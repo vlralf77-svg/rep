@@ -2,8 +2,7 @@ export interface Team {
   id: number;
   name: string;
   shortName: string;
-  tla: string;
-  crest?: string;
+  crest: string;
   eloRating: number;
 }
 
@@ -12,14 +11,24 @@ export interface Match {
   homeTeam: Team;
   awayTeam: Team;
   utcDate: string;
-  status: 'SCHEDULED' | 'LIVE' | 'IN_PLAY' | 'PAUSED' | 'FINISHED' | 'SUSPENDED' | 'POSTPONED' | 'CANCELLED' | 'AWARDED';
-  matchday?: number;
-  stage?: string;
-  homeScore?: number;
-  awayScore?: number;
-  leagueId: string;
-  leagueName: string;
-  season: string;
+  status: 'SCHEDULED' | 'LIVE' | 'IN_PLAY' | 'PAUSED' | 'FINISHED' | 'POSTPONED' | 'CANCELLED';
+  matchday: number;
+  stage: string;
+  group?: string;
+  lastUpdated: string;
+  score: {
+    winner?: 'HOME_TEAM' | 'AWAY_TEAM' | 'DRAW';
+    duration: string;
+    fullTime: { home: number | null; away: number | null };
+    halfTime: { home: number | null; away: number | null };
+  };
+  competition: {
+    id: number;
+    name: string;
+    code: string;
+    type: string;
+    emblem: string;
+  };
 }
 
 export interface Standing {
@@ -29,20 +38,34 @@ export interface Standing {
   won: number;
   draw: number;
   lost: number;
+  points: number;
   goalsFor: number;
   goalsAgainst: number;
   goalDifference: number;
-  points: number;
-  form?: string;
+  form: string;
 }
 
 export interface H2HRecord {
-  homeTeam: Team;
-  awayTeam: Team;
-  matches: Match[];
+  homeTeamId: number;
+  awayTeamId: number;
   homeWins: number;
   draws: number;
   awayWins: number;
+  homeGoals: number;
+  awayGoals: number;
+  matches: number;
+}
+
+export interface Prediction {
+  matchId: number;
+  homeWinProbability: number;
+  drawProbability: number;
+  awayWinProbability: number;
+  expectedHomeGoals: number;
+  expectedAwayGoals: number;
+  topScorePredictions: ScorePrediction[];
+  confidence: 'HIGH' | 'MEDIUM' | 'LOW';
+  generatedAt: string;
 }
 
 export interface ScorePrediction {
@@ -52,29 +75,16 @@ export interface ScorePrediction {
 }
 
 export interface PredictionResult {
-  matchId: number;
-  homeWinProbability: number;
-  drawProbability: number;
-  awayWinProbability: number;
-  expectedHomeGoals: number;
-  expectedAwayGoals: number;
-  topScores: ScorePrediction[];
-  homeElo: number;
-  awayElo: number;
-  rationale: string;
-  computedAt: string;
+  match: Match;
+  prediction: Prediction;
+  h2h: H2HRecord;
+  homeTeamForm: string[];
+  awayTeamForm: string[];
 }
 
-export interface LeagueFilter {
-  id: string;
-  name: string;
-  flag?: string;
+export interface SyncStatus {
+  lastSync: string;
+  matchesSynced: number;
+  status: 'success' | 'error' | 'running';
+  message?: string;
 }
-
-export const SUPPORTED_LEAGUES: LeagueFilter[] = [
-  { id: 'PL', name: '프리미어리그', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' },
-  { id: 'BL1', name: '분데스리가', flag: '🇩🇪' },
-  { id: 'SA', name: '세리에 A', flag: '🇮🇹' },
-  { id: 'PD', name: '라리가', flag: '🇪🇸' },
-  { id: 'FL1', name: '리그 앙', flag: '🇫🇷' },
-];
