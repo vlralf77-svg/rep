@@ -62,10 +62,29 @@ async function scrape() {
     const page2 = await browser.newPage();
     await page2.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36');
 
+    const DETAIL_DEBUG = path.join(__dirname, '..', 'data', 'betman-detail-debug.html');
+    let firstDetail = true;
+
     for (const game of activGames) {
       console.log(`[betman] 상세 로딩: ${game.name}`);
       await page2.goto(game.href, { waitUntil: 'networkidle0', timeout: 30000 }).catch(() => {});
       await new Promise(r => setTimeout(r, 2000));
+
+      // 첫 번째 상세 페이지 HTML 저장 (디버그)
+      if (firstDetail) {
+        const detailHtml = await page2.content();
+        fs.writeFileSync(DETAIL_DEBUG, detailHtml);
+        const title = await page2.title();
+        console.log(`[debug] 상세 페이지 제목: ${title}, HTML: ${detailHtml.length}bytes`);
+        // 로그인 필요 여부
+        if (detailHtml.includes('로그인이 필요')) {
+          console.log('[debug] 상세 페이지도 로그인 필요!');
+        }
+        // 배당률 패턴
+        const odds = detailHtml.match(/\b[1-9]\.\d{2}\b/g);
+        console.log('[debug] 배당률 패턴:', odds ? odds.slice(0, 10) : '없음');
+        firstDetail = false;
+      }
 
       const matches = await page2.evaluate((gameName) => {
         const results = [];

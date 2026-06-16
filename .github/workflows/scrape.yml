@@ -41,7 +41,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: betman-debug-html
-          path: data/betman-debug.html
+          path: |
+            data/betman-debug.html
+            data/betman-detail-debug.html
           retention-days: 1
 
       - name: Commit data
