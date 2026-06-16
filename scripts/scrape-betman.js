@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * betman.co.kr 크롤러 v4
+ * betman.co.kr 크롤러 v5
  * buyableGameList.do (발매중) → gameScheduleList.do (예정) 순서로 시도
  */
 
@@ -32,6 +32,60 @@ async function getGameLinks(page, url) {
     });
     return links;
   }, BASE);
+}
+
+async function extractMatches(page2, game) {
+  return page2.evaluate((gameName) => {
+    // Diagnostic: dump all table rows
+    const tableData = [];
+    document.querySelectorAll('table').forEach((tbl, ti) => {
+      const rows = [];
+      tbl.querySelectorAll('tr').forEach(tr => {
+        const cells = Array.from(tr.querySelectorAll('td, th')).map(c => {
+          // Normalize whitespace and non-breaking spaces
+          return c.textContent.replace(/ /g, ' ').replace(/\s+/g, ' ').trim();
+        }).filter(Boolean);
+        if (cells.length > 0) rows.push(cells);
+      });
+      if (rows.length > 0) tableData.push({ tableIndex: ti, rows: rows.slice(0, 20) });
+    });
+
+    // Log first few tables for diagnosis
+    const diagLog = tableData.slice(0, 5).map(t =>
+      `[Table ${t.tableIndex}]\n` + t.rows.map(r => r.join(' | ')).join('\n')
+    ).join('\n\n');
+
+    // Extract odds from all tables
+    const results = [];
+    const oddsRe = /^[1-9]\d*\.\d{2}$/;
+
+    for (const tbl of tableData) {
+      for (const cells of tbl.rows) {
+        // Try exact match on cells
+        const oddsCells = cells.filter(c => oddsRe.test(c));
+        if (oddsCells.length >= 2) {
+          const nonOdds = cells.filter(c => !oddsRe.test(c) && !/^\d+$/.test(c) && c.length > 1 && c.length < 40);
+          results.push({
+            gameId: `${gameName}_${results.length}`,
+            round: '', gameDate: '',
+            sport: gameName.includes('야구') ? '야구' : '축구',
+            league: gameName,
+            homeTeam: nonOdds[0] || '',
+            awayTeam: nonOdds[1] || '',
+            odds: {
+              homeWin: parseFloat(oddsCells[0]) || 0,
+              draw: oddsCells.length >= 3 ? parseFloat(oddsCells[1]) || 0 : 0,
+              awayWin: parseFloat(oddsCells[oddsCells.length - 1]) || 0,
+            },
+            status: '발매중', result: null,
+            raw: cells.join(' | '),
+          });
+        }
+      }
+    }
+
+    return { results, diagLog };
+  }, game.name);
 }
 
 async function scrape() {
@@ -69,47 +123,25 @@ async function scrape() {
 
     let firstDetail = true;
     for (const game of gameLinks.slice(0, 8)) {
-      console.log(`[betman] 상세 로딩: ${game.name}`);
+      console.log(`[betman] 상세 로딩: ${game.name} → ${game.href}`);
       await page2.goto(game.href, { waitUntil: 'networkidle0', timeout: 30000 }).catch(() => {});
       await new Promise(r => setTimeout(r, 2000));
 
+      const dHtml = await page2.content();
       if (firstDetail) {
-        const dHtml = await page2.content();
         fs.writeFileSync(DETAIL_DEBUG, dHtml);
         const odds = dHtml.match(/\b[1-9]\.\d{2}\b/g);
-        console.log(`[debug] 상세 HTML: ${dHtml.length}bytes, 배당: ${odds ? odds.slice(0,10) : '없음'}`);
+        console.log(`[debug] 상세 HTML: ${dHtml.length}bytes, 배당후보: ${odds ? [...new Set(odds)].slice(0,10) : '없음'}`);
         if (dHtml.includes('로그인이 필요')) console.log('[debug] 로그인 필요!');
         firstDetail = false;
       }
 
-      const matches = await page2.evaluate((gameName) => {
-        const results = [];
-        document.querySelectorAll('table tr').forEach(row => {
-          const cells = Array.from(row.querySelectorAll('td, th')).map(c => c.textContent.trim()).filter(Boolean);
-          if (cells.length < 3) return;
-          const oddsPat = /^\d\.\d{2}$/;
-          const oddsCells = cells.filter(c => oddsPat.test(c));
-          if (oddsCells.length >= 2) {
-            const nonOdds = cells.filter(c => !oddsPat.test(c) && !/^\d+$/.test(c) && c.length > 1 && c.length < 30);
-            results.push({
-              gameId: `${gameName}_${results.length}`,
-              round: '', gameDate: '',
-              sport: gameName.includes('야구') ? '야구' : '축구',
-              league: gameName,
-              homeTeam: nonOdds[0] || '',
-              awayTeam: nonOdds[1] || '',
-              odds: {
-                homeWin: parseFloat(oddsCells[0]) || 0,
-                draw: oddsCells.length >= 3 ? parseFloat(oddsCells[1]) || 0 : 0,
-                awayWin: parseFloat(oddsCells[oddsCells.length - 1]) || 0,
-              },
-              status: '발매중', result: null,
-              raw: cells.join(' | '),
-            });
-          }
-        });
-        return results;
-      }, game.name);
+      const { results: matches, diagLog } = await extractMatches(page2, game);
+
+      if (matches.length === 0) {
+        // Print table diagnosis for debugging
+        console.log(`[debug] ${game.name} 테이블 구조:\n${diagLog.substring(0, 800)}`);
+      }
 
       console.log(`  → ${matches.length}경기 추출`);
       if (game.name.includes('야구')) result.proto.push(...matches);
