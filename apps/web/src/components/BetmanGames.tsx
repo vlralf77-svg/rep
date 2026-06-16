@@ -1,12 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import {
   Box, Typography, Card, CardActionArea, CardContent, Chip,
   CircularProgress, Alert, Dialog, DialogTitle, DialogContent,
-  Divider, LinearProgress,
+  Divider, LinearProgress, Button,
 } from '@mui/material';
 import { useBetmanData } from '../api/hooks';
 import { BetmanGame, BetmanMarket } from '../lib/api';
 import { analyzeMarket } from '../lib/betman-analyze';
+import {
+  savePredictions,
+  setActualResult,
+  getPredictions,
+  getAccuracyStats,
+  PredictionRecord,
+  MarketPrediction,
+} from '../lib/betman-history';
 
 function OddsBox({ label, value }: { label: string; value: number }) {
   return (
@@ -50,10 +58,28 @@ const PALETTE = ['#4fc3f7', '#78909c', '#f48fb1', '#ce93d8', '#ffb74d'];
 const CONF_LABEL = { HIGH: '높음', MEDIUM: '보통', LOW: '낮음' } as const;
 
 // 마켓 한 개: 배당 박스 + 2가지 예측(시장/AI) + AI 추천
-function MarketBlock({ market }: { market: BetmanMarket }) {
+// + optional result-entry section for past games
+function MarketBlock({
+  market,
+  matchId,
+  isPast,
+  savedPred,
+  onActualSet,
+}: {
+  market: BetmanMarket;
+  matchId: string;
+  isPast: boolean;
+  savedPred?: MarketPrediction;
+  onActualSet?: () => void;
+}) {
   const a = analyzeMarket(market);
   const aiPick = a.selections[a.aiBestIdx];
   const value = a.valueIdx >= 0 ? a.selections[a.valueIdx] : null;
+
+  const handleActual = (label: string) => {
+    setActualResult(matchId, market.type, label);
+    onActualSet?.();
+  };
 
   return (
     <Box sx={{ mb: 2, bgcolor: 'rgba(255,255,255,0.02)', borderRadius: 2, p: 1.5 }}>
@@ -86,6 +112,36 @@ function MarketBlock({ market }: { market: BetmanMarket }) {
           ░ 시장(배당 역산) · ▓ AI(편향 보정) — 두 막대를 비교하세요
         </Typography>
       </Box>
+
+      {isPast && (
+        <Box sx={{ mt: 1, pt: 1, borderTop: '1px dashed rgba(255,255,255,0.1)' }}>
+          <Typography variant="caption" display="block" color="text.secondary" mb={0.5}>
+            결과 입력
+          </Typography>
+          <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
+            {market.selections.map((s, i) => {
+              const isSelected = savedPred?.actual === s.label;
+              return (
+                <Button
+                  key={i}
+                  size="small"
+                  variant={isSelected ? 'contained' : 'outlined'}
+                  onClick={() => handleActual(s.label)}
+                  sx={{ minWidth: 0, px: 1, py: 0.3, fontSize: 11 }}
+                >
+                  {s.label}
+                </Button>
+              );
+            })}
+          </Box>
+          {savedPred?.actual !== undefined && (
+            <Typography variant="caption" display="block" mt={0.5}
+              color={savedPred.actual === savedPred.aiPick ? 'success.main' : 'error.main'}>
+              {savedPred.actual === savedPred.aiPick ? '✅ AI 적중' : '❌ AI 오류'} (AI: {savedPred.aiPick} / 실제: {savedPred.actual})
+            </Typography>
+          )}
+        </Box>
+      )}
     </Box>
   );
 }
@@ -102,20 +158,86 @@ function GameDetail({ game, open, onClose }: { game: BetmanGame; open: boolean; 
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
   });
 
+  const isPast = game.gameDate
+    ? new Date(game.gameDate) < new Date(Date.now() - 24 * 60 * 60 * 1000)
+    : false;
+
+  // State to trigger re-render when actuals change
+  const [tick, setTick] = useState(0);
+  const refresh = useCallback(() => setTick((t) => t + 1), []);
+
+  // Load saved predictions for this game
+  const [savedRecord, setSavedRecord] = useState<PredictionRecord | undefined>(undefined);
+
+  useEffect(() => {
+    if (!open) return;
+    const all = getPredictions();
+    setSavedRecord(all.find((r) => r.matchId === game.matchId));
+  }, [open, game.matchId, tick]);
+
+  // Auto-save predictions when dialog opens (only for games not too far in the past)
+  useEffect(() => {
+    if (!open) return;
+    if (!game.gameDate) return;
+
+    const gameDate = new Date(game.gameDate);
+    const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000);
+    if (gameDate < yesterday) return;
+
+    const predictions: MarketPrediction[] = game.markets.map((m) => {
+      const a = analyzeMarket(m);
+      return {
+        marketType: m.type,
+        aiPick: a.selections[a.aiBestIdx].label,
+        aiProb: a.selections[a.aiBestIdx].aiProb,
+        marketPick: a.selections[a.marketBestIdx].label,
+      };
+    });
+
+    savePredictions({
+      matchId: game.matchId,
+      homeTeam: game.homeTeam,
+      awayTeam: game.awayTeam,
+      gameDate: game.gameDate,
+      savedAt: new Date().toISOString(),
+      predictions,
+    });
+  }, [open, game]);
+
+  // Compute per-game accuracy badge
+  let gameBadge: string | null = null;
+  if (savedRecord) {
+    const withActual = savedRecord.predictions.filter((p) => p.actual !== undefined);
+    if (withActual.length > 0) {
+      const correct = withActual.filter((p) => p.actual === p.aiPick).length;
+      gameBadge = `✅ ${correct}/${withActual.length} 적중`;
+    }
+  }
+
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm"
       PaperProps={{ sx: { bgcolor: '#1a1a2e', borderRadius: 3 } }}>
       <DialogTitle sx={{ pb: 0.5 }}>
-        <Box sx={{ display: 'flex', gap: 1, mb: 0.5, flexWrap: 'wrap' }}>
+        <Box sx={{ display: 'flex', gap: 1, mb: 0.5, flexWrap: 'wrap', alignItems: 'center' }}>
           {game.sport && <Chip label={game.sport} size="small" variant="outlined" />}
           {gameDateTime && <Chip label={gameDateTime} size="small" variant="outlined" />}
+          {gameBadge && <Chip label={gameBadge} size="small" color="success" />}
         </Box>
         <Typography variant="h6" fontWeight={700}>{game.homeTeam} vs {game.awayTeam}</Typography>
         <Typography variant="caption" color="text.secondary">{sorted.length}개 베팅 마켓</Typography>
       </DialogTitle>
       <DialogContent>
         <Divider sx={{ mb: 2 }} />
-        {sorted.map((m, i) => <MarketBlock key={i} market={m} />)}
+        {sorted.map((m, i) => (
+          <MarketBlock
+            key={i}
+            market={m}
+            matchId={game.matchId}
+            isPast={isPast}
+            savedPred={savedRecord?.predictions.find((p) => p.marketType === m.type)}
+            onActualSet={refresh}
+          />
+        ))}
       </DialogContent>
     </Dialog>
   );
@@ -163,6 +285,39 @@ function GameRow({ game }: { game: BetmanGame }) {
   );
 }
 
+function AccuracyPanel() {
+  const stats = getAccuracyStats();
+  if (stats.total === 0) return null;
+
+  const aiPct = (stats.aiCorrect / stats.total * 100).toFixed(0);
+  const mktPct = (stats.marketCorrect / stats.total * 100).toFixed(0);
+
+  return (
+    <Box sx={{
+      mb: 2, p: 1.5, borderRadius: 2,
+      bgcolor: 'rgba(255,255,255,0.04)',
+      border: '1px solid rgba(255,255,255,0.08)',
+    }}>
+      <Typography variant="caption" color="text.secondary" display="block" mb={0.5} fontWeight={600}>
+        예측 적중률
+      </Typography>
+      <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+        <Chip
+          label={`AI 예측 적중률: ${stats.aiCorrect}/${stats.total} (${aiPct}%)`}
+          size="small"
+          color="primary"
+          variant="outlined"
+        />
+        <Chip
+          label={`시장 배당 적중률: ${stats.marketCorrect}/${stats.total} (${mktPct}%)`}
+          size="small"
+          variant="outlined"
+        />
+      </Box>
+    </Box>
+  );
+}
+
 export default function BetmanGames({ type }: { type: 'toto' | 'proto' }) {
   const { data, isLoading, error } = useBetmanData();
 
@@ -183,6 +338,8 @@ export default function BetmanGames({ type }: { type: 'toto' | 'proto' }) {
         </Typography>
         {updatedAt && <Typography variant="caption" color="text.secondary">갱신: {updatedAt}</Typography>}
       </Box>
+
+      <AccuracyPanel />
 
       {data.error && <Alert severity="warning" sx={{ mb: 2 }}>스크래핑 오류: {data.error}</Alert>}
 
