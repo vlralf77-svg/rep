@@ -1,11 +1,10 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 
-const api = axios.create({
-  baseURL: '/api',
-});
+const api = axios.create({ baseURL: '/api' });
 
 export interface MatchListParams {
+  sport?: string;
   league?: string;
   status?: string;
   dateFrom?: string;
@@ -38,8 +37,8 @@ export function useMatchPrediction(matchId: number | null) {
 export function useSyncMatches() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async () => {
-      const { data } = await api.post('/matches/sync');
+    mutationFn: async (params?: { sport?: string }) => {
+      const { data } = await api.post('/matches/sync', null, { params });
       return data;
     },
     onSuccess: () => {

@@ -2,15 +2,17 @@ import { Router, Request, Response } from 'express';
 import prisma from '../models/db';
 import { generatePrediction } from '../services/predictionEngine';
 import { syncAll } from '../services/syncService';
+import { syncKBO } from '../services/kboSyncService';
 
 const router = Router();
 
 router.get('/', async (req: Request, res: Response) => {
   try {
-    const { league, status, dateFrom, dateTo, limit = '20', offset = '0' } = req.query;
+    const { league, status, dateFrom, dateTo, sport, limit = '20', offset = '0' } = req.query;
 
     const where: Record<string, unknown> = {};
 
+    if (sport) where.sport = sport as string;
     if (league) where.competitionCode = league as string;
     if (status) where.status = status as string;
 
@@ -22,10 +24,7 @@ router.get('/', async (req: Request, res: Response) => {
 
     const matches = await prisma.match.findMany({
       where,
-      include: {
-        homeTeam: true,
-        awayTeam: true,
-      },
+      include: { homeTeam: true, awayTeam: true },
       orderBy: { utcDate: 'asc' },
       take: parseInt(limit as string),
       skip: parseInt(offset as string),
@@ -43,23 +42,16 @@ router.get('/', async (req: Request, res: Response) => {
 router.get('/:id/prediction', async (req: Request, res: Response) => {
   try {
     const matchId = parseInt(req.params.id);
-
-    if (isNaN(matchId)) {
-      return res.status(400).json({ error: 'Invalid match ID' });
-    }
+    if (isNaN(matchId)) return res.status(400).json({ error: 'Invalid match ID' });
 
     const match = await prisma.match.findUnique({
       where: { id: matchId },
       include: { homeTeam: true, awayTeam: true },
     });
-
-    if (!match) {
-      return res.status(404).json({ error: 'Match not found' });
-    }
+    if (!match) return res.status(404).json({ error: 'Match not found' });
 
     const prediction = await generatePrediction(matchId);
 
-    // Get H2H
     const h2h = await prisma.h2H.findFirst({
       where: {
         OR: [
@@ -69,17 +61,12 @@ router.get('/:id/prediction', async (req: Request, res: Response) => {
       },
     });
 
-    // Get recent form
     const getForm = async (teamId: number) => {
       const recent = await prisma.match.findMany({
-        where: {
-          OR: [{ homeTeamId: teamId }, { awayTeamId: teamId }],
-          status: 'FINISHED',
-        },
+        where: { OR: [{ homeTeamId: teamId }, { awayTeamId: teamId }], status: 'FINISHED' },
         orderBy: { utcDate: 'desc' },
         take: 5,
       });
-
       return recent.map(m => {
         if (!m.winner) return 'D';
         if (m.winner === 'HOME_TEAM') return m.homeTeamId === teamId ? 'W' : 'L';
@@ -88,24 +75,12 @@ router.get('/:id/prediction', async (req: Request, res: Response) => {
       });
     };
 
-    const [homeForm, awayForm] = await Promise.all([
-      getForm(match.homeTeamId),
-      getForm(match.awayTeamId),
-    ]);
+    const [homeForm, awayForm] = await Promise.all([getForm(match.homeTeamId), getForm(match.awayTeamId)]);
 
     res.json({
       match,
       prediction,
-      h2h: h2h || {
-        homeTeamId: match.homeTeamId,
-        awayTeamId: match.awayTeamId,
-        homeWins: 0,
-        draws: 0,
-        awayWins: 0,
-        homeGoals: 0,
-        awayGoals: 0,
-        totalMatches: 0,
-      },
+      h2h: h2h || { homeTeamId: match.homeTeamId, awayTeamId: match.awayTeamId, homeWins: 0, draws: 0, awayWins: 0, homeGoals: 0, awayGoals: 0, totalMatches: 0 },
       homeTeamForm: homeForm,
       awayTeamForm: awayForm,
     });
@@ -115,18 +90,22 @@ router.get('/:id/prediction', async (req: Request, res: Response) => {
   }
 });
 
-router.post('/sync', async (_req: Request, res: Response) => {
+router.post('/sync', async (req: Request, res: Response) => {
   try {
+    const { sport } = req.query;
     res.json({ message: 'Sync started', status: 'running' });
 
-    // Run sync in background
-    syncAll().then(result => {
-      console.log('Sync completed:', result);
-    }).catch(error => {
-      console.error('Sync failed:', error);
-    });
+    if (sport === 'baseball') {
+      syncKBO().then(r => console.log('KBO sync done:', r)).catch(console.error);
+    } else if (sport === 'football') {
+      syncAll().then(r => console.log('Football sync done:', r)).catch(console.error);
+    } else {
+      // 전체 동기화
+      Promise.all([syncAll(), syncKBO()])
+        .then(([f, k]) => console.log('All sync done:', f, k))
+        .catch(console.error);
+    }
   } catch (error) {
-    console.error('Error starting sync:', error);
     res.status(500).json({ error: 'Failed to start sync' });
   }
 });

@@ -1,9 +1,12 @@
+export type Sport = 'football' | 'baseball';
+
 export interface Team {
   id: number;
   name: string;
   shortName: string;
   crest: string;
   eloRating: number;
+  sport: Sport;
 }
 
 export interface Match {
@@ -16,19 +19,13 @@ export interface Match {
   stage: string;
   group?: string;
   lastUpdated: string;
-  score: {
-    winner?: 'HOME_TEAM' | 'AWAY_TEAM' | 'DRAW';
-    duration: string;
-    fullTime: { home: number | null; away: number | null };
-    halfTime: { home: number | null; away: number | null };
-  };
-  competition: {
-    id: number;
-    name: string;
-    code: string;
-    type: string;
-    emblem: string;
-  };
+  sport: Sport;
+  homeScore?: number | null;
+  awayScore?: number | null;
+  winner?: string | null;
+  competitionId: number;
+  competitionName: string;
+  competitionCode: string;
 }
 
 export interface Standing {
@@ -56,6 +53,12 @@ export interface H2HRecord {
   matches: number;
 }
 
+export interface ScorePrediction {
+  homeScore: number;
+  awayScore: number;
+  probability: number;
+}
+
 export interface Prediction {
   matchId: number;
   homeWinProbability: number;
@@ -68,12 +71,6 @@ export interface Prediction {
   generatedAt: string;
 }
 
-export interface ScorePrediction {
-  homeScore: number;
-  awayScore: number;
-  probability: number;
-}
-
 export interface PredictionResult {
   match: Match;
   prediction: Prediction;
@@ -82,9 +79,21 @@ export interface PredictionResult {
   awayTeamForm: string[];
 }
 
-export interface SyncStatus {
-  lastSync: string;
-  matchesSynced: number;
-  status: 'success' | 'error' | 'running';
-  message?: string;
+export interface LeagueInfo {
+  code: string;
+  name: string;
+  sport: Sport;
+  flag?: string;
 }
+
+export const FOOTBALL_LEAGUES: LeagueInfo[] = [
+  { code: 'PL', name: '프리미어리그', sport: 'football', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' },
+  { code: 'BL1', name: '분데스리가', sport: 'football', flag: '🇩🇪' },
+  { code: 'SA', name: '세리에 A', sport: 'football', flag: '🇮🇹' },
+  { code: 'PD', name: '라리가', sport: 'football', flag: '🇪🇸' },
+  { code: 'FL1', name: '리그 앙', sport: 'football', flag: '🇫🇷' },
+];
+
+export const BASEBALL_LEAGUES: LeagueInfo[] = [
+  { code: 'KBO', name: 'KBO 리그', sport: 'baseball', flag: '🇰🇷' },
+];

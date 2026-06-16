@@ -13,6 +13,7 @@ model Team {
   shortName  String
   crest      String
   eloRating  Float    @default(1500)
+  sport      String   @default("football")
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
@@ -22,25 +23,26 @@ model Team {
 }
 
 model Match {
-  id          Int      @id
-  homeTeamId  Int
-  awayTeamId  Int
-  utcDate     DateTime
-  status      String
-  matchday    Int?
-  stage       String?
-  groupName   String?
-  competitionId Int
+  id              Int      @id
+  homeTeamId      Int
+  awayTeamId      Int
+  utcDate         DateTime
+  status          String
+  matchday        Int?
+  stage           String?
+  groupName       String?
+  competitionId   Int      @default(0)
   competitionName String
   competitionCode String
-  homeScore   Int?
-  awayScore   Int?
-  htHomeScore Int?
-  htAwayScore Int?
-  winner      String?
-  lastUpdated DateTime
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  sport           String   @default("football")
+  homeScore       Int?
+  awayScore       Int?
+  htHomeScore     Int?
+  htAwayScore     Int?
+  winner          String?
+  lastUpdated     DateTime
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 
   homeTeam    Team     @relation("HomeTeam", fields: [homeTeamId], references: [id])
   awayTeam    Team     @relation("AwayTeam", fields: [awayTeamId], references: [id])
@@ -48,25 +50,26 @@ model Match {
   @@index([status])
   @@index([utcDate])
   @@index([competitionCode])
+  @@index([sport])
 }
 
 model Standing {
-  id            Int      @id @default(autoincrement())
-  teamId        Int
+  id              Int      @id @default(autoincrement())
+  teamId          Int
   competitionCode String
-  season        String
-  position      Int
-  playedGames   Int
-  won           Int
-  draw          Int
-  lost          Int
-  points        Int
-  goalsFor      Int
-  goalsAgainst  Int
-  goalDifference Int
-  form          String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  season          String
+  position        Int
+  playedGames     Int
+  won             Int
+  draw            Int
+  lost            Int
+  points          Int
+  goalsFor        Int
+  goalsAgainst    Int
+  goalDifference  Int
+  form            String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 
   team          Team     @relation(fields: [teamId], references: [id])
 
@@ -74,16 +77,16 @@ model Standing {
 }
 
 model H2H {
-  id          Int      @id @default(autoincrement())
-  homeTeamId  Int
-  awayTeamId  Int
-  homeWins    Int      @default(0)
-  draws       Int      @default(0)
-  awayWins    Int      @default(0)
-  homeGoals   Int      @default(0)
-  awayGoals   Int      @default(0)
-  totalMatches Int     @default(0)
-  updatedAt   DateTime @updatedAt
+  id           Int      @id @default(autoincrement())
+  homeTeamId   Int
+  awayTeamId   Int
+  homeWins     Int      @default(0)
+  draws        Int      @default(0)
+  awayWins     Int      @default(0)
+  homeGoals    Int      @default(0)
+  awayGoals    Int      @default(0)
+  totalMatches Int      @default(0)
+  updatedAt    DateTime @updatedAt
 
   @@unique([homeTeamId, awayTeamId])
 }
