@@ -6,7 +6,7 @@
  * - 직접 API 호출 시도
  */
 
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
