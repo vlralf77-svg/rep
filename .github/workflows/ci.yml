@@ -24,13 +24,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Type check shared
-        run: pnpm --filter @sports/shared tsc --noEmit 2>/dev/null || true
-
-      - name: Build web
+      - name: Build web app
         run: pnpm --filter @sports/web build
-        env:
-          VITE_API_URL: http://localhost:3001
 
       - name: Upload web build artifact
         uses: actions/upload-artifact@v4
