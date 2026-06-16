@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * betman.co.kr 크롤러 v7
- * div.btnChkBox + button[data-selkey] + span.db 구조 사용
+ * betman.co.kr 크롤러 v8
+ * div.btnChkBox 구조 + 날짜/베팅타입 추출
  */
 
 const puppeteer = require('puppeteer-core');
@@ -35,15 +35,11 @@ async function getGameLinks(page, url) {
 }
 
 async function extractMatches(page2, game) {
-  // Scroll to trigger lazy-loaded content
   await page2.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
   await new Promise(r => setTimeout(r, 1500));
 
   return page2.evaluate((gameName) => {
     const results = [];
-    const sport = gameName.includes('야구') ? '야구' : '축구';
-
-    // Each match is in a div.btnChkBox with buttons keyed by data-selkey
     const boxes = document.querySelectorAll('div.btnChkBox');
     const diagLog = `Found ${boxes.length} btnChkBox elements`;
 
@@ -51,28 +47,51 @@ async function extractMatches(page2, game) {
       const buttons = box.querySelectorAll('button.btnChk');
       if (!buttons.length) return;
 
+      // Extract game date from data-gamecombkey timestamp
+      const combKey = box.getAttribute('data-gamecombkey') || '';
+      const tsMatch = combKey.match(/\d{13}/);
+      const gameDate = tsMatch ? new Date(parseInt(tsMatch[0])).toISOString() : '';
+
+      // Sport from key prefix (BS=baseball, SC=soccer) or game name
+      const prefix = combKey.slice(0, 2);
+      const sport = prefix === 'BS' ? '야구' : prefix === 'SC' ? '축구'
+        : (gameName.includes('야구') ? '야구' : '축구');
+
       const title = buttons[0].getAttribute('title') || '';
       const [homeTeam = '', awayTeam = ''] = title.split(' vs ');
 
       const oddsMap = {};
+      const selkeys = [];
       buttons.forEach(btn => {
         const selkey = btn.getAttribute('data-selkey');
         const span = btn.querySelector('span.db');
         if (selkey && span) {
           const val = parseFloat(span.textContent.replace(/\s/g, ''));
-          if (!isNaN(val)) oddsMap[selkey] = val;
+          if (!isNaN(val)) { oddsMap[selkey] = val; selkeys.push(selkey); }
         }
       });
 
+      // Determine bet type from selkeys
+      let betType = '';
+      if (selkeys.includes('X')) betType = '승무패';
+      else if (selkeys.includes('O') || selkeys.includes('U')) betType = '언더오버';
+      else if (selkeys.some(k => /^H/.test(k))) betType = '핸디캡';
+      else if (selkeys.includes('1') && selkeys.includes('2')) betType = '승1패';
+      else return; // unknown type, skip
+
+      // Only include win/loss type bets (not over/under, handicap)
+      if (betType !== '승무패' && betType !== '승1패') return;
       if (!oddsMap['1'] && !oddsMap['2']) return;
 
       results.push({
         gameId: `${gameName}_${idx}`,
-        round: '', gameDate: '',
+        round: '',
+        gameDate,
         sport,
         league: gameName,
         homeTeam: homeTeam.trim(),
         awayTeam: awayTeam.trim(),
+        betType,
         odds: {
           homeWin: oddsMap['1'] || 0,
           draw: oddsMap['X'] || 0,
@@ -104,15 +123,12 @@ async function scrape() {
     console.log('[betman] 발매중 게임(buyableGameList) 로딩...');
     let gameLinks = await getGameLinks(page, `${BASE}/main/mainPage/gamebuy/buyableGameList.do`);
     console.log(`[betman] 발매중 게임 ${gameLinks.length}개`);
-    gameLinks.forEach(g => console.log(' -', g.name, '|', g.cells.join(' | ').substring(0, 80)));
 
     if (gameLinks.length === 0) {
-      console.log('[betman] 발매중 게임 없음 → 게임일정 목록 시도');
       gameLinks = await getGameLinks(page, `${BASE}/main/mainPage/gamebuy/gameScheduleList.do`);
       console.log(`[betman] 일정 게임 ${gameLinks.length}개`);
     }
 
-    // 승부식(proto 고정배당) + 승무패/승1패(toto 고정배당) 만 처리
     const targetGames = gameLinks.filter(g =>
       g.name.includes('승부식') || g.name.includes('승1패') || g.name.includes('승무패')
     );
@@ -134,7 +150,7 @@ async function scrape() {
 
       const { results: matches, diagLog } = await extractMatches(page2, game);
       console.log(`  → ${matches.length}경기 추출 (${diagLog})`);
-      matches.forEach(m => console.log(`    ${m.homeTeam} vs ${m.awayTeam} | 홈:${m.odds.homeWin} 무:${m.odds.draw} 원:${m.odds.awayWin}`));
+      matches.forEach(m => console.log(`    [${m.betType}] ${m.homeTeam} vs ${m.awayTeam} | 홈:${m.odds.homeWin} 무:${m.odds.draw} 원:${m.odds.awayWin} | ${m.gameDate}`));
 
       if (game.name.includes('야구') || game.name.includes('승부식')) result.proto.push(...matches);
       else result.toto.push(...matches);

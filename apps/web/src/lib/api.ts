@@ -233,6 +233,7 @@ export interface BetmanGame {
   league: string;
   homeTeam: string;
   awayTeam: string;
+  betType?: string;
   odds: { homeWin: number; draw: number; awayWin: number };
   handicap?: string | null;
   overUnder?: string | null;
