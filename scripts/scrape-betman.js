@@ -41,9 +41,9 @@ async function scrape() {
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
     );
 
-    // 스포츠토토 페이지 로드
-    console.log('[betman] 스포츠토토 페이지 로딩...');
-    await page.goto('https://www.betman.co.kr/main/mainPage/game/S01/selectGameView.do', {
+    // 게임 일정 페이지 (로그인 불필요)
+    console.log('[betman] 게임 일정 페이지 로딩...');
+    await page.goto('https://www.betman.co.kr/main/mainPage/gamebuy/gameScheduleList.do', {
       waitUntil: 'networkidle0',
       timeout: 40000,
     }).catch(e => console.log('[warn]', e.message));
