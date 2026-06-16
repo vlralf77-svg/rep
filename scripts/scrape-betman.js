@@ -53,18 +53,20 @@ async function extractInto(page2, gameName, matchMap) {
       const gameDate = ts ? new Date(ts).toISOString() : '';
 
       const markets = [];
-      ul.querySelectorAll('li[data-matchseq]').forEach(li => {
+      // ul 직속 li만 (div.btnChkBox도 data-matchseq를 가지므로 :scope > li로 한정)
+      ul.querySelectorAll(':scope > li[data-matchseq]').forEach(li => {
         const gb = li.querySelector('b.game');
         if (!gb) return;
         const fullType = gb.textContent.trim(); // "야구 승1패", "축구 전반 언더오버" 등
         const sport = fullType.startsWith('야구') ? '야구' : fullType.startsWith('축구') ? '축구' : '';
         const type = fullType.replace(/^(야구|축구)\s*/, '');
 
-        // 언더오버/핸디캡 기준점수: b.game 형제인 span.udPoint (예: "U/O 2.5", "H -1.0")
+        // 언더오버/핸디캡 기준점수: b.game과 같은 부모(div.competition-detail) 안의 span.udPoint
         let line = null;
-        const ud = gb.parentElement && gb.parentElement.querySelector('span.udPoint');
-        if (ud) {
-          const mm = ud.textContent.match(/-?\d+(\.\d+)?/);
+        const udSpans = li.querySelectorAll('span.udPoint');
+        if (udSpans.length > 0) {
+          const txt = udSpans[0].textContent.trim();
+          const mm = txt.match(/-?\d+(\.\d+)?/);
           if (mm) line = parseFloat(mm[0]);
         }
 
