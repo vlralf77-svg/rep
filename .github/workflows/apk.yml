@@ -12,9 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 10
 
       - uses: actions/setup-node@v4
         with:
@@ -30,16 +30,29 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build web app
         run: pnpm --filter @sports/web build
 
-      - name: Add Capacitor Android platform
+      - name: Verify web build output
+        run: |
+          echo "=== Web dist contents ==="
+          ls -la apps/web/dist/
+          echo "=== index.html ==="
+          head -5 apps/web/dist/index.html
+
+      - name: Initialize Capacitor Android
         working-directory: apps/web
         run: |
-          npx cap add android || true
+          npx cap add android 2>&1 || echo "Android platform may already exist"
           npx cap sync android
+          echo "=== Capacitor sync done ==="
+
+      - name: Verify Android assets
+        run: |
+          echo "=== Android assets ==="
+          ls -la apps/web/android/app/src/main/assets/ 2>/dev/null || echo "assets dir not found"
 
       - name: Make Gradlew executable
         working-directory: apps/web/android
@@ -47,10 +60,24 @@ jobs:
 
       - name: Build Debug APK
         working-directory: apps/web/android
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleDebug --stacktrace
+        env:
+          GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.daemon=false"
+
+      - name: Verify APK size
+        run: |
+          APK_PATH="apps/web/android/app/build/outputs/apk/debug/app-debug.apk"
+          if [ -f "$APK_PATH" ]; then
+            SIZE=$(du -sh "$APK_PATH" | cut -f1)
+            echo "APK size: $SIZE"
+          else
+            echo "ERROR: APK not found!"
+            exit 1
+          fi
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: sports-predict-debug-apk
           path: apps/web/android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 30
