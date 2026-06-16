@@ -1,5 +1,14 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { syncSport, getMatches, getPrediction, Sport } from '../lib/api';
+import { syncSport, getMatches, getPrediction, fetchBetmanData, Sport } from '../lib/api';
+
+export function useBetmanData() {
+  return useQuery({
+    queryKey: ['betman'],
+    queryFn: fetchBetmanData,
+    staleTime: 1000 * 60 * 30, // 30분 캐시
+    retry: 2,
+  });
+}
 
 export function useMatches(params: { sport: Sport; status?: string }) {
   return useQuery({

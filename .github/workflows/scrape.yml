@@ -1,0 +1,46 @@
+name: Scrape Betman
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'   # 매 2시간마다
+  workflow_dispatch:          # 수동 실행 가능
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Chromium dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libnss3 libatk1.0-0 libatk-bridge2.0-0 \
+            libcups2 libdrm2 libxkbcommon0 libxcomposite1 \
+            libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2
+
+      - name: Install puppeteer
+        working-directory: scripts
+        run: npm install
+
+      - name: Run scraper
+        working-directory: scripts
+        run: node scrape-betman.js
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'false'
+
+      - name: Commit data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/betman.json
+          git diff --cached --quiet || git commit -m "chore: update betman data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push

@@ -6,6 +6,7 @@ const FOOTBALL_API_KEY = '6942278d1b1e447bb04375f4b84ce286';
 const FOOTBALL_BASE = 'https://api.football-data.org/v4';
 const SPORTSDB_BASE = 'https://www.thesportsdb.com/api/v1/json/3';
 const KBO_LEAGUE_ID = '4342';
+const BETMAN_JSON_URL = 'https://raw.githubusercontent.com/vlralf77-svg/rep/main/data/betman.json';
 
 export type Sport = 'football' | 'baseball';
 
@@ -221,6 +222,35 @@ export function getPrediction(matchId: string): { match: AppMatch; prediction: P
 
 export function getLastSync(): string {
   return loadStore().lastSync;
+}
+
+// ── Betman 데이터 ────────────────────────────────────────────────────────────
+export interface BetmanGame {
+  gameId: string;
+  round: string;
+  gameDate: string;
+  sport: string;
+  league: string;
+  homeTeam: string;
+  awayTeam: string;
+  odds: { homeWin: number; draw: number; awayWin: number };
+  handicap?: string | null;
+  overUnder?: string | null;
+  status: string;
+  result: string | null;
+  raw?: string;
+}
+
+export interface BetmanData {
+  updatedAt: string;
+  error?: string;
+  toto: BetmanGame[];
+  proto: BetmanGame[];
+}
+
+export async function fetchBetmanData(): Promise<BetmanData> {
+  const res = await axios.get<BetmanData>(BETMAN_JSON_URL, { timeout: 10000 });
+  return res.data;
 }
 
 export { FOOTBALL_LEAGUES };
