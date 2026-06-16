@@ -18,6 +18,10 @@ import {
   PredictionRecord,
   MarketPrediction,
 } from '../lib/betman-history';
+import {
+  loadPicks, savePicks, loadAmount, saveAmount,
+  getSavedBets, addSavedBet, removeSavedBet, SavedBet,
+} from '../lib/betman-betslip';
 
 // ── 베팅 슬립 타입 ─────────────────────────────────────────────
 export interface BetPick {
@@ -308,12 +312,14 @@ function GameRow({ game, picks, onTogglePick }: {
 }
 
 // ── 베팅 슬립 패널 ──────────────────────────────────────────────
-function BetSlip({ picks, onRemove, onClear }: {
+function BetSlip({ picks, amount, setAmount, onRemove, onClear, onSave }: {
   picks: BetPick[];
+  amount: string;
+  setAmount: (v: string) => void;
   onRemove: (matchId: string, marketType: string) => void;
   onClear: () => void;
+  onSave: (amount: number, combinedOdds: number, payout: number) => void;
 }) {
-  const [amount, setAmount] = useState('');
   const [expanded, setExpanded] = useState(true);
 
   if (picks.length === 0) return null;
@@ -415,6 +421,65 @@ function BetSlip({ picks, onRemove, onClear }: {
               </Box>
             </Box>
           )}
+
+          {/* 저장 버튼 */}
+          <Button fullWidth variant="contained" disabled={inputAmount <= 0}
+            onClick={() => onSave(inputAmount, combinedOdds, payout)}
+            sx={{ mt: 1.2, bgcolor: '#FFD700', color: '#1a1a2e', fontWeight: 700,
+              '&:hover': { bgcolor: '#e6c200' } }}>
+            💾 이 베팅 저장하기
+          </Button>
+        </Box>
+      </Collapse>
+    </Box>
+  );
+}
+
+// ── 저장된 베팅 목록 ────────────────────────────────────────────
+function SavedBets({ bets, onRemove }: { bets: SavedBet[]; onRemove: (id: string) => void }) {
+  const [expanded, setExpanded] = useState(false);
+  if (bets.length === 0) return null;
+  const formatKRW = (n: number) => n.toLocaleString('ko-KR') + '원';
+
+  return (
+    <Box sx={{ mb: 2, borderRadius: 2, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', px: 1.5, py: 1, bgcolor: 'rgba(255,255,255,0.04)', cursor: 'pointer' }}
+        onClick={() => setExpanded((e) => !e)}>
+        <Typography variant="subtitle2" fontWeight={700} sx={{ flex: 1 }}>
+          📒 저장된 베팅 ({bets.length})
+        </Typography>
+        {expanded ? <ExpandLessIcon sx={{ fontSize: 18 }} /> : <ExpandMoreIcon sx={{ fontSize: 18 }} />}
+      </Box>
+      <Collapse in={expanded}>
+        <Box sx={{ p: 1.5 }}>
+          {bets.map((b) => (
+            <Box key={b.id} sx={{ mb: 1.2, p: 1.2, borderRadius: 1.5, bgcolor: 'rgba(255,255,255,0.03)' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 0.5 }}>
+                <Typography variant="caption" color="text.secondary" sx={{ flex: 1 }}>
+                  {new Date(b.savedAt).toLocaleString('ko-KR', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                  {' · '}{b.picks.length}경기
+                </Typography>
+                <IconButton size="small" onClick={() => onRemove(b.id)}
+                  sx={{ color: 'text.disabled', '&:hover': { color: 'error.main' } }}>
+                  <DeleteIcon sx={{ fontSize: 16 }} />
+                </IconButton>
+              </Box>
+              {b.picks.map((p) => (
+                <Typography key={`${p.matchId}-${p.marketType}`} variant="caption" display="block" noWrap>
+                  {p.homeTeam} vs {p.awayTeam} · {p.marketType} <span style={{ color: '#FFD700' }}>{p.label}</span> @ {p.odds.toFixed(2)}
+                </Typography>
+              ))}
+              <Divider sx={{ my: 0.6 }} />
+              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Typography variant="caption" color="text.secondary">
+                  베팅 {formatKRW(b.amount)} · 배당 ×{b.combinedOdds.toFixed(2)}
+                </Typography>
+                <Typography variant="caption" fontWeight={700} sx={{ color: '#4fc3f7' }}>
+                  {formatKRW(b.payout)}
+                </Typography>
+              </Box>
+            </Box>
+          ))}
         </Box>
       </Collapse>
     </Box>
@@ -441,7 +506,13 @@ function AccuracyPanel() {
 // ── 메인 컴포넌트 ───────────────────────────────────────────────
 export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' | 'proto'; sportFilter?: string }) {
   const { data, isLoading, error } = useBetmanData();
-  const [picks, setPicks] = useState<BetPick[]>([]);
+  const [picks, setPicks] = useState<BetPick[]>(() => loadPicks());
+  const [amount, setAmountState] = useState<string>(() => loadAmount());
+  const [savedBets, setSavedBets] = useState<SavedBet[]>(() => getSavedBets());
+
+  // 슬립/금액 변경 시 localStorage에 영구 저장 (앱 재시작해도 유지)
+  useEffect(() => { savePicks(picks); }, [picks]);
+  const setAmount = useCallback((v: string) => { setAmountState(v); saveAmount(v); }, []);
 
   const handleTogglePick = useCallback((pick: BetPick) => {
     setPicks(prev => {
@@ -461,7 +532,19 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
     setPicks(prev => prev.filter(p => !(p.matchId === matchId && p.marketType === marketType)));
   }, []);
 
-  const handleClear = useCallback(() => setPicks([]), []);
+  const handleClear = useCallback(() => { setPicks([]); setAmount(''); }, [setAmount]);
+
+  const handleSaveBet = useCallback((amt: number, combinedOdds: number, payout: number) => {
+    addSavedBet({ picks, amount: amt, combinedOdds, payout });
+    setSavedBets(getSavedBets());
+    setPicks([]);
+    setAmount('');
+  }, [picks, setAmount]);
+
+  const handleRemoveSaved = useCallback((id: string) => {
+    removeSavedBet(id);
+    setSavedBets(getSavedBets());
+  }, []);
 
   if (isLoading) return <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}><CircularProgress /></Box>;
   if (error) return <Alert severity="warning">배트맨 데이터를 불러올 수 없습니다.</Alert>;
@@ -479,7 +562,10 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
       </Box>
 
       {/* 베팅 슬립 (상단 고정) */}
-      <BetSlip picks={picks} onRemove={handleRemove} onClear={handleClear} />
+      <BetSlip picks={picks} amount={amount} setAmount={setAmount}
+        onRemove={handleRemove} onClear={handleClear} onSave={handleSaveBet} />
+
+      <SavedBets bets={savedBets} onRemove={handleRemoveSaved} />
 
       <AccuracyPanel />
 
