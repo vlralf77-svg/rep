@@ -1,32 +1,59 @@
 import { createTheme } from '@mui/material/styles';
 
-const theme = createTheme({
+export const theme = createTheme({
   palette: {
     mode: 'dark',
-    primary: { main: '#00C896' },
-    secondary: { main: '#FF6B35' },
-    background: { default: '#0A0E1A', paper: '#131929' },
-    text: { primary: '#E8EAF0', secondary: '#8B95A8' },
+    primary: {
+      main: '#4fc3f7',
+      light: '#8bf6ff',
+      dark: '#0093c4',
+    },
+    secondary: {
+      main: '#81c784',
+      light: '#b2fab4',
+      dark: '#519657',
+    },
+    background: {
+      default: '#0d1117',
+      paper: '#161b22',
+    },
+    success: {
+      main: '#4caf50',
+    },
+    warning: {
+      main: '#ff9800',
+    },
+    error: {
+      main: '#f44336',
+    },
   },
   typography: {
-    fontFamily: '"Noto Sans KR", sans-serif',
-    h4: { fontWeight: 700 },
-    h6: { fontWeight: 600 },
+    fontFamily: '"Noto Sans KR", "Roboto", "Helvetica", "Arial", sans-serif',
+    h4: {
+      fontWeight: 700,
+    },
+    h5: {
+      fontWeight: 600,
+    },
+    h6: {
+      fontWeight: 600,
+    },
   },
   components: {
     MuiCard: {
       styleOverrides: {
         root: {
           backgroundImage: 'none',
-          border: '1px solid rgba(255,255,255,0.06)',
-          borderRadius: 12,
+          border: '1px solid rgba(255, 255, 255, 0.08)',
         },
       },
     },
     MuiChip: {
-      styleOverrides: { root: { fontWeight: 600 } },
+      styleOverrides: {
+        root: {
+          fontWeight: 600,
+        },
+      },
     },
   },
 });
-
-export default theme;

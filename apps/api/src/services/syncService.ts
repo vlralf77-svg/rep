@@ -1,117 +1,121 @@
+import { footballApi } from './footballApi';
+import { updateEloRating } from './predictionEngine';
 import prisma from '../models/db';
-import { fetchMatches, fetchStandings, ApiMatch, ApiStanding } from './footballApi';
-import { updateElo } from './predictionEngine';
-import { SUPPORTED_LEAGUES } from '@sports/shared';
 
-async function upsertTeam(team: { id: number; name: string; shortName: string; tla: string; crest?: string }, leagueId: string) {
+const LEAGUES = ['PL', 'BL1', 'SA', 'PD', 'FL1'];
+
+async function upsertTeam(team: { id: number; name: string; shortName: string; crest: string }) {
   return prisma.team.upsert({
     where: { id: team.id },
-    update: { name: team.name, shortName: team.shortName, tla: team.tla, crest: team.crest },
+    update: {
+      name: team.name,
+      shortName: team.shortName,
+      crest: team.crest,
+    },
     create: {
       id: team.id,
       name: team.name,
       shortName: team.shortName,
-      tla: team.tla,
       crest: team.crest,
-      leagueId,
       eloRating: 1500,
     },
   });
 }
 
-async function syncLeague(leagueCode: string, leagueName: string) {
-  console.log(`Syncing ${leagueName}...`);
+async function syncLeagueMatches(league: string) {
+  console.log(`Syncing matches for league: ${league}`);
 
-  const matches = await fetchMatches(leagueCode);
+  try {
+    const matches = await footballApi.getMatches(league);
 
-  for (const m of matches) {
-    await upsertTeam(m.homeTeam, leagueCode);
-    await upsertTeam(m.awayTeam, leagueCode);
+    for (const match of matches) {
+      await upsertTeam(match.homeTeam);
+      await upsertTeam(match.awayTeam);
 
-    const utcDate = new Date(m.utcDate);
-    const season = utcDate.getFullYear().toString();
+      await prisma.match.upsert({
+        where: { id: match.id },
+        update: {
+          status: match.status,
+          homeScore: match.score.fullTime.home,
+          awayScore: match.score.fullTime.away,
+          htHomeScore: match.score.halfTime.home,
+          htAwayScore: match.score.halfTime.away,
+          winner: match.score.winner,
+          lastUpdated: new Date(match.lastUpdated),
+        },
+        create: {
+          id: match.id,
+          homeTeamId: match.homeTeam.id,
+          awayTeamId: match.awayTeam.id,
+          utcDate: new Date(match.utcDate),
+          status: match.status,
+          matchday: match.matchday,
+          stage: match.stage,
+          groupName: match.group,
+          competitionId: match.competition.id,
+          competitionName: match.competition.name,
+          competitionCode: match.competition.code,
+          homeScore: match.score.fullTime.home,
+          awayScore: match.score.fullTime.away,
+          htHomeScore: match.score.halfTime.home,
+          htAwayScore: match.score.halfTime.away,
+          winner: match.score.winner,
+          lastUpdated: new Date(match.lastUpdated),
+        },
+      });
 
-    await prisma.match.upsert({
-      where: { id: m.id },
-      update: {
-        status: m.status,
-        homeScore: m.score.fullTime.home ?? undefined,
-        awayScore: m.score.fullTime.away ?? undefined,
-        utcDate,
-      },
-      create: {
-        id: m.id,
-        homeTeamId: m.homeTeam.id,
-        awayTeamId: m.awayTeam.id,
-        utcDate,
-        status: m.status,
-        matchday: m.matchday,
-        stage: m.stage,
-        homeScore: m.score.fullTime.home ?? undefined,
-        awayScore: m.score.fullTime.away ?? undefined,
-        leagueId: leagueCode,
-        leagueName,
-        season,
-      },
-    });
+      // Update Elo for finished matches
+      if (match.status === 'FINISHED' && match.score.winner) {
+        const homeTeam = await prisma.team.findUnique({ where: { id: match.homeTeam.id } });
+        const awayTeam = await prisma.team.findUnique({ where: { id: match.awayTeam.id } });
 
-    if (m.status === 'FINISHED' && m.score.fullTime.home !== null && m.score.fullTime.away !== null) {
-      const homeTeam = await prisma.team.findUnique({ where: { id: m.homeTeam.id } });
-      const awayTeam = await prisma.team.findUnique({ where: { id: m.awayTeam.id } });
-      if (homeTeam && awayTeam) {
-        const outcome = m.score.fullTime.home > m.score.fullTime.away ? 1 :
-          m.score.fullTime.home === m.score.fullTime.away ? 0.5 : 0;
-        const [newHomeElo, newAwayElo] = updateElo(homeTeam.eloRating, awayTeam.eloRating, outcome);
-        await prisma.team.update({ where: { id: homeTeam.id }, data: { eloRating: newHomeElo } });
-        await prisma.team.update({ where: { id: awayTeam.id }, data: { eloRating: newAwayElo } });
+        if (homeTeam && awayTeam) {
+          let homeActual: number;
+          let awayActual: number;
+
+          if (match.score.winner === 'HOME_TEAM') {
+            homeActual = 1; awayActual = 0;
+          } else if (match.score.winner === 'AWAY_TEAM') {
+            homeActual = 0; awayActual = 1;
+          } else {
+            homeActual = 0.5; awayActual = 0.5;
+          }
+
+          const newHomeElo = updateEloRating(homeTeam.eloRating, awayTeam.eloRating, homeActual);
+          const newAwayElo = updateEloRating(awayTeam.eloRating, homeTeam.eloRating, awayActual);
+
+          await prisma.team.update({ where: { id: homeTeam.id }, data: { eloRating: newHomeElo } });
+          await prisma.team.update({ where: { id: awayTeam.id }, data: { eloRating: newAwayElo } });
+        }
       }
     }
-  }
 
-  const standings = await fetchStandings(leagueCode);
-  for (const s of standings) {
-    await upsertTeam(s.team, leagueCode);
-    await prisma.standing.upsert({
-      where: { teamId_leagueId_season: { teamId: s.team.id, leagueId: leagueCode, season: new Date().getFullYear().toString() } },
-      update: {
-        position: s.position,
-        playedGames: s.playedGames,
-        won: s.won,
-        draw: s.draw,
-        lost: s.lost,
-        goalsFor: s.goalsFor,
-        goalsAgainst: s.goalsAgainst,
-        goalDifference: s.goalDifference,
-        points: s.points,
-        form: s.form,
-      },
-      create: {
-        teamId: s.team.id,
-        leagueId: leagueCode,
-        season: new Date().getFullYear().toString(),
-        position: s.position,
-        playedGames: s.playedGames,
-        won: s.won,
-        draw: s.draw,
-        lost: s.lost,
-        goalsFor: s.goalsFor,
-        goalsAgainst: s.goalsAgainst,
-        goalDifference: s.goalDifference,
-        points: s.points,
-        form: s.form,
-      },
-    });
+    console.log(`Synced ${matches.length} matches for ${league}`);
+    return matches.length;
+  } catch (error) {
+    console.error(`Error syncing ${league}:`, error);
+    return 0;
   }
-
-  console.log(`${leagueName}: ${matches.length} matches synced`);
 }
 
-export async function syncAll() {
-  for (const league of SUPPORTED_LEAGUES) {
+export async function syncAll(): Promise<{ matchesSynced: number; status: 'success' | 'error'; message?: string }> {
+  let totalSynced = 0;
+  const errors: string[] = [];
+
+  for (const league of LEAGUES) {
     try {
-      await syncLeague(league.id, league.name);
-    } catch (err) {
-      console.error(`Failed to sync ${league.name}:`, err);
+      const count = await syncLeagueMatches(league);
+      totalSynced += count;
+      // Rate limit: 10 requests/minute for free tier
+      await new Promise(resolve => setTimeout(resolve, 6000));
+    } catch (error) {
+      errors.push(`${league}: ${error}`);
     }
   }
+
+  if (errors.length > 0) {
+    return { matchesSynced: totalSynced, status: 'error', message: errors.join(', ') };
+  }
+
+  return { matchesSynced: totalSynced, status: 'success' };
 }

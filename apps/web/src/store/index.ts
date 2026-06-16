@@ -1,24 +1,37 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-interface AppStore {
+interface AppState {
   selectedLeague: string;
+  selectedStatus: string;
   favorites: number[];
-  setLeague: (league: string) => void;
+  setSelectedLeague: (league: string) => void;
+  setSelectedStatus: (status: string) => void;
   toggleFavorite: (matchId: number) => void;
+  isFavorite: (matchId: number) => boolean;
 }
 
-export const useAppStore = create<AppStore>()(
+export const useAppStore = create<AppState>()(
   persist(
     (set, get) => ({
       selectedLeague: 'PL',
+      selectedStatus: 'SCHEDULED',
       favorites: [],
-      setLeague: (league) => set({ selectedLeague: league }),
-      toggleFavorite: (matchId) => {
-        const favs = get().favorites;
-        set({ favorites: favs.includes(matchId) ? favs.filter(id => id !== matchId) : [...favs, matchId] });
-      },
+
+      setSelectedLeague: (league) => set({ selectedLeague: league }),
+      setSelectedStatus: (status) => set({ selectedStatus: status }),
+
+      toggleFavorite: (matchId) =>
+        set((state) => ({
+          favorites: state.favorites.includes(matchId)
+            ? state.favorites.filter((id) => id !== matchId)
+            : [...state.favorites, matchId],
+        })),
+
+      isFavorite: (matchId) => get().favorites.includes(matchId),
     }),
-    { name: 'sports-app-store' }
+    {
+      name: 'sports-prediction-store',
+    }
   )
 );

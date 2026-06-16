@@ -1,40 +1,49 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
-import { PredictionResult } from '@sports/shared';
 
-const api = axios.create({ baseURL: '/api' });
+const api = axios.create({
+  baseURL: '/api',
+});
 
-export function useMatches(filters?: { league?: string; status?: string; date?: string }) {
+export interface MatchListParams {
+  league?: string;
+  status?: string;
+  dateFrom?: string;
+  dateTo?: string;
+  limit?: number;
+  offset?: number;
+}
+
+export function useMatches(params: MatchListParams = {}) {
   return useQuery({
-    queryKey: ['matches', filters],
+    queryKey: ['matches', params],
     queryFn: async () => {
-      const res = await api.get('/matches', { params: filters });
-      return res.data;
+      const { data } = await api.get('/matches', { params });
+      return data;
     },
-    staleTime: 60_000,
   });
 }
 
-export function usePrediction(matchId: number | null) {
-  return useQuery<PredictionResult>({
+export function useMatchPrediction(matchId: number | null) {
+  return useQuery({
     queryKey: ['prediction', matchId],
     queryFn: async () => {
-      const res = await api.get(`/matches/${matchId}/prediction`);
-      return res.data;
+      const { data } = await api.get(`/matches/${matchId}/prediction`);
+      return data;
     },
     enabled: matchId !== null,
-    staleTime: 300_000,
   });
 }
 
-export function useSync() {
-  const qc = useQueryClient();
+export function useSyncMatches() {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async () => {
-      await api.post('/matches/sync');
+      const { data } = await api.post('/matches/sync');
+      return data;
     },
     onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ['matches'] });
+      queryClient.invalidateQueries({ queryKey: ['matches'] });
     },
   });
 }
