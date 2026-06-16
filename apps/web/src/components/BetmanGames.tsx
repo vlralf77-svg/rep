@@ -6,68 +6,86 @@ import {
 } from '@mui/material';
 import { useBetmanData } from '../api/hooks';
 import { BetmanGame, BetmanMarket } from '../lib/api';
+import { analyzeMarket } from '../lib/betman-analyze';
 
-function OddsBox({ label, value, best }: { label: string; value: number; best: boolean }) {
+function OddsBox({ label, value }: { label: string; value: number }) {
   return (
     <Box sx={{
       flex: 1, textAlign: 'center', p: 1, borderRadius: 1.5, minWidth: 0,
-      border: best ? '2px solid' : '1px solid',
-      borderColor: best ? 'primary.main' : 'rgba(255,255,255,0.1)',
-      bgcolor: best ? 'rgba(79,195,247,0.1)' : 'rgba(255,255,255,0.03)',
+      border: '1px solid', borderColor: 'rgba(255,255,255,0.1)',
+      bgcolor: 'rgba(255,255,255,0.03)',
     }}>
       <Typography variant="caption" color="text.secondary" display="block" noWrap>{label}</Typography>
-      <Typography variant="h6" fontWeight={700} color={best ? 'primary.main' : 'text.primary'} fontSize={15}>
+      <Typography variant="h6" fontWeight={700} color="text.primary" fontSize={15}>
         {value > 0 ? value.toFixed(2) : '-'}
       </Typography>
     </Box>
   );
 }
 
-function ProbBar({ label, prob, color }: { label: string; prob: number; color: string }) {
+// 시장 확률 + AI 확률을 한 줄에 같이 표시 (2가지 예측 비교)
+function DualProbRow({ label, marketProb, aiProb, star, color }:
+  { label: string; marketProb: number; aiProb: number; star: boolean; color: string }) {
   return (
-    <Box mb={1}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
-        <Typography variant="caption">{label}</Typography>
-        <Typography variant="caption" fontWeight={700}>{(prob * 100).toFixed(1)}%</Typography>
+    <Box mb={1.2}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.3 }}>
+        <Typography variant="caption">{label} {star ? '⭐' : ''}</Typography>
+        <Typography variant="caption" color="text.secondary">
+          시장 {(marketProb * 100).toFixed(0)}% · AI {(aiProb * 100).toFixed(0)}%
+        </Typography>
       </Box>
-      <LinearProgress variant="determinate" value={prob * 100}
-        sx={{ height: 6, borderRadius: 3, bgcolor: 'rgba(255,255,255,0.08)',
+      {/* 시장 배당 확률 */}
+      <LinearProgress variant="determinate" value={marketProb * 100}
+        sx={{ height: 5, borderRadius: 3, mb: 0.4, bgcolor: 'rgba(255,255,255,0.08)',
+          '& .MuiLinearProgress-bar': { bgcolor: 'rgba(255,255,255,0.35)' } }} />
+      {/* AI 보정 확률 */}
+      <LinearProgress variant="determinate" value={aiProb * 100}
+        sx={{ height: 5, borderRadius: 3, bgcolor: 'rgba(255,255,255,0.08)',
           '& .MuiLinearProgress-bar': { bgcolor: color } }} />
     </Box>
   );
 }
 
 const PALETTE = ['#4fc3f7', '#78909c', '#f48fb1', '#ce93d8', '#ffb74d'];
+const CONF_LABEL = { HIGH: '높음', MEDIUM: '보통', LOW: '낮음' } as const;
 
-// 마켓 한 개를 배당 박스 + 확률 분석으로 표시
+// 마켓 한 개: 배당 박스 + 2가지 예측(시장/AI) + AI 추천
 function MarketBlock({ market }: { market: BetmanMarket }) {
-  const oddsVals = market.selections.map(s => s.odds).filter(v => v > 0);
-  const max = oddsVals.length ? Math.max(...oddsVals) : 0;
-
-  // 배당률 역산 확률 (마진 제거)
-  const raw = market.selections.map(s => (s.odds > 0 ? 1 / s.odds : 0));
-  const total = raw.reduce((a, b) => a + b, 0) || 1;
-  const probs = raw.map(r => r / total);
-  const margin = (total - 1) * 100;
-
-  const bestIdx = probs.indexOf(Math.max(...probs));
+  const a = analyzeMarket(market);
+  const aiPick = a.selections[a.aiBestIdx];
+  const value = a.valueIdx >= 0 ? a.selections[a.valueIdx] : null;
 
   return (
     <Box sx={{ mb: 2, bgcolor: 'rgba(255,255,255,0.02)', borderRadius: 2, p: 1.5 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
         <Chip label={market.type} size="small" color="primary" variant="outlined" />
-        <Typography variant="caption" color="text.secondary">마진 {margin.toFixed(1)}%</Typography>
+        <Typography variant="caption" color="text.secondary">마진 {a.margin.toFixed(1)}%</Typography>
       </Box>
 
       <Box sx={{ display: 'flex', gap: 1, mb: 1.5 }}>
         {market.selections.map((s, i) => (
-          <OddsBox key={i} label={s.label} value={s.odds} best={s.odds === max} />
+          <OddsBox key={i} label={s.label} value={s.odds} />
         ))}
       </Box>
 
-      {market.selections.map((s, i) => (
-        <ProbBar key={i} label={`${s.label} ${i === bestIdx ? '⭐' : ''}`} prob={probs[i]} color={PALETTE[i % PALETTE.length]} />
+      {a.selections.map((s, i) => (
+        <DualProbRow key={i} label={s.label} marketProb={s.marketProb} aiProb={s.aiProb}
+          star={i === a.aiBestIdx} color={PALETTE[i % PALETTE.length]} />
       ))}
+
+      <Box sx={{ mt: 1, pt: 1, borderTop: '1px dashed rgba(255,255,255,0.1)' }}>
+        <Typography variant="caption" display="block">
+          🤖 AI 추천: <b>{aiPick.label}</b> ({(aiPick.aiProb * 100).toFixed(0)}%) · 신뢰도 {CONF_LABEL[a.confidence]}
+        </Typography>
+        <Typography variant="caption" display="block" color={value ? 'success.main' : 'text.secondary'}>
+          {value
+            ? `💰 가치 베팅: ${value.label} (배당 ${value.odds.toFixed(2)}, 기대값 ${value.ev.toFixed(2)})`
+            : '💤 가치 베팅 없음 (배당 대비 기대값 부족)'}
+        </Typography>
+        <Typography variant="caption" display="block" color="text.disabled" sx={{ fontSize: 10, mt: 0.3 }}>
+          ░ 시장(배당 역산) · ▓ AI(편향 보정) — 두 막대를 비교하세요
+        </Typography>
+      </Box>
     </Box>
   );
 }
@@ -112,8 +130,6 @@ function GameRow({ game }: { game: BetmanGame }) {
   // 카드에는 대표 마켓(승무패/승1패 우선) 배당만 미리보기
   const primary = game.markets.find(m => m.type === '승무패' || m.type === '승1패' || m.type === '승패')
     || game.markets[0];
-  const oddsVals = primary ? primary.selections.map(s => s.odds).filter(v => v > 0) : [];
-  const max = oddsVals.length ? Math.max(...oddsVals) : 0;
 
   return (
     <>
@@ -132,7 +148,7 @@ function GameRow({ game }: { game: BetmanGame }) {
             {primary && (
               <Box sx={{ display: 'flex', gap: 1 }}>
                 {primary.selections.map((s, i) => (
-                  <OddsBox key={i} label={s.label} value={s.odds} best={s.odds === max} />
+                  <OddsBox key={i} label={s.label} value={s.odds} />
                 ))}
               </Box>
             )}
