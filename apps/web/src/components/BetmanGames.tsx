@@ -546,6 +546,26 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
     setSavedBets(getSavedBets());
   }, []);
 
+  // 데이터 로드 시 모든 경기 예측 자동 저장 (전날 대시보드용)
+  useEffect(() => {
+    if (!data) return;
+    const allGames = [...(data.proto || []), ...(data.toto || [])];
+    for (const game of allGames) {
+      if (!game.gameDate) continue;
+      const predictions: MarketPrediction[] = game.markets.map((m) => {
+        const a = analyzeMarket(m);
+        return {
+          marketType: m.type,
+          aiPick: a.selections[a.aiBestIdx].label,
+          aiProb: a.selections[a.aiBestIdx].aiProb,
+          marketPick: a.selections[a.marketBestIdx].label,
+        };
+      });
+      savePredictions({ matchId: game.matchId, homeTeam: game.homeTeam, awayTeam: game.awayTeam, gameDate: game.gameDate, savedAt: new Date().toISOString(), predictions });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data?.updatedAt]);
+
   if (isLoading) return <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}><CircularProgress /></Box>;
   if (error) return <Alert severity="warning">배트맨 데이터를 불러올 수 없습니다.</Alert>;
   if (!data) return null;

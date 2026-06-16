@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
 import {
   Box, Typography, Card, CardContent, Chip, Divider, LinearProgress,
-  ToggleButtonGroup, ToggleButton,
+  ToggleButtonGroup, ToggleButton, Button,
 } from '@mui/material';
-import { getPredictions, PredictionRecord } from '../lib/betman-history';
+import { getPredictions, setActualResult, PredictionRecord } from '../lib/betman-history';
 
 // ── 날짜 유틸 ───────────────────────────────────────────────────
 function dayKey(d: Date): string {
@@ -14,25 +14,10 @@ function startOfToday(): Date {
   return new Date(n.getFullYear(), n.getMonth(), n.getDate());
 }
 
-interface Resolved {
-  marketType: string;
-  aiPick: string;
-  marketPick: string;
-  actual: string;
-  aiCorrect: boolean;
-  marketCorrect: boolean;
-}
-interface ResolvedGame {
-  record: PredictionRecord;
-  dateLabel: string;
-  dayKey: string;
-  resolved: Resolved[];
-}
-
 interface Agg { total: number; aiCorrect: number; marketCorrect: number; }
 function emptyAgg(): Agg { return { total: 0, aiCorrect: 0, marketCorrect: 0 }; }
 
-// ── 통계 카드 ───────────────────────────────────────────────────
+// ── 통계 막대 ───────────────────────────────────────────────────
 function StatBar({ label, correct, total, color }: { label: string; correct: number; total: number; color: string }) {
   const pct = total > 0 ? (correct / total) * 100 : 0;
   return (
@@ -50,30 +35,88 @@ function StatBar({ label, correct, total, color }: { label: string; correct: num
   );
 }
 
-function SummaryCard({ title, agg, highlight }: { title: string; agg: Agg; highlight?: boolean }) {
+// ── 개별 경기 카드 ──────────────────────────────────────────────
+function GameCard({ record, onActualSet }: { record: PredictionRecord; onActualSet: () => void }) {
+  const resolved = record.predictions.filter((p) => p.actual !== undefined);
+  const pending = record.predictions.filter((p) => p.actual === undefined);
+  const aiCorrect = resolved.filter((p) => p.actual === p.aiPick).length;
+  const hasResults = resolved.length > 0;
+
+  const handleSetActual = (marketType: string, label: string) => {
+    setActualResult(record.matchId, marketType, label);
+    onActualSet();
+  };
+
+  // 가능한 결과 레이블 추출 (predictions의 aiPick/marketPick 합집합)
+  function getOptions(marketType: string): string[] {
+    const pred = record.predictions.find((p) => p.marketType === marketType);
+    if (!pred) return [];
+    const opts = new Set([pred.aiPick, pred.marketPick]);
+    // 승무패 계열 보완
+    if (marketType.includes('승무패')) { opts.add('승'); opts.add('무'); opts.add('패'); }
+    if (marketType.includes('승1패') || marketType.includes('승패')) { opts.add('승'); opts.add('패'); }
+    if (marketType.includes('언더오버')) { opts.add('언더'); opts.add('오버'); }
+    if (marketType.includes('핸디캡')) { opts.add('승'); opts.add('패'); }
+    return Array.from(opts);
+  }
+
   return (
-    <Card sx={{ mb: 2, border: highlight ? '1px solid rgba(255,215,0,0.4)' : undefined,
-      bgcolor: highlight ? 'rgba(255,215,0,0.05)' : undefined }}>
-      <CardContent>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5 }}>
-          <Typography variant="subtitle1" fontWeight={700}>{title}</Typography>
-          <Chip label={`총 ${agg.total}건`} size="small"
-            sx={highlight ? { bgcolor: 'rgba(255,215,0,0.2)', color: '#FFD700' } : {}} />
+    <Card sx={{ mb: 1.5 }}>
+      <CardContent sx={{ pb: '12px !important' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
+          <Typography variant="caption" color="text.secondary">
+            {record.gameDate
+              ? new Date(record.gameDate).toLocaleString('ko-KR', { month: 'short', day: 'numeric', weekday: 'short', hour: '2-digit', minute: '2-digit' })
+              : ''}
+          </Typography>
+          {hasResults
+            ? <Chip label={`AI ${aiCorrect}/${resolved.length} 적중`} size="small"
+                color={aiCorrect === resolved.length ? 'success' : aiCorrect === 0 ? 'error' : 'warning'} />
+            : <Chip label="결과 미입력" size="small" variant="outlined" sx={{ fontSize: 10, color: 'text.disabled' }} />}
         </Box>
-        {agg.total === 0 ? (
-          <Typography variant="body2" color="text.secondary">결과가 입력된 예측이 없습니다.</Typography>
-        ) : (
+        <Typography variant="body2" fontWeight={700} mb={1}>
+          {record.homeTeam} vs {record.awayTeam}
+        </Typography>
+
+        {/* 결과 입력된 마켓 */}
+        {resolved.map((p, i) => (
+          <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5,
+            py: 0.5, px: 1, borderRadius: 1, bgcolor: 'rgba(255,255,255,0.03)' }}>
+            <Chip label={p.marketType} size="small" variant="outlined" sx={{ fontSize: 10, height: 20 }} />
+            <Box sx={{ flex: 1, minWidth: 0 }}>
+              <Typography variant="caption" display="block" noWrap>
+                AI <b style={{ color: p.actual === p.aiPick ? '#66bb6a' : '#ef5350' }}>{p.aiPick}</b>
+                {' · '}시장 <b style={{ color: p.actual === p.marketPick ? '#66bb6a' : '#ef5350' }}>{p.marketPick}</b>
+              </Typography>
+              <Typography variant="caption" color="text.secondary">실제: <b>{p.actual}</b></Typography>
+            </Box>
+            <Typography sx={{ fontSize: 16 }}>{p.actual === p.aiPick ? '✅' : '❌'}</Typography>
+          </Box>
+        ))}
+
+        {/* 결과 미입력 마켓 — 버튼으로 입력 */}
+        {pending.length > 0 && (
           <>
-            <StatBar label="🤖 AI 예측" correct={agg.aiCorrect} total={agg.total} color="#4fc3f7" />
-            <StatBar label="📊 시장 배당" correct={agg.marketCorrect} total={agg.total} color="#ffb74d" />
-            <Divider sx={{ my: 1 }} />
-            <Typography variant="caption" color="text.secondary">
-              {agg.aiCorrect > agg.marketCorrect
-                ? `AI가 시장보다 ${agg.aiCorrect - agg.marketCorrect}건 더 적중`
-                : agg.aiCorrect < agg.marketCorrect
-                  ? `시장이 AI보다 ${agg.marketCorrect - agg.aiCorrect}건 더 적중`
-                  : 'AI와 시장 적중 동일'}
-            </Typography>
+            {resolved.length > 0 && <Divider sx={{ my: 1 }} />}
+            {pending.map((p, i) => (
+              <Box key={i} sx={{ mb: 1 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 0.5 }}>
+                  <Chip label={p.marketType} size="small" variant="outlined" sx={{ fontSize: 10, height: 20 }} />
+                  <Typography variant="caption" color="text.secondary">
+                    AI: {p.aiPick} · 시장: {p.marketPick}
+                  </Typography>
+                </Box>
+                <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
+                  {getOptions(p.marketType).map((opt) => (
+                    <Button key={opt} size="small" variant="outlined"
+                      onClick={() => handleSetActual(p.marketType, opt)}
+                      sx={{ py: 0.2, px: 1, fontSize: 11, minWidth: 0, textTransform: 'none' }}>
+                      {opt}
+                    </Button>
+                  ))}
+                </Box>
+              </Box>
+            ))}
           </>
         )}
       </CardContent>
@@ -81,137 +124,132 @@ function SummaryCard({ title, agg, highlight }: { title: string; agg: Agg; highl
   );
 }
 
-// ── 경기별 결과 카드 ────────────────────────────────────────────
-function GameResultCard({ g }: { g: ResolvedGame }) {
-  const correct = g.resolved.filter((r) => r.aiCorrect).length;
-  return (
-    <Card sx={{ mb: 1.5 }}>
-      <CardContent sx={{ pb: '12px !important' }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
-          <Typography variant="caption" color="text.secondary">{g.dateLabel}</Typography>
-          <Chip label={`AI ${correct}/${g.resolved.length} 적중`} size="small"
-            color={correct === g.resolved.length ? 'success' : correct === 0 ? 'error' : 'warning'} />
-        </Box>
-        <Typography variant="body2" fontWeight={700} mb={1}>
-          {g.record.homeTeam} vs {g.record.awayTeam}
-        </Typography>
-        {g.resolved.map((r, i) => (
-          <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5,
-            py: 0.5, px: 1, borderRadius: 1, bgcolor: 'rgba(255,255,255,0.03)' }}>
-            <Chip label={r.marketType} size="small" variant="outlined" sx={{ fontSize: 10, height: 20 }} />
-            <Box sx={{ flex: 1, minWidth: 0 }}>
-              <Typography variant="caption" display="block" noWrap>
-                AI <b style={{ color: r.aiCorrect ? '#66bb6a' : '#ef5350' }}>{r.aiPick}</b>
-                {' · '}시장 <b style={{ color: r.marketCorrect ? '#66bb6a' : '#ef5350' }}>{r.marketPick}</b>
-              </Typography>
-              <Typography variant="caption" color="text.secondary" noWrap>
-                실제 결과: <b>{r.actual}</b>
-              </Typography>
-            </Box>
-            <Typography sx={{ fontSize: 18 }}>{r.aiCorrect ? '✅' : '❌'}</Typography>
-          </Box>
-        ))}
-      </CardContent>
-    </Card>
-  );
-}
-
 // ── 메인 ────────────────────────────────────────────────────────
-type FilterMode = 'all' | 'yesterday' | 'correct' | 'wrong';
+type FilterMode = 'yesterday' | 'all' | 'correct' | 'wrong';
 
 export default function AccuracyDashboard() {
-  const [mode, setMode] = useState<FilterMode>('all');
+  const [mode, setMode] = useState<FilterMode>('yesterday');
+  const [tick, setTick] = useState(0);
+  const refresh = () => setTick((t) => t + 1);
 
-  const { games, overall, yesterday, yesterdayKey } = useMemo(() => {
+  const { yesterdayGames, allGames, yesterdayAgg, overallAgg, yesterdayKey } = useMemo(() => {
     const records = getPredictions();
     const today0 = startOfToday();
     const yest = new Date(today0.getTime() - 24 * 60 * 60 * 1000);
     const yKey = dayKey(yest);
 
-    const resolvedGames: ResolvedGame[] = [];
-    const ov = emptyAgg();
-    const yd = emptyAgg();
+    const yGames: PredictionRecord[] = [];
+    const aGames: PredictionRecord[] = [];
+    const yAgg = emptyAgg();
+    const oAgg = emptyAgg();
 
     for (const rec of records) {
-      const resolved: Resolved[] = rec.predictions
-        .filter((p) => p.actual !== undefined)
-        .map((p) => ({
-          marketType: p.marketType,
-          aiPick: p.aiPick,
-          marketPick: p.marketPick,
-          actual: p.actual as string,
-          aiCorrect: p.actual === p.aiPick,
-          marketCorrect: p.actual === p.marketPick,
-        }));
-      if (resolved.length === 0) continue;
-
       const gd = rec.gameDate ? new Date(rec.gameDate) : new Date(rec.savedAt);
       const gKey = dayKey(gd);
-      const dateLabel = gd.toLocaleString('ko-KR', { month: 'short', day: 'numeric', weekday: 'short' });
-
-      for (const r of resolved) {
-        ov.total++; if (r.aiCorrect) ov.aiCorrect++; if (r.marketCorrect) ov.marketCorrect++;
-        if (gKey === yKey) { yd.total++; if (r.aiCorrect) yd.aiCorrect++; if (r.marketCorrect) yd.marketCorrect++; }
+      const resolved = rec.predictions.filter((p) => p.actual !== undefined);
+      for (const p of resolved) {
+        oAgg.total++;
+        if (p.actual === p.aiPick) oAgg.aiCorrect++;
+        if (p.actual === p.marketPick) oAgg.marketCorrect++;
+        if (gKey === yKey) {
+          yAgg.total++;
+          if (p.actual === p.aiPick) yAgg.aiCorrect++;
+          if (p.actual === p.marketPick) yAgg.marketCorrect++;
+        }
       }
-
-      resolvedGames.push({ record: rec, dateLabel, dayKey: gKey, resolved });
+      if (gKey === yKey) yGames.push(rec);
+      aGames.push(rec);
     }
 
-    resolvedGames.sort((a, b) => b.dayKey.localeCompare(a.dayKey));
-    return { games: resolvedGames, overall: ov, yesterday: yd, yesterdayKey: yKey };
-  }, []);
+    yGames.sort((a, b) => (a.gameDate || '').localeCompare(b.gameDate || ''));
+    aGames.sort((a, b) => (b.gameDate || b.savedAt).localeCompare(a.gameDate || a.savedAt));
 
-  const filtered = useMemo(() => {
-    if (mode === 'yesterday') return games.filter((g) => g.dayKey === yesterdayKey);
-    if (mode === 'correct') {
-      return games
-        .map((g) => ({ ...g, resolved: g.resolved.filter((r) => r.aiCorrect) }))
-        .filter((g) => g.resolved.length > 0);
-    }
-    if (mode === 'wrong') {
-      return games
-        .map((g) => ({ ...g, resolved: g.resolved.filter((r) => !r.aiCorrect) }))
-        .filter((g) => g.resolved.length > 0);
-    }
-    return games;
-  }, [games, mode, yesterdayKey]);
+    return { yesterdayGames: yGames, allGames: aGames, yesterdayAgg: yAgg, overallAgg: oAgg, yesterdayKey: yKey };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tick]);
 
-  if (overall.total === 0) {
-    return (
-      <Box sx={{ py: 6, textAlign: 'center' }}>
-        <Typography variant="h6" mb={1}>📊 적중률 대시보드</Typography>
-        <Typography variant="body2" color="text.secondary">
-          아직 결과가 입력된 예측이 없습니다.<br />
-          경기 상세 화면에서 종료된 경기의 실제 결과를 입력하면<br />
-          이곳에서 AI·시장 예측 적중률을 한눈에 볼 수 있습니다.
-        </Typography>
-      </Box>
-    );
-  }
+  const yestLabel = (() => {
+    const [y, m, d] = yesterdayKey.split('-');
+    return `${parseInt(m)}월 ${parseInt(d)}일 경기`;
+  })();
+
+  const filteredAll = useMemo(() => {
+    if (mode === 'correct') return allGames.filter((r) => r.predictions.some((p) => p.actual !== undefined && p.actual === p.aiPick));
+    if (mode === 'wrong') return allGames.filter((r) => r.predictions.some((p) => p.actual !== undefined && p.actual !== p.aiPick));
+    return allGames;
+  }, [allGames, mode]);
+
+  const displayGames = mode === 'yesterday' ? yesterdayGames : filteredAll;
 
   return (
     <Box>
-      <SummaryCard title="🏆 전체 적중률" agg={overall} />
-      <SummaryCard title="📅 전날 경기 적중률" agg={yesterday} highlight />
+      {/* 전날 요약 (항상 상단) */}
+      <Card sx={{ mb: 2, border: '1px solid rgba(255,215,0,0.35)', bgcolor: 'rgba(255,215,0,0.05)' }}>
+        <CardContent>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5 }}>
+            <Typography variant="subtitle1" fontWeight={700}>📅 {yestLabel}</Typography>
+            <Box sx={{ display: 'flex', gap: 0.5 }}>
+              <Chip label={`총 ${yesterdayGames.length}경기`} size="small" sx={{ bgcolor: 'rgba(255,215,0,0.2)', color: '#FFD700' }} />
+              {yesterdayAgg.total > 0 && <Chip label={`${yesterdayAgg.total}건 결과입력`} size="small" variant="outlined" />}
+            </Box>
+          </Box>
+          {yesterdayAgg.total === 0 ? (
+            <Typography variant="body2" color="text.secondary">
+              {yesterdayGames.length > 0
+                ? `${yesterdayGames.length}경기가 저장되어 있습니다. 아래 경기 카드에서 실제 결과를 입력하세요.`
+                : '전날 경기 데이터가 없습니다. 배당 화면을 열면 자동으로 저장됩니다.'}
+            </Typography>
+          ) : (
+            <>
+              <StatBar label="🤖 AI 예측" correct={yesterdayAgg.aiCorrect} total={yesterdayAgg.total} color="#4fc3f7" />
+              <StatBar label="📊 시장 배당" correct={yesterdayAgg.marketCorrect} total={yesterdayAgg.total} color="#ffb74d" />
+            </>
+          )}
+        </CardContent>
+      </Card>
 
-      <Typography variant="subtitle2" fontWeight={700} sx={{ mt: 1, mb: 1 }}>경기별 결과</Typography>
-      <ToggleButtonGroup
-        value={mode} exclusive size="small"
-        onChange={(_, v) => { if (v !== null) setMode(v); }}
-        sx={{ mb: 1.5, '& .MuiToggleButton-root': { px: 1.5, py: 0.4, fontSize: 12, textTransform: 'none' } }}
-      >
-        <ToggleButton value="all">전체</ToggleButton>
-        <ToggleButton value="yesterday">전날</ToggleButton>
-        <ToggleButton value="correct">✅ 적중</ToggleButton>
-        <ToggleButton value="wrong">❌ 실패</ToggleButton>
-      </ToggleButtonGroup>
+      {/* 전체 누적 요약 */}
+      {overallAgg.total > 0 && (
+        <Card sx={{ mb: 2 }}>
+          <CardContent>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5 }}>
+              <Typography variant="subtitle1" fontWeight={700}>🏆 전체 누적 적중률</Typography>
+              <Chip label={`${overallAgg.total}건`} size="small" />
+            </Box>
+            <StatBar label="🤖 AI 예측" correct={overallAgg.aiCorrect} total={overallAgg.total} color="#4fc3f7" />
+            <StatBar label="📊 시장 배당" correct={overallAgg.marketCorrect} total={overallAgg.total} color="#ffb74d" />
+            <Typography variant="caption" color="text.secondary">
+              {overallAgg.aiCorrect > overallAgg.marketCorrect
+                ? `AI가 시장보다 ${overallAgg.aiCorrect - overallAgg.marketCorrect}건 더 적중`
+                : overallAgg.aiCorrect < overallAgg.marketCorrect
+                  ? `시장이 AI보다 ${overallAgg.marketCorrect - overallAgg.aiCorrect}건 더 적중`
+                  : 'AI와 시장 적중 동일'}
+            </Typography>
+          </CardContent>
+        </Card>
+      )}
 
-      {filtered.length === 0 ? (
+      {/* 경기 목록 필터 */}
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+        <Typography variant="subtitle2" fontWeight={700}>경기별 결과</Typography>
+        <ToggleButtonGroup value={mode} exclusive size="small"
+          onChange={(_, v) => { if (v !== null) setMode(v); }}
+          sx={{ '& .MuiToggleButton-root': { px: 1.2, py: 0.4, fontSize: 11, textTransform: 'none' } }}>
+          <ToggleButton value="yesterday">전날</ToggleButton>
+          <ToggleButton value="all">전체</ToggleButton>
+          <ToggleButton value="correct">✅ 적중</ToggleButton>
+          <ToggleButton value="wrong">❌ 실패</ToggleButton>
+        </ToggleButtonGroup>
+      </Box>
+
+      {displayGames.length === 0 ? (
         <Typography variant="body2" color="text.secondary" sx={{ py: 3, textAlign: 'center' }}>
-          해당하는 경기가 없습니다.
+          {mode === 'yesterday' ? '전날 저장된 경기가 없습니다.' : '해당하는 경기가 없습니다.'}
         </Typography>
       ) : (
-        filtered.map((g) => <GameResultCard key={g.record.matchId + g.dayKey} g={g} />)
+        displayGames.map((r) => (
+          <GameCard key={r.matchId} record={r} onActualSet={refresh} />
+        ))
       )}
     </Box>
   );
