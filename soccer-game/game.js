@@ -40,6 +40,10 @@
   let ball = null;       // 움직이는 공
   let keeper = null;     // 골키퍼
   let resultTimer = 0;
+  let kickAnim = 0;      // 차는 동작 애니메이션 (1→0)
+
+  // 차는 사람 위치 (공 바로 뒤)
+  const KICKER = { x: BALL_START.x - 22, y: BALL_START.y + 30 };
 
   function reset() {
     state = State.AIM;
@@ -51,6 +55,7 @@
     powerDir = 1;
     ball = { ...BALL_START, r: BALL_R };
     keeper = { x: W / 2, y: GOAL.bottom - 10, w: 70, h: 16, vx: 0 };
+    kickAnim = 0;
     updateHud();
     hideMsg();
     btn.disabled = false;
@@ -104,6 +109,7 @@
     btn.disabled = true;
     btn.textContent = "슛!";
     hintEl.textContent = "";
+    kickAnim = 1; // 다리 휘두르기 시작
 
     const p = shot.power;
     // 파워에 따른 도착 높이: 적정 파워(0.55~0.85)면 골대 안, 과하면 크로스바 위로
@@ -147,6 +153,7 @@
       if (power > 1) { power = 1; powerDir = -1; }
       if (power < 0) { power = 0; powerDir = 1; }
     } else if (state === State.SHOOT) {
+      if (kickAnim > 0) kickAnim = Math.max(0, kickAnim - 0.06);
       // 공 이동
       ball.x += ball.vx;
       ball.y += ball.vy;
@@ -208,6 +215,7 @@
     // 다음 킥 준비
     ball = { ...BALL_START, r: BALL_R };
     keeper = { x: W / 2, y: GOAL.bottom - 10, w: 70, h: 16, vx: 0 };
+    kickAnim = 0;
     aimX = GOAL.left;
     aimDir = 1;
     state = State.AIM;
@@ -284,6 +292,77 @@
     ctx.fill();
   }
 
+  function drawKicker() {
+    const kx = KICKER.x, ky = KICKER.y;
+    // 차는 순간 다리가 앞(위)으로 휘둘러짐: 0=뻗음, 1=차는 중
+    const swing = Math.sin(kickAnim * Math.PI); // 0→1→0
+    ctx.save();
+    ctx.lineCap = "round";
+
+    // 그림자
+    ctx.fillStyle = "rgba(0,0,0,0.25)";
+    ctx.beginPath();
+    ctx.ellipse(kx, ky + 2, 16, 5, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // 디딤 다리 (왼쪽)
+    ctx.strokeStyle = "#2b2b2b";
+    ctx.lineWidth = 5;
+    ctx.beginPath();
+    ctx.moveTo(kx - 4, ky - 26);
+    ctx.lineTo(kx - 8, ky);
+    ctx.stroke();
+
+    // 차는 다리 (오른쪽) — 공쪽(위)으로 휘두름
+    const hipX = kx + 4, hipY = ky - 26;
+    const footX = hipX + 4 + swing * 18;
+    const footY = ky - swing * 26; // 휘두를수록 위로 올라감
+    ctx.strokeStyle = "#2b2b2b";
+    ctx.lineWidth = 5;
+    ctx.beginPath();
+    ctx.moveTo(hipX, hipY);
+    ctx.lineTo(footX, footY);
+    ctx.stroke();
+    // 축구화
+    ctx.fillStyle = "#111";
+    ctx.beginPath();
+    ctx.ellipse(footX + 2, footY, 6, 3.5, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // 몸통 (유니폼)
+    ctx.fillStyle = "#1565ff";
+    ctx.beginPath();
+    ctx.moveTo(kx - 9, ky - 26);
+    ctx.lineTo(kx + 9, ky - 26);
+    ctx.lineTo(kx + 7, ky - 52);
+    ctx.lineTo(kx - 7, ky - 52);
+    ctx.closePath();
+    ctx.fill();
+
+    // 팔 (균형)
+    ctx.strokeStyle = "#ffd9b3";
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(kx - 7, ky - 48);
+    ctx.lineTo(kx - 18, ky - 38 + swing * 6);
+    ctx.moveTo(kx + 7, ky - 48);
+    ctx.lineTo(kx + 17, ky - 40 - swing * 4);
+    ctx.stroke();
+
+    // 머리
+    ctx.fillStyle = "#ffd9b3";
+    ctx.beginPath();
+    ctx.arc(kx, ky - 60, 8, 0, Math.PI * 2);
+    ctx.fill();
+    // 머리카락
+    ctx.fillStyle = "#3a2a1a";
+    ctx.beginPath();
+    ctx.arc(kx, ky - 62, 8, Math.PI, Math.PI * 2);
+    ctx.fill();
+
+    ctx.restore();
+  }
+
   function drawBall() {
     ctx.save();
     ctx.shadowColor = "rgba(0,0,0,0.4)";
@@ -358,6 +437,7 @@
       drawKeeper();
       drawAim();
       drawPowerGauge();
+      drawKicker();
       drawBall();
     }
   }
