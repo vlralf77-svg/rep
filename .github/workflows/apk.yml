@@ -64,12 +64,15 @@ jobs:
             -fill '#FFD700' -draw "circle 512,512 512,100" \
             -fill '#1a1a2e' -pointsize 260 -gravity center -annotate 0 '1$' \
             /tmp/icon1024.png
-          # 각 해상도로 복사
+          # Android 8+ adaptive icon XML 제거 (PNG 폴백 강제)
+          rm -rf "$RES/mipmap-anydpi-v26"
+          # 각 해상도로 복사 (일반 + foreground 레이어)
           for d in mdpi:48 hdpi:72 xhdpi:96 xxhdpi:144 xxxhdpi:192; do
-            DENSITY=${d%:*}; SIZE=${d#*:}
+            DENSITY=${d%:*}; SIZE=${d#*:}; FGSIZE=$((SIZE*2))
             mkdir -p "$RES/mipmap-$DENSITY"
             convert /tmp/icon1024.png -resize "${SIZE}x${SIZE}" "$RES/mipmap-$DENSITY/ic_launcher.png"
-            cp "$RES/mipmap-$DENSITY/ic_launcher.png" "$RES/mipmap-$DENSITY/ic_launcher_round.png" 2>/dev/null || true
+            convert /tmp/icon1024.png -resize "${SIZE}x${SIZE}" "$RES/mipmap-$DENSITY/ic_launcher_round.png"
+            convert /tmp/icon1024.png -resize "${FGSIZE}x${FGSIZE}" "$RES/mipmap-$DENSITY/ic_launcher_foreground.png"
           done
           echo "✅ 아이콘 생성 완료"
 
