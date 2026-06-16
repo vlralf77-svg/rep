@@ -53,10 +53,11 @@ async function extractInto(page2, gameName, matchMap) {
       const gameDate = ts ? new Date(ts).toISOString() : '';
 
       const markets = [];
-      // ul 직속 li만 (div.btnChkBox도 data-matchseq를 가지므로 :scope > li로 한정)
-      ul.querySelectorAll(':scope > li[data-matchseq]').forEach(li => {
+      const liList = Array.from(ul.children).filter(el => el.tagName === 'LI' && el.hasAttribute('data-matchseq'));
+      console.log('[dbg] ul li count:', liList.length, 'rowname:', ul.getAttribute('data-rowname') || '');
+      liList.forEach(li => {
         const gb = li.querySelector('b.game');
-        if (!gb) return;
+        if (!gb) { console.log('[dbg] no b.game in li'); return; }
         const fullType = gb.textContent.trim(); // "야구 승1패", "축구 전반 언더오버" 등
         const sport = fullType.startsWith('야구') ? '야구' : fullType.startsWith('축구') ? '축구' : '';
         const type = fullType.replace(/^(야구|축구)\s*/, '');
@@ -64,6 +65,7 @@ async function extractInto(page2, gameName, matchMap) {
         // 언더오버/핸디캡 기준점수: b.game과 같은 부모(div.competition-detail) 안의 span.udPoint
         let line = null;
         const udSpans = li.querySelectorAll('span.udPoint');
+        console.log('[dbg] type:', type, 'udSpans:', udSpans.length, udSpans.length > 0 ? udSpans[0].textContent.trim() : '');
         if (udSpans.length > 0) {
           const txt = udSpans[0].textContent.trim();
           const mm = txt.match(/-?\d+(\.\d+)?/);
