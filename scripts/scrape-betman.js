@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * betman.co.kr 크롤러 v3
- * gameScheduleList.do → 게임 목록 → 각 상세 페이지에서 배당 추출
+ * betman.co.kr 크롤러 v4
+ * buyableGameList.do (발매중) → gameScheduleList.do (예정) 순서로 시도
  */
 
 const puppeteer = require('puppeteer-core');
@@ -11,6 +11,28 @@ const path = require('path');
 const BASE = 'https://www.betman.co.kr';
 const OUTPUT = path.join(__dirname, '..', 'data', 'betman.json');
 const DEBUG_HTML = path.join(__dirname, '..', 'data', 'betman-debug.html');
+const DETAIL_DEBUG = path.join(__dirname, '..', 'data', 'betman-detail-debug.html');
+
+async function getGameLinks(page, url) {
+  await page.goto(url, { waitUntil: 'networkidle0', timeout: 40000 }).catch(e => console.log('[warn]', e.message));
+  await new Promise(r => setTimeout(r, 3000));
+  const html = await page.content();
+  fs.writeFileSync(DEBUG_HTML, html);
+
+  return page.evaluate((base) => {
+    const links = [];
+    document.querySelectorAll('#listTbl tbody tr, table tbody tr').forEach(tr => {
+      const a = tr.querySelector('a[href*=".do"]');
+      if (!a) return;
+      const href = a.getAttribute('href');
+      const name = a.textContent.trim();
+      if (!name) return;
+      const cells = Array.from(tr.querySelectorAll('td')).map(td => td.textContent.trim());
+      links.push({ name, href: href.startsWith('http') ? href : base + href, cells });
+    });
+    return links;
+  }, BASE);
+}
 
 async function scrape() {
   console.log('[betman] 브라우저 시작...');
@@ -27,123 +49,71 @@ async function scrape() {
     const page = await browser.newPage();
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36');
 
-    // 1. 게임 일정 목록 페이지
-    console.log('[betman] 게임 일정 목록 로딩...');
-    await page.goto(`${BASE}/main/mainPage/gamebuy/gameScheduleList.do`, {
-      waitUntil: 'networkidle0', timeout: 40000,
-    }).catch(e => console.log('[warn]', e.message));
-    await new Promise(r => setTimeout(r, 3000));
+    // 1. 발매중 게임 목록 먼저 시도
+    console.log('[betman] 발매중 게임(buyableGameList) 로딩...');
+    let gameLinks = await getGameLinks(page, `${BASE}/main/mainPage/gamebuy/buyableGameList.do`);
+    console.log(`[betman] 발매중 게임 ${gameLinks.length}개`);
+    gameLinks.forEach(g => console.log(' -', g.name, '|', g.cells.join(' | ').substring(0, 80)));
 
-    const html = await page.content();
-    fs.writeFileSync(DEBUG_HTML, html);
+    // 2. 없으면 게임 일정(예정 포함)으로 폴백
+    if (gameLinks.length === 0) {
+      console.log('[betman] 발매중 게임 없음 → 게임일정 목록 시도');
+      gameLinks = await getGameLinks(page, `${BASE}/main/mainPage/gamebuy/gameScheduleList.do`);
+      console.log(`[betman] 일정 게임 ${gameLinks.length}개`);
+      gameLinks.forEach(g => console.log(' -', g.name, '|', g.cells.join(' | ').substring(0, 80)));
+    }
 
-    // 2. 목록에서 게임 링크 추출
-    const gameLinks = await page.evaluate((base) => {
-      const links = [];
-      document.querySelectorAll('#listTbl tbody tr').forEach(tr => {
-        const a = tr.querySelector('a');
-        if (!a) return;
-        const href = a.getAttribute('href');
-        const name = a.textContent.trim();
-        const cells = Array.from(tr.querySelectorAll('td')).map(td => td.textContent.trim());
-        links.push({ name, href: href.startsWith('http') ? href : base + href, cells });
-      });
-      return links;
-    }, BASE);
-
-    console.log(`[betman] 게임 ${gameLinks.length}개 발견`);
-    gameLinks.forEach(g => console.log(' -', g.name, g.href));
-
-    // 3. 발매중인 게임만 상세 페이지 크롤링 (최대 5개)
-    const activGames = gameLinks.filter(g =>
-      g.cells.some(c => c.includes('발매중') || c.includes('마감임박') || c.includes('발매예정'))
-    ).slice(0, 8);
-
+    // 3. 상세 페이지에서 배당 추출
     const page2 = await browser.newPage();
     await page2.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36');
 
-    const DETAIL_DEBUG = path.join(__dirname, '..', 'data', 'betman-detail-debug.html');
     let firstDetail = true;
-
-    for (const game of activGames) {
+    for (const game of gameLinks.slice(0, 8)) {
       console.log(`[betman] 상세 로딩: ${game.name}`);
       await page2.goto(game.href, { waitUntil: 'networkidle0', timeout: 30000 }).catch(() => {});
       await new Promise(r => setTimeout(r, 2000));
 
-      // 첫 번째 상세 페이지 HTML 저장 (디버그)
       if (firstDetail) {
-        const detailHtml = await page2.content();
-        fs.writeFileSync(DETAIL_DEBUG, detailHtml);
-        const title = await page2.title();
-        console.log(`[debug] 상세 페이지 제목: ${title}, HTML: ${detailHtml.length}bytes`);
-        // 로그인 필요 여부
-        if (detailHtml.includes('로그인이 필요')) {
-          console.log('[debug] 상세 페이지도 로그인 필요!');
-        }
-        // 배당률 패턴
-        const odds = detailHtml.match(/\b[1-9]\.\d{2}\b/g);
-        console.log('[debug] 배당률 패턴:', odds ? odds.slice(0, 10) : '없음');
+        const dHtml = await page2.content();
+        fs.writeFileSync(DETAIL_DEBUG, dHtml);
+        const odds = dHtml.match(/\b[1-9]\.\d{2}\b/g);
+        console.log(`[debug] 상세 HTML: ${dHtml.length}bytes, 배당: ${odds ? odds.slice(0,10) : '없음'}`);
+        if (dHtml.includes('로그인이 필요')) console.log('[debug] 로그인 필요!');
         firstDetail = false;
       }
 
       const matches = await page2.evaluate((gameName) => {
         const results = [];
-
-        // 배당 테이블 선택자 시도
-        const tables = document.querySelectorAll('table');
-        tables.forEach(table => {
-          const rows = Array.from(table.querySelectorAll('tr'));
-          rows.forEach(row => {
-            const cells = Array.from(row.querySelectorAll('td, th')).map(c => c.textContent.trim()).filter(Boolean);
-            if (cells.length < 3) return;
-
-            // 배당률 패턴 (x.xx)
-            const oddsPattern = /^\d\.\d{2}$/;
-            const oddsCells = cells.filter(c => oddsPattern.test(c));
-
-            if (oddsCells.length >= 2) {
-              results.push({
-                raw: cells.join(' | '),
-                odds: oddsCells,
-                cells,
-              });
-            }
-          });
+        document.querySelectorAll('table tr').forEach(row => {
+          const cells = Array.from(row.querySelectorAll('td, th')).map(c => c.textContent.trim()).filter(Boolean);
+          if (cells.length < 3) return;
+          const oddsPat = /^\d\.\d{2}$/;
+          const oddsCells = cells.filter(c => oddsPat.test(c));
+          if (oddsCells.length >= 2) {
+            const nonOdds = cells.filter(c => !oddsPat.test(c) && !/^\d+$/.test(c) && c.length > 1 && c.length < 30);
+            results.push({
+              gameId: `${gameName}_${results.length}`,
+              round: '', gameDate: '',
+              sport: gameName.includes('야구') ? '야구' : '축구',
+              league: gameName,
+              homeTeam: nonOdds[0] || '',
+              awayTeam: nonOdds[1] || '',
+              odds: {
+                homeWin: parseFloat(oddsCells[0]) || 0,
+                draw: oddsCells.length >= 3 ? parseFloat(oddsCells[1]) || 0 : 0,
+                awayWin: parseFloat(oddsCells[oddsCells.length - 1]) || 0,
+              },
+              status: '발매중', result: null,
+              raw: cells.join(' | '),
+            });
+          }
         });
-
-        // 팀명 + 배당 패턴으로 매치 구성
-        const matchResults = [];
-        for (let i = 0; i < results.length; i++) {
-          const r = results[i];
-          const nonOdds = r.cells.filter(c => !/^\d[\d.]*$/.test(c) && c.length > 1 && c.length < 30);
-          matchResults.push({
-            gameId: `${gameName}_${i}`,
-            round: '',
-            gameDate: '',
-            sport: gameName.includes('야구') ? '야구' : '축구',
-            league: gameName,
-            homeTeam: nonOdds[0] || '',
-            awayTeam: nonOdds[1] || '',
-            odds: {
-              homeWin: parseFloat(r.odds[0] || '0') || 0,
-              draw: r.odds.length >= 3 ? parseFloat(r.odds[1] || '0') || 0 : 0,
-              awayWin: parseFloat(r.odds[r.odds.length - 1] || '0') || 0,
-            },
-            status: '발매중',
-            result: null,
-            raw: r.raw,
-          });
-        }
-        return matchResults;
+        return results;
       }, game.name);
 
       console.log(`  → ${matches.length}경기 추출`);
-
-      if (game.name.includes('야구') || game.name.includes('BS')) {
-        result.proto.push(...matches);
-      } else {
-        result.toto.push(...matches);
-      }
+      if (game.name.includes('야구')) result.proto.push(...matches);
+      else result.toto.push(...matches);
     }
 
     await page2.close();
