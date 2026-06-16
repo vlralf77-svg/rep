@@ -6,7 +6,7 @@ const FOOTBALL_API_KEY = '6942278d1b1e447bb04375f4b84ce286';
 const FOOTBALL_BASE = 'https://api.football-data.org/v4';
 const SPORTSDB_BASE = 'https://www.thesportsdb.com/api/v1/json/3';
 const KBO_LEAGUE_ID = '4342';
-const BETMAN_JSON_URL = 'https://raw.githubusercontent.com/vlralf77-svg/rep/main/data/betman.json';
+const BETMAN_JSON_URL = 'https://raw.githubusercontent.com/vlralf77-svg/rep/claude%2Fgracious-fermat-c195k9/data/betman.json';
 
 export type Sport = 'football' | 'baseball';
 
