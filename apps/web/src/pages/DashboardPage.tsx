@@ -59,6 +59,7 @@ export default function DashboardPage() {
   });
 
   const syncMutation = useSyncMatches();
+  const syncResult = syncMutation.data as { matchesSynced?: number; status?: string; message?: string } | undefined;
 
   const matches = data?.matches || [];
   const grouped = groupMatchesByDate(matches);
@@ -145,6 +146,18 @@ export default function DashboardPage() {
           <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
             <CircularProgress />
           </Box>
+        )}
+
+        {syncResult && syncResult.status === 'success' && (
+          <Alert severity="info" sx={{ mb: 2 }}>
+            동기화 완료: {syncResult.matchesSynced}경기 업데이트됨
+            {syncResult.matchesSynced === 0 && ' (오늘 경기 데이터가 아직 없습니다)'}
+          </Alert>
+        )}
+        {syncResult && syncResult.status === 'error' && (
+          <Alert severity="warning" sx={{ mb: 2 }}>
+            동기화 오류: {syncResult.message || 'API 연결 실패'}
+          </Alert>
         )}
 
         {error && (

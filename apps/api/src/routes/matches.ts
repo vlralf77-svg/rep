@@ -93,14 +93,16 @@ router.get('/:id/prediction', async (req: Request, res: Response) => {
 router.post('/sync', async (req: Request, res: Response) => {
   try {
     const { sport } = req.query;
-    res.json({ message: 'Sync started', status: 'running' });
 
     if (sport === 'baseball') {
-      syncKBO().then(r => console.log('KBO sync done:', r)).catch(console.error);
+      // baseball은 응답을 기다림 (빠른 편)
+      const result = await syncKBO();
+      res.json({ message: 'KBO sync completed', ...result });
     } else if (sport === 'football') {
+      res.json({ message: 'Football sync started', status: 'running' });
       syncAll().then(r => console.log('Football sync done:', r)).catch(console.error);
     } else {
-      // 전체 동기화
+      res.json({ message: 'Full sync started', status: 'running' });
       Promise.all([syncAll(), syncKBO()])
         .then(([f, k]) => console.log('All sync done:', f, k))
         .catch(console.error);
