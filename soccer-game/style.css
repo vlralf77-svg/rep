@@ -111,6 +111,7 @@ html, body {
   font-size: 30px;
   font-weight: 900;
   text-align: center;
+  white-space: pre-line;
   pointer-events: none;
   z-index: 10;
   animation: pop 0.3s ease;
