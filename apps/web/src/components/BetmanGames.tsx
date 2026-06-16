@@ -318,7 +318,7 @@ function AccuracyPanel() {
   );
 }
 
-export default function BetmanGames({ type }: { type: 'toto' | 'proto' }) {
+export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' | 'proto'; sportFilter?: string }) {
   const { data, isLoading, error } = useBetmanData();
 
   if (isLoading) return <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}><CircularProgress /></Box>;
@@ -328,14 +328,12 @@ export default function BetmanGames({ type }: { type: 'toto' | 'proto' }) {
   const games = (type === 'toto' ? data.toto : data.proto) || [];
   const updatedAt = data.updatedAt ? new Date(data.updatedAt).toLocaleString('ko-KR') : '';
 
-  const sorted = [...games].sort((a, b) => (a.gameDate || '').localeCompare(b.gameDate || ''));
+  let sorted = [...games].sort((a, b) => (a.gameDate || '').localeCompare(b.gameDate || ''));
+  if (sportFilter) sorted = sorted.filter(g => g.sport === sportFilter);
 
   return (
     <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-        <Typography variant="subtitle2" color="text.secondary">
-          {type === 'toto' ? '스포츠토토' : '프로토 승부식'}
-        </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
         {updatedAt && <Typography variant="caption" color="text.secondary">갱신: {updatedAt}</Typography>}
       </Box>
 
@@ -345,10 +343,14 @@ export default function BetmanGames({ type }: { type: 'toto' | 'proto' }) {
 
       {sorted.length === 0 ? (
         <Box sx={{ textAlign: 'center', py: 4 }}>
-          <Typography color="text.secondary">데이터가 없습니다.</Typography>
-          <Typography variant="caption" color="text.secondary" display="block" mt={1}>
-            GitHub Actions → Scrape Betman 워크플로우를 수동으로 실행해주세요.
+          <Typography color="text.secondary">
+            {sportFilter ? `${sportFilter} 경기 데이터가 없습니다.` : '데이터가 없습니다.'}
           </Typography>
+          {!sportFilter && (
+            <Typography variant="caption" color="text.secondary" display="block" mt={1}>
+              GitHub Actions → Scrape Betman 워크플로우를 수동으로 실행해주세요.
+            </Typography>
+          )}
         </Box>
       ) : (
         sorted.map((g) => <GameRow key={g.matchId} game={g} />)
