@@ -1,0 +1,1906 @@
+<!DOCTYPE html><html lang="ko"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+<script type="text/javascript" class="init"></script>
+
+<!-- 라이브러리 영역  -->
+<script type="text/javascript" src="//cdn.betman.co.kr/js/jquery.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/jquery-ui.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/jquery.dataTables.min.origin.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/jquery.ui.monthpicker.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/jquery.history.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/jszip.min.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/contents.path.js" id="contentsPath"></script>
+
+
+<!-- 퍼블리싱팀 영역 -->
+<link href="//cdn.betman.co.kr/css/ui-common.css?ver=2026061604" type="text/css" rel="stylesheet">
+
+<!-- 공통개발팀 영역 -->
+<script type="text/javascript" src="//cdn.betman.co.kr/js/requestClient.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/BUICommon.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/loading-common.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/code-common.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/serialize-common.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/grid-common.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/message-common.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/login.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/common.js"></script>
+
+<!-- 직접 호출 -->
+<script type="text/javascript" src="/js/ui-common.js?ver=20260616"></script>
+
+
+<!-- BET코치 영역 header 일괄 적용 여부 검토 --> 
+<link href="//cdn.betman.co.kr/js/betcoach/betcoach.style.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="//cdn.betman.co.kr/js/betcoach/betcoach.js"></script> 
+<script type="text/javascript" src="//cdn.betman.co.kr/js/betcoach/betcoach.drawer.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/betcoach/betcoach.util.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/betcoach/betcoach.on.js"></script>
+<script type="text/javascript" src="//cdn.betman.co.kr/js/betcoach/date-common.js"></script>
+
+</head>
+<body>
+	
+	
+	
+	
+		
+			
+
+
+
+
+
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>BETMAN</title>
+	<link href="/css/ui-common.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="/js/jquery.ui.monthpicker.js"></script>
+	<script type="text/javascript" src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript" src="/js/ui-common.js"></script>
+
+
+	<div class="errorArea contents wide">
+		<div class="inner">
+			<em class="ico login"></em>
+			<h3 class="htit">로그인이 필요한 메뉴입니다.</h3>
+			<div class="txt">
+				서비스를 이용하시려면,
+				<p class="import">로그인을 해주세요.</p>
+			</div>
+
+			<div class="bts">
+				<a href="javascript:;" class="btn btnB sBorder" onclick="openLoginPop();">로그인 하기</a>
+				<a href="javascript:;" class="btn btnB sky" onclick="window.location.href='/'">홈으로</a>
+			</div>
+		</div>
+	</div>
+
+
+
+
+<script>
+
+
+var list = [];
+
+var loginRefererUrl = '';
+
+$(function() {
+	
+
+	
+// 	loginRefererUrl = document.referrer;
+
+	//TEST
+// 	loginRefererUrl = "https://local.betman.co.kr:8003/main/mainPage/mypage/mypageMain.do";
+// 	loginRefererUrl = "https://local.betman.co.kr:8003/main/mainPage/mypage/mypgDsmnPaymentPage.do";
+// 	loginRefererUrl = "https://local.betman.co.kr:8003/main/mainPage/totocafe/totocafeFreeBoardDetail.do";
+	
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "1";
+	menu['MENU_NM'] = "FrontRoot";
+	menu['MENU_NO'] = "200000000";
+	menu['UPPER_MENU_ID'] = "0";
+	menu['PROGRM_URL'] = "";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "2";
+	menu['MENU_NM'] = "메인";
+	menu['MENU_NO'] = "201000000";
+	menu['UPPER_MENU_ID'] = "200000000";
+	menu['PROGRM_URL'] = "";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "3";
+	menu['MENU_NM'] = "게임구매";
+	menu['MENU_NO'] = "201010000";
+	menu['UPPER_MENU_ID'] = "201000000";
+	menu['PROGRM_URL'] = "";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "구매 가능게임";
+	menu['MENU_NO'] = "201010100";
+	menu['UPPER_MENU_ID'] = "201010000";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/buyableGameList.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "구매 가능게임 상세";
+	menu['MENU_NO'] = "201010110";
+	menu['UPPER_MENU_ID'] = "201010100";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/gameSlip.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "테스트 게임환불";
+	menu['MENU_NO'] = "20101090000100";
+	menu['UPPER_MENU_ID'] = "201010000";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/gameSlipIFR.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "마감게임보기";
+	menu['MENU_NO'] = "201010200";
+	menu['UPPER_MENU_ID'] = "201010000";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/closedGameList.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "마감게임보기 상세";
+	menu['MENU_NO'] = "201010210";
+	menu['UPPER_MENU_ID'] = "201010200";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/closedGameSlip.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "게임일정";
+	menu['MENU_NO'] = "201010300";
+	menu['UPPER_MENU_ID'] = "201010000";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/gameScheduleList.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "게임일정 상세";
+	menu['MENU_NO'] = "201010310";
+	menu['UPPER_MENU_ID'] = "201010300";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/gameScheduleDetl.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "적중결과";
+	menu['MENU_NO'] = "201010400";
+	menu['UPPER_MENU_ID'] = "201010000";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/winrstList.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "적중결과 상세";
+	menu['MENU_NO'] = "201010410";
+	menu['UPPER_MENU_ID'] = "201010400";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/winrstDetl.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "스포츠토토_게임별 공지사항";
+	menu['MENU_NO'] = "201010500";
+	menu['UPPER_MENU_ID'] = "201010000";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/noticeIFR.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "스포츠토토_구매가능,마감게임";
+	menu['MENU_NO'] = "201010600";
+	menu['UPPER_MENU_ID'] = "201010000";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/buyableNClosedIFR.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "스포츠토토_구매 가능게임_상세";
+	menu['MENU_NO'] = "201010610";
+	menu['UPPER_MENU_ID'] = "201010600";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/gameSlipIFR.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "스포츠토토_마감게임보기_상세";
+	menu['MENU_NO'] = "201010620";
+	menu['UPPER_MENU_ID'] = "201010600";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/closedGameSlipIFR.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "스포츠토토_게임일정";
+	menu['MENU_NO'] = "201010700";
+	menu['UPPER_MENU_ID'] = "201010000";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/gameScheduleListIFR.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "스포츠토토_게임일정_상세";
+	menu['MENU_NO'] = "201010710";
+	menu['UPPER_MENU_ID'] = "201010700";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/gameScheduleDetlIFR.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "스포츠토토_적중결과";
+	menu['MENU_NO'] = "201010800";
+	menu['UPPER_MENU_ID'] = "201010000";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/winrstListIFR.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "스포츠토토_적중결과_상세";
+	menu['MENU_NO'] = "201010810";
+	menu['UPPER_MENU_ID'] = "201010800";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/winrstDetlIFR.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "게임구매하위 추가";
+	menu['MENU_NO'] = "20101090000000";
+	menu['UPPER_MENU_ID'] = "201010000";
+	menu['PROGRM_URL'] = "/main/mainPage/gamebuy/buyableNClosedIFR.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "3";
+	menu['MENU_NM'] = "경기정보";
+	menu['MENU_NO'] = "201020000";
+	menu['UPPER_MENU_ID'] = "201000000";
+	menu['PROGRM_URL'] = "";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "LIVE 스코어";
+	menu['MENU_NO'] = "201020100";
+	menu['UPPER_MENU_ID'] = "201020000";
+	menu['PROGRM_URL'] = "";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "경기별 스코어";
+	menu['MENU_NO'] = "201020110";
+	menu['UPPER_MENU_ID'] = "201020100";
+	menu['PROGRM_URL'] = "/main/mainPage/matchinfo/livescreMch.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "게임별 스코어";
+	menu['MENU_NO'] = "201020130";
+	menu['UPPER_MENU_ID'] = "201020100";
+	menu['PROGRM_URL'] = "/main/mainPage/matchinfo/livescreGame.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "6";
+	menu['MENU_NM'] = "게임별 스코어_상세";
+	menu['MENU_NO'] = "201020131";
+	menu['UPPER_MENU_ID'] = "201020130";
+	menu['PROGRM_URL'] = "/main/mainPage/matchinfo/liveScoreDetailView.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "축구";
+	menu['MENU_NO'] = "201020200";
+	menu['UPPER_MENU_ID'] = "201020000";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/scGameInfo.do?item=SC";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "일정/결과";
+	menu['MENU_NO'] = "201020210";
+	menu['UPPER_MENU_ID'] = "201020200";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/dataOfSoccerSchedule.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "맞대결정보";
+	menu['MENU_NO'] = "201020220";
+	menu['UPPER_MENU_ID'] = "201020200";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/scMatchRecord.do?gmType=SC";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "팀/순위정보";
+	menu['MENU_NO'] = "201020230";
+	menu['UPPER_MENU_ID'] = "201020200";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/scTeamRank.do?item=SC";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "6";
+	menu['MENU_NM'] = "팀/순위정보_상세";
+	menu['MENU_NO'] = "201020231";
+	menu['UPPER_MENU_ID'] = "201020230";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/scTeamDetail.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "선수정보";
+	menu['MENU_NO'] = "201020240";
+	menu['UPPER_MENU_ID'] = "201020200";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/scPlayerInfo.do?item=SC";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "6";
+	menu['MENU_NM'] = "선수정보_상세";
+	menu['MENU_NO'] = "201020241";
+	menu['UPPER_MENU_ID'] = "201020240";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/scPlayerDetail.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "야구";
+	menu['MENU_NO'] = "201020300";
+	menu['UPPER_MENU_ID'] = "201020000";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/bsGameInfo.do?item=BS";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "일정/결과";
+	menu['MENU_NO'] = "201020310";
+	menu['UPPER_MENU_ID'] = "201020300";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/dataOfBaseballSchedule.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "맞대결정보";
+	menu['MENU_NO'] = "201020320";
+	menu['UPPER_MENU_ID'] = "201020300";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/bsMatchRecord.do?gmType=BS";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "팀/순위정보";
+	menu['MENU_NO'] = "201020330";
+	menu['UPPER_MENU_ID'] = "201020300";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/bsTeamRank.do?item=BS";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "6";
+	menu['MENU_NM'] = "팀/순위정보_상세";
+	menu['MENU_NO'] = "201020331";
+	menu['UPPER_MENU_ID'] = "201020330";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/bsTeamDetail.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "선수정보";
+	menu['MENU_NO'] = "201020340";
+	menu['UPPER_MENU_ID'] = "201020300";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/bsPlayerInfo.do?item=BS";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "6";
+	menu['MENU_NM'] = "선수정보_상세";
+	menu['MENU_NO'] = "201020341";
+	menu['UPPER_MENU_ID'] = "201020340";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/bsPlayerDetail.do?item=BS";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "농구";
+	menu['MENU_NO'] = "201020400";
+	menu['UPPER_MENU_ID'] = "201020000";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/bkGameInfo.do?item=BK";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "일정/결과";
+	menu['MENU_NO'] = "201020410";
+	menu['UPPER_MENU_ID'] = "201020400";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/dataOfBasketballSchedule.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "맞대결정보";
+	menu['MENU_NO'] = "201020420";
+	menu['UPPER_MENU_ID'] = "201020400";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/bkMatchRecord.do?gmType=BK";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "팀/순위정보";
+	menu['MENU_NO'] = "201020430";
+	menu['UPPER_MENU_ID'] = "201020400";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/bkTeamRank.do?item=BK";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "6";
+	menu['MENU_NM'] = "팀/순위정보_상세";
+	menu['MENU_NO'] = "201020431";
+	menu['UPPER_MENU_ID'] = "201020430";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/bkTeamDetail.do?item=BK";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "선수정보";
+	menu['MENU_NO'] = "201020440";
+	menu['UPPER_MENU_ID'] = "201020400";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/bkPlayerInfo.do?item=BK";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "6";
+	menu['MENU_NM'] = "선수정보_상세";
+	menu['MENU_NO'] = "201020441";
+	menu['UPPER_MENU_ID'] = "201020440";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/bkPlayerDetail.do?item=BK";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "배구";
+	menu['MENU_NO'] = "201020500";
+	menu['UPPER_MENU_ID'] = "201020000";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/vlGameInfo.do?item=VL";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "일정/결과";
+	menu['MENU_NO'] = "201020510";
+	menu['UPPER_MENU_ID'] = "201020500";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/dataOfVolleyballSchedule.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "맞대결정보";
+	menu['MENU_NO'] = "201020520";
+	menu['UPPER_MENU_ID'] = "201020500";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/vlMatchRecord.do?gmType=VL";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "팀/순위정보";
+	menu['MENU_NO'] = "201020530";
+	menu['UPPER_MENU_ID'] = "201020500";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/vlTeamRank.do?item=VL";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "6";
+	menu['MENU_NM'] = "팀/순위정보_상세";
+	menu['MENU_NO'] = "201020531";
+	menu['UPPER_MENU_ID'] = "201020530";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/vlTeamDetail.do?item=VL";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "선수정보";
+	menu['MENU_NO'] = "201020540";
+	menu['UPPER_MENU_ID'] = "201020500";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/vlPlayerInfo.do?item=VL";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "6";
+	menu['MENU_NM'] = "선수정보_상세";
+	menu['MENU_NO'] = "201020541";
+	menu['UPPER_MENU_ID'] = "201020540";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/vlPlayerDetail.do?item=VL";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "월드컵";
+	menu['MENU_NO'] = "201020600";
+	menu['UPPER_MENU_ID'] = "201020000";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/wcSchedule.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "월드컵 일정";
+	menu['MENU_NO'] = "201020610";
+	menu['UPPER_MENU_ID'] = "201020600";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/wcSchedule.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "월드컵 순위";
+	menu['MENU_NO'] = "201020620";
+	menu['UPPER_MENU_ID'] = "201020600";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/wcRankInfo.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "팀/선수정보";
+	menu['MENU_NO'] = "201020630";
+	menu['UPPER_MENU_ID'] = "201020600";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/wcAdvanceInfo.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "토토가이드";
+	menu['MENU_NO'] = "201020700";
+	menu['UPPER_MENU_ID'] = "201020000";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/totoGuideEbook.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "스포츠토토_토토가이드";
+	menu['MENU_NO'] = "201020800";
+	menu['UPPER_MENU_ID'] = "201020000";
+	menu['PROGRM_URL'] = "/main/mainPage/gameinfo/totoGuideEbookIFR.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "3";
+	menu['MENU_NM'] = "토토카페";
+	menu['MENU_NO'] = "201030000";
+	menu['UPPER_MENU_ID'] = "201000000";
+	menu['PROGRM_URL'] = "";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "명예의전당";
+	menu['MENU_NO'] = "201030100";
+	menu['UPPER_MENU_ID'] = "201030000";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/totocafeHonorHall.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "도전픽";
+	menu['MENU_NO'] = "201030200";
+	menu['UPPER_MENU_ID'] = "201030000";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/chalPick.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "도전픽_상세";
+	menu['MENU_NO'] = "201030210";
+	menu['UPPER_MENU_ID'] = "201030200";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/chalPickDetail.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "도전픽_작성";
+	menu['MENU_NO'] = "201030220";
+	menu['UPPER_MENU_ID'] = "201030200";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/chalPickWrite.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "구매픽";
+	menu['MENU_NO'] = "201030300";
+	menu['UPPER_MENU_ID'] = "201030000";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/totocafeBuyPick.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "구매픽_상세";
+	menu['MENU_NO'] = "201030310";
+	menu['UPPER_MENU_ID'] = "201030300";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/totocafeBuyPickDetail.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "구매픽_작성";
+	menu['MENU_NO'] = "201030320";
+	menu['UPPER_MENU_ID'] = "201030300";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/totocafeBuyPickWrite.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "적중공유";
+	menu['MENU_NO'] = "201030400";
+	menu['UPPER_MENU_ID'] = "201030000";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/winShare.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "적중공유_상세";
+	menu['MENU_NO'] = "201030410";
+	menu['UPPER_MENU_ID'] = "201030400";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/winShareDetail.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "적중공유_작성";
+	menu['MENU_NO'] = "201030420";
+	menu['UPPER_MENU_ID'] = "201030400";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/winShareWrite.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "전문가분석";
+	menu['MENU_NO'] = "201030500";
+	menu['UPPER_MENU_ID'] = "201030000";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/expertAnalysis.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "전문가분석_상세";
+	menu['MENU_NO'] = "201030510";
+	menu['UPPER_MENU_ID'] = "201030500";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/expertAnalysisDetail.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "자유게시판";
+	menu['MENU_NO'] = "201030600";
+	menu['UPPER_MENU_ID'] = "201030000";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/totocafeFreeBoard.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "자유게시판_상세";
+	menu['MENU_NO'] = "201030610";
+	menu['UPPER_MENU_ID'] = "201030600";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/totocafeFreeBoardDetail.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "자유게시판_작성";
+	menu['MENU_NO'] = "201030620";
+	menu['UPPER_MENU_ID'] = "201030600";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/totocafeFreeBoardWrite.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "벳포인트";
+	menu['MENU_NO'] = "201030700";
+	menu['UPPER_MENU_ID'] = "201030000";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/betPointGuidance.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "벳포인트_전환";
+	menu['MENU_NO'] = "201030710";
+	menu['UPPER_MENU_ID'] = "201030700";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/changeBetPoint.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "나의 활동정보";
+	menu['MENU_NO'] = "201030800";
+	menu['UPPER_MENU_ID'] = "201030000";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/myActInfo.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "회원 활동정보";
+	menu['MENU_NO'] = "201030900";
+	menu['UPPER_MENU_ID'] = "201030000";
+	menu['PROGRM_URL'] = "/main/mainPage/totocafe/mbrActInfo.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "3";
+	menu['MENU_NM'] = "건전토토";
+	menu['MENU_NO'] = "201040000";
+	menu['UPPER_MENU_ID'] = "201000000";
+	menu['PROGRM_URL'] = "";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "건전구매캠페인";
+	menu['MENU_NO'] = "201040100";
+	menu['UPPER_MENU_ID'] = "201040000";
+	menu['PROGRM_URL'] = "/main/mainPage/healthiness/myHealthyBuyCampaign.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "건전구매캠페인_상세";
+	menu['MENU_NO'] = "201040110";
+	menu['UPPER_MENU_ID'] = "201040100";
+	menu['PROGRM_URL'] = "/main/mainPage/healthiness/myHealthyBuyCampaignDetail.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "셀프 진단평가";
+	menu['MENU_NO'] = "201040200";
+	menu['UPPER_MENU_ID'] = "201040000";
+	menu['PROGRM_URL'] = "/main/mainPage/healthiness/selfTest.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "셀프 구매계획";
+	menu['MENU_NO'] = "201040300";
+	menu['UPPER_MENU_ID'] = "201040000";
+	menu['PROGRM_URL'] = "/main/mainPage/healthiness/myHealthyPlan.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "셀프 휴식계획";
+	menu['MENU_NO'] = "201040400";
+	menu['UPPER_MENU_ID'] = "201040000";
+	menu['PROGRM_URL'] = "/main/mainPage/healthiness/selfExclusion.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "나의 건전상태";
+	menu['MENU_NO'] = "201040500";
+	menu['UPPER_MENU_ID'] = "201040000";
+	menu['PROGRM_URL'] = "/main/mainPage/healthiness/myHealthy.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "건전구매 가이드";
+	menu['MENU_NO'] = "20104060000000";
+	menu['UPPER_MENU_ID'] = "201040000";
+	menu['PROGRM_URL'] = "/main/mainPage/healthiness/healthyGuide.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "건전이용 가이드";
+	menu['MENU_NO'] = "20104060000100";
+	menu['UPPER_MENU_ID'] = "201040000";
+	menu['PROGRM_URL'] = "/main/mainPage/healthiness/healthyUseGuide.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "몰입지수 자가진단";
+	menu['MENU_NO'] = "20104060000200";
+	menu['UPPER_MENU_ID'] = "201040000";
+	menu['PROGRM_URL'] = "https://www.withtoto.co.kr/self-test/immersion-test/test";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "3";
+	menu['MENU_NM'] = "고객센터";
+	menu['MENU_NO'] = "201050000";
+	menu['UPPER_MENU_ID'] = "201000000";
+	menu['PROGRM_URL'] = "";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "공지사항";
+	menu['MENU_NO'] = "201050100";
+	menu['UPPER_MENU_ID'] = "201050000";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/notice.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "공지사항_상세";
+	menu['MENU_NO'] = "201050110";
+	menu['UPPER_MENU_ID'] = "201050100";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/noticeContent.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "FAQ";
+	menu['MENU_NO'] = "201050200";
+	menu['UPPER_MENU_ID'] = "201050000";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/faq.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "이벤트/벳볼";
+	menu['MENU_NO'] = "201050300";
+	menu['UPPER_MENU_ID'] = "201050000";
+	menu['PROGRM_URL'] = "";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "토토이벤트";
+	menu['MENU_NO'] = "201050310";
+	menu['UPPER_MENU_ID'] = "201050300";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/event.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "6";
+	menu['MENU_NM'] = "토토이벤트";
+	menu['MENU_NO'] = "201050311";
+	menu['UPPER_MENU_ID'] = "201050310";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/eventContent.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "6";
+	menu['MENU_NM'] = "토토이벤트_당첨자보기";
+	menu['MENU_NO'] = "201050312";
+	menu['UPPER_MENU_ID'] = "201050310";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/eventWinner.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "벳볼혜택";
+	menu['MENU_NO'] = "201050320";
+	menu['UPPER_MENU_ID'] = "201050300";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/eventBetBall.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "6";
+	menu['MENU_NM'] = "벳볼이벤트_당첨자보기";
+	menu['MENU_NO'] = "201050321";
+	menu['UPPER_MENU_ID'] = "201050320";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/eventBetBallWinner.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "1:1문의";
+	menu['MENU_NO'] = "201050400";
+	menu['UPPER_MENU_ID'] = "201050000";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/rgstQestn.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "환급계산기";
+	menu['MENU_NO'] = "201050500";
+	menu['UPPER_MENU_ID'] = "201050000";
+	menu['PROGRM_URL'] = "";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "배당률게임";
+	menu['MENU_NO'] = "201050510";
+	menu['UPPER_MENU_ID'] = "201050500";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/allotPayoCalc.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "등위게임";
+	menu['MENU_NO'] = "201050520";
+	menu['UPPER_MENU_ID'] = "201050500";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/victoryPayoCalc.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "판매점찾기";
+	menu['MENU_NO'] = "201050600";
+	menu['UPPER_MENU_ID'] = "201050000";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/findStore.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "이용약관";
+	menu['MENU_NO'] = "201050700";
+	menu['UPPER_MENU_ID'] = "201050000";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/agreement.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "운영정책";
+	menu['MENU_NO'] = "201050800";
+	menu['UPPER_MENU_ID'] = "201050000";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/operationPolicy.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "개인정보처리방침";
+	menu['MENU_NO'] = "201050900";
+	menu['UPPER_MENU_ID'] = "201050000";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/personalInfoPolicy.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "불법스포츠토토신고";
+	menu['MENU_NO'] = "201051000";
+	menu['UPPER_MENU_ID'] = "201050000";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/inJustice.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "회원가입";
+	menu['MENU_NO'] = "201051100";
+	menu['UPPER_MENU_ID'] = "201050000";
+	menu['PROGRM_URL'] = "/main/mainPage/mbrsvc/join/joinMbrMain.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "회원가입_실패";
+	menu['MENU_NO'] = "201051110";
+	menu['UPPER_MENU_ID'] = "201051100";
+	menu['PROGRM_URL'] = "/main/mainPage/mbrsvc/join/joinFail.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "아이디찾기/비밀번호 재설정";
+	menu['MENU_NO'] = "201051200";
+	menu['UPPER_MENU_ID'] = "201050000";
+	menu['PROGRM_URL'] = "/main/mainPage/mbrsvc/findIdResetPwd.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "로그인 필요 안내 페이지";
+	menu['MENU_NO'] = "201051300";
+	menu['UPPER_MENU_ID'] = "201050000";
+	menu['PROGRM_URL'] = "/main/mainPage/error/accessDenied.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "증복로그인 안내 페이지";
+	menu['MENU_NO'] = "201051400";
+	menu['UPPER_MENU_ID'] = "201050000";
+	menu['PROGRM_URL'] = "/main/mainPage/error/sessionExpired.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "3";
+	menu['MENU_NM'] = "마이페이지";
+	menu['MENU_NO'] = "201060000";
+	menu['UPPER_MENU_ID'] = "201000000";
+	menu['PROGRM_URL'] = "";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "마이페이지 홈";
+	menu['MENU_NO'] = "201060100";
+	menu['UPPER_MENU_ID'] = "201060000";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/mypageMain.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "알림센터";
+	menu['MENU_NO'] = "201060200";
+	menu['UPPER_MENU_ID'] = "201060000";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/mypgNoticeMain.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "구매/적중내역";
+	menu['MENU_NO'] = "201060300";
+	menu['UPPER_MENU_ID'] = "201060000";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/myPurchaseWinList.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "구매/적중내역_상세";
+	menu['MENU_NO'] = "201060310";
+	menu['UPPER_MENU_ID'] = "201060300";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/myPurchaseWinDetail.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "구매/적중내역_예약취소완료";
+	menu['MENU_NO'] = "201060320";
+	menu['UPPER_MENU_ID'] = "201060300";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/myPaymentBuyReservCancel.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "6";
+	menu['MENU_NM'] = "외국인 과세 적중내역";
+	menu['MENU_NO'] = "20106032001000";
+	menu['UPPER_MENU_ID'] = "201060320";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/myPurchaseFornPayoList.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "구매현황분석";
+	menu['MENU_NO'] = "201060400";
+	menu['UPPER_MENU_ID'] = "201060000";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/myPurchaseAnalysis.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "쇼핑카트";
+	menu['MENU_NO'] = "201060500";
+	menu['UPPER_MENU_ID'] = "201060000";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/myCartList.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "쇼핑카트_상세";
+	menu['MENU_NO'] = "201060510";
+	menu['UPPER_MENU_ID'] = "201060500";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/myCartDetail.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "쇼핑카트_구매_구매진행";
+	menu['MENU_NO'] = "201060520";
+	menu['UPPER_MENU_ID'] = "201060500";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/myPaymentList.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "쇼핑카트_구매_구매결과";
+	menu['MENU_NO'] = "201060530";
+	menu['UPPER_MENU_ID'] = "201060500";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/myPaymentResult.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "예치금";
+	menu['MENU_NO'] = "201060600";
+	menu['UPPER_MENU_ID'] = "201060000";
+	menu['PROGRM_URL'] = "";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "예치금내역";
+	menu['MENU_NO'] = "201060610";
+	menu['UPPER_MENU_ID'] = "201060600";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/mypgDsmnList.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "예치금충전";
+	menu['MENU_NO'] = "201060620";
+	menu['UPPER_MENU_ID'] = "201060600";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/mypgDsmnFilling.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "예치금출금";
+	menu['MENU_NO'] = "201060630";
+	menu['UPPER_MENU_ID'] = "201060600";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/mypgDsmnPaymentList.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "6";
+	menu['MENU_NM'] = "예치금출금_출금 신청서 작성";
+	menu['MENU_NO'] = "201060631";
+	menu['UPPER_MENU_ID'] = "201060630";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/mypgDsmnPaymentPage.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "6";
+	menu['MENU_NM'] = "예치금출금_출금 신청 접수 완료";
+	menu['MENU_NO'] = "201060632";
+	menu['UPPER_MENU_ID'] = "201060630";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/mypgDsmnPaymentPageChk.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "벳머니";
+	menu['MENU_NO'] = "201060700";
+	menu['UPPER_MENU_ID'] = "201060000";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/mypgBetMoneyList.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "벳머니_상품권 적립";
+	menu['MENU_NO'] = "201060710";
+	menu['UPPER_MENU_ID'] = "201060700";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/mypgBetMoneyGcctAcm.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "벳볼";
+	menu['MENU_NO'] = "201060800";
+	menu['UPPER_MENU_ID'] = "201060000";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/mypgBetBallList.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "1:1문의";
+	menu['MENU_NO'] = "201060900";
+	menu['UPPER_MENU_ID'] = "201060000";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/rgstQestnList.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "1:1문의_상세";
+	menu['MENU_NO'] = "201060910";
+	menu['UPPER_MENU_ID'] = "201060900";
+	menu['PROGRM_URL'] = "/main/mainPage/mypage/rgstQestnContent.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "개인정보";
+	menu['MENU_NO'] = "201061000";
+	menu['UPPER_MENU_ID'] = "201060000";
+	menu['PROGRM_URL'] = "/main/mainPage/mbrsvc/myPrsnInfoChk.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "개인정보_수정";
+	menu['MENU_NO'] = "201061010";
+	menu['UPPER_MENU_ID'] = "201061000";
+	menu['PROGRM_URL'] = "/main/mainPage/mbrsvc/myPrsnInfoUpdt.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "6";
+	menu['MENU_NM'] = "개인정보수정인증";
+	menu['MENU_NO'] = "20106101001000";
+	menu['UPPER_MENU_ID'] = "201061010";
+	menu['PROGRM_URL'] = "/main/mainPage/mbrsvc/myPrsnInfoUpdtCert.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "선호게임/경기";
+	menu['MENU_NO'] = "201061100";
+	menu['UPPER_MENU_ID'] = "201060000";
+	menu['PROGRM_URL'] = "/main/mainPage/mbrsvc/myPreferGame.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "회원탈퇴";
+	menu['MENU_NO'] = "201061200";
+	menu['UPPER_MENU_ID'] = "201060000";
+	menu['PROGRM_URL'] = "/main/mainPage/mbrsvc/chkPwdMbrQuit.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "회원탈퇴_신청";
+	menu['MENU_NO'] = "201061210";
+	menu['UPPER_MENU_ID'] = "201061200";
+	menu['PROGRM_URL'] = "/main/mainPage/mbrsvc/myMbrQuitGuide.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "회원탈퇴_완료";
+	menu['MENU_NO'] = "201061220";
+	menu['UPPER_MENU_ID'] = "201061200";
+	menu['PROGRM_URL'] = "/main/mainPage/mbrsvc/myMbrQuitCmpt.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "3";
+	menu['MENU_NM'] = "이용가이드";
+	menu['MENU_NO'] = "201070000";
+	menu['UPPER_MENU_ID'] = "201000000";
+	menu['PROGRM_URL'] = "";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "프로토게임안내";
+	menu['MENU_NO'] = "201070100";
+	menu['UPPER_MENU_ID'] = "201070000";
+	menu['PROGRM_URL'] = "/gameguide/protoVictory.html";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "토토게임안내";
+	menu['MENU_NO'] = "201070200";
+	menu['UPPER_MENU_ID'] = "201070000";
+	menu['PROGRM_URL'] = "/gameguide/scVictoryA.html";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "게임구매안내";
+	menu['MENU_NO'] = "201070300";
+	menu['UPPER_MENU_ID'] = "201070000";
+	menu['PROGRM_URL'] = "/gameguide/buyGuideGameA.html";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "용어사전";
+	menu['MENU_NO'] = "201070400";
+	menu['UPPER_MENU_ID'] = "201070000";
+	menu['PROGRM_URL'] = "/main/mainPage/etc/dictionary.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "테스트 이벤트당첨자";
+	menu['MENU_NO'] = "20107050000000";
+	menu['UPPER_MENU_ID'] = "201070000";
+	menu['PROGRM_URL'] = "/main/mainPage/customercenter/eventWinner.do";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "3";
+	menu['MENU_NM'] = "사업소개";
+	menu['MENU_NO'] = "201080000";
+	menu['UPPER_MENU_ID'] = "201000000";
+	menu['PROGRM_URL'] = "";
+	menu['MENU_GNB_YN'] = "N";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "체육진흥투표권";
+	menu['MENU_NO'] = "201080100";
+	menu['UPPER_MENU_ID'] = "201080000";
+	menu['PROGRM_URL'] = "/main/mainPage/etc/sosfoIntro.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "투표권시스템 (K-TOS)";
+	menu['MENU_NO'] = "20108080000100";
+	menu['UPPER_MENU_ID'] = "201080000";
+	menu['PROGRM_URL'] = "/main/mainPage/etc/K_TOS.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "약관법령";
+	menu['MENU_NO'] = "20108080000000";
+	menu['UPPER_MENU_ID'] = "201080000";
+	menu['PROGRM_URL'] = "";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "체육진흥투표권 약관";
+	menu['MENU_NO'] = "20108080100000";
+	menu['UPPER_MENU_ID'] = "20108080000000";
+	menu['PROGRM_URL'] = "/main/mainPage/etc/sosfoArticle.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "고정배당률 투표권 세부규칙";
+	menu['MENU_NO'] = "20108080200000";
+	menu['UPPER_MENU_ID'] = "20108080000000";
+	menu['PROGRM_URL'] = "/main/mainPage/etc/protoRules.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "관련법령";
+	menu['MENU_NO'] = "20108080300000";
+	menu['UPPER_MENU_ID'] = "20108080000000";
+	menu['PROGRM_URL'] = "/main/mainPage/etc/referenceRaws.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "수탁사업자소개";
+	menu['MENU_NO'] = "201080700";
+	menu['UPPER_MENU_ID'] = "201080000";
+	menu['PROGRM_URL'] = "";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "수탁사업자";
+	menu['MENU_NO'] = "201080710";
+	menu['UPPER_MENU_ID'] = "201080700";
+	menu['PROGRM_URL'] = "/main/mainPage/etc/companyIntro.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "5";
+	menu['MENU_NM'] = "회사연혁";
+	menu['MENU_NO'] = "201080720";
+	menu['UPPER_MENU_ID'] = "201080700";
+	menu['PROGRM_URL'] = "/main/mainPage/etc/historyIntro.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	var menu = [];
+	menu['MENU_LEVEL'] = "4";
+	menu['MENU_NM'] = "관련단체";
+	menu['MENU_NO'] = "201080600";
+	menu['UPPER_MENU_ID'] = "201080000";
+	menu['PROGRM_URL'] = "/main/mainPage/etc/relatedOrganization.do";
+	menu['MENU_GNB_YN'] = "Y";
+	
+	list.push(menu);
+	
+	
+	//로그인 후 페이지 이동시킬 url 구하는 로직
+	list.forEach(function(item, index){
+		
+		//현재 referrer url이 포함된 menu 정보인 경우
+		if(document.referrer.indexOf(item.PROGRM_URL) != -1 && item.PROGRM_URL != '')
+		{
+			//현재 url이 gnb_yn이 'Y'이고 URL 정보가 존재하는 경우
+			if(item.MENU_GNB_YN == 'Y' && item.PROGRM_URL != '' )
+			{
+				loginRefererUrl = item.PROGRM_URL;	//로그인 후 이동 시킬 url 저장
+			}
+			//현재 url에 대한 상위 메뉴 url 을 찾는 경우
+			else
+			{
+				list.forEach(function(item2)
+				{
+				    if(item2.MENU_NO == item.UPPER_MENU_ID && item2.PROGRM_URL != '') 
+			    	{
+				    	loginRefererUrl = item2.PROGRM_URL;	//로그인 후 이동 시킬 url 저장
+				    	return;
+			    	}
+				});
+			}
+			
+			return;
+		}
+	});
+	
+});
+</script>
+
+		
+		
+	
+	
+	
+	
+	
+	
+ 	
+
+
+
+
+<dialog id="asideletter" class="time-letter1-layer" style="user-select: auto; display:none;" tabindex="0">
+	<div class="time-letter1" id="divLetter" style="user-select: auto;">
+		<strong class="letter-title" style="user-select: auto;">
+		<span id="loginTime">60분</span>
+		<em style="user-select: auto;">경과하였습니다.</em>
+			<p>잠시 쉬어가면 어떨까요?</p>
+		</strong>
+		<button class="letter-btn2" id="selfTestBtn" onclick="" style="user-select: auto; display:none;">셀프진단평가</button>
+		<button class="letter-btn" id="logoutBtn" onclick="" style="user-select: auto;">로그아웃</button>
+		<div class="layer-close type2" id="popupClose" style="user-select: auto;" tabindex="0" role="button">
+			<span class="hidden" style="user-select: auto;">닫기</span>
+		</div>
+	</div>
+</dialog>
+<script>
+function detectIE(){
+	var isIE = false;
+	var userAgent = window.navigator.userAgent;
+	
+	var oldIE = userAgent.indexOf('MSIE ');
+	var newIE = userAgent.indexOf('Trident/');
+	
+	if((oldIE > -1 )|| (newIE > -1 )){
+		isIE = true;
+	}
+	
+	return isIE;
+}
+// ready
+$(document).ready(function() {
+	
+		
+	// 팝업 닫기
+	var popupCloseBtn = document.getElementById('popupClose');
+	
+	popupCloseBtn.addEventListener('click', function() {
+		popupClose();
+	});
+	
+	popupCloseBtn.addEventListener('keydown',  function(event) {
+		if(event.key === 'Enter'){
+			popupClose();
+		}
+	});
+	
+	// 셀프테스트 이동(새탭)
+	document.getElementById('selfTestBtn').addEventListener('click',  function() {
+		popupClose();
+		window.open('/main/mainPage/healthiness/selfTest.do', '_blank');
+		return false;
+	});
+	
+	// logout 버튼
+	document.getElementById('logoutBtn').addEventListener('click', function() {
+		popupClose();
+		openLogoutPop();
+	});
+	
+	var popupDialog = document.getElementById('asideletter');
+	var closeBtn = document.getElementById('popupClose');
+	
+	popupDialog.addEventListener('keydown',  function(event) {
+		if(event.key === 'Tab'){
+			if(event.shiftKey){
+				if(document.activeElement === popupDialog){
+					closeBtn.focus();
+					event.preventDefault();
+				}				
+			}else{
+				if(document.activeElement === closeBtn){
+					popupDialog.focus();
+					event.preventDefault();
+				}				
+			}
+		}
+	});
+
+}); // ready
+
+// 건전 팝업(60분) 열기
+function popupOpen(e){
+	var popup = document.getElementById('asideletter');
+	if(e != null ){
+		//popup 닫힐때 60분 기준으로 초기화
+		popupClose(); // popup 초기화
+		document.getElementById('loginTime').innerHTML = '60분';
+		document.getElementById('divLetter').className = 'time-letter1';
+	}
+	var isIE = detectIE();
+	popup.style.display = 'block';
+	if(!isIE){
+		popup.show();	
+	}	
+	popup.focus();
+}
+
+// 건전팝업 닫기 
+function popupClose() {
+	var popup = document.getElementById('asideletter');
+	var isIE = detectIE();
+	if(!isIE){	
+		popup.classList.add('hide');
+		popup.addEventListener('animationend', function() {
+			popup.close();
+			popup.classList.remove('hide');
+			popup.removeEventListener('animationend', arguments.callee, false);
+			popup.style.display = 'none';
+		}, false);
+	}else{
+		popup.style.display = 'none';
+	}
+}
+
+// 건전 팝업(90분) 열기
+function popup90Open(){
+	document.getElementById('loginTime').innerHTML = '90분';
+	document.getElementById('divLetter').className = 'time-letter2';
+	document.getElementById('selfTestBtn').style.display = 'block';
+	popupOpen();
+}
+
+// 로그아웃
+function openLogoutPop() {
+ 	if(chkSlipState() == false) return;
+ 	var url = '/sub/subPage/mbrsvc/logoutPop.do';
+ 	var title = '로그아웃';
+	BUICommon.openModalByUrl(url, title, 'small');
+}
+</script>
+<!-- </html> --><!-- 2025 웹접근성 개선 -->
+
+ 
+
+</body></html><!-- 건전 팝업 추가-->
