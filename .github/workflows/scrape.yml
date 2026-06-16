@@ -48,6 +48,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/betman.json
+          git add data/betman.json data/betman-debug.html
           git diff --cached --quiet || git commit -m "chore: update betman data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push
