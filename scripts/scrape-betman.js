@@ -60,9 +60,9 @@ async function extractInto(page2, gameName, matchMap) {
         const sport = fullType.startsWith('야구') ? '야구' : fullType.startsWith('축구') ? '축구' : '';
         const type = fullType.replace(/^(야구|축구)\s*/, '');
 
-        // 언더오버/핸디캡 기준점수: span.udPoint (예: "U/O 2.5", "H -1.0")
+        // 언더오버/핸디캡 기준점수: b.game 형제인 span.udPoint (예: "U/O 2.5", "H -1.0")
         let line = null;
-        const ud = li.querySelector('span.udPoint');
+        const ud = gb.parentElement && gb.parentElement.querySelector('span.udPoint');
         if (ud) {
           const mm = ud.textContent.match(/-?\d+(\.\d+)?/);
           if (mm) line = parseFloat(mm[0]);
