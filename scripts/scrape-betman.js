@@ -79,7 +79,6 @@ async function extractMatches(page2, game) {
           awayWin: oddsMap['2'] || 0,
         },
         status: '발매중', result: null,
-        raw: title,
       });
     });
 
