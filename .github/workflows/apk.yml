@@ -1,0 +1,56 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build web app
+        run: pnpm --filter @sports/web build
+
+      - name: Add Capacitor Android platform
+        working-directory: apps/web
+        run: |
+          npx cap add android || true
+          npx cap sync android
+
+      - name: Make Gradlew executable
+        working-directory: apps/web/android
+        run: chmod +x gradlew
+
+      - name: Build Debug APK
+        working-directory: apps/web/android
+        run: ./gradlew assembleDebug
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sports-predict-debug-apk
+          path: apps/web/android/app/build/outputs/apk/debug/app-debug.apk

@@ -1,0 +1,83 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Team {
+  id          Int      @id
+  name        String
+  shortName   String
+  tla         String
+  crest       String?
+  eloRating   Float    @default(1500)
+  leagueId    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  homeMatches Match[]  @relation("HomeTeam")
+  awayMatches Match[]  @relation("AwayTeam")
+  standings   Standing[]
+}
+
+model Match {
+  id          Int      @id
+  homeTeamId  Int
+  awayTeamId  Int
+  utcDate     DateTime
+  status      String
+  matchday    Int?
+  stage       String?
+  homeScore   Int?
+  awayScore   Int?
+  leagueId    String
+  leagueName  String
+  season      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  homeTeam    Team     @relation("HomeTeam", fields: [homeTeamId], references: [id])
+  awayTeam    Team     @relation("AwayTeam", fields: [awayTeamId], references: [id])
+  prediction  Prediction?
+}
+
+model Standing {
+  id             Int    @id @default(autoincrement())
+  teamId         Int
+  leagueId       String
+  season         String
+  position       Int
+  playedGames    Int
+  won            Int
+  draw           Int
+  lost           Int
+  goalsFor       Int
+  goalsAgainst   Int
+  goalDifference Int
+  points         Int
+  form           String?
+
+  team           Team   @relation(fields: [teamId], references: [id])
+
+  @@unique([teamId, leagueId, season])
+}
+
+model Prediction {
+  id                   Int      @id @default(autoincrement())
+  matchId              Int      @unique
+  homeWinProbability   Float
+  drawProbability      Float
+  awayWinProbability   Float
+  expectedHomeGoals    Float
+  expectedAwayGoals    Float
+  topScores            String
+  homeElo              Float
+  awayElo              Float
+  rationale            String
+  computedAt           DateTime @default(now())
+
+  match                Match    @relation(fields: [matchId], references: [id])
+}
