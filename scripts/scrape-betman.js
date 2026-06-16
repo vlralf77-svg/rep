@@ -41,7 +41,30 @@ async function extractMatches(page2, game) {
   return page2.evaluate((gameName) => {
     const results = [];
     const boxes = document.querySelectorAll('div.btnChkBox');
-    const diagLog = `Found ${boxes.length} btnChkBox elements`;
+    let diagLog = `Found ${boxes.length} btnChkBox elements`;
+
+    // DIAGNOSTIC: dump structure of first matches to find bet-type marker
+    const diagParts = [];
+    Array.from(boxes).slice(0, 12).forEach((box, i) => {
+      const attrs = {};
+      for (const a of box.attributes) attrs[a.name] = a.value;
+      const btn = box.querySelector('button.btnChk');
+      const btnAttrs = {};
+      if (btn) for (const a of btn.attributes) btnAttrs[a.name] = a.value;
+      const selkeys = Array.from(box.querySelectorAll('button.btnChk'))
+        .map(b => b.getAttribute('data-selkey') + ':' + (b.querySelector('span.db')?.textContent.trim() || '-'));
+      // find nearest preceding heading-like text
+      let header = '';
+      let cur = box;
+      for (let depth = 0; depth < 6 && cur; depth++) {
+        cur = cur.parentElement;
+        if (!cur) break;
+        const h = cur.querySelector('h2,h3,h4,h5,strong,.tit,.title,caption,th');
+        if (h && h.textContent.trim()) { header = h.textContent.trim().substring(0, 40); break; }
+      }
+      diagParts.push(`#${i} box[${JSON.stringify(attrs)}] btn[${JSON.stringify(btnAttrs)}] sel=[${selkeys.join(',')}] hdr="${header}"`);
+    });
+    diagLog += '\n' + diagParts.join('\n');
 
     boxes.forEach((box, idx) => {
       const buttons = box.querySelectorAll('button.btnChk');
