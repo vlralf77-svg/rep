@@ -84,7 +84,12 @@ function MarketBlock({
   return (
     <Box sx={{ mb: 2, bgcolor: 'rgba(255,255,255,0.02)', borderRadius: 2, p: 1.5 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
-        <Chip label={market.type} size="small" color="primary" variant="outlined" />
+        <Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
+          <Chip label={market.type} size="small" color="primary" variant="outlined" />
+          {market.line != null && (
+            <Chip label={`기준 ${market.line}`} size="small" sx={{ fontSize: 11, height: 20, bgcolor: 'rgba(255,183,77,0.15)', color: '#ffb74d', border: '1px solid rgba(255,183,77,0.4)' }} />
+          )}
+        </Box>
         <Typography variant="caption" color="text.secondary">마진 {a.margin.toFixed(1)}%</Typography>
       </Box>
 

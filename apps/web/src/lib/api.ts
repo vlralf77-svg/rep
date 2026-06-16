@@ -233,6 +233,7 @@ export interface BetmanSelection {
 export interface BetmanMarket {
   type: string; // 승무패, 전반 승무패, 언더오버, 전반 언더오버, 핸디캡 등
   selections: BetmanSelection[];
+  line?: number; // 언더오버/핸디캡 기준점수 (예: 2.5)
 }
 
 export interface BetmanGame {

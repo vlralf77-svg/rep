@@ -60,16 +60,29 @@ async function extractInto(page2, gameName, matchMap) {
         const sport = fullType.startsWith('야구') ? '야구' : fullType.startsWith('축구') ? '축구' : '';
         const type = fullType.replace(/^(야구|축구)\s*/, '');
 
+        // 언더오버/핸디캡 라인: li의 data-hdnum 또는 버튼 내 숫자 span에서 추출
+        let line = null;
+        const hdnum = li.getAttribute('data-hdnum') || li.getAttribute('data-num') || '';
+        if (hdnum && !isNaN(parseFloat(hdnum))) {
+          line = parseFloat(hdnum);
+        }
+
         const selections = [];
         li.querySelectorAll('button.btnChk').forEach(btn => {
           const spans = btn.querySelectorAll('span');
-          // 첫 span = label(승/무/패/언더/오버/홀/짝), span.db = 배당
+          // 첫 span = label(승/무/패/언더/오버/홀/짝), span.db = 배당, span.hd = 기준점수
           const db = btn.querySelector('span.db');
+          const hd = btn.querySelector('span.hd');
           let label = '';
           for (const s of spans) {
-            if (s.classList.contains('db') || s.classList.contains('blind')) continue;
+            if (s.classList.contains('db') || s.classList.contains('blind') || s.classList.contains('hd')) continue;
             const t = s.textContent.trim();
             if (t) { label = t; break; }
+          }
+          // span.hd가 있으면 라인값으로 사용 (버튼마다 동일하므로 첫 번째만 사용)
+          if (hd && line === null) {
+            const v = parseFloat(hd.textContent.replace(/[^0-9.]/g, ''));
+            if (!isNaN(v)) line = v;
           }
           if (db) {
             const odds = parseFloat(db.textContent.replace(/[^0-9.]/g, ''));
@@ -78,7 +91,7 @@ async function extractInto(page2, gameName, matchMap) {
         });
 
         if (selections.length >= 2) {
-          markets.push({ type, sport, selections });
+          markets.push({ type, sport, selections, ...(line !== null ? { line } : {}) });
         }
       });
 
