@@ -74,14 +74,18 @@ async function extractMatches(page2, game) {
       // Determine bet type from selkeys
       let betType = '';
       if (selkeys.includes('X')) betType = '승무패';
-      else if (selkeys.includes('O') || selkeys.includes('U')) betType = '언더오버';
+      else if (selkeys.includes('O') && selkeys.includes('U')) betType = '언더오버';
       else if (selkeys.some(k => /^H/.test(k))) betType = '핸디캡';
       else if (selkeys.includes('1') && selkeys.includes('2')) betType = '승1패';
       else return; // unknown type, skip
 
-      // Only include win/loss type bets (not over/under, handicap)
-      if (betType !== '승무패' && betType !== '승1패') return;
-      if (!oddsMap['1'] && !oddsMap['2']) return;
+      // Build unified odds structure
+      const homeWin = oddsMap['1'] || 0;
+      const awayWin = oddsMap['2'] || 0;
+      const drawOrOver = oddsMap['X'] || oddsMap['O'] || 0;
+      const under = oddsMap['U'] || 0;
+
+      if (!homeWin && !awayWin && !drawOrOver) return;
 
       results.push({
         gameId: `${gameName}_${idx}`,
@@ -93,9 +97,9 @@ async function extractMatches(page2, game) {
         awayTeam: awayTeam.trim(),
         betType,
         odds: {
-          homeWin: oddsMap['1'] || 0,
-          draw: oddsMap['X'] || 0,
-          awayWin: oddsMap['2'] || 0,
+          homeWin,
+          draw: drawOrOver,
+          awayWin: betType === '언더오버' ? under : awayWin,
         },
         status: '발매중', result: null,
       });

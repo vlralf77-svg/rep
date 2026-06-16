@@ -61,7 +61,8 @@ function eloProbs(homeWin: number, awayWin: number, hasDraw: boolean) {
 
 function GameDetail({ game, open, onClose }: { game: BetmanGame; open: boolean; onClose: () => void }) {
   const { homeWin, draw, awayWin } = game.odds;
-  const hasDraw = draw > 0;
+  const betType = game.betType || '';
+  const hasDraw = draw > 0 && betType !== '언더오버';
   const vals = [homeWin, hasDraw ? draw : 0, awayWin].filter(v => v > 0);
   const max = vals.length ? Math.max(...vals) : 0;
 
@@ -100,9 +101,18 @@ function GameDetail({ game, open, onClose }: { game: BetmanGame; open: boolean; 
         {/* 배당률 */}
         <Typography variant="subtitle2" color="text.secondary" mt={1} mb={1}>배당률</Typography>
         <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
-          <OddsBox label="홈승" value={homeWin} best={homeWin === max} />
-          {hasDraw && <OddsBox label="무" value={draw} best={draw === max} />}
-          <OddsBox label="원정승" value={awayWin} best={awayWin === max} />
+          {betType === '언더오버' ? (
+            <>
+              <OddsBox label="오버" value={homeWin > 0 ? homeWin : draw} best={(homeWin || draw) === max} />
+              <OddsBox label="언더" value={awayWin} best={awayWin === max} />
+            </>
+          ) : (
+            <>
+              <OddsBox label="홈승" value={homeWin} best={homeWin === max} />
+              {hasDraw && <OddsBox label="무" value={draw} best={draw === max} />}
+              <OddsBox label="원정승" value={awayWin} best={awayWin === max} />
+            </>
+          )}
         </Box>
         <Typography variant="caption" color="text.secondary">
           북메이커 마진: {margin.toFixed(1)}%
@@ -177,9 +187,18 @@ function GameRow({ game }: { game: BetmanGame }) {
               {game.homeTeam} vs {game.awayTeam}
             </Typography>
             <Box sx={{ display: 'flex', gap: 1 }}>
-              <OddsBox label="홈승" value={homeWin} best={homeWin === max} />
-              {draw > 0 && <OddsBox label="무" value={draw} best={draw === max} />}
-              <OddsBox label="원정승" value={awayWin} best={awayWin === max} />
+              {game.betType === '언더오버' ? (
+                <>
+                  <OddsBox label="오버" value={homeWin > 0 ? homeWin : draw} best={(homeWin || draw) === max} />
+                  <OddsBox label="언더" value={awayWin} best={awayWin === max} />
+                </>
+              ) : (
+                <>
+                  <OddsBox label="홈승" value={homeWin} best={homeWin === max} />
+                  {draw > 0 && <OddsBox label="무" value={draw} best={draw === max} />}
+                  <OddsBox label="원정승" value={awayWin} best={awayWin === max} />
+                </>
+              )}
             </Box>
           </CardContent>
         </CardActionArea>
