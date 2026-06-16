@@ -49,6 +49,30 @@ jobs:
           npx cap sync android
           echo "=== Capacitor sync done ==="
 
+      - name: Generate app icon (1억원)
+        run: |
+          sudo apt-get install -y fonts-noto-cjk imagemagick 2>/dev/null | tail -2
+          RES=apps/web/android/app/src/main/res
+          # 1024x1024 기본 아이콘: 짙은 남색 배경 + 금색 원 + 흰색 1억 텍스트
+          convert -size 1024x1024 xc:'#1a1a2e' \
+            -fill '#FFD700' -draw "circle 512,512 512,100" \
+            -fill '#1a1a2e' \
+            -font "$(fc-list :lang=ko | grep -i 'Bold' | head -1 | cut -d: -f1)" \
+            -pointsize 260 -gravity center -annotate 0 '1억' \
+            /tmp/icon1024.png || \
+          convert -size 1024x1024 xc:'#1a1a2e' \
+            -fill '#FFD700' -draw "circle 512,512 512,100" \
+            -fill '#1a1a2e' -pointsize 260 -gravity center -annotate 0 '1$' \
+            /tmp/icon1024.png
+          # 각 해상도로 복사
+          for d in mdpi:48 hdpi:72 xhdpi:96 xxhdpi:144 xxxhdpi:192; do
+            DENSITY=${d%:*}; SIZE=${d#*:}
+            mkdir -p "$RES/mipmap-$DENSITY"
+            convert /tmp/icon1024.png -resize "${SIZE}x${SIZE}" "$RES/mipmap-$DENSITY/ic_launcher.png"
+            cp "$RES/mipmap-$DENSITY/ic_launcher.png" "$RES/mipmap-$DENSITY/ic_launcher_round.png" 2>/dev/null || true
+          done
+          echo "✅ 아이콘 생성 완료"
+
       - name: Verify Android assets
         run: |
           echo "=== Android assets ==="
