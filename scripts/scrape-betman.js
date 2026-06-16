@@ -1,191 +1,153 @@
 #!/usr/bin/env node
 /**
- * betman.co.kr API 직접 호출 스크래퍼
- * Puppeteer 없이 HTTP 요청으로 내부 API 탐색
+ * betman.co.kr 크롤러
+ * 1단계: 페이지 HTML을 data/betman-debug.html 에 저장해서 구조 파악
+ * 2단계: 구조 확인 후 실제 파싱 로직 추가
  */
 
-const https = require('https');
-const http = require('http');
+const puppeteer = require('puppeteer-core');
 const fs = require('fs');
 const path = require('path');
 
 const OUTPUT = path.join(__dirname, '..', 'data', 'betman.json');
-
-const BASE = 'https://www.betman.co.kr';
-const HEADERS = {
-  'User-Agent': 'Mozilla/5.0 (Linux; Android 12; SM-S908N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.144 Mobile Safari/537.36',
-  'Accept': 'application/json, text/html, */*',
-  'Accept-Language': 'ko-KR,ko;q=0.9',
-  'Referer': 'https://www.betman.co.kr/',
-  'X-Requested-With': 'XMLHttpRequest',
-};
-
-function request(url, options = {}) {
-  return new Promise((resolve) => {
-    const parsed = new URL(url);
-    const lib = parsed.protocol === 'https:' ? https : http;
-    const reqOptions = {
-      hostname: parsed.hostname,
-      path: parsed.pathname + parsed.search,
-      method: options.method || 'GET',
-      headers: { ...HEADERS, ...options.headers },
-      timeout: 10000,
-    };
-    const req = lib.request(reqOptions, (res) => {
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => resolve({ status: res.statusCode, data, headers: res.headers }));
-    });
-    req.on('error', () => resolve({ status: 0, data: '', headers: {} }));
-    req.on('timeout', () => { req.destroy(); resolve({ status: 0, data: 'timeout', headers: {} }); });
-    if (options.body) req.write(options.body);
-    req.end();
-  });
-}
-
-async function tryEndpoint(url, method = 'GET', body = null) {
-  const opts = { method };
-  if (body) {
-    opts.body = typeof body === 'string' ? body : JSON.stringify(body);
-    opts.headers = { 'Content-Type': body && typeof body === 'object' ? 'application/json' : 'application/x-www-form-urlencoded' };
-  }
-  const res = await request(url, opts);
-  if (res.status === 200 && res.data.length > 100) {
-    try {
-      const json = JSON.parse(res.data);
-      console.log(`[OK ${res.status}] ${url} → ${res.data.substring(0, 150)}`);
-      return json;
-    } catch {
-      // HTML 응답에서 JSON 블록 추출 시도
-      const match = res.data.match(/\{[\s\S]{50,5000}\}/);
-      if (match) {
-        try { return JSON.parse(match[0]); } catch {}
-      }
-      console.log(`[HTML ${res.status}] ${url} → ${res.data.substring(0, 100)}`);
-    }
-  } else {
-    console.log(`[${res.status}] ${url}`);
-  }
-  return null;
-}
+const DEBUG_HTML = path.join(__dirname, '..', 'data', 'betman-debug.html');
 
 async function scrape() {
-  console.log('[betman] HTTP 직접 호출 스크래퍼 시작');
+  console.log('[betman] 브라우저 시작...');
+  const browser = await puppeteer.launch({
+    headless: 'new',
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/google-chrome-stable',
+    args: [
+      '--no-sandbox', '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage', '--disable-gpu',
+      '--lang=ko-KR,ko',
+      '--disable-blink-features=AutomationControlled',
+    ],
+    defaultViewport: { width: 1280, height: 900 },
+  });
 
   const result = { updatedAt: new Date().toISOString(), toto: [], proto: [] };
 
-  // 세션 쿠키 획득
-  console.log('[betman] 메인 페이지에서 세션 쿠키 획득...');
-  const mainRes = await request(BASE + '/');
-  const cookies = mainRes.headers['set-cookie']?.map(c => c.split(';')[0]).join('; ') || '';
-  if (cookies) {
-    HEADERS['Cookie'] = cookies;
-    console.log('[betman] 쿠키 획득:', cookies.substring(0, 80));
-  }
+  try {
+    const page = await browser.newPage();
 
-  // 스포츠토토 게임 목록 API 후보들
-  const totoEndpoints = [
-    // GET 방식
-    `${BASE}/main/mainPage/game/S01/selectGameList.do`,
-    `${BASE}/main/game/S01/selectGameList.do`,
-    `${BASE}/ntry/spayo/game/infoGame.do`,
-    `${BASE}/ntry/spayo/game/selectGameList.do`,
-    `${BASE}/ntry/spayo/game/S01/selectGameList.do`,
-    `${BASE}/main/mainPage/game/selectCurrentGameList.do?gameId=S01`,
-    `${BASE}/main/mainPage/game/S01/selectGameView.do`,
-    `${BASE}/api/game/S01`,
-    `${BASE}/api/v1/game/S01/list`,
-    `${BASE}/game/S01/list.json`,
-  ];
+    // 봇 탐지 우회
+    await page.evaluateOnNewDocument(() => {
+      Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+      window.chrome = { runtime: {} };
+    });
 
-  // POST 방식 시도
-  const totoPostEndpoints = [
-    [`${BASE}/main/mainPage/game/S01/selectGameList.do`, 'gameId=S01&pageIndex=1'],
-    [`${BASE}/ntry/spayo/game/infoGame.do`, 'gameKindId=1&gameStatusCode=1'],
-    [`${BASE}/main/mainPage/game/selectCurrentGameList.do`, 'sportsType=S01'],
-  ];
+    await page.setUserAgent(
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+    );
 
-  for (const url of totoEndpoints) {
-    const data = await tryEndpoint(url);
-    if (data) {
-      const games = extractGames(data);
-      if (games.length > 0) {
-        console.log(`[betman] 토토 ${games.length}경기 획득!`);
-        result.toto.push(...games);
-        break;
-      }
-    }
-  }
+    // 스포츠토토 페이지 로드
+    console.log('[betman] 스포츠토토 페이지 로딩...');
+    await page.goto('https://www.betman.co.kr/main/mainPage/game/S01/selectGameView.do', {
+      waitUntil: 'networkidle0',
+      timeout: 40000,
+    }).catch(e => console.log('[warn]', e.message));
 
-  if (result.toto.length === 0) {
-    for (const [url, body] of totoPostEndpoints) {
-      const data = await tryEndpoint(url, 'POST', body);
-      if (data) {
-        const games = extractGames(data);
-        if (games.length > 0) {
-          console.log(`[betman] 토토 POST로 ${games.length}경기 획득!`);
-          result.toto.push(...games);
-          break;
+    // JS 렌더링 대기
+    await new Promise(r => setTimeout(r, 5000));
+
+    // 페이지 제목 확인
+    const title = await page.title();
+    console.log('[betman] 페이지 제목:', title);
+
+    // 전체 HTML 저장 (구조 파악용)
+    const html = await page.content();
+    fs.mkdirSync(path.dirname(DEBUG_HTML), { recursive: true });
+    fs.writeFileSync(DEBUG_HTML, html, 'utf-8');
+    console.log('[betman] HTML 저장됨:', DEBUG_HTML, '(' + html.length + ' bytes)');
+
+    // HTML에서 패턴으로 데이터 추출 시도
+    // betman.co.kr 알려진 구조: 테이블 기반, 팀명+배당률
+    const games = await page.evaluate(() => {
+      const results = [];
+
+      // 방법 1: 배당률이 있는 테이블 행
+      document.querySelectorAll('table tbody tr').forEach(tr => {
+        const tds = Array.from(tr.querySelectorAll('td'));
+        const texts = tds.map(td => td.innerText.trim()).filter(Boolean);
+        // 배당률 패턴 (x.xx)
+        const oddsPattern = /^\d\.\d{2}$/;
+        const oddsInRow = texts.filter(t => oddsPattern.test(t));
+        if (oddsInRow.length >= 2) {
+          results.push({ type: 'table', texts });
         }
-      }
-    }
-  }
+      });
 
-  // 프로토 게임 목록 API 후보들
-  const protoEndpoints = [
-    `${BASE}/main/mainPage/game/S02/selectGameList.do`,
-    `${BASE}/main/game/S02/selectGameList.do`,
-    `${BASE}/ntry/spayo/game/S02/selectGameList.do`,
-    `${BASE}/main/mainPage/game/selectCurrentGameList.do?gameId=S02`,
-    `${BASE}/api/game/S02`,
-  ];
+      // 방법 2: class에 'game' 또는 'match' 포함된 요소
+      document.querySelectorAll('[class*="game"], [class*="match"], [class*="sport"]').forEach(el => {
+        const text = el.innerText?.trim();
+        if (text && text.length > 10 && text.length < 500) {
+          const oddsPattern = /\d\.\d{2}/;
+          if (oddsPattern.test(text)) {
+            results.push({ type: 'class', text: text.substring(0, 200) });
+          }
+        }
+      });
 
-  for (const url of protoEndpoints) {
-    const data = await tryEndpoint(url);
-    if (data) {
-      const games = extractGames(data);
-      if (games.length > 0) {
-        console.log(`[betman] 프로토 ${games.length}경기 획득!`);
-        result.proto.push(...games);
-        break;
-      }
-    }
-  }
+      // 방법 3: 페이지 내 모든 텍스트에서 배당 패턴
+      const body = document.body.innerText;
+      const lines = body.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+      let oddsLineCount = 0;
+      lines.forEach(line => {
+        if (/\d\.\d{2}/.test(line) && line.length < 200) {
+          if (++oddsLineCount <= 30) results.push({ type: 'text', line });
+        }
+      });
 
-  console.log(`[betman] 완료 - 토토: ${result.toto.length}, 프로토: ${result.proto.length}`);
-  fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
-  fs.writeFileSync(OUTPUT, JSON.stringify(result, null, 2), 'utf-8');
-  console.log('[betman] 저장:', OUTPUT);
-}
+      return results;
+    });
 
-function extractGames(data) {
-  const candidates = [
-    data?.gameList, data?.list, data?.data?.gameList,
-    data?.result?.gameList, data?.body?.gameList,
-    data?.response?.gameList, data?.games,
-    data?.data, data?.items,
-  ];
-  for (const list of candidates) {
-    if (Array.isArray(list) && list.length > 0) {
-      return list.map(g => ({
-        gameId: String(g.gameId || g.id || g.gmId || ''),
-        round: String(g.gameRound || g.round || g.gmRound || ''),
-        gameDate: g.gameDate || g.matchDate || g.gmDate || '',
-        sport: g.sportsTypeNm || g.sport || g.sportsNm || '',
-        league: g.leagueNm || g.league || g.leagName || '',
-        homeTeam: g.homeTeamNm || g.homeTeam || g.hmTeamNm || '',
-        awayTeam: g.awayTeamNm || g.awayTeam || g.awTeamNm || '',
-        odds: {
-          homeWin: parseFloat(g.homeOdds || g.winOdds || g.hmOdds || '0') || 0,
-          draw: parseFloat(g.drawOdds || g.drawOdd || '0') || 0,
-          awayWin: parseFloat(g.awayOdds || g.loseOdds || g.awOdds || '0') || 0,
-        },
-        status: g.gameStatus || g.status || g.gmStatus || '',
-        result: g.gameResult || g.result || null,
+    console.log('[betman] 추출 결과:', games.length, '개 항목');
+    games.forEach((g, i) => {
+      if (i < 20) console.log(`  [${g.type}]`, JSON.stringify(g).substring(0, 150));
+    });
+
+    // 파싱된 게임을 결과에 추가
+    const tableGames = games.filter(g => g.type === 'table');
+    if (tableGames.length > 0) {
+      result.toto = tableGames.map((g, i) => {
+        const odds = g.texts.filter(t => /^\d\.\d{2}$/.test(t));
+        return {
+          gameId: `t_${i}`,
+          round: '', gameDate: '',
+          sport: '스포츠토토', league: '',
+          homeTeam: g.texts[0] || '',
+          awayTeam: g.texts[1] || '',
+          odds: {
+            homeWin: parseFloat(odds[0] || '0'),
+            draw: parseFloat(odds[1] || '0'),
+            awayWin: parseFloat(odds[2] || '0'),
+          },
+          status: '', result: null,
+          raw: g.texts.join(' | '),
+        };
+      });
+    } else if (games.length > 0) {
+      // raw 텍스트라도 저장
+      result.toto = games.slice(0, 30).map((g, i) => ({
+        gameId: `r_${i}`,
+        round: '', gameDate: '',
+        sport: '스포츠토토', league: '',
+        homeTeam: '', awayTeam: '',
+        odds: { homeWin: 0, draw: 0, awayWin: 0 },
+        status: '', result: null,
+        raw: g.texts?.join(' | ') || g.text || g.line || '',
       }));
     }
+
+  } finally {
+    await browser.close();
   }
-  return [];
+
+  console.log(`[betman] 토토: ${result.toto.length}경기`);
+  fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
+  fs.writeFileSync(OUTPUT, JSON.stringify(result, null, 2), 'utf-8');
+  console.log('[betman] 완료');
 }
 
 scrape().catch(err => {

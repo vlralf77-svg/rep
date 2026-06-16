@@ -2,8 +2,8 @@ name: Scrape Betman
 
 on:
   schedule:
-    - cron: '0 */2 * * *'   # 매 2시간마다
-  workflow_dispatch:          # 수동 실행 가능
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
 
 jobs:
   scrape:
@@ -18,10 +18,31 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: scripts/package.json
+
+      - name: Install Google Chrome
+        run: |
+          wget -q -O /tmp/chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y /tmp/chrome.deb
+
+      - name: Install deps
+        working-directory: scripts
+        run: npm install
 
       - name: Run scraper
         working-directory: scripts
         run: node scrape-betman.js
+        env:
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
+
+      - name: Upload debug HTML
+        uses: actions/upload-artifact@v4
+        with:
+          name: betman-debug-html
+          path: data/betman-debug.html
+          retention-days: 1
 
       - name: Commit data
         run: |
