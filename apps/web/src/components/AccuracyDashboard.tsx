@@ -143,8 +143,11 @@ export default function AccuracyDashboard() {
     const yAgg = emptyAgg();
     const oAgg = emptyAgg();
 
+    const now = Date.now();
     for (const rec of records) {
       const gd = rec.gameDate ? new Date(rec.gameDate) : new Date(rec.savedAt);
+      // 아직 시작 안 한 경기는 대시보드에서 제외
+      if (gd.getTime() > now) continue;
       const gKey = dayKey(gd);
       const resolved = rec.predictions.filter((p) => p.actual !== undefined);
       for (const p of resolved) {
