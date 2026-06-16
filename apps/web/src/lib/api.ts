@@ -225,21 +225,25 @@ export function getLastSync(): string {
 }
 
 // ── Betman 데이터 ────────────────────────────────────────────────────────────
+export interface BetmanSelection {
+  label: string;
+  odds: number;
+}
+
+export interface BetmanMarket {
+  type: string; // 승무패, 전반 승무패, 언더오버, 전반 언더오버, 핸디캡 등
+  selections: BetmanSelection[];
+}
+
 export interface BetmanGame {
-  gameId: string;
-  round: string;
-  gameDate: string;
+  matchId: string;
   sport: string;
   league: string;
   homeTeam: string;
   awayTeam: string;
-  betType?: string;
-  odds: { homeWin: number; draw: number; awayWin: number };
-  handicap?: string | null;
-  overUnder?: string | null;
+  gameDate: string;
   status: string;
-  result: string | null;
-  raw?: string;
+  markets: BetmanMarket[];
 }
 
 export interface BetmanData {

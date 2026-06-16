@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * betman.co.kr 크롤러 v8
- * div.btnChkBox 구조 + 날짜/베팅타입 추출
+ * betman.co.kr 크롤러 v9
+ * 경기별로 여러 베팅 마켓(승무패/전반승무패/언더오버/전반언더오버 등)을 묶어서 수집
  */
 
 const puppeteer = require('puppeteer-core');
@@ -34,102 +34,88 @@ async function getGameLinks(page, url) {
   }, BASE);
 }
 
-async function extractMatches(page2, game) {
+// 경기별로 마켓을 묶어서 추출. matchMap: key=home|away|ts → match object
+async function extractInto(page2, gameName, matchMap) {
   await page2.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
   await new Promise(r => setTimeout(r, 1500));
 
-  return page2.evaluate((gameName) => {
-    const results = [];
-    const boxes = document.querySelectorAll('div.btnChkBox');
-    let diagLog = `Found ${boxes.length} btnChkBox elements`;
+  const matches = await page2.evaluate(() => {
+    const out = [];
+    // 각 ul.list-proto-detail = 한 경기, 안의 li = 베팅 타입
+    document.querySelectorAll('ul.list-proto-detail').forEach(ul => {
+      const rowname = ul.getAttribute('data-rowname') || '';
+      // 형식: 홈팀_원정팀_타임스탬프
+      const m = rowname.match(/^(.+)_(.+)_(\d{10,13})$/);
+      if (!m) return;
+      const homeTeam = m[1].trim();
+      const awayTeam = m[2].trim();
+      const ts = parseInt(m[3]);
+      const gameDate = ts ? new Date(ts).toISOString() : '';
 
-    // DIAGNOSTIC: dump structure of first matches to find bet-type marker
-    const diagParts = [];
-    Array.from(boxes).slice(0, 12).forEach((box, i) => {
-      const attrs = {};
-      for (const a of box.attributes) attrs[a.name] = a.value;
-      const btn = box.querySelector('button.btnChk');
-      const btnAttrs = {};
-      if (btn) for (const a of btn.attributes) btnAttrs[a.name] = a.value;
-      const selkeys = Array.from(box.querySelectorAll('button.btnChk'))
-        .map(b => b.getAttribute('data-selkey') + ':' + (b.querySelector('span.db')?.textContent.trim() || '-'));
-      // find nearest preceding heading-like text
-      let header = '';
-      let cur = box;
-      for (let depth = 0; depth < 6 && cur; depth++) {
-        cur = cur.parentElement;
-        if (!cur) break;
-        const h = cur.querySelector('h2,h3,h4,h5,strong,.tit,.title,caption,th');
-        if (h && h.textContent.trim()) { header = h.textContent.trim().substring(0, 40); break; }
-      }
-      diagParts.push(`#${i} box[${JSON.stringify(attrs)}] btn[${JSON.stringify(btnAttrs)}] sel=[${selkeys.join(',')}] hdr="${header}"`);
-    });
-    diagLog += '\n' + diagParts.join('\n');
+      const markets = [];
+      ul.querySelectorAll('li[data-matchseq]').forEach(li => {
+        const gb = li.querySelector('b.game');
+        if (!gb) return;
+        const fullType = gb.textContent.trim(); // "야구 승1패", "축구 전반 언더오버" 등
+        const sport = fullType.startsWith('야구') ? '야구' : fullType.startsWith('축구') ? '축구' : '';
+        const type = fullType.replace(/^(야구|축구)\s*/, '');
 
-    boxes.forEach((box, idx) => {
-      const buttons = box.querySelectorAll('button.btnChk');
-      if (!buttons.length) return;
+        const selections = [];
+        li.querySelectorAll('button.btnChk').forEach(btn => {
+          const spans = btn.querySelectorAll('span');
+          // 첫 span = label(승/무/패/언더/오버/홀/짝), span.db = 배당
+          const db = btn.querySelector('span.db');
+          let label = '';
+          for (const s of spans) {
+            if (s.classList.contains('db') || s.classList.contains('blind')) continue;
+            const t = s.textContent.trim();
+            if (t) { label = t; break; }
+          }
+          if (db) {
+            const odds = parseFloat(db.textContent.replace(/[^0-9.]/g, ''));
+            if (!isNaN(odds)) selections.push({ label, odds });
+          }
+        });
 
-      // Extract game date from data-gamecombkey timestamp
-      const combKey = box.getAttribute('data-gamecombkey') || '';
-      const tsMatch = combKey.match(/\d{13}/);
-      const gameDate = tsMatch ? new Date(parseInt(tsMatch[0])).toISOString() : '';
-
-      // Sport from key prefix (BS=baseball, SC=soccer) or game name
-      const prefix = combKey.slice(0, 2);
-      const sport = prefix === 'BS' ? '야구' : prefix === 'SC' ? '축구'
-        : (gameName.includes('야구') ? '야구' : '축구');
-
-      const title = buttons[0].getAttribute('title') || '';
-      const [homeTeam = '', awayTeam = ''] = title.split(' vs ');
-
-      const oddsMap = {};
-      const selkeys = [];
-      buttons.forEach(btn => {
-        const selkey = btn.getAttribute('data-selkey');
-        const span = btn.querySelector('span.db');
-        if (selkey && span) {
-          const val = parseFloat(span.textContent.replace(/\s/g, ''));
-          if (!isNaN(val)) { oddsMap[selkey] = val; selkeys.push(selkey); }
+        if (selections.length >= 2) {
+          markets.push({ type, sport, selections });
         }
       });
 
-      // Determine bet type from selkeys
-      let betType = '';
-      if (selkeys.includes('X')) betType = '승무패';
-      else if (selkeys.includes('O') && selkeys.includes('U')) betType = '언더오버';
-      else if (selkeys.some(k => /^H/.test(k))) betType = '핸디캡';
-      else if (selkeys.includes('1') && selkeys.includes('2')) betType = '승1패';
-      else return; // unknown type, skip
+      if (markets.length > 0) {
+        out.push({ homeTeam, awayTeam, gameDate, ts, markets });
+      }
+    });
+    return out;
+  });
 
-      // Build unified odds structure
-      const homeWin = oddsMap['1'] || 0;
-      const awayWin = oddsMap['2'] || 0;
-      const drawOrOver = oddsMap['X'] || oddsMap['O'] || 0;
-      const under = oddsMap['U'] || 0;
-
-      if (!homeWin && !awayWin && !drawOrOver) return;
-
-      results.push({
-        gameId: `${gameName}_${idx}`,
-        round: '',
-        gameDate,
+  // 머지: 같은 경기면 마켓 추가(타입 중복 제거)
+  for (const mt of matches) {
+    const key = `${mt.homeTeam}|${mt.awayTeam}|${mt.ts}`;
+    if (!matchMap.has(key)) {
+      const sport = mt.markets[0]?.sport || (gameName.includes('야구') ? '야구' : '축구');
+      matchMap.set(key, {
+        matchId: key,
         sport,
         league: gameName,
-        homeTeam: homeTeam.trim(),
-        awayTeam: awayTeam.trim(),
-        betType,
-        odds: {
-          homeWin,
-          draw: drawOrOver,
-          awayWin: betType === '언더오버' ? under : awayWin,
-        },
-        status: '발매중', result: null,
+        homeTeam: mt.homeTeam,
+        awayTeam: mt.awayTeam,
+        gameDate: mt.gameDate,
+        status: '발매중',
+        markets: [],
       });
-    });
+    }
+    const entry = matchMap.get(key);
+    const seenTypes = new Set(entry.markets.map(m => m.type));
+    for (const mk of mt.markets) {
+      if (!seenTypes.has(mk.type)) {
+        entry.markets.push({ type: mk.type, selections: mk.selections });
+        seenTypes.add(mk.type);
+      }
+    }
+  }
 
-    return { results, diagLog };
-  }, game.name);
+  return matches.length;
 }
 
 async function scrape() {
@@ -156,39 +142,45 @@ async function scrape() {
       console.log(`[betman] 일정 게임 ${gameLinks.length}개`);
     }
 
-    const targetGames = gameLinks.filter(g =>
-      g.name.includes('승부식') || g.name.includes('승1패') || g.name.includes('승무패')
-    );
-    console.log(`[betman] 배당 추출 대상: ${targetGames.length}개`);
+    // 승부식(프로토) 페이지가 모든 베팅 타입을 포함함
+    const protoGames = gameLinks.filter(g => g.name.includes('승부식'));
+    const totoGames = gameLinks.filter(g => g.name.includes('승1패') || g.name.includes('승무패'));
+    console.log(`[betman] 프로토 ${protoGames.length}개, 토토 ${totoGames.length}개`);
 
     const page2 = await browser.newPage();
     await page2.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36');
 
     let firstDetail = true;
-    for (const game of targetGames.slice(0, 6)) {
-      console.log(`[betman] 상세 로딩: ${game.name}`);
+    const protoMap = new Map();
+    for (const game of protoGames.slice(0, 4)) {
+      console.log(`[betman] 프로토 로딩: ${game.name}`);
       await page2.goto(game.href, { waitUntil: 'networkidle0', timeout: 30000 }).catch(() => {});
       await new Promise(r => setTimeout(r, 2000));
-
-      if (firstDetail) {
-        fs.writeFileSync(DETAIL_DEBUG, await page2.content());
-        firstDetail = false;
-      }
-
-      const { results: matches, diagLog } = await extractMatches(page2, game);
-      console.log(`  → ${matches.length}경기 추출 (${diagLog})`);
-      matches.forEach(m => console.log(`    [${m.betType}] ${m.homeTeam} vs ${m.awayTeam} | 홈:${m.odds.homeWin} 무:${m.odds.draw} 원:${m.odds.awayWin} | ${m.gameDate}`));
-
-      if (game.name.includes('야구') || game.name.includes('승부식')) result.proto.push(...matches);
-      else result.toto.push(...matches);
+      if (firstDetail) { fs.writeFileSync(DETAIL_DEBUG, await page2.content()); firstDetail = false; }
+      const n = await extractInto(page2, game.name, protoMap);
+      console.log(`  → ul ${n}개 처리, 누적 경기 ${protoMap.size}`);
     }
+
+    const totoMap = new Map();
+    for (const game of totoGames.slice(0, 4)) {
+      console.log(`[betman] 토토 로딩: ${game.name}`);
+      await page2.goto(game.href, { waitUntil: 'networkidle0', timeout: 30000 }).catch(() => {});
+      await new Promise(r => setTimeout(r, 2000));
+      const n = await extractInto(page2, game.name, totoMap);
+      console.log(`  → ul ${n}개 처리, 누적 경기 ${totoMap.size}`);
+    }
+
+    result.proto = Array.from(protoMap.values());
+    result.toto = Array.from(totoMap.values());
+
+    result.proto.forEach(m => console.log(`  [P] ${m.homeTeam} vs ${m.awayTeam} | 마켓 ${m.markets.length}개: ${m.markets.map(x => x.type).join(', ')}`));
 
     await page2.close();
   } finally {
     await browser.close();
   }
 
-  console.log(`[betman] 완료 - 토토: ${result.toto.length}, 프로토: ${result.proto.length}`);
+  console.log(`[betman] 완료 - 토토: ${result.toto.length}경기, 프로토: ${result.proto.length}경기`);
   fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
   fs.writeFileSync(OUTPUT, JSON.stringify(result, null, 2), 'utf-8');
 }
