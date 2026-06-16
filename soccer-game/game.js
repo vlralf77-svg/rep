@@ -20,19 +20,19 @@
 
   // ── 원근 투영 ──────────────────────────────────────────────
   // u: 좌우(-1~1), d: 깊이(0=발밑, 1=골라인), h: 높이(0=땅, 1=크로스바)
-  const FIELD = { nearY: 552, farY: 168, nearHalf: 210, farHalf: 64, cx: W / 2 };
+  const FIELD = { nearY: 552, farY: 200, nearHalf: 210, farHalf: 100, cx: W / 2 };
   function project(u, d, h) {
     const dd = clamp(d, 0, 1);
     const gy = lerp(FIELD.nearY, FIELD.farY, dd);
     const half = lerp(FIELD.nearHalf, FIELD.farHalf, dd);
-    const scale = lerp(1, 0.42, dd);
-    const heightPx = h * lerp(165, 70, dd);
+    const scale = lerp(1, 0.5, dd);
+    const heightPx = h * lerp(165, 90, dd);
     return { x: FIELD.cx + u * half, y: gy - heightPx, gy, scale };
   }
 
   // 골대 규격
-  const GOAL_U = 0.46;   // 골대 반폭 (u)
-  const BAR_H = 1.0;     // 크로스바 높이 (h)
+  const GOAL_U = 0.6;    // 골대 반폭 (u)
+  const BAR_H = 1.3;     // 크로스바 높이 (h)
 
   // ── 효과음 (WebAudio, 외부 파일 없음) ──────────────────────
   let actx = null, noiseBuf = null;
@@ -168,7 +168,7 @@
     const p = shot.power;
     ball = freshBall();
     ball.uStart = 0; ball.uT = shot.uT;
-    ball.goalH = (p - 0.45) * 2.35;              // 골라인에서의 높이 (파워↑ → 높이↑)
+    ball.goalH = (p - 0.45) * 2.9;               // 골라인에서의 높이 (파워↑ → 높이↑)
     ball.arc = 0.32 + p * 0.55;                   // 비행 중 포물선 정점
     ball.swerve = rand(-0.05, 0.05);              // 살짝 휘는 무회전성 흔들림
     ball.frames = Math.round(52 - p * 16);        // 파워↑ → 빠름
@@ -496,9 +496,9 @@
       const gx = W - 30, gy = 210, gw = 16, gh = 230;
       ctx.fillStyle = "rgba(0,0,0,0.45)"; ctx.fillRect(gx, gy, gw, gh);
       ctx.fillStyle = "rgba(109,255,158,0.35)";
-      ctx.fillRect(gx, gy + gh * (1 - 0.85), gw, gh * (0.85 - 0.55));
+      ctx.fillRect(gx, gy + gh * (1 - 0.9), gw, gh * (0.9 - 0.6));
       const fillH = gh * power;
-      ctx.fillStyle = power > 0.87 ? "#ff5252" : power >= 0.55 ? "#6dff9e" : "#ffd54f";
+      ctx.fillStyle = power > 0.9 ? "#ff5252" : power >= 0.6 ? "#6dff9e" : "#ffd54f";
       ctx.fillRect(gx, gy + gh - fillH, gw, fillH);
       ctx.strokeStyle = "#fff"; ctx.lineWidth = 2; ctx.strokeRect(gx, gy, gw, gh);
     }
