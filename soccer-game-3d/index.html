@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="theme-color" content="#1b8a3a" />
+<title>⚽ 3D 프리킥 챌린지</title>
+<link rel="stylesheet" href="style.css" />
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+  }
+}
+</script>
+</head>
+<body>
+  <div id="app">
+    <canvas id="scene"></canvas>
+
+    <header id="hud">
+      <div class="hud-item"><span class="hud-label">점수</span><span id="score" class="hud-value">0</span></div>
+      <div class="hud-item"><span class="hud-label">남은 킥</span><span id="shots" class="hud-value">5</span></div>
+      <div class="hud-item"><span class="hud-label">최고</span><span id="best" class="hud-value">0</span></div>
+    </header>
+
+    <div id="gauge" class="gauge hidden">
+      <div id="gaugeZone" class="gauge-zone"></div>
+      <div id="gaugeFill" class="gauge-fill"></div>
+    </div>
+
+    <div id="message" class="message hidden"></div>
+
+    <footer id="controls">
+      <p id="hint" class="hint">불러오는 중…</p>
+      <button id="actionBtn" class="action-btn" disabled>잠시만요</button>
+    </footer>
+  </div>
+
+  <div id="fallback" class="fallback hidden">
+    이 브라우저에서 3D(WebGL)를 사용할 수 없습니다.<br />
+    최신 Chrome/Safari/Edge에서 열어 주세요.<br /><br />
+    평면 2D 버전: <a href="../soccer-game/">여기</a>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>
