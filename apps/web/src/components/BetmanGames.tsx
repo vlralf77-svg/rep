@@ -2,8 +2,11 @@ import { useState, useEffect, useCallback } from 'react';
 import {
   Box, Typography, Card, CardActionArea, CardContent, Chip,
   CircularProgress, Alert, Dialog, DialogTitle, DialogContent,
-  Divider, LinearProgress, Button,
+  Divider, LinearProgress, Button, TextField, IconButton, Collapse,
 } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { useBetmanData } from '../api/hooks';
 import { BetmanGame, BetmanMarket } from '../lib/api';
 import { analyzeMarket } from '../lib/betman-analyze';
@@ -16,22 +19,42 @@ import {
   MarketPrediction,
 } from '../lib/betman-history';
 
-function OddsBox({ label, value }: { label: string; value: number }) {
+// ── 베팅 슬립 타입 ─────────────────────────────────────────────
+export interface BetPick {
+  matchId: string;
+  homeTeam: string;
+  awayTeam: string;
+  marketType: string;
+  label: string;
+  odds: number;
+}
+
+// ── 공통 컴포넌트 ───────────────────────────────────────────────
+function OddsBox({ label, value, selected, onSelect }: {
+  label: string; value: number; selected?: boolean; onSelect?: () => void;
+}) {
   return (
-    <Box sx={{
-      flex: 1, textAlign: 'center', p: 1, borderRadius: 1.5, minWidth: 0,
-      border: '1px solid', borderColor: 'rgba(255,255,255,0.1)',
-      bgcolor: 'rgba(255,255,255,0.03)',
-    }}>
+    <Box
+      onClick={onSelect}
+      sx={{
+        flex: 1, textAlign: 'center', p: 1, borderRadius: 1.5, minWidth: 0,
+        border: selected ? '2px solid' : '1px solid',
+        borderColor: selected ? '#FFD700' : 'rgba(255,255,255,0.1)',
+        bgcolor: selected ? 'rgba(255,215,0,0.12)' : 'rgba(255,255,255,0.03)',
+        cursor: onSelect ? 'pointer' : 'default',
+        transition: 'all 0.15s',
+        '&:active': onSelect ? { transform: 'scale(0.96)' } : {},
+      }}>
       <Typography variant="caption" color="text.secondary" display="block" noWrap>{label}</Typography>
-      <Typography variant="h6" fontWeight={700} color="text.primary" fontSize={15}>
+      <Typography variant="h6" fontWeight={700}
+        color={selected ? '#FFD700' : 'text.primary'} fontSize={15}>
         {value > 0 ? value.toFixed(2) : '-'}
       </Typography>
+      {selected && <Typography variant="caption" sx={{ color: '#FFD700', fontSize: 9 }}>✓ 선택</Typography>}
     </Box>
   );
 }
 
-// 시장 확률 + AI 확률을 한 줄에 같이 표시 (2가지 예측 비교)
 function DualProbRow({ label, marketProb, aiProb, star, color }:
   { label: string; marketProb: number; aiProb: number; star: boolean; color: string }) {
   return (
@@ -42,11 +65,9 @@ function DualProbRow({ label, marketProb, aiProb, star, color }:
           시장 {(marketProb * 100).toFixed(0)}% · AI {(aiProb * 100).toFixed(0)}%
         </Typography>
       </Box>
-      {/* 시장 배당 확률 */}
       <LinearProgress variant="determinate" value={marketProb * 100}
         sx={{ height: 5, borderRadius: 3, mb: 0.4, bgcolor: 'rgba(255,255,255,0.08)',
           '& .MuiLinearProgress-bar': { bgcolor: 'rgba(255,255,255,0.35)' } }} />
-      {/* AI 보정 확률 */}
       <LinearProgress variant="determinate" value={aiProb * 100}
         sx={{ height: 5, borderRadius: 3, bgcolor: 'rgba(255,255,255,0.08)',
           '& .MuiLinearProgress-bar': { bgcolor: color } }} />
@@ -57,20 +78,20 @@ function DualProbRow({ label, marketProb, aiProb, star, color }:
 const PALETTE = ['#4fc3f7', '#78909c', '#f48fb1', '#ce93d8', '#ffb74d'];
 const CONF_LABEL = { HIGH: '높음', MEDIUM: '보통', LOW: '낮음' } as const;
 
-// 마켓 한 개: 배당 박스 + 2가지 예측(시장/AI) + AI 추천
-// + optional result-entry section for past games
+// ── 마켓 블록 ───────────────────────────────────────────────────
 function MarketBlock({
-  market,
-  matchId,
-  isPast,
-  savedPred,
-  onActualSet,
+  market, matchId, homeTeam, awayTeam, isPast, savedPred, onActualSet,
+  picks, onTogglePick,
 }: {
   market: BetmanMarket;
   matchId: string;
+  homeTeam: string;
+  awayTeam: string;
   isPast: boolean;
   savedPred?: MarketPrediction;
   onActualSet?: () => void;
+  picks: BetPick[];
+  onTogglePick: (pick: BetPick) => void;
 }) {
   const a = analyzeMarket(market);
   const aiPick = a.selections[a.aiBestIdx];
@@ -87,16 +108,26 @@ function MarketBlock({
         <Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
           <Chip label={market.type} size="small" color="primary" variant="outlined" />
           {market.line != null && (
-            <Chip label={`기준 ${market.line}`} size="small" sx={{ fontSize: 11, height: 20, bgcolor: 'rgba(255,183,77,0.15)', color: '#ffb74d', border: '1px solid rgba(255,183,77,0.4)' }} />
+            <Chip label={`기준 ${market.line}`} size="small"
+              sx={{ fontSize: 11, height: 20, bgcolor: 'rgba(255,183,77,0.15)', color: '#ffb74d', border: '1px solid rgba(255,183,77,0.4)' }} />
           )}
         </Box>
         <Typography variant="caption" color="text.secondary">마진 {a.margin.toFixed(1)}%</Typography>
       </Box>
 
+      {/* 배당 박스 — 탭으로 선택 */}
       <Box sx={{ display: 'flex', gap: 1, mb: 1.5 }}>
-        {market.selections.map((s, i) => (
-          <OddsBox key={i} label={s.label} value={s.odds} />
-        ))}
+        {market.selections.map((s, i) => {
+          const isSelected = picks.some(
+            p => p.matchId === matchId && p.marketType === market.type && p.label === s.label
+          );
+          return (
+            <OddsBox
+              key={i} label={s.label} value={s.odds} selected={isSelected}
+              onSelect={() => onTogglePick({ matchId, homeTeam, awayTeam, marketType: market.type, label: s.label, odds: s.odds })}
+            />
+          );
+        })}
       </Box>
 
       {a.selections.map((s, i) => (
@@ -111,33 +142,25 @@ function MarketBlock({
         <Typography variant="caption" display="block" color={value ? 'success.main' : 'text.secondary'}>
           {value
             ? `💰 가치 베팅: ${value.label} (배당 ${value.odds.toFixed(2)}, 기대값 ${value.ev.toFixed(2)})`
-            : '💤 가치 베팅 없음 (배당 대비 기대값 부족)'}
+            : '💤 가치 베팅 없음'}
         </Typography>
         <Typography variant="caption" display="block" color="text.disabled" sx={{ fontSize: 10, mt: 0.3 }}>
-          ░ 시장(배당 역산) · ▓ AI(편향 보정) — 두 막대를 비교하세요
+          ░ 시장(배당 역산) · ▓ AI(편향 보정) — 배당 박스를 탭하면 슬립에 추가
         </Typography>
       </Box>
 
       {isPast && (
         <Box sx={{ mt: 1, pt: 1, borderTop: '1px dashed rgba(255,255,255,0.1)' }}>
-          <Typography variant="caption" display="block" color="text.secondary" mb={0.5}>
-            결과 입력
-          </Typography>
+          <Typography variant="caption" display="block" color="text.secondary" mb={0.5}>결과 입력</Typography>
           <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
-            {market.selections.map((s, i) => {
-              const isSelected = savedPred?.actual === s.label;
-              return (
-                <Button
-                  key={i}
-                  size="small"
-                  variant={isSelected ? 'contained' : 'outlined'}
-                  onClick={() => handleActual(s.label)}
-                  sx={{ minWidth: 0, px: 1, py: 0.3, fontSize: 11 }}
-                >
-                  {s.label}
-                </Button>
-              );
-            })}
+            {market.selections.map((s, i) => (
+              <Button key={i} size="small"
+                variant={savedPred?.actual === s.label ? 'contained' : 'outlined'}
+                onClick={() => handleActual(s.label)}
+                sx={{ minWidth: 0, px: 1, py: 0.3, fontSize: 11 }}>
+                {s.label}
+              </Button>
+            ))}
           </Box>
           {savedPred?.actual !== undefined && (
             <Typography variant="caption" display="block" mt={0.5}
@@ -151,12 +174,15 @@ function MarketBlock({
   );
 }
 
-function GameDetail({ game, open, onClose }: { game: BetmanGame; open: boolean; onClose: () => void }) {
+// ── 게임 상세 다이얼로그 ────────────────────────────────────────
+function GameDetail({ game, open, onClose, picks, onTogglePick }: {
+  game: BetmanGame; open: boolean; onClose: () => void;
+  picks: BetPick[]; onTogglePick: (pick: BetPick) => void;
+}) {
   const gameDateTime = game.gameDate
     ? new Date(game.gameDate).toLocaleString('ko-KR', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', weekday: 'short' })
     : '';
 
-  // 원하는 순서로 마켓 정렬
   const order = ['승무패', '승1패', '승패', '전반 승무패', '언더오버', '전반 언더오버', '핸디캡', '전반 핸디캡', 'SUM'];
   const sorted = [...game.markets].sort((a, b) => {
     const ia = order.indexOf(a.type); const ib = order.indexOf(b.type);
@@ -167,11 +193,8 @@ function GameDetail({ game, open, onClose }: { game: BetmanGame; open: boolean; 
     ? new Date(game.gameDate) < new Date(Date.now() - 24 * 60 * 60 * 1000)
     : false;
 
-  // State to trigger re-render when actuals change
   const [tick, setTick] = useState(0);
   const refresh = useCallback(() => setTick((t) => t + 1), []);
-
-  // Load saved predictions for this game
   const [savedRecord, setSavedRecord] = useState<PredictionRecord | undefined>(undefined);
 
   useEffect(() => {
@@ -180,15 +203,10 @@ function GameDetail({ game, open, onClose }: { game: BetmanGame; open: boolean; 
     setSavedRecord(all.find((r) => r.matchId === game.matchId));
   }, [open, game.matchId, tick]);
 
-  // Auto-save predictions when dialog opens (only for games not too far in the past)
   useEffect(() => {
-    if (!open) return;
-    if (!game.gameDate) return;
-
+    if (!open || !game.gameDate) return;
     const gameDate = new Date(game.gameDate);
-    const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000);
-    if (gameDate < yesterday) return;
-
+    if (gameDate < new Date(Date.now() - 24 * 60 * 60 * 1000)) return;
     const predictions: MarketPrediction[] = game.markets.map((m) => {
       const a = analyzeMarket(m);
       return {
@@ -198,18 +216,9 @@ function GameDetail({ game, open, onClose }: { game: BetmanGame; open: boolean; 
         marketPick: a.selections[a.marketBestIdx].label,
       };
     });
-
-    savePredictions({
-      matchId: game.matchId,
-      homeTeam: game.homeTeam,
-      awayTeam: game.awayTeam,
-      gameDate: game.gameDate,
-      savedAt: new Date().toISOString(),
-      predictions,
-    });
+    savePredictions({ matchId: game.matchId, homeTeam: game.homeTeam, awayTeam: game.awayTeam, gameDate: game.gameDate, savedAt: new Date().toISOString(), predictions });
   }, [open, game]);
 
-  // Compute per-game accuracy badge
   let gameBadge: string | null = null;
   if (savedRecord) {
     const withActual = savedRecord.predictions.filter((p) => p.actual !== undefined);
@@ -219,6 +228,8 @@ function GameDetail({ game, open, onClose }: { game: BetmanGame; open: boolean; 
     }
   }
 
+  const selectedCount = picks.filter(p => p.matchId === game.matchId).length;
+
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm"
       PaperProps={{ sx: { bgcolor: '#1a1a2e', borderRadius: 3 } }}>
@@ -227,20 +238,20 @@ function GameDetail({ game, open, onClose }: { game: BetmanGame; open: boolean; 
           {game.sport && <Chip label={game.sport} size="small" variant="outlined" />}
           {gameDateTime && <Chip label={gameDateTime} size="small" variant="outlined" />}
           {gameBadge && <Chip label={gameBadge} size="small" color="success" />}
+          {selectedCount > 0 && <Chip label={`슬립 ${selectedCount}개 선택`} size="small" sx={{ bgcolor: 'rgba(255,215,0,0.2)', color: '#FFD700' }} />}
         </Box>
         <Typography variant="h6" fontWeight={700}>{game.homeTeam} vs {game.awayTeam}</Typography>
-        <Typography variant="caption" color="text.secondary">{sorted.length}개 베팅 마켓</Typography>
+        <Typography variant="caption" color="text.secondary">{sorted.length}개 베팅 마켓 · 배당 박스를 탭하여 슬립에 추가</Typography>
       </DialogTitle>
       <DialogContent>
         <Divider sx={{ mb: 2 }} />
         {sorted.map((m, i) => (
-          <MarketBlock
-            key={i}
-            market={m}
-            matchId={game.matchId}
+          <MarketBlock key={i} market={m} matchId={game.matchId}
+            homeTeam={game.homeTeam} awayTeam={game.awayTeam}
             isPast={isPast}
             savedPred={savedRecord?.predictions.find((p) => p.marketType === m.type)}
             onActualSet={refresh}
+            picks={picks} onTogglePick={onTogglePick}
           />
         ))}
       </DialogContent>
@@ -248,26 +259,30 @@ function GameDetail({ game, open, onClose }: { game: BetmanGame; open: boolean; 
   );
 }
 
-function GameRow({ game }: { game: BetmanGame }) {
+// ── 게임 카드 ───────────────────────────────────────────────────
+function GameRow({ game, picks, onTogglePick }: {
+  game: BetmanGame; picks: BetPick[]; onTogglePick: (pick: BetPick) => void;
+}) {
   const [open, setOpen] = useState(false);
   const gameDateTime = game.gameDate
     ? new Date(game.gameDate).toLocaleString('ko-KR', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
     : '';
-
-  // 카드에는 대표 마켓(승무패/승1패 우선) 배당만 미리보기
-  const primary = game.markets.find(m => m.type === '승무패' || m.type === '승1패' || m.type === '승패')
-    || game.markets[0];
+  const primary = game.markets.find(m => m.type === '승무패' || m.type === '승1패' || m.type === '승패') || game.markets[0];
+  const selectedInGame = picks.filter(p => p.matchId === game.matchId).length;
 
   return (
     <>
-      <Card sx={{ mb: 1.5 }}>
+      <Card sx={{ mb: 1.5, border: selectedInGame > 0 ? '1px solid rgba(255,215,0,0.4)' : undefined }}>
         <CardActionArea onClick={() => setOpen(true)}>
           <CardContent sx={{ pb: '12px !important' }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5, alignItems: 'center' }}>
               <Typography variant="caption" color="text.secondary">
                 {game.sport}{gameDateTime ? ' · ' + gameDateTime : ''}
               </Typography>
-              <Chip label={`마켓 ${game.markets.length}`} size="small" sx={{ fontSize: 10, height: 18 }} />
+              <Box sx={{ display: 'flex', gap: 0.5 }}>
+                {selectedInGame > 0 && <Chip label={`슬립 ${selectedInGame}`} size="small" sx={{ fontSize: 10, height: 18, bgcolor: 'rgba(255,215,0,0.2)', color: '#FFD700' }} />}
+                <Chip label={`마켓 ${game.markets.length}`} size="small" sx={{ fontSize: 10, height: 18 }} />
+              </Box>
             </Box>
             <Typography variant="body2" fontWeight={600} textAlign="center" mb={1}>
               {game.homeTeam} vs {game.awayTeam}
@@ -275,56 +290,178 @@ function GameRow({ game }: { game: BetmanGame }) {
             {primary && (
               <Box sx={{ display: 'flex', gap: 1 }}>
                 {primary.selections.map((s, i) => (
-                  <OddsBox key={i} label={s.label} value={s.odds} />
+                  <OddsBox key={i} label={s.label} value={s.odds}
+                    selected={picks.some(p => p.matchId === game.matchId && p.marketType === primary.type && p.label === s.label)}
+                  />
                 ))}
               </Box>
             )}
             <Typography variant="caption" color="text.secondary" display="block" textAlign="center" mt={0.5}>
-              탭하여 전체 베팅({game.markets.map(m => m.type).slice(0, 4).join('/')}…) 보기
+              탭하여 전체 베팅 보기 · 배당 선택 가능
             </Typography>
           </CardContent>
         </CardActionArea>
       </Card>
-      <GameDetail game={game} open={open} onClose={() => setOpen(false)} />
+      <GameDetail game={game} open={open} onClose={() => setOpen(false)} picks={picks} onTogglePick={onTogglePick} />
     </>
   );
 }
 
-function AccuracyPanel() {
-  const stats = getAccuracyStats();
-  if (stats.total === 0) return null;
+// ── 베팅 슬립 패널 ──────────────────────────────────────────────
+function BetSlip({ picks, onRemove, onClear }: {
+  picks: BetPick[];
+  onRemove: (matchId: string, marketType: string) => void;
+  onClear: () => void;
+}) {
+  const [amount, setAmount] = useState('');
+  const [expanded, setExpanded] = useState(true);
 
-  const aiPct = (stats.aiCorrect / stats.total * 100).toFixed(0);
-  const mktPct = (stats.marketCorrect / stats.total * 100).toFixed(0);
+  if (picks.length === 0) return null;
+
+  const combinedOdds = picks.reduce((acc, p) => acc * p.odds, 1);
+  const inputAmount = parseInt(amount.replace(/,/g, '')) || 0;
+  const payout = Math.floor(inputAmount * combinedOdds);
+  const profit = payout - inputAmount;
+
+  const formatKRW = (n: number) => n.toLocaleString('ko-KR') + '원';
 
   return (
     <Box sx={{
-      mb: 2, p: 1.5, borderRadius: 2,
-      bgcolor: 'rgba(255,255,255,0.04)',
-      border: '1px solid rgba(255,255,255,0.08)',
+      mb: 2, borderRadius: 2, overflow: 'hidden',
+      border: '1px solid rgba(255,215,0,0.4)',
+      bgcolor: 'rgba(255,215,0,0.05)',
     }}>
-      <Typography variant="caption" color="text.secondary" display="block" mb={0.5} fontWeight={600}>
-        예측 적중률
-      </Typography>
+      {/* 헤더 */}
+      <Box sx={{ display: 'flex', alignItems: 'center', px: 1.5, py: 1, bgcolor: 'rgba(255,215,0,0.1)', cursor: 'pointer' }}
+        onClick={() => setExpanded(e => !e)}>
+        <Typography variant="subtitle2" fontWeight={700} sx={{ color: '#FFD700', flex: 1 }}>
+          🎯 베팅 슬립 ({picks.length}경기)
+        </Typography>
+        <Typography variant="caption" sx={{ color: '#FFD700', mr: 1 }}>
+          합산 배당 {combinedOdds.toFixed(2)}
+        </Typography>
+        {expanded ? <ExpandLessIcon sx={{ color: '#FFD700', fontSize: 18 }} /> : <ExpandMoreIcon sx={{ color: '#FFD700', fontSize: 18 }} />}
+      </Box>
+
+      <Collapse in={expanded}>
+        <Box sx={{ p: 1.5 }}>
+          {/* 픽 목록 */}
+          {picks.map((p) => (
+            <Box key={`${p.matchId}-${p.marketType}`}
+              sx={{ display: 'flex', alignItems: 'center', mb: 0.8, gap: 1 }}>
+              <Box sx={{ flex: 1, minWidth: 0 }}>
+                <Typography variant="caption" color="text.secondary" noWrap display="block">
+                  {p.homeTeam} vs {p.awayTeam}
+                </Typography>
+                <Typography variant="caption" fontWeight={600} noWrap>
+                  {p.marketType} · <span style={{ color: '#FFD700' }}>{p.label}</span> @ {p.odds.toFixed(2)}
+                </Typography>
+              </Box>
+              <IconButton size="small" onClick={() => onRemove(p.matchId, p.marketType)}
+                sx={{ color: 'text.disabled', '&:hover': { color: 'error.main' } }}>
+                <DeleteIcon sx={{ fontSize: 16 }} />
+              </IconButton>
+            </Box>
+          ))}
+
+          <Divider sx={{ my: 1.2 }} />
+
+          {/* 금액 입력 */}
+          <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mb: 1 }}>
+            <TextField
+              size="small" label="베팅 금액" placeholder="10,000"
+              value={amount}
+              onChange={(e) => {
+                const raw = e.target.value.replace(/[^0-9]/g, '');
+                setAmount(raw ? parseInt(raw).toLocaleString() : '');
+              }}
+              InputProps={{ endAdornment: <Typography variant="caption" color="text.secondary">원</Typography> }}
+              sx={{ flex: 1, '& .MuiInputBase-input': { fontSize: 14 } }}
+            />
+            <Button size="small" variant="outlined" color="error" onClick={onClear}
+              sx={{ whiteSpace: 'nowrap', fontSize: 12 }}>전체삭제</Button>
+          </Box>
+
+          {/* 빠른 금액 버튼 */}
+          <Box sx={{ display: 'flex', gap: 0.5, mb: 1.2, flexWrap: 'wrap' }}>
+            {[1000, 5000, 10000, 50000, 100000].map(v => (
+              <Chip key={v} label={formatKRW(v)} size="small" variant="outlined"
+                onClick={() => setAmount(v.toLocaleString())}
+                sx={{ fontSize: 10, height: 22, cursor: 'pointer' }} />
+            ))}
+          </Box>
+
+          {/* 계산 결과 */}
+          {inputAmount > 0 && (
+            <Box sx={{ bgcolor: 'rgba(255,215,0,0.08)', borderRadius: 1.5, p: 1.2 }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
+                <Typography variant="caption" color="text.secondary">베팅 금액</Typography>
+                <Typography variant="caption">{formatKRW(inputAmount)}</Typography>
+              </Box>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
+                <Typography variant="caption" color="text.secondary">합산 배당</Typography>
+                <Typography variant="caption" sx={{ color: '#FFD700' }}>× {combinedOdds.toFixed(2)}</Typography>
+              </Box>
+              <Divider sx={{ my: 0.5 }} />
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.3 }}>
+                <Typography variant="body2" fontWeight={700}>예상 수익금</Typography>
+                <Typography variant="body2" fontWeight={700} sx={{ color: '#4fc3f7' }}>{formatKRW(payout)}</Typography>
+              </Box>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Typography variant="caption" color="text.secondary">순이익</Typography>
+                <Typography variant="caption" color={profit >= 0 ? 'success.main' : 'error.main'}>
+                  {profit >= 0 ? '+' : ''}{formatKRW(profit)}
+                </Typography>
+              </Box>
+            </Box>
+          )}
+        </Box>
+      </Collapse>
+    </Box>
+  );
+}
+
+// ── 적중률 패널 ─────────────────────────────────────────────────
+function AccuracyPanel() {
+  const stats = getAccuracyStats();
+  if (stats.total === 0) return null;
+  const aiPct = (stats.aiCorrect / stats.total * 100).toFixed(0);
+  const mktPct = (stats.marketCorrect / stats.total * 100).toFixed(0);
+  return (
+    <Box sx={{ mb: 2, p: 1.5, borderRadius: 2, bgcolor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+      <Typography variant="caption" color="text.secondary" display="block" mb={0.5} fontWeight={600}>예측 적중률</Typography>
       <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-        <Chip
-          label={`AI 예측 적중률: ${stats.aiCorrect}/${stats.total} (${aiPct}%)`}
-          size="small"
-          color="primary"
-          variant="outlined"
-        />
-        <Chip
-          label={`시장 배당 적중률: ${stats.marketCorrect}/${stats.total} (${mktPct}%)`}
-          size="small"
-          variant="outlined"
-        />
+        <Chip label={`AI 예측 적중률: ${stats.aiCorrect}/${stats.total} (${aiPct}%)`} size="small" color="primary" variant="outlined" />
+        <Chip label={`시장 배당 적중률: ${stats.marketCorrect}/${stats.total} (${mktPct}%)`} size="small" variant="outlined" />
       </Box>
     </Box>
   );
 }
 
+// ── 메인 컴포넌트 ───────────────────────────────────────────────
 export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' | 'proto'; sportFilter?: string }) {
   const { data, isLoading, error } = useBetmanData();
+  const [picks, setPicks] = useState<BetPick[]>([]);
+
+  const handleTogglePick = useCallback((pick: BetPick) => {
+    setPicks(prev => {
+      const existing = prev.findIndex(p => p.matchId === pick.matchId && p.marketType === pick.marketType);
+      if (existing >= 0) {
+        // 같은 마켓에서 같은 항목이면 제거, 다른 항목이면 교체
+        if (prev[existing].label === pick.label) {
+          return prev.filter((_, i) => i !== existing);
+        }
+        return prev.map((p, i) => i === existing ? pick : p);
+      }
+      return [...prev, pick];
+    });
+  }, []);
+
+  const handleRemove = useCallback((matchId: string, marketType: string) => {
+    setPicks(prev => prev.filter(p => !(p.matchId === matchId && p.marketType === marketType)));
+  }, []);
+
+  const handleClear = useCallback(() => setPicks([]), []);
 
   if (isLoading) return <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}><CircularProgress /></Box>;
   if (error) return <Alert severity="warning">배트맨 데이터를 불러올 수 없습니다.</Alert>;
@@ -332,7 +469,6 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
 
   const games = (type === 'toto' ? data.toto : data.proto) || [];
   const updatedAt = data.updatedAt ? new Date(data.updatedAt).toLocaleString('ko-KR') : '';
-
   let sorted = [...games].sort((a, b) => (a.gameDate || '').localeCompare(b.gameDate || ''));
   if (sportFilter) sorted = sorted.filter(g => g.sport === sportFilter);
 
@@ -341,6 +477,9 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
       <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
         {updatedAt && <Typography variant="caption" color="text.secondary">갱신: {updatedAt}</Typography>}
       </Box>
+
+      {/* 베팅 슬립 (상단 고정) */}
+      <BetSlip picks={picks} onRemove={handleRemove} onClear={handleClear} />
 
       <AccuracyPanel />
 
@@ -358,7 +497,9 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
           )}
         </Box>
       ) : (
-        sorted.map((g) => <GameRow key={g.matchId} game={g} />)
+        sorted.map((g) => (
+          <GameRow key={g.matchId} game={g} picks={picks} onTogglePick={handleTogglePick} />
+        ))
       )}
     </Box>
   );
