@@ -1,149 +1,62 @@
-import { Card, CardContent, CardActionArea, Box, Typography, Chip, Avatar } from '@mui/material';
+import { Card, CardActionArea, CardContent, Box, Typography, Chip, Avatar } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import IconButton from '@mui/material/IconButton';
-import { useAppStore } from '../store';
-
-interface MatchCardProps {
-  match: {
-    id: number;
-    homeTeam: { id: number; name: string; shortName: string; crest: string };
-    awayTeam: { id: number; name: string; shortName: string; crest: string };
-    utcDate: string;
-    status: string;
-    homeScore?: number | null;
-    awayScore?: number | null;
-    competitionCode: string;
-    competitionName: string;
-  };
-  prediction?: {
-    homeWinProbability: number;
-    drawProbability: number;
-    awayWinProbability: number;
-    confidence: 'HIGH' | 'MEDIUM' | 'LOW';
-  };
-}
-
-function getConfidenceColor(confidence: string) {
-  switch (confidence) {
-    case 'HIGH': return 'success';
-    case 'MEDIUM': return 'warning';
-    case 'LOW': return 'error';
-    default: return 'default';
-  }
-}
+import { AppMatch, getPrediction } from '../lib/api';
 
 function formatDate(dateStr: string) {
-  const date = new Date(dateStr);
-  return date.toLocaleString('ko-KR', {
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+  return new Date(dateStr).toLocaleString('ko-KR', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
 }
 
-export default function MatchCard({ match, prediction }: MatchCardProps) {
+function statusLabel(s: string) {
+  const map: Record<string, string> = { SCHEDULED: '예정', FINISHED: '종료', LIVE: 'LIVE', IN_PLAY: 'LIVE', POSTPONED: '연기', TIMED: '예정' };
+  return map[s] || s;
+}
+
+export default function MatchCard({ match }: { match: AppMatch }) {
   const navigate = useNavigate();
-  const { toggleFavorite, isFavorite } = useAppStore();
-  const favorite = isFavorite(match.id);
+  const pred = getPrediction(match.id)?.prediction;
+  const isBaseball = match.sport === 'baseball';
 
-  const dominantOutcome = prediction
-    ? (['home', 'draw', 'away'] as const).reduce((best, current) => {
-        const probs = {
-          home: prediction.homeWinProbability,
-          draw: prediction.drawProbability,
-          away: prediction.awayWinProbability,
-        };
-        return probs[current] > probs[best] ? current : best;
-      }, 'home' as 'home' | 'draw' | 'away')
-    : null;
-
-  const dominantProb = dominantOutcome && prediction
-    ? {
-        home: prediction.homeWinProbability,
-        draw: prediction.drawProbability,
-        away: prediction.awayWinProbability,
-      }[dominantOutcome]
-    : null;
+  let badge: { label: string; prob: number } | null = null;
+  if (pred) {
+    const opts = isBaseball
+      ? [{ l: '홈승', p: pred.homeWinProbability }, { l: '원정승', p: pred.awayWinProbability }]
+      : [{ l: '홈승', p: pred.homeWinProbability }, { l: '무', p: pred.drawProbability }, { l: '원정승', p: pred.awayWinProbability }];
+    const best = opts.reduce((a, b) => (b.p > a.p ? b : a));
+    badge = { label: best.l, prob: best.p };
+  }
+  const conf = badge ? (badge.prob >= 0.55 ? 'success' : badge.prob >= 0.42 ? 'warning' : 'default') : 'default';
 
   return (
     <Card sx={{ mb: 1 }}>
       <CardActionArea onClick={() => navigate(`/match/${match.id}`)}>
         <CardContent>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
-            <Typography variant="caption" color="text.secondary">
-              {match.competitionName} · {formatDate(match.utcDate)}
-            </Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              {prediction && dominantOutcome && dominantProb && (
-                <Chip
-                  label={`${dominantOutcome === 'home' ? '홈승' : dominantOutcome === 'draw' ? '무승부' : '원정승'} ${(dominantProb * 100).toFixed(0)}%`}
-                  size="small"
-                  color={getConfidenceColor(prediction.confidence) as 'success' | 'warning' | 'error' | 'default'}
-                  variant="outlined"
-                />
+            <Typography variant="caption" color="text.secondary">{match.leagueName} · {formatDate(match.utcDate)}</Typography>
+            <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+              {badge && (
+                <Chip label={`${badge.label} ${(badge.prob * 100).toFixed(0)}%`} size="small" color={conf as any} variant="outlined" />
               )}
-              <IconButton
-                size="small"
-                onClick={(e) => { e.stopPropagation(); toggleFavorite(match.id); }}
-                sx={{ color: favorite ? 'warning.main' : 'text.secondary' }}
-              >
-                {favorite ? <StarIcon fontSize="small" /> : <StarBorderIcon fontSize="small" />}
-              </IconButton>
+              <Chip label={statusLabel(match.status)} size="small" sx={{ fontSize: 11 }} />
             </Box>
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flex: 1 }}>
-              <Avatar src={match.homeTeam.crest} sx={{ width: 32, height: 32 }} />
-              <Typography variant="body1" fontWeight={600}>
-                {match.homeTeam.shortName}
-              </Typography>
+              {match.homeTeam.crest && <Avatar src={match.homeTeam.crest} sx={{ width: 28, height: 28 }} />}
+              <Typography fontWeight={600} noWrap>{match.homeTeam.shortName}</Typography>
             </Box>
-
-            <Box sx={{ textAlign: 'center', px: 2 }}>
-              {match.status === 'FINISHED' && match.homeScore !== null && match.awayScore !== null ? (
-                <Typography variant="h6" fontWeight={700}>
-                  {match.homeScore} - {match.awayScore}
-                </Typography>
+            <Box sx={{ textAlign: 'center', px: 2, minWidth: 56 }}>
+              {match.status === 'FINISHED' && match.homeScore !== null ? (
+                <Typography variant="h6" fontWeight={700}>{match.homeScore} - {match.awayScore}</Typography>
               ) : (
-                <Typography variant="body2" color="text.secondary">
-                  vs
-                </Typography>
+                <Typography variant="body2" color="text.secondary">vs</Typography>
               )}
             </Box>
-
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flex: 1, justifyContent: 'flex-end' }}>
-              <Typography variant="body1" fontWeight={600}>
-                {match.awayTeam.shortName}
-              </Typography>
-              <Avatar src={match.awayTeam.crest} sx={{ width: 32, height: 32 }} />
+              <Typography fontWeight={600} noWrap>{match.awayTeam.shortName}</Typography>
+              {match.awayTeam.crest && <Avatar src={match.awayTeam.crest} sx={{ width: 28, height: 28 }} />}
             </Box>
           </Box>
-
-          {prediction && (
-            <Box sx={{ mt: 1.5, display: 'flex', gap: 0.5 }}>
-              <Box sx={{
-                flex: prediction.homeWinProbability,
-                bgcolor: 'primary.dark',
-                height: 4,
-                borderRadius: '2px 0 0 2px',
-              }} />
-              <Box sx={{
-                flex: prediction.drawProbability,
-                bgcolor: 'grey.600',
-                height: 4,
-              }} />
-              <Box sx={{
-                flex: prediction.awayWinProbability,
-                bgcolor: 'secondary.dark',
-                height: 4,
-                borderRadius: '0 2px 2px 0',
-              }} />
-            </Box>
-          )}
         </CardContent>
       </CardActionArea>
     </Card>

@@ -1,34 +1,22 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios';
+import { syncSport, getMatches, getPrediction, Sport } from '../lib/api';
 
-const api = axios.create({ baseURL: '/api' });
-
-export interface MatchListParams {
-  sport?: string;
-  league?: string;
-  status?: string;
-  dateFrom?: string;
-  dateTo?: string;
-  limit?: number;
-  offset?: number;
-}
-
-export function useMatches(params: MatchListParams = {}) {
+export function useMatches(params: { sport: Sport; status?: string }) {
   return useQuery({
     queryKey: ['matches', params],
     queryFn: async () => {
-      const { data } = await api.get('/matches', { params });
-      return data;
+      const matches = getMatches(params.sport, params.status || undefined);
+      return { matches, total: matches.length };
     },
   });
 }
 
-export function useMatchPrediction(matchId: number | null) {
+export function useMatchPrediction(matchId: string | null) {
   return useQuery({
     queryKey: ['prediction', matchId],
     queryFn: async () => {
-      const { data } = await api.get(`/matches/${matchId}/prediction`);
-      return data;
+      if (!matchId) return null;
+      return getPrediction(matchId);
     },
     enabled: matchId !== null,
   });
@@ -37,9 +25,9 @@ export function useMatchPrediction(matchId: number | null) {
 export function useSyncMatches() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async (params?: { sport?: string }) => {
-      const { data } = await api.post('/matches/sync', null, { params });
-      return data;
+    mutationFn: async (params: { sport: Sport }) => {
+      const result = await syncSport(params.sport);
+      return { matchesSynced: result.count, status: result.error ? 'error' : 'success', message: result.error };
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['matches'] });
