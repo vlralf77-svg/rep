@@ -52,4 +52,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/betman.json data/betman-debug.html
           git diff --cached --quiet || git commit -m "chore: update betman data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git pull --rebase origin claude/gracious-fermat-c195k9
           git push
