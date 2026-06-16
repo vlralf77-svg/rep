@@ -72,6 +72,7 @@ async function scrape() {
   console.log('[betman] 브라우저 시작...');
   const browser = await puppeteer.launch({
     headless: 'new',
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
