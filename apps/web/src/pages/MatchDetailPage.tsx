@@ -7,6 +7,7 @@ import {
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useMatchPrediction } from '../api/hooks';
 import PredictionChart from '../components/PredictionChart';
+import BettingMarketsCard from '../components/BettingMarkets';
 
 function FormChip({ result }: { result: string }) {
   const color = result === 'W' ? 'success' : result === 'L' ? 'error' : 'default';
@@ -128,6 +129,15 @@ export default function MatchDetailPage() {
               </Box>
             </CardContent>
           </Card>
+        )}
+
+        {/* Betting Markets */}
+        {prediction?.betting && (
+          <BettingMarketsCard
+            betting={prediction.betting}
+            homeTeam={match.homeTeam.shortName}
+            awayTeam={match.awayTeam.shortName}
+          />
         )}
 
         {/* Top Score Predictions */}

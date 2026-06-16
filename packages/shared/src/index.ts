@@ -59,6 +59,29 @@ export interface ScorePrediction {
   probability: number;
 }
 
+export interface BettingMarkets {
+  // 풀타임 승/무/패
+  ftHomeWin: number;
+  ftDraw: number;
+  ftAwayWin: number;
+  // 풀타임 오버/언더
+  over15: number;
+  under15: number;
+  over25: number;
+  under25: number;
+  over35: number;
+  under35: number;
+  // 전반 승/무/패
+  htHomeWin: number;
+  htDraw: number;
+  htAwayWin: number;
+  // 전반 오버/언더
+  htOver05: number;
+  htUnder05: number;
+  htOver15: number;
+  htUnder15: number;
+}
+
 export interface Prediction {
   matchId: number;
   homeWinProbability: number;
@@ -68,6 +91,7 @@ export interface Prediction {
   expectedAwayGoals: number;
   topScorePredictions: ScorePrediction[];
   confidence: 'HIGH' | 'MEDIUM' | 'LOW';
+  betting?: BettingMarkets;
   generatedAt: string;
 }
 
