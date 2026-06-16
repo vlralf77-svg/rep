@@ -33,6 +33,8 @@
   // 골대 규격
   const GOAL_U = 0.6;    // 골대 반폭 (u)
   const BAR_H = 1.3;     // 크로스바 높이 (h)
+  const KEEPER_H = 0.98; // 골키퍼 키 (h 단위, 크로스바의 약 75%)
+  const KEEP_D = 0.9;    // 골키퍼 깊이(골라인 살짝 앞)
 
   // ── 효과음 (WebAudio, 외부 파일 없음) ──────────────────────
   let actx = null, noiseBuf = null;
@@ -179,7 +181,7 @@
     const guessU = r < 0.34 ? shot.uT : (Math.random() < 0.5 ? -0.28 : 0.28);
     keeper = freshKeeper();
     keeper.target = clamp(guessU + rand(-0.06, 0.06), -GOAL_U, GOAL_U);
-    keeper.reach = rand(0.55, 0.92);
+    keeper.reach = rand(0.62, 1.0);
 
     // 키커 백스윙 → 컨택
     kicker = freshKicker();
@@ -241,7 +243,7 @@
     const grounded = ball.goalH < -0.05;
     const inside = !overBar && !wide && !grounded;
     const saved = inside &&
-      Math.abs(uF - keeper.u) < 0.16 &&
+      Math.abs(uF - keeper.u) < 0.2 &&
       ball.goalH <= keeper.reach + 0.05;
 
     const goal = inside && !saved;
@@ -369,39 +371,81 @@
   }
 
   function drawKeeper() {
-    const base = project(keeper.u, 0.98, 0);
-    const s = base.scale;
-    const dive = keeper.anim * (keeper.target === 0 ? 0 : 1);
-    const lean = keeper.target * 40 * keeper.anim;
+    const feet = project(keeper.u, KEEP_D, 0);
+    const Hpx = KEEPER_H * lerp(165, 90, KEEP_D);   // 선키 (px)
+    const w = Hpx * 0.2;                              // 몸 폭 기준
+    const diving = Math.abs(keeper.target) > 0.05;
+    const diveAmt = diving ? keeper.anim : 0;
+    const side = Math.sign(keeper.target || 1);
+    const jump = Math.sin(keeper.anim * Math.PI) * Hpx * 0.4 * (diving ? 1 : 0.08);
+    // 준비 자세 살짝 흔들
+    const bob = state === S.SHOOT ? 0 : Math.sin(Date.now() / 350) * 2;
+
     ctx.save();
-    ctx.translate(base.x, base.y);
-    // 그림자
-    ctx.fillStyle = "rgba(0,0,0,0.25)";
-    ctx.beginPath(); ctx.ellipse(0, 0, 22 * s, 6 * s, 0, 0, Math.PI * 2); ctx.fill();
-    ctx.translate(lean, 0);
-    // 점프 높이
-    const jump = Math.sin(keeper.anim * Math.PI) * 26 * s * (Math.abs(keeper.target) > 0.05 ? 1 : 0.2);
-    ctx.translate(0, -jump);
-    const body = 40 * s;
-    // 유니폼
-    ctx.fillStyle = "#ffcc00";
-    ctx.fillRect(-9 * s, -body, 18 * s, body * 0.62);
-    // 다리
-    ctx.fillStyle = "#222";
-    ctx.fillRect(-8 * s, -body * 0.38, 6 * s, body * 0.38);
-    ctx.fillRect(2 * s, -body * 0.38, 6 * s, body * 0.38);
-    // 뻗는 팔(장갑)
-    ctx.strokeStyle = "#ffcc00"; ctx.lineWidth = 5 * s; ctx.lineCap = "round";
-    const armA = 0.5 + keeper.anim * 1.4 * Math.sign(keeper.target || 1);
+    // 그림자 (지면, 다이빙 시 옆으로)
+    ctx.fillStyle = "rgba(0,0,0,0.28)";
     ctx.beginPath();
-    ctx.moveTo(0, -body * 0.85);
-    ctx.lineTo(Math.cos(-Math.PI / 2 - armA) * 22 * s, -body * 0.85 + Math.sin(-Math.PI / 2 - armA) * 22 * s);
-    ctx.moveTo(0, -body * 0.85);
-    ctx.lineTo(Math.cos(-Math.PI / 2 + armA) * 22 * s, -body * 0.85 + Math.sin(-Math.PI / 2 + armA) * 22 * s);
+    ctx.ellipse(feet.x + side * Hpx * 0.45 * diveAmt, feet.y, w * 1.4, w * 0.4, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.translate(feet.x, feet.y + bob);
+    ctx.translate(side * Hpx * 0.5 * diveAmt, -jump);
+    ctx.rotate(side * diveAmt * 1.05);   // 다이빙 시 몸이 옆으로 눕는다
+
+    const kit = "#16c79a", short = "#0e3d57", skin = "#ffd9b3", glove = "#ff7a00";
+    ctx.lineCap = "round";
+
+    // 다리(반바지 아래 + 양말)
+    ctx.strokeStyle = skin; ctx.lineWidth = w * 0.42;
+    const legSpread = diving ? 0.5 : 0.32;
+    ctx.beginPath();
+    ctx.moveTo(-w * 0.3, -Hpx * 0.45); ctx.lineTo(-w * legSpread, 0);
+    ctx.moveTo(w * 0.3, -Hpx * 0.45);  ctx.lineTo(w * legSpread, 0);
     ctx.stroke();
+    // 양말/축구화
+    ctx.fillStyle = "#111";
+    ctx.beginPath(); ctx.ellipse(-w * legSpread, 0, w * 0.32, w * 0.18, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(w * legSpread, 0, w * 0.32, w * 0.18, 0, 0, Math.PI * 2); ctx.fill();
+
+    // 반바지
+    ctx.fillStyle = short;
+    ctx.fillRect(-w * 0.7, -Hpx * 0.55, w * 1.4, Hpx * 0.16);
+    // 상의(골키퍼 유니폼)
+    ctx.fillStyle = kit;
+    ctx.beginPath();
+    ctx.moveTo(-w * 0.7, -Hpx * 0.4);
+    ctx.lineTo(w * 0.7, -Hpx * 0.4);
+    ctx.lineTo(w * 0.62, -Hpx * 0.78);
+    ctx.lineTo(-w * 0.62, -Hpx * 0.78);
+    ctx.closePath(); ctx.fill();
+    // 유니폼 무늬
+    ctx.fillStyle = "rgba(255,255,255,0.25)";
+    ctx.fillRect(-w * 0.2, -Hpx * 0.78, w * 0.12, Hpx * 0.38);
+
+    // 팔 + 장갑 (공 쪽으로 쭉 뻗음)
+    const shoulderY = -Hpx * 0.72;
+    const reach = Hpx * (0.42 + diveAmt * 0.28);
+    // 위쪽(다이빙 방향) 팔
+    const upAng = -Math.PI / 2 - 0.5 - diveAmt * 0.6;
+    const dnAng = -Math.PI / 2 + 0.7 + diveAmt * 0.3;
+    ctx.strokeStyle = kit; ctx.lineWidth = w * 0.34;
+    const ux = Math.cos(upAng) * reach, uy = shoulderY + Math.sin(upAng) * reach;
+    const dx = Math.cos(dnAng) * reach * 0.8, dy = shoulderY + Math.sin(dnAng) * reach * 0.8;
+    ctx.beginPath();
+    ctx.moveTo(0, shoulderY); ctx.lineTo(ux, uy);
+    ctx.moveTo(0, shoulderY); ctx.lineTo(dx, dy);
+    ctx.stroke();
+    // 장갑
+    ctx.fillStyle = glove;
+    ctx.beginPath(); ctx.arc(ux, uy, w * 0.34, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(dx, dy, w * 0.34, 0, Math.PI * 2); ctx.fill();
+
     // 머리
-    ctx.fillStyle = "#ffd9b3";
-    ctx.beginPath(); ctx.arc(0, -body - 6 * s, 7 * s, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = skin;
+    ctx.beginPath(); ctx.arc(0, -Hpx * 0.86, w * 0.5, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = "#2a1d12";
+    ctx.beginPath(); ctx.arc(0, -Hpx * 0.88, w * 0.5, Math.PI, Math.PI * 2); ctx.fill();
+
     ctx.restore();
   }
 
@@ -508,12 +552,12 @@
     drawBackground();
     drawPitch();
     drawGoal(true);   // 그물(뒤)
+    drawGoal(false);  // 골대 프레임 (키퍼보다 뒤: 골라인이 더 멀다)
     drawKeeper();
     if (state !== S.OVER) {
       drawBallShadow();
       drawBall();
     }
-    drawGoal(false);  // 포스트(앞)
     if (state === S.SHOOT || state === S.AIM || state === S.POWER) drawKicker();
     drawAimAndPower();
   }
