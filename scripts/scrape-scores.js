@@ -111,7 +111,7 @@ function parseSpojoy(text, sportName) {
     if (dm) { curDate = { y: +dm[1], mo: +dm[2], d: +dm[3] }; continue; }
     const tm = lines[i].match(/^(\d{1,2}):(\d{2})$/);
     if (!tm || !curDate) continue;
-    let home, away, hs = 0, as = 0, status = 'SCHEDULED', found = false;
+    let home, away, hs = 0, as = 0, status = 'SCHEDULED', found = false, halfHome, halfAway;
     for (let j = i + 1; j < Math.min(i + 9, lines.length); j++) {
       const L = lines[j];
       if (j > i + 1 && (/^\d{1,2}:\d{2}$/.test(L) || /\d{4}년/.test(L))) break;
@@ -120,13 +120,18 @@ function parseSpojoy(text, sportName) {
       const v = L.match(/^(.+?)\s+vs\s+(.+)$/i);
       if (m) { home = m[1].trim(); hs = +m[2]; as = +m[3]; away = m[4].trim(); found = true; }
       else if (v) { home = v[1].trim(); away = v[2].trim(); found = true; }
+      // 전반 스코어 파싱: "(전반 1-0)", "(1:0)", "전반 2-1" 등
+      const hm = L.match(/(?:전반|HT|1st)\s*(\d+)\s*[-:]\s*(\d+)/i) || L.match(/\((\d+)\s*[-:]\s*(\d+)\)/);
+      if (hm && !halfHome) { halfHome = +hm[1]; halfAway = +hm[2]; }
       if (/경기종료|종료/.test(L)) status = 'FINISHED';
       else if (/경기중|진행/.test(L)) status = 'LIVE';
       else if (/경기취소|취소|연기|순연/.test(L)) status = 'SCHEDULED';
     }
     if (found && home && away) {
       const ts = Date.UTC(curDate.y, curDate.mo - 1, curDate.d, +tm[1] - 9, +tm[2]);
-      out.push({ homeTeam: home, awayTeam: away, homeScore: hs, awayScore: as, status, timestamp: ts, sport: sportName });
+      const entry = { homeTeam: home, awayTeam: away, homeScore: hs, awayScore: as, status, timestamp: ts, sport: sportName };
+      if (halfHome != null) { entry.homeHalfScore = halfHome; entry.awayHalfScore = halfAway; }
+      out.push(entry);
     }
   }
   return out;
@@ -145,7 +150,17 @@ async function scrape() {
   const seen = new Set();
   const addScore = (s) => {
     const key = `${s.homeTeam}|${s.awayTeam}|${s.timestamp}`;
-    if (seen.has(key)) return;
+    if (seen.has(key)) {
+      // 이미 있으면 전반 스코어만 보강
+      if (s.homeHalfScore != null) {
+        const existing = scores.find(x => `${x.homeTeam}|${x.awayTeam}|${x.timestamp}` === key);
+        if (existing && existing.homeHalfScore == null) {
+          existing.homeHalfScore = s.homeHalfScore;
+          existing.awayHalfScore = s.awayHalfScore;
+        }
+      }
+      return;
+    }
     seen.add(key);
     scores.push(s);
   };
@@ -195,8 +210,9 @@ async function scrape() {
       await new Promise(r => setTimeout(r, 2500));
     }
 
-    // ── spojoy.com (네이버에 없는 종목/경기 보완: 배구 등) ──
+    // ── spojoy.com (네이버에 없는 종목/경기 보완 + 축구 전반 스코어) ──
     const spojoyPages = [
+      { mct: 'soccer', sport: '축구' },
       { mct: 'volleyball', sport: '배구' },
       { mct: 'basketball', sport: '농구' },
     ];
@@ -208,6 +224,22 @@ async function scrape() {
         const text = await page.evaluate(() => document.body ? document.body.innerText : '');
         const parsed = parseSpojoy(text, sp.sport);
         const before = scores.length;
+        // 축구는 새 경기 추가보다 전반 스코어 병합이 주 목적
+        if (sp.sport === '축구') {
+          let merged = 0;
+          for (const p of parsed) {
+            if (p.homeHalfScore == null) continue;
+            const pn = (s) => (s || '').replace(/\s+/g, '').toLowerCase();
+            for (const s of scores) {
+              if (s.sport !== '축구' || s.homeHalfScore != null) continue;
+              const sh = pn(s.homeTeam), sa = pn(s.awayTeam), ph = pn(p.homeTeam), pa = pn(p.awayTeam);
+              const eq = (a, b) => a === b || a.includes(b) || b.includes(a) || (a.length >= 3 && b.startsWith(a.slice(0,3))) || (b.length >= 3 && a.startsWith(b.slice(0,3)));
+              if (eq(sh, ph) && eq(sa, pa)) { s.homeHalfScore = p.homeHalfScore; s.awayHalfScore = p.awayHalfScore; merged++; }
+              else if (eq(sh, pa) && eq(sa, ph)) { s.homeHalfScore = p.awayHalfScore; s.awayHalfScore = p.homeHalfScore; merged++; }
+            }
+          }
+          console.log(`[scores] spojoy ${sp.sport} 전반스코어 병합: ${merged}건`);
+        }
         parsed.forEach(addScore);
         console.log(`[scores] spojoy ${sp.sport}: +${scores.length - before} (파싱 ${parsed.length})`);
       } catch (e) { console.log('[warn spojoy]', e.message); }
