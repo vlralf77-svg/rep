@@ -136,10 +136,11 @@ function GameCard({ record, score }: { record: PredictionRecord; score?: LiveSco
 }
 
 // ── 메인 ────────────────────────────────────────────────────────
-type FilterMode = 'yesterday' | 'all' | 'correct' | 'wrong';
+type ResultFilter = 'all' | 'correct' | 'wrong';
 
 export default function AccuracyDashboard() {
-  const [mode, setMode] = useState<FilterMode>('yesterday');
+  const [selectedDate, setSelectedDate] = useState<string>(dayKey(new Date()));
+  const [resultFilter, setResultFilter] = useState<ResultFilter>('all');
   const [tick, setTick] = useState(0);
   const refresh = () => setTick((t) => t + 1);
   const { data: liveData } = useLiveScores();
@@ -170,56 +171,58 @@ export default function AccuracyDashboard() {
     if (changed) refresh();
   }, [liveScores]);
 
-  const { yesterdayGames, allGames, yesterdayAgg, overallAgg, yesterdayKey } = useMemo(() => {
+  const { availableDates, gamesByDate, overallAgg, dateAgg } = useMemo(() => {
     const records = getPredictions();
-    const today0 = startOfToday();
-    const yest = new Date(today0.getTime() - 24 * 60 * 60 * 1000);
-    const yKey = dayKey(yest);
-
-    const yGames: PredictionRecord[] = [];
-    const aGames: PredictionRecord[] = [];
-    const yAgg = emptyAgg();
+    const byDate = new Map<string, PredictionRecord[]>();
     const oAgg = emptyAgg();
 
-    const now = Date.now();
     for (const rec of records) {
       const gd = rec.gameDate ? new Date(rec.gameDate) : new Date(rec.savedAt);
-      if (gd.getTime() > now) continue;
       const gKey = dayKey(gd);
+      if (!byDate.has(gKey)) byDate.set(gKey, []);
+      byDate.get(gKey)!.push(rec);
+
       const resolved = rec.predictions.filter((p) => p.actual !== undefined);
       for (const p of resolved) {
         oAgg.total++;
         if (p.actual === p.aiPick) oAgg.aiCorrect++;
         if (p.actual === p.marketPick) oAgg.marketCorrect++;
-        if (gKey === yKey) {
-          yAgg.total++;
-          if (p.actual === p.aiPick) yAgg.aiCorrect++;
-          if (p.actual === p.marketPick) yAgg.marketCorrect++;
-        }
       }
-      if (gKey === yKey) yGames.push(rec);
-      aGames.push(rec);
     }
 
-    yGames.sort((a, b) => (a.gameDate || '').localeCompare(b.gameDate || ''));
-    aGames.sort((a, b) => (b.gameDate || b.savedAt).localeCompare(a.gameDate || a.savedAt));
+    const dates = Array.from(byDate.keys()).sort().reverse();
 
-    return { yesterdayGames: yGames, allGames: aGames, yesterdayAgg: yAgg, overallAgg: oAgg, yesterdayKey: yKey };
+    // 선택된 날짜의 통계
+    const dAgg = emptyAgg();
+    const dateGames = byDate.get(selectedDate) || [];
+    for (const rec of dateGames) {
+      const resolved = rec.predictions.filter((p) => p.actual !== undefined);
+      for (const p of resolved) {
+        dAgg.total++;
+        if (p.actual === p.aiPick) dAgg.aiCorrect++;
+        if (p.actual === p.marketPick) dAgg.marketCorrect++;
+      }
+    }
+
+    for (const [, games] of byDate) {
+      games.sort((a, b) => (a.gameDate || '').localeCompare(b.gameDate || ''));
+    }
+
+    return { availableDates: dates, gamesByDate: byDate, overallAgg: oAgg, dateAgg: dAgg };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tick, liveScores]);
+  }, [tick, liveScores, selectedDate]);
 
-  const yestLabel = (() => {
-    const [, m, d] = yesterdayKey.split('-');
-    return `${parseInt(m)}월 ${parseInt(d)}일 경기`;
+  const dateGames = gamesByDate.get(selectedDate) || [];
+  const displayGames = useMemo(() => {
+    if (resultFilter === 'correct') return dateGames.filter((r) => r.predictions.some((p) => p.actual !== undefined && p.actual === p.aiPick));
+    if (resultFilter === 'wrong') return dateGames.filter((r) => r.predictions.some((p) => p.actual !== undefined && p.actual !== p.aiPick));
+    return dateGames;
+  }, [dateGames, resultFilter]);
+
+  const dateLabel = (() => {
+    const [, m, d] = selectedDate.split('-');
+    return `${parseInt(m)}월 ${parseInt(d)}일`;
   })();
-
-  const filteredAll = useMemo(() => {
-    if (mode === 'correct') return allGames.filter((r) => r.predictions.some((p) => p.actual !== undefined && p.actual === p.aiPick));
-    if (mode === 'wrong') return allGames.filter((r) => r.predictions.some((p) => p.actual !== undefined && p.actual !== p.aiPick));
-    return allGames;
-  }, [allGames, mode]);
-
-  const displayGames = mode === 'yesterday' ? yesterdayGames : filteredAll;
 
   // 스코어 매칭 함수 (livescore의 공용 매칭 로직 사용)
   const findScore = (rec: PredictionRecord): LiveScore | null => {
@@ -252,23 +255,46 @@ export default function AccuracyDashboard() {
         </CardContent>
       </Card>
 
-      {/* 전날 요약 */}
+      {/* 날짜 선택 */}
+      <Box sx={{ mb: 2, display: 'flex', gap: 0.8, flexWrap: 'wrap' }}>
+        {availableDates.map((d) => {
+          const [, m, dd] = d.split('-');
+          const isToday = d === dayKey(new Date());
+          const label = isToday ? '오늘' : `${parseInt(m)}/${parseInt(dd)}`;
+          return (
+            <Chip key={d} label={label} size="small"
+              onClick={() => setSelectedDate(d)}
+              variant={d === selectedDate ? 'filled' : 'outlined'}
+              sx={{
+                fontSize: 12, fontWeight: d === selectedDate ? 700 : 400,
+                bgcolor: d === selectedDate ? 'primary.main' : undefined,
+                color: d === selectedDate ? '#fff' : undefined,
+              }}
+            />
+          );
+        })}
+        {availableDates.length === 0 && (
+          <Typography variant="caption" color="text.secondary">저장된 경기가 없습니다</Typography>
+        )}
+      </Box>
+
+      {/* 선택 날짜 요약 */}
       <Card sx={{ mb: 2, border: '1px solid rgba(255,215,0,0.35)', bgcolor: 'rgba(255,215,0,0.05)' }}>
         <CardContent>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5 }}>
-            <Typography variant="subtitle1" fontWeight={700}>📅 {yestLabel}</Typography>
-            <Chip label={`총 ${yesterdayGames.length}경기`} size="small" sx={{ bgcolor: 'rgba(255,215,0,0.2)', color: '#FFD700' }} />
+            <Typography variant="subtitle1" fontWeight={700}>📅 {dateLabel} 경기</Typography>
+            <Chip label={`총 ${dateGames.length}경기`} size="small" sx={{ bgcolor: 'rgba(255,215,0,0.2)', color: '#FFD700' }} />
           </Box>
-          {yesterdayAgg.total === 0 ? (
+          {dateAgg.total === 0 ? (
             <Typography variant="body2" color="text.secondary">
-              {yesterdayGames.length > 0
+              {dateGames.length > 0
                 ? '경기 결과를 자동으로 가져오는 중입니다...'
-                : '전날 경기 데이터가 없습니다. 배당 화면을 열면 자동으로 저장됩니다.'}
+                : '해당 날짜에 저장된 경기가 없습니다.'}
             </Typography>
           ) : (
             <>
-              <StatBar label="🤖 AI 예측" correct={yesterdayAgg.aiCorrect} total={yesterdayAgg.total} color="#4fc3f7" />
-              <StatBar label="📊 시장 배당" correct={yesterdayAgg.marketCorrect} total={yesterdayAgg.total} color="#ffb74d" />
+              <StatBar label="🤖 AI 예측" correct={dateAgg.aiCorrect} total={dateAgg.total} color="#4fc3f7" />
+              <StatBar label="📊 시장 배당" correct={dateAgg.marketCorrect} total={dateAgg.total} color="#ffb74d" />
             </>
           )}
         </CardContent>
@@ -298,10 +324,9 @@ export default function AccuracyDashboard() {
       {/* 경기 목록 필터 */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
         <Typography variant="subtitle2" fontWeight={700}>경기별 결과</Typography>
-        <ToggleButtonGroup value={mode} exclusive size="small"
-          onChange={(_, v) => { if (v !== null) setMode(v); }}
+        <ToggleButtonGroup value={resultFilter} exclusive size="small"
+          onChange={(_, v) => { if (v !== null) setResultFilter(v); }}
           sx={{ '& .MuiToggleButton-root': { px: 1.2, py: 0.4, fontSize: 11, textTransform: 'none' } }}>
-          <ToggleButton value="yesterday">전날</ToggleButton>
           <ToggleButton value="all">전체</ToggleButton>
           <ToggleButton value="correct">✅ 적중</ToggleButton>
           <ToggleButton value="wrong">❌ 실패</ToggleButton>
@@ -310,7 +335,7 @@ export default function AccuracyDashboard() {
 
       {displayGames.length === 0 ? (
         <Typography variant="body2" color="text.secondary" sx={{ py: 3, textAlign: 'center' }}>
-          {mode === 'yesterday' ? '전날 저장된 경기가 없습니다.' : '해당하는 경기가 없습니다.'}
+          해당하는 경기가 없습니다.
         </Typography>
       ) : (
         displayGames.map((r) => (
