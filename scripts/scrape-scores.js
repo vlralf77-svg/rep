@@ -222,6 +222,11 @@ async function scrape() {
         await page.goto(`https://www.spojoy.com/live/?mct=${sp.mct}`, { waitUntil: 'networkidle2', timeout: 30000 }).catch(e => console.log('[warn spojoy]', e.message));
         await new Promise(r => setTimeout(r, 3500));
         const text = await page.evaluate(() => document.body ? document.body.innerText : '');
+        if (sp.sport === '축구') {
+          console.log('===SPOJOY_SOCCER_TEXT_START===');
+          console.log(text.slice(0, 4000));
+          console.log('===SPOJOY_SOCCER_TEXT_END===');
+        }
         const parsed = parseSpojoy(text, sp.sport);
         const before = scores.length;
         // 축구는 새 경기 추가보다 전반 스코어 병합이 주 목적
