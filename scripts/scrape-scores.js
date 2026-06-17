@@ -72,6 +72,9 @@ function parseGame(g) {
       ?? (Array.isArray(g.awayTeamScoreByPeriod) ? g.awayTeamScoreByPeriod[0] : undefined)
       ?? (Array.isArray(g.awayPeriodScores) ? g.awayPeriodScores[0] : undefined));
     if (hh != null && ah != null) { out.homeHalfScore = hh; out.awayHalfScore = ah; }
+    // 네이버 경기 상세에서 전반 스코어 보강용 gameId (임시 필드, 저장 전 제거)
+    const gid = g.gameId || g.gmkey || g.gameKey || g.id || '';
+    if (gid) out._gameId = String(gid);
   }
   // LIVE 일 때만 진행 정보 표시 (statusInfo: "후반 1'", "9회초" 등)
   if (status === 'LIVE' && g.statusInfo) {
@@ -98,6 +101,32 @@ function collectGames(obj, out) {
       collectGames(v, out);
     }
   }
+}
+
+// 네이버 경기 상세 JSON 응답에서 전반(1피리어드) 스코어를 재귀 탐색
+function findHalfScore(obj) {
+  let result = null;
+  const visit = (o) => {
+    if (result || !o || typeof o !== 'object') return;
+    if (Array.isArray(o)) { for (const x of o) visit(x); return; }
+    // 축구 피리어드별 스코어: homeTeamScoreByPeriod / awayTeamScoreByPeriod
+    const hp = o.homeTeamScoreByPeriod || o.homeScoreByPeriod || o.homePeriodScores;
+    const ap = o.awayTeamScoreByPeriod || o.awayScoreByPeriod || o.awayPeriodScores;
+    if (Array.isArray(hp) && Array.isArray(ap) && hp.length >= 1 && ap.length >= 1) {
+      const h = parseInt(hp[0]), a = parseInt(ap[0]);
+      if (!isNaN(h) && !isNaN(a)) { result = { home: h, away: a }; return; }
+    }
+    // 직접 전반 필드
+    const hh = o.homeTeamHalfScore ?? o.homeFirstHalfScore ?? o.homeHalfScore;
+    const ah = o.awayTeamHalfScore ?? o.awayFirstHalfScore ?? o.awayHalfScore;
+    if (hh != null && ah != null) {
+      const h = parseInt(hh), a = parseInt(ah);
+      if (!isNaN(h) && !isNaN(a)) { result = { home: h, away: a }; return; }
+    }
+    for (const v of Object.values(o)) if (typeof v === 'object') visit(v);
+  };
+  visit(obj);
+  return result;
 }
 
 // spojoy 종목별 페이지 innerText 파싱 (네이버에 없는 배구 등 보완)
@@ -244,6 +273,47 @@ async function scrape() {
         console.log(`[scores] spojoy ${sp.sport}: +${scores.length - before} (파싱 ${parsed.length})`);
       } catch (e) { console.log('[warn spojoy]', e.message); }
     }
+
+    // ── 네이버 경기 상세에서 전반 스코어 보강 ──
+    // 전반 스코어가 아직 없는 축구 경기들의 gameId로 상세 페이지 방문
+    const needHalf = scores.filter(s => s.sport === '축구' && s.homeHalfScore == null && s._gameId);
+    const gameIds = [...new Set(needHalf.map(s => s._gameId))].slice(0, 20);
+    console.log(`[scores] 네이버 경기상세 방문 대상: ${gameIds.length}건`);
+    let detailMerged = 0;
+    let dumped = false;
+    for (const gid of gameIds) {
+      let detailHalf = null;
+      const onResp = async (res) => {
+        try {
+          const ct = res.headers()['content-type'] || '';
+          if (!ct.includes('json')) return;
+          if (!/sports\.naver\.com/i.test(res.url())) return;
+          const data = await res.json();
+          if (!dumped) {
+            const str = JSON.stringify(data);
+            if (/period|회|전반|half|quarter|Period/i.test(str)) {
+              console.log(`[NV_DETAIL_DUMP] ${res.url().slice(0,90)}`);
+              console.log(str.slice(0, 2500));
+              dumped = true;
+            }
+          }
+          const h = findHalfScore(data);
+          if (h) detailHalf = h;
+        } catch { /* skip */ }
+      };
+      page.on('response', onResp);
+      try {
+        await page.goto(`https://m.sports.naver.com/game/${gid}`, { waitUntil: 'networkidle2', timeout: 25000 }).catch(() => {});
+        await new Promise(r => setTimeout(r, 1500));
+      } catch { /* skip */ }
+      page.off('response', onResp);
+      if (detailHalf) {
+        for (const s of scores) {
+          if (s._gameId === gid) { s.homeHalfScore = detailHalf.home; s.awayHalfScore = detailHalf.away; detailMerged++; }
+        }
+      }
+    }
+    console.log(`[scores] 네이버 경기상세 전반 병합: ${detailMerged}건`);
   } finally {
     await browser.close();
   }
@@ -327,6 +397,8 @@ async function scrape() {
   } catch (e) { console.log('[warn football-data halftime]', e.message); }
 
   void apiDebug;
+  // 임시 필드(_gameId) 제거
+  for (const s of scores) delete s._gameId;
   const result = {
     updatedAt: new Date().toISOString(),
     count: scores.length,
