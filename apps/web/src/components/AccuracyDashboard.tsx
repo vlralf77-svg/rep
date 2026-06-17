@@ -151,21 +151,7 @@ export default function AccuracyDashboard() {
 
     for (const rec of records) {
       if (!rec.gameDate) continue;
-      // 이 경기에 매칭되는 스코어 찾기
-      const score = liveScores.find(s => {
-        const gameTs = new Date(rec.gameDate!).getTime();
-        if (Math.abs(s.timestamp - gameTs) > 3 * 60 * 60 * 1000) return false;
-        const hm = rec.homeTeam.includes(s.homeTeam) || s.homeTeam.includes(rec.homeTeam);
-        const am = rec.awayTeam.includes(s.awayTeam) || s.awayTeam.includes(rec.awayTeam);
-        return hm && am;
-      }) || liveScores.find(s => {
-        const gameTs = new Date(rec.gameDate!).getTime();
-        if (Math.abs(s.timestamp - gameTs) > 3 * 60 * 60 * 1000) return false;
-        const hm = rec.homeTeam.includes(s.homeTeam) || s.homeTeam.includes(rec.homeTeam);
-        const am = rec.awayTeam.includes(s.awayTeam) || s.awayTeam.includes(rec.awayTeam);
-        return hm || am;
-      });
-
+      const score = matchScore(rec, liveScores);
       if (!score || score.status !== 'FINISHED') continue;
 
       for (const p of rec.predictions) {
@@ -232,21 +218,10 @@ export default function AccuracyDashboard() {
 
   const displayGames = mode === 'yesterday' ? yesterdayGames : filteredAll;
 
-  // 스코어 매칭 함수
+  // 스코어 매칭 함수 (livescore의 공용 매칭 로직 사용)
   const findScore = (rec: PredictionRecord): LiveScore | null => {
-    if (!liveScores || !rec.gameDate) return null;
-    const gameTs = new Date(rec.gameDate).getTime();
-    return liveScores.find(s => {
-      if (Math.abs(s.timestamp - gameTs) > 3 * 60 * 60 * 1000) return false;
-      const hm = rec.homeTeam.includes(s.homeTeam) || s.homeTeam.includes(rec.homeTeam);
-      const am = rec.awayTeam.includes(s.awayTeam) || s.awayTeam.includes(rec.awayTeam);
-      return hm && am;
-    }) || liveScores.find(s => {
-      if (Math.abs(s.timestamp - gameTs) > 3 * 60 * 60 * 1000) return false;
-      const hm = rec.homeTeam.includes(s.homeTeam) || s.homeTeam.includes(rec.homeTeam);
-      const am = rec.awayTeam.includes(s.awayTeam) || s.awayTeam.includes(rec.awayTeam);
-      return hm || am;
-    }) || null;
+    if (!liveScores) return null;
+    return matchScore(rec, liveScores);
   };
 
   return (

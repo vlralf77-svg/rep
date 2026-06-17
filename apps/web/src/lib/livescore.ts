@@ -1,6 +1,5 @@
 import { Capacitor } from '@capacitor/core';
 import { CapacitorHttp } from '@capacitor/core';
-import { BetmanGame } from './api';
 
 export interface LiveScore {
   homeTeam: string;
@@ -322,6 +321,54 @@ async function fetchSportsDB(): Promise<LiveScore[]> {
   return scores;
 }
 
+// ── 영어 → 한글 팀/국가명 매핑 (betman 매칭용) ──────────────────
+const TEAM_NAME_MAP: Record<string, string> = {
+  // 국가대표 (월드컵/A매치)
+  'Argentina': '아르헨티나', 'Algeria': '알제리', 'Brazil': '브라질',
+  'France': '프랑스', 'Germany': '독일', 'Spain': '스페인', 'Portugal': '포르투갈',
+  'England': '잉글랜드', 'Italy': '이탈리아', 'Netherlands': '네덜란드',
+  'Belgium': '벨기에', 'Croatia': '크로아티아', 'Uruguay': '우루과이',
+  'Colombia': '콜롬비아', 'Mexico': '멕시코', 'USA': '미국',
+  'United States': '미국', 'Japan': '일본', 'South Korea': '대한민국',
+  'Korea Republic': '대한민국', 'Korea': '한국', 'Morocco': '모로코',
+  'Senegal': '세네갈', 'Nigeria': '나이지리아', 'Ghana': '가나',
+  'Egypt': '이집트', 'Cameroon': '카메룬', 'Ecuador': '에콰도르',
+  'Peru': '페루', 'Chile': '칠레', 'Paraguay': '파라과이',
+  'Switzerland': '스위스', 'Austria': '오스트리아', 'Poland': '폴란드',
+  'Denmark': '덴마크', 'Sweden': '스웨덴', 'Norway': '노르웨이',
+  'Serbia': '세르비아', 'Turkey': '튀르키예', 'Türkiye': '튀르키예',
+  'Greece': '그리스', 'Czech Republic': '체코', 'Czechia': '체코',
+  'Ukraine': '우크라이나', 'Wales': '웨일스', 'Scotland': '스코틀랜드',
+  'Ireland': '아일랜드', 'Australia': '호주', 'Canada': '캐나다',
+  'Saudi Arabia': '사우디아라비아', 'Iran': '이란', 'Qatar': '카타르',
+  'Tunisia': '튀니지', 'Costa Rica': '코스타리카',
+  // 주요 유럽 클럽
+  'Real Madrid': '레알마드리드', 'Real Madrid CF': '레알마드리드',
+  'FC Barcelona': '바르셀로나', 'Barcelona': '바르셀로나',
+  'Manchester United': '맨체스터유나이티드', 'Manchester United FC': '맨체스터유나이티드',
+  'Manchester City': '맨체스터시티', 'Manchester City FC': '맨체스터시티',
+  'Liverpool': '리버풀', 'Liverpool FC': '리버풀',
+  'Chelsea': '첼시', 'Chelsea FC': '첼시',
+  'Arsenal': '아스널', 'Arsenal FC': '아스널',
+  'Tottenham Hotspur': '토트넘', 'Tottenham Hotspur FC': '토트넘',
+  'Bayern München': '바이에른뮌헨', 'FC Bayern München': '바이에른뮌헨',
+  'Borussia Dortmund': '도르트문트', 'Juventus': '유벤투스', 'Juventus FC': '유벤투스',
+  'AC Milan': 'AC밀란', 'Inter': '인터밀란', 'FC Internazionale Milano': '인터밀란',
+  'Paris Saint-Germain': '파리생제르맹', 'Paris Saint-Germain FC': '파리생제르맹',
+  'Atlético Madrid': '아틀레티코마드리드', 'Club Atlético de Madrid': '아틀레티코마드리드',
+  'Napoli': '나폴리', 'SSC Napoli': '나폴리', 'AS Roma': 'AS로마',
+};
+
+function toKoreanTeam(name: string): string {
+  if (!name) return '';
+  if (TEAM_NAME_MAP[name]) return TEAM_NAME_MAP[name];
+  // 부분 매칭 (e.g. "Argentina" in "Argentina U21")
+  for (const [en, ko] of Object.entries(TEAM_NAME_MAP)) {
+    if (name.includes(en)) return ko;
+  }
+  return name;
+}
+
 // ── football-data.org (축구 폴백) ────────────────────────────────
 async function fetchFootballData(): Promise<LiveScore[]> {
   const scores: LiveScore[] = [];
@@ -337,9 +384,11 @@ async function fetchFootballData(): Promise<LiveScore[]> {
     const data = JSON.parse(text);
     for (const m of (data.matches || [])) {
       const st = m.status;
+      const homeEn = m.homeTeam?.name || m.homeTeam?.shortName || '';
+      const awayEn = m.awayTeam?.name || m.awayTeam?.shortName || '';
       scores.push({
-        homeTeam: m.homeTeam?.name || '',
-        awayTeam: m.awayTeam?.name || '',
+        homeTeam: toKoreanTeam(homeEn),
+        awayTeam: toKoreanTeam(awayEn),
         homeScore: m.score?.fullTime?.home ?? m.score?.halfTime?.home ?? 0,
         awayScore: m.score?.fullTime?.away ?? m.score?.halfTime?.away ?? 0,
         status: ['IN_PLAY', 'PAUSED', 'HALFTIME', 'EXTRA_TIME', 'PENALTY_SHOOTOUT'].includes(st) ? 'LIVE'
@@ -350,6 +399,77 @@ async function fetchFootballData(): Promise<LiveScore[]> {
       });
     }
   } catch { /* skip */ }
+  return scores;
+}
+
+// ── spojoy.com 스크래핑 (한글 라이브스코어) ─────────────────────
+async function fetchSpojoy(logs: string[]): Promise<LiveScore[]> {
+  const scores: LiveScore[] = [];
+  const urls = [
+    'https://www.spojoy.com/live/',
+    'https://spojoy.com/live/',
+  ];
+
+  for (const url of urls) {
+    const { text, ok } = await httpGet(url);
+    if (!ok || !text) {
+      logs.push(`spojoy ${ok ? '빈' : '실패'}: ${url}`);
+      continue;
+    }
+    logs.push(`spojoy 응답: ${text.length}자 ${text.slice(0, 70).replace(/\s+/g, ' ')}`);
+
+    // 1) JSON 데이터 추출 시도 (__NEXT_DATA__, window 변수, JSON 블록)
+    const jsonMatch = text.match(/<script[^>]*id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/)
+      || text.match(/window\.__(?:NUXT|DATA|INITIAL_STATE|matchData)__\s*=\s*({[\s\S]*?})\s*[;<]/)
+      || text.match(/var\s+(?:matchList|gameList|liveData)\s*=\s*(\[[\s\S]*?\]);/);
+    if (jsonMatch) {
+      logs.push(`spojoy JSON 발견: ${jsonMatch[1].slice(0, 60)}`);
+      try {
+        const data = JSON.parse(jsonMatch[1]);
+        const items = Array.isArray(data) ? data
+          : data?.props?.pageProps?.matches || data?.matches || data?.games || data?.list || [];
+        for (const g of (Array.isArray(items) ? items : [])) {
+          const home = g.homeTeam || g.home || g.homeName || g.hometeam || '';
+          const away = g.awayTeam || g.away || g.awayName || g.awayteam || '';
+          if (!home || !away) continue;
+          const hs = g.homeScore ?? g.homeGoal ?? g.hscore ?? 0;
+          const as_ = g.awayScore ?? g.awayGoal ?? g.ascore ?? 0;
+          const st = (g.status || g.state || g.gameStatus || '').toString();
+          scores.push({
+            homeTeam: String(home), awayTeam: String(away),
+            homeScore: typeof hs === 'number' ? hs : parseInt(hs) || 0,
+            awayScore: typeof as_ === 'number' ? as_ : parseInt(as_) || 0,
+            status: /종료|fin|ft|end/i.test(st) ? 'FINISHED' : /진행|live|playing/i.test(st) ? 'LIVE' : 'SCHEDULED',
+            timestamp: g.startTime ? new Date(g.startTime).getTime() : Date.now(),
+            sport: /야구|baseball/i.test(g.sport || g.category || '') ? '야구' : '축구',
+          });
+        }
+      } catch (e: any) { logs.push(`spojoy JSON 파싱실패: ${e?.message}`); }
+    }
+
+    // 2) HTML 테이블/행 파싱 폴백
+    if (scores.length === 0) {
+      // 한글 팀명 + 스코어 패턴: 팀A  N : N  팀B
+      const re = /([가-힣A-Za-z][가-힣A-Za-z0-9\s.]{1,20}?)\s*(\d{1,3})\s*[:：]\s*(\d{1,3})\s*([가-힣A-Za-z][가-힣A-Za-z0-9\s.]{1,20}?)(?:\s|<)/g;
+      let m;
+      let cnt = 0;
+      while ((m = re.exec(text)) !== null && cnt < 100) {
+        cnt++;
+        const home = m[1].trim(), away = m[4].trim();
+        if (home.length < 2 || away.length < 2) continue;
+        scores.push({
+          homeTeam: home, awayTeam: away,
+          homeScore: parseInt(m[2]), awayScore: parseInt(m[3]),
+          status: 'FINISHED',
+          timestamp: Date.now(),
+          sport: '축구',
+        });
+      }
+      if (cnt > 0) logs.push(`spojoy HTML파싱: ${cnt}개 패턴`);
+    }
+
+    if (scores.length > 0) return scores;
+  }
   return scores;
 }
 
@@ -403,56 +523,47 @@ export async function fetchLiveScoresWithLog(): Promise<FetchResult> {
   const logs: string[] = [];
   logs.push(`isNative: ${isNative}`);
 
-  // 1. 네이버 스코어보드
+  // 1. spojoy.com (한글 라이브스코어 — betman 매칭에 최적)
   try {
-    const sb = await fetchNaverScoreboard(logs);
-    allScores.push(...sb);
-    logs.push(`1.스코어보드: ${sb.length}건`);
-  } catch (e: any) { logs.push(`1.스코어보드: 에러 ${e?.message || e}`); }
+    const sp = await fetchSpojoy(logs);
+    allScores.push(...sp);
+    logs.push(`1.spojoy: ${sp.length}건`);
+  } catch (e: any) { logs.push(`1.spojoy: 에러 ${e?.message || e}`); }
 
-  // 2. 네이버 API
-  if (allScores.length === 0) {
+  // 2. football-data.org (해외 축구, 영어→한글 매핑)
+  if (!allScores.some(s => s.sport === '축구')) {
     try {
-      const api = await fetchNaverApi(logs);
-      allScores.push(...api);
-      logs.push(`2.네이버API: ${api.length}건`);
-    } catch (e: any) { logs.push(`2.네이버API: 에러 ${e?.message || e}`); }
+      const fb = await fetchFootballData();
+      allScores.push(...fb);
+      logs.push(`2.football-data: ${fb.length}건`);
+    } catch (e: any) { logs.push(`2.football-data: 에러 ${e?.message || e}`); }
   }
 
-  // 3. 네이버 종목별 일정 페이지
-  if (allScores.length === 0) {
-    try {
-      const pages = await fetchNaverSchedulePages(logs);
-      allScores.push(...pages);
-      logs.push(`3.일정페이지: ${pages.length}건`);
-    } catch (e: any) { logs.push(`3.일정페이지: 에러 ${e?.message || e}`); }
-  }
-
-  // 4. 야구 없으면 TheSportsDB
+  // 3. 야구 없으면 TheSportsDB (KBO)
   if (!allScores.some(s => s.sport === '야구')) {
     try {
       const sdb = await fetchSportsDB();
       allScores.push(...sdb);
-      logs.push(`4.SportsDB: ${sdb.length}건`);
-    } catch (e: any) { logs.push(`4.SportsDB: 실패 ${e?.message || e}`); }
+      logs.push(`3.SportsDB: ${sdb.length}건`);
+    } catch (e: any) { logs.push(`3.SportsDB: 에러 ${e?.message || e}`); }
   }
 
-  // 5. 축구 없으면 livescore.in
+  // 4. 네이버 API (마지막 시도)
+  if (allScores.length === 0) {
+    try {
+      const api = await fetchNaverApi(logs);
+      allScores.push(...api);
+      logs.push(`4.네이버API: ${api.length}건`);
+    } catch (e: any) { logs.push(`4.네이버API: 에러 ${e?.message || e}`); }
+  }
+
+  // 5. livescore.in (축구 폴백)
   if (!allScores.some(s => s.sport === '축구')) {
     try {
       const ls = await fetchLivescoreIn();
       allScores.push(...ls);
       logs.push(`5.livescore.in: ${ls.length}건`);
-    } catch (e: any) { logs.push(`5.livescore.in: 실패 ${e?.message || e}`); }
-  }
-
-  // 6. 축구 여전히 없으면 football-data.org
-  if (!allScores.some(s => s.sport === '축구')) {
-    try {
-      const fb = await fetchFootballData();
-      allScores.push(...fb);
-      logs.push(`6.football-data: ${fb.length}건`);
-    } catch (e: any) { logs.push(`6.football-data: 실패 ${e?.message || e}`); }
+    } catch (e: any) { logs.push(`5.livescore.in: 에러 ${e?.message || e}`); }
   }
 
   const summary = `총 ${allScores.length}건 (LIVE:${allScores.filter(s => s.status === 'LIVE').length} FIN:${allScores.filter(s => s.status === 'FINISHED').length})`;
@@ -463,33 +574,53 @@ export async function fetchLiveScoresWithLog(): Promise<FetchResult> {
 }
 
 // ── betman 경기 매칭 ─────────────────────────────────────────────
-export function matchScore(game: BetmanGame, scores: LiveScore[]): LiveScore | null {
+function norm(s: string): string {
+  return (s || '').replace(/\s+/g, '').replace(/FC|fc|cf|CF/g, '').toLowerCase();
+}
+function teamMatch(a: string, b: string): boolean {
+  const na = norm(a), nb = norm(b);
+  if (!na || !nb) return false;
+  return na === nb || na.includes(nb) || nb.includes(na);
+}
+
+// 홈/원정이 뒤바뀐 경우 스코어를 betman 기준으로 정렬해서 반환
+function orientScore(s: LiveScore): LiveScore {
+  return { ...s, homeScore: s.awayScore, awayScore: s.homeScore, homeTeam: s.awayTeam, awayTeam: s.homeTeam };
+}
+
+// homeTeam/awayTeam/gameDate/sport 만 있으면 매칭 가능 (BetmanGame, PredictionRecord 공용)
+interface MatchableGame {
+  homeTeam: string;
+  awayTeam: string;
+  gameDate?: string;
+  sport?: string;
+}
+
+export function matchScore(game: MatchableGame, scores: LiveScore[]): LiveScore | null {
   if (!game.gameDate) return null;
   const gameTs = new Date(game.gameDate).getTime();
+  const sameSport = (s: LiveScore) => !game.sport || s.sport === game.sport;
 
-  // 1차: 종목 + 양팀명
+  // 1차: 종목 + 양팀명 (홈/원정 순서 무관)
   for (const s of scores) {
-    if (s.sport !== game.sport) continue;
-    const hm = game.homeTeam.includes(s.homeTeam) || s.homeTeam.includes(game.homeTeam);
-    const am = game.awayTeam.includes(s.awayTeam) || s.awayTeam.includes(game.awayTeam);
-    if (hm && am) return s;
+    if (!sameSport(s)) continue;
+    if (teamMatch(game.homeTeam, s.homeTeam) && teamMatch(game.awayTeam, s.awayTeam)) return s;
+    if (teamMatch(game.homeTeam, s.awayTeam) && teamMatch(game.awayTeam, s.homeTeam)) return orientScore(s);
   }
 
   // 2차: 양팀명 (종목 무시, 시간 3시간 이내)
   for (const s of scores) {
     if (Math.abs(s.timestamp - gameTs) > 3 * 60 * 60 * 1000) continue;
-    const hm = game.homeTeam.includes(s.homeTeam) || s.homeTeam.includes(game.homeTeam);
-    const am = game.awayTeam.includes(s.awayTeam) || s.awayTeam.includes(game.awayTeam);
-    if (hm && am) return s;
+    if (teamMatch(game.homeTeam, s.homeTeam) && teamMatch(game.awayTeam, s.awayTeam)) return s;
+    if (teamMatch(game.homeTeam, s.awayTeam) && teamMatch(game.awayTeam, s.homeTeam)) return orientScore(s);
   }
 
   // 3차: 한쪽 팀명 + 종목 + 시간
   for (const s of scores) {
-    if (s.sport !== game.sport) continue;
+    if (!sameSport(s)) continue;
     if (Math.abs(s.timestamp - gameTs) > 3 * 60 * 60 * 1000) continue;
-    const hm = game.homeTeam.includes(s.homeTeam) || s.homeTeam.includes(game.homeTeam);
-    const am = game.awayTeam.includes(s.awayTeam) || s.awayTeam.includes(game.awayTeam);
-    if (hm || am) return s;
+    if (teamMatch(game.homeTeam, s.homeTeam) || teamMatch(game.awayTeam, s.awayTeam)) return s;
+    if (teamMatch(game.homeTeam, s.awayTeam) || teamMatch(game.awayTeam, s.homeTeam)) return orientScore(s);
   }
 
   return null;
