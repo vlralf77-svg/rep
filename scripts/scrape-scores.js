@@ -87,6 +87,38 @@ function collectGames(obj, out) {
   }
 }
 
+// spojoy 종목별 페이지 innerText 파싱 (네이버에 없는 배구 등 보완)
+function parseSpojoy(text, sportName) {
+  const out = [];
+  const lines = text.split('\n').map(l => l.replace(/ /g, ' ').trim()).filter(Boolean);
+  let curDate = null;
+  const isHeader = (l) => /홈팀|원정팀|^대회$|^시간$|결과|비고|일정이 없습니다/.test(l);
+  for (let i = 0; i < lines.length; i++) {
+    const dm = lines[i].match(/(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일/);
+    if (dm) { curDate = { y: +dm[1], mo: +dm[2], d: +dm[3] }; continue; }
+    const tm = lines[i].match(/^(\d{1,2}):(\d{2})$/);
+    if (!tm || !curDate) continue;
+    let home, away, hs = 0, as = 0, status = 'SCHEDULED', found = false;
+    for (let j = i + 1; j < Math.min(i + 9, lines.length); j++) {
+      const L = lines[j];
+      if (j > i + 1 && (/^\d{1,2}:\d{2}$/.test(L) || /\d{4}년/.test(L))) break;
+      if (isHeader(L)) continue;
+      const m = L.match(/^(.+?)\s+(\d+)\s*[-:]\s*(\d+)\s+(.+)$/);
+      const v = L.match(/^(.+?)\s+vs\s+(.+)$/i);
+      if (m) { home = m[1].trim(); hs = +m[2]; as = +m[3]; away = m[4].trim(); found = true; }
+      else if (v) { home = v[1].trim(); away = v[2].trim(); found = true; }
+      if (/경기종료|종료/.test(L)) status = 'FINISHED';
+      else if (/경기중|진행/.test(L)) status = 'LIVE';
+      else if (/경기취소|취소|연기|순연/.test(L)) status = 'SCHEDULED';
+    }
+    if (found && home && away) {
+      const ts = Date.UTC(curDate.y, curDate.mo - 1, curDate.d, +tm[1] - 9, +tm[2]);
+      out.push({ homeTeam: home, awayTeam: away, homeScore: hs, awayScore: as, status, timestamp: ts, sport: sportName });
+    }
+  }
+  return out;
+}
+
 async function scrape() {
   console.log('[scores] 브라우저 시작...');
   const browser = await puppeteer.launch({
@@ -106,7 +138,6 @@ async function scrape() {
   };
 
   const apiDebug = [];
-  let spojoyDebug = null;
   try {
     const page = await browser.newPage();
     await page.setUserAgent('Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36');
@@ -152,24 +183,30 @@ async function scrape() {
     }
 
     // ── spojoy.com (네이버에 없는 종목/경기 보완: 배구 등) ──
-    try {
-      console.log('[scores] spojoy 배구 페이지 방문...');
-      await page.goto('https://www.spojoy.com/live/?mct=volleyball', { waitUntil: 'networkidle2', timeout: 30000 }).catch(e => console.log('[warn spojoy]', e.message));
-      await new Promise(r => setTimeout(r, 3500));
-      spojoyDebug = await page.evaluate(() => ({
-        url: location.href,
-        text: document.body ? document.body.innerText.replace(/\n{2,}/g, '\n').slice(0, 5000) : '',
-      }));
-    } catch (e) { console.log('[warn spojoy]', e.message); }
+    const spojoyPages = [
+      { mct: 'volleyball', sport: '배구' },
+      { mct: 'basketball', sport: '농구' },
+    ];
+    for (const sp of spojoyPages) {
+      try {
+        console.log(`[scores] spojoy ${sp.sport} 방문...`);
+        await page.goto(`https://www.spojoy.com/live/?mct=${sp.mct}`, { waitUntil: 'networkidle2', timeout: 30000 }).catch(e => console.log('[warn spojoy]', e.message));
+        await new Promise(r => setTimeout(r, 3500));
+        const text = await page.evaluate(() => document.body ? document.body.innerText : '');
+        const parsed = parseSpojoy(text, sp.sport);
+        const before = scores.length;
+        parsed.forEach(addScore);
+        console.log(`[scores] spojoy ${sp.sport}: +${scores.length - before} (파싱 ${parsed.length})`);
+      } catch (e) { console.log('[warn spojoy]', e.message); }
+    }
   } finally {
     await browser.close();
   }
 
+  void apiDebug;
   const result = {
     updatedAt: new Date().toISOString(),
     count: scores.length,
-    _apiDebug: apiDebug,
-    _spojoyDebug: spojoyDebug,
     scores,
   };
   console.log(`[scores] 완료 - ${scores.length}건 (LIVE:${scores.filter(s => s.status === 'LIVE').length} FIN:${scores.filter(s => s.status === 'FINISHED').length})`);
