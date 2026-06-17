@@ -6,6 +6,10 @@ const FOOTBALL_BASE = 'https://api.football-data.org/v4';
 const SPORTSDB_BASE = 'https://www.thesportsdb.com/api/v1/json/3';
 const KBO_LEAGUE_ID = '4342';
 
+function corsProxy(url: string): string {
+  return `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+}
+
 export interface LiveScore {
   homeTeam: string;
   awayTeam: string;
@@ -62,7 +66,7 @@ async function tryNaverEndpoint(host: string, date: string, category: string, sp
 
   for (const url of urls) {
     try {
-      const res = await axios.get(url, { headers: NAVER_HEADERS, timeout: 8000 });
+      const res = await axios.get(corsProxy(url), { timeout: 10000 });
       const data = res.data;
       const games: any[] = data?.result?.games || data?.games || data?.result || [];
       if (!Array.isArray(games) || games.length === 0) continue;
@@ -144,9 +148,8 @@ async function fetchSportsDBScores(): Promise<LiveScore[]> {
   const scores: LiveScore[] = [];
   for (const day of [todayISO(), yesterdayISO()]) {
     try {
-      const res = await axios.get(`${SPORTSDB_BASE}/eventsday.php`, {
-        params: { d: day, l: KBO_LEAGUE_ID }, timeout: 10000,
-      });
+      const sdbUrl = `${SPORTSDB_BASE}/eventsday.php?d=${day}&l=${KBO_LEAGUE_ID}`;
+      const res = await axios.get(corsProxy(sdbUrl), { timeout: 10000 });
       for (const e of (res.data.events || [])) {
         const ts = e.strTimestamp ? new Date(e.strTimestamp).getTime()
           : new Date(`${e.dateEvent}T${e.strTime || '18:00:00'}+09:00`).getTime();
@@ -172,9 +175,9 @@ async function fetchSportsDBScores(): Promise<LiveScore[]> {
 async function fetchFootballScores(): Promise<LiveScore[]> {
   const scores: LiveScore[] = [];
   try {
-    const res = await axios.get(`${FOOTBALL_BASE}/matches`, {
+    const fbUrl = `${FOOTBALL_BASE}/matches?dateFrom=${yesterdayISO()}&dateTo=${todayISO()}`;
+    const res = await axios.get(corsProxy(fbUrl), {
       headers: { 'X-Auth-Token': FOOTBALL_API_KEY },
-      params: { dateFrom: yesterdayISO(), dateTo: todayISO() },
       timeout: 10000,
     });
     for (const m of (res.data.matches || [])) {
