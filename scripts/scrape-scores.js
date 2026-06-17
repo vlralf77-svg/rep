@@ -105,14 +105,16 @@ async function scrape() {
     scores.push(s);
   };
 
+  const apiDebug = [];
   try {
     const page = await browser.newPage();
     await page.setUserAgent('Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36');
 
-    // 네이버가 호출하는 스케줄/스코어보드 API 응답 가로채기
+    // 네이버가 호출하는 모든 스포츠 API JSON 응답 가로채기
     page.on('response', async (res) => {
       const url = res.url();
-      if (!/sports\.naver\.com\/.*(schedule|scoreboard|games)/i.test(url)) return;
+      if (!/sports\.naver\.com/i.test(url)) return;
+      if (!/(schedule|scoreboard|games|game|match|calendar)/i.test(url)) return;
       try {
         const ct = res.headers()['content-type'] || '';
         if (!ct.includes('json')) return;
@@ -121,7 +123,9 @@ async function scrape() {
         const tmp = [];
         collectGames(data, tmp);
         tmp.forEach(addScore);
-        if (scores.length > before) console.log(`[scores] API ${url.slice(0, 60)} → +${scores.length - before}`);
+        const added = scores.length - before;
+        apiDebug.push(`+${added} ${url.replace(/https?:\/\/[^/]+/, '')}`);
+        if (added > 0) console.log(`[scores] API +${added} ${url.slice(0, 80)}`);
       } catch { /* skip */ }
     });
 
@@ -152,6 +156,7 @@ async function scrape() {
   const result = {
     updatedAt: new Date().toISOString(),
     count: scores.length,
+    _apiDebug: apiDebug,
     scores,
   };
   console.log(`[scores] 완료 - ${scores.length}건 (LIVE:${scores.filter(s => s.status === 'LIVE').length} FIN:${scores.filter(s => s.status === 'FINISHED').length})`);
