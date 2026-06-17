@@ -274,39 +274,38 @@ async function scrape() {
       } catch (e) { console.log('[warn spojoy]', e.message); }
     }
 
-    // ── 네이버 경기 상세에서 전반 스코어 보강 ──
-    // 전반 스코어가 아직 없는 축구 경기들의 gameId로 상세 페이지 방문
+    // ── 네이버 경기 상세 API로 전반 스코어 보강 ──
+    // gameId 로 record/preview API 를 직접 호출해서 피리어드 스코어 추출
+    const https = require('https');
+    const nvGet = (url) => new Promise((res) => {
+      https.get(url, { headers: { 'Referer': 'https://m.sports.naver.com/', 'User-Agent': 'Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36', 'Accept': 'application/json' } }, (r) => {
+        let d = ''; r.on('data', c => d += c); r.on('end', () => res(d));
+      }).on('error', () => res(''));
+    });
     const needHalf = scores.filter(s => s.sport === '축구' && s.homeHalfScore == null && s._gameId);
-    const gameIds = [...new Set(needHalf.map(s => s._gameId))].slice(0, 20);
-    console.log(`[scores] 네이버 경기상세 방문 대상: ${gameIds.length}건`);
+    const gameIds = [...new Set(needHalf.map(s => s._gameId))].slice(0, 25);
+    console.log(`[scores] 네이버 경기상세 API 대상: ${gameIds.length}건`);
     let detailMerged = 0;
     let dumped = false;
     for (const gid of gameIds) {
       let detailHalf = null;
-      const onResp = async (res) => {
+      const eps = ['/record', '', '/preview', '/result', '/relay'];
+      for (const ep of eps) {
+        const t = await nvGet(`https://api-gw.sports.naver.com/schedule/games/${gid}${ep}`);
+        if (!t) continue;
         try {
-          const ct = res.headers()['content-type'] || '';
-          if (!ct.includes('json')) return;
-          if (!/sports\.naver\.com/i.test(res.url())) return;
-          const data = await res.json();
+          const d = JSON.parse(t);
           if (!dumped) {
-            const str = JSON.stringify(data);
-            if (/period|회|전반|half|quarter|Period/i.test(str)) {
-              console.log(`[NV_DETAIL_DUMP] ${res.url().slice(0,90)}`);
-              console.log(str.slice(0, 2500));
+            const str = JSON.stringify(d);
+            if (/(byPeriod|period|전반|half|scoreBoard|scoreboard)/i.test(str)) {
+              console.log(`[NV_EP_DUMP] ${ep || '(base)'} ${str.slice(0, 2200)}`);
               dumped = true;
             }
           }
-          const h = findHalfScore(data);
-          if (h) detailHalf = h;
-        } catch { /* skip */ }
-      };
-      page.on('response', onResp);
-      try {
-        await page.goto(`https://m.sports.naver.com/game/${gid}`, { waitUntil: 'networkidle2', timeout: 25000 }).catch(() => {});
-        await new Promise(r => setTimeout(r, 1500));
-      } catch { /* skip */ }
-      page.off('response', onResp);
+          const h = findHalfScore(d);
+          if (h) { detailHalf = h; break; }
+        } catch { /* not json */ }
+      }
       if (detailHalf) {
         for (const s of scores) {
           if (s._gameId === gid) { s.homeHalfScore = detailHalf.home; s.awayHalfScore = detailHalf.away; detailMerged++; }
