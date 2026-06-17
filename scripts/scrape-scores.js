@@ -106,6 +106,7 @@ async function scrape() {
   };
 
   const apiDebug = [];
+  let spojoyDebug = null;
   try {
     const page = await browser.newPage();
     await page.setUserAgent('Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36');
@@ -149,6 +150,19 @@ async function scrape() {
       await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 }).catch(e => console.log('[warn]', e.message));
       await new Promise(r => setTimeout(r, 2500));
     }
+
+    // ── spojoy.com (네이버에 없는 종목/경기 보완: 배구 등) ──
+    try {
+      console.log('[scores] spojoy 방문...');
+      await page.goto('https://www.spojoy.com/live/', { waitUntil: 'networkidle2', timeout: 30000 }).catch(e => console.log('[warn spojoy]', e.message));
+      await new Promise(r => setTimeout(r, 3500));
+      spojoyDebug = await page.evaluate(() => ({
+        url: location.href,
+        title: document.title,
+        textLen: document.body ? document.body.innerText.length : 0,
+        text: document.body ? document.body.innerText.slice(0, 4000) : '',
+      }));
+    } catch (e) { console.log('[warn spojoy]', e.message); }
   } finally {
     await browser.close();
   }
@@ -157,6 +171,7 @@ async function scrape() {
     updatedAt: new Date().toISOString(),
     count: scores.length,
     _apiDebug: apiDebug,
+    _spojoyDebug: spojoyDebug,
     scores,
   };
   console.log(`[scores] 완료 - ${scores.length}건 (LIVE:${scores.filter(s => s.status === 'LIVE').length} FIN:${scores.filter(s => s.status === 'FINISHED').length})`);
