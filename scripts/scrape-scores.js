@@ -293,8 +293,8 @@ async function scrape() {
       for (const ep of eps) {
         const t = await nvGet(`https://api-gw.sports.naver.com/schedule/games/${gid}${ep}`);
         if (!t) continue;
-        // 진단: 첫 2경기의 모든 엔드포인트 응답 일부 출력
-        if (dumped < 10) { console.log(`[NV_EP_DUMP] ${gid}${ep || '(base)'} len=${t.length} :: ${t.slice(0, 600)}`); dumped++; }
+        // 진단: 첫 경기 base 응답 전체 출력 (전반 스코어 필드 탐색)
+        if (dumped < 2 && ep === '') { console.log(`[NV_BASE_FULL] ${gid} ${t}`); dumped++; }
         try {
           const d = JSON.parse(t);
           const h = findHalfScore(d);
