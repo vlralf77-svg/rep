@@ -18,13 +18,22 @@ function kstDate(offsetDays = 0) {
   return `${d.getUTCFullYear()}${String(d.getUTCMonth() + 1).padStart(2, '0')}${String(d.getUTCDate()).padStart(2, '0')}`;
 }
 
-function mapStatus(code, info) {
-  const c = (code || '').toString().toUpperCase();
-  const i = (info || '').toString();
-  if (['RESULT', 'FINAL', 'END', 'FINISHED', 'CANCEL', 'POSTPONE'].includes(c)
-    || i.includes('종료') || i.includes('FT')) return 'FINISHED';
-  if (['PROGRESS', 'PLAYING', 'LIVE', 'STARTED'].includes(c)
-    || i.includes('진행') || i.includes('회초') || i.includes('회말') || i.includes('이닝')) return 'LIVE';
+// 네이버 상태 판정: statusCode / statusNum 만 권위 있는 값으로 사용.
+// statusInfo("1회초" 등)는 경기전에도 placeholder로 들어있어 신뢰 불가 → 표시용으로만 사용.
+function mapStatus(g) {
+  if (g.cancel === true || g.suspended === true) return 'SCHEDULED';
+  const c = (g.statusCode || g.gameStatus || '').toString().toUpperCase();
+  if (['BEFORE', 'READY', 'SCHEDULED', 'NOTSTARTED', 'NS'].includes(c)) return 'SCHEDULED';
+  if (['STARTED', 'PROGRESS', 'PLAYING', 'LIVE', 'DURING', 'INPROGRESS'].includes(c)) return 'LIVE';
+  if (['RESULT', 'FINAL', 'END', 'FINISHED', 'CLOSED', 'FT', 'AOT'].includes(c)) return 'FINISHED';
+  if (['CANCEL', 'CANCELLED', 'POSTPONE', 'POSTPONED'].includes(c)) return 'SCHEDULED';
+  // statusCode 가 없거나 미지의 값이면 statusNum 으로 폴백
+  const n = Number(g.statusNum);
+  if (!isNaN(n)) {
+    if (n <= 1) return 'SCHEDULED';
+    if (n <= 3) return 'LIVE';
+    return 'FINISHED'; // 4,5
+  }
   return 'SCHEDULED';
 }
 
@@ -37,22 +46,26 @@ function parseGame(g) {
   const dt = g.gameDateTime || g.startTime || g.gameDate || g.startDateTime || '';
   const ts = dt ? new Date(dt).getTime() : Date.now();
   if (isNaN(ts)) return null;
-  const status = mapStatus(g.statusCode || g.gameStatus || g.statusNum, g.statusInfo || g.statusText);
-  const sc = (g.superCategoryId || g.sportCode || g.categoryId || '').toString().toLowerCase();
-  const sport = sc.includes('baseball') || sc.includes('kbo') ? '야구'
-    : sc.includes('football') || sc.includes('soccer') ? '축구' : '기타';
-  return {
+  const status = mapStatus(g);
+  const sc = [g.superCategoryId, g.sportCode, g.categoryId, g.categoryName, g.sportName]
+    .filter(Boolean).join(' ').toLowerCase();
+  const sport = sc.includes('volleyball') || sc.includes('배구') ? '배구'
+    : sc.includes('basketball') || sc.includes('농구') ? '농구'
+    : sc.includes('baseball') || sc.includes('kbo') || sc.includes('야구') ? '야구'
+    : sc.includes('football') || sc.includes('soccer') || sc.includes('축구') ? '축구'
+    : '기타';
+  const out = {
     homeTeam: home, awayTeam: away,
     homeScore: hsRaw == null || hsRaw === '' ? 0 : (typeof hsRaw === 'number' ? hsRaw : parseInt(hsRaw) || 0),
     awayScore: asRaw == null || asRaw === '' ? 0 : (typeof asRaw === 'number' ? asRaw : parseInt(asRaw) || 0),
     status, timestamp: ts, sport,
-    // 진단용: 네이버 원본 상태 필드 (매핑 검증 후 제거)
-    _raw: {
-      statusCode: g.statusCode, gameStatus: g.gameStatus, statusNum: g.statusNum,
-      statusInfo: g.statusInfo, statusText: g.statusText, gameStatusInfo: g.gameStatusInfo,
-      cancel: g.cancel, suspended: g.suspended,
-    },
   };
+  // LIVE 일 때만 진행 정보 표시 (statusInfo: "후반 1'", "9회초" 등)
+  if (status === 'LIVE' && g.statusInfo) {
+    if (sport === '축구') out.minute = String(g.statusInfo);
+    else out.inning = String(g.statusInfo);
+  }
+  return out;
 }
 
 // JSON 응답 본문에서 games 배열을 재귀적으로 찾기
@@ -117,8 +130,13 @@ async function scrape() {
       'https://m.sports.naver.com/scoreboard/index',
       ...dates.flatMap(d => [
         `https://m.sports.naver.com/kbaseball/schedule/index?date=${d}`,
+        `https://m.sports.naver.com/wbaseball/schedule/index?date=${d}`,
         `https://m.sports.naver.com/wfootball/schedule/index?date=${d}`,
         `https://m.sports.naver.com/kfootball/schedule/index?date=${d}`,
+        `https://m.sports.naver.com/volleyball/schedule/index?date=${d}`,
+        `https://m.sports.naver.com/wvolleyball/schedule/index?date=${d}`,
+        `https://m.sports.naver.com/basketball/schedule/index?date=${d}`,
+        `https://m.sports.naver.com/wkbl/schedule/index?date=${d}`,
       ]),
     ];
 
