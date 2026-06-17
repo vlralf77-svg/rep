@@ -216,6 +216,80 @@ async function scrape() {
     await browser.close();
   }
 
+  // ── football-data.org 전반(하프타임) 스코어 병합 ──
+  const TEAM_KO = {
+    'Argentina':'아르헨티나','Algeria':'알제리','Brazil':'브라질','France':'프랑스',
+    'Germany':'독일','Spain':'스페인','Portugal':'포르투갈','England':'잉글랜드',
+    'Italy':'이탈리아','Netherlands':'네덜란드','Belgium':'벨기에','Croatia':'크로아티아',
+    'Uruguay':'우루과이','Colombia':'콜롬비아','Mexico':'멕시코','USA':'미국',
+    'United States':'미국','Japan':'일본','South Korea':'대한민국','Korea Republic':'대한민국',
+    'Morocco':'모로코','Senegal':'세네갈','Nigeria':'나이지리아','Ghana':'가나',
+    'Egypt':'이집트','Cameroon':'카메룬','Ecuador':'에콰도르','Peru':'페루',
+    'Chile':'칠레','Paraguay':'파라과이','Switzerland':'스위스','Austria':'오스트리아',
+    'Poland':'폴란드','Denmark':'덴마크','Sweden':'스웨덴','Norway':'노르웨이',
+    'Serbia':'세르비아','Turkey':'튀르키예','Türkiye':'튀르키예','Greece':'그리스',
+    'Czech Republic':'체코','Czechia':'체코','Ukraine':'우크라이나','Wales':'웨일스',
+    'Scotland':'스코틀랜드','Ireland':'아일랜드','Australia':'호주','Canada':'캐나다',
+    'Saudi Arabia':'사우디아라비아','Iran':'이란','Qatar':'카타르','Tunisia':'튀니지',
+    'Costa Rica':'코스타리카','Jordan':'요르단','China PR':'중국','China':'중국',
+    'Thailand':'태국','Vietnam':'베트남','India':'인도','Iraq':'이라크',
+    'Uzbekistan':'우즈베키스탄','Dominican Republic':'도미니카공화국',
+    'Bolivia':'볼리비아','Venezuela':'베네수엘라','Honduras':'온두라스',
+    'Panama':'파나마','Jamaica':'자메이카','El Salvador':'엘살바도르',
+    'Bulgaria':'불가리아','Romania':'루마니아','Hungary':'헝가리',
+    'Slovakia':'슬로바키아','Slovenia':'슬로베니아','Finland':'핀란드',
+    'Iceland':'아이슬란드','Albania':'알바니아','Bosnia and Herzegovina':'보스니아',
+    'Montenegro':'몬테네그로','North Macedonia':'북마케도니아','Kosovo':'코소보',
+    'Georgia':'조지아','Armenia':'아르메니아','Azerbaijan':'아제르바이잔',
+    'Belarus':'벨라루스','Lithuania':'리투아니아','Latvia':'라트비아',
+    'Estonia':'에스토니아','Luxembourg':'룩셈부르크','Cyprus':'키프로스',
+    'Malta':'몰타','Liechtenstein':'리히텐슈타인','Andorra':'안도라',
+    'Faroe Islands':'페로제도','Gibraltar':'지브롤터','San Marino':'산마리노',
+  };
+  const toKo = (en) => TEAM_KO[en] || en;
+  const norm = (s) => (s || '').replace(/\s+/g, '').toLowerCase();
+  const tmatch = (a, b) => {
+    const na = norm(a), nb = norm(b);
+    if (!na || !nb) return false;
+    if (na === nb || na.includes(nb) || nb.includes(na)) return true;
+    if (na.length >= 3 && nb.startsWith(na.slice(0,3))) return true;
+    if (nb.length >= 3 && na.startsWith(nb.slice(0,3))) return true;
+    return false;
+  };
+  try {
+    const https = require('https');
+    const fdGet = (url) => new Promise((res, rej) => {
+      https.get(url, { headers: { 'X-Auth-Token': '6942278d1b1e447bb04375f4b84ce286' } }, (r) => {
+        let d = ''; r.on('data', c => d += c); r.on('end', () => res(d));
+      }).on('error', rej);
+    });
+    const today = kstDate(0);
+    const dateStr = `${today.slice(0,4)}-${today.slice(4,6)}-${today.slice(6,8)}`;
+    const yesterday = kstDate(-1);
+    const yDateStr = `${yesterday.slice(0,4)}-${yesterday.slice(4,6)}-${yesterday.slice(6,8)}`;
+    const fdUrl = `https://api.football-data.org/v4/matches?dateFrom=${yDateStr}&dateTo=${dateStr}`;
+    console.log(`[scores] football-data.org 전반 스코어 조회...`);
+    const fdText = await fdGet(fdUrl);
+    const fdData = JSON.parse(fdText);
+    let halfMerged = 0;
+    for (const m of (fdData.matches || [])) {
+      const htH = m.score?.halfTime?.home;
+      const htA = m.score?.halfTime?.away;
+      if (htH == null || htA == null) continue;
+      const homeKo = toKo(m.homeTeam?.name || m.homeTeam?.shortName || '');
+      const awayKo = toKo(m.awayTeam?.name || m.awayTeam?.shortName || '');
+      for (const s of scores) {
+        if (s.sport !== '축구' || s.homeHalfScore != null) continue;
+        if (tmatch(s.homeTeam, homeKo) && tmatch(s.awayTeam, awayKo)) {
+          s.homeHalfScore = htH; s.awayHalfScore = htA; halfMerged++;
+        } else if (tmatch(s.homeTeam, awayKo) && tmatch(s.awayTeam, homeKo)) {
+          s.homeHalfScore = htA; s.awayHalfScore = htH; halfMerged++;
+        }
+      }
+    }
+    console.log(`[scores] football-data 전반 스코어 병합: ${halfMerged}건`);
+  } catch (e) { console.log('[warn football-data halftime]', e.message); }
+
   void apiDebug;
   const result = {
     updatedAt: new Date().toISOString(),
