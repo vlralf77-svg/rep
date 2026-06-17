@@ -156,12 +156,20 @@ async function scrape() {
       console.log('[scores] spojoy 방문...');
       await page.goto('https://www.spojoy.com/live/', { waitUntil: 'networkidle2', timeout: 30000 }).catch(e => console.log('[warn spojoy]', e.message));
       await new Promise(r => setTimeout(r, 3500));
-      spojoyDebug = await page.evaluate(() => ({
-        url: location.href,
-        title: document.title,
-        textLen: document.body ? document.body.innerText.length : 0,
-        text: document.body ? document.body.innerText.slice(0, 4000) : '',
-      }));
+      spojoyDebug = await page.evaluate(() => {
+        // 스코어("N - N")가 들어있는 행을 가진 테이블을 찾아 HTML 일부 덤프
+        const tables = Array.from(document.querySelectorAll('table'));
+        let best = null, bestLen = 0;
+        for (const t of tables) {
+          const txt = t.innerText || '';
+          if (/\d+\s*-\s*\d+/.test(txt) && txt.length > bestLen) { best = t; bestLen = txt.length; }
+        }
+        return {
+          url: location.href,
+          tableCount: tables.length,
+          tableHtml: best ? best.outerHTML.slice(0, 8000) : '',
+        };
+      });
     } catch (e) { console.log('[warn spojoy]', e.message); }
   } finally {
     await browser.close();
