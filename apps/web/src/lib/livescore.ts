@@ -263,7 +263,10 @@ export function determineResult(
   awayScore: number,
   line?: number,
 ): string | null {
-  if (marketType.includes('승무패') || marketType === '전반 승무패') {
+  // 전반 마켓은 풀타임 스코어로 판정 불가 → 수동 입력만 가능
+  if (marketType.includes('전반')) return null;
+
+  if (marketType.includes('승무패')) {
     return homeScore > awayScore ? '승' : homeScore === awayScore ? '무' : '패';
   }
   if (marketType.includes('승1패') || marketType === '승패') {

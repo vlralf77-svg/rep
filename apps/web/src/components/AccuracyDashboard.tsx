@@ -40,6 +40,7 @@ function StatBar({ label, correct, total, color }: { label: string; correct: num
 
 // ── 개별 경기 카드 ──────────────────────────────────────────────
 function GameCard({ record, onActualSet, score }: { record: PredictionRecord; onActualSet: () => void; score?: LiveScore | null }) {
+  const [editingMarket, setEditingMarket] = useState<string | null>(null);
   const resolved = record.predictions.filter((p) => p.actual !== undefined);
   const pending = record.predictions.filter((p) => p.actual === undefined);
   const aiCorrect = resolved.filter((p) => p.actual === p.aiPick).length;
@@ -131,19 +132,36 @@ function GameCard({ record, onActualSet, score }: { record: PredictionRecord; on
           </Button>
         )}
 
-        {/* 결과 입력된 마켓 */}
+        {/* 결과 입력된 마켓 (탭하면 수정 가능) */}
         {resolved.map((p, i) => (
-          <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5,
-            py: 0.5, px: 1, borderRadius: 1, bgcolor: 'rgba(255,255,255,0.03)' }}>
-            <Chip label={p.marketType} size="small" variant="outlined" sx={{ fontSize: 10, height: 20 }} />
-            <Box sx={{ flex: 1, minWidth: 0 }}>
-              <Typography variant="caption" display="block" noWrap>
-                AI <b style={{ color: p.actual === p.aiPick ? '#66bb6a' : '#ef5350' }}>{p.aiPick}</b>
-                {' · '}시장 <b style={{ color: p.actual === p.marketPick ? '#66bb6a' : '#ef5350' }}>{p.marketPick}</b>
-              </Typography>
-              <Typography variant="caption" color="text.secondary">실제: <b>{p.actual}</b></Typography>
+          <Box key={i} sx={{ mb: 0.5 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1,
+              py: 0.5, px: 1, borderRadius: 1, bgcolor: 'rgba(255,255,255,0.03)',
+              cursor: 'pointer' }}
+              onClick={() => setEditingMarket(editingMarket === p.marketType ? null : p.marketType)}>
+              <Chip label={p.marketType} size="small" variant="outlined" sx={{ fontSize: 10, height: 20 }} />
+              <Box sx={{ flex: 1, minWidth: 0 }}>
+                <Typography variant="caption" display="block" noWrap>
+                  AI <b style={{ color: p.actual === p.aiPick ? '#66bb6a' : '#ef5350' }}>{p.aiPick}</b>
+                  {' · '}시장 <b style={{ color: p.actual === p.marketPick ? '#66bb6a' : '#ef5350' }}>{p.marketPick}</b>
+                </Typography>
+                <Typography variant="caption" color="text.secondary">실제: <b>{p.actual}</b></Typography>
+              </Box>
+              <Typography sx={{ fontSize: 16 }}>{p.actual === p.aiPick ? '✅' : '❌'}</Typography>
             </Box>
-            <Typography sx={{ fontSize: 16 }}>{p.actual === p.aiPick ? '✅' : '❌'}</Typography>
+            {editingMarket === p.marketType && (
+              <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mt: 0.3, pl: 1 }}>
+                <Typography variant="caption" color="text.secondary" sx={{ width: '100%', mb: 0.2 }}>결과 수정:</Typography>
+                {getOptions(p.marketType).map((opt) => (
+                  <Button key={opt} size="small"
+                    variant={p.actual === opt ? 'contained' : 'outlined'}
+                    onClick={() => { handleSetActual(p.marketType, opt); setEditingMarket(null); }}
+                    sx={{ py: 0.2, px: 1, fontSize: 11, minWidth: 0, textTransform: 'none' }}>
+                    {opt}
+                  </Button>
+                ))}
+              </Box>
+            )}
           </Box>
         ))}
 
