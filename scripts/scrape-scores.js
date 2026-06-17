@@ -275,33 +275,28 @@ async function scrape() {
     }
 
     // ── 네이버 경기 상세 API로 전반 스코어 보강 ──
-    // gameId 로 record/preview API 를 직접 호출해서 피리어드 스코어 추출
-    const https = require('https');
-    const nvGet = (url) => new Promise((res) => {
-      https.get(url, { headers: { 'Referer': 'https://m.sports.naver.com/', 'User-Agent': 'Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36', 'Accept': 'application/json' } }, (r) => {
-        let d = ''; r.on('data', c => d += c); r.on('end', () => res(d));
-      }).on('error', () => res(''));
-    });
+    // 브라우저 컨텍스트에서 API URL 직접 방문 → JSON 본문 파싱 (순수 https.get은 차단됨)
+    const nvGet = async (url) => {
+      try {
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 15000 });
+        return await page.evaluate(() => document.body ? document.body.innerText : '');
+      } catch { return ''; }
+    };
     const needHalf = scores.filter(s => s.sport === '축구' && s.homeHalfScore == null && s._gameId);
     const gameIds = [...new Set(needHalf.map(s => s._gameId))].slice(0, 25);
     console.log(`[scores] 네이버 경기상세 API 대상: ${gameIds.length}건`);
     let detailMerged = 0;
-    let dumped = false;
+    let dumped = 0;
     for (const gid of gameIds) {
       let detailHalf = null;
       const eps = ['/record', '', '/preview', '/result', '/relay'];
       for (const ep of eps) {
         const t = await nvGet(`https://api-gw.sports.naver.com/schedule/games/${gid}${ep}`);
         if (!t) continue;
+        // 진단: 첫 2경기의 모든 엔드포인트 응답 일부 출력
+        if (dumped < 10) { console.log(`[NV_EP_DUMP] ${gid}${ep || '(base)'} len=${t.length} :: ${t.slice(0, 600)}`); dumped++; }
         try {
           const d = JSON.parse(t);
-          if (!dumped) {
-            const str = JSON.stringify(d);
-            if (/(byPeriod|period|전반|half|scoreBoard|scoreboard)/i.test(str)) {
-              console.log(`[NV_EP_DUMP] ${ep || '(base)'} ${str.slice(0, 2200)}`);
-              dumped = true;
-            }
-          }
           const h = findHalfScore(d);
           if (h) { detailHalf = h; break; }
         } catch { /* not json */ }
