@@ -282,25 +282,16 @@ async function scrape() {
         return await page.evaluate(() => document.body ? document.body.innerText : '');
       } catch { return ''; }
     };
+    // 네이버는 축구 전반 스코어를 제공하지 않지만(record/preview=null, base=풀타임만),
+    // 혹시 일부 경기/종목이 base 의 피리어드 필드를 주면 활용 (base 1회만 호출).
     const needHalf = scores.filter(s => s.sport === '축구' && s.homeHalfScore == null && s._gameId);
     const gameIds = [...new Set(needHalf.map(s => s._gameId))].slice(0, 25);
-    console.log(`[scores] 네이버 경기상세 API 대상: ${gameIds.length}건`);
     let detailMerged = 0;
-    let dumped = 0;
     for (const gid of gameIds) {
+      const t = await nvGet(`https://api-gw.sports.naver.com/schedule/games/${gid}`);
+      if (!t) continue;
       let detailHalf = null;
-      const eps = ['/record', '', '/preview', '/result', '/relay'];
-      for (const ep of eps) {
-        const t = await nvGet(`https://api-gw.sports.naver.com/schedule/games/${gid}${ep}`);
-        if (!t) continue;
-        // 진단: 첫 경기 base 응답 전체 출력 (전반 스코어 필드 탐색)
-        if (dumped < 2 && ep === '') { console.log(`[NV_BASE_FULL] ${gid} ${t}`); dumped++; }
-        try {
-          const d = JSON.parse(t);
-          const h = findHalfScore(d);
-          if (h) { detailHalf = h; break; }
-        } catch { /* not json */ }
-      }
+      try { detailHalf = findHalfScore(JSON.parse(t)); } catch { /* not json */ }
       if (detailHalf) {
         for (const s of scores) {
           if (s._gameId === gid) { s.homeHalfScore = detailHalf.home; s.awayHalfScore = detailHalf.away; detailMerged++; }
@@ -367,10 +358,6 @@ async function scrape() {
     console.log(`[scores] football-data.org 전반 스코어 조회...`);
     const fdText = await fdGet(fdUrl);
     const fdData = JSON.parse(fdText);
-    console.log(`[FD_DEBUG] resultSet count=${fdData.resultSet?.count} matches=${(fdData.matches||[]).length} err=${fdData.message||fdData.error||''}`);
-    for (const m of (fdData.matches || [])) {
-      console.log(`[FD_DEBUG] ${m.competition?.code} ${m.homeTeam?.name} vs ${m.awayTeam?.name} HT=${m.score?.halfTime?.home}-${m.score?.halfTime?.away} FT=${m.score?.fullTime?.home}-${m.score?.fullTime?.away}`);
-    }
     let halfMerged = 0;
     for (const m of (fdData.matches || [])) {
       const htH = m.score?.halfTime?.home;
