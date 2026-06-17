@@ -612,7 +612,13 @@ function norm(s: string): string {
 function teamMatch(a: string, b: string): boolean {
   const na = norm(a), nb = norm(b);
   if (!na || !nb) return false;
-  return na === nb || na.includes(nb) || nb.includes(na);
+  if (na === nb || na.includes(nb) || nb.includes(na)) return true;
+  // 약어 매칭: 짧은 쪽이 2자 이상이고 앞 2글자가 동일하면 같은 팀으로 간주
+  // (예: "도미니공" ↔ "도미니카공화국", "세인트루" ↔ "세인트루이스")
+  const short = na.length <= nb.length ? na : nb;
+  const long = na.length <= nb.length ? nb : na;
+  if (short.length >= 3 && long.startsWith(short.slice(0, 3))) return true;
+  return false;
 }
 
 // 홈/원정이 뒤바뀐 경우 스코어를 betman 기준으로 정렬해서 반환
