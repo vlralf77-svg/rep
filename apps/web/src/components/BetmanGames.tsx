@@ -292,7 +292,7 @@ function GameRow({ game, picks, onTogglePick, score }: {
                   {game.sport}{gameDateTime ? ' · ' + gameDateTime : ''}
                 </Typography>
                 {isLive && (
-                  <Chip label={score.minute ? `LIVE ${score.minute}'` : 'LIVE'} size="small"
+                  <Chip label={score?.inning ? `LIVE ${score.inning}` : score?.minute ? `LIVE ${score.minute}'` : 'LIVE'} size="small"
                     sx={{ fontSize: 10, height: 18, bgcolor: '#4caf50', color: '#fff', animation: 'pulse 1.5s infinite',
                       '@keyframes pulse': { '0%,100%': { opacity: 1 }, '50%': { opacity: 0.6 } } }} />
                 )}
