@@ -222,19 +222,6 @@ async function scrape() {
         await page.goto(`https://www.spojoy.com/live/?mct=${sp.mct}`, { waitUntil: 'networkidle2', timeout: 30000 }).catch(e => console.log('[warn spojoy]', e.message));
         await new Promise(r => setTimeout(r, 3500));
         const text = await page.evaluate(() => document.body ? document.body.innerText : '');
-        if (sp.sport === '축구') {
-          const links = await page.evaluate(() => {
-            const out = [];
-            document.querySelectorAll('a').forEach(a => {
-              const t = (a.innerText || '').trim();
-              if (/경기결과|비교분석|결과/.test(t) && a.href) out.push(a.href);
-            });
-            return out.slice(0, 20);
-          });
-          console.log('===SPOJOY_LINKS_START===');
-          console.log(links.join('\n'));
-          console.log('===SPOJOY_LINKS_END===');
-        }
         const parsed = parseSpojoy(text, sp.sport);
         const before = scores.length;
         // 축구는 새 경기 추가보다 전반 스코어 병합이 주 목적
@@ -316,6 +303,10 @@ async function scrape() {
     console.log(`[scores] football-data.org 전반 스코어 조회...`);
     const fdText = await fdGet(fdUrl);
     const fdData = JSON.parse(fdText);
+    console.log(`[FD_DEBUG] resultSet count=${fdData.resultSet?.count} matches=${(fdData.matches||[]).length} err=${fdData.message||fdData.error||''}`);
+    for (const m of (fdData.matches || [])) {
+      console.log(`[FD_DEBUG] ${m.competition?.code} ${m.homeTeam?.name} vs ${m.awayTeam?.name} HT=${m.score?.halfTime?.home}-${m.score?.halfTime?.away} FT=${m.score?.fullTime?.home}-${m.score?.fullTime?.away}`);
+    }
     let halfMerged = 0;
     for (const m of (fdData.matches || [])) {
       const htH = m.score?.halfTime?.home;
