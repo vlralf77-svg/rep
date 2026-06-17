@@ -85,6 +85,14 @@ jobs:
         working-directory: apps/web/android
         run: chmod +x gradlew
 
+      - name: Setup consistent signing key
+        run: |
+          # 리포에 포함된 고정 debug keystore를 기본 위치에 복사
+          # → 매 빌드 동일 서명 → 기존 앱 삭제 없이 업데이트 설치 가능
+          mkdir -p "$HOME/.android"
+          cp apps/web/debug.keystore "$HOME/.android/debug.keystore"
+          echo "✅ 고정 debug keystore 설정 완료"
+
       - name: Build Debug APK
         working-directory: apps/web/android
         run: ./gradlew assembleDebug --stacktrace
