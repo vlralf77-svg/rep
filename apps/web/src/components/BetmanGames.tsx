@@ -233,6 +233,7 @@ function GameDetail({ game, open, onClose, picks, onTogglePick, score }: {
         aiPick: a.selections[a.aiBestIdx].label,
         aiProb: a.selections[a.aiBestIdx].aiProb,
         marketPick: a.selections[a.marketBestIdx].label,
+        line: m.line,
       };
     });
     savePredictions({ matchId: game.matchId, homeTeam: game.homeTeam, awayTeam: game.awayTeam, gameDate: game.gameDate, savedAt: new Date().toISOString(), predictions });

@@ -3,6 +3,7 @@ export interface MarketPrediction {
   aiPick: string;       // label of AI top pick
   aiProb: number;       // AI probability (0-1)
   marketPick: string;   // label of market-implied top pick
+  line?: number;        // 언더오버/핸디캡 기준점수 (결과 판정에 필요)
   actual?: string;      // set after game: winner label, or undefined
 }
 
@@ -45,7 +46,8 @@ export function savePredictions(record: PredictionRecord): void {
       ...record,
       predictions: record.predictions.map((p) => {
         const old = existing.predictions.find((e) => e.marketType === p.marketType);
-        if (old) return old;
+        // 기존 예측은 유지하되, 빠져있던 기준점수(line)는 보강
+        if (old) return old.line == null && p.line != null ? { ...old, line: p.line } : old;
         return p;
       }),
     };
