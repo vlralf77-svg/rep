@@ -72,6 +72,7 @@ function GameCard({ record, onActualSet, score }: { record: PredictionRecord; on
     if (marketType.includes('승1패') || marketType.includes('승패')) { opts.add('승'); opts.add('패'); }
     if (marketType.includes('언더오버')) { opts.add('언더'); opts.add('오버'); }
     if (marketType.includes('핸디캡')) { opts.add('승'); opts.add('무'); opts.add('패'); }
+    if (marketType === 'SUM' || marketType.includes('홀짝')) { opts.add('홀'); opts.add('짝'); }
     return Array.from(opts);
   }
 

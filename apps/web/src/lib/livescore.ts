@@ -279,5 +279,9 @@ export function determineResult(
     const adj = homeScore + line;
     return adj > awayScore ? '승' : adj === awayScore ? '무' : '패';
   }
+  if (marketType === 'SUM' || marketType.includes('홀짝')) {
+    const total = homeScore + awayScore;
+    return total % 2 === 0 ? '짝' : '홀';
+  }
   return null;
 }
