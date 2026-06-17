@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { Capacitor } from '@capacitor/core';
+import { CapacitorHttp } from '@capacitor/core';
 import { BetmanGame } from './api';
 
 const FOOTBALL_API_KEY = '6942278d1b1e447bb04375f4b84ce286';
@@ -6,8 +8,26 @@ const FOOTBALL_BASE = 'https://api.football-data.org/v4';
 const SPORTSDB_BASE = 'https://www.thesportsdb.com/api/v1/json/3';
 const KBO_LEAGUE_ID = '4342';
 
-function corsProxy(url: string): string {
-  return `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+const isNative = Capacitor.isNativePlatform();
+
+const CORS_PROXIES = [
+  (u: string) => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+  (u: string) => `https://corsproxy.io/?${encodeURIComponent(u)}`,
+  (u: string) => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
+];
+
+async function fetchUrl(url: string, headers?: Record<string, string>): Promise<any> {
+  if (isNative) {
+    const res = await CapacitorHttp.get({ url, headers: headers || {}, connectTimeout: 10000, readTimeout: 10000 });
+    return typeof res.data === 'string' ? JSON.parse(res.data) : res.data;
+  }
+  for (const proxy of CORS_PROXIES) {
+    try {
+      const res = await axios.get(proxy(url), { headers, timeout: 10000 });
+      return res.data;
+    } catch { /* try next proxy */ }
+  }
+  throw new Error('All CORS proxies failed');
 }
 
 export interface LiveScore {
@@ -66,8 +86,7 @@ async function tryNaverEndpoint(host: string, date: string, category: string, sp
 
   for (const url of urls) {
     try {
-      const res = await axios.get(corsProxy(url), { timeout: 10000 });
-      const data = res.data;
+      const data = await fetchUrl(url, NAVER_HEADERS);
       const games: any[] = data?.result?.games || data?.games || data?.result || [];
       if (!Array.isArray(games) || games.length === 0) continue;
 
@@ -149,8 +168,8 @@ async function fetchSportsDBScores(): Promise<LiveScore[]> {
   for (const day of [todayISO(), yesterdayISO()]) {
     try {
       const sdbUrl = `${SPORTSDB_BASE}/eventsday.php?d=${day}&l=${KBO_LEAGUE_ID}`;
-      const res = await axios.get(corsProxy(sdbUrl), { timeout: 10000 });
-      for (const e of (res.data.events || [])) {
+      const data = await fetchUrl(sdbUrl);
+      for (const e of (data.events || [])) {
         const ts = e.strTimestamp ? new Date(e.strTimestamp).getTime()
           : new Date(`${e.dateEvent}T${e.strTime || '18:00:00'}+09:00`).getTime();
         const hasScore = e.intHomeScore !== null && e.intHomeScore !== '';
@@ -176,11 +195,8 @@ async function fetchFootballScores(): Promise<LiveScore[]> {
   const scores: LiveScore[] = [];
   try {
     const fbUrl = `${FOOTBALL_BASE}/matches?dateFrom=${yesterdayISO()}&dateTo=${todayISO()}`;
-    const res = await axios.get(corsProxy(fbUrl), {
-      headers: { 'X-Auth-Token': FOOTBALL_API_KEY },
-      timeout: 10000,
-    });
-    for (const m of (res.data.matches || [])) {
+    const data = await fetchUrl(fbUrl, { 'X-Auth-Token': FOOTBALL_API_KEY });
+    for (const m of (data.matches || [])) {
       const ts = new Date(m.utcDate).getTime();
       const st = m.status;
       const status: LiveScore['status'] =
