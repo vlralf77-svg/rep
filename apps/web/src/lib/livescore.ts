@@ -56,8 +56,7 @@ function yesterdayKST(): string {
 }
 
 // ── 네이버 스포츠 전체 스코어보드 (가장 신뢰성 높은 소스) ──────────
-// m.sports.naver.com 의 전체 스코어보드 페이지에서 __NEXT_DATA__ 추출
-async function fetchNaverScoreboard(): Promise<LiveScore[]> {
+async function fetchNaverScoreboard(logs: string[]): Promise<LiveScore[]> {
   const scores: LiveScore[] = [];
   const urls = [
     'https://m.sports.naver.com/scoreboard/index',
@@ -66,13 +65,15 @@ async function fetchNaverScoreboard(): Promise<LiveScore[]> {
 
   for (const url of urls) {
     const { text, ok } = await httpGet(url);
-    if (!ok || !text) continue;
-    console.log(`[livescore] 네이버 스코어보드 응답 길이: ${text.length}`);
+    if (!ok || !text) {
+      logs.push(`스코어보드 ${ok ? '빈응답' : '실패'}: ${url.split('.com')[1]}`);
+      continue;
+    }
+    logs.push(`스코어보드 응답: ${text.length}자 ${text.slice(0, 80).replace(/\n/g, ' ')}`);
 
-    const parsed = parseNaverNextData(text, '');
+    const parsed = parseNaverNextData(text, '', logs);
     if (parsed.length > 0) {
       scores.push(...parsed);
-      console.log(`[livescore] 스코어보드에서 ${parsed.length}건 추출`);
       return scores;
     }
   }
@@ -80,38 +81,42 @@ async function fetchNaverScoreboard(): Promise<LiveScore[]> {
 }
 
 // ── 네이버 종목별 일정 페이지 크롤링 ────────────────────────────
-async function fetchNaverSchedulePages(): Promise<LiveScore[]> {
+async function fetchNaverSchedulePages(logs: string[]): Promise<LiveScore[]> {
   const scores: LiveScore[] = [];
   const pages = [
     { url: 'https://m.sports.naver.com/kbaseball/schedule/index', sport: '야구' },
     { url: 'https://m.sports.naver.com/wfootball/schedule/index', sport: '축구' },
     { url: 'https://m.sports.naver.com/kfootball/schedule/index', sport: '축구' },
-    { url: 'https://m.sports.naver.com/basketball/schedule/index', sport: '농구' },
   ];
 
   for (const page of pages) {
-    const { text } = await httpGet(page.url);
-    if (!text) continue;
-    const parsed = parseNaverNextData(text, page.sport);
+    const { text, ok } = await httpGet(page.url);
+    if (!ok || !text) {
+      logs.push(`${page.sport}페이지: ${ok ? '빈' : '실패'}`);
+      continue;
+    }
+    logs.push(`${page.sport}페이지: ${text.length}자 ${text.slice(0, 60).replace(/\n/g, ' ')}`);
+    const parsed = parseNaverNextData(text, page.sport, logs);
     scores.push(...parsed);
-    console.log(`[livescore] ${page.sport} 일정: ${parsed.length}건`);
   }
   return scores;
 }
 
-function parseNaverNextData(html: string, defaultSport: string): LiveScore[] {
+function parseNaverNextData(html: string, defaultSport: string, logs?: string[]): LiveScore[] {
   const scores: LiveScore[] = [];
+  const log = (s: string) => { logs?.push(s); };
 
   // __NEXT_DATA__ 추출
   const m = html.match(/<script[^>]*id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
   if (!m) {
-    console.log('[livescore] __NEXT_DATA__ 없음');
+    log('__NEXT_DATA__ 없음');
     return parseNaverHtmlFallback(html, defaultSport);
   }
 
   try {
     const data = JSON.parse(m[1]);
-    console.log(`[livescore] __NEXT_DATA__ 파싱 성공, keys: ${Object.keys(data?.props?.pageProps || {}).join(',')}`);
+    const ppKeys = Object.keys(data?.props?.pageProps || {}).join(',');
+    log(`NEXT_DATA keys: ${ppKeys}`);
 
     const pp = data?.props?.pageProps || {};
     // 다양한 데이터 구조 시도
@@ -221,7 +226,7 @@ function parseNaverHtmlFallback(html: string, sport: string): LiveScore[] {
 }
 
 // ── 네이버 스포츠 JSON API (여러 패턴 시도) ─────────────────────
-async function fetchNaverApi(): Promise<LiveScore[]> {
+async function fetchNaverApi(logs: string[]): Promise<LiveScore[]> {
   const scores: LiveScore[] = [];
   const dates = [todayKST(), yesterdayKST()];
   const categories = [
@@ -259,11 +264,13 @@ async function fetchNaverApi(): Promise<LiveScore[]> {
 
           try {
             const data = JSON.parse(text);
+            const topKeys = Object.keys(data || {}).join(',');
+            logs.push(`API ${url.replace(/https:\/\/[^/]+/, '').substring(0, 40)}: ${topKeys} ${text.slice(0, 60)}`);
             const games: any[] = data?.result?.games || data?.games || data?.result?.gameList
               || data?.result || data?.data?.games || data?.data || [];
             if (!Array.isArray(games) || games.length === 0) continue;
 
-            console.log(`[livescore] API 성공: ${url} → ${games.length}건`);
+            logs.push(`API 성공: ${games.length}건`);
             for (const g of games) {
               const score = parseNaverGame(g, cat.sport);
               if (score) scores.push(score);
@@ -398,27 +405,27 @@ export async function fetchLiveScoresWithLog(): Promise<FetchResult> {
 
   // 1. 네이버 스코어보드
   try {
-    const sb = await fetchNaverScoreboard();
+    const sb = await fetchNaverScoreboard(logs);
     allScores.push(...sb);
     logs.push(`1.스코어보드: ${sb.length}건`);
-  } catch (e: any) { logs.push(`1.스코어보드: 실패 ${e?.message || e}`); }
+  } catch (e: any) { logs.push(`1.스코어보드: 에러 ${e?.message || e}`); }
 
   // 2. 네이버 API
   if (allScores.length === 0) {
     try {
-      const api = await fetchNaverApi();
+      const api = await fetchNaverApi(logs);
       allScores.push(...api);
       logs.push(`2.네이버API: ${api.length}건`);
-    } catch (e: any) { logs.push(`2.네이버API: 실패 ${e?.message || e}`); }
+    } catch (e: any) { logs.push(`2.네이버API: 에러 ${e?.message || e}`); }
   }
 
   // 3. 네이버 종목별 일정 페이지
   if (allScores.length === 0) {
     try {
-      const pages = await fetchNaverSchedulePages();
+      const pages = await fetchNaverSchedulePages(logs);
       allScores.push(...pages);
       logs.push(`3.일정페이지: ${pages.length}건`);
-    } catch (e: any) { logs.push(`3.일정페이지: 실패 ${e?.message || e}`); }
+    } catch (e: any) { logs.push(`3.일정페이지: 에러 ${e?.message || e}`); }
   }
 
   // 4. 야구 없으면 TheSportsDB
