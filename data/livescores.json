@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-06-17T05:33:45.937Z",
-  "count": 65,
+  "updatedAt": "2026-06-17T06:08:13.556Z",
+  "count": 77,
   "scores": [
     {
       "homeTeam": "프랑스",
@@ -9,7 +9,9 @@
       "awayScore": 1,
       "status": "FINISHED",
       "timestamp": 1781668800000,
-      "sport": "축구"
+      "sport": "축구",
+      "homeHalfScore": 0,
+      "awayHalfScore": 0
     },
     {
       "homeTeam": "이라크",
@@ -18,7 +20,9 @@
       "awayScore": 4,
       "status": "FINISHED",
       "timestamp": 1781679600000,
-      "sport": "축구"
+      "sport": "축구",
+      "homeHalfScore": 1,
+      "awayHalfScore": 2
     },
     {
       "homeTeam": "필라델피아",
@@ -158,12 +162,12 @@
     {
       "homeTeam": "오스트리아",
       "awayTeam": "요르단",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1781701200000,
       "sport": "축구",
-      "minute": "후반 21'"
+      "minute": "후반 56'"
     },
     {
       "homeTeam": "한신",
@@ -460,6 +464,118 @@
       "awayScore": 3,
       "status": "FINISHED",
       "timestamp": 1781640000000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "스페인",
+      "awayTeam": "카보베르데",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1781539200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "벨기에",
+      "awayTeam": "이집트",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "SCHEDULED",
+      "timestamp": 1781550000000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "사우디",
+      "awayTeam": "우루과이",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "SCHEDULED",
+      "timestamp": 1781560800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "이란",
+      "awayTeam": "뉴질랜드",
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "SCHEDULED",
+      "timestamp": 1781571600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "프랑스",
+      "awayTeam": "세네갈",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "SCHEDULED",
+      "timestamp": 1781636400000,
+      "sport": "축구",
+      "homeHalfScore": 0,
+      "awayHalfScore": 0
+    },
+    {
+      "homeTeam": "이라크",
+      "awayTeam": "노르웨이",
+      "homeScore": 1,
+      "awayScore": 4,
+      "status": "SCHEDULED",
+      "timestamp": 1781647200000,
+      "sport": "축구",
+      "homeHalfScore": 1,
+      "awayHalfScore": 2
+    },
+    {
+      "homeTeam": "아르헨티나",
+      "awayTeam": "알제리",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1781658000000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "오스트리아",
+      "awayTeam": "요르단",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "SCHEDULED",
+      "timestamp": 1781668800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "포르투갈",
+      "awayTeam": "콩고민주",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1781715600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "잉글랜드",
+      "awayTeam": "크로아티아",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1781726400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "가나",
+      "awayTeam": "파나마",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1781737200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "우즈베키스탄",
+      "awayTeam": "콜롬비아",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1781748000000,
       "sport": "축구"
     },
     {
