@@ -1,34 +1,6 @@
-import axios from 'axios';
 import { Capacitor } from '@capacitor/core';
 import { CapacitorHttp } from '@capacitor/core';
 import { BetmanGame } from './api';
-
-const FOOTBALL_API_KEY = '6942278d1b1e447bb04375f4b84ce286';
-const FOOTBALL_BASE = 'https://api.football-data.org/v4';
-const SPORTSDB_BASE = 'https://www.thesportsdb.com/api/v1/json/3';
-const KBO_LEAGUE_ID = '4342';
-
-const isNative = Capacitor.isNativePlatform();
-
-const CORS_PROXIES = [
-  (u: string) => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
-  (u: string) => `https://corsproxy.io/?${encodeURIComponent(u)}`,
-  (u: string) => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
-];
-
-async function fetchUrl(url: string, headers?: Record<string, string>): Promise<any> {
-  if (isNative) {
-    const res = await CapacitorHttp.get({ url, headers: headers || {}, connectTimeout: 10000, readTimeout: 10000 });
-    return typeof res.data === 'string' ? JSON.parse(res.data) : res.data;
-  }
-  for (const proxy of CORS_PROXIES) {
-    try {
-      const res = await axios.get(proxy(url), { headers, timeout: 10000 });
-      return res.data;
-    } catch { /* try next proxy */ }
-  }
-  throw new Error('All CORS proxies failed');
-}
 
 export interface LiveScore {
   homeTeam: string;
@@ -42,7 +14,61 @@ export interface LiveScore {
   inning?: string;
 }
 
-// 한국시간 기준 오늘/어제
+const isNative = Capacitor.isNativePlatform();
+
+const MOBILE_UA = 'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36';
+
+async function fetchHtml(url: string): Promise<string> {
+  if (isNative) {
+    const res = await CapacitorHttp.get({
+      url,
+      headers: {
+        'User-Agent': MOBILE_UA,
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'ko-KR,ko;q=0.9',
+      },
+      connectTimeout: 12000,
+      readTimeout: 12000,
+    });
+    return typeof res.data === 'string' ? res.data : JSON.stringify(res.data);
+  }
+  // 브라우저에서는 CORS 프록시 경유
+  const proxies = [
+    `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+    `https://corsproxy.io/?${encodeURIComponent(url)}`,
+  ];
+  for (const p of proxies) {
+    try {
+      const res = await fetch(p, { signal: AbortSignal.timeout(12000) });
+      if (res.ok) return res.text();
+    } catch { /* next */ }
+  }
+  return '';
+}
+
+async function fetchJson(url: string, headers?: Record<string, string>): Promise<any> {
+  if (isNative) {
+    const res = await CapacitorHttp.get({
+      url,
+      headers: { 'User-Agent': MOBILE_UA, ...headers },
+      connectTimeout: 10000,
+      readTimeout: 10000,
+    });
+    return typeof res.data === 'string' ? JSON.parse(res.data) : res.data;
+  }
+  const proxies = [
+    `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+    `https://corsproxy.io/?${encodeURIComponent(url)}`,
+  ];
+  for (const p of proxies) {
+    try {
+      const res = await fetch(p, { headers, signal: AbortSignal.timeout(10000) });
+      if (res.ok) return res.json();
+    } catch { /* next */ }
+  }
+  throw new Error('fetch failed');
+}
+
 function todayKST(): string {
   const d = new Date(Date.now() + 9 * 60 * 60 * 1000);
   return `${d.getUTCFullYear()}${String(d.getUTCMonth() + 1).padStart(2, '0')}${String(d.getUTCDate()).padStart(2, '0')}`;
@@ -60,102 +86,212 @@ function yesterdayISO(): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 }
 
-// ── 네이버 스포츠 API ────────────────────────────────────────────
-// 여러 엔드포인트 패턴 시도
-const NAVER_HOSTS = [
-  'https://api-gw.sports.naver.com',
-  'https://api.sports.naver.com',
-];
-const NAVER_HEADERS = {
-  'User-Agent': 'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 Chrome/120 Mobile Safari/537.36',
-  'Referer': 'https://m.sports.naver.com/',
-  'Accept': 'application/json',
-};
-
-interface NaverResult {
-  games: LiveScore[];
-  success: boolean;
-}
-
-async function tryNaverEndpoint(host: string, date: string, category: string, sport: string): Promise<LiveScore[]> {
+// ── 1. 네이버 스포츠 API (JSON) ──────────────────────────────────
+async function fetchNaverApi(): Promise<LiveScore[]> {
   const scores: LiveScore[] = [];
-  const urls = [
-    `${host}/schedule/games?date=${date}&category=${category}&fields=basic,superCategoryId,categoryId,statusNum`,
-    `${host}/schedule/games?date=${date}&category=${category}`,
-  ];
-
-  for (const url of urls) {
-    try {
-      const data = await fetchUrl(url, NAVER_HEADERS);
-      const games: any[] = data?.result?.games || data?.games || data?.result || [];
-      if (!Array.isArray(games) || games.length === 0) continue;
-
-      for (const g of games) {
-        const home = g.homeTeamName || g.homeTeam?.teamName || g.homeTeam?.name || '';
-        const away = g.awayTeamName || g.awayTeam?.teamName || g.awayTeam?.name || '';
-        if (!home && !away) continue;
-
-        const hs = g.homeTeamScore ?? g.homeTeam?.score ?? 0;
-        const as_ = g.awayTeamScore ?? g.awayTeam?.score ?? 0;
-        const dt = g.gameDateTime || g.startTime || '';
-        const ts = dt ? new Date(dt).getTime() : Date.now();
-
-        const code = (g.statusCode || g.gameStatus || '').toUpperCase();
-        const info = g.statusInfo || g.statusText || '';
-        let status: LiveScore['status'] = 'SCHEDULED';
-        if (['RESULT', 'FINAL', 'END', 'FINISHED', 'CANCEL'].includes(code) || info.includes('종료')) {
-          status = 'FINISHED';
-        } else if (['PROGRESS', 'PLAYING', 'LIVE'].includes(code) || info.includes('진행') || info.includes('회')) {
-          status = 'LIVE';
-        }
-
-        const inning = g.currentInning || g.statusInfo || undefined;
-        const minute = g.gameMinute || g.matchMinute || undefined;
-
-        scores.push({
-          homeTeam: home, awayTeam: away,
-          homeScore: typeof hs === 'number' ? hs : parseInt(hs) || 0,
-          awayScore: typeof as_ === 'number' ? as_ : parseInt(as_) || 0,
-          status, timestamp: ts, sport,
-          minute: status === 'LIVE' ? minute : undefined,
-          inning: status === 'LIVE' ? inning : undefined,
-        });
-      }
-
-      if (scores.length > 0) return scores;
-    } catch {
-      // 다음 URL 시도
-    }
-  }
-  return scores;
-}
-
-async function fetchNaverScores(): Promise<LiveScore[]> {
-  const scores: LiveScore[] = [];
-  const today = todayKST();
-  const yesterday = yesterdayKST();
-
+  const hosts = ['https://api-gw.sports.naver.com', 'https://api.sports.naver.com'];
   const categories = [
     { id: 'kbo', sport: '야구' },
     { id: 'wfootball', sport: '축구' },
     { id: 'kfootball', sport: '축구' },
+    { id: 'kleague', sport: '축구' },
   ];
+  const headers = {
+    'User-Agent': MOBILE_UA,
+    'Referer': 'https://m.sports.naver.com/',
+    'Accept': 'application/json',
+  };
 
-  for (const day of [today, yesterday]) {
+  for (const day of [todayKST(), yesterdayKST()]) {
     for (const cat of categories) {
-      for (const host of NAVER_HOSTS) {
-        const result = await tryNaverEndpoint(host, day, cat.id, cat.sport);
-        if (result.length > 0) {
-          scores.push(...result);
-          break; // 이 host에서 성공하면 다음 host 안 시도
-        }
+      for (const host of hosts) {
+        try {
+          const data = await fetchJson(
+            `${host}/schedule/games?date=${day}&category=${cat.id}&fields=basic,superCategoryId,categoryId,statusNum`,
+            headers,
+          );
+          const games: any[] = data?.result?.games || data?.games || data?.result || [];
+          if (!Array.isArray(games) || games.length === 0) continue;
+
+          for (const g of games) {
+            const home = g.homeTeamName || g.homeTeam?.teamName || g.homeTeam?.name || '';
+            const away = g.awayTeamName || g.awayTeam?.teamName || g.awayTeam?.name || '';
+            if (!home && !away) continue;
+
+            const hs = g.homeTeamScore ?? g.homeTeam?.score ?? 0;
+            const as_ = g.awayTeamScore ?? g.awayTeam?.score ?? 0;
+            const dt = g.gameDateTime || g.startTime || '';
+            const ts = dt ? new Date(dt).getTime() : Date.now();
+            const code = (g.statusCode || g.gameStatus || '').toUpperCase();
+            const info = g.statusInfo || g.statusText || '';
+            let status: LiveScore['status'] = 'SCHEDULED';
+            if (['RESULT', 'FINAL', 'END', 'FINISHED', 'CANCEL'].includes(code) || info.includes('종료')) {
+              status = 'FINISHED';
+            } else if (['PROGRESS', 'PLAYING', 'LIVE'].includes(code) || info.includes('진행') || info.includes('회')) {
+              status = 'LIVE';
+            }
+            scores.push({
+              homeTeam: home, awayTeam: away,
+              homeScore: typeof hs === 'number' ? hs : parseInt(hs) || 0,
+              awayScore: typeof as_ === 'number' ? as_ : parseInt(as_) || 0,
+              status, timestamp: ts, sport: cat.sport,
+              minute: status === 'LIVE' ? (g.gameMinute || g.matchMinute || undefined) : undefined,
+              inning: status === 'LIVE' ? (g.currentInning || g.statusInfo || undefined) : undefined,
+            });
+          }
+          if (scores.length > 0) break;
+        } catch { /* next host */ }
       }
     }
   }
   return scores;
 }
 
-// ── TheSportsDB (KBO 폴백) ───────────────────────────────────────
+// ── 2. 네이버 스포츠 HTML 스크래핑 (폴백) ─────────────────────────
+// m.sports.naver.com/scoreboard 또는 개별 종목 일정 페이지에서
+// __NEXT_DATA__ JSON 또는 HTML에서 스코어 정보 추출
+async function fetchNaverHtml(): Promise<LiveScore[]> {
+  const scores: LiveScore[] = [];
+  const pages = [
+    { url: 'https://m.sports.naver.com/kbaseball/schedule/index', sport: '야구' },
+    { url: 'https://m.sports.naver.com/wfootball/schedule/index', sport: '축구' },
+    { url: 'https://m.sports.naver.com/kfootball/schedule/index', sport: '축구' },
+  ];
+
+  for (const page of pages) {
+    try {
+      const html = await fetchHtml(page.url);
+      if (!html) continue;
+
+      // __NEXT_DATA__ JSON 추출
+      const nextMatch = html.match(/<script[^>]*id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
+      if (nextMatch) {
+        try {
+          const nextData = JSON.parse(nextMatch[1]);
+          const props = nextData?.props?.pageProps;
+          const scheduleList = props?.scheduleList || props?.todaySchedule || props?.schedule || [];
+          const gamesList: any[] = Array.isArray(scheduleList) ? scheduleList : [scheduleList];
+
+          for (const group of gamesList) {
+            const games = group?.games || group?.gameList || (Array.isArray(group) ? group : []);
+            for (const g of games) {
+              const home = g.homeTeamName || g.homeTeam?.teamName || '';
+              const away = g.awayTeamName || g.awayTeam?.teamName || '';
+              if (!home && !away) continue;
+
+              const hs = g.homeTeamScore ?? g.homeScore ?? 0;
+              const as_ = g.awayTeamScore ?? g.awayScore ?? 0;
+              const dt = g.gameDateTime || g.startTime || g.gameDate || '';
+              const ts = dt ? new Date(dt).getTime() : Date.now();
+              const code = (g.statusCode || g.gameStatus || '').toUpperCase();
+              const info = g.statusInfo || '';
+              let status: LiveScore['status'] = 'SCHEDULED';
+              if (['RESULT', 'FINAL', 'END', 'FINISHED', 'CANCEL'].includes(code) || info.includes('종료')) status = 'FINISHED';
+              else if (['PROGRESS', 'PLAYING', 'LIVE'].includes(code) || info.includes('진행') || info.includes('회')) status = 'LIVE';
+
+              scores.push({
+                homeTeam: home, awayTeam: away,
+                homeScore: typeof hs === 'number' ? hs : parseInt(hs) || 0,
+                awayScore: typeof as_ === 'number' ? as_ : parseInt(as_) || 0,
+                status, timestamp: ts, sport: page.sport,
+                inning: status === 'LIVE' ? (g.currentInning || info || undefined) : undefined,
+              });
+            }
+          }
+        } catch { /* JSON parse fail */ }
+      }
+
+      // HTML 파싱 폴백: 스코어 패턴 추출
+      // 네이버 모바일 스코어보드: 팀이름 + 스코어가 포함된 패턴
+      if (scores.filter(s => s.sport === page.sport).length === 0) {
+        // data-game-id 등의 속성 또는 일반적인 스코어 패턴
+        const gameBlocks = html.match(/data-game-id="[^"]*"[\s\S]*?(?=data-game-id="|$)/g) || [];
+        for (const block of gameBlocks) {
+          const homeMatch = block.match(/home[^"]*team[^"]*name[^"]*"[^>]*>([^<]+)/i);
+          const awayMatch = block.match(/away[^"]*team[^"]*name[^"]*"[^>]*>([^<]+)/i);
+          const scoreMatch = block.match(/(\d+)\s*(?::\s*|-\s*)(\d+)/);
+          if (homeMatch && awayMatch) {
+            scores.push({
+              homeTeam: homeMatch[1].trim(),
+              awayTeam: awayMatch[1].trim(),
+              homeScore: scoreMatch ? parseInt(scoreMatch[1]) : 0,
+              awayScore: scoreMatch ? parseInt(scoreMatch[2]) : 0,
+              status: block.includes('종료') ? 'FINISHED' : block.includes('진행') ? 'LIVE' : 'SCHEDULED',
+              timestamp: Date.now(),
+              sport: page.sport,
+            });
+          }
+        }
+      }
+    } catch { /* skip page */ }
+  }
+  return scores;
+}
+
+// ── 3. livescore.in 스크래핑 (축구 폴백) ────────────────────────
+async function fetchLivescoreIn(): Promise<LiveScore[]> {
+  const scores: LiveScore[] = [];
+  try {
+    const html = await fetchHtml('https://www.livescore.in/kr/');
+    if (!html) return scores;
+
+    // __NEXT_DATA__ 또는 window.__DATA__ 추출
+    const dataMatch = html.match(/<script[^>]*id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/)
+      || html.match(/window\.__(?:NEXT_DATA|DATA|INITIAL_STATE)__\s*=\s*({[\s\S]*?});?\s*<\/script>/);
+    if (dataMatch) {
+      try {
+        const data = JSON.parse(dataMatch[1]);
+        const events = data?.props?.pageProps?.events
+          || data?.props?.pageProps?.matches
+          || data?.events || [];
+        for (const e of (Array.isArray(events) ? events : [])) {
+          const home = e.homeTeam?.name || e.home?.name || e.homeName || '';
+          const away = e.awayTeam?.name || e.away?.name || e.awayName || '';
+          if (!home || !away) continue;
+          const hs = e.homeScore ?? e.homeTeam?.score ?? 0;
+          const as_ = e.awayScore ?? e.awayTeam?.score ?? 0;
+          const st = (e.status || e.statusText || '').toLowerCase();
+          let status: LiveScore['status'] = 'SCHEDULED';
+          if (st.includes('fin') || st.includes('ft') || st.includes('종료') || st.includes('end')) status = 'FINISHED';
+          else if (st.includes('live') || st.includes('진행') || st.includes('1st') || st.includes('2nd') || st.includes('ht')) status = 'LIVE';
+          scores.push({
+            homeTeam: home, awayTeam: away,
+            homeScore: typeof hs === 'number' ? hs : parseInt(hs) || 0,
+            awayScore: typeof as_ === 'number' ? as_ : parseInt(as_) || 0,
+            status, timestamp: e.startTimestamp ? e.startTimestamp * 1000 : Date.now(),
+            sport: '축구',
+          });
+        }
+      } catch { /* parse fail */ }
+    }
+
+    // HTML 직접 파싱 폴백
+    if (scores.length === 0) {
+      const rows = html.match(/class="[^"]*event__match[^"]*"[\s\S]*?(?=class="[^"]*event__match|$)/g) || [];
+      for (const row of rows) {
+        const teams = row.match(/class="[^"]*participant[^"]*"[^>]*>([^<]+)/g);
+        const scoreNums = row.match(/class="[^"]*score[^"]*"[^>]*>(\d+)/g);
+        if (teams && teams.length >= 2) {
+          const home = teams[0].replace(/.*>/, '').trim();
+          const away = teams[1].replace(/.*>/, '').trim();
+          const hs = scoreNums?.[0] ? parseInt(scoreNums[0].replace(/.*>/, '')) : 0;
+          const as_ = scoreNums?.[1] ? parseInt(scoreNums[1].replace(/.*>/, '')) : 0;
+          const isLive = row.includes('live') || row.includes('진행');
+          const isFin = row.includes('Fin') || row.includes('종료') || row.includes('FT');
+          scores.push({
+            homeTeam: home, awayTeam: away,
+            homeScore: hs, awayScore: as_,
+            status: isFin ? 'FINISHED' : isLive ? 'LIVE' : 'SCHEDULED',
+            timestamp: Date.now(), sport: '축구',
+          });
+        }
+      }
+    }
+  } catch { /* skip */ }
+  return scores;
+}
+
+// ── 4. TheSportsDB (KBO 폴백) ───────────────────────────────────
 const KBO_MAP: Record<string, string> = {
   'Doosan Bears': '두산', 'LG Twins': 'LG', 'Samsung Lions': '삼성',
   'Hanwha Eagles': '한화', 'Kiwoom Heroes': '키움', 'NC Dinos': 'NC',
@@ -167,22 +303,19 @@ async function fetchSportsDBScores(): Promise<LiveScore[]> {
   const scores: LiveScore[] = [];
   for (const day of [todayISO(), yesterdayISO()]) {
     try {
-      const sdbUrl = `${SPORTSDB_BASE}/eventsday.php?d=${day}&l=${KBO_LEAGUE_ID}`;
-      const data = await fetchUrl(sdbUrl);
+      const data = await fetchJson(`https://www.thesportsdb.com/api/v1/json/3/eventsday.php?d=${day}&l=4342`);
       for (const e of (data.events || [])) {
         const ts = e.strTimestamp ? new Date(e.strTimestamp).getTime()
           : new Date(`${e.dateEvent}T${e.strTime || '18:00:00'}+09:00`).getTime();
         const hasScore = e.intHomeScore !== null && e.intHomeScore !== '';
-        const hs = hasScore ? parseInt(e.intHomeScore) : 0;
-        const as_ = hasScore ? parseInt(e.intAwayScore) : 0;
-        let status: LiveScore['status'] = 'SCHEDULED';
-        if (e.strStatus === 'FT' || e.strStatus === 'AOT') status = 'FINISHED';
-        else if (hasScore && e.strStatus !== 'NS' && e.strStatus !== 'Not Started') status = 'LIVE';
         scores.push({
           homeTeam: KBO_MAP[e.strHomeTeam] || e.strHomeTeam || '',
           awayTeam: KBO_MAP[e.strAwayTeam] || e.strAwayTeam || '',
-          homeScore: hs, awayScore: as_,
-          status, timestamp: ts, sport: '야구',
+          homeScore: hasScore ? parseInt(e.intHomeScore) : 0,
+          awayScore: hasScore ? parseInt(e.intAwayScore) : 0,
+          status: e.strStatus === 'FT' || e.strStatus === 'AOT' ? 'FINISHED'
+            : hasScore && e.strStatus !== 'NS' ? 'LIVE' : 'SCHEDULED',
+          timestamp: ts, sport: '야구',
         });
       }
     } catch { /* skip */ }
@@ -190,54 +323,77 @@ async function fetchSportsDBScores(): Promise<LiveScore[]> {
   return scores;
 }
 
-// ── football-data.org (축구 폴백) ────────────────────────────────
+// ── 5. football-data.org (축구 폴백) ────────────────────────────
 async function fetchFootballScores(): Promise<LiveScore[]> {
   const scores: LiveScore[] = [];
   try {
-    const fbUrl = `${FOOTBALL_BASE}/matches?dateFrom=${yesterdayISO()}&dateTo=${todayISO()}`;
-    const data = await fetchUrl(fbUrl, { 'X-Auth-Token': FOOTBALL_API_KEY });
+    const data = await fetchJson(
+      `https://api.football-data.org/v4/matches?dateFrom=${yesterdayISO()}&dateTo=${todayISO()}`,
+      { 'X-Auth-Token': '6942278d1b1e447bb04375f4b84ce286' },
+    );
     for (const m of (data.matches || [])) {
-      const ts = new Date(m.utcDate).getTime();
       const st = m.status;
-      const status: LiveScore['status'] =
-        ['IN_PLAY', 'PAUSED', 'HALFTIME', 'EXTRA_TIME', 'PENALTY_SHOOTOUT'].includes(st) ? 'LIVE'
-          : st === 'FINISHED' ? 'FINISHED' : 'SCHEDULED';
       scores.push({
         homeTeam: m.homeTeam?.name || '',
         awayTeam: m.awayTeam?.name || '',
         homeScore: m.score?.fullTime?.home ?? m.score?.halfTime?.home ?? 0,
         awayScore: m.score?.fullTime?.away ?? m.score?.halfTime?.away ?? 0,
-        status, minute: m.minute ?? undefined,
-        timestamp: ts, sport: '축구',
+        status: ['IN_PLAY', 'PAUSED', 'HALFTIME', 'EXTRA_TIME', 'PENALTY_SHOOTOUT'].includes(st) ? 'LIVE'
+          : st === 'FINISHED' ? 'FINISHED' : 'SCHEDULED',
+        minute: m.minute ?? undefined,
+        timestamp: new Date(m.utcDate).getTime(),
+        sport: '축구',
       });
     }
   } catch { /* skip */ }
   return scores;
 }
 
-// ── 통합: 네이버 우선 → 폴백 ────────────────────────────────────
+// ── 통합: API → HTML 스크래핑 → 해외 폴백 ───────────────────────
 export async function fetchLiveScores(): Promise<LiveScore[]> {
   const scores: LiveScore[] = [];
 
-  // 1. 네이버 스포츠 시도
-  const naver = await fetchNaverScores();
-  scores.push(...naver);
-  console.log(`[livescore] 네이버: ${naver.length}건`);
+  // 1. 네이버 API 시도
+  try {
+    const api = await fetchNaverApi();
+    scores.push(...api);
+    console.log(`[livescore] 네이버 API: ${api.length}건`);
+  } catch { console.log('[livescore] 네이버 API 실패'); }
 
-  // 2. 야구 데이터 없으면 TheSportsDB 폴백
-  const hasBaseball = scores.some(s => s.sport === '야구');
-  if (!hasBaseball) {
-    const sdb = await fetchSportsDBScores();
-    scores.push(...sdb);
-    console.log(`[livescore] TheSportsDB 폴백: ${sdb.length}건`);
+  // 2. API 실패 시 HTML 스크래핑
+  if (scores.length === 0) {
+    try {
+      const html = await fetchNaverHtml();
+      scores.push(...html);
+      console.log(`[livescore] 네이버 HTML: ${html.length}건`);
+    } catch { console.log('[livescore] 네이버 HTML 실패'); }
   }
 
-  // 3. 축구 데이터 없으면 football-data.org 폴백
-  const hasFootball = scores.some(s => s.sport === '축구');
-  if (!hasFootball) {
-    const fb = await fetchFootballScores();
-    scores.push(...fb);
-    console.log(`[livescore] football-data.org 폴백: ${fb.length}건`);
+  // 3. 야구 없으면 TheSportsDB
+  if (!scores.some(s => s.sport === '야구')) {
+    try {
+      const sdb = await fetchSportsDBScores();
+      scores.push(...sdb);
+      console.log(`[livescore] TheSportsDB: ${sdb.length}건`);
+    } catch { /* skip */ }
+  }
+
+  // 4. 축구 없으면 livescore.in
+  if (!scores.some(s => s.sport === '축구')) {
+    try {
+      const ls = await fetchLivescoreIn();
+      scores.push(...ls);
+      console.log(`[livescore] livescore.in: ${ls.length}건`);
+    } catch { /* skip */ }
+  }
+
+  // 5. 여전히 축구 없으면 football-data.org
+  if (!scores.some(s => s.sport === '축구')) {
+    try {
+      const fb = await fetchFootballScores();
+      scores.push(...fb);
+      console.log(`[livescore] football-data.org: ${fb.length}건`);
+    } catch { /* skip */ }
   }
 
   console.log(`[livescore] 총 ${scores.length}건 (LIVE: ${scores.filter(s => s.status === 'LIVE').length}, FINISHED: ${scores.filter(s => s.status === 'FINISHED').length})`);
@@ -248,7 +404,7 @@ export async function fetchLiveScores(): Promise<LiveScore[]> {
 export function matchScore(game: BetmanGame, scores: LiveScore[]): LiveScore | null {
   if (!game.gameDate) return null;
   const gameTs = new Date(game.gameDate).getTime();
-  const TOLERANCE = 30 * 60 * 1000;
+  const TOLERANCE = 3 * 60 * 60 * 1000; // 3시간 허용 (시간대 차이 고려)
 
   // 1차: 종목 + 시간 + 양팀명 매칭
   for (const s of scores) {
@@ -259,7 +415,15 @@ export function matchScore(game: BetmanGame, scores: LiveScore[]): LiveScore | n
     if (hm && am) return s;
   }
 
-  // 2차: 한쪽 팀명만 매칭
+  // 2차: 팀명만 매칭 (시간 무시)
+  for (const s of scores) {
+    if (s.sport !== game.sport) continue;
+    const hm = game.homeTeam.includes(s.homeTeam) || s.homeTeam.includes(game.homeTeam);
+    const am = game.awayTeam.includes(s.awayTeam) || s.awayTeam.includes(game.awayTeam);
+    if (hm && am) return s;
+  }
+
+  // 3차: 한쪽 팀명 + 시간 근접
   for (const s of scores) {
     if (s.sport !== game.sport) continue;
     if (Math.abs(s.timestamp - gameTs) > TOLERANCE) continue;
@@ -267,10 +431,6 @@ export function matchScore(game: BetmanGame, scores: LiveScore[]): LiveScore | n
     const am = game.awayTeam.includes(s.awayTeam) || s.awayTeam.includes(game.awayTeam);
     if (hm || am) return s;
   }
-
-  // 3차: 5분 이내 + 같은 종목 유일 매칭
-  const tight = scores.filter(s => s.sport === game.sport && Math.abs(s.timestamp - gameTs) < 5 * 60 * 1000);
-  if (tight.length === 1) return tight[0];
 
   return null;
 }
@@ -282,7 +442,6 @@ export function determineResult(
   awayScore: number,
   line?: number,
 ): string | null {
-  // 전반 마켓은 풀타임 스코어로 판정 불가 → 수동 입력만 가능
   if (marketType.includes('전반')) return null;
 
   if (marketType.includes('승무패')) {
