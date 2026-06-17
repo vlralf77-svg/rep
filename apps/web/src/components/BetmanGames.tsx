@@ -7,9 +7,10 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import { useBetmanData } from '../api/hooks';
+import { useBetmanData, useLiveScores } from '../api/hooks';
 import { BetmanGame, BetmanMarket } from '../lib/api';
 import { analyzeMarket } from '../lib/betman-analyze';
+import { LiveScore, matchScore } from '../lib/livescore';
 import {
   savePredictions,
   setActualResult,
@@ -264,8 +265,9 @@ function GameDetail({ game, open, onClose, picks, onTogglePick }: {
 }
 
 // ── 게임 카드 ───────────────────────────────────────────────────
-function GameRow({ game, picks, onTogglePick }: {
+function GameRow({ game, picks, onTogglePick, score }: {
   game: BetmanGame; picks: BetPick[]; onTogglePick: (pick: BetPick) => void;
+  score?: LiveScore | null;
 }) {
   const [open, setOpen] = useState(false);
   const gameDateTime = game.gameDate
@@ -273,24 +275,62 @@ function GameRow({ game, picks, onTogglePick }: {
     : '';
   const primary = game.markets.find(m => m.type === '승무패' || m.type === '승1패' || m.type === '승패') || game.markets[0];
   const selectedInGame = picks.filter(p => p.matchId === game.matchId).length;
+  const isLive = score?.status === 'LIVE';
+  const isFinished = score?.status === 'FINISHED';
 
   return (
     <>
-      <Card sx={{ mb: 1.5, border: selectedInGame > 0 ? '1px solid rgba(255,215,0,0.4)' : undefined }}>
+      <Card sx={{ mb: 1.5,
+        border: isLive ? '1px solid rgba(76,175,80,0.6)' : selectedInGame > 0 ? '1px solid rgba(255,215,0,0.4)' : undefined,
+        bgcolor: isLive ? 'rgba(76,175,80,0.05)' : undefined,
+      }}>
         <CardActionArea onClick={() => setOpen(true)}>
           <CardContent sx={{ pb: '12px !important' }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5, alignItems: 'center' }}>
-              <Typography variant="caption" color="text.secondary">
-                {game.sport}{gameDateTime ? ' · ' + gameDateTime : ''}
-              </Typography>
+              <Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
+                <Typography variant="caption" color="text.secondary">
+                  {game.sport}{gameDateTime ? ' · ' + gameDateTime : ''}
+                </Typography>
+                {isLive && (
+                  <Chip label={score.minute ? `LIVE ${score.minute}'` : 'LIVE'} size="small"
+                    sx={{ fontSize: 10, height: 18, bgcolor: '#4caf50', color: '#fff', animation: 'pulse 1.5s infinite',
+                      '@keyframes pulse': { '0%,100%': { opacity: 1 }, '50%': { opacity: 0.6 } } }} />
+                )}
+                {isFinished && <Chip label="종료" size="small" sx={{ fontSize: 10, height: 18, bgcolor: 'rgba(255,255,255,0.1)' }} />}
+              </Box>
               <Box sx={{ display: 'flex', gap: 0.5 }}>
                 {selectedInGame > 0 && <Chip label={`슬립 ${selectedInGame}`} size="small" sx={{ fontSize: 10, height: 18, bgcolor: 'rgba(255,215,0,0.2)', color: '#FFD700' }} />}
                 <Chip label={`마켓 ${game.markets.length}`} size="small" sx={{ fontSize: 10, height: 18 }} />
               </Box>
             </Box>
-            <Typography variant="body2" fontWeight={600} textAlign="center" mb={1}>
-              {game.homeTeam} vs {game.awayTeam}
-            </Typography>
+
+            {/* 팀명 + 실시간 스코어 */}
+            {(isLive || isFinished) && score ? (
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1.5, mb: 1, py: 0.5 }}>
+                <Typography variant="body2" fontWeight={600} sx={{ flex: 1, textAlign: 'right' }}>
+                  {game.homeTeam}
+                </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5,
+                  px: 1.5, py: 0.3, borderRadius: 2,
+                  bgcolor: isLive ? 'rgba(76,175,80,0.15)' : 'rgba(255,255,255,0.08)' }}>
+                  <Typography variant="h6" fontWeight={800} sx={{ color: isLive ? '#4caf50' : '#fff', fontSize: 20 }}>
+                    {score.homeScore}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">:</Typography>
+                  <Typography variant="h6" fontWeight={800} sx={{ color: isLive ? '#4caf50' : '#fff', fontSize: 20 }}>
+                    {score.awayScore}
+                  </Typography>
+                </Box>
+                <Typography variant="body2" fontWeight={600} sx={{ flex: 1, textAlign: 'left' }}>
+                  {game.awayTeam}
+                </Typography>
+              </Box>
+            ) : (
+              <Typography variant="body2" fontWeight={600} textAlign="center" mb={1}>
+                {game.homeTeam} vs {game.awayTeam}
+              </Typography>
+            )}
+
             {primary && (
               <Box sx={{ display: 'flex', gap: 1 }}>
                 {primary.selections.map((s, i) => (
@@ -506,6 +546,7 @@ function AccuracyPanel() {
 // ── 메인 컴포넌트 ───────────────────────────────────────────────
 export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' | 'proto'; sportFilter?: string }) {
   const { data, isLoading, error } = useBetmanData();
+  const { data: liveScores } = useLiveScores();
   const [picks, setPicks] = useState<BetPick[]>(() => loadPicks());
   const [amount, setAmountState] = useState<string>(() => loadAmount());
   const [savedBets, setSavedBets] = useState<SavedBet[]>(() => getSavedBets());
@@ -604,7 +645,8 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
         </Box>
       ) : (
         sorted.map((g) => (
-          <GameRow key={g.matchId} game={g} picks={picks} onTogglePick={handleTogglePick} />
+          <GameRow key={g.matchId} game={g} picks={picks} onTogglePick={handleTogglePick}
+            score={liveScores ? matchScore(g, liveScores) : null} />
         ))
       )}
     </Box>

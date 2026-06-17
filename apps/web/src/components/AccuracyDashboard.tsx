@@ -1,9 +1,11 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import {
   Box, Typography, Card, CardContent, Chip, Divider, LinearProgress,
   ToggleButtonGroup, ToggleButton, Button,
 } from '@mui/material';
 import { getPredictions, setActualResult, clearPredictions, PredictionRecord } from '../lib/betman-history';
+import { useLiveScores } from '../api/hooks';
+import { LiveScore, determineResult } from '../lib/livescore';
 
 // ── 날짜 유틸 ───────────────────────────────────────────────────
 function dayKey(d: Date): string {
@@ -36,7 +38,7 @@ function StatBar({ label, correct, total, color }: { label: string; correct: num
 }
 
 // ── 개별 경기 카드 ──────────────────────────────────────────────
-function GameCard({ record, onActualSet }: { record: PredictionRecord; onActualSet: () => void }) {
+function GameCard({ record, onActualSet, score }: { record: PredictionRecord; onActualSet: () => void; score?: LiveScore | null }) {
   const resolved = record.predictions.filter((p) => p.actual !== undefined);
   const pending = record.predictions.filter((p) => p.actual === undefined);
   const aiCorrect = resolved.filter((p) => p.actual === p.aiPick).length;
@@ -69,14 +71,39 @@ function GameCard({ record, onActualSet }: { record: PredictionRecord; onActualS
               ? new Date(record.gameDate).toLocaleString('ko-KR', { month: 'short', day: 'numeric', weekday: 'short', hour: '2-digit', minute: '2-digit' })
               : ''}
           </Typography>
+          {score?.status === 'LIVE' && (
+            <Chip label={score.minute ? `LIVE ${score.minute}'` : 'LIVE'} size="small"
+              sx={{ fontSize: 10, height: 18, bgcolor: '#4caf50', color: '#fff',
+                animation: 'pulse 1.5s infinite',
+                '@keyframes pulse': { '0%,100%': { opacity: 1 }, '50%': { opacity: 0.6 } } }} />
+          )}
           {hasResults
             ? <Chip label={`AI ${aiCorrect}/${resolved.length} 적중`} size="small"
                 color={aiCorrect === resolved.length ? 'success' : aiCorrect === 0 ? 'error' : 'warning'} />
             : <Chip label="결과 미입력" size="small" variant="outlined" sx={{ fontSize: 10, color: 'text.disabled' }} />}
         </Box>
-        <Typography variant="body2" fontWeight={700} mb={1}>
-          {record.homeTeam} vs {record.awayTeam}
-        </Typography>
+
+        {/* 실시간/최종 스코어 */}
+        {score && (score.status === 'LIVE' || score.status === 'FINISHED') ? (
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1.5, mb: 1, py: 0.5 }}>
+            <Typography variant="body2" fontWeight={700} sx={{ flex: 1, textAlign: 'right' }}>
+              {record.homeTeam}
+            </Typography>
+            <Box sx={{ px: 1.5, py: 0.3, borderRadius: 2,
+              bgcolor: score.status === 'LIVE' ? 'rgba(76,175,80,0.15)' : 'rgba(255,255,255,0.08)' }}>
+              <Typography variant="h6" fontWeight={800} sx={{ color: score.status === 'LIVE' ? '#4caf50' : '#fff', fontSize: 20 }}>
+                {score.homeScore} : {score.awayScore}
+              </Typography>
+            </Box>
+            <Typography variant="body2" fontWeight={700} sx={{ flex: 1, textAlign: 'left' }}>
+              {record.awayTeam}
+            </Typography>
+          </Box>
+        ) : (
+          <Typography variant="body2" fontWeight={700} mb={1}>
+            {record.homeTeam} vs {record.awayTeam}
+          </Typography>
+        )}
 
         {/* 결과 입력된 마켓 */}
         {resolved.map((p, i) => (
@@ -131,6 +158,35 @@ export default function AccuracyDashboard() {
   const [mode, setMode] = useState<FilterMode>('yesterday');
   const [tick, setTick] = useState(0);
   const refresh = () => setTick((t) => t + 1);
+  const { data: liveScores } = useLiveScores();
+
+  // 라이브스코어로 종료된 경기 결과 자동 입력
+  useEffect(() => {
+    if (!liveScores || liveScores.length === 0) return;
+    const records = getPredictions();
+    let changed = false;
+    for (const rec of records) {
+      if (!rec.gameDate) continue;
+      const gameTs = new Date(rec.gameDate).getTime();
+      const TOLERANCE = 30 * 60 * 1000;
+      // 라이브스코어에서 종료된 경기 매칭
+      const match = liveScores.find(s =>
+        s.status === 'FINISHED' && Math.abs(s.timestamp - gameTs) < TOLERANCE
+        && (rec.homeTeam.includes(s.homeTeam) || s.homeTeam.includes(rec.homeTeam)
+          || Math.abs(s.timestamp - gameTs) < 5 * 60 * 1000)
+      );
+      if (!match) continue;
+      for (const pred of rec.predictions) {
+        if (pred.actual !== undefined) continue;
+        const result = determineResult(pred.marketType, match.homeScore, match.awayScore);
+        if (result) {
+          setActualResult(rec.matchId, pred.marketType, result);
+          changed = true;
+        }
+      }
+    }
+    if (changed) refresh();
+  }, [liveScores]);
 
   const { yesterdayGames, allGames, yesterdayAgg, overallAgg, yesterdayKey } = useMemo(() => {
     const records = getPredictions();
@@ -250,9 +306,13 @@ export default function AccuracyDashboard() {
           {mode === 'yesterday' ? '전날 저장된 경기가 없습니다.' : '해당하는 경기가 없습니다.'}
         </Typography>
       ) : (
-        displayGames.map((r) => (
-          <GameCard key={r.matchId} record={r} onActualSet={refresh} />
-        ))
+        displayGames.map((r) => {
+          const sc = liveScores?.find(s => {
+            if (!r.gameDate) return false;
+            return Math.abs(s.timestamp - new Date(r.gameDate).getTime()) < 30 * 60 * 1000;
+          }) || null;
+          return <GameCard key={r.matchId} record={r} onActualSet={refresh} score={sc} />;
+        })
       )}
 
       {/* 데이터 초기화 */}

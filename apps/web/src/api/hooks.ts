@@ -1,12 +1,23 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { syncSport, getMatches, getPrediction, fetchBetmanData, Sport } from '../lib/api';
+import { fetchLiveScores } from '../lib/livescore';
 
 export function useBetmanData() {
   return useQuery({
     queryKey: ['betman'],
     queryFn: fetchBetmanData,
-    staleTime: 1000 * 60 * 30, // 30분 캐시
+    staleTime: 1000 * 60 * 30,
     retry: 2,
+  });
+}
+
+export function useLiveScores() {
+  return useQuery({
+    queryKey: ['liveScores'],
+    queryFn: fetchLiveScores,
+    staleTime: 1000 * 60, // 1분 캐시
+    refetchInterval: 1000 * 60, // 60초마다 갱신
+    retry: 1,
   });
 }
 
