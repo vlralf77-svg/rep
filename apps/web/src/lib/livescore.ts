@@ -669,9 +669,11 @@ export function matchScore(game: MatchableGame, scores: LiveScore[]): LiveScore 
   const gameTs = new Date(game.gameDate).getTime();
   const sameSport = (s: LiveScore) => !game.sport || s.sport === game.sport;
 
-  // 1차: 종목 + 양팀명 (홈/원정 순서 무관)
+  const sameDay = (s: LiveScore) => Math.abs(s.timestamp - gameTs) < 12 * 60 * 60 * 1000;
+
+  // 1차: 종목 + 양팀명 + 같은 날 (12시간 이내)
   for (const s of scores) {
-    if (!sameSport(s)) continue;
+    if (!sameSport(s) || !sameDay(s)) continue;
     if (teamMatch(game.homeTeam, s.homeTeam) && teamMatch(game.awayTeam, s.awayTeam)) return s;
     if (teamMatch(game.homeTeam, s.awayTeam) && teamMatch(game.awayTeam, s.homeTeam)) return orientScore(s);
   }
@@ -683,7 +685,7 @@ export function matchScore(game: MatchableGame, scores: LiveScore[]): LiveScore 
     if (teamMatch(game.homeTeam, s.awayTeam) && teamMatch(game.awayTeam, s.homeTeam)) return orientScore(s);
   }
 
-  // 3차: 한쪽 팀명 + 종목 + 시간
+  // 3차: 한쪽 팀명 + 종목 + 시간 3시간 이내
   for (const s of scores) {
     if (!sameSport(s)) continue;
     if (Math.abs(s.timestamp - gameTs) > 3 * 60 * 60 * 1000) continue;
