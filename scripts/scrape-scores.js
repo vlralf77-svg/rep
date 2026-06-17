@@ -54,12 +54,25 @@ function parseGame(g) {
     : sc.includes('baseball') || sc.includes('kbo') || sc.includes('야구') ? '야구'
     : sc.includes('football') || sc.includes('soccer') || sc.includes('축구') ? '축구'
     : '기타';
+  const toNum = (v) => v == null || v === '' ? undefined : (typeof v === 'number' ? v : (isNaN(parseInt(v)) ? undefined : parseInt(v)));
   const out = {
     homeTeam: home, awayTeam: away,
     homeScore: hsRaw == null || hsRaw === '' ? 0 : (typeof hsRaw === 'number' ? hsRaw : parseInt(hsRaw) || 0),
     awayScore: asRaw == null || asRaw === '' ? 0 : (typeof asRaw === 'number' ? asRaw : parseInt(asRaw) || 0),
     status, timestamp: ts, sport,
   };
+  // 전반(하프타임) 스코어 — 네이버 축구 경기 객체에 있으면 표시 (필드명 후보 다수)
+  if (sport === '축구') {
+    const hh = toNum(g.homeTeamHalfScore ?? g.homeHalfScore ?? g.homeTeamFirstHalfScore
+      ?? g.homeTeam?.halfScore ?? g.homeTeam?.firstHalfScore
+      ?? (Array.isArray(g.homeTeamScoreByPeriod) ? g.homeTeamScoreByPeriod[0] : undefined)
+      ?? (Array.isArray(g.homePeriodScores) ? g.homePeriodScores[0] : undefined));
+    const ah = toNum(g.awayTeamHalfScore ?? g.awayHalfScore ?? g.awayTeamFirstHalfScore
+      ?? g.awayTeam?.halfScore ?? g.awayTeam?.firstHalfScore
+      ?? (Array.isArray(g.awayTeamScoreByPeriod) ? g.awayTeamScoreByPeriod[0] : undefined)
+      ?? (Array.isArray(g.awayPeriodScores) ? g.awayPeriodScores[0] : undefined));
+    if (hh != null && ah != null) { out.homeHalfScore = hh; out.awayHalfScore = ah; }
+  }
   // LIVE 일 때만 진행 정보 표시 (statusInfo: "후반 1'", "9회초" 등)
   if (status === 'LIVE' && g.statusInfo) {
     if (sport === '축구') out.minute = String(g.statusInfo);

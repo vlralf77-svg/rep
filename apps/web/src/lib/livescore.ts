@@ -11,6 +11,9 @@ export interface LiveScore {
   timestamp: number;
   sport: string;
   inning?: string;
+  // 전반(하프타임) 스코어 — 전반 마켓 판정용 (없으면 undefined)
+  homeHalfScore?: number;
+  awayHalfScore?: number;
 }
 
 const isNative = Capacitor.isNativePlatform();
@@ -386,6 +389,8 @@ async function fetchFootballData(): Promise<LiveScore[]> {
       const st = m.status;
       const homeEn = m.homeTeam?.name || m.homeTeam?.shortName || '';
       const awayEn = m.awayTeam?.name || m.awayTeam?.shortName || '';
+      const htH = m.score?.halfTime?.home;
+      const htA = m.score?.halfTime?.away;
       scores.push({
         homeTeam: toKoreanTeam(homeEn),
         awayTeam: toKoreanTeam(awayEn),
@@ -396,6 +401,8 @@ async function fetchFootballData(): Promise<LiveScore[]> {
         minute: m.minute ?? undefined,
         timestamp: new Date(m.utcDate).getTime(),
         sport: '축구',
+        homeHalfScore: typeof htH === 'number' ? htH : undefined,
+        awayHalfScore: typeof htA === 'number' ? htA : undefined,
       });
     }
   } catch { /* skip */ }
@@ -562,13 +569,14 @@ export async function fetchLiveScoresWithLog(): Promise<FetchResult> {
     } catch (e: any) { logs.push(`1.spojoy: 에러 ${e?.message || e}`); }
   }
 
-  // 2. football-data.org (해외 축구, 영어→한글 매핑)
+  // 2. football-data.org (해외 축구, 영어→한글 매핑 + 전반 스코어 제공)
+  let fbScores: LiveScore[] = [];
+  try {
+    fbScores = await fetchFootballData();
+  } catch (e: any) { logs.push(`2.football-data: 에러 ${e?.message || e}`); }
   if (!allScores.some(s => s.sport === '축구')) {
-    try {
-      const fb = await fetchFootballData();
-      allScores.push(...fb);
-      logs.push(`2.football-data: ${fb.length}건`);
-    } catch (e: any) { logs.push(`2.football-data: 에러 ${e?.message || e}`); }
+    allScores.push(...fbScores);
+    logs.push(`2.football-data: ${fbScores.length}건 추가`);
   }
 
   // 3. 야구 없으면 TheSportsDB (KBO)
@@ -598,6 +606,23 @@ export async function fetchLiveScoresWithLog(): Promise<FetchResult> {
     } catch (e: any) { logs.push(`5.livescore.in: 에러 ${e?.message || e}`); }
   }
 
+  // 전반 마켓 판정용 하프타임 스코어 병합 — 서버/네이버 축구 경기에
+  // 전반 스코어가 없으면 football-data 의 하프타임 값으로 보강.
+  let halfMerged = 0;
+  for (const s of allScores) {
+    if (s.sport !== '축구' || s.homeHalfScore != null) continue;
+    for (const fb of fbScores) {
+      if (fb.homeHalfScore == null) continue;
+      if (teamMatch(s.homeTeam, fb.homeTeam) && teamMatch(s.awayTeam, fb.awayTeam)) {
+        s.homeHalfScore = fb.homeHalfScore; s.awayHalfScore = fb.awayHalfScore; halfMerged++; break;
+      }
+      if (teamMatch(s.homeTeam, fb.awayTeam) && teamMatch(s.awayTeam, fb.homeTeam)) {
+        s.homeHalfScore = fb.awayHalfScore; s.awayHalfScore = fb.homeHalfScore; halfMerged++; break;
+      }
+    }
+  }
+  if (halfMerged) logs.push(`전반스코어 병합: ${halfMerged}건`);
+
   const summary = `총 ${allScores.length}건 (LIVE:${allScores.filter(s => s.status === 'LIVE').length} FIN:${allScores.filter(s => s.status === 'FINISHED').length})`;
   logs.push(summary);
   console.log(`[livescore] ${logs.join(' | ')}`);
@@ -623,7 +648,12 @@ function teamMatch(a: string, b: string): boolean {
 
 // 홈/원정이 뒤바뀐 경우 스코어를 betman 기준으로 정렬해서 반환
 function orientScore(s: LiveScore): LiveScore {
-  return { ...s, homeScore: s.awayScore, awayScore: s.homeScore, homeTeam: s.awayTeam, awayTeam: s.homeTeam };
+  return {
+    ...s,
+    homeScore: s.awayScore, awayScore: s.homeScore,
+    homeTeam: s.awayTeam, awayTeam: s.homeTeam,
+    homeHalfScore: s.awayHalfScore, awayHalfScore: s.homeHalfScore,
+  };
 }
 
 // homeTeam/awayTeam/gameDate/sport 만 있으면 매칭 가능 (BetmanGame, PredictionRecord 공용)
@@ -670,8 +700,15 @@ export function determineResult(
   homeScore: number,
   awayScore: number,
   line?: number,
+  homeHalfScore?: number,
+  awayHalfScore?: number,
 ): string | null {
-  if (marketType.includes('전반')) return null;
+  // 전반 마켓: 전반(하프타임) 스코어가 있어야 판정 가능
+  if (marketType.includes('전반')) {
+    if (homeHalfScore == null || awayHalfScore == null) return null;
+    homeScore = homeHalfScore;
+    awayScore = awayHalfScore;
+  }
 
   if (marketType.includes('승무패')) {
     return homeScore > awayScore ? '승' : homeScore === awayScore ? '무' : '패';

@@ -252,7 +252,7 @@ function GameDetail({ game, open, onClose, picks, onTogglePick, score }: {
   const liveResults: Record<string, string | null> = {};
   if (hasScore && score) {
     for (const m of game.markets) {
-      liveResults[m.type] = determineResult(m.type, score.homeScore, score.awayScore, m.line);
+      liveResults[m.type] = determineResult(m.type, score.homeScore, score.awayScore, m.line, score.homeHalfScore, score.awayHalfScore);
     }
   }
 

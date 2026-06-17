@@ -96,7 +96,7 @@ function GameCard({ record, score }: { record: PredictionRecord; score?: LiveSco
 
         {/* 마켓별 예측 결과 */}
         {record.predictions.map((p, i) => {
-          const liveResult = score ? determineResult(p.marketType, score.homeScore, score.awayScore, p.line) : null;
+          const liveResult = score ? determineResult(p.marketType, score.homeScore, score.awayScore, p.line, score.homeHalfScore, score.awayHalfScore) : null;
           const actualOrLive = p.actual ?? liveResult;
           const hasActual = p.actual !== undefined;
 
@@ -156,7 +156,7 @@ export default function AccuracyDashboard() {
 
       for (const p of rec.predictions) {
         if (p.actual !== undefined) continue;
-        const result = determineResult(p.marketType, score.homeScore, score.awayScore, p.line);
+        const result = determineResult(p.marketType, score.homeScore, score.awayScore, p.line, score.homeHalfScore, score.awayHalfScore);
         if (result) {
           setActualResult(rec.matchId, p.marketType, result);
           changed = true;
