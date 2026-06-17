@@ -10,7 +10,7 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { useBetmanData, useLiveScores } from '../api/hooks';
 import { BetmanGame, BetmanMarket } from '../lib/api';
 import { analyzeMarket } from '../lib/betman-analyze';
-import { LiveScore, matchScore } from '../lib/livescore';
+import { LiveScore, matchScore, determineResult } from '../lib/livescore';
 import {
   savePredictions,
   setActualResult,
@@ -86,7 +86,7 @@ const CONF_LABEL = { HIGH: '높음', MEDIUM: '보통', LOW: '낮음' } as const;
 // ── 마켓 블록 ───────────────────────────────────────────────────
 function MarketBlock({
   market, matchId, homeTeam, awayTeam, isPast, savedPred, onActualSet,
-  picks, onTogglePick,
+  picks, onTogglePick, liveResult,
 }: {
   market: BetmanMarket;
   matchId: string;
@@ -97,6 +97,7 @@ function MarketBlock({
   onActualSet?: () => void;
   picks: BetPick[];
   onTogglePick: (pick: BetPick) => void;
+  liveResult?: string | null;
 }) {
   const a = analyzeMarket(market);
   const aiPick = a.selections[a.aiBestIdx];
@@ -152,6 +153,14 @@ function MarketBlock({
         <Typography variant="caption" display="block" color="text.disabled" sx={{ fontSize: 10, mt: 0.3 }}>
           ░ 시장(배당 역산) · ▓ AI(편향 보정) — 배당 박스를 탭하면 슬립에 추가
         </Typography>
+        {liveResult && (
+          <Box sx={{ mt: 0.5, p: 0.5, borderRadius: 1, bgcolor: liveResult === aiPick.label ? 'rgba(76,175,80,0.15)' : 'rgba(244,67,54,0.12)' }}>
+            <Typography variant="caption" fontWeight={700}
+              color={liveResult === aiPick.label ? '#4caf50' : '#f44336'}>
+              {liveResult === aiPick.label ? '✅' : '❌'} 현재: {liveResult} (AI: {aiPick.label})
+            </Typography>
+          </Box>
+        )}
       </Box>
 
       {isPast && (
@@ -180,9 +189,10 @@ function MarketBlock({
 }
 
 // ── 게임 상세 다이얼로그 ────────────────────────────────────────
-function GameDetail({ game, open, onClose, picks, onTogglePick }: {
+function GameDetail({ game, open, onClose, picks, onTogglePick, score }: {
   game: BetmanGame; open: boolean; onClose: () => void;
   picks: BetPick[]; onTogglePick: (pick: BetPick) => void;
+  score?: LiveScore | null;
 }) {
   const gameDateTime = game.gameDate
     ? new Date(game.gameDate).toLocaleString('ko-KR', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', weekday: 'short' })
@@ -197,6 +207,10 @@ function GameDetail({ game, open, onClose, picks, onTogglePick }: {
   const isPast = game.gameDate
     ? new Date(game.gameDate) < new Date(Date.now() - 24 * 60 * 60 * 1000)
     : false;
+
+  const isLive = score?.status === 'LIVE';
+  const isFinished = score?.status === 'FINISHED';
+  const hasScore = isLive || isFinished;
 
   const [tick, setTick] = useState(0);
   const refresh = useCallback(() => setTick((t) => t + 1), []);
@@ -233,6 +247,14 @@ function GameDetail({ game, open, onClose, picks, onTogglePick }: {
     }
   }
 
+  // 현재 스코어 기준 예측 적중 여부 계산
+  const liveResults: Record<string, string | null> = {};
+  if (hasScore && score) {
+    for (const m of game.markets) {
+      liveResults[m.type] = determineResult(m.type, score.homeScore, score.awayScore, m.line);
+    }
+  }
+
   const selectedCount = picks.filter(p => p.matchId === game.matchId).length;
 
   return (
@@ -242,10 +264,35 @@ function GameDetail({ game, open, onClose, picks, onTogglePick }: {
         <Box sx={{ display: 'flex', gap: 1, mb: 0.5, flexWrap: 'wrap', alignItems: 'center' }}>
           {game.sport && <Chip label={game.sport} size="small" variant="outlined" />}
           {gameDateTime && <Chip label={gameDateTime} size="small" variant="outlined" />}
+          {isLive && (
+            <Chip label={score?.inning ? `LIVE ${score.inning}` : score?.minute ? `LIVE ${score.minute}'` : 'LIVE'} size="small"
+              sx={{ bgcolor: '#4caf50', color: '#fff', animation: 'pulse 1.5s infinite',
+                '@keyframes pulse': { '0%,100%': { opacity: 1 }, '50%': { opacity: 0.6 } } }} />
+          )}
+          {isFinished && <Chip label="종료" size="small" sx={{ bgcolor: 'rgba(255,255,255,0.1)' }} />}
           {gameBadge && <Chip label={gameBadge} size="small" color="success" />}
           {selectedCount > 0 && <Chip label={`슬립 ${selectedCount}개 선택`} size="small" sx={{ bgcolor: 'rgba(255,215,0,0.2)', color: '#FFD700' }} />}
         </Box>
-        <Typography variant="h6" fontWeight={700}>{game.homeTeam} vs {game.awayTeam}</Typography>
+
+        {/* 실시간 스코어 표시 */}
+        {hasScore && score ? (
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, my: 1 }}>
+            <Typography variant="h6" fontWeight={700} sx={{ flex: 1, textAlign: 'right' }}>
+              {game.homeTeam}
+            </Typography>
+            <Box sx={{ px: 2, py: 0.5, borderRadius: 2,
+              bgcolor: isLive ? 'rgba(76,175,80,0.15)' : 'rgba(255,255,255,0.08)' }}>
+              <Typography variant="h5" fontWeight={800} sx={{ color: isLive ? '#4caf50' : '#fff' }}>
+                {score.homeScore} : {score.awayScore}
+              </Typography>
+            </Box>
+            <Typography variant="h6" fontWeight={700} sx={{ flex: 1, textAlign: 'left' }}>
+              {game.awayTeam}
+            </Typography>
+          </Box>
+        ) : (
+          <Typography variant="h6" fontWeight={700}>{game.homeTeam} vs {game.awayTeam}</Typography>
+        )}
         <Typography variant="caption" color="text.secondary">{sorted.length}개 베팅 마켓 · 배당 박스를 탭하여 슬립에 추가</Typography>
       </DialogTitle>
       <DialogContent>
@@ -257,6 +304,7 @@ function GameDetail({ game, open, onClose, picks, onTogglePick }: {
             savedPred={savedRecord?.predictions.find((p) => p.marketType === m.type)}
             onActualSet={refresh}
             picks={picks} onTogglePick={onTogglePick}
+            liveResult={liveResults[m.type] || null}
           />
         ))}
       </DialogContent>
@@ -346,7 +394,7 @@ function GameRow({ game, picks, onTogglePick, score }: {
           </CardContent>
         </CardActionArea>
       </Card>
-      <GameDetail game={game} open={open} onClose={() => setOpen(false)} picks={picks} onTogglePick={onTogglePick} />
+      <GameDetail game={game} open={open} onClose={() => setOpen(false)} picks={picks} onTogglePick={onTogglePick} score={score} />
     </>
   );
 }
