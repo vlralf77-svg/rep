@@ -39,15 +39,22 @@ export function savePredictions(record: PredictionRecord): void {
   const records = getPredictions();
   const idx = records.findIndex((r) => r.matchId === record.matchId);
   if (idx >= 0) {
-    // Preserve any existing actual results when upserting
+    // 이미 저장된 예측은 덮어쓰지 않음 (배당 변동으로 aiPick이 바뀌는 것 방지)
     const existing = records[idx];
     const merged: PredictionRecord = {
       ...record,
       predictions: record.predictions.map((p) => {
         const old = existing.predictions.find((e) => e.marketType === p.marketType);
-        return old?.actual !== undefined ? { ...p, actual: old.actual } : p;
+        if (old) return old;
+        return p;
       }),
     };
+    // 기존에 없던 새 마켓만 추가
+    for (const ep of existing.predictions) {
+      if (!merged.predictions.some((p) => p.marketType === ep.marketType)) {
+        merged.predictions.push(ep);
+      }
+    }
     records[idx] = merged;
   } else {
     records.push(record);
