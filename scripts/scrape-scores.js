@@ -223,9 +223,17 @@ async function scrape() {
         await new Promise(r => setTimeout(r, 3500));
         const text = await page.evaluate(() => document.body ? document.body.innerText : '');
         if (sp.sport === '축구') {
-          console.log('===SPOJOY_SOCCER_TEXT_START===');
-          console.log(text.slice(0, 4000));
-          console.log('===SPOJOY_SOCCER_TEXT_END===');
+          const links = await page.evaluate(() => {
+            const out = [];
+            document.querySelectorAll('a').forEach(a => {
+              const t = (a.innerText || '').trim();
+              if (/경기결과|비교분석|결과/.test(t) && a.href) out.push(a.href);
+            });
+            return out.slice(0, 20);
+          });
+          console.log('===SPOJOY_LINKS_START===');
+          console.log(links.join('\n'));
+          console.log('===SPOJOY_LINKS_END===');
         }
         const parsed = parseSpojoy(text, sp.sport);
         const before = scores.length;
