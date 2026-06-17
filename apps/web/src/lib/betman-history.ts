@@ -91,3 +91,7 @@ export function getAccuracyStats(): AccuracyStats {
   const rate = total > 0 ? correct / total : 0;
   return { total, correct, rate, aiCorrect, marketCorrect };
 }
+
+export function clearPredictions(): void {
+  localStorage.removeItem(STORAGE_KEY);
+}

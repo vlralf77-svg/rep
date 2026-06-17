@@ -3,7 +3,7 @@ import {
   Box, Typography, Card, CardContent, Chip, Divider, LinearProgress,
   ToggleButtonGroup, ToggleButton, Button,
 } from '@mui/material';
-import { getPredictions, setActualResult, PredictionRecord } from '../lib/betman-history';
+import { getPredictions, setActualResult, clearPredictions, PredictionRecord } from '../lib/betman-history';
 
 // ── 날짜 유틸 ───────────────────────────────────────────────────
 function dayKey(d: Date): string {
@@ -254,6 +254,23 @@ export default function AccuracyDashboard() {
           <GameCard key={r.matchId} record={r} onActualSet={refresh} />
         ))
       )}
+
+      {/* 데이터 초기화 */}
+      <Box sx={{ mt: 4, textAlign: 'center' }}>
+        <Button size="small" color="error" variant="outlined"
+          onClick={() => {
+            if (window.confirm('잘못된 적중률 데이터를 초기화합니다.\n저장된 베팅은 유지됩니다.\n계속하시겠습니까?')) {
+              clearPredictions();
+              refresh();
+            }
+          }}
+          sx={{ fontSize: 11, textTransform: 'none' }}>
+          적중률 데이터 초기화
+        </Button>
+        <Typography variant="caption" color="text.secondary" display="block" mt={0.5}>
+          잘못된 데이터 삭제 시 사용 (저장된 베팅은 유지)
+        </Typography>
+      </Box>
     </Box>
   );
 }
