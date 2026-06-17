@@ -572,10 +572,7 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
 
   const games = (type === 'toto' ? data.toto : data.proto) || [];
   const updatedAt = data.updatedAt ? new Date(data.updatedAt).toLocaleString('ko-KR') : '';
-  const now = Date.now();
-  let sorted = [...games]
-    .filter(g => !g.gameDate || new Date(g.gameDate).getTime() > now)
-    .sort((a, b) => (a.gameDate || '').localeCompare(b.gameDate || ''));
+  let sorted = [...games].sort((a, b) => (a.gameDate || '').localeCompare(b.gameDate || ''));
   if (sportFilter) sorted = sorted.filter(g => g.sport === sportFilter);
 
   return (
