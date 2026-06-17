@@ -115,12 +115,24 @@ async function extractInto(page2, gameName, matchMap) {
       });
     }
     const entry = matchMap.get(key);
-    const seenTypes = new Set(entry.markets.map(m => m.type));
+    // 같은 타입이라도 기준점(line)이 다르면 별도 마켓 (예: 핸디캡 2개 → 핸디캡, 핸디캡2)
+    const seen = new Map(); // baseType -> [lines...]
+    for (const m of entry.markets) {
+      const base = m.type.replace(/\d+$/, '');
+      if (!seen.has(base)) seen.set(base, []);
+      seen.get(base).push(m.line ?? null);
+    }
     for (const mk of mt.markets) {
-      if (!seenTypes.has(mk.type)) {
-        entry.markets.push({ type: mk.type, selections: mk.selections, ...(mk.line != null ? { line: mk.line } : {}) });
-        seenTypes.add(mk.type);
-      }
+      const base = mk.type;
+      const lines = seen.get(base) || [];
+      // 동일 타입+동일 line이면 진짜 중복 → skip
+      if (lines.some(l => l === (mk.line ?? null))) continue;
+      // 동일 타입이 이미 있으면 번호 부여(핸디캡 → 핸디캡2, 핸디캡3...)
+      let type = base;
+      if (lines.length > 0) type = `${base}${lines.length + 1}`;
+      entry.markets.push({ type, selections: mk.selections, ...(mk.line != null ? { line: mk.line } : {}) });
+      if (!seen.has(base)) seen.set(base, []);
+      seen.get(base).push(mk.line ?? null);
     }
   }
 
