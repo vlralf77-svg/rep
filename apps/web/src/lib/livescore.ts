@@ -512,6 +512,30 @@ export interface FetchResult {
   logs: string[];
 }
 
+// 서버(GitHub Actions)에서 Puppeteer로 미리 크롤링해 둔 라이브스코어 JSON.
+// 네이버는 클라이언트 렌더링이라 앱에서 직접 못 긁으므로 서버가 대신 긁어서 저장.
+const LIVESCORES_JSON_URL = 'https://raw.githubusercontent.com/vlralf77-svg/rep/claude%2Fgracious-fermat-c195k9/data/livescores.json';
+
+async function fetchServerScores(logs: string[]): Promise<LiveScore[]> {
+  // 캐시 무력화를 위해 타임스탬프 쿼리 추가
+  const url = `${LIVESCORES_JSON_URL}?t=${Date.now()}`;
+  const { text, ok } = await httpGet(url);
+  if (!ok || !text) {
+    logs.push(`서버JSON: ${ok ? '빈응답' : '실패'}`);
+    return [];
+  }
+  try {
+    const data = JSON.parse(text);
+    const arr: LiveScore[] = Array.isArray(data?.scores) ? data.scores : [];
+    const age = data?.updatedAt ? Math.round((Date.now() - new Date(data.updatedAt).getTime()) / 60000) : -1;
+    logs.push(`서버JSON: ${arr.length}건 (${age >= 0 ? age + '분전' : '시각미상'})${data?.error ? ' err:' + data.error : ''}`);
+    return arr;
+  } catch (e: any) {
+    logs.push(`서버JSON 파싱실패: ${e?.message}`);
+    return [];
+  }
+}
+
 // ── 통합 ─────────────────────────────────────────────────────────
 export async function fetchLiveScores(): Promise<LiveScore[]> {
   const result = await fetchLiveScoresWithLog();
@@ -523,12 +547,20 @@ export async function fetchLiveScoresWithLog(): Promise<FetchResult> {
   const logs: string[] = [];
   logs.push(`isNative: ${isNative}`);
 
-  // 1. spojoy.com (한글 라이브스코어 — betman 매칭에 최적)
+  // 0. 서버 사전 크롤링 JSON (가장 신뢰성 높음 — 네이버 데이터)
   try {
-    const sp = await fetchSpojoy(logs);
-    allScores.push(...sp);
-    logs.push(`1.spojoy: ${sp.length}건`);
-  } catch (e: any) { logs.push(`1.spojoy: 에러 ${e?.message || e}`); }
+    const srv = await fetchServerScores(logs);
+    allScores.push(...srv);
+  } catch (e: any) { logs.push(`0.서버JSON: 에러 ${e?.message || e}`); }
+
+  // 1. spojoy.com (한글 라이브스코어 — betman 매칭에 최적)
+  if (allScores.length === 0) {
+    try {
+      const sp = await fetchSpojoy(logs);
+      allScores.push(...sp);
+      logs.push(`1.spojoy: ${sp.length}건`);
+    } catch (e: any) { logs.push(`1.spojoy: 에러 ${e?.message || e}`); }
+  }
 
   // 2. football-data.org (해외 축구, 영어→한글 매핑)
   if (!allScores.some(s => s.sport === '축구')) {
