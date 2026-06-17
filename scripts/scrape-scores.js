@@ -46,6 +46,12 @@ function parseGame(g) {
     homeScore: hsRaw == null || hsRaw === '' ? 0 : (typeof hsRaw === 'number' ? hsRaw : parseInt(hsRaw) || 0),
     awayScore: asRaw == null || asRaw === '' ? 0 : (typeof asRaw === 'number' ? asRaw : parseInt(asRaw) || 0),
     status, timestamp: ts, sport,
+    // 진단용: 네이버 원본 상태 필드 (매핑 검증 후 제거)
+    _raw: {
+      statusCode: g.statusCode, gameStatus: g.gameStatus, statusNum: g.statusNum,
+      statusInfo: g.statusInfo, statusText: g.statusText, gameStatusInfo: g.gameStatusInfo,
+      cancel: g.cancel, suspended: g.suspended,
+    },
   };
 }
 
