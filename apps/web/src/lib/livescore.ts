@@ -380,25 +380,36 @@ async function fetchLivescoreIn(): Promise<LiveScore[]> {
   return scores;
 }
 
+export interface FetchResult {
+  scores: LiveScore[];
+  logs: string[];
+}
+
 // ── 통합 ─────────────────────────────────────────────────────────
 export async function fetchLiveScores(): Promise<LiveScore[]> {
-  const allScores: LiveScore[] = [];
-  const errors: string[] = [];
+  const result = await fetchLiveScoresWithLog();
+  return result.scores;
+}
 
-  // 1. 네이버 스코어보드 (전체 종목 한번에)
+export async function fetchLiveScoresWithLog(): Promise<FetchResult> {
+  const allScores: LiveScore[] = [];
+  const logs: string[] = [];
+  logs.push(`isNative: ${isNative}`);
+
+  // 1. 네이버 스코어보드
   try {
     const sb = await fetchNaverScoreboard();
     allScores.push(...sb);
-    console.log(`[livescore] 1. 네이버 스코어보드: ${sb.length}건`);
-  } catch (e) { errors.push(`스코어보드: ${e}`); }
+    logs.push(`1.스코어보드: ${sb.length}건`);
+  } catch (e: any) { logs.push(`1.스코어보드: 실패 ${e?.message || e}`); }
 
   // 2. 네이버 API
   if (allScores.length === 0) {
     try {
       const api = await fetchNaverApi();
       allScores.push(...api);
-      console.log(`[livescore] 2. 네이버 API: ${api.length}건`);
-    } catch (e) { errors.push(`API: ${e}`); }
+      logs.push(`2.네이버API: ${api.length}건`);
+    } catch (e: any) { logs.push(`2.네이버API: 실패 ${e?.message || e}`); }
   }
 
   // 3. 네이버 종목별 일정 페이지
@@ -406,8 +417,8 @@ export async function fetchLiveScores(): Promise<LiveScore[]> {
     try {
       const pages = await fetchNaverSchedulePages();
       allScores.push(...pages);
-      console.log(`[livescore] 3. 네이버 일정페이지: ${pages.length}건`);
-    } catch (e) { errors.push(`일정: ${e}`); }
+      logs.push(`3.일정페이지: ${pages.length}건`);
+    } catch (e: any) { logs.push(`3.일정페이지: 실패 ${e?.message || e}`); }
   }
 
   // 4. 야구 없으면 TheSportsDB
@@ -415,8 +426,8 @@ export async function fetchLiveScores(): Promise<LiveScore[]> {
     try {
       const sdb = await fetchSportsDB();
       allScores.push(...sdb);
-      console.log(`[livescore] 4. TheSportsDB: ${sdb.length}건`);
-    } catch (e) { errors.push(`SportsDB: ${e}`); }
+      logs.push(`4.SportsDB: ${sdb.length}건`);
+    } catch (e: any) { logs.push(`4.SportsDB: 실패 ${e?.message || e}`); }
   }
 
   // 5. 축구 없으면 livescore.in
@@ -424,8 +435,8 @@ export async function fetchLiveScores(): Promise<LiveScore[]> {
     try {
       const ls = await fetchLivescoreIn();
       allScores.push(...ls);
-      console.log(`[livescore] 5. livescore.in: ${ls.length}건`);
-    } catch (e) { errors.push(`livescore.in: ${e}`); }
+      logs.push(`5.livescore.in: ${ls.length}건`);
+    } catch (e: any) { logs.push(`5.livescore.in: 실패 ${e?.message || e}`); }
   }
 
   // 6. 축구 여전히 없으면 football-data.org
@@ -433,14 +444,15 @@ export async function fetchLiveScores(): Promise<LiveScore[]> {
     try {
       const fb = await fetchFootballData();
       allScores.push(...fb);
-      console.log(`[livescore] 6. football-data.org: ${fb.length}건`);
-    } catch (e) { errors.push(`football-data: ${e}`); }
+      logs.push(`6.football-data: ${fb.length}건`);
+    } catch (e: any) { logs.push(`6.football-data: 실패 ${e?.message || e}`); }
   }
 
-  if (errors.length > 0) console.warn('[livescore] 에러:', errors.join('; '));
-  console.log(`[livescore] 총 ${allScores.length}건 | LIVE: ${allScores.filter(s => s.status === 'LIVE').length} | FINISHED: ${allScores.filter(s => s.status === 'FINISHED').length} | isNative: ${isNative}`);
+  const summary = `총 ${allScores.length}건 (LIVE:${allScores.filter(s => s.status === 'LIVE').length} FIN:${allScores.filter(s => s.status === 'FINISHED').length})`;
+  logs.push(summary);
+  console.log(`[livescore] ${logs.join(' | ')}`);
 
-  return allScores;
+  return { scores: allScores, logs };
 }
 
 // ── betman 경기 매칭 ─────────────────────────────────────────────

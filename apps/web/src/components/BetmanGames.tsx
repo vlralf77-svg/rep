@@ -594,7 +594,8 @@ function AccuracyPanel() {
 // ── 메인 컴포넌트 ───────────────────────────────────────────────
 export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' | 'proto'; sportFilter?: string }) {
   const { data, isLoading, error } = useBetmanData();
-  const { data: liveScores } = useLiveScores();
+  const { data: liveData } = useLiveScores();
+  const liveScores = liveData?.scores;
   const [picks, setPicks] = useState<BetPick[]>(() => loadPicks());
   const [amount, setAmountState] = useState<string>(() => loadAmount());
   const [savedBets, setSavedBets] = useState<SavedBet[]>(() => getSavedBets());

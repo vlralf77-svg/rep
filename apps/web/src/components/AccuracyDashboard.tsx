@@ -139,7 +139,9 @@ export default function AccuracyDashboard() {
   const [mode, setMode] = useState<FilterMode>('yesterday');
   const [tick, setTick] = useState(0);
   const refresh = () => setTick((t) => t + 1);
-  const { data: liveScores } = useLiveScores();
+  const { data: liveData } = useLiveScores();
+  const liveScores = liveData?.scores;
+  const liveLogs = liveData?.logs;
 
   // 실시간 스코어로 종료된 경기 결과 자동 저장
   useEffect(() => {
@@ -249,6 +251,29 @@ export default function AccuracyDashboard() {
 
   return (
     <Box>
+      {/* 스코어 소스 디버그 */}
+      <Card sx={{ mb: 2, bgcolor: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.1)' }}>
+        <CardContent sx={{ py: 1, px: 1.5, '&:last-child': { pb: 1 } }}>
+          <Typography variant="caption" fontWeight={700} color="text.secondary" display="block" mb={0.5}>
+            📡 실시간 스코어 상태
+          </Typography>
+          {liveLogs ? (
+            liveLogs.map((log, i) => (
+              <Typography key={i} variant="caption" display="block" sx={{
+                fontSize: 10, color: log.includes('실패') ? '#ef5350' : log.includes('0건') ? '#ffb74d' : '#66bb6a',
+                fontFamily: 'monospace',
+              }}>
+                {log}
+              </Typography>
+            ))
+          ) : (
+            <Typography variant="caption" color="text.disabled" sx={{ fontSize: 10 }}>
+              로딩 중...
+            </Typography>
+          )}
+        </CardContent>
+      </Card>
+
       {/* 전날 요약 */}
       <Card sx={{ mb: 2, border: '1px solid rgba(255,215,0,0.35)', bgcolor: 'rgba(255,215,0,0.05)' }}>
         <CardContent>
