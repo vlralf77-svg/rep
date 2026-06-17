@@ -103,7 +103,10 @@ function GameCard({ record, score }: { record: PredictionRecord; score?: LiveSco
           return (
             <Box key={i} sx={{ mb: 0.5, py: 0.5, px: 1, borderRadius: 1, bgcolor: 'rgba(255,255,255,0.03)' }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Chip label={p.marketType} size="small" variant="outlined" sx={{ fontSize: 10, height: 20 }} />
+                <Chip
+                  label={p.marketType + (p.line != null && (p.marketType.includes('핸디캡') || p.marketType.includes('언더오버')) ? ` (${p.line > 0 ? '+' : ''}${p.line})` : '')}
+                  size="small" variant="outlined" sx={{ fontSize: 10, height: 20 }}
+                />
                 <Box sx={{ flex: 1, minWidth: 0 }}>
                   <Typography variant="caption" display="block" noWrap>
                     AI <b style={{ color: actualOrLive ? (actualOrLive === p.aiPick ? '#66bb6a' : '#ef5350') : 'inherit' }}>{p.aiPick}</b>

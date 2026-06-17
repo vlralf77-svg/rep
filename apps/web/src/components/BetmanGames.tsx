@@ -198,7 +198,7 @@ function GameDetail({ game, open, onClose, picks, onTogglePick, score }: {
     ? new Date(game.gameDate).toLocaleString('ko-KR', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', weekday: 'short' })
     : '';
 
-  const order = ['승무패', '승1패', '승패', '전반 승무패', '언더오버', '전반 언더오버', '핸디캡', '전반 핸디캡', 'SUM'];
+  const order = ['승무패', '승1패', '승패', '전반 승무패', '언더오버', '전반 언더오버', '핸디캡', '핸디캡2', '전반 핸디캡', 'SUM'];
   const sorted = [...game.markets].sort((a, b) => {
     const ia = order.indexOf(a.type); const ib = order.indexOf(b.type);
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
