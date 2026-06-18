@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-18T04:53:13.251Z",
+  "updatedAt": "2026-06-18T09:39:36.592Z",
   "count": 86,
   "scores": [
     {
@@ -180,9 +180,9 @@
     {
       "homeTeam": "고려대",
       "awayTeam": "상명대",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 81,
+      "awayScore": 49,
+      "status": "FINISHED",
       "timestamp": 1781798400000,
       "sport": "농구"
     },
@@ -191,45 +191,50 @@
       "awayTeam": "한화",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1781807400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "두산",
       "awayTeam": "KT",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1781807400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "KIA",
       "awayTeam": "LG",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1781807400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "SSG",
       "awayTeam": "롯데",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1781807400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "삼성",
       "awayTeam": "키움",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1781807400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "FC섭돌이",
@@ -697,8 +702,8 @@
       "homeTeam": "체코",
       "awayTeam": "미국",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1781769600000,
       "sport": "배구"
     },
