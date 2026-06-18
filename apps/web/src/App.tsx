@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Box } from '@mui/material';
 import DashboardPage from './pages/DashboardPage';
 import MatchDetailPage from './pages/MatchDetailPage';
@@ -6,7 +6,7 @@ import Disclaimer from './components/Disclaimer';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <Box sx={{ flex: 1 }}>
           <Routes>
@@ -16,6 +16,6 @@ export default function App() {
         </Box>
         <Disclaimer />
       </Box>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
