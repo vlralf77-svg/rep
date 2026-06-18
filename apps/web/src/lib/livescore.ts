@@ -652,11 +652,17 @@ export async function fetchLiveScoresWithLog(): Promise<FetchResult> {
   }
   if (halfMerged) logs.push(`전반스코어 병합: ${halfMerged}건`);
 
-  const summary = `총 ${allScores.length}건 (LIVE:${allScores.filter(s => s.status === 'LIVE').length} FIN:${allScores.filter(s => s.status === 'FINISHED').length})`;
+  // 중복 제거 (같은 경기가 여러 소스에서 다른 타임스탬프로 들어올 수 있음)
+  const deduped = deduplicateScores(allScores);
+  if (deduped.length < allScores.length) {
+    logs.push(`중복제거: ${allScores.length} → ${deduped.length}건`);
+  }
+
+  const summary = `총 ${deduped.length}건 (LIVE:${deduped.filter(s => s.status === 'LIVE').length} FIN:${deduped.filter(s => s.status === 'FINISHED').length})`;
   logs.push(summary);
   console.log(`[livescore] ${logs.join(' | ')}`);
 
-  return { scores: allScores, logs };
+  return { scores: deduped, logs };
 }
 
 // ── betman 경기 매칭 ─────────────────────────────────────────────
@@ -699,12 +705,31 @@ function kstDayKey(ts: number): string {
   return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
 }
 
-// 같은 경기(같은 종목·양팀·시간 근접)인지 판별 — 신선한 데이터로 오래된 항목 대체용
+// 같은 경기(같은 종목·양팀·같은 KST 날짜)인지 판별 — 중복 제거용
 function isSameGame(a: LiveScore, b: LiveScore): boolean {
   if (a.sport !== b.sport) return false;
-  if (Math.abs(a.timestamp - b.timestamp) > 6 * 60 * 60 * 1000) return false;
+  if (kstDayKey(a.timestamp) !== kstDayKey(b.timestamp)) return false;
   return (teamMatch(a.homeTeam, b.homeTeam) && teamMatch(a.awayTeam, b.awayTeam))
     || (teamMatch(a.homeTeam, b.awayTeam) && teamMatch(a.awayTeam, b.homeTeam));
+}
+
+// 상태 우선순위: LIVE > FINISHED > SCHEDULED
+function statusRank(s: LiveScore['status']): number {
+  return s === 'LIVE' ? 0 : s === 'FINISHED' ? 1 : 2;
+}
+
+// 중복 경기 제거 — LIVE/FINISHED를 SCHEDULED보다 우선
+function deduplicateScores(scores: LiveScore[]): LiveScore[] {
+  const result: LiveScore[] = [];
+  for (const s of scores) {
+    const idx = result.findIndex(r => isSameGame(r, s));
+    if (idx < 0) {
+      result.push(s);
+    } else if (statusRank(s.status) < statusRank(result[idx].status)) {
+      result[idx] = s;
+    }
+  }
+  return result;
 }
 
 export function matchScore(game: MatchableGame, scores: LiveScore[]): LiveScore | null {
