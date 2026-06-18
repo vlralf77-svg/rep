@@ -664,37 +664,47 @@ interface MatchableGame {
   sport?: string;
 }
 
+// KST 기준 날짜 키 (YYYY-MM-DD)
+function kstDayKey(ts: number): string {
+  const d = new Date(ts + 9 * 60 * 60 * 1000);
+  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
+}
+
 export function matchScore(game: MatchableGame, scores: LiveScore[]): LiveScore | null {
   if (!game.gameDate) return null;
   const gameTs = new Date(game.gameDate).getTime();
+  const gameDay = kstDayKey(gameTs);
   const sameSport = (s: LiveScore) => !game.sport || s.sport === game.sport;
 
-  // 같은 팀 경기가 여러 개 있을 수 있으므로 (연속 시리즈)
-  // 시간이 가장 가까운 경기를 선택
-  let best: LiveScore | null = null;
-  let bestDiff = Infinity;
-
+  // 양팀명이 일치하는 후보 수집 (연속 시리즈로 같은 팀 경기가 여럿일 수 있음)
+  interface Cand { score: LiveScore; diff: number; sameDay: boolean; }
+  const cands: Cand[] = [];
   for (const s of scores) {
+    if (!sameSport(s)) continue;
     const diff = Math.abs(s.timestamp - gameTs);
     if (diff > 12 * 60 * 60 * 1000) continue;
-    if (!sameSport(s)) continue;
 
-    let matched = false;
-    let flipped = false;
-    if (teamMatch(game.homeTeam, s.homeTeam) && teamMatch(game.awayTeam, s.awayTeam)) {
-      matched = true;
-    } else if (teamMatch(game.homeTeam, s.awayTeam) && teamMatch(game.awayTeam, s.homeTeam)) {
-      matched = true;
-      flipped = true;
-    }
+    let flipped: boolean | null = null;
+    if (teamMatch(game.homeTeam, s.homeTeam) && teamMatch(game.awayTeam, s.awayTeam)) flipped = false;
+    else if (teamMatch(game.homeTeam, s.awayTeam) && teamMatch(game.awayTeam, s.homeTeam)) flipped = true;
+    if (flipped === null) continue;
 
-    if (matched && diff < bestDiff) {
-      bestDiff = diff;
-      best = flipped ? orientScore(s) : s;
-    }
+    cands.push({ score: flipped ? orientScore(s) : s, diff, sameDay: kstDayKey(s.timestamp) === gameDay });
   }
 
-  if (best) return best;
+  if (cands.length > 0) {
+    // 우선순위: ① 같은 KST 날짜 ② LIVE 상태(진행중 우선) ③ 시간 근접
+    const rank = (c: Cand) => (c.sameDay ? 0 : 1000) + (c.score.status === 'LIVE' ? -1 : 0);
+    cands.sort((a, b) => {
+      const ra = rank(a), rb = rank(b);
+      if (ra !== rb) return ra - rb;
+      return a.diff - b.diff;
+    });
+    return cands[0].score;
+  }
+
+  let best: LiveScore | null = null;
+  let bestDiff = Infinity;
 
   // 폴백: 한쪽 팀명만 매칭 + 종목 + 시간 3시간 이내 (가장 가까운 것)
   bestDiff = Infinity;
