@@ -7,10 +7,10 @@ import AccuracyDashboard from '../components/AccuracyDashboard';
 
 const SPORT_FILTERS = [
   { value: '', label: '전체' },
-  { value: '축구', label: '⚽ 축구' },
-  { value: '야구', label: '⚾ 야구' },
-  { value: '배구', label: '🏐 배구' },
-  { value: '농구', label: '🏀 농구' },
+  { value: '축구', label: '⚽' },
+  { value: '야구', label: '⚾' },
+  { value: '배구', label: '🏐' },
+  { value: '농구', label: '🏀' },
 ];
 
 export default function DashboardPage() {
@@ -37,7 +37,7 @@ export default function DashboardPage() {
               exclusive
               onChange={(_, v) => { if (v !== null) setSport(v); }}
               size="small"
-              sx={{ '& .MuiToggleButton-root': { px: 2, py: 0.5, fontSize: 13, textTransform: 'none' } }}
+              sx={{ '& .MuiToggleButton-root': { px: 2, py: 0.5, fontSize: 18, textTransform: 'none' } }}
             >
               {SPORT_FILTERS.map((f) => (
                 <ToggleButton key={f.value} value={f.value}>{f.label}</ToggleButton>
