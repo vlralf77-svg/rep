@@ -3,7 +3,7 @@ import {
   Box, Typography, Card, CardContent, Chip, Divider, LinearProgress,
   ToggleButtonGroup, ToggleButton, Button,
 } from '@mui/material';
-import { getPredictions, setActualResult, clearPredictions, PredictionRecord } from '../lib/betman-history';
+import { getPredictions, setActualResult, clearPredictions, PredictionRecord, getModelAccuracyStats } from '../lib/betman-history';
 import { useLiveScores } from '../api/hooks';
 import { LiveScore, determineResult, matchScore } from '../lib/livescore';
 
@@ -359,6 +359,83 @@ export default function AccuracyDashboard() {
           </CardContent>
         </Card>
       )}
+
+      {/* 모델별 적중률 */}
+      {(() => {
+        const modelStats = getModelAccuracyStats();
+        if (modelStats.length === 0) return null;
+        const modelColors: Record<string, string> = { 'De-Vig': '#4fc3f7', 'Platt': '#66bb6a', 'D-C': '#ffa726', 'Pyth': '#ab47bc', 'Meta': '#ef5350' };
+        return (
+          <Card sx={{ mb: 2 }}>
+            <CardContent>
+              <Typography variant="subtitle1" fontWeight={700} mb={1.5}>📊 모델별 적중률</Typography>
+              {modelStats.map(ms => (
+                <StatBar key={ms.modelName} label={ms.modelName} correct={ms.correct} total={ms.total}
+                  color={modelColors[ms.modelName] || '#78909c'} />
+              ))}
+            </CardContent>
+          </Card>
+        );
+      })()}
+
+      {/* 수익률 시뮬레이션 */}
+      {(() => {
+        const records = getPredictions();
+        const resolved = records.flatMap(r => r.predictions.filter(p => p.actual !== undefined && p.odds));
+        if (resolved.length === 0) return null;
+        const FLAT = 10000;
+        let totalWagered = 0, totalReturned = 0;
+        let valueWagered = 0, valueReturned = 0;
+        for (const p of resolved) {
+          totalWagered += FLAT;
+          if (p.actual === p.aiPick) totalReturned += FLAT * (p.odds || 0);
+          if ((p.aiProb * (p.odds || 0)) > 1.03) {
+            valueWagered += FLAT;
+            if (p.actual === p.aiPick) valueReturned += FLAT * (p.odds || 0);
+          }
+        }
+        const roi = totalWagered > 0 ? ((totalReturned - totalWagered) / totalWagered) * 100 : 0;
+        const valueRoi = valueWagered > 0 ? ((valueReturned - valueWagered) / valueWagered) * 100 : 0;
+        const fmt = (n: number) => Math.floor(n).toLocaleString('ko-KR') + '원';
+        return (
+          <Card sx={{ mb: 2, border: '1px solid rgba(79,195,247,0.3)' }}>
+            <CardContent>
+              <Typography variant="subtitle1" fontWeight={700} mb={1.5}>💰 수익률 시뮬레이션</Typography>
+              <Typography variant="caption" color="text.secondary" display="block" mb={1}>
+                매 경기 {fmt(FLAT)} 정액 베팅 기준
+              </Typography>
+              <Box sx={{ mb: 1.5 }}>
+                <Typography variant="body2" fontWeight={600} mb={0.5}>전체 AI 추천</Typography>
+                <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                  <Typography variant="caption">투자: {fmt(totalWagered)}</Typography>
+                  <Typography variant="caption">회수: {fmt(totalReturned)}</Typography>
+                  <Typography variant="caption" sx={{ color: roi >= 0 ? '#66bb6a' : '#ef5350' }}>
+                    ROI: {roi >= 0 ? '+' : ''}{roi.toFixed(1)}%
+                  </Typography>
+                  <Typography variant="caption" sx={{ color: totalReturned - totalWagered >= 0 ? '#66bb6a' : '#ef5350' }}>
+                    손익: {totalReturned - totalWagered >= 0 ? '+' : ''}{fmt(totalReturned - totalWagered)}
+                  </Typography>
+                </Box>
+              </Box>
+              {valueWagered > 0 && (
+                <Box>
+                  <Typography variant="body2" fontWeight={600} mb={0.5}>가치 베팅만 (EV {'>'} 1.03)</Typography>
+                  <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                    <Typography variant="caption">투자: {fmt(valueWagered)}</Typography>
+                    <Typography variant="caption">회수: {fmt(valueReturned)}</Typography>
+                    <Typography variant="caption" sx={{ color: valueRoi >= 0 ? '#66bb6a' : '#ef5350' }}>
+                      ROI: {valueRoi >= 0 ? '+' : ''}{valueRoi.toFixed(1)}%
+                    </Typography>
+                    <Typography variant="caption" sx={{ color: valueReturned - valueWagered >= 0 ? '#66bb6a' : '#ef5350' }}>
+                      손익: {valueReturned - valueWagered >= 0 ? '+' : ''}{fmt(valueReturned - valueWagered)}
+                    </Typography>
+                  </Box>
+                </Box>
+              )}
+            </CardContent>
+          </Card>
+        );
+      })()}
 
       {/* 경기 목록 필터 */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>

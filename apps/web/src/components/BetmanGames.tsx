@@ -18,7 +18,9 @@ import {
   getAccuracyStats,
   PredictionRecord,
   MarketPrediction,
+  getModelAccuracyStats,
 } from '../lib/betman-history';
+import { saveOddsSnapshot, getOddsHistory, detectSharpMove } from '../lib/betman-odds-history';
 import {
   loadPicks, savePicks, loadAmount, saveAmount,
   getSavedBets, addSavedBet, removeSavedBet, SavedBet,
@@ -169,6 +171,8 @@ function MarketBlock({
   const a = analyzeMarket(market);
   const aiPick = a.selections[a.aiBestIdx];
   const value = a.valueIdx >= 0 ? a.selections[a.valueIdx] : null;
+  const oddsHistory = getOddsHistory(matchId, market.type);
+  const sharpMove = detectSharpMove(oddsHistory);
 
   const handleActual = (label: string) => {
     setActualResult(matchId, market.type, label);
@@ -220,6 +224,35 @@ function MarketBlock({
             ? `💰 가치 베팅: ${value.label} (배당 ${value.odds.toFixed(2)}, 기대값 ${value.ev.toFixed(2)})`
             : '💤 가치 베팅 없음'}
         </Typography>
+        {aiPick.kelly && aiPick.kelly.full > 0 && (
+          <Typography variant="caption" display="block" sx={{ color: '#ce93d8' }}>
+            {'🎲 켈리: 시드의 '}
+            {(aiPick.kelly.full * 100).toFixed(1)}% (풀) / {(aiPick.kelly.half * 100).toFixed(1)}% (하프)
+          </Typography>
+        )}
+        {sharpMove && (
+          <Typography variant="caption" display="block" sx={{ color: sharpMove.direction === 'sharp' ? '#ef5350' : '#78909c' }}>
+            {sharpMove.direction === 'up' ? '📈' : sharpMove.direction === 'down' ? '📉' : '🔄'}
+            {sharpMove.direction === 'sharp'
+              ? ` 샤프 무브: ${sharpMove.label}`
+              : sharpMove.direction === 'up'
+                ? ` 배당 상승 +${sharpMove.magnitude.toFixed(1)}%`
+                : ` 배당 하락 -${sharpMove.magnitude.toFixed(1)}%`}
+          </Typography>
+        )}
+        {oddsHistory.length > 1 && (
+          <Box sx={{ display: 'flex', gap: '1px', alignItems: 'flex-end', height: 16, mt: 0.5 }}>
+            {oddsHistory.slice(-10).map((snap, si) => {
+              const mainOdd = snap.odds[0] || 1;
+              const allOdds = oddsHistory.map(s => s.odds[0] || 1);
+              const min = Math.min(...allOdds);
+              const max = Math.max(...allOdds);
+              const range = max - min || 1;
+              const h = 4 + ((mainOdd - min) / range) * 12;
+              return <Box key={si} sx={{ width: 4, height: h, bgcolor: 'rgba(79,195,247,0.5)', borderRadius: 0.5 }} />;
+            })}
+          </Box>
+        )}
         <Typography variant="caption" display="block" color="text.disabled" sx={{ fontSize: 10, mt: 0.3 }}>
           ░ 시장(배당 역산) · ▓ AI(메타 블렌더) — 배당 박스를 탭하면 슬립에 추가
         </Typography>
@@ -304,6 +337,12 @@ function GameDetail({ game, open, onClose, picks, onTogglePick, score }: {
         aiProb: a.selections[a.aiBestIdx].aiProb,
         marketPick: a.selections[a.marketBestIdx].label,
         line: m.line,
+        odds: a.selections[a.aiBestIdx].odds,
+        modelPicks: a.models.map(model => ({
+          modelName: model.shortName,
+          pick: model.probs[model.bestIdx] > 0 ? m.selections[model.bestIdx]?.label || '' : '',
+          prob: model.probs[model.bestIdx],
+        })),
       };
     });
     savePredictions({ matchId: game.matchId, homeTeam: game.homeTeam, awayTeam: game.awayTeam, gameDate: game.gameDate, savedAt: new Date().toISOString(), predictions });
@@ -488,6 +527,38 @@ function BetSlip({ picks, amount, setAmount, onRemove, onClear, onSave }: {
   const payout = Math.floor(inputAmount * combinedOdds);
   const profit = payout - inputAmount;
 
+  // 콤보 분석
+  const leagueCounts = new Map<string, number>();
+  for (const p of picks) {
+    const key = p.marketType;
+    leagueCounts.set(key, (leagueCounts.get(key) || 0) + 1);
+  }
+
+  // AI 확률 기반 콤보 EV (simplified — we don't have aiProb in BetPick, estimate from odds)
+  const comboProbEstimate = picks.reduce((acc, p) => acc * (1 / p.odds * 0.92), 1); // rough de-vig
+  const comboEV = comboProbEstimate * combinedOdds;
+
+  // 같은 리그 체크 — picks don't have league, but check if same matchId appears
+  const matchCounts = new Map<string, number>();
+  for (const p of picks) matchCounts.set(p.matchId, (matchCounts.get(p.matchId) || 0) + 1);
+
+  // Kelly for combo
+  const comboKelly = combinedOdds > 1
+    ? Math.max(0, (comboProbEstimate * (combinedOdds - 1) - (1 - comboProbEstimate)) / (combinedOdds - 1))
+    : 0;
+
+  // Find weakest pick (lowest implied prob = highest odds)
+  const weakestIdx = picks.length > 2
+    ? picks.reduce((maxI, p, i, arr) => p.odds > arr[maxI].odds ? i : maxI, 0)
+    : -1;
+  const withoutWeakest = weakestIdx >= 0
+    ? picks.filter((_, i) => i !== weakestIdx)
+    : [];
+  const altCombinedOdds = withoutWeakest.reduce((acc, p) => acc * p.odds, 1);
+  const altComboProb = withoutWeakest.reduce((acc, p) => acc * (1 / p.odds * 0.92), 1);
+  const altComboEV = altComboProb * altCombinedOdds;
+  const suggestRemove = weakestIdx >= 0 && altComboEV > comboEV + 0.02;
+
   const formatKRW = (n: number) => n.toLocaleString('ko-KR') + '원';
 
   return (
@@ -588,6 +659,31 @@ function BetSlip({ picks, amount, setAmount, onRemove, onClear, onSave }: {
               '&:hover': { bgcolor: '#e6c200' } }}>
             💾 이 베팅 저장하기
           </Button>
+
+          {/* 콤보 분석 */}
+          {picks.length >= 2 && (
+            <Box sx={{ mt: 1.2, p: 1, borderRadius: 1.5, bgcolor: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
+              <Typography variant="caption" fontWeight={700} display="block" mb={0.5}>📊 콤보 분석</Typography>
+              {Array.from(matchCounts.entries()).some(([, c]) => c > 1) && (
+                <Typography variant="caption" display="block" sx={{ color: '#ffb74d' }}>
+                  {'⚠️ 같은 경기에서 복수 선택 — 상관관계 주의'}
+                </Typography>
+              )}
+              <Typography variant="caption" display="block" color="text.secondary">
+                콤보 확률 (추정): {(comboProbEstimate * 100).toFixed(2)}% · 콤보 EV: {comboEV.toFixed(3)}
+              </Typography>
+              {comboKelly > 0 && (
+                <Typography variant="caption" display="block" sx={{ color: '#ce93d8' }}>
+                  {'🎲 콤보 켈리: 시드의 '}{(comboKelly * 100).toFixed(1)}% (풀) / {(comboKelly * 50).toFixed(1)}% (하프)
+                </Typography>
+              )}
+              {suggestRemove && (
+                <Typography variant="caption" display="block" sx={{ color: '#66bb6a', mt: 0.3 }}>
+                  {'💡 최적 조합: '}{picks[weakestIdx].label} ({picks[weakestIdx].homeTeam} vs {picks[weakestIdx].awayTeam}) 제거 시 EV 개선 ({comboEV.toFixed(3)} → {altComboEV.toFixed(3)})
+                </Typography>
+              )}
+            </Box>
+          )}
         </Box>
       </Collapse>
     </Box>
@@ -722,10 +818,24 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
           aiProb: a.selections[a.aiBestIdx].aiProb,
           marketPick: a.selections[a.marketBestIdx].label,
           line: m.line,
+          odds: a.selections[a.aiBestIdx].odds,
+          modelPicks: a.models.map(model => ({
+            modelName: model.shortName,
+            pick: model.probs[model.bestIdx] > 0 ? m.selections[model.bestIdx]?.label || '' : '',
+            prob: model.probs[model.bestIdx],
+          })),
         };
       });
       savePredictions({ matchId: game.matchId, homeTeam: game.homeTeam, awayTeam: game.awayTeam, gameDate: game.gameDate, sport: game.sport, savedAt: new Date().toISOString(), predictions });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data?.updatedAt]);
+
+  // 배당 변동 저장
+  useEffect(() => {
+    if (!data) return;
+    const allGames = [...(data.proto || []), ...(data.toto || [])];
+    saveOddsSnapshot(allGames);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data?.updatedAt]);
 
