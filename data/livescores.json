@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-06-18T12:26:49.451Z",
-  "count": 89,
+  "updatedAt": "2026-06-18T13:56:30.179Z",
+  "count": 87,
   "scores": [
     {
       "homeTeam": "신시내티",
@@ -187,50 +187,46 @@
       "sport": "농구"
     },
     {
-      "homeTeam": "KIA",
-      "awayTeam": "LG",
-      "homeScore": 3,
-      "awayScore": 2,
-      "status": "LIVE",
-      "timestamp": 1781807400000,
-      "sport": "야구",
-      "inning": "8회말"
-    },
-    {
-      "homeTeam": "SSG",
-      "awayTeam": "롯데",
-      "homeScore": 2,
-      "awayScore": 2,
-      "status": "LIVE",
-      "timestamp": 1781807400000,
-      "sport": "야구",
-      "inning": "10회초"
-    },
-    {
-      "homeTeam": "삼성",
-      "awayTeam": "키움",
-      "homeScore": 3,
-      "awayScore": 3,
-      "status": "LIVE",
-      "timestamp": 1781807400000,
-      "sport": "야구",
-      "inning": "9회초"
-    },
-    {
       "homeTeam": "NC",
       "awayTeam": "한화",
       "homeScore": 6,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1781807400000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "두산",
       "awayTeam": "KT",
       "homeScore": 2,
       "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1781807400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "KIA",
+      "awayTeam": "LG",
+      "homeScore": 4,
+      "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1781807400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "SSG",
+      "awayTeam": "롯데",
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1781807400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "삼성",
+      "awayTeam": "키움",
+      "homeScore": 4,
+      "awayScore": 3,
       "status": "FINISHED",
       "timestamp": 1781807400000,
       "sport": "야구"
@@ -501,30 +497,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n25\n25\n18\n12",
-      "awayTeam": "중국",
-      "homeScore": 12,
-      "awayScore": 30,
+      "homeTeam": "Q\n18\n22\n6\n15\n13\n11",
+      "awayTeam": "포르투갈",
+      "homeScore": 19,
+      "awayScore": 15,
       "status": "FINISHED",
-      "timestamp": 1781785566274,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n16\n13\n21\n18",
-      "awayTeam": "Tianjin Pioneers U21",
-      "homeScore": 11,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1781785566274,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n29\n27\n22\n25",
-      "awayTeam": "Beijing Beikong U21\nQ",
-      "homeScore": 9,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1781785566274,
+      "timestamp": 1781790952688,
       "sport": "농구"
     },
     {
@@ -745,8 +723,8 @@
     {
       "homeTeam": "세르비아",
       "awayTeam": "이탈리아",
-      "homeScore": 0,
-      "awayScore": 1,
+      "homeScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1781784000000,
       "sport": "배구"
@@ -755,7 +733,7 @@
       "homeTeam": "벨기에",
       "awayTeam": "브라질",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1781787600000,
       "sport": "배구"
