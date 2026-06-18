@@ -166,6 +166,56 @@ function parseSpojoy(text, sportName) {
   return out;
 }
 
+// scoreman123.com 파싱: innerText + innerHTML 모두 활용
+function parseScoreman(text, html, sportName) {
+  const out = [];
+  // 패턴 1: innerText에서 "팀A N : N 팀B" 또는 "팀A N - N 팀B"
+  const re1 = /([가-힣A-Za-z][가-힣A-Za-z0-9\s.]{1,20}?)\s+(\d{1,3})\s*[:：\-]\s*(\d{1,3})\s+([가-힣A-Za-z][가-힣A-Za-z0-9\s.]{1,20})/g;
+  let m;
+  while ((m = re1.exec(text)) !== null) {
+    const home = m[1].trim(), away = m[4].trim();
+    if (home.length < 2 || away.length < 2) continue;
+    if (/^\d+$/.test(home) || /^\d+$/.test(away)) continue;
+    const hs = parseInt(m[2]), as = parseInt(m[3]);
+    let status = 'SCHEDULED';
+    const ctx = text.slice(Math.max(0, m.index - 80), m.index + m[0].length + 80);
+    if (/종료|END|FT|경기종료|FINAL/i.test(ctx)) status = 'FINISHED';
+    else if (/진행|LIVE|경기중|(\d+회)|(\d+[분'])|전반|후반|하프|1st|2nd|SET|세트/i.test(ctx)) status = 'LIVE';
+    else if (hs > 0 || as > 0) status = 'LIVE';
+    // 이닝/분 추출
+    let inning, minute;
+    if (sportName === '야구') {
+      const im = ctx.match(/(\d+)회\s*(초|말)/);
+      if (im) inning = `${im[1]}회${im[2]}`;
+    } else if (sportName === '축구') {
+      const mm = ctx.match(/(\d+)[분']/);
+      if (mm) minute = mm[1];
+    }
+    const entry = { homeTeam: home, awayTeam: away, homeScore: hs, awayScore: as, status, timestamp: Date.now(), sport: sportName };
+    if (inning) entry.inning = inning;
+    if (minute) entry.minute = minute;
+    out.push(entry);
+  }
+
+  // 패턴 2: HTML에서 data- 속성 또는 구조화된 클래스 추출
+  const scoreBlocks = html.match(/<[^>]+class="[^"]*(?:game|match|score|item)[^"]*"[^>]*>[\s\S]*?<\/(?:div|li|tr)>/gi) || [];
+  for (const block of scoreBlocks) {
+    const teams = block.match(/>([가-힣]{2,10})</g)?.map(t => t.slice(1)) || [];
+    const nums = block.match(/>(\d{1,3})</g)?.map(n => parseInt(n.slice(1))) || [];
+    if (teams.length >= 2 && nums.length >= 2) {
+      const key = `${teams[0]}|${teams[1]}`;
+      if (!out.some(o => `${o.homeTeam}|${o.awayTeam}` === key)) {
+        let status = 'SCHEDULED';
+        if (/종료|end|final/i.test(block)) status = 'FINISHED';
+        else if (/진행|live|경기중/i.test(block)) status = 'LIVE';
+        else if (nums[0] > 0 || nums[1] > 0) status = 'LIVE';
+        out.push({ homeTeam: teams[0], awayTeam: teams[1], homeScore: nums[0], awayScore: nums[1], status, timestamp: Date.now(), sport: sportName });
+      }
+    }
+  }
+  return out;
+}
+
 async function scrape() {
   console.log('[scores] 브라우저 시작...');
   const browser = await puppeteer.launch({
@@ -237,6 +287,27 @@ async function scrape() {
       console.log(`[scores] 방문: ${url}`);
       await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 }).catch(e => console.log('[warn]', e.message));
       await new Promise(r => setTimeout(r, 2500));
+    }
+
+    // ── scoreman123.com (야구/축구/배구/농구 실시간) ──
+    const scoremanPages = [
+      { path: '/baseball', sport: '야구' },
+      { path: '/soccer', sport: '축구' },
+      { path: '/volleyball', sport: '배구' },
+      { path: '/basketball', sport: '농구' },
+    ];
+    for (const sp of scoremanPages) {
+      try {
+        console.log(`[scores] scoreman ${sp.sport} 방문...`);
+        await page.goto(`https://m.scoreman123.com${sp.path}`, { waitUntil: 'networkidle2', timeout: 25000 }).catch(e => console.log('[warn scoreman]', e.message));
+        await new Promise(r => setTimeout(r, 3000));
+        const text = await page.evaluate(() => document.body ? document.body.innerText : '');
+        const html = await page.evaluate(() => document.body ? document.body.innerHTML : '');
+        const parsed = parseScoreman(text, html, sp.sport);
+        const before = scores.length;
+        parsed.forEach(addScore);
+        console.log(`[scores] scoreman ${sp.sport}: +${scores.length - before} (파싱 ${parsed.length})`);
+      } catch (e) { console.log('[warn scoreman]', e.message); }
     }
 
     // ── spojoy.com (네이버에 없는 종목/경기 보완 + 축구 전반 스코어) ──

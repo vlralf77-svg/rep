@@ -483,6 +483,74 @@ async function fetchSpojoy(logs: string[]): Promise<LiveScore[]> {
   return scores;
 }
 
+// ── scoreman123.com (야구/축구/배구/농구 실시간) ──────────────────
+async function fetchScoreman(logs: string[]): Promise<LiveScore[]> {
+  const scores: LiveScore[] = [];
+  const pages = [
+    { path: '/baseball', sport: '야구' },
+    { path: '/soccer', sport: '축구' },
+    { path: '/volleyball', sport: '배구' },
+    { path: '/basketball', sport: '농구' },
+  ];
+  for (const sp of pages) {
+    const { text, ok } = await httpGet(`https://m.scoreman123.com${sp.path}`);
+    if (!ok || !text) {
+      logs.push(`scoreman ${sp.sport}: ${ok ? '빈' : '실패'}`);
+      continue;
+    }
+    // JSON 데이터 블록 추출 시도
+    const jsonMatch = text.match(/<script[^>]*id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/)
+      || text.match(/window\.__(?:NUXT|DATA|INITIAL_STATE)__\s*=\s*({[\s\S]*?})\s*[;<]/)
+      || text.match(/var\s+(?:gameList|matchData|liveData)\s*=\s*(\[[\s\S]*?\]);/);
+    if (jsonMatch) {
+      try {
+        const data = JSON.parse(jsonMatch[1]);
+        const items = Array.isArray(data) ? data
+          : data?.props?.pageProps?.matches || data?.props?.pageProps?.games
+          || data?.matches || data?.games || data?.list || [];
+        for (const g of (Array.isArray(items) ? items : [])) {
+          const home = g.homeTeam || g.home || g.homeName || g.homeTeamName || '';
+          const away = g.awayTeam || g.away || g.awayName || g.awayTeamName || '';
+          if (!home || !away) continue;
+          const hs = g.homeScore ?? g.homeGoal ?? 0;
+          const as_ = g.awayScore ?? g.awayGoal ?? 0;
+          const st = (g.status || g.state || '').toString();
+          scores.push({
+            homeTeam: String(home), awayTeam: String(away),
+            homeScore: typeof hs === 'number' ? hs : parseInt(hs) || 0,
+            awayScore: typeof as_ === 'number' ? as_ : parseInt(as_) || 0,
+            status: /종료|fin|ft|end/i.test(st) ? 'FINISHED' : /진행|live|playing/i.test(st) ? 'LIVE' : 'SCHEDULED',
+            timestamp: g.startTime ? new Date(g.startTime).getTime() : Date.now(),
+            sport: sp.sport,
+            inning: sp.sport === '야구' ? (g.inning || g.statusInfo || undefined) : undefined,
+            minute: sp.sport === '축구' ? (g.minute || undefined) : undefined,
+          });
+        }
+        logs.push(`scoreman ${sp.sport} JSON: ${scores.length}건`);
+        continue;
+      } catch { /* fall through to text parsing */ }
+    }
+    // 텍스트 파싱: "팀A N : N 팀B"
+    const re = /([가-힣A-Za-z][가-힣A-Za-z0-9\s.]{1,20}?)\s+(\d{1,3})\s*[:：\-]\s*(\d{1,3})\s+([가-힣A-Za-z][가-힣A-Za-z0-9\s.]{1,20})/g;
+    let m, cnt = 0;
+    while ((m = re.exec(text)) !== null && cnt < 50) {
+      const home = m[1].trim(), away = m[4].trim();
+      if (home.length < 2 || away.length < 2) continue;
+      if (/^\d+$/.test(home) || /^\d+$/.test(away)) continue;
+      const hs = parseInt(m[2]), as_ = parseInt(m[3]);
+      const ctx = text.slice(Math.max(0, m.index - 60), m.index + m[0].length + 60);
+      let status: LiveScore['status'] = 'SCHEDULED';
+      if (/종료|END|FT|FINAL/i.test(ctx)) status = 'FINISHED';
+      else if (/진행|LIVE|경기중|\d+회|\d+[분']|전반|후반|SET/i.test(ctx)) status = 'LIVE';
+      else if (hs > 0 || as_ > 0) status = 'LIVE';
+      scores.push({ homeTeam: home, awayTeam: away, homeScore: hs, awayScore: as_, status, timestamp: Date.now(), sport: sp.sport });
+      cnt++;
+    }
+    logs.push(`scoreman ${sp.sport} 텍스트: ${cnt}건`);
+  }
+  return scores;
+}
+
 // ── livescore.in 스크래핑 (축구 폴백) ─────────────────────────────
 async function fetchLivescoreIn(): Promise<LiveScore[]> {
   const scores: LiveScore[] = [];
@@ -586,6 +654,13 @@ export async function fetchLiveScoresWithLog(): Promise<FetchResult> {
       logs.push(`1.spojoy: ${sp.length}건`);
     } catch (e: any) { logs.push(`1.spojoy: 에러 ${e?.message || e}`); }
   }
+
+  // 1b. scoreman123.com (야구/축구/배구/농구 한글 실시간)
+  try {
+    const sm = await fetchScoreman(logs);
+    allScores.push(...sm);
+    logs.push(`1b.scoreman: ${sm.length}건`);
+  } catch (e: any) { logs.push(`1b.scoreman: 에러 ${e?.message || e}`); }
 
   // 2. football-data.org (해외 축구, 영어→한글 매핑 + 전반 스코어 제공)
   //    서버 데이터가 오래됐으면 무조건 가져와서 우선 사용
