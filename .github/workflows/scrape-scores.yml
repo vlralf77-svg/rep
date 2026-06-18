@@ -2,7 +2,7 @@ name: Scrape Live Scores
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 # 동시 실행 방지 (스코어 잡끼리)
