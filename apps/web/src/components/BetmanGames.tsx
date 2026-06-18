@@ -9,7 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { useBetmanData, useLiveScores } from '../api/hooks';
 import { BetmanGame, BetmanMarket } from '../lib/api';
-import { analyzeMarket, ModelPrediction } from '../lib/betman-analyze';
+import { analyzeMarket, ModelPrediction, kellyFraction } from '../lib/betman-analyze';
 import { LiveScore, matchScore, determineResult, liveLabel } from '../lib/livescore';
 import {
   savePredictions,
@@ -758,6 +758,125 @@ function AccuracyPanel() {
   );
 }
 
+// ── AI 추천 조합 ───────────────────────────────────────────────
+interface ComboCandidate {
+  picks: { matchId: string; homeTeam: string; awayTeam: string; marketType: string; label: string; odds: number; aiProb: number; sport: string }[];
+  comboOdds: number;
+  comboProb: number;
+  comboEV: number;
+  comboKelly: number;
+}
+
+function RecommendedCombos({ games, onApply }: {
+  games: BetmanGame[];
+  onApply: (picks: BetPick[]) => void;
+}) {
+  const [expanded, setExpanded] = useState(false);
+
+  // 각 경기의 주력 마켓에서 AI 추천 픽 추출
+  const gamePicks: ComboCandidate['picks'] = [];
+  for (const g of games) {
+    if (!g.gameDate || new Date(g.gameDate) < new Date()) continue;
+    const primary = g.markets.find(m => m.type === '승무패' || m.type === '승1패' || m.type === '승패');
+    if (!primary) continue;
+    const a = analyzeMarket(primary);
+    const best = a.selections[a.aiBestIdx];
+    if (!best || best.odds <= 1) continue;
+    gamePicks.push({
+      matchId: g.matchId,
+      homeTeam: g.homeTeam,
+      awayTeam: g.awayTeam,
+      marketType: primary.type,
+      label: best.label,
+      odds: best.odds,
+      aiProb: best.aiProb,
+      sport: g.sport,
+    });
+  }
+
+  if (gamePicks.length < 2) return null;
+
+  // 모든 2-게임 조합 생성 및 평가
+  const combos: ComboCandidate[] = [];
+  for (let i = 0; i < gamePicks.length; i++) {
+    for (let j = i + 1; j < gamePicks.length; j++) {
+      const p = [gamePicks[i], gamePicks[j]];
+      const comboOdds = p[0].odds * p[1].odds;
+      const comboProb = p[0].aiProb * p[1].aiProb;
+      const comboEV = comboOdds * comboProb;
+      const k = kellyFraction(comboProb, comboOdds);
+      combos.push({ picks: p, comboOdds, comboProb, comboEV, comboKelly: k.half });
+    }
+  }
+
+  // 필터: EV > 0.85, 확률 > 15%, 배당 2.5~15 범위
+  const good = combos.filter(c =>
+    c.comboEV > 0.85 && c.comboProb > 0.15 && c.comboOdds >= 2.5 && c.comboOdds <= 15
+  );
+
+  // EV 기준 정렬 후 상위 3개
+  good.sort((a, b) => b.comboEV - a.comboEV);
+  const top3 = good.slice(0, 3);
+
+  if (top3.length === 0) return null;
+
+  const rankEmoji = ['🥇', '🥈', '🥉'];
+  const evColor = (ev: number) => ev >= 1.0 ? '#66bb6a' : ev >= 0.9 ? '#ffb74d' : '#ef5350';
+
+  return (
+    <Box sx={{ mb: 2, borderRadius: 2, overflow: 'hidden', border: '1px solid rgba(79,195,247,0.4)', bgcolor: 'rgba(79,195,247,0.05)' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', px: 1.5, py: 1, cursor: 'pointer', bgcolor: 'rgba(79,195,247,0.08)' }}
+        onClick={() => setExpanded(e => !e)}>
+        <Typography variant="subtitle2" fontWeight={700} sx={{ flex: 1, color: '#4fc3f7' }}>
+          🎯 AI 추천 2폴더 조합 ({top3.length}개)
+        </Typography>
+        {expanded ? <ExpandLessIcon sx={{ color: '#4fc3f7', fontSize: 18 }} /> : <ExpandMoreIcon sx={{ color: '#4fc3f7', fontSize: 18 }} />}
+      </Box>
+      <Collapse in={expanded}>
+        <Box sx={{ p: 1.5 }}>
+          {top3.map((combo, ci) => (
+            <Box key={ci} sx={{ mb: ci < top3.length - 1 ? 1.5 : 0, p: 1.2, borderRadius: 2, bgcolor: 'rgba(255,255,255,0.03)', border: ci === 0 ? '1px solid rgba(255,215,0,0.3)' : '1px solid rgba(255,255,255,0.06)' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 0.8, gap: 0.8 }}>
+                <Typography sx={{ fontSize: 18 }}>{rankEmoji[ci]}</Typography>
+                <Box sx={{ flex: 1 }}>
+                  <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
+                    <Chip label={`배당 ${combo.comboOdds.toFixed(2)}`} size="small" sx={{ fontSize: 10, height: 18, bgcolor: 'rgba(255,215,0,0.15)', color: '#FFD700' }} />
+                    <Chip label={`확률 ${(combo.comboProb * 100).toFixed(1)}%`} size="small" sx={{ fontSize: 10, height: 18 }} />
+                    <Chip label={`EV ${combo.comboEV.toFixed(2)}`} size="small" sx={{ fontSize: 10, height: 18, bgcolor: `${evColor(combo.comboEV)}22`, color: evColor(combo.comboEV) }} />
+                    {combo.comboKelly > 0 && <Chip label={`켈리 ${(combo.comboKelly * 100).toFixed(1)}%`} size="small" sx={{ fontSize: 10, height: 18, color: '#ab47bc' }} />}
+                  </Box>
+                </Box>
+              </Box>
+              {combo.picks.map((p, pi) => (
+                <Box key={pi} sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5, pl: 0.5 }}>
+                  <Typography variant="caption" sx={{ fontSize: 10, color: 'text.disabled', minWidth: 24 }}>{p.sport}</Typography>
+                  <Typography variant="caption" sx={{ flex: 1, fontSize: 12 }} noWrap>
+                    {p.homeTeam} vs {p.awayTeam}
+                  </Typography>
+                  <Chip label={p.label} size="small" sx={{ fontSize: 10, height: 18, bgcolor: 'rgba(79,195,247,0.15)', color: '#4fc3f7', fontWeight: 600 }} />
+                  <Typography variant="caption" sx={{ fontSize: 11, color: '#FFD700', fontWeight: 600, minWidth: 32, textAlign: 'right' }}>
+                    {p.odds.toFixed(2)}
+                  </Typography>
+                </Box>
+              ))}
+              <Box sx={{ mt: 0.8, display: 'flex', justifyContent: 'flex-end' }}>
+                <Button size="small" variant="outlined"
+                  onClick={() => onApply(combo.picks.map(p => ({ matchId: p.matchId, homeTeam: p.homeTeam, awayTeam: p.awayTeam, marketType: p.marketType, label: p.label, odds: p.odds })))}
+                  sx={{ fontSize: 10, py: 0.3, px: 1.5, textTransform: 'none', borderColor: 'rgba(79,195,247,0.5)', color: '#4fc3f7' }}>
+                  슬립에 담기
+                </Button>
+              </Box>
+            </Box>
+          ))}
+          <Typography variant="caption" display="block" color="text.disabled" sx={{ fontSize: 9, mt: 1, textAlign: 'center' }}>
+            AI 확률 × 배당 = 기대값(EV) 기준 · 배당 2.5~15 · 확률 15%+ · 미래 경기만
+          </Typography>
+        </Box>
+      </Collapse>
+    </Box>
+  );
+}
+
 // ── 메인 컴포넌트 ───────────────────────────────────────────────
 export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' | 'proto'; sportFilter?: string }) {
   const { data, isLoading, error } = useBetmanData();
@@ -904,6 +1023,11 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
       <SavedBets bets={savedBets} onRemove={handleRemoveSaved} />
 
       <AccuracyPanel />
+
+      {/* AI 추천 2폴더 조합 */}
+      <RecommendedCombos games={filtered} onApply={(comboPicks) => {
+        setPicks(comboPicks);
+      }} />
 
       {data.error && <Alert severity="warning" sx={{ mb: 2 }}>스크래핑 오류: {data.error}</Alert>}
 
