@@ -669,31 +669,51 @@ export function matchScore(game: MatchableGame, scores: LiveScore[]): LiveScore 
   const gameTs = new Date(game.gameDate).getTime();
   const sameSport = (s: LiveScore) => !game.sport || s.sport === game.sport;
 
-  const sameDay = (s: LiveScore) => Math.abs(s.timestamp - gameTs) < 12 * 60 * 60 * 1000;
+  // 같은 팀 경기가 여러 개 있을 수 있으므로 (연속 시리즈)
+  // 시간이 가장 가까운 경기를 선택
+  let best: LiveScore | null = null;
+  let bestDiff = Infinity;
 
-  // 1차: 종목 + 양팀명 + 같은 날 (12시간 이내)
   for (const s of scores) {
-    if (!sameSport(s) || !sameDay(s)) continue;
-    if (teamMatch(game.homeTeam, s.homeTeam) && teamMatch(game.awayTeam, s.awayTeam)) return s;
-    if (teamMatch(game.homeTeam, s.awayTeam) && teamMatch(game.awayTeam, s.homeTeam)) return orientScore(s);
-  }
-
-  // 2차: 양팀명 (종목 무시, 시간 3시간 이내)
-  for (const s of scores) {
-    if (Math.abs(s.timestamp - gameTs) > 3 * 60 * 60 * 1000) continue;
-    if (teamMatch(game.homeTeam, s.homeTeam) && teamMatch(game.awayTeam, s.awayTeam)) return s;
-    if (teamMatch(game.homeTeam, s.awayTeam) && teamMatch(game.awayTeam, s.homeTeam)) return orientScore(s);
-  }
-
-  // 3차: 한쪽 팀명 + 종목 + 시간 3시간 이내
-  for (const s of scores) {
+    const diff = Math.abs(s.timestamp - gameTs);
+    if (diff > 12 * 60 * 60 * 1000) continue;
     if (!sameSport(s)) continue;
-    if (Math.abs(s.timestamp - gameTs) > 3 * 60 * 60 * 1000) continue;
-    if (teamMatch(game.homeTeam, s.homeTeam) || teamMatch(game.awayTeam, s.awayTeam)) return s;
-    if (teamMatch(game.homeTeam, s.awayTeam) || teamMatch(game.awayTeam, s.homeTeam)) return orientScore(s);
+
+    let matched = false;
+    let flipped = false;
+    if (teamMatch(game.homeTeam, s.homeTeam) && teamMatch(game.awayTeam, s.awayTeam)) {
+      matched = true;
+    } else if (teamMatch(game.homeTeam, s.awayTeam) && teamMatch(game.awayTeam, s.homeTeam)) {
+      matched = true;
+      flipped = true;
+    }
+
+    if (matched && diff < bestDiff) {
+      bestDiff = diff;
+      best = flipped ? orientScore(s) : s;
+    }
   }
 
-  return null;
+  if (best) return best;
+
+  // 폴백: 한쪽 팀명만 매칭 + 종목 + 시간 3시간 이내 (가장 가까운 것)
+  bestDiff = Infinity;
+  for (const s of scores) {
+    const diff = Math.abs(s.timestamp - gameTs);
+    if (diff > 3 * 60 * 60 * 1000 || !sameSport(s)) continue;
+    const homeMatch = teamMatch(game.homeTeam, s.homeTeam) || teamMatch(game.homeTeam, s.awayTeam);
+    const awayMatch = teamMatch(game.awayTeam, s.awayTeam) || teamMatch(game.awayTeam, s.homeTeam);
+    if ((homeMatch || awayMatch) && diff < bestDiff) {
+      bestDiff = diff;
+      if (teamMatch(game.homeTeam, s.awayTeam) || teamMatch(game.awayTeam, s.homeTeam)) {
+        best = orientScore(s);
+      } else {
+        best = s;
+      }
+    }
+  }
+
+  return best;
 }
 
 // ── 스코어 → 마켓 결과 자동 판정 ────────────────────────────────
