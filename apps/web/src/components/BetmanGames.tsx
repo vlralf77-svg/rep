@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import {
   Box, Typography, Card, CardActionArea, CardContent, Chip,
   CircularProgress, Alert, Dialog, DialogTitle, DialogContent,
@@ -600,6 +600,7 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
   const [picks, setPicks] = useState<BetPick[]>(() => loadPicks());
   const [amount, setAmountState] = useState<string>(() => loadAmount());
   const [savedBets, setSavedBets] = useState<SavedBet[]>(() => getSavedBets());
+  const [selectedDate, setSelectedDate] = useState<string>('all');
 
   // 슬립/금액 변경 시 localStorage에 영구 저장 (앱 재시작해도 유지)
   useEffect(() => { savePicks(picks); }, [picks]);
@@ -667,11 +668,56 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
   let sorted = [...games].sort((a, b) => (a.gameDate || '').localeCompare(b.gameDate || ''));
   if (sportFilter) sorted = sorted.filter(g => g.sport === sportFilter);
 
+  // 날짜 목록 추출
+  const availableDates = useMemo(() => {
+    const dates = new Set<string>();
+    for (const g of sorted) {
+      if (g.gameDate) {
+        const d = new Date(g.gameDate);
+        dates.add(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`);
+      }
+    }
+    return Array.from(dates).sort();
+  }, [sorted]);
+
+  const filtered = selectedDate === 'all' ? sorted : sorted.filter(g => {
+    if (!g.gameDate) return false;
+    const d = new Date(g.gameDate);
+    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    return key === selectedDate;
+  });
+
   return (
     <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 1 }}>
         {updatedAt && <Typography variant="caption" color="text.secondary">갱신: {updatedAt}</Typography>}
       </Box>
+
+      {/* 날짜 선택 */}
+      {availableDates.length > 1 && (
+        <Box sx={{ mb: 2, display: 'flex', gap: 0.8, flexWrap: 'wrap' }}>
+          <Chip label="전체" size="small"
+            onClick={() => setSelectedDate('all')}
+            variant={selectedDate === 'all' ? 'filled' : 'outlined'}
+            sx={{ fontSize: 12, fontWeight: selectedDate === 'all' ? 700 : 400,
+              bgcolor: selectedDate === 'all' ? 'primary.main' : undefined,
+              color: selectedDate === 'all' ? '#fff' : undefined }} />
+          {availableDates.map((dt) => {
+            const [, m, d] = dt.split('-');
+            const todayKey = (() => { const n = new Date(); return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`; })();
+            const label = dt === todayKey ? '오늘' : `${parseInt(m)}/${parseInt(d)}`;
+            const count = sorted.filter(g => { if (!g.gameDate) return false; const dd = new Date(g.gameDate); return `${dd.getFullYear()}-${String(dd.getMonth()+1).padStart(2,'0')}-${String(dd.getDate()).padStart(2,'0')}` === dt; }).length;
+            return (
+              <Chip key={dt} label={`${label} (${count})`} size="small"
+                onClick={() => setSelectedDate(dt)}
+                variant={dt === selectedDate ? 'filled' : 'outlined'}
+                sx={{ fontSize: 12, fontWeight: dt === selectedDate ? 700 : 400,
+                  bgcolor: dt === selectedDate ? 'primary.main' : undefined,
+                  color: dt === selectedDate ? '#fff' : undefined }} />
+            );
+          })}
+        </Box>
+      )}
 
       {/* 베팅 슬립 (상단 고정) */}
       <BetSlip picks={picks} amount={amount} setAmount={setAmount}
@@ -683,19 +729,19 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
 
       {data.error && <Alert severity="warning" sx={{ mb: 2 }}>스크래핑 오류: {data.error}</Alert>}
 
-      {sorted.length === 0 ? (
+      {filtered.length === 0 ? (
         <Box sx={{ textAlign: 'center', py: 4 }}>
           <Typography color="text.secondary">
             {sportFilter ? `${sportFilter} 경기 데이터가 없습니다.` : '데이터가 없습니다.'}
           </Typography>
-          {!sportFilter && (
+          {!sportFilter && sorted.length === 0 && (
             <Typography variant="caption" color="text.secondary" display="block" mt={1}>
               GitHub Actions → Scrape Betman 워크플로우를 수동으로 실행해주세요.
             </Typography>
           )}
         </Box>
       ) : (
-        sorted.map((g) => (
+        filtered.map((g) => (
           <GameRow key={g.matchId} game={g} picks={picks} onTogglePick={handleTogglePick}
             score={liveScores ? matchScore(g, liveScores) : null} />
         ))
