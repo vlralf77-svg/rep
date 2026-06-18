@@ -9,7 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { useBetmanData, useLiveScores } from '../api/hooks';
 import { BetmanGame, BetmanMarket } from '../lib/api';
-import { analyzeMarket } from '../lib/betman-analyze';
+import { analyzeMarket, ModelPrediction } from '../lib/betman-analyze';
 import { LiveScore, matchScore, determineResult, liveLabel } from '../lib/livescore';
 import {
   savePredictions,
@@ -81,7 +81,74 @@ function DualProbRow({ label, marketProb, aiProb, star, color }:
 }
 
 const PALETTE = ['#4fc3f7', '#78909c', '#f48fb1', '#ce93d8', '#ffb74d'];
+const MODEL_COLORS = ['#4fc3f7', '#66bb6a', '#ffa726', '#ab47bc', '#ef5350'];
 const CONF_LABEL = { HIGH: '높음', MEDIUM: '보통', LOW: '낮음' } as const;
+
+function ModelCompare({ models, labels }: { models: ModelPrediction[]; labels: string[] }) {
+  const [expanded, setExpanded] = useState(false);
+  const meta = models[4]; // 메타 블렌더 = 최종
+  const agree = models.filter(m => m.bestIdx === meta.bestIdx).length;
+
+  return (
+    <Box sx={{ mt: 1.2, bgcolor: 'rgba(255,255,255,0.02)', borderRadius: 1.5, overflow: 'hidden' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', px: 1.2, py: 0.6, cursor: 'pointer',
+        bgcolor: 'rgba(255,255,255,0.03)' }}
+        onClick={() => setExpanded(e => !e)}>
+        <Typography variant="caption" fontWeight={600} sx={{ flex: 1, fontSize: 11 }}>
+          📊 5개 모델 비교 ({agree}/5 일치)
+        </Typography>
+        {expanded ? <ExpandLessIcon sx={{ fontSize: 14 }} /> : <ExpandMoreIcon sx={{ fontSize: 14 }} />}
+      </Box>
+      <Collapse in={expanded}>
+        <Box sx={{ p: 1.2 }}>
+          {models.map((m, mi) => (
+            <Box key={mi} sx={{ mb: 1.2 }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.3 }}>
+                <Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
+                  <Box sx={{ width: 8, height: 8, borderRadius: '50%', bgcolor: MODEL_COLORS[mi], flexShrink: 0 }} />
+                  <Typography variant="caption" fontWeight={mi === 4 ? 700 : 400} sx={{ fontSize: 11 }}>
+                    {m.shortName}
+                  </Typography>
+                </Box>
+                <Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
+                  <Chip label={labels[m.bestIdx]} size="small"
+                    sx={{ fontSize: 9, height: 16, bgcolor: MODEL_COLORS[mi], color: '#fff' }} />
+                  <Typography variant="caption" sx={{ fontSize: 10, color: 'text.secondary' }}>
+                    {CONF_LABEL[m.confidence]}
+                  </Typography>
+                </Box>
+              </Box>
+              {/* 확률 바 */}
+              <Box sx={{ display: 'flex', gap: '2px', height: 6, borderRadius: 3, overflow: 'hidden' }}>
+                {m.probs.map((p, pi) => (
+                  <Box key={pi} sx={{
+                    flex: p, bgcolor: PALETTE[pi % PALETTE.length],
+                    opacity: pi === m.bestIdx ? 1 : 0.35,
+                    minWidth: p > 0.01 ? 2 : 0,
+                  }} />
+                ))}
+              </Box>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 0.2 }}>
+                {m.probs.map((p, pi) => (
+                  <Typography key={pi} variant="caption" sx={{ fontSize: 9, color: pi === m.bestIdx ? PALETTE[pi % PALETTE.length] : 'text.disabled' }}>
+                    {labels[pi]} {(p * 100).toFixed(0)}%
+                  </Typography>
+                ))}
+              </Box>
+            </Box>
+          ))}
+          {/* 모델 설명 */}
+          <Divider sx={{ my: 0.8 }} />
+          {models.map((m, mi) => (
+            <Typography key={mi} variant="caption" display="block" sx={{ fontSize: 9, color: 'text.disabled', mb: 0.2 }}>
+              <Box component="span" sx={{ color: MODEL_COLORS[mi], fontWeight: 600 }}>{m.shortName}</Box> — {m.description}
+            </Typography>
+          ))}
+        </Box>
+      </Collapse>
+    </Box>
+  );
+}
 
 // ── 마켓 블록 ───────────────────────────────────────────────────
 function MarketBlock({
@@ -141,9 +208,12 @@ function MarketBlock({
           star={i === a.aiBestIdx} color={PALETTE[i % PALETTE.length]} />
       ))}
 
+      {/* 5개 모델 비교 */}
+      {a.models && <ModelCompare models={a.models} labels={market.selections.map(s => s.label)} />}
+
       <Box sx={{ mt: 1, pt: 1, borderTop: '1px dashed rgba(255,255,255,0.1)' }}>
         <Typography variant="caption" display="block">
-          🤖 AI 추천: <b>{aiPick.label}</b> ({(aiPick.aiProb * 100).toFixed(0)}%) · 신뢰도 {CONF_LABEL[a.confidence]}
+          🤖 최종 추천 (메타 블렌더): <b>{aiPick.label}</b> ({(aiPick.aiProb * 100).toFixed(0)}%) · 신뢰도 {CONF_LABEL[a.confidence]}
         </Typography>
         <Typography variant="caption" display="block" color={value ? 'success.main' : 'text.secondary'}>
           {value
@@ -151,7 +221,7 @@ function MarketBlock({
             : '💤 가치 베팅 없음'}
         </Typography>
         <Typography variant="caption" display="block" color="text.disabled" sx={{ fontSize: 10, mt: 0.3 }}>
-          ░ 시장(배당 역산) · ▓ AI(편향 보정) — 배당 박스를 탭하면 슬립에 추가
+          ░ 시장(배당 역산) · ▓ AI(메타 블렌더) — 배당 박스를 탭하면 슬립에 추가
         </Typography>
         {liveResult && (
           <Box sx={{ mt: 0.5, p: 0.5, borderRadius: 1, bgcolor: liveResult === aiPick.label ? 'rgba(76,175,80,0.15)' : 'rgba(244,67,54,0.12)' }}>
