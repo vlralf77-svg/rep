@@ -55,3 +55,11 @@ export function removeSavedBet(id: string): void {
   const list = getSavedBets().filter((b) => b.id !== id);
   localStorage.setItem(SAVED_KEY, JSON.stringify(list));
 }
+
+export function updateSavedBet(id: string, update: Partial<Pick<SavedBet, 'picks' | 'amount' | 'combinedOdds' | 'payout'>>): void {
+  const list = getSavedBets();
+  const idx = list.findIndex(b => b.id === id);
+  if (idx < 0) return;
+  list[idx] = { ...list[idx], ...update };
+  localStorage.setItem(SAVED_KEY, JSON.stringify(list));
+}

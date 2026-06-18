@@ -5,6 +5,7 @@ import {
   Divider, LinearProgress, Button, TextField, IconButton, Collapse,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { useBetmanData, useLiveScores } from '../api/hooks';
@@ -23,7 +24,7 @@ import {
 import { saveOddsSnapshot, getOddsHistory, detectSharpMove } from '../lib/betman-odds-history';
 import {
   loadPicks, savePicks, loadAmount, saveAmount,
-  getSavedBets, addSavedBet, removeSavedBet, SavedBet,
+  getSavedBets, addSavedBet, removeSavedBet, updateSavedBet, SavedBet,
 } from '../lib/betman-betslip';
 
 // ── 베팅 슬립 타입 ─────────────────────────────────────────────
@@ -691,10 +692,45 @@ function BetSlip({ picks, amount, setAmount, onRemove, onClear, onSave }: {
 }
 
 // ── 저장된 베팅 목록 ────────────────────────────────────────────
-function SavedBets({ bets, onRemove }: { bets: SavedBet[]; onRemove: (id: string) => void }) {
+function SavedBets({ bets, onRemove, onEdit, onRefresh }: {
+  bets: SavedBet[];
+  onRemove: (id: string) => void;
+  onEdit: (bet: SavedBet) => void;
+  onRefresh: () => void;
+}) {
   const [expanded, setExpanded] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editAmount, setEditAmount] = useState('');
+
   if (bets.length === 0) return null;
   const formatKRW = (n: number) => n.toLocaleString('ko-KR') + '원';
+
+  const handleStartEdit = (b: SavedBet) => {
+    setEditingId(b.id);
+    setEditAmount(b.amount.toLocaleString());
+  };
+
+  const handleSaveEdit = (b: SavedBet) => {
+    const newAmount = parseInt(editAmount.replace(/[^0-9]/g, '')) || 0;
+    if (newAmount > 0) {
+      const payout = Math.floor(newAmount * b.combinedOdds);
+      updateSavedBet(b.id, { amount: newAmount, payout });
+      onRefresh();
+    }
+    setEditingId(null);
+  };
+
+  const handleRemovePick = (betId: string, bet: SavedBet, matchId: string, marketType: string) => {
+    const newPicks = bet.picks.filter(p => !(p.matchId === matchId && p.marketType === marketType));
+    if (newPicks.length === 0) {
+      onRemove(betId);
+      return;
+    }
+    const newOdds = newPicks.reduce((acc, p) => acc * p.odds, 1);
+    const payout = Math.floor(bet.amount * newOdds);
+    updateSavedBet(betId, { picks: newPicks, combinedOdds: newOdds, payout });
+    onRefresh();
+  };
 
   return (
     <Box sx={{ mb: 2, borderRadius: 2, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
@@ -707,34 +743,76 @@ function SavedBets({ bets, onRemove }: { bets: SavedBet[]; onRemove: (id: string
       </Box>
       <Collapse in={expanded}>
         <Box sx={{ p: 1.5 }}>
-          {bets.map((b) => (
-            <Box key={b.id} sx={{ mb: 1.2, p: 1.2, borderRadius: 1.5, bgcolor: 'rgba(255,255,255,0.03)' }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 0.5 }}>
-                <Typography variant="caption" color="text.secondary" sx={{ flex: 1 }}>
-                  {new Date(b.savedAt).toLocaleString('ko-KR', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
-                  {' · '}{b.picks.length}경기
-                </Typography>
-                <IconButton size="small" onClick={() => onRemove(b.id)}
-                  sx={{ color: 'text.disabled', '&:hover': { color: 'error.main' } }}>
-                  <DeleteIcon sx={{ fontSize: 16 }} />
-                </IconButton>
+          {bets.map((b) => {
+            const isEditing = editingId === b.id;
+            return (
+              <Box key={b.id} sx={{ mb: 1.2, p: 1.2, borderRadius: 1.5, bgcolor: 'rgba(255,255,255,0.03)',
+                border: isEditing ? '1px solid rgba(79,195,247,0.4)' : undefined }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 0.5 }}>
+                  <Typography variant="caption" color="text.secondary" sx={{ flex: 1 }}>
+                    {new Date(b.savedAt).toLocaleString('ko-KR', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                    {' · '}{b.picks.length}경기
+                  </Typography>
+                  <IconButton size="small" onClick={() => onEdit(b)}
+                    sx={{ color: 'text.disabled', '&:hover': { color: '#4fc3f7' }, mr: 0.3 }}
+                    title="슬립으로 불러오기">
+                    <ExpandLessIcon sx={{ fontSize: 16, transform: 'rotate(-90deg)' }} />
+                  </IconButton>
+                  <IconButton size="small" onClick={() => isEditing ? handleSaveEdit(b) : handleStartEdit(b)}
+                    sx={{ color: isEditing ? '#4fc3f7' : 'text.disabled', '&:hover': { color: '#4fc3f7' }, mr: 0.3 }}>
+                    <EditIcon sx={{ fontSize: 16 }} />
+                  </IconButton>
+                  <IconButton size="small" onClick={() => onRemove(b.id)}
+                    sx={{ color: 'text.disabled', '&:hover': { color: 'error.main' } }}>
+                    <DeleteIcon sx={{ fontSize: 16 }} />
+                  </IconButton>
+                </Box>
+                {b.picks.map((p) => (
+                  <Box key={`${p.matchId}-${p.marketType}`} sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                    <Typography variant="caption" sx={{ flex: 1 }} noWrap>
+                      {p.homeTeam} vs {p.awayTeam} · {p.marketType} <span style={{ color: '#FFD700' }}>{p.label}</span> @ {p.odds.toFixed(2)}
+                    </Typography>
+                    {isEditing && (
+                      <IconButton size="small" onClick={() => handleRemovePick(b.id, b, p.matchId, p.marketType)}
+                        sx={{ color: 'text.disabled', '&:hover': { color: 'error.main' }, p: 0.3 }}>
+                        <DeleteIcon sx={{ fontSize: 13 }} />
+                      </IconButton>
+                    )}
+                  </Box>
+                ))}
+                <Divider sx={{ my: 0.6 }} />
+                {isEditing ? (
+                  <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+                    <TextField size="small" label="금액" value={editAmount}
+                      onChange={(e) => {
+                        const raw = e.target.value.replace(/[^0-9]/g, '');
+                        setEditAmount(raw ? parseInt(raw).toLocaleString() : '');
+                      }}
+                      InputProps={{ endAdornment: <Typography variant="caption" color="text.secondary">원</Typography> }}
+                      sx={{ flex: 1, '& .MuiInputBase-input': { fontSize: 12 } }}
+                    />
+                    <Button size="small" variant="contained" onClick={() => handleSaveEdit(b)}
+                      sx={{ fontSize: 11, py: 0.5, textTransform: 'none', bgcolor: '#4fc3f7' }}>
+                      저장
+                    </Button>
+                    <Button size="small" variant="outlined" onClick={() => setEditingId(null)}
+                      sx={{ fontSize: 11, py: 0.5, textTransform: 'none' }}>
+                      취소
+                    </Button>
+                  </Box>
+                ) : (
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <Typography variant="caption" color="text.secondary">
+                      베팅 {formatKRW(b.amount)} · 배당 ×{b.combinedOdds.toFixed(2)}
+                    </Typography>
+                    <Typography variant="caption" fontWeight={700} sx={{ color: '#4fc3f7' }}>
+                      {formatKRW(b.payout)}
+                    </Typography>
+                  </Box>
+                )}
               </Box>
-              {b.picks.map((p) => (
-                <Typography key={`${p.matchId}-${p.marketType}`} variant="caption" display="block" noWrap>
-                  {p.homeTeam} vs {p.awayTeam} · {p.marketType} <span style={{ color: '#FFD700' }}>{p.label}</span> @ {p.odds.toFixed(2)}
-                </Typography>
-              ))}
-              <Divider sx={{ my: 0.6 }} />
-              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Typography variant="caption" color="text.secondary">
-                  베팅 {formatKRW(b.amount)} · 배당 ×{b.combinedOdds.toFixed(2)}
-                </Typography>
-                <Typography variant="caption" fontWeight={700} sx={{ color: '#4fc3f7' }}>
-                  {formatKRW(b.payout)}
-                </Typography>
-              </Box>
-            </Box>
-          ))}
+            );
+          })}
         </Box>
       </Collapse>
     </Box>
@@ -1020,7 +1098,12 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
       <BetSlip picks={picks} amount={amount} setAmount={setAmount}
         onRemove={handleRemove} onClear={handleClear} onSave={handleSaveBet} />
 
-      <SavedBets bets={savedBets} onRemove={handleRemoveSaved} />
+      <SavedBets bets={savedBets} onRemove={handleRemoveSaved}
+        onEdit={(bet) => {
+          setPicks(bet.picks);
+          setAmount(bet.amount.toLocaleString());
+        }}
+        onRefresh={() => setSavedBets(getSavedBets())} />
 
       <AccuracyPanel />
 
