@@ -667,6 +667,42 @@ export async function fetchLiveScoresWithLog(): Promise<FetchResult> {
   return { scores: deduped, logs };
 }
 
+// LIVE 경기의 진행 표시 텍스트 계산.
+// - 실시간 소스(football-data 등)면 정확한 minute 사용
+// - 그 외(네이버 스크래퍼 스냅샷 등)는 분 표기가 멈춰 있을 수 있으므로
+//   경기 시작(timestamp)으로부터 흐른 시간으로 추정해 "항상 흐르게" 표시
+export function liveLabel(score: LiveScore): string {
+  if (score.status !== 'LIVE') return 'LIVE';
+
+  // 야구: 이닝 정보를 그대로 사용
+  if (score.sport === '야구') {
+    return score.inning ? `LIVE ${score.inning}` : 'LIVE';
+  }
+
+  // 축구: 실시간 소스의 분이 있으면 그대로 신뢰
+  if (score.realtime && typeof score.minute === 'number' && score.minute > 0) {
+    return score.minute <= 45 ? `LIVE 전반 ${score.minute}'`
+      : score.minute <= 90 ? `LIVE 후반 ${score.minute}'`
+      : `LIVE ${score.minute}'`;
+  }
+
+  // 축구(스냅샷/추정): 킥오프부터 흐른 시간으로 분 추정 (멈춤 방지)
+  if (score.sport === '축구' && score.timestamp > 0) {
+    const e = Math.floor((Date.now() - score.timestamp) / 60000);
+    if (e >= 0 && e < 140) {
+      if (e <= 45) return `LIVE 전반 ${Math.max(1, e)}'`;
+      if (e <= 60) return 'LIVE 하프타임';
+      if (e <= 105) return `LIVE 후반 ${e - 15}'`;
+      return 'LIVE 후반';
+    }
+  }
+
+  // 폴백: 스냅샷 정보
+  if (score.inning) return `LIVE ${score.inning}`;
+  if (typeof score.minute === 'number' && score.minute > 0) return `LIVE ${score.minute}'`;
+  return 'LIVE';
+}
+
 // ── betman 경기 매칭 ─────────────────────────────────────────────
 function norm(s: string): string {
   return (s || '').replace(/\s+/g, '').replace(/FC|fc|cf|CF/g, '').toLowerCase();

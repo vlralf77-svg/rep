@@ -10,7 +10,7 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { useBetmanData, useLiveScores } from '../api/hooks';
 import { BetmanGame, BetmanMarket } from '../lib/api';
 import { analyzeMarket } from '../lib/betman-analyze';
-import { LiveScore, matchScore, determineResult } from '../lib/livescore';
+import { LiveScore, matchScore, determineResult, liveLabel } from '../lib/livescore';
 import {
   savePredictions,
   setActualResult,
@@ -266,7 +266,7 @@ function GameDetail({ game, open, onClose, picks, onTogglePick, score }: {
           {game.sport && <Chip label={game.sport} size="small" variant="outlined" />}
           {gameDateTime && <Chip label={gameDateTime} size="small" variant="outlined" />}
           {isLive && (
-            <Chip label={score?.inning ? `LIVE ${score.inning}` : score?.minute ? `LIVE ${score.minute}'` : 'LIVE'} size="small"
+            <Chip label={score ? liveLabel(score) : 'LIVE'} size="small"
               sx={{ bgcolor: '#4caf50', color: '#fff', animation: 'pulse 1.5s infinite',
                 '@keyframes pulse': { '0%,100%': { opacity: 1 }, '50%': { opacity: 0.6 } } }} />
           )}
@@ -341,7 +341,7 @@ function GameRow({ game, picks, onTogglePick, score }: {
                   {game.sport}{gameDateTime ? ' · ' + gameDateTime : ''}
                 </Typography>
                 {isLive && (
-                  <Chip label={score?.inning ? `LIVE ${score.inning}` : score?.minute ? `LIVE ${score.minute}'` : 'LIVE'} size="small"
+                  <Chip label={score ? liveLabel(score) : 'LIVE'} size="small"
                     sx={{ fontSize: 10, height: 18, bgcolor: '#4caf50', color: '#fff', animation: 'pulse 1.5s infinite',
                       '@keyframes pulse': { '0%,100%': { opacity: 1 }, '50%': { opacity: 0.6 } } }} />
                 )}
