@@ -13,6 +13,7 @@ export interface AnalyzedSelection {
   aiProb: number;
   ev: number;
   isValue: boolean;
+  kelly?: { full: number; half: number; quarter: number };
 }
 
 export interface ModelPrediction {
@@ -120,11 +121,44 @@ function pythagoreanAdjust(marketProbs: number[], nSelections: number): number[]
 // ── 모델 5: 메타 블렌더 (로지스틱 회귀) ──────────────────────────
 // 모델 1~4의 확률을 학습된 가중치로 결합 (고정 70:30보다 최적)
 // 사전 학습 가중치 (온라인 축적 시 업데이트 가능)
+function getAdaptiveWeights(isSoccer: boolean): number[] {
+  const defaultW = isSoccer
+    ? [0.30, 0.15, 0.30, 0.05, 0.20]
+    : [0.25, 0.15, 0.05, 0.30, 0.25];
+  try {
+    const raw = localStorage.getItem('betman_predictions_v1');
+    if (!raw) return defaultW;
+    const records = JSON.parse(raw) as Array<{ predictions: Array<{ actual?: string; modelPicks?: Array<{ modelName: string; pick: string }> }> }>;
+    const stats = new Map<string, { total: number; correct: number }>();
+    for (const rec of records) {
+      for (const pred of rec.predictions) {
+        if (pred.actual === undefined || !pred.modelPicks) continue;
+        for (const mp of pred.modelPicks) {
+          const s = stats.get(mp.modelName) || { total: 0, correct: 0 };
+          s.total++;
+          if (pred.actual === mp.pick) s.correct++;
+          stats.set(mp.modelName, s);
+        }
+      }
+    }
+    let totalSamples = 0;
+    for (const s of stats.values()) totalSamples = Math.max(totalSamples, s.total);
+    if (totalSamples < 20) return defaultW;
+    const modelOrder = ['De-Vig', 'Platt', 'D-C', 'Pyth', 'Meta'];
+    const rates = modelOrder.map(name => {
+      const s = stats.get(name);
+      return s && s.total > 0 ? s.correct / s.total : 0.3;
+    });
+    const sum = rates.reduce((a, b) => a + b, 0) || 1;
+    return rates.map(r => r / sum);
+  } catch {
+    return defaultW;
+  }
+}
+
 function metaBlend(modelProbs: number[][], isSoccer: boolean): number[] {
   // 축구: Dixon-Coles(3)에 가중, 야구: Pythagorean(4)에 가중
-  const weights = isSoccer
-    ? [0.30, 0.15, 0.30, 0.05, 0.20] // devig, platt, dixon, pyth, 균등(baseline)
-    : [0.25, 0.15, 0.05, 0.30, 0.25]; // 야구: pyth에 가중
+  const weights = getAdaptiveWeights(isSoccer);
 
   const n = modelProbs[0]?.length || 0;
   if (n === 0) return [];
@@ -150,6 +184,13 @@ function detectSport(market: BetmanMarket): 'soccer' | 'baseball' | 'unknown' {
   if (t === '승1패' || t === '승패') return 'baseball';
   if (market.selections.length === 2 && !t.includes('언더오버')) return 'baseball';
   return 'unknown';
+}
+
+export function kellyFraction(prob: number, odds: number): { full: number; half: number; quarter: number } {
+  const q = 1 - prob;
+  const b = odds - 1;
+  const full = b > 0 ? Math.max(0, (prob * b - q) / b) : 0;
+  return { full, half: full / 2, quarter: full / 4 };
 }
 
 export function analyzeMarket(market: BetmanMarket): MarketAnalysis {
@@ -227,6 +268,7 @@ export function analyzeMarket(market: BetmanMarket): MarketAnalysis {
       aiProb: aiProbs[i],
       ev,
       isValue: ev >= VALUE_THRESHOLD,
+      kelly: kellyFraction(aiProbs[i], s.odds),
     };
   });
 

@@ -5,6 +5,8 @@ export interface MarketPrediction {
   marketPick: string;   // label of market-implied top pick
   line?: number;        // 언더오버/핸디캡 기준점수 (결과 판정에 필요)
   actual?: string;      // set after game: winner label, or undefined
+  modelPicks?: { modelName: string; pick: string; prob: number }[];
+  odds?: number;
 }
 
 export interface PredictionRecord {
@@ -97,4 +99,35 @@ export function getAccuracyStats(): AccuracyStats {
 
 export function clearPredictions(): void {
   localStorage.removeItem(STORAGE_KEY);
+}
+
+export interface ModelAccuracyStats {
+  modelName: string;
+  total: number;
+  correct: number;
+  rate: number;
+}
+
+export function getModelAccuracyStats(): ModelAccuracyStats[] {
+  const records = getPredictions();
+  const stats = new Map<string, { total: number; correct: number }>();
+
+  for (const rec of records) {
+    for (const pred of rec.predictions) {
+      if (pred.actual === undefined || !pred.modelPicks) continue;
+      for (const mp of pred.modelPicks) {
+        const s = stats.get(mp.modelName) || { total: 0, correct: 0 };
+        s.total++;
+        if (pred.actual === mp.pick) s.correct++;
+        stats.set(mp.modelName, s);
+      }
+    }
+  }
+
+  return Array.from(stats.entries()).map(([modelName, s]) => ({
+    modelName,
+    total: s.total,
+    correct: s.correct,
+    rate: s.total > 0 ? s.correct / s.total : 0,
+  }));
 }
