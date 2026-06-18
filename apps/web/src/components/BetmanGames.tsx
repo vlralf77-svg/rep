@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import {
   Box, Typography, Card, CardActionArea, CardContent, Chip,
   CircularProgress, Alert, Dialog, DialogTitle, DialogContent,
@@ -668,17 +668,15 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
   let sorted = [...games].sort((a, b) => (a.gameDate || '').localeCompare(b.gameDate || ''));
   if (sportFilter) sorted = sorted.filter(g => g.sport === sportFilter);
 
-  // 날짜 목록 추출
-  const availableDates = useMemo(() => {
-    const dates = new Set<string>();
-    for (const g of sorted) {
-      if (g.gameDate) {
-        const d = new Date(g.gameDate);
-        dates.add(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`);
-      }
+  // 날짜 목록 추출 (early return 이후이므로 hook은 사용하지 않음)
+  const dateSet = new Set<string>();
+  for (const g of sorted) {
+    if (g.gameDate) {
+      const d = new Date(g.gameDate);
+      dateSet.add(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`);
     }
-    return Array.from(dates).sort();
-  }, [sorted]);
+  }
+  const availableDates = Array.from(dateSet).sort();
 
   const filtered = selectedDate === 'all' ? sorted : sorted.filter(g => {
     if (!g.gameDate) return false;
