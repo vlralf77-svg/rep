@@ -10,6 +10,9 @@ const config: CapacitorConfig = {
       enabled: true,
     },
   },
+  server: {
+    androidScheme: 'https',
+  },
   android: {
     minWebViewVersion: 60,
   },

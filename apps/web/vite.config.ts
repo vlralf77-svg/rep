@@ -5,6 +5,7 @@ import { viteSingleFile } from 'vite-plugin-singlefile';
 const singleFile = process.env.SINGLE_FILE === '1';
 
 export default defineConfig({
+  base: './',
   plugins: [react(), ...(singleFile ? [viteSingleFile()] : [])],
   server: {
     port: 5173,
