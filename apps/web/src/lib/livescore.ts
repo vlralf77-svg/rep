@@ -523,23 +523,23 @@ export interface FetchResult {
 // 네이버는 클라이언트 렌더링이라 앱에서 직접 못 긁으므로 서버가 대신 긁어서 저장.
 const LIVESCORES_JSON_URL = 'https://raw.githubusercontent.com/vlralf77-svg/rep/claude%2Fgracious-fermat-c195k9/data/livescores.json';
 
-async function fetchServerScores(logs: string[]): Promise<LiveScore[]> {
+async function fetchServerScores(logs: string[]): Promise<{ scores: LiveScore[]; age: number }> {
   // 캐시 무력화를 위해 타임스탬프 쿼리 추가
   const url = `${LIVESCORES_JSON_URL}?t=${Date.now()}`;
   const { text, ok } = await httpGet(url);
   if (!ok || !text) {
     logs.push(`서버JSON: ${ok ? '빈응답' : '실패'}`);
-    return [];
+    return { scores: [], age: -1 };
   }
   try {
     const data = JSON.parse(text);
     const arr: LiveScore[] = Array.isArray(data?.scores) ? data.scores : [];
     const age = data?.updatedAt ? Math.round((Date.now() - new Date(data.updatedAt).getTime()) / 60000) : -1;
     logs.push(`서버JSON: ${arr.length}건 (${age >= 0 ? age + '분전' : '시각미상'})${data?.error ? ' err:' + data.error : ''}`);
-    return arr;
+    return { scores: arr, age };
   } catch (e: any) {
     logs.push(`서버JSON 파싱실패: ${e?.message}`);
-    return [];
+    return { scores: [], age: -1 };
   }
 }
 
@@ -549,16 +549,31 @@ export async function fetchLiveScores(): Promise<LiveScore[]> {
   return result.scores;
 }
 
+// 서버 JSON이 이 시간(분)보다 오래되면 신선한 실시간 소스를 우선 사용
+const STALE_THRESHOLD_MIN = 10;
+
 export async function fetchLiveScoresWithLog(): Promise<FetchResult> {
   const allScores: LiveScore[] = [];
   const logs: string[] = [];
   logs.push(`isNative: ${isNative}`);
 
-  // 0. 서버 사전 크롤링 JSON (가장 신뢰성 높음 — 네이버 데이터)
+  // 0. 서버 사전 크롤링 JSON (네이버 데이터 — 커버리지 넓음)
+  let serverScores: LiveScore[] = [];
+  let serverAge = -1;
   try {
     const srv = await fetchServerScores(logs);
-    allScores.push(...srv);
+    serverScores = srv.scores;
+    serverAge = srv.age;
   } catch (e: any) { logs.push(`0.서버JSON: 에러 ${e?.message || e}`); }
+
+  // 서버 데이터가 오래됐거나(>임계) 시각 미상이면 신선하지 않은 것으로 간주
+  const serverStale = serverAge < 0 || serverAge > STALE_THRESHOLD_MIN;
+  logs.push(`서버데이터: ${serverStale ? `오래됨(${serverAge}분) → 실시간소스 우선` : '신선'}`);
+
+  // 신선하면 서버 데이터를 먼저 채움 (기존 동작)
+  if (!serverStale) {
+    allScores.push(...serverScores);
+  }
 
   // 1. spojoy.com (한글 라이브스코어 — betman 매칭에 최적)
   if (allScores.length === 0) {
@@ -570,22 +585,36 @@ export async function fetchLiveScoresWithLog(): Promise<FetchResult> {
   }
 
   // 2. football-data.org (해외 축구, 영어→한글 매핑 + 전반 스코어 제공)
+  //    서버 데이터가 오래됐으면 무조건 가져와서 우선 사용
   let fbScores: LiveScore[] = [];
   try {
     fbScores = await fetchFootballData();
   } catch (e: any) { logs.push(`2.football-data: 에러 ${e?.message || e}`); }
-  if (!allScores.some(s => s.sport === '축구')) {
+  if (serverStale || !allScores.some(s => s.sport === '축구')) {
     allScores.push(...fbScores);
-    logs.push(`2.football-data: ${fbScores.length}건 추가`);
+    logs.push(`2.football-data: ${fbScores.length}건 추가${serverStale ? ' (실시간 우선)' : ''}`);
   }
 
-  // 3. 야구 없으면 TheSportsDB (KBO)
-  if (!allScores.some(s => s.sport === '야구')) {
+  // 3. 야구 — 서버 데이터가 오래됐거나 야구가 없으면 TheSportsDB (KBO)
+  if (serverStale || !allScores.some(s => s.sport === '야구')) {
     try {
       const sdb = await fetchSportsDB();
       allScores.push(...sdb);
-      logs.push(`3.SportsDB: ${sdb.length}건`);
+      logs.push(`3.SportsDB: ${sdb.length}건${serverStale ? ' (실시간 우선)' : ''}`);
     } catch (e: any) { logs.push(`3.SportsDB: 에러 ${e?.message || e}`); }
+  }
+
+  // 서버 데이터가 오래된 경우: 신선한 실시간 소스가 커버하지 못한 경기만
+  // 서버 데이터로 보강 (네이버의 넓은 커버리지 유지, 단 신선한 데이터가 우선)
+  if (serverStale && serverScores.length > 0) {
+    let added = 0;
+    for (const srv of serverScores) {
+      if (!allScores.some(fresh => isSameGame(fresh, srv))) {
+        allScores.push(srv);
+        added++;
+      }
+    }
+    logs.push(`0b.서버JSON 보강: ${added}건 (실시간에 없는 경기만)`);
   }
 
   // 4. 네이버 API (마지막 시도)
@@ -668,6 +697,14 @@ interface MatchableGame {
 function kstDayKey(ts: number): string {
   const d = new Date(ts + 9 * 60 * 60 * 1000);
   return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
+}
+
+// 같은 경기(같은 종목·양팀·시간 근접)인지 판별 — 신선한 데이터로 오래된 항목 대체용
+function isSameGame(a: LiveScore, b: LiveScore): boolean {
+  if (a.sport !== b.sport) return false;
+  if (Math.abs(a.timestamp - b.timestamp) > 6 * 60 * 60 * 1000) return false;
+  return (teamMatch(a.homeTeam, b.homeTeam) && teamMatch(a.awayTeam, b.awayTeam))
+    || (teamMatch(a.homeTeam, b.awayTeam) && teamMatch(a.awayTeam, b.homeTeam));
 }
 
 export function matchScore(game: MatchableGame, scores: LiveScore[]): LiveScore | null {
