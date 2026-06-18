@@ -182,6 +182,7 @@ function detectSport(market: BetmanMarket): 'soccer' | 'baseball' | 'unknown' {
   const t = market.type;
   if (t.includes('승무패') || t.includes('전반')) return 'soccer';
   if (t === '승1패' || t === '승패') return 'baseball';
+  // 배구/농구/하키는 무승부가 없으므로 야구와 같은 2-way 모델 사용
   if (market.selections.length === 2 && !t.includes('언더오버')) return 'baseball';
   return 'unknown';
 }

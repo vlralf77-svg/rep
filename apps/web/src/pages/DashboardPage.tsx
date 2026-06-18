@@ -9,6 +9,8 @@ const SPORT_FILTERS = [
   { value: '', label: '전체' },
   { value: '축구', label: '⚽ 축구' },
   { value: '야구', label: '⚾ 야구' },
+  { value: '배구', label: '🏐 배구' },
+  { value: '농구', label: '🏀 농구' },
 ];
 
 export default function DashboardPage() {

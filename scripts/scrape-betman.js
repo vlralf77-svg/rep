@@ -57,8 +57,9 @@ async function extractInto(page2, gameName, matchMap) {
         const gb = li.querySelector('b.game');
         if (!gb) return;
         const fullType = gb.textContent.trim(); // "야구 승1패", "축구 전반 언더오버" 등
-        const sport = fullType.startsWith('야구') ? '야구' : fullType.startsWith('축구') ? '축구' : '';
-        const type = fullType.replace(/^(야구|축구)\s*/, '');
+        const sportMatch = fullType.match(/^(야구|축구|농구|배구|하키|핸드볼)/);
+        const sport = sportMatch ? sportMatch[1] : '';
+        const type = sportMatch ? fullType.slice(sportMatch[1].length).trim() : fullType;
 
         // 언더오버/핸디캡 기준점수: span.udPoint (예: "U/O 2.5", "H -1.0")
         let line = null;
@@ -102,7 +103,10 @@ async function extractInto(page2, gameName, matchMap) {
   for (const mt of matches) {
     const key = `${mt.homeTeam}|${mt.awayTeam}|${mt.ts}`;
     if (!matchMap.has(key)) {
-      const sport = mt.markets[0]?.sport || (gameName.includes('야구') ? '야구' : '축구');
+      const sport = mt.markets[0]?.sport
+        || (gameName.includes('야구') ? '야구' : gameName.includes('배구') ? '배구'
+          : gameName.includes('농구') ? '농구' : gameName.includes('하키') ? '하키'
+          : gameName.includes('핸드볼') ? '핸드볼' : '축구');
       matchMap.set(key, {
         matchId: key,
         sport,
