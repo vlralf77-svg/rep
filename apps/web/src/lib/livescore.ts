@@ -14,6 +14,8 @@ export interface LiveScore {
   // 전반(하프타임) 스코어 — 전반 마켓 판정용 (없으면 undefined)
   homeHalfScore?: number;
   awayHalfScore?: number;
+  // 요청 시점 실시간 API(football-data 등) 출처 — 분(minute) 표시가 실시간
+  realtime?: boolean;
 }
 
 const isNative = Capacitor.isNativePlatform();
@@ -403,6 +405,7 @@ async function fetchFootballData(): Promise<LiveScore[]> {
         sport: '축구',
         homeHalfScore: typeof htH === 'number' ? htH : undefined,
         awayHalfScore: typeof htA === 'number' ? htA : undefined,
+        realtime: true,
       });
     }
   } catch { /* skip */ }
@@ -586,14 +589,13 @@ export async function fetchLiveScoresWithLog(): Promise<FetchResult> {
 
   // 2. football-data.org (해외 축구, 영어→한글 매핑 + 전반 스코어 제공)
   //    서버 데이터가 오래됐으면 무조건 가져와서 우선 사용
+  //    분(minute)이 실시간이라 항상 가져와서 LIVE 경기에 우선 적용
   let fbScores: LiveScore[] = [];
   try {
     fbScores = await fetchFootballData();
   } catch (e: any) { logs.push(`2.football-data: 에러 ${e?.message || e}`); }
-  if (serverStale || !allScores.some(s => s.sport === '축구')) {
-    allScores.push(...fbScores);
-    logs.push(`2.football-data: ${fbScores.length}건 추가${serverStale ? ' (실시간 우선)' : ''}`);
-  }
+  allScores.push(...fbScores);
+  logs.push(`2.football-data: ${fbScores.length}건 추가 (실시간 분)`);
 
   // 3. 야구 — 서버 데이터가 오래됐거나 야구가 없으면 TheSportsDB (KBO)
   if (serverStale || !allScores.some(s => s.sport === '야구')) {
@@ -718,15 +720,24 @@ function statusRank(s: LiveScore['status']): number {
   return s === 'LIVE' ? 0 : s === 'FINISHED' ? 1 : 2;
 }
 
-// 중복 경기 제거 — LIVE/FINISHED를 SCHEDULED보다 우선
+// 중복 경기 제거 — LIVE/FINISHED를 SCHEDULED보다 우선,
+// 같은 상태면 실시간 소스(football-data)를 우선 (분 표시가 실시간)
 function deduplicateScores(scores: LiveScore[]): LiveScore[] {
   const result: LiveScore[] = [];
   for (const s of scores) {
     const idx = result.findIndex(r => isSameGame(r, s));
     if (idx < 0) {
       result.push(s);
-    } else if (statusRank(s.status) < statusRank(result[idx].status)) {
+      continue;
+    }
+    const cur = result[idx];
+    const rs = statusRank(s.status), rc = statusRank(cur.status);
+    if (rs < rc) {
       result[idx] = s;
+    } else if (rs === rc && s.realtime && !cur.realtime) {
+      // 같은 상태면 실시간 분 정보를 가진 쪽으로 교체하되,
+      // 한글 분 표기 등 기존 정보가 유용하면 minute만 실시간으로 보강
+      result[idx] = { ...s, homeHalfScore: s.homeHalfScore ?? cur.homeHalfScore, awayHalfScore: s.awayHalfScore ?? cur.awayHalfScore };
     }
   }
   return result;

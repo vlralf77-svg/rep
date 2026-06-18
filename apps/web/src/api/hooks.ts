@@ -15,8 +15,9 @@ export function useLiveScores() {
   return useQuery<FetchResult>({
     queryKey: ['liveScores'],
     queryFn: fetchLiveScoresWithLog,
-    staleTime: 1000 * 60,
-    refetchInterval: 1000 * 60,
+    staleTime: 1000 * 30,
+    refetchInterval: 1000 * 30,
+    refetchIntervalInBackground: true,
     retry: 1,
   });
 }
