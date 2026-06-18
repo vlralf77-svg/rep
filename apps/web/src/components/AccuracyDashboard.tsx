@@ -140,6 +140,7 @@ type ResultFilter = 'all' | 'correct' | 'wrong';
 
 export default function AccuracyDashboard() {
   const [selectedDate, setSelectedDate] = useState<string>(dayKey(new Date()));
+  const [selectedSport, setSelectedSport] = useState<string>('all');
   const [resultFilter, setResultFilter] = useState<ResultFilter>('all');
   const [tick, setTick] = useState(0);
   const refresh = () => setTick((t) => t + 1);
@@ -171,8 +172,19 @@ export default function AccuracyDashboard() {
     if (changed) refresh();
   }, [liveScores]);
 
-  const { availableDates, gamesByDate, overallAgg, dateAgg } = useMemo(() => {
-    const records = getPredictions();
+  const { availableDates, availableSports, gamesByDate, overallAgg, dateAgg } = useMemo(() => {
+    const allRecords = getPredictions();
+    const sportSet = new Set<string>();
+    for (const rec of allRecords) {
+      if (rec.sport) sportSet.add(rec.sport);
+    }
+    const sports = Array.from(sportSet).sort();
+
+    // 종목 필터 적용
+    const records = selectedSport === 'all'
+      ? allRecords
+      : allRecords.filter((r) => r.sport === selectedSport);
+
     const byDate = new Map<string, PredictionRecord[]>();
     const oAgg = emptyAgg();
 
@@ -208,9 +220,9 @@ export default function AccuracyDashboard() {
       games.sort((a, b) => (a.gameDate || '').localeCompare(b.gameDate || ''));
     }
 
-    return { availableDates: dates, gamesByDate: byDate, overallAgg: oAgg, dateAgg: dAgg };
+    return { availableDates: dates, availableSports: sports, gamesByDate: byDate, overallAgg: oAgg, dateAgg: dAgg };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tick, liveScores, selectedDate]);
+  }, [tick, liveScores, selectedDate, selectedSport]);
 
   const dateGames = gamesByDate.get(selectedDate) || [];
   const displayGames = useMemo(() => {
@@ -254,6 +266,33 @@ export default function AccuracyDashboard() {
           )}
         </CardContent>
       </Card>
+
+      {/* 종목 선택 */}
+      {availableSports.length > 0 && (
+        <Box sx={{ mb: 1.2, display: 'flex', gap: 0.8, flexWrap: 'wrap', alignItems: 'center' }}>
+          <Typography variant="caption" color="text.secondary" sx={{ mr: 0.5 }}>종목</Typography>
+          <Chip label="전체" size="small"
+            onClick={() => setSelectedSport('all')}
+            variant={selectedSport === 'all' ? 'filled' : 'outlined'}
+            sx={{
+              fontSize: 12, fontWeight: selectedSport === 'all' ? 700 : 400,
+              bgcolor: selectedSport === 'all' ? 'secondary.main' : undefined,
+              color: selectedSport === 'all' ? '#fff' : undefined,
+            }}
+          />
+          {availableSports.map((sp) => (
+            <Chip key={sp} label={sp} size="small"
+              onClick={() => setSelectedSport(sp)}
+              variant={sp === selectedSport ? 'filled' : 'outlined'}
+              sx={{
+                fontSize: 12, fontWeight: sp === selectedSport ? 700 : 400,
+                bgcolor: sp === selectedSport ? 'secondary.main' : undefined,
+                color: sp === selectedSport ? '#fff' : undefined,
+              }}
+            />
+          ))}
+        </Box>
+      )}
 
       {/* 날짜 선택 */}
       <Box sx={{ mb: 2, display: 'flex', gap: 0.8, flexWrap: 'wrap' }}>

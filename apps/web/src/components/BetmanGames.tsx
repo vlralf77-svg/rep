@@ -654,7 +654,7 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
           line: m.line,
         };
       });
-      savePredictions({ matchId: game.matchId, homeTeam: game.homeTeam, awayTeam: game.awayTeam, gameDate: game.gameDate, savedAt: new Date().toISOString(), predictions });
+      savePredictions({ matchId: game.matchId, homeTeam: game.homeTeam, awayTeam: game.awayTeam, gameDate: game.gameDate, sport: game.sport, savedAt: new Date().toISOString(), predictions });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data?.updatedAt]);

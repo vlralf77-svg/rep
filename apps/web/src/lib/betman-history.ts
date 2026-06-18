@@ -13,6 +13,7 @@ export interface PredictionRecord {
   awayTeam: string;
   gameDate: string;
   savedAt: string;
+  sport?: string;
   predictions: MarketPrediction[];
 }
 
