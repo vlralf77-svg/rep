@@ -767,13 +767,23 @@ function deduplicateScores(scores: LiveScore[]): LiveScore[] {
       continue;
     }
     const cur = result[idx];
+    // 실시간 소스(football-data)는 요청 시점 상태가 항상 정확하므로 권위 있음.
+    // 스냅샷(네이버 스크래퍼)이 오래돼 "LIVE 0:0"으로 멈춰 있어도
+    // 실시간이 "FINISHED 3:1"이면 실시간을 신뢰한다.
+    if (s.realtime && !cur.realtime) {
+      result[idx] = { ...s, homeHalfScore: s.homeHalfScore ?? cur.homeHalfScore, awayHalfScore: s.awayHalfScore ?? cur.awayHalfScore };
+      continue;
+    }
+    if (cur.realtime && !s.realtime) {
+      // 기존(실시간)을 유지, 단 전반 스코어만 보강
+      cur.homeHalfScore = cur.homeHalfScore ?? s.homeHalfScore;
+      cur.awayHalfScore = cur.awayHalfScore ?? s.awayHalfScore;
+      continue;
+    }
+    // 둘 다 실시간이 아니거나 둘 다 실시간이면 상태 우선순위로 판단
     const rs = statusRank(s.status), rc = statusRank(cur.status);
     if (rs < rc) {
       result[idx] = s;
-    } else if (rs === rc && s.realtime && !cur.realtime) {
-      // 같은 상태면 실시간 분 정보를 가진 쪽으로 교체하되,
-      // 한글 분 표기 등 기존 정보가 유용하면 minute만 실시간으로 보강
-      result[idx] = { ...s, homeHalfScore: s.homeHalfScore ?? cur.homeHalfScore, awayHalfScore: s.awayHalfScore ?? cur.awayHalfScore };
     }
   }
   return result;
@@ -802,8 +812,10 @@ export function matchScore(game: MatchableGame, scores: LiveScore[]): LiveScore 
   }
 
   if (cands.length > 0) {
-    // 우선순위: ① 같은 KST 날짜 ② LIVE 상태(진행중 우선) ③ 시간 근접
-    const rank = (c: Cand) => (c.sameDay ? 0 : 1000) + (c.score.status === 'LIVE' ? -1 : 0);
+    // 우선순위: ① 같은 KST 날짜 ② 실시간 소스(권위) ③ LIVE 상태 ④ 시간 근접
+    const rank = (c: Cand) => (c.sameDay ? 0 : 1000)
+      + (c.score.realtime ? -2 : 0)
+      + (c.score.status === 'LIVE' ? -1 : 0);
     cands.sort((a, b) => {
       const ra = rank(a), rb = rank(b);
       if (ra !== rb) return ra - rb;
