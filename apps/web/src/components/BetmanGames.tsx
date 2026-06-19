@@ -26,6 +26,7 @@ import {
   loadPicks, savePicks, loadAmount, saveAmount,
   getSavedBets, addSavedBet, removeSavedBet, updateSavedBet, SavedBet,
 } from '../lib/betman-betslip';
+import { getTeamForm, getH2H, updateFormFromScores, TeamForm, H2HStats } from '../lib/team-stats';
 
 // ── 베팅 슬립 타입 ─────────────────────────────────────────────
 export interface BetPick {
@@ -292,6 +293,95 @@ function MarketBlock({
   );
 }
 
+// ── 폼/컨디션 & H2H ────────────────────────────────────────────
+function FormBadge({ form }: { form: TeamForm }) {
+  if (form.results.length === 0) return null;
+  const colorMap = { W: '#66bb6a', D: '#78909c', L: '#ef5350' };
+  return (
+    <Box sx={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
+      {form.results.map((r, i) => (
+        <Box key={i} sx={{
+          width: 18, height: 18, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          bgcolor: colorMap[r], fontSize: 10, fontWeight: 700, color: '#fff',
+        }}>
+          {r}
+        </Box>
+      ))}
+      <Typography variant="caption" color="text.secondary" sx={{ ml: 0.5, fontSize: 10 }}>
+        {form.goalsScored}득 {form.goalsConceded}실
+      </Typography>
+    </Box>
+  );
+}
+
+function TeamFormSection({ homeTeam, awayTeam }: { homeTeam: string; awayTeam: string }) {
+  const homeForm = getTeamForm(homeTeam);
+  const awayForm = getTeamForm(awayTeam);
+  const h2h = getH2H(homeTeam, awayTeam);
+
+  if (homeForm.results.length === 0 && awayForm.results.length === 0 && h2h.matches.length === 0) return null;
+
+  return (
+    <Box sx={{ mb: 2, p: 1.2, borderRadius: 2, bgcolor: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
+      {/* 최근 폼 */}
+      {(homeForm.results.length > 0 || awayForm.results.length > 0) && (
+        <>
+          <Typography variant="caption" fontWeight={700} display="block" mb={0.8} sx={{ fontSize: 11 }}>
+            📊 최근 폼 (최근 5경기)
+          </Typography>
+          {homeForm.results.length > 0 && (
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.6 }}>
+              <Typography variant="caption" fontWeight={600} sx={{ minWidth: 60, fontSize: 11 }} noWrap>{homeTeam}</Typography>
+              <FormBadge form={homeForm} />
+            </Box>
+          )}
+          {awayForm.results.length > 0 && (
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.6 }}>
+              <Typography variant="caption" fontWeight={600} sx={{ minWidth: 60, fontSize: 11 }} noWrap>{awayTeam}</Typography>
+              <FormBadge form={awayForm} />
+            </Box>
+          )}
+        </>
+      )}
+
+      {/* H2H 전적 */}
+      {h2h.matches.length > 0 && (
+        <>
+          <Divider sx={{ my: 1 }} />
+          <Typography variant="caption" fontWeight={700} display="block" mb={0.5} sx={{ fontSize: 11 }}>
+            ⚔️ 상대 전적
+          </Typography>
+          <Box sx={{ display: 'flex', gap: 1.5, mb: 0.8 }}>
+            <Chip label={`${homeTeam} ${h2h.homeWins}승`} size="small"
+              sx={{ fontSize: 10, height: 20, bgcolor: h2h.homeWins > h2h.awayWins ? 'rgba(102,187,106,0.2)' : undefined,
+                color: h2h.homeWins > h2h.awayWins ? '#66bb6a' : undefined }} />
+            {h2h.draws > 0 && <Chip label={`무 ${h2h.draws}`} size="small" sx={{ fontSize: 10, height: 20 }} />}
+            <Chip label={`${awayTeam} ${h2h.awayWins}승`} size="small"
+              sx={{ fontSize: 10, height: 20, bgcolor: h2h.awayWins > h2h.homeWins ? 'rgba(102,187,106,0.2)' : undefined,
+                color: h2h.awayWins > h2h.homeWins ? '#66bb6a' : undefined }} />
+          </Box>
+          {h2h.matches.slice(0, 5).map((m, i) => (
+            <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 0.3 }}>
+              <Typography variant="caption" color="text.disabled" sx={{ fontSize: 9, minWidth: 50 }}>
+                {new Date(m.date).toLocaleDateString('ko-KR', { month: 'short', day: 'numeric' })}
+              </Typography>
+              <Typography variant="caption" sx={{ fontSize: 10, flex: 1 }} noWrap>
+                {m.homeTeam}
+              </Typography>
+              <Typography variant="caption" fontWeight={700} sx={{ fontSize: 11, minWidth: 30, textAlign: 'center' }}>
+                {m.homeScore}:{m.awayScore}
+              </Typography>
+              <Typography variant="caption" sx={{ fontSize: 10, flex: 1, textAlign: 'right' }} noWrap>
+                {m.awayTeam}
+              </Typography>
+            </Box>
+          ))}
+        </>
+      )}
+    </Box>
+  );
+}
+
 // ── 게임 상세 다이얼로그 ────────────────────────────────────────
 function GameDetail({ game, open, onClose, picks, onTogglePick, score }: {
   game: BetmanGame; open: boolean; onClose: () => void;
@@ -408,6 +498,7 @@ function GameDetail({ game, open, onClose, picks, onTogglePick, score }: {
       </DialogTitle>
       <DialogContent>
         <Divider sx={{ mb: 2 }} />
+        <TeamFormSection homeTeam={game.homeTeam} awayTeam={game.awayTeam} />
         {sorted.map((m, i) => (
           <MarketBlock key={i} market={m} matchId={game.matchId}
             homeTeam={game.homeTeam} awayTeam={game.awayTeam}
@@ -1035,6 +1126,11 @@ export default function BetmanGames({ type, sportFilter = '' }: { type: 'toto' |
     saveOddsSnapshot(allGames);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data?.updatedAt]);
+
+  // 폼/전적 데이터 갱신
+  useEffect(() => {
+    if (liveScores && liveScores.length > 0) updateFormFromScores(liveScores);
+  }, [liveScores]);
 
   if (isLoading) return <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}><CircularProgress /></Box>;
   if (error) return <Alert severity="warning">배트맨 데이터를 불러올 수 없습니다.</Alert>;
