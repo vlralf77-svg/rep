@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-19T09:04:23.595Z",
+  "updatedAt": "2026-06-19T09:33:24.678Z",
   "count": 81,
   "scores": [
     {
@@ -135,58 +135,60 @@
       "awayTeam": "히로시마",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1781892000000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회말"
     },
     {
       "homeTeam": "요미우리",
       "awayTeam": "주니치",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1781892000000,
       "sport": "야구",
-      "inning": "1회초"
+      "inning": "2회초"
     },
     {
       "homeTeam": "지바롯데",
       "awayTeam": "라쿠텐",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1781892000000,
       "sport": "야구",
-      "inning": "1회초"
+      "inning": "1회말"
     },
     {
       "homeTeam": "오릭스",
       "awayTeam": "세이부",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1781892000000,
       "sport": "야구",
-      "inning": "1회초"
+      "inning": "2회말"
     },
     {
       "homeTeam": "닛폰햄",
       "awayTeam": "소프트뱅크",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1781892000000,
       "sport": "야구",
-      "inning": "1회초"
+      "inning": "2회말"
     },
     {
       "homeTeam": "요코하마",
       "awayTeam": "한신",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 5,
+      "status": "LIVE",
       "timestamp": 1781892900000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "KT",
@@ -648,8 +650,8 @@
       "homeTeam": "도미니공",
       "awayTeam": "세르비아",
       "homeScore": 0,
-      "awayScore": 2,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1781856000000,
       "sport": "배구"
     },
