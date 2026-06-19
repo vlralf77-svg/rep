@@ -1,72 +1,7 @@
 {
-  "updatedAt": "2026-06-19T09:54:35.128Z",
+  "updatedAt": "2026-06-19T10:17:49.128Z",
   "toto": [],
   "proto": [
-    {
-      "matchId": "우크라이나_여자_네덜란드|여자|1781863200000",
-      "sport": "배구",
-      "league": "승부식72 회차",
-      "homeTeam": "우크라이나_여자_네덜란드",
-      "awayTeam": "여자",
-      "gameDate": "2026-06-19T10:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3.03
-            },
-            {
-              "label": "패",
-              "odds": 1.24
-            }
-          ]
-        },
-        {
-          "type": "세트핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.97
-            },
-            {
-              "label": "패",
-              "odds": 1.59
-            }
-          ],
-          "line": 1.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.76
-            },
-            {
-              "label": "오버",
-              "odds": 1.76
-            }
-          ],
-          "line": 179.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.76
-            },
-            {
-              "label": "짝",
-              "odds": 1.76
-            }
-          ]
-        }
-      ]
-    },
     {
       "matchId": "일본_여자_체코|여자|1781870400000",
       "sport": "배구",
