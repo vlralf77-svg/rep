@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-19T05:37:32.712Z",
+  "updatedAt": "2026-06-19T09:04:23.595Z",
   "count": 81,
   "scores": [
     {
@@ -124,9 +124,9 @@
     {
       "homeTeam": "명지대",
       "awayTeam": "경희대",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 49,
+      "awayScore": 79,
+      "status": "FINISHED",
       "timestamp": 1781884800000,
       "sport": "농구"
     },
@@ -144,36 +144,40 @@
       "awayTeam": "주니치",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1781892000000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "지바롯데",
       "awayTeam": "라쿠텐",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1781892000000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "오릭스",
       "awayTeam": "세이부",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1781892000000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "닛폰햄",
       "awayTeam": "소프트뱅크",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1781892000000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "요코하마",
@@ -644,7 +648,7 @@
       "homeTeam": "도미니공",
       "awayTeam": "세르비아",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1781856000000,
       "sport": "배구"
