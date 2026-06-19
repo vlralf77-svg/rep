@@ -44,6 +44,7 @@ function GameCard({ record, score }: { record: PredictionRecord; score?: LiveSco
   const hasResults = resolved.length > 0;
   const isLive = score?.status === 'LIVE';
   const isFinished = score?.status === 'FINISHED';
+  const gameStarted = isLive || isFinished;
 
   return (
     <Card sx={{ mb: 1.5,
@@ -67,10 +68,12 @@ function GameCard({ record, score }: { record: PredictionRecord; score?: LiveSco
             {!isLive && !isFinished && !score && (
               <Chip label="스코어 대기" size="small" variant="outlined" sx={{ fontSize: 10, height: 18, color: 'text.disabled' }} />
             )}
-            {hasResults
-              ? <Chip label={`AI ${aiCorrect}/${resolved.length} 적중`} size="small"
-                  color={aiCorrect === resolved.length ? 'success' : aiCorrect === 0 ? 'error' : 'warning'} />
-              : <Chip label="결과 대기" size="small" variant="outlined" sx={{ fontSize: 10, color: 'text.disabled' }} />}
+            {gameStarted
+              ? hasResults
+                ? <Chip label={`AI ${aiCorrect}/${resolved.length} 적중`} size="small"
+                    color={aiCorrect === resolved.length ? 'success' : aiCorrect === 0 ? 'error' : 'warning'} />
+                : <Chip label="결과 대기" size="small" variant="outlined" sx={{ fontSize: 10, color: 'text.disabled' }} />
+              : <Chip label="경기 전" size="small" variant="outlined" sx={{ fontSize: 10, color: 'text.disabled' }} />}
           </Box>
         </Box>
 
@@ -96,7 +99,7 @@ function GameCard({ record, score }: { record: PredictionRecord; score?: LiveSco
 
         {/* 마켓별 예측 결과 */}
         {record.predictions.map((p, i) => {
-          const liveResult = score ? determineResult(p.marketType, score.homeScore, score.awayScore, p.line, score.homeHalfScore, score.awayHalfScore) : null;
+          const liveResult = gameStarted && score ? determineResult(p.marketType, score.homeScore, score.awayScore, p.line, score.homeHalfScore, score.awayHalfScore) : null;
           const actualOrLive = p.actual ?? liveResult;
           const hasActual = p.actual !== undefined;
 
@@ -109,17 +112,17 @@ function GameCard({ record, score }: { record: PredictionRecord; score?: LiveSco
                 />
                 <Box sx={{ flex: 1, minWidth: 0 }}>
                   <Typography variant="caption" display="block" noWrap>
-                    AI <b style={{ color: actualOrLive ? (actualOrLive === p.aiPick ? '#66bb6a' : '#ef5350') : 'inherit' }}>{p.aiPick}</b>
-                    {' · '}시장 <b style={{ color: actualOrLive ? (actualOrLive === p.marketPick ? '#66bb6a' : '#ef5350') : 'inherit' }}>{p.marketPick}</b>
+                    AI <b style={{ color: gameStarted && actualOrLive ? (actualOrLive === p.aiPick ? '#66bb6a' : '#ef5350') : 'inherit' }}>{p.aiPick}</b>
+                    {' · '}시장 <b style={{ color: gameStarted && actualOrLive ? (actualOrLive === p.marketPick ? '#66bb6a' : '#ef5350') : 'inherit' }}>{p.marketPick}</b>
                   </Typography>
-                  {actualOrLive && (
+                  {gameStarted && actualOrLive && (
                     <Typography variant="caption" color="text.secondary">
                       {hasActual ? '결과' : isLive ? '현재' : '결과'}: <b>{actualOrLive}</b>
                       {!hasActual && isLive && <span style={{ color: '#ffb74d' }}> (진행중)</span>}
                     </Typography>
                   )}
                 </Box>
-                {actualOrLive ? (
+                {gameStarted && actualOrLive ? (
                   <Typography sx={{ fontSize: 16 }}>
                     {actualOrLive === p.aiPick ? '✅' : '❌'}
                   </Typography>
