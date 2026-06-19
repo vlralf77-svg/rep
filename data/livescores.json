@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-19T18:28:50.310Z",
+  "updatedAt": "2026-06-19T22:15:36.283Z",
   "count": 91,
   "scores": [
     {
@@ -232,30 +232,32 @@
     {
       "homeTeam": "시카고컵스",
       "awayTeam": "토론토",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
+      "homeScore": 16,
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1781925600000,
-      "sport": "야구",
-      "inning": "1회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "미국",
       "awayTeam": "호주",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1781928000000,
-      "sport": "축구"
+      "sport": "축구",
+      "homeHalfScore": 2,
+      "awayHalfScore": 0
     },
     {
       "homeTeam": "스코틀랜드",
       "awayTeam": "모로코",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1781938800000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 12'"
     },
     {
       "homeTeam": "디트로이트",
@@ -568,17 +570,19 @@
     {
       "homeTeam": "미국",
       "awayTeam": "호주",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1781895600000,
-      "sport": "축구"
+      "sport": "축구",
+      "homeHalfScore": 2,
+      "awayHalfScore": 0
     },
     {
       "homeTeam": "스코틀랜드",
       "awayTeam": "모로코",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1781906400000,
       "sport": "축구"
