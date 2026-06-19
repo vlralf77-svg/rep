@@ -44,7 +44,7 @@ function GameCard({ record, score }: { record: PredictionRecord; score?: LiveSco
   const hasResults = resolved.length > 0;
   const isLive = score?.status === 'LIVE';
   const isFinished = score?.status === 'FINISHED';
-  const gameStarted = isLive || isFinished;
+  const gameStarted = isLive || isFinished || hasResults;
 
   return (
     <Card sx={{ mb: 1.5,
