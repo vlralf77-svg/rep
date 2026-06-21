@@ -1,0 +1,32 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 사용자 프로필
+    match /users/{uid} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // 오늘의 경기 (읽기: 인증 사용자, 쓰기: 관리자만)
+    match /days/{day}/matches/{matchId} {
+      allow read: if request.auth != null;
+      // TODO: 실제 운영 시 관리자 uid 목록으로 제한
+      // allow write: if request.auth.uid in ['ADMIN_UID_HERE'];
+      allow write: if request.auth != null;
+    }
+
+    // 픽 (본인 uid 문서만 쓰기 가능)
+    match /days/{day}/picks/{pickId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null
+                   && request.resource.data.uid == request.auth.uid;
+    }
+
+    // 조합 (본인 uid 문서만 쓰기 가능)
+    match /days/{day}/combos/{uid} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == uid;
+    }
+  }
+}
