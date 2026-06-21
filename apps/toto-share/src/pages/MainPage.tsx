@@ -63,7 +63,7 @@ export default function MainPage() {
       <AppBar position="sticky" elevation={0} sx={{ bgcolor: 'background.paper', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
         <Toolbar sx={{ justifyContent: 'space-between', minHeight: '56px !important' }}>
           <Typography variant="h6" sx={{ fontSize: '1.1rem' }}>
-            TotoShare
+            벳
           </Typography>
           <Stack direction="row" spacing={1} alignItems="center">
             <Chip

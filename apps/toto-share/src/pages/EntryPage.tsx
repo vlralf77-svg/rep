@@ -73,7 +73,7 @@ export default function EntryPage() {
         </Avatar>
 
         <Typography variant="h5" gutterBottom>
-          TotoShare
+          벳
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
           오늘의 경기 픽을 공유하세요
