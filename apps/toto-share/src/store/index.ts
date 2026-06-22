@@ -1,13 +1,19 @@
 import { create } from 'zustand';
 import type { Match, Pick, UserProfile, Selection } from '../types';
 
+interface EloEntry {
+  rating: number;
+  matches: number;
+  lastUpdated: any;
+}
+
 interface AppState {
   user: UserProfile | null;
   matches: Match[];
   picks: Pick[];
   onlineUsers: UserProfile[];
   myPicks: Record<string, Selection>;
-  confirmedCombo: boolean;
+  eloRatings: Record<string, EloEntry>;
 
   setUser: (user: UserProfile | null) => void;
   setMatches: (matches: Match[]) => void;
@@ -16,7 +22,7 @@ interface AppState {
   setMyPick: (matchId: string, selection: Selection) => void;
   removeMyPick: (matchId: string) => void;
   clearMyPicks: () => void;
-  setConfirmedCombo: (v: boolean) => void;
+  setEloRatings: (ratings: Record<string, EloEntry>) => void;
 }
 
 export const useStore = create<AppState>((set) => ({
@@ -25,7 +31,7 @@ export const useStore = create<AppState>((set) => ({
   picks: [],
   onlineUsers: [],
   myPicks: {},
-  confirmedCombo: false,
+  eloRatings: {},
 
   setUser: (user) => set({ user }),
   setMatches: (matches) => set({ matches }),
@@ -39,6 +45,6 @@ export const useStore = create<AppState>((set) => ({
       delete next[matchId];
       return { myPicks: next };
     }),
-  clearMyPicks: () => set({ myPicks: {}, confirmedCombo: false }),
-  setConfirmedCombo: (v) => set({ confirmedCombo: v }),
+  clearMyPicks: () => set({ myPicks: {} }),
+  setEloRatings: (ratings) => set({ eloRatings: ratings }),
 }));

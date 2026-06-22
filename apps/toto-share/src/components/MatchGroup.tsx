@@ -15,7 +15,8 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import type { Match, Selection, PickSummary } from '../types';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import type { Match, Selection, PickSummary, MatchResult } from '../types';
 import MatchPrediction from './MatchPrediction';
 
 interface Props {
@@ -24,6 +25,8 @@ interface Props {
   pickSummaries: Record<string, PickSummary>;
   onSelect: (matchId: string, sel: Selection) => void;
   defaultOpen?: boolean;
+  isAdmin?: boolean;
+  onRecordResult?: (homeTeam: string, awayTeam: string, result: MatchResult, matchId: string) => void;
 }
 
 function formatTime(ts: number): string {
@@ -214,12 +217,71 @@ function MarketRow({
 
 const EMPTY_SUMMARY: PickSummary = { HOME: 0, DRAW: 0, AWAY: 0, users: {} };
 
+function ResultRecorder({
+  homeTeam,
+  awayTeam,
+  matchId,
+  currentResult,
+  onRecord,
+}: {
+  homeTeam: string;
+  awayTeam: string;
+  matchId: string;
+  currentResult: MatchResult;
+  onRecord: (homeTeam: string, awayTeam: string, result: MatchResult, matchId: string) => void;
+}) {
+  const options: { label: string; value: 'HOME' | 'DRAW' | 'AWAY' }[] = [
+    { label: '홈승', value: 'HOME' },
+    { label: '무', value: 'DRAW' },
+    { label: '원정승', value: 'AWAY' },
+  ];
+  return (
+    <Box sx={{ mt: 1, p: 1, bgcolor: 'rgba(255,193,7,0.05)', borderRadius: 1, border: '1px dashed rgba(255,193,7,0.3)' }}>
+      <Stack direction="row" alignItems="center" spacing={0.5} sx={{ mb: 0.5 }}>
+        <EmojiEventsIcon sx={{ fontSize: 14, color: '#ffc107' }} />
+        <Typography variant="caption" sx={{ fontWeight: 700, fontSize: '0.6rem', color: '#ffc107' }}>
+          경기 결과 입력 (엘로 반영)
+        </Typography>
+        {currentResult && (
+          <Chip
+            label={`결과: ${currentResult === 'HOME' ? '홈승' : currentResult === 'DRAW' ? '무' : '원정승'}`}
+            size="small"
+            color="success"
+            sx={{ height: 16, fontSize: '0.5rem' }}
+          />
+        )}
+      </Stack>
+      <Stack direction="row" spacing={0.5}>
+        {options.map((opt) => (
+          <Button
+            key={opt.value}
+            size="small"
+            variant={currentResult === opt.value ? 'contained' : 'outlined'}
+            color="warning"
+            disabled={currentResult !== null}
+            onClick={() => {
+              if (window.confirm(`${homeTeam} vs ${awayTeam} 결과를 "${opt.label}"로 확정합니다. 엘로 레이팅에 반영됩니다.`)) {
+                onRecord(homeTeam, awayTeam, opt.value, matchId);
+              }
+            }}
+            sx={{ flex: 1, fontSize: '0.65rem', py: 0.3, minHeight: 0 }}
+          >
+            {opt.label}
+          </Button>
+        ))}
+      </Stack>
+    </Box>
+  );
+}
+
 export default function MatchGroup({
   matches,
   myPicks,
   pickSummaries,
   onSelect,
   defaultOpen = false,
+  isAdmin = false,
+  onRecordResult,
 }: Props) {
   const [open, setOpen] = useState(defaultOpen);
   if (matches.length === 0) return null;
@@ -318,6 +380,15 @@ export default function MatchGroup({
             />
           ))}
           <MatchPrediction matches={sorted} />
+          {isAdmin && onRecordResult && (
+            <ResultRecorder
+              homeTeam={head.homeTeam}
+              awayTeam={head.awayTeam}
+              matchId={head.gameKey || head.id}
+              currentResult={head.result}
+              onRecord={onRecordResult}
+            />
+          )}
         </Box>
       </Collapse>
     </Card>

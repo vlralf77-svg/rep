@@ -26,9 +26,10 @@ import { useMatches, todayKey } from '../hooks/useMatches';
 import { usePicks } from '../hooks/usePicks';
 import { useOnlineUsers } from '../hooks/useOnlineUsers';
 import { useAutoImport } from '../hooks/useAutoImport';
+import { useEloRatings } from '../hooks/useEloRatings';
 import { useStore } from '../store';
 import { isAdmin } from '../config';
-import type { Selection, PickSummary } from '../types';
+import type { Selection, PickSummary, MatchResult } from '../types';
 
 function formatDate(key: string): string {
   const [y, m, d] = key.split('-');
@@ -44,9 +45,18 @@ export default function MainPage() {
     usePicks();
   const { onlineUsers } = useOnlineUsers();
   const { lastUpdated, refreshing, refresh } = useAutoImport();
+  const { recordResult } = useEloRatings();
   const [sportFilter, setSportFilter] = useState('전체');
   const day = todayKey();
   const admin = isAdmin(user?.nickname);
+
+  const handleRecordResult = useCallback(
+    async (homeTeam: string, awayTeam: string, result: MatchResult, matchId: string) => {
+      if (!result) return;
+      await recordResult(homeTeam, awayTeam, result, matchId);
+    },
+    [recordResult],
+  );
 
   const handleReset = async () => {
     const msg = admin
@@ -212,6 +222,8 @@ export default function MainPage() {
                 pickSummaries={pickSummaries}
                 onSelect={handleSelect}
                 defaultOpen={groups.length === 1}
+                isAdmin={admin}
+                onRecordResult={handleRecordResult}
               />
             ))
         )}

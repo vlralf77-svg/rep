@@ -3,6 +3,8 @@ import SmartToyIcon from '@mui/icons-material/SmartToy';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import ScaleIcon from '@mui/icons-material/Scale';
 import type { Match } from '../types';
+import { useStore } from '../store';
+import { DEFAULT_RATING, expectedScore } from '../utils/elo';
 
 interface Props {
   matches: Match[];
@@ -18,11 +20,6 @@ function impliedProb(oddsH: number, oddsD: number, oddsA: number) {
     draw: rawD / total,
     away: rawA / total,
   };
-}
-
-function eloDiff(prob: number): number {
-  if (prob <= 0 || prob >= 1) return 0;
-  return -400 * Math.log10(1 / prob - 1);
 }
 
 function ProbBar({ label, value, color }: { label: string; value: number; color: string }) {
@@ -87,20 +84,27 @@ function MarketPrediction({ match }: { match: Match }) {
 }
 
 export default function MatchPrediction({ matches }: Props) {
+  const eloRatings = useStore((s) => s.eloRatings);
   const main = matches.find((m) => m.marketType === '승무패' || m.marketType === '승패') || matches[0];
   if (!main) return null;
 
   const prob = impliedProb(main.oddsHome, main.oddsDraw, main.oddsAway);
-  const homeElo = eloDiff(prob.home);
-  const awayElo = eloDiff(prob.away);
-  const eloDiffVal = Math.round(homeElo - awayElo);
+
+  const homeRating = eloRatings[main.homeTeam]?.rating ?? DEFAULT_RATING;
+  const awayRating = eloRatings[main.awayTeam]?.rating ?? DEFAULT_RATING;
+  const homeMatches = eloRatings[main.homeTeam]?.matches ?? 0;
+  const awayMatches = eloRatings[main.awayTeam]?.matches ?? 0;
+  const hasEloData = homeMatches > 0 || awayMatches > 0;
+  const eloDiffVal = homeRating - awayRating;
+  const eloHomeWin = expectedScore(homeRating, awayRating);
+  const eloAwayWin = 1 - eloHomeWin;
 
   const otherMarkets = matches.filter((m) => m.id !== main.id);
 
-  let weightedHome = prob.home * 0.4;
-  let weightedAway = prob.away * 0.4;
-  let weightedDraw = prob.draw * 0.4;
-  let totalWeight = 0.4;
+  let weightedHome = prob.home * 0.35;
+  let weightedAway = prob.away * 0.35;
+  let weightedDraw = prob.draw * 0.35;
+  let totalWeight = 0.35;
   const usedMarkets: string[] = [main.marketType || '승무패'];
 
   for (const m of otherMarkets) {
@@ -116,6 +120,16 @@ export default function MatchPrediction({ matches }: Props) {
     weightedDraw += mp.draw * w;
     totalWeight += w;
     usedMarkets.push(t);
+  }
+
+  if (hasEloData) {
+    const eloW = 0.25;
+    const drawFactor = Math.max(0, 0.28 - Math.abs(eloDiffVal) / 2000);
+    weightedHome += (eloHomeWin - drawFactor / 2) * eloW;
+    weightedAway += (eloAwayWin - drawFactor / 2) * eloW;
+    weightedDraw += drawFactor * eloW;
+    totalWeight += eloW;
+    usedMarkets.push('엘로');
   }
 
   const wHome = Math.max(0, weightedHome / totalWeight);
@@ -151,21 +165,29 @@ export default function MatchPrediction({ matches }: Props) {
 
         <Divider sx={{ borderColor: 'rgba(255,255,255,0.06)' }} />
 
-        {/* 엘로 레이팅 */}
+        {/* 실제 엘로 레이팅 */}
         <Box>
           <Stack direction="row" alignItems="center" spacing={0.5} sx={{ mb: 0.8 }}>
             <BarChartIcon sx={{ fontSize: 14, color: '#66bb6a' }} />
             <Typography variant="caption" sx={{ fontWeight: 700, fontSize: '0.65rem' }}>
               엘로 레이팅
             </Typography>
+            {hasEloData ? (
+              <Chip label="실전 데이터" size="small" sx={{ height: 16, fontSize: '0.5rem', bgcolor: 'rgba(102,187,106,0.15)', color: '#81c784' }} />
+            ) : (
+              <Chip label="기본값" size="small" sx={{ height: 16, fontSize: '0.5rem', bgcolor: 'rgba(255,255,255,0.08)', color: 'text.secondary' }} />
+            )}
           </Stack>
           <Stack direction="row" justifyContent="space-between" alignItems="center">
             <Box sx={{ textAlign: 'center', flex: 1 }}>
               <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.6rem', display: 'block' }}>
                 {main.homeTeam}
               </Typography>
-              <Typography variant="body2" sx={{ fontWeight: 700, color: homeElo > 0 ? '#42a5f5' : 'text.secondary' }}>
-                {homeElo > 0 ? '+' : ''}{Math.round(homeElo)}
+              <Typography variant="body2" sx={{ fontWeight: 700, color: homeRating > awayRating ? '#42a5f5' : 'text.secondary' }}>
+                {homeRating}
+              </Typography>
+              <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.5rem' }}>
+                {homeMatches}전
               </Typography>
             </Box>
             <Box sx={{ textAlign: 'center', px: 1 }}>
@@ -175,16 +197,22 @@ export default function MatchPrediction({ matches }: Props) {
               <Chip
                 label={`${eloDiffVal > 0 ? '+' : ''}${eloDiffVal}`}
                 size="small"
-                color={eloDiffVal > 30 ? 'primary' : eloDiffVal < -30 ? 'error' : 'default'}
+                color={eloDiffVal > 50 ? 'primary' : eloDiffVal < -50 ? 'error' : 'default'}
                 sx={{ height: 20, fontSize: '0.7rem', fontWeight: 700 }}
               />
+              <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.5rem', display: 'block', mt: 0.3 }}>
+                승률 {Math.round(eloHomeWin * 100)}:{Math.round(eloAwayWin * 100)}
+              </Typography>
             </Box>
             <Box sx={{ textAlign: 'center', flex: 1 }}>
               <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.6rem', display: 'block' }}>
                 {main.awayTeam}
               </Typography>
-              <Typography variant="body2" sx={{ fontWeight: 700, color: awayElo > 0 ? '#ef5350' : 'text.secondary' }}>
-                {awayElo > 0 ? '+' : ''}{Math.round(awayElo)}
+              <Typography variant="body2" sx={{ fontWeight: 700, color: awayRating > homeRating ? '#ef5350' : 'text.secondary' }}>
+                {awayRating}
+              </Typography>
+              <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.5rem' }}>
+                {awayMatches}전
               </Typography>
             </Box>
           </Stack>
