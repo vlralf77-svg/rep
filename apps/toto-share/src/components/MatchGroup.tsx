@@ -25,7 +25,16 @@ interface Props {
 
 function formatTime(ts: number): string {
   const d = new Date(ts);
-  return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+  const hh = String(d.getHours()).padStart(2, '0');
+  const mm = String(d.getMinutes()).padStart(2, '0');
+  // 여러 날짜의 경기가 섞이므로 날짜도 함께 표시 (오늘이 아니면)
+  const today = new Date();
+  const sameDay =
+    d.getFullYear() === today.getFullYear() &&
+    d.getMonth() === today.getMonth() &&
+    d.getDate() === today.getDate();
+  if (sameDay) return `${hh}:${mm}`;
+  return `${d.getMonth() + 1}/${d.getDate()} ${hh}:${mm}`;
 }
 
 function getLabels(marketType?: string): { home: string; draw: string; away: string } {
@@ -112,24 +121,6 @@ function SelectionButton({
   );
 }
 
-// 마켓 타입 + 핸디/기준점을 사람이 읽기 쉬운 라벨로
-function marketLabel(match: Match): string {
-  const t = match.marketType || '승무패';
-  const line = match.line;
-  const isHandicap = t.includes('핸디캡');
-  const isOU = t.includes('언더오버');
-  if (line === null || line === undefined) return t;
-  if (isHandicap) {
-    // 핸디캡은 홈팀 기준 점수 (예: 홈 -1)
-    const sign = line > 0 ? `+${line}` : `${line}`;
-    return `${t} (홈 ${sign})`;
-  }
-  if (isOU) {
-    return `${t} (기준 ${line})`;
-  }
-  return `${t} (${line})`;
-}
-
 function MarketRow({
   match,
   mySelection,
@@ -143,15 +134,32 @@ function MarketRow({
 }) {
   const labels = getLabels(match.marketType);
   const disabled = match.status !== 'OPEN' || Date.now() > match.startTime;
+  const t = match.marketType || '승무패';
+  const hasLine = match.line !== null && match.line !== undefined;
+  // 핸디캡: 홈 기준 점수 / 언더오버: 기준점
+  const lineText = hasLine
+    ? t.includes('핸디캡')
+      ? `기준 ${match.line! > 0 ? '+' + match.line : match.line}`
+      : t.includes('언더오버')
+        ? `기준 ${match.line}`
+        : `${match.line}`
+    : '';
 
   return (
     <Box sx={{ mb: 1 }}>
-      <Typography
-        variant="caption"
-        sx={{ display: 'block', mb: 0.5, color: 'text.secondary', fontWeight: 700 }}
-      >
-        {marketLabel(match)}
-      </Typography>
+      <Stack direction="row" spacing={0.5} alignItems="center" sx={{ mb: 0.5 }}>
+        <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 700 }}>
+          {t}
+        </Typography>
+        {hasLine && (
+          <Chip
+            label={lineText}
+            size="small"
+            color="info"
+            sx={{ height: 18, fontSize: '0.62rem', fontWeight: 700, '& .MuiChip-label': { px: 0.7 } }}
+          />
+        )}
+      </Stack>
       <Stack direction="row" spacing={0.5}>
         <SelectionButton
           label={labels.home}

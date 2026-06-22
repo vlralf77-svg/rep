@@ -1,4 +1,5 @@
-import { Box, Button, Typography, Chip, Paper } from '@mui/material';
+import { useState } from 'react';
+import { Box, Button, Typography, Chip, Paper, TextField, InputAdornment } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import type { Match, Selection } from '../types';
 
@@ -6,7 +7,7 @@ interface Props {
   myPicks: Record<string, Selection>;
   matches: Match[];
   confirmed: boolean;
-  onConfirm: () => void;
+  onConfirm: (stake: number) => void;
 }
 
 export default function PickSummaryBar({
@@ -15,6 +16,7 @@ export default function PickSummaryBar({
   confirmed,
   onConfirm,
 }: Props) {
+  const [stake, setStake] = useState('10');
   const entries = Object.entries(myPicks);
   const count = entries.length;
 
@@ -28,58 +30,76 @@ export default function PickSummaryBar({
     return acc * odds;
   }, 1);
 
+  const stakeNum = parseFloat(stake) || 0;
+  const payout = stakeNum * totalOdds;
+  const profit = payout - stakeNum;
+
   return (
     <Paper
       elevation={8}
       sx={{
         position: 'fixed',
-        bottom: 0,
+        bottom: 56, // 하단 네비게이션(56px) 위에 위치
         left: 0,
         right: 0,
-        zIndex: 1200,
+        zIndex: 1150,
         borderRadius: '16px 16px 0 0',
         p: 2,
         background: 'linear-gradient(180deg, #1e1e2e 0%, #161b22 100%)',
         borderTop: '1px solid rgba(255,255,255,0.1)',
       }}
     >
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          maxWidth: 600,
-          mx: 'auto',
-        }}
-      >
-        <Box>
-          <Typography variant="body2" color="text.secondary">
-            내 조합
-          </Typography>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 0.5 }}>
-            <Chip
-              label={`${count}경기`}
+      <Box sx={{ maxWidth: 600, mx: 'auto' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'flex-end',
+            justifyContent: 'space-between',
+            gap: 1,
+          }}
+        >
+          <Box sx={{ flex: 1 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.8 }}>
+              <Chip label={`${count}경기`} size="small" color="primary" variant="outlined" />
+              <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+                x{totalOdds.toFixed(2)}
+              </Typography>
+            </Box>
+            <TextField
               size="small"
-              color="primary"
-              variant="outlined"
+              type="number"
+              label="베팅 금액"
+              value={stake}
+              onChange={(e) => setStake(e.target.value)}
+              InputProps={{
+                endAdornment: <InputAdornment position="end">원</InputAdornment>,
+              }}
+              inputProps={{ min: 0, step: 10 }}
+              sx={{ width: 140 }}
             />
-            <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-              x{totalOdds.toFixed(2)}
-            </Typography>
           </Box>
+
+          <Button
+            variant="contained"
+            color={confirmed ? 'success' : 'primary'}
+            size="large"
+            onClick={() => onConfirm(stakeNum)}
+            disabled={confirmed}
+            startIcon={confirmed ? <CheckCircleIcon /> : undefined}
+            sx={{ px: 3, py: 1.2, fontWeight: 700, minWidth: 110 }}
+          >
+            {confirmed ? '확정됨' : '확정하기'}
+          </Button>
         </Box>
 
-        <Button
-          variant="contained"
-          color={confirmed ? 'success' : 'primary'}
-          size="large"
-          onClick={onConfirm}
-          disabled={confirmed}
-          startIcon={confirmed ? <CheckCircleIcon /> : undefined}
-          sx={{ px: 3, py: 1.2, fontWeight: 700, minWidth: 120 }}
-        >
-          {confirmed ? '확정됨' : '확정하기'}
-        </Button>
+        <Box sx={{ display: 'flex', gap: 2, mt: 1 }}>
+          <Typography variant="caption" color="text.secondary">
+            예상 수익 <b style={{ color: '#90caf9' }}>{Math.round(payout).toLocaleString()}원</b>
+          </Typography>
+          <Typography variant="caption" color="text.secondary">
+            순수익 <b style={{ color: '#a5d6a7' }}>+{Math.round(profit).toLocaleString()}원</b>
+          </Typography>
+        </Box>
       </Box>
     </Paper>
   );

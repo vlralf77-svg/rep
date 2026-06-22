@@ -66,7 +66,7 @@ export function usePicks() {
     [user, removeMyPick],
   );
 
-  const confirmCombo = useCallback(async () => {
+  const confirmCombo = useCallback(async (stake: number = 10) => {
     if (!user || Object.keys(myPicks).length === 0) return;
     const day = todayKey();
     const batch = writeBatch(db);
@@ -78,6 +78,7 @@ export function usePicks() {
         nickname: user.nickname,
         matchId,
         selection,
+        stake,
         updatedAt: serverTimestamp(),
       });
     });
@@ -94,6 +95,7 @@ export function usePicks() {
       uid: user.uid,
       pickIds: Object.keys(myPicks),
       totalOdds: Math.round(totalOdds * 100) / 100,
+      stake,
       confirmedAt: serverTimestamp(),
     });
 

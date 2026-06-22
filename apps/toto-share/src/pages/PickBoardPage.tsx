@@ -30,7 +30,7 @@ export default function PickBoardPage() {
         </Toolbar>
       </AppBar>
 
-      <Container maxWidth="md" sx={{ py: 2 }}>
+      <Container maxWidth="md" sx={{ py: 2, pb: 10 }}>
         <PickBoard matches={matches} picks={picks} />
       </Container>
     </Box>

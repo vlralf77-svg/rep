@@ -87,7 +87,7 @@ export default function MainPage() {
   }, [matches]);
 
   return (
-    <Box sx={{ pb: Object.keys(myPicks).length > 0 ? 10 : 2 }}>
+    <Box sx={{ pb: Object.keys(myPicks).length > 0 ? 28 : 9 }}>
       <AppBar position="sticky" elevation={0} sx={{ bgcolor: 'background.paper', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
         <Toolbar sx={{ justifyContent: 'space-between', minHeight: '56px !important' }}>
           <Typography variant="h6" sx={{ fontSize: '1.1rem' }}>

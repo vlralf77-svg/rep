@@ -106,6 +106,11 @@ export default function PickBoard({ matches, picks }: Props) {
           })
           .filter(Boolean) as { pick: Pick; match: Match; odds: number }[];
 
+        // 베팅 금액(픽에 저장된 stake, 없으면 기본 10원)
+        const stake = userPicks.find((p) => typeof p.stake === 'number')?.stake ?? 10;
+        const payout = stake * totalOdds; // 예상 수익(원금 포함)
+        const profit = payout - stake; // 순수익
+
         return (
           <Paper key={nickname} sx={{ p: 2, borderRadius: 2 }}>
             <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 1.5 }}>
@@ -169,6 +174,35 @@ export default function PickBoard({ matches, picks }: Props) {
                   </Stack>
                 </Stack>
               ))}
+            </Stack>
+
+            <Divider sx={{ my: 1 }} />
+
+            <Stack direction="row" justifyContent="space-between" sx={{ px: 0.5 }}>
+              <Box sx={{ textAlign: 'center' }}>
+                <Typography variant="caption" color="text.secondary" sx={{ display: 'block', fontSize: '0.6rem' }}>
+                  베팅금액
+                </Typography>
+                <Typography variant="body2" sx={{ fontWeight: 700 }}>
+                  {stake.toLocaleString()}원
+                </Typography>
+              </Box>
+              <Box sx={{ textAlign: 'center' }}>
+                <Typography variant="caption" color="text.secondary" sx={{ display: 'block', fontSize: '0.6rem' }}>
+                  예상수익
+                </Typography>
+                <Typography variant="body2" sx={{ fontWeight: 700, color: 'primary.light' }}>
+                  {Math.round(payout).toLocaleString()}원
+                </Typography>
+              </Box>
+              <Box sx={{ textAlign: 'center' }}>
+                <Typography variant="caption" color="text.secondary" sx={{ display: 'block', fontSize: '0.6rem' }}>
+                  순수익
+                </Typography>
+                <Typography variant="body2" sx={{ fontWeight: 700, color: 'success.light' }}>
+                  +{Math.round(profit).toLocaleString()}원
+                </Typography>
+              </Box>
             </Stack>
           </Paper>
         );

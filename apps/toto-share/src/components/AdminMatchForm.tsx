@@ -112,7 +112,8 @@ export default function AdminMatchForm() {
       for (const game of allGames) {
         if (game.gameDate) {
           const gd = kstDateStr(new Date(game.gameDate).getTime());
-          if (gd !== importDate) {
+          // 선택한 날짜 이전(과거) 경기만 제외하고, 그 이후는 모두 가져온다
+          if (gd < importDate) {
             skippedDate++;
             continue;
           }
@@ -207,7 +208,7 @@ export default function AdminMatchForm() {
             value={importDate}
             onChange={(e) => setImportDate(e.target.value)}
             InputLabelProps={{ shrink: true }}
-            helperText="이 날짜의 모든 경기·마켓을 가져옵니다 (승무패·핸디캡·언더오버·SUM 전체)"
+            helperText="이 날짜부터 이후의 모든 경기·마켓을 가져옵니다 (과거 경기 제외)"
             sx={{ mb: 1.5 }}
           />
 
