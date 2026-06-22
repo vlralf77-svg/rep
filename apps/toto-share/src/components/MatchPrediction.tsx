@@ -51,45 +51,80 @@ function ProbBar({ label, value, color }: { label: string; value: number; color:
   );
 }
 
+function getLabels(marketType?: string): { home: string; draw: string; away: string } {
+  const t = marketType || '승무패';
+  if (t.includes('언더오버')) return { home: '언더', draw: '', away: '오버' };
+  if (t === 'SUM') return { home: '홀', draw: '', away: '짝' };
+  if (t.includes('핸디캡') || t === '승패' || t === '승1패') return { home: '승', draw: t === '승1패' ? '1' : '무', away: '패' };
+  return { home: '홈승', draw: '무', away: '원정승' };
+}
+
+function lineTag(m: Match): string {
+  const t = m.marketType || '';
+  if (m.line == null) return '';
+  if (t.includes('핸디캡')) return ` (${m.line > 0 ? '+' + m.line : m.line})`;
+  return ` (${m.line})`;
+}
+
+function MarketPrediction({ match }: { match: Match }) {
+  const prob = impliedProb(match.oddsHome, match.oddsDraw, match.oddsAway);
+  const labels = getLabels(match.marketType);
+  const hasDraw = match.oddsDraw > 0 && labels.draw;
+  const t = match.marketType || '승무패';
+
+  return (
+    <Box>
+      <Stack direction="row" alignItems="center" spacing={0.5} sx={{ mb: 0.5 }}>
+        <Typography variant="caption" sx={{ fontWeight: 700, fontSize: '0.6rem', color: 'text.secondary' }}>
+          {t}{lineTag(match)}
+        </Typography>
+      </Stack>
+      <ProbBar label={labels.home} value={prob.home} color="#42a5f5" />
+      {hasDraw && <ProbBar label={labels.draw} value={prob.draw} color="#ffa726" />}
+      <ProbBar label={labels.away} value={prob.away} color="#ef5350" />
+    </Box>
+  );
+}
+
 export default function MatchPrediction({ matches }: Props) {
   const main = matches.find((m) => m.marketType === '승무패' || m.marketType === '승패') || matches[0];
   if (!main) return null;
 
-  const hasDraw = main.oddsDraw > 0;
   const prob = impliedProb(main.oddsHome, main.oddsDraw, main.oddsAway);
-
-  const hdcpMatch = matches.find((m) => m.marketType?.includes('핸디캡'));
-  const uoMatch = matches.find((m) => m.marketType?.includes('언더오버'));
-
   const homeElo = eloDiff(prob.home);
   const awayElo = eloDiff(prob.away);
   const eloDiffVal = Math.round(homeElo - awayElo);
 
-  let weightedHome = prob.home * 0.5;
-  let weightedAway = prob.away * 0.5;
-  let weightedDraw = prob.draw * 0.5;
-  let totalWeight = 0.5;
+  const otherMarkets = matches.filter((m) => m.id !== main.id);
 
-  if (hdcpMatch) {
-    const hp = impliedProb(hdcpMatch.oddsHome, hdcpMatch.oddsDraw, hdcpMatch.oddsAway);
-    weightedHome += hp.home * 0.3;
-    weightedAway += hp.away * 0.3;
-    weightedDraw += hp.draw * 0.3;
-    totalWeight += 0.3;
+  let weightedHome = prob.home * 0.4;
+  let weightedAway = prob.away * 0.4;
+  let weightedDraw = prob.draw * 0.4;
+  let totalWeight = 0.4;
+  const usedMarkets: string[] = [main.marketType || '승무패'];
+
+  for (const m of otherMarkets) {
+    const mp = impliedProb(m.oddsHome, m.oddsDraw, m.oddsAway);
+    const t = m.marketType || '';
+    let w = 0.15;
+    if (t.includes('핸디캡')) w = 0.2;
+    else if (t.includes('언더오버')) w = 0.15;
+    else if (t === 'SUM') w = 0.1;
+
+    weightedHome += mp.home * w;
+    weightedAway += mp.away * w;
+    weightedDraw += mp.draw * w;
+    totalWeight += w;
+    usedMarkets.push(t);
   }
-  if (uoMatch) {
-    const up = impliedProb(uoMatch.oddsHome, 0, uoMatch.oddsAway);
-    const attackBonus = up.away > 0.55 ? 0.03 : up.home > 0.55 ? -0.02 : 0;
-    weightedHome += attackBonus;
-    totalWeight += 0.2;
-  }
+
   const wHome = Math.max(0, weightedHome / totalWeight);
   const wAway = Math.max(0, weightedAway / totalWeight);
   const wDraw = Math.max(0, weightedDraw / totalWeight);
   const wTotal = wHome + wDraw + wAway || 1;
 
-  const homeLabel = '홈승';
-  const awayLabel = '원정승';
+  const mainLabels = getLabels(main.marketType);
+  const hasDraw = main.oddsDraw > 0 && mainLabels.draw;
 
   return (
     <Box sx={{ mt: 1.5, p: 1.5, bgcolor: 'rgba(255,255,255,0.03)', borderRadius: 2, border: '1px solid rgba(255,255,255,0.06)' }}>
@@ -98,21 +133,25 @@ export default function MatchPrediction({ matches }: Props) {
       </Typography>
 
       <Stack spacing={1.5}>
+        {/* AI 예측 — 마켓별 */}
         <Box>
           <Stack direction="row" alignItems="center" spacing={0.5} sx={{ mb: 0.8 }}>
             <SmartToyIcon sx={{ fontSize: 14, color: '#ab47bc' }} />
             <Typography variant="caption" sx={{ fontWeight: 700, fontSize: '0.65rem' }}>
-              AI 예측
+              AI 마켓별 예측
             </Typography>
-            <Chip label="배당 역산" size="small" sx={{ height: 16, fontSize: '0.55rem', bgcolor: 'rgba(171,71,188,0.15)', color: '#ce93d8' }} />
+            <Chip label={`${matches.length}마켓`} size="small" sx={{ height: 16, fontSize: '0.55rem', bgcolor: 'rgba(171,71,188,0.15)', color: '#ce93d8' }} />
           </Stack>
-          <ProbBar label={homeLabel} value={prob.home} color="#42a5f5" />
-          {hasDraw && <ProbBar label="무승부" value={prob.draw} color="#ffa726" />}
-          <ProbBar label={awayLabel} value={prob.away} color="#ef5350" />
+          <Stack spacing={1}>
+            {matches.map((m) => (
+              <MarketPrediction key={m.id} match={m} />
+            ))}
+          </Stack>
         </Box>
 
         <Divider sx={{ borderColor: 'rgba(255,255,255,0.06)' }} />
 
+        {/* 엘로 레이팅 */}
         <Box>
           <Stack direction="row" alignItems="center" spacing={0.5} sx={{ mb: 0.8 }}>
             <BarChartIcon sx={{ fontSize: 14, color: '#66bb6a' }} />
@@ -153,20 +192,19 @@ export default function MatchPrediction({ matches }: Props) {
 
         <Divider sx={{ borderColor: 'rgba(255,255,255,0.06)' }} />
 
+        {/* 가중치 스코어링 */}
         <Box>
           <Stack direction="row" alignItems="center" spacing={0.5} sx={{ mb: 0.8 }}>
             <ScaleIcon sx={{ fontSize: 14, color: '#ffa726' }} />
             <Typography variant="caption" sx={{ fontWeight: 700, fontSize: '0.65rem' }}>
               가중치 스코어링
             </Typography>
-            {hdcpMatch && <Chip label="핸디" size="small" sx={{ height: 14, fontSize: '0.5rem', bgcolor: 'rgba(255,167,38,0.15)', color: '#ffb74d' }} />}
-            {uoMatch && <Chip label="언오" size="small" sx={{ height: 14, fontSize: '0.5rem', bgcolor: 'rgba(255,167,38,0.15)', color: '#ffb74d' }} />}
           </Stack>
-          <ProbBar label={homeLabel} value={wHome / wTotal} color="#42a5f5" />
-          {hasDraw && <ProbBar label="무승부" value={wDraw / wTotal} color="#ffa726" />}
-          <ProbBar label={awayLabel} value={wAway / wTotal} color="#ef5350" />
+          <ProbBar label={mainLabels.home} value={wHome / wTotal} color="#42a5f5" />
+          {hasDraw && <ProbBar label={mainLabels.draw} value={wDraw / wTotal} color="#ffa726" />}
+          <ProbBar label={mainLabels.away} value={wAway / wTotal} color="#ef5350" />
           <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.5rem', mt: 0.5, display: 'block' }}>
-            정배당{hdcpMatch ? ' + 핸디캡' : ''}{uoMatch ? ' + 언더오버' : ''} 종합 분석
+            {usedMarkets.join(' + ')} 종합 분석
           </Typography>
         </Box>
       </Stack>
