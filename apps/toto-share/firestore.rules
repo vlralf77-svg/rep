@@ -13,10 +13,10 @@ service cloud.firestore {
         && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.nickname in ['관리자', 'admin'];
     }
 
-    // 사용자 프로필
+    // 사용자 프로필: 본인 수정 + 관리자가 online 변경 가능
     match /users/{uid} {
       allow read: if isSignedIn();
-      allow write: if isSignedIn() && request.auth.uid == uid;
+      allow write: if isSignedIn() && (request.auth.uid == uid || isAdmin());
     }
 
     // 오늘의 경기 (읽기: 인증 사용자, 쓰기: 인증 사용자)

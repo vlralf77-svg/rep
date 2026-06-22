@@ -1,10 +1,14 @@
-import { Box, Avatar, Chip, Stack, Typography } from '@mui/material';
+import { Avatar, Chip, Stack, Typography } from '@mui/material';
 import CircleIcon from '@mui/icons-material/Circle';
+import CancelIcon from '@mui/icons-material/Cancel';
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 import type { UserProfile } from '../types';
 
 interface Props {
   users: UserProfile[];
   currentUid?: string;
+  isAdmin?: boolean;
 }
 
 function stringToColor(str: string): string {
@@ -16,7 +20,16 @@ function stringToColor(str: string): string {
   return `hsl(${hue}, 60%, 45%)`;
 }
 
-export default function OnlineUsers({ users, currentUid }: Props) {
+async function kickUser(uid: string) {
+  await updateDoc(doc(db, 'users', uid), { online: false });
+}
+
+export default function OnlineUsers({ users, currentUid, isAdmin }: Props) {
+  const handleDelete = (uid: string, nickname: string) => {
+    if (!window.confirm(`"${nickname}" 을(를) 접속 해제합니다.`)) return;
+    kickUser(uid);
+  };
+
   return (
     <Stack direction="row" spacing={0.5} alignItems="center" sx={{ flexWrap: 'wrap', gap: 0.5 }}>
       <CircleIcon sx={{ fontSize: 8, color: 'success.main' }} />
@@ -36,6 +49,12 @@ export default function OnlineUsers({ users, currentUid }: Props) {
           variant={u.uid === currentUid ? 'filled' : 'outlined'}
           color={u.uid === currentUid ? 'primary' : 'default'}
           sx={{ fontSize: '0.7rem', height: 24 }}
+          {...(isAdmin && u.uid !== currentUid
+            ? {
+                deleteIcon: <CancelIcon sx={{ fontSize: 14 }} />,
+                onDelete: () => handleDelete(u.uid, u.nickname),
+              }
+            : {})}
         />
       ))}
     </Stack>

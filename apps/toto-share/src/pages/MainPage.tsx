@@ -121,7 +121,7 @@ export default function MainPage() {
         </Stack>
 
         <Box sx={{ mb: 2 }}>
-          <OnlineUsers users={onlineUsers} currentUid={user?.uid} />
+          <OnlineUsers users={onlineUsers} currentUid={user?.uid} isAdmin={admin} />
         </Box>
 
         {matches.length === 0 ? (
