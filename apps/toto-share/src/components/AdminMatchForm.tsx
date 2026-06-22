@@ -16,7 +16,7 @@ import {
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import UploadIcon from '@mui/icons-material/Upload';
-import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, setDoc, getDoc, writeBatch, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase';
 import { todayKey } from '../hooks/useMatches';
 import type { MatchStatus } from '../types';
@@ -107,22 +107,19 @@ export default function AdminMatchForm() {
         { cache: 'no-store' },
       );
       const data = await res.json();
-      // 가져온 경기는 앱의 오늘 화면(공유 보드)에 바로 보이도록 today 컬렉션에 저장
       const day = todayKey();
       const allGames = [...(data.proto || []), ...(data.toto || [])];
 
-      let count = 0;
+      interface Pending { matchId: string; gameData: Record<string, any>; oddsHome: number; oddsDraw: number; oddsAway: number }
+      const pending: Pending[] = [];
       let skippedDate = 0;
+      let idx = 0;
+
       for (const game of allGames) {
         if (game.gameDate) {
           const gd = kstDateStr(new Date(game.gameDate).getTime());
-          // 선택한 날짜 이전(과거) 경기만 제외하고, 그 이후는 모두 가져온다
-          if (gd < importDate) {
-            skippedDate++;
-            continue;
-          }
+          if (gd < importDate) { skippedDate++; continue; }
         }
-
         const markets = game.markets || [];
         if (markets.length === 0) continue;
 
@@ -138,38 +135,57 @@ export default function AdminMatchForm() {
           const baseId = game.matchId || `${game.homeTeam}_${game.awayTeam}`;
           const gameKey = `betman_${baseId}`.replace(/[\/\.\#\$\[\]]/g, '_');
           const matchId = `${gameKey}_${marketType}`.replace(/[\/\.\#\$\[\]]/g, '_');
+          idx++;
 
-          const matchRef = doc(db, 'days', day, 'matches', matchId);
-          const existing = await getDoc(matchRef);
-          const prev = existing.exists() ? existing.data() : null;
-          await setDoc(matchRef, {
-            gameNo: game.matchId?.split('|')[0] || String(count + 1),
-            league: game.league || game.sport || '미정',
-            sport: game.sport || '기타',
-            homeTeam: game.homeTeam,
-            awayTeam: game.awayTeam,
-            startTime: game.gameDate ? new Date(game.gameDate).getTime() : Date.now() + 3600000,
+          pending.push({
+            matchId,
+            gameData: {
+              gameNo: game.matchId?.split('|')[0] || String(idx),
+              league: game.league || game.sport || '미정',
+              sport: game.sport || '기타',
+              homeTeam: game.homeTeam,
+              awayTeam: game.awayTeam,
+              startTime: game.gameDate ? new Date(game.gameDate).getTime() : Date.now() + 3600000,
+              marketType,
+              gameKey,
+              line: typeof market.line === 'number' ? market.line : null,
+              status: 'OPEN' as MatchStatus,
+              result: null,
+            },
             oddsHome,
             oddsDraw,
             oddsAway,
-            initialOddsHome: prev?.initialOddsHome ?? prev?.oddsHome ?? oddsHome,
-            initialOddsDraw: prev?.initialOddsDraw ?? prev?.oddsDraw ?? oddsDraw,
-            initialOddsAway: prev?.initialOddsAway ?? prev?.oddsAway ?? oddsAway,
-            marketType,
-            gameKey,
-            line: typeof market.line === 'number' ? market.line : null,
-            status: 'OPEN' as MatchStatus,
-            result: null,
           });
-          count++;
         }
       }
-      if (count === 0) {
-        setMessage(
-          `가져온 경기 없음 (날짜 불일치 ${skippedDate}개 제외). 날짜를 확인하세요.`,
-        );
+
+      if (pending.length === 0) {
+        setMessage(`가져온 경기 없음 (날짜 불일치 ${skippedDate}개 제외). 날짜를 확인하세요.`);
       } else {
-        setMessage(`${count}개 마켓을 가져왔습니다`);
+        const existingDocs = await Promise.all(
+          pending.map((p) => getDoc(doc(db, 'days', day, 'matches', p.matchId))),
+        );
+        const BATCH_LIMIT = 499;
+        for (let i = 0; i < pending.length; i += BATCH_LIMIT) {
+          const batch = writeBatch(db);
+          const chunk = pending.slice(i, i + BATCH_LIMIT);
+          for (let j = 0; j < chunk.length; j++) {
+            const p = chunk[j];
+            const existing = existingDocs[i + j];
+            const prev = existing.exists() ? existing.data() : null;
+            batch.set(doc(db, 'days', day, 'matches', p.matchId), {
+              ...p.gameData,
+              oddsHome: p.oddsHome,
+              oddsDraw: p.oddsDraw,
+              oddsAway: p.oddsAway,
+              initialOddsHome: prev?.initialOddsHome ?? prev?.oddsHome ?? p.oddsHome,
+              initialOddsDraw: prev?.initialOddsDraw ?? prev?.oddsDraw ?? p.oddsDraw,
+              initialOddsAway: prev?.initialOddsAway ?? prev?.oddsAway ?? p.oddsAway,
+            });
+          }
+          await batch.commit();
+        }
+        setMessage(`${pending.length}개 마켓을 가져왔습니다`);
       }
       setTimeout(() => setMessage(''), 4000);
     } catch (err) {
