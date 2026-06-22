@@ -20,14 +20,20 @@ function stringToColor(str: string): string {
   return `hsl(${hue}, 60%, 45%)`;
 }
 
-async function kickUser(uid: string) {
-  await updateDoc(doc(db, 'users', uid), { online: false });
-}
-
 export default function OnlineUsers({ users, currentUid, isAdmin }: Props) {
-  const handleDelete = (uid: string, nickname: string) => {
+  const handleDelete = async (uid: string, nickname: string) => {
     if (!window.confirm(`"${nickname}" 을(를) 접속 해제합니다.`)) return;
-    kickUser(uid);
+    try {
+      await updateDoc(doc(db, 'users', uid), { online: false });
+    } catch (err) {
+      // 권한 거부 등 실패 시 원인을 바로 알 수 있게 표시
+      window.alert(
+        '접속 해제 실패: 권한이 없습니다.\n' +
+          'Firestore 규칙 배포(firebase deploy --only firestore:rules)가 필요하거나,\n' +
+          '관리자 닉네임(관리자/admin)으로 접속했는지 확인하세요.',
+      );
+      console.error('kickUser failed', err);
+    }
   };
 
   return (
