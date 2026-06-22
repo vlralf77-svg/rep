@@ -57,14 +57,31 @@ function getOdds(match: Match, sel: Selection): number {
   return match.oddsAway;
 }
 
+// Firestore Timestamp / number / null 을 비교용 밀리초로 변환
+function tsMillis(v: any): number {
+  if (!v) return 0;
+  if (typeof v === 'number') return v;
+  if (typeof v.toMillis === 'function') return v.toMillis();
+  if (typeof v.seconds === 'number') return v.seconds * 1000;
+  return 0;
+}
+
 export default function PickBoard({ matches, picks }: Props) {
-  // 사용자별로 그룹핑
-  const userMap = new Map<string, { nickname: string; picks: Pick[] }>();
+  // 이름(nickname)으로 그룹핑. 익명 로그인은 매번 uid가 바뀌므로
+  // 같은 사람이 재접속해도 한 그룹으로 묶이도록 nickname 기준으로 묶는다.
+  // 같은 경기를 여러 번(다른 세션) 선택한 경우 최신 픽만 남긴다.
+  const userMap = new Map<string, Map<string, Pick>>();
   for (const p of picks) {
-    if (!userMap.has(p.uid)) userMap.set(p.uid, { nickname: p.nickname, picks: [] });
-    userMap.get(p.uid)!.picks.push(p);
+    if (!userMap.has(p.nickname)) userMap.set(p.nickname, new Map());
+    const byMatch = userMap.get(p.nickname)!;
+    const prev = byMatch.get(p.matchId);
+    if (!prev || tsMillis(p.updatedAt) >= tsMillis(prev.updatedAt)) {
+      byMatch.set(p.matchId, p);
+    }
   }
-  const users = Array.from(userMap.entries());
+  const users = Array.from(userMap.entries()).map(
+    ([nickname, byMatch]) => [nickname, Array.from(byMatch.values())] as const,
+  );
 
   if (picks.length === 0) {
     return (
@@ -76,7 +93,7 @@ export default function PickBoard({ matches, picks }: Props) {
 
   return (
     <Stack spacing={2}>
-      {users.map(([uid, { nickname, picks: userPicks }]) => {
+      {users.map(([nickname, userPicks]) => {
         // 총 배당 계산
         let totalOdds = 1;
         const pickDetails = userPicks
@@ -90,7 +107,7 @@ export default function PickBoard({ matches, picks }: Props) {
           .filter(Boolean) as { pick: Pick; match: Match; odds: number }[];
 
         return (
-          <Paper key={uid} sx={{ p: 2, borderRadius: 2 }}>
+          <Paper key={nickname} sx={{ p: 2, borderRadius: 2 }}>
             <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 1.5 }}>
               <Stack direction="row" spacing={1} alignItems="center">
                 <Avatar
