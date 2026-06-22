@@ -101,8 +101,19 @@ export default function AdminMatchForm() {
       const day = todayKey();
       const allGames = [...(data.proto || []), ...(data.toto || [])];
 
-      // 승무패(축구 3선택) > 승패(야구 승/패) > 승1패(야구 무 포함) 순으로 우선 사용
-      const MARKET_PRIORITY = ['승무패', '승패', '승1패'];
+      // 승/패 odds를 뽑을 수 있는 모든 마켓 (전체 경기 포함).
+      // 정배당 마켓(승무패/승패/승1패) 우선, 없으면 핸디캡 계열로 대체.
+      const MARKET_PRIORITY = [
+        '승무패',
+        '승패',
+        '승1패',
+        '핸디캡2',
+        '핸디캡',
+        '세트핸디캡',
+        '소수핸디캡',
+        '전반 승무패',
+        '전반 핸디캡',
+      ];
 
       let count = 0;
       let skippedDate = 0;
@@ -208,7 +219,7 @@ export default function AdminMatchForm() {
             value={importDate}
             onChange={(e) => setImportDate(e.target.value)}
             InputLabelProps={{ shrink: true }}
-            helperText="이 날짜의 경기만 가져옵니다 (승/무/패·승패·승1패 모두 포함)"
+            helperText="이 날짜의 모든 경기를 가져옵니다 (승무패·승패·승1패·핸디캡 포함)"
             sx={{ mb: 1.5 }}
           />
 

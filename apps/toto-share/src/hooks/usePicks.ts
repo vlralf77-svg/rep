@@ -4,6 +4,7 @@ import {
   doc,
   setDoc,
   deleteDoc,
+  getDocs,
   onSnapshot,
   serverTimestamp,
   writeBatch,
@@ -14,8 +15,16 @@ import { todayKey } from './useMatches';
 import type { Pick, Selection, Match } from '../types';
 
 export function usePicks() {
-  const { user, picks, setPicks, myPicks, setMyPick, removeMyPick, matches } =
-    useStore();
+  const {
+    user,
+    picks,
+    setPicks,
+    myPicks,
+    setMyPick,
+    removeMyPick,
+    clearMyPicks,
+    matches,
+  } = useStore();
 
   useEffect(() => {
     const day = todayKey();
@@ -92,5 +101,28 @@ export function usePicks() {
     useStore.getState().setConfirmedCombo(true);
   }, [user, myPicks, matches]);
 
-  return { picks, myPicks, submitPick, removePick, confirmCombo };
+  // 픽 초기화. all=true면 전원 픽/조합 삭제(관리자), false면 본인 것만.
+  const resetPicks = useCallback(
+    async (all: boolean) => {
+      if (!user) return;
+      const day = todayKey();
+      const batch = writeBatch(db);
+
+      const pickSnap = await getDocs(collection(db, 'days', day, 'picks'));
+      pickSnap.forEach((d) => {
+        if (all || d.data().uid === user.uid) batch.delete(d.ref);
+      });
+
+      const comboSnap = await getDocs(collection(db, 'days', day, 'combos'));
+      comboSnap.forEach((d) => {
+        if (all || d.id === user.uid) batch.delete(d.ref);
+      });
+
+      await batch.commit();
+      clearMyPicks();
+    },
+    [user, clearMyPicks],
+  );
+
+  return { picks, myPicks, submitPick, removePick, confirmCombo, resetPicks };
 }

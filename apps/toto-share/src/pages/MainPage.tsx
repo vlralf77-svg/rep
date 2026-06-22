@@ -8,9 +8,11 @@ import {
   Container,
   Stack,
   Chip,
+  Button,
 } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import MatchCard from '../components/MatchCard';
 import PickSummaryBar from '../components/PickSummaryBar';
 import OnlineUsers from '../components/OnlineUsers';
@@ -20,6 +22,7 @@ import { useMatches, todayKey } from '../hooks/useMatches';
 import { usePicks } from '../hooks/usePicks';
 import { useOnlineUsers } from '../hooks/useOnlineUsers';
 import { useStore } from '../store';
+import { isAdmin } from '../config';
 import type { Selection, PickSummary } from '../types';
 
 function formatDate(key: string): string {
@@ -32,10 +35,20 @@ function formatDate(key: string): string {
 export default function MainPage() {
   const { user, logout } = useAuth();
   const { matches } = useMatches();
-  const { picks, myPicks, submitPick, removePick, confirmCombo } = usePicks();
+  const { picks, myPicks, submitPick, removePick, confirmCombo, resetPicks } =
+    usePicks();
   const { onlineUsers } = useOnlineUsers();
   const confirmedCombo = useStore((s) => s.confirmedCombo);
   const day = todayKey();
+  const admin = isAdmin(user?.nickname);
+
+  const handleReset = async () => {
+    const msg = admin
+      ? '전원의 픽을 모두 초기화합니다. 계속할까요?'
+      : '내가 선택한 픽을 초기화합니다. 계속할까요?';
+    if (!window.confirm(msg)) return;
+    await resetPicks(admin);
+  };
 
   const pickSummaries = useMemo(() => {
     const map: Record<string, PickSummary> = {};
@@ -92,7 +105,19 @@ export default function MainPage() {
               {formatDate(day)}
             </Typography>
           </Stack>
-          <AdminMatchForm />
+          <Stack direction="row" spacing={1} alignItems="center">
+            <Button
+              startIcon={<RestartAltIcon />}
+              variant="outlined"
+              size="small"
+              color={admin ? 'error' : 'inherit'}
+              onClick={handleReset}
+              sx={{ fontSize: '0.75rem' }}
+            >
+              {admin ? '전체 초기화' : '선택 초기화'}
+            </Button>
+            <AdminMatchForm />
+          </Stack>
         </Stack>
 
         <Box sx={{ mb: 2 }}>
