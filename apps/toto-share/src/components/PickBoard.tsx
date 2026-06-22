@@ -2,15 +2,10 @@ import {
   Box,
   Typography,
   Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
   Chip,
   Avatar,
   Stack,
+  Divider,
 } from '@mui/material';
 import type { Match, Pick, Selection } from '../types';
 
@@ -33,170 +28,134 @@ const selectionColor: Record<Selection, 'primary' | 'warning' | 'secondary'> = {
   AWAY: 'secondary',
 };
 
-// 마켓 타입별 선택지 라벨 (현황판 표시용)
-function selLabels(marketType?: string): Record<Selection, string> {
-  switch (marketType) {
-    case '언더오버':
-    case '전반 언더오버':
-      return { HOME: '언더', DRAW: '', AWAY: '오버' };
-    case 'SUM':
-      return { HOME: '홀', DRAW: '', AWAY: '짝' };
-    case '핸디캡':
-    case '핸디캡2':
-    case '소수핸디캡':
-    case '세트핸디캡':
-    case '전반 핸디캡':
-      return { HOME: '승', DRAW: '무', AWAY: '패' };
-    case '승패':
-      return { HOME: '승', DRAW: '', AWAY: '패' };
-    case '승1패':
-      return { HOME: '승', DRAW: '1', AWAY: '패' };
-    default:
-      return { HOME: '홈승', DRAW: '무', AWAY: '원정승' };
+function selLabel(sel: Selection, marketType?: string): string {
+  const t = marketType || '승무패';
+  if (t.includes('언더오버')) return sel === 'HOME' ? '언더' : '오버';
+  if (t === 'SUM') return sel === 'HOME' ? '홀' : '짝';
+  if (t.includes('핸디캡') || t === '승패' || t === '승1패') {
+    if (sel === 'HOME') return '승';
+    if (sel === 'DRAW') return t === '승1패' ? '1' : '무';
+    return '패';
   }
+  if (sel === 'HOME') return '홈승';
+  if (sel === 'DRAW') return '무';
+  return '원정승';
 }
 
-// 마켓 타입 + 핸디/기준점 라벨
-function marketLabel(match: Match): string {
+function marketTag(match: Match): string {
   const t = match.marketType || '승무패';
   const line = match.line;
   if (line === null || line === undefined) return t;
-  if (t.includes('핸디캡')) return `${t} (홈 ${line > 0 ? '+' + line : line})`;
-  if (t.includes('언더오버')) return `${t} (기준 ${line})`;
-  return `${t} (${line})`;
+  if (t.includes('핸디캡')) return `${t}(${line > 0 ? '+' + line : line})`;
+  if (t.includes('언더오버')) return `${t}(${line})`;
+  return `${t}(${line})`;
+}
+
+function getOdds(match: Match, sel: Selection): number {
+  if (sel === 'HOME') return match.oddsHome;
+  if (sel === 'DRAW') return match.oddsDraw;
+  return match.oddsAway;
 }
 
 export default function PickBoard({ matches, picks }: Props) {
-  const users = Array.from(
-    new Map(picks.map((p) => [p.uid, p.nickname])).entries(),
-  ).map(([uid, nickname]) => ({ uid, nickname }));
+  // 사용자별로 그룹핑
+  const userMap = new Map<string, { nickname: string; picks: Pick[] }>();
+  for (const p of picks) {
+    if (!userMap.has(p.uid)) userMap.set(p.uid, { nickname: p.nickname, picks: [] });
+    userMap.get(p.uid)!.picks.push(p);
+  }
+  const users = Array.from(userMap.entries());
 
-  if (matches.length === 0) {
+  if (picks.length === 0) {
     return (
       <Box sx={{ textAlign: 'center', py: 6 }}>
-        <Typography color="text.secondary">등록된 경기가 없습니다</Typography>
+        <Typography color="text.secondary">아직 선택한 사람이 없습니다</Typography>
       </Box>
     );
   }
 
   return (
-    <TableContainer
-      component={Paper}
-      sx={{
-        maxHeight: 'calc(100dvh - 160px)',
-        '& .MuiTableCell-root': { px: 1, py: 0.8, fontSize: '0.75rem' },
-      }}
-    >
-      <Table stickyHeader size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell sx={{ minWidth: 100, fontWeight: 700 }}>경기</TableCell>
-            {users.map((u) => (
-              <TableCell key={u.uid} align="center" sx={{ minWidth: 60 }}>
-                <Stack alignItems="center" spacing={0.3}>
-                  <Avatar
-                    sx={{
-                      width: 24,
-                      height: 24,
-                      fontSize: '0.65rem',
-                      bgcolor: stringToColor(u.nickname),
-                    }}
-                  >
-                    {u.nickname[0]}
-                  </Avatar>
-                  <Typography variant="caption" sx={{ fontSize: '0.6rem' }}>
-                    {u.nickname}
-                  </Typography>
-                </Stack>
-              </TableCell>
-            ))}
-            <TableCell align="center" sx={{ fontWeight: 700, minWidth: 90 }}>
-              인기 픽
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {matches.map((match) => {
-            const matchPicks = picks.filter((p) => p.matchId === match.id);
-            const counts: Record<Selection, number> = { HOME: 0, DRAW: 0, AWAY: 0 };
-            matchPicks.forEach((p) => counts[p.selection]++);
-            const popular = (Object.entries(counts) as [Selection, number][])
-              .sort((a, b) => b[1] - a[1])
-              .filter(([, c]) => c > 0);
+    <Stack spacing={2}>
+      {users.map(([uid, { nickname, picks: userPicks }]) => {
+        // 총 배당 계산
+        let totalOdds = 1;
+        const pickDetails = userPicks
+          .map((p) => {
+            const match = matches.find((m) => m.id === p.matchId);
+            if (!match) return null;
+            const odds = getOdds(match, p.selection);
+            totalOdds *= odds;
+            return { pick: p, match, odds };
+          })
+          .filter(Boolean) as { pick: Pick; match: Match; odds: number }[];
 
-            return (
-              <TableRow key={match.id} hover>
-                <TableCell>
-                  <Typography
-                    variant="caption"
-                    sx={{ fontWeight: 600, display: 'block', lineHeight: 1.3 }}
-                  >
-                    {match.homeTeam}
-                  </Typography>
-                  <Typography
-                    variant="caption"
-                    color="text.secondary"
-                    sx={{ display: 'block', lineHeight: 1.3 }}
-                  >
-                    vs {match.awayTeam}
-                  </Typography>
-                  <Chip
-                    label={marketLabel(match)}
-                    size="small"
-                    sx={{
-                      mt: 0.3,
-                      height: 16,
-                      fontSize: '0.55rem',
-                      bgcolor: 'grey.800',
-                      color: 'grey.300',
-                      '& .MuiChip-label': { px: 0.6 },
-                    }}
-                  />
-                </TableCell>
-                {users.map((u) => {
-                  const pick = matchPicks.find((p) => p.uid === u.uid);
-                  const labels = selLabels(match.marketType);
-                  return (
-                    <TableCell key={u.uid} align="center">
-                      {pick ? (
-                        <Chip
-                          label={labels[pick.selection]}
-                          size="small"
-                          color={selectionColor[pick.selection]}
-                          sx={{
-                            height: 20,
-                            fontSize: '0.6rem',
-                            '& .MuiChip-label': { px: 0.5 },
-                          }}
-                        />
-                      ) : (
-                        <Typography variant="caption" color="text.disabled">
-                          —
-                        </Typography>
-                      )}
-                    </TableCell>
-                  );
-                })}
-                <TableCell align="center">
-                  {popular.length > 0 ? (
-                    <Stack spacing={0.3} alignItems="center">
-                      {popular.slice(0, 2).map(([sel, count]) => (
-                        <Typography key={sel} variant="caption" sx={{ fontSize: '0.6rem' }}>
-                          {selLabels(match.marketType)[sel]} {count}명
-                        </Typography>
-                      ))}
-                    </Stack>
-                  ) : (
-                    <Typography variant="caption" color="text.disabled">
-                      —
+        return (
+          <Paper key={uid} sx={{ p: 2, borderRadius: 2 }}>
+            <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 1.5 }}>
+              <Stack direction="row" spacing={1} alignItems="center">
+                <Avatar
+                  sx={{
+                    width: 32,
+                    height: 32,
+                    fontSize: '0.8rem',
+                    bgcolor: stringToColor(nickname),
+                  }}
+                >
+                  {nickname[0]}
+                </Avatar>
+                <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+                  {nickname}
+                </Typography>
+                <Chip
+                  label={`${pickDetails.length}경기`}
+                  size="small"
+                  variant="outlined"
+                  sx={{ fontSize: '0.7rem', height: 22 }}
+                />
+              </Stack>
+              <Chip
+                label={`x${totalOdds.toFixed(2)}`}
+                size="small"
+                color="primary"
+                sx={{ fontSize: '0.85rem', fontWeight: 700, height: 28, px: 0.5 }}
+              />
+            </Stack>
+
+            <Divider sx={{ mb: 1 }} />
+
+            <Stack spacing={0.8}>
+              {pickDetails.map(({ pick, match, odds }) => (
+                <Stack
+                  key={pick.id}
+                  direction="row"
+                  alignItems="center"
+                  justifyContent="space-between"
+                >
+                  <Box sx={{ flex: 1, minWidth: 0 }}>
+                    <Typography variant="caption" sx={{ fontWeight: 600, display: 'block', lineHeight: 1.3 }}>
+                      {match.homeTeam} vs {match.awayTeam}
                     </Typography>
-                  )}
-                </TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
-    </TableContainer>
+                    <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.6rem' }}>
+                      {marketTag(match)}
+                    </Typography>
+                  </Box>
+                  <Stack direction="row" spacing={0.5} alignItems="center" sx={{ flexShrink: 0 }}>
+                    <Chip
+                      label={selLabel(pick.selection, match.marketType)}
+                      size="small"
+                      color={selectionColor[pick.selection]}
+                      sx={{ height: 20, fontSize: '0.65rem', '& .MuiChip-label': { px: 0.5 } }}
+                    />
+                    <Typography variant="caption" sx={{ fontWeight: 700, minWidth: 32, textAlign: 'right' }}>
+                      {odds.toFixed(2)}
+                    </Typography>
+                  </Stack>
+                </Stack>
+              ))}
+            </Stack>
+          </Paper>
+        );
+      })}
+    </Stack>
   );
 }
