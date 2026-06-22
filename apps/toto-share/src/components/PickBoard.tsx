@@ -66,6 +66,14 @@ function tsMillis(v: any): number {
   return 0;
 }
 
+function formatConfirmedTime(ms: number): string {
+  if (!ms) return '';
+  const d = new Date(ms);
+  const hh = String(d.getHours()).padStart(2, '0');
+  const mm = String(d.getMinutes()).padStart(2, '0');
+  return `${hh}:${mm} 확정`;
+}
+
 export default function PickBoard({ matches, picks }: Props) {
   // 이름(nickname)으로 그룹핑. 익명 로그인은 매번 uid가 바뀌므로
   // 같은 사람이 재접속해도 한 그룹으로 묶이도록 nickname 기준으로 묶는다.
@@ -108,8 +116,9 @@ export default function PickBoard({ matches, picks }: Props) {
 
         // 베팅 금액(픽에 저장된 stake, 없으면 기본 10원)
         const stake = userPicks.find((p) => typeof p.stake === 'number')?.stake ?? 10;
-        const payout = stake * totalOdds; // 예상 수익(원금 포함)
-        const profit = payout - stake; // 순수익
+        const payout = stake * totalOdds;
+        const profit = payout - stake;
+        const latestTs = Math.max(...userPicks.map((p) => tsMillis(p.updatedAt)));
 
         return (
           <Paper key={nickname} sx={{ p: 2, borderRadius: 2 }}>
@@ -125,9 +134,16 @@ export default function PickBoard({ matches, picks }: Props) {
                 >
                   {nickname[0]}
                 </Avatar>
-                <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-                  {nickname}
-                </Typography>
+                <Box>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 700, lineHeight: 1.2 }}>
+                    {nickname}
+                  </Typography>
+                  {latestTs > 0 && (
+                    <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.6rem' }}>
+                      {formatConfirmedTime(latestTs)}
+                    </Typography>
+                  )}
+                </Box>
                 <Chip
                   label={`${pickDetails.length}경기`}
                   size="small"
