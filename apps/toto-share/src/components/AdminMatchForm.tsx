@@ -99,8 +99,11 @@ export default function AdminMatchForm() {
   const handleImportBetman = async () => {
     setImportLoading(true);
     try {
+      // 캐시 무력화(?t=) + no-store 로 항상 최신 배당을 받아온다.
+      // raw.githubusercontent 은 5분 캐시라 안 붙이면 옛 배당이 올 수 있음.
       const res = await fetch(
-        'https://raw.githubusercontent.com/vlralf77-svg/rep/claude/gracious-fermat-c195k9/data/betman.json',
+        `https://raw.githubusercontent.com/vlralf77-svg/rep/claude/gracious-fermat-c195k9/data/betman.json?t=${Date.now()}`,
+        { cache: 'no-store' },
       );
       const data = await res.json();
       // 가져온 경기는 앱의 오늘 화면(공유 보드)에 바로 보이도록 today 컬렉션에 저장
