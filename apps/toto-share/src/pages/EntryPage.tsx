@@ -17,7 +17,18 @@ export default function EntryPage() {
   const [selected, setSelected] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [adminUnlocked, setAdminUnlocked] = useState(false);
+  const [iconClicks, setIconClicks] = useState(0);
   const { login } = useAuth();
+
+  // 축구 아이콘 5번 클릭 시 관리자 항목 노출
+  const handleIconClick = () => {
+    setIconClicks((c) => {
+      const next = c + 1;
+      if (next >= 5) setAdminUnlocked(true);
+      return next;
+    });
+  };
 
   const handleEnter = async () => {
     if (!selected) {
@@ -34,8 +45,8 @@ export default function EntryPage() {
     }
   };
 
-  // 멤버 + 관리자(관리 기능용) 한 항목
-  const options = [...MEMBERS, ADMIN_NICKNAMES[0]];
+  // 멤버 목록. 관리자는 축구 아이콘 5번 클릭으로 잠금 해제됐을 때만 노출.
+  const options = adminUnlocked ? [...MEMBERS, ADMIN_NICKNAMES[0]] : MEMBERS;
 
   return (
     <Box
@@ -60,12 +71,15 @@ export default function EntryPage() {
         }}
       >
         <Avatar
+          onClick={handleIconClick}
           sx={{
             width: 64,
             height: 64,
             mx: 'auto',
             mb: 2,
             bgcolor: 'primary.main',
+            cursor: 'pointer',
+            userSelect: 'none',
           }}
         >
           <SportsSoccerIcon sx={{ fontSize: 36 }} />
