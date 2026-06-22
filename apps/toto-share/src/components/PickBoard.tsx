@@ -75,6 +75,23 @@ function probColor(p: number): string {
   return '#ef5350';
 }
 
+function comboProbs(probs: number[]): number[] {
+  const n = probs.length;
+  // dp[k] = P(exactly k correct) via DP
+  let dp = new Array(n + 1).fill(0);
+  dp[0] = 1;
+  for (const p of probs) {
+    const next = new Array(n + 1).fill(0);
+    for (let k = 0; k <= n; k++) {
+      if (dp[k] === 0) continue;
+      next[k] += dp[k] * (1 - p);
+      if (k + 1 <= n) next[k + 1] += dp[k] * p;
+    }
+    dp = next;
+  }
+  return dp;
+}
+
 // Firestore Timestamp / number / null 을 비교용 밀리초로 변환
 function tsMillis(v: any): number {
   if (!v) return 0;
@@ -231,21 +248,42 @@ export default function PickBoard({ matches, picks }: Props) {
 
             <Divider sx={{ my: 1 }} />
 
-            {pickDetails.length > 0 && (() => {
-              const comboProb = pickDetails.reduce((acc, { pick, match }) => acc * impliedProb(match, pick.selection), 1);
-              const comboPct = (comboProb * 100).toFixed(1);
+            {pickDetails.length > 1 && (() => {
+              const probs = pickDetails.map(({ pick, match }) => impliedProb(match, pick.selection));
+              const dp = comboProbs(probs);
+              const n = probs.length;
+              let cumulative = 0;
+              const rows: { label: string; pct: string; color: string }[] = [];
+              for (let k = n; k >= Math.max(1, n - 2); k--) {
+                cumulative += dp[k];
+                const label = k === n ? `${n}/${n} 전적중` : `${k}/${n} 이상`;
+                rows.push({
+                  label,
+                  pct: (cumulative * 100).toFixed(1),
+                  color: k === n ? '#ab47bc' : k === n - 1 ? '#ffa726' : '#66bb6a',
+                });
+              }
               return (
-                <Stack direction="row" alignItems="center" spacing={0.5} sx={{ mb: 1, px: 0.5 }}>
-                  <SmartToyIcon sx={{ fontSize: 12, color: '#ab47bc' }} />
-                  <Typography variant="caption" sx={{ fontSize: '0.6rem', color: 'text.secondary' }}>
-                    AI 적중 예측
-                  </Typography>
-                  <Chip
-                    label={`${comboPct}%`}
-                    size="small"
-                    sx={{ height: 18, fontSize: '0.65rem', fontWeight: 700, bgcolor: 'rgba(171,71,188,0.15)', color: '#ce93d8' }}
-                  />
-                </Stack>
+                <Box sx={{ mb: 1, px: 0.5 }}>
+                  <Stack direction="row" alignItems="center" spacing={0.5} sx={{ mb: 0.5 }}>
+                    <SmartToyIcon sx={{ fontSize: 12, color: '#ab47bc' }} />
+                    <Typography variant="caption" sx={{ fontSize: '0.6rem', color: 'text.secondary', fontWeight: 700 }}>
+                      AI 조합 적중 예측
+                    </Typography>
+                  </Stack>
+                  <Stack direction="row" spacing={0.8}>
+                    {rows.map((r) => (
+                      <Box key={r.label} sx={{ textAlign: 'center', flex: 1 }}>
+                        <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.55rem', display: 'block' }}>
+                          {r.label}
+                        </Typography>
+                        <Typography variant="caption" sx={{ fontWeight: 700, fontSize: '0.75rem', color: r.color }}>
+                          {r.pct}%
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Stack>
+                </Box>
               );
             })()}
 
