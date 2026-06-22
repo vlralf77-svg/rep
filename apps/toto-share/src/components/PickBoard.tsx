@@ -103,16 +103,17 @@ export default function PickBoard({ matches, picks }: Props) {
     <Stack spacing={2}>
       {users.map(([nickname, userPicks]) => {
         // 총 배당 계산
-        let totalOdds = 1;
+        let rawOdds = 1;
         const pickDetails = userPicks
           .map((p) => {
             const match = matches.find((m) => m.id === p.matchId);
             if (!match) return null;
             const odds = getOdds(match, p.selection);
-            totalOdds *= odds;
+            rawOdds *= odds;
             return { pick: p, match, odds };
           })
           .filter(Boolean) as { pick: Pick; match: Match; odds: number }[];
+        const totalOdds = Math.ceil(rawOdds * 100) / 100;
 
         // 베팅 금액(픽에 저장된 stake, 없으면 기본 10원)
         const stake = userPicks.find((p) => typeof p.stake === 'number')?.stake ?? 10;

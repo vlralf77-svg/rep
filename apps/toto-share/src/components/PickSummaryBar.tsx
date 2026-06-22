@@ -22,13 +22,14 @@ export default function PickSummaryBar({
 
   if (count === 0) return null;
 
-  const totalOdds = entries.reduce((acc, [matchId, sel]) => {
+  const rawOdds = entries.reduce((acc, [matchId, sel]) => {
     const m = matches.find((x) => x.id === matchId);
     if (!m) return acc;
     const odds =
       sel === 'HOME' ? m.oddsHome : sel === 'DRAW' ? m.oddsDraw : m.oddsAway;
     return acc * odds;
   }, 1);
+  const totalOdds = Math.ceil(rawOdds * 100) / 100;
 
   const stakeNum = parseFloat(stake) || 0;
   const payout = stakeNum * totalOdds;

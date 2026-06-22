@@ -83,18 +83,19 @@ export function usePicks() {
       });
     });
 
-    const totalOdds = Object.entries(myPicks).reduce((acc, [matchId, sel]) => {
+    const rawOdds = Object.entries(myPicks).reduce((acc, [matchId, sel]) => {
       const m = matches.find((x) => x.id === matchId);
       if (!m) return acc;
       const odds =
         sel === 'HOME' ? m.oddsHome : sel === 'DRAW' ? m.oddsDraw : m.oddsAway;
       return acc * odds;
     }, 1);
+    const totalOdds = Math.ceil(rawOdds * 100) / 100;
 
     batch.set(doc(db, 'days', day, 'combos', user.uid), {
       uid: user.uid,
       pickIds: Object.keys(myPicks),
-      totalOdds: Math.round(totalOdds * 100) / 100,
+      totalOdds,
       stake,
       confirmedAt: serverTimestamp(),
     });
