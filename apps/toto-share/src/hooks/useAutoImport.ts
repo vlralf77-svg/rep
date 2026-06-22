@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { todayKey } from './useMatches';
@@ -78,17 +78,27 @@ const INTERVAL_MS = 5 * 60 * 1000;
 
 export function useAutoImport() {
   const ran = useRef(false);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const doImport = useCallback(async () => {
+    setRefreshing(true);
+    try {
+      await importBetman();
+      setLastUpdated(new Date());
+    } catch {}
+    setRefreshing(false);
+  }, []);
 
   useEffect(() => {
     if (ran.current) return;
     ran.current = true;
 
-    importBetman().catch(() => {});
+    doImport();
 
-    const id = setInterval(() => {
-      importBetman().catch(() => {});
-    }, INTERVAL_MS);
-
+    const id = setInterval(doImport, INTERVAL_MS);
     return () => clearInterval(id);
-  }, []);
+  }, [doImport]);
+
+  return { lastUpdated, refreshing, refresh: doImport };
 }

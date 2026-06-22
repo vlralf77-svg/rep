@@ -15,6 +15,7 @@ import {
 import LogoutIcon from '@mui/icons-material/Logout';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import RefreshIcon from '@mui/icons-material/Refresh';
 import MatchGroup from '../components/MatchGroup';
 import PickSummaryBar from '../components/PickSummaryBar';
 import OnlineUsers from '../components/OnlineUsers';
@@ -42,7 +43,7 @@ export default function MainPage() {
   const { picks, myPicks, submitPick, removePick, confirmCombo, resetPicks } =
     usePicks();
   const { onlineUsers } = useOnlineUsers();
-  useAutoImport();
+  const { lastUpdated, refreshing, refresh } = useAutoImport();
   const confirmedCombo = useStore((s) => s.confirmedCombo);
   const [sportFilter, setSportFilter] = useState('전체');
   const day = todayKey();
@@ -126,7 +127,21 @@ export default function MainPage() {
           <Typography variant="h6" sx={{ fontSize: '1.1rem' }}>
             벳
           </Typography>
-          <Stack direction="row" spacing={1} alignItems="center">
+          <Stack direction="row" spacing={0.5} alignItems="center">
+            {lastUpdated && (
+              <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.6rem' }}>
+                {lastUpdated.toLocaleTimeString('ko-KR')}
+              </Typography>
+            )}
+            <IconButton
+              size="small"
+              onClick={refresh}
+              disabled={refreshing}
+              color="inherit"
+              sx={refreshing ? { animation: 'spin 1s linear infinite', '@keyframes spin': { '100%': { transform: 'rotate(360deg)' } } } : {}}
+            >
+              <RefreshIcon sx={{ fontSize: 18 }} />
+            </IconButton>
             <Chip
               label={user?.nickname}
               size="small"
