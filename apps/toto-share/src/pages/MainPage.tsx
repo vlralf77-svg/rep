@@ -13,7 +13,7 @@ import {
 import LogoutIcon from '@mui/icons-material/Logout';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-import MatchCard from '../components/MatchCard';
+import MatchGroup from '../components/MatchGroup';
 import PickSummaryBar from '../components/PickSummaryBar';
 import OnlineUsers from '../components/OnlineUsers';
 import AdminMatchForm from '../components/AdminMatchForm';
@@ -70,6 +70,20 @@ export default function MainPage() {
       submitPick(matchId, sel);
     }
   };
+
+  // 같은 경기(gameKey)끼리 묶기. gameKey 없으면 id로 단독 그룹.
+  const groups = useMemo(() => {
+    const map = new Map<string, typeof matches>();
+    for (const m of matches) {
+      const key = m.gameKey || m.id;
+      if (!map.has(key)) map.set(key, []);
+      map.get(key)!.push(m);
+    }
+    // 그룹별 대표 경기시간 기준 정렬
+    return Array.from(map.entries())
+      .map(([key, ms]) => ({ key, ms }))
+      .sort((a, b) => a.ms[0].startTime - b.ms[0].startTime);
+  }, [matches]);
 
   return (
     <Box sx={{ pb: Object.keys(myPicks).length > 0 ? 10 : 2 }}>
@@ -134,13 +148,14 @@ export default function MainPage() {
             </Typography>
           </Box>
         ) : (
-          matches.map((match) => (
-            <MatchCard
-              key={match.id}
-              match={match}
-              mySelection={myPicks[match.id]}
-              pickSummary={pickSummaries[match.id] || { HOME: 0, DRAW: 0, AWAY: 0, users: {} }}
+          groups.map((g) => (
+            <MatchGroup
+              key={g.key}
+              matches={g.ms}
+              myPicks={myPicks}
+              pickSummaries={pickSummaries}
               onSelect={handleSelect}
+              defaultOpen={groups.length === 1}
             />
           ))
         )}

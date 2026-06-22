@@ -20,6 +20,7 @@ export interface Match {
   oddsDraw: number;
   oddsAway: number;
   marketType: string;
+  gameKey: string;
   status: MatchStatus;
   result: MatchResult;
 }

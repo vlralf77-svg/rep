@@ -82,6 +82,7 @@ export default function AdminMatchForm() {
         oddsDraw: parseFloat(form.oddsDraw) || 3.5,
         oddsAway: parseFloat(form.oddsAway) || 2.5,
         marketType: '승무패',
+        gameKey: matchId,
         status: 'OPEN' as MatchStatus,
         result: null,
       });
@@ -129,7 +130,8 @@ export default function AdminMatchForm() {
           const oddsAway = sels.find((s: any) => AWAY_LABELS.includes(s.label))?.odds || 2.5;
 
           const baseId = game.matchId || `${game.homeTeam}_${game.awayTeam}`;
-          const matchId = `betman_${baseId}_${marketType}`.replace(/[\/\.\#\$\[\]]/g, '_');
+          const gameKey = `betman_${baseId}`.replace(/[\/\.\#\$\[\]]/g, '_');
+          const matchId = `${gameKey}_${marketType}`.replace(/[\/\.\#\$\[\]]/g, '_');
 
           await setDoc(doc(db, 'days', day, 'matches', matchId), {
             gameNo: game.matchId?.split('|')[0] || String(count + 1),
@@ -141,6 +143,7 @@ export default function AdminMatchForm() {
             oddsDraw,
             oddsAway,
             marketType,
+            gameKey,
             status: 'OPEN' as MatchStatus,
             result: null,
           });
