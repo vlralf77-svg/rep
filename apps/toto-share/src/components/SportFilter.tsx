@@ -6,6 +6,7 @@ import SportsVolleyballIcon from '@mui/icons-material/SportsVolleyball';
 import SportsIcon from '@mui/icons-material/Sports';
 import AppsIcon from '@mui/icons-material/Apps';
 import type { Match } from '../types';
+import { detectSport } from '../utils/detectSport';
 
 export interface MatchGroup {
   key: string;
@@ -27,8 +28,10 @@ const SPORTS = [
   { key: '기타', label: '기타', icon: SportsIcon },
 ];
 
-function groupSport(ms: Match[]): string {
-  return ms[0]?.sport || '기타';
+export function groupSport(ms: Match[]): string {
+  const h = ms[0];
+  if (!h) return '기타';
+  return detectSport(h.homeTeam, h.awayTeam, h.sport);
 }
 
 export default function SportFilter({ groups, selected, onSelect }: Props) {

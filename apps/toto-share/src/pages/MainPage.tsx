@@ -20,7 +20,7 @@ import MatchGroup from '../components/MatchGroup';
 import PickSummaryBar from '../components/PickSummaryBar';
 import OnlineUsers from '../components/OnlineUsers';
 import AdminMatchForm from '../components/AdminMatchForm';
-import SportFilter from '../components/SportFilter';
+import SportFilter, { groupSport } from '../components/SportFilter';
 import { useAuth } from '../hooks/useAuth';
 import { useMatches, todayKey } from '../hooks/useMatches';
 import { usePicks } from '../hooks/usePicks';
@@ -203,7 +203,7 @@ export default function MainPage() {
         ) : (
           groups
             .filter((g) =>
-              sportFilter === '전체' || (g.ms[0]?.sport || '기타') === sportFilter,
+              sportFilter === '전체' || groupSport(g.ms) === sportFilter,
             )
             .map((g) => (
               <MatchGroup
