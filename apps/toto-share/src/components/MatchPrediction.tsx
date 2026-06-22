@@ -2,12 +2,14 @@ import { Box, Typography, Stack, LinearProgress, Divider, Chip } from '@mui/mate
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import ScaleIcon from '@mui/icons-material/Scale';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import type { Match } from '../types';
 import { useStore } from '../store';
 import { DEFAULT_RATING, expectedScore } from '../utils/elo';
 
 interface Props {
   matches: Match[];
+  isAdmin?: boolean;
 }
 
 function impliedProb(oddsH: number, oddsD: number, oddsA: number) {
@@ -20,6 +22,11 @@ function impliedProb(oddsH: number, oddsD: number, oddsA: number) {
     draw: rawD / total,
     away: rawA / total,
   };
+}
+
+function eloDiffFromProb(prob: number): number {
+  if (prob <= 0 || prob >= 1) return 0;
+  return -400 * Math.log10(1 / prob - 1);
 }
 
 function ProbBar({ label, value, color }: { label: string; value: number; color: string }) {
@@ -83,19 +90,25 @@ function MarketPrediction({ match }: { match: Match }) {
   );
 }
 
-export default function MatchPrediction({ matches }: Props) {
+export default function MatchPrediction({ matches, isAdmin = false }: Props) {
   const eloRatings = useStore((s) => s.eloRatings);
   const main = matches.find((m) => m.marketType === '승무패' || m.marketType === '승패') || matches[0];
   if (!main) return null;
 
   const prob = impliedProb(main.oddsHome, main.oddsDraw, main.oddsAway);
 
+  // 배당 역산 엘로 (모든 유저에게 표시)
+  const homeElo = eloDiffFromProb(prob.home);
+  const awayElo = eloDiffFromProb(prob.away);
+  const oddsEloDiff = Math.round(homeElo - awayElo);
+
+  // 실제 엘로 (관리자 전용)
   const homeRating = eloRatings[main.homeTeam]?.rating ?? DEFAULT_RATING;
   const awayRating = eloRatings[main.awayTeam]?.rating ?? DEFAULT_RATING;
-  const homeMatches = eloRatings[main.homeTeam]?.matches ?? 0;
-  const awayMatches = eloRatings[main.awayTeam]?.matches ?? 0;
-  const hasEloData = homeMatches > 0 || awayMatches > 0;
-  const eloDiffVal = homeRating - awayRating;
+  const homeMatchCount = eloRatings[main.homeTeam]?.matches ?? 0;
+  const awayMatchCount = eloRatings[main.awayTeam]?.matches ?? 0;
+  const hasEloData = homeMatchCount > 0 || awayMatchCount > 0;
+  const realEloDiff = homeRating - awayRating;
   const eloHomeWin = expectedScore(homeRating, awayRating);
   const eloAwayWin = 1 - eloHomeWin;
 
@@ -124,7 +137,7 @@ export default function MatchPrediction({ matches }: Props) {
 
   if (hasEloData) {
     const eloW = 0.25;
-    const drawFactor = Math.max(0, 0.28 - Math.abs(eloDiffVal) / 2000);
+    const drawFactor = Math.max(0, 0.28 - Math.abs(realEloDiff) / 2000);
     weightedHome += (eloHomeWin - drawFactor / 2) * eloW;
     weightedAway += (eloAwayWin - drawFactor / 2) * eloW;
     weightedDraw += drawFactor * eloW;
@@ -147,7 +160,7 @@ export default function MatchPrediction({ matches }: Props) {
       </Typography>
 
       <Stack spacing={1.5}>
-        {/* AI 예측 — 마켓별 */}
+        {/* AI 마켓별 예측 */}
         <Box>
           <Stack direction="row" alignItems="center" spacing={0.5} sx={{ mb: 0.8 }}>
             <SmartToyIcon sx={{ fontSize: 14, color: '#ab47bc' }} />
@@ -165,29 +178,22 @@ export default function MatchPrediction({ matches }: Props) {
 
         <Divider sx={{ borderColor: 'rgba(255,255,255,0.06)' }} />
 
-        {/* 실제 엘로 레이팅 */}
+        {/* 배당 역산 엘로 레이팅 (모든 유저) */}
         <Box>
           <Stack direction="row" alignItems="center" spacing={0.5} sx={{ mb: 0.8 }}>
             <BarChartIcon sx={{ fontSize: 14, color: '#66bb6a' }} />
             <Typography variant="caption" sx={{ fontWeight: 700, fontSize: '0.65rem' }}>
               엘로 레이팅
             </Typography>
-            {hasEloData ? (
-              <Chip label="실전 데이터" size="small" sx={{ height: 16, fontSize: '0.5rem', bgcolor: 'rgba(102,187,106,0.15)', color: '#81c784' }} />
-            ) : (
-              <Chip label="기본값" size="small" sx={{ height: 16, fontSize: '0.5rem', bgcolor: 'rgba(255,255,255,0.08)', color: 'text.secondary' }} />
-            )}
+            <Chip label="배당 역산" size="small" sx={{ height: 16, fontSize: '0.55rem', bgcolor: 'rgba(102,187,106,0.15)', color: '#81c784' }} />
           </Stack>
           <Stack direction="row" justifyContent="space-between" alignItems="center">
             <Box sx={{ textAlign: 'center', flex: 1 }}>
               <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.6rem', display: 'block' }}>
                 {main.homeTeam}
               </Typography>
-              <Typography variant="body2" sx={{ fontWeight: 700, color: homeRating > awayRating ? '#42a5f5' : 'text.secondary' }}>
-                {homeRating}
-              </Typography>
-              <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.5rem' }}>
-                {homeMatches}전
+              <Typography variant="body2" sx={{ fontWeight: 700, color: homeElo > 0 ? '#42a5f5' : 'text.secondary' }}>
+                {homeElo > 0 ? '+' : ''}{Math.round(homeElo)}
               </Typography>
             </Box>
             <Box sx={{ textAlign: 'center', px: 1 }}>
@@ -195,28 +201,82 @@ export default function MatchPrediction({ matches }: Props) {
                 레이팅 차
               </Typography>
               <Chip
-                label={`${eloDiffVal > 0 ? '+' : ''}${eloDiffVal}`}
+                label={`${oddsEloDiff > 0 ? '+' : ''}${oddsEloDiff}`}
                 size="small"
-                color={eloDiffVal > 50 ? 'primary' : eloDiffVal < -50 ? 'error' : 'default'}
+                color={oddsEloDiff > 30 ? 'primary' : oddsEloDiff < -30 ? 'error' : 'default'}
                 sx={{ height: 20, fontSize: '0.7rem', fontWeight: 700 }}
               />
-              <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.5rem', display: 'block', mt: 0.3 }}>
-                승률 {Math.round(eloHomeWin * 100)}:{Math.round(eloAwayWin * 100)}
-              </Typography>
             </Box>
             <Box sx={{ textAlign: 'center', flex: 1 }}>
               <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.6rem', display: 'block' }}>
                 {main.awayTeam}
               </Typography>
-              <Typography variant="body2" sx={{ fontWeight: 700, color: awayRating > homeRating ? '#ef5350' : 'text.secondary' }}>
-                {awayRating}
-              </Typography>
-              <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.5rem' }}>
-                {awayMatches}전
+              <Typography variant="body2" sx={{ fontWeight: 700, color: awayElo > 0 ? '#ef5350' : 'text.secondary' }}>
+                {awayElo > 0 ? '+' : ''}{Math.round(awayElo)}
               </Typography>
             </Box>
           </Stack>
         </Box>
+
+        {/* 실제 엘로 레이팅 — 관리자 전용 */}
+        {isAdmin && (
+          <>
+            <Divider sx={{ borderColor: 'rgba(255,193,7,0.15)' }} />
+            <Box sx={{ p: 1, bgcolor: 'rgba(255,193,7,0.04)', borderRadius: 1, border: '1px dashed rgba(255,193,7,0.2)' }}>
+              <Stack direction="row" alignItems="center" spacing={0.5} sx={{ mb: 0.8 }}>
+                <AdminPanelSettingsIcon sx={{ fontSize: 14, color: '#ffc107' }} />
+                <Typography variant="caption" sx={{ fontWeight: 700, fontSize: '0.65rem', color: '#ffc107' }}>
+                  엘로 레이팅 (내부용)
+                </Typography>
+                {hasEloData ? (
+                  <Chip label="실전 데이터" size="small" sx={{ height: 16, fontSize: '0.5rem', bgcolor: 'rgba(102,187,106,0.15)', color: '#81c784' }} />
+                ) : (
+                  <Chip label="데이터 없음" size="small" sx={{ height: 16, fontSize: '0.5rem', bgcolor: 'rgba(255,255,255,0.08)', color: 'text.secondary' }} />
+                )}
+              </Stack>
+              <Stack direction="row" justifyContent="space-between" alignItems="center">
+                <Box sx={{ textAlign: 'center', flex: 1 }}>
+                  <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.6rem', display: 'block' }}>
+                    {main.homeTeam}
+                  </Typography>
+                  <Typography variant="body2" sx={{ fontWeight: 700, color: homeRating > awayRating ? '#42a5f5' : 'text.secondary' }}>
+                    {homeRating}
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.5rem' }}>
+                    {homeMatchCount}전
+                  </Typography>
+                </Box>
+                <Box sx={{ textAlign: 'center', px: 1 }}>
+                  <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.55rem', display: 'block' }}>
+                    레이팅 차
+                  </Typography>
+                  <Chip
+                    label={`${realEloDiff > 0 ? '+' : ''}${realEloDiff}`}
+                    size="small"
+                    color={realEloDiff > 50 ? 'primary' : realEloDiff < -50 ? 'error' : 'default'}
+                    sx={{ height: 20, fontSize: '0.7rem', fontWeight: 700 }}
+                  />
+                  {hasEloData && (
+                    <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.5rem', display: 'block', mt: 0.3 }}>
+                      승률 {Math.round(eloHomeWin * 100)}:{Math.round(eloAwayWin * 100)}
+                    </Typography>
+                  )}
+                </Box>
+                <Box sx={{ textAlign: 'center', flex: 1 }}>
+                  <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.6rem', display: 'block' }}>
+                    {main.awayTeam}
+                  </Typography>
+                  <Typography variant="body2" sx={{ fontWeight: 700, color: awayRating > homeRating ? '#ef5350' : 'text.secondary' }}>
+                    {awayRating}
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.5rem' }}>
+                    {awayMatchCount}전
+                  </Typography>
+                </Box>
+              </Stack>
+            </Box>
+          </>
+        )}
 
         <Divider sx={{ borderColor: 'rgba(255,255,255,0.06)' }} />
 

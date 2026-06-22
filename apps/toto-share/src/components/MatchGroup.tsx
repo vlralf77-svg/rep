@@ -379,7 +379,7 @@ export default function MatchGroup({
               onSelect={onSelect}
             />
           ))}
-          <MatchPrediction matches={sorted} />
+          <MatchPrediction matches={sorted} isAdmin={isAdmin} />
           {isAdmin && onRecordResult && (
             <ResultRecorder
               homeTeam={head.homeTeam}
