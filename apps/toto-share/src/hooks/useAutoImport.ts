@@ -52,6 +52,7 @@ async function importBetman(): Promise<number> {
       await setDoc(matchRef, {
         gameNo: game.matchId?.split('|')[0] || String(count + 1),
         league: game.league || game.sport || '미정',
+        sport: game.sport || '기타',
         homeTeam: game.homeTeam,
         awayTeam: game.awayTeam,
         startTime: game.gameDate ? new Date(game.gameDate).getTime() : Date.now() + 3600000,

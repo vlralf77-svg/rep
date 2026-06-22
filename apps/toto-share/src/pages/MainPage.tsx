@@ -19,6 +19,7 @@ import MatchGroup from '../components/MatchGroup';
 import PickSummaryBar from '../components/PickSummaryBar';
 import OnlineUsers from '../components/OnlineUsers';
 import AdminMatchForm from '../components/AdminMatchForm';
+import SportFilter from '../components/SportFilter';
 import { useAuth } from '../hooks/useAuth';
 import { useMatches, todayKey } from '../hooks/useMatches';
 import { usePicks } from '../hooks/usePicks';
@@ -43,6 +44,7 @@ export default function MainPage() {
   const { onlineUsers } = useOnlineUsers();
   useAutoImport();
   const confirmedCombo = useStore((s) => s.confirmedCombo);
+  const [sportFilter, setSportFilter] = useState('전체');
   const day = todayKey();
   const admin = isAdmin(user?.nickname);
 
@@ -166,8 +168,12 @@ export default function MainPage() {
           </Stack>
         </Stack>
 
-        <Box sx={{ mb: 2 }}>
+        <Box sx={{ mb: 1.5 }}>
           <OnlineUsers users={onlineUsers} currentUid={user?.uid} isAdmin={admin} />
+        </Box>
+
+        <Box sx={{ mb: 2 }}>
+          <SportFilter matches={matches} selected={sportFilter} onSelect={setSportFilter} />
         </Box>
 
         {matches.length === 0 ? (
@@ -180,16 +186,20 @@ export default function MainPage() {
             </Typography>
           </Box>
         ) : (
-          groups.map((g) => (
-            <MatchGroup
-              key={g.key}
-              matches={g.ms}
-              myPicks={myPicks}
-              pickSummaries={pickSummaries}
-              onSelect={handleSelect}
-              defaultOpen={groups.length === 1}
-            />
-          ))
+          groups
+            .filter((g) =>
+              sportFilter === '전체' || g.ms.some((m) => (m.sport || '기타') === sportFilter),
+            )
+            .map((g) => (
+              <MatchGroup
+                key={g.key}
+                matches={g.ms}
+                myPicks={myPicks}
+                pickSummaries={pickSummaries}
+                onSelect={handleSelect}
+                defaultOpen={groups.length === 1}
+              />
+            ))
         )}
       </Container>
 

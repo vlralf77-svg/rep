@@ -75,6 +75,7 @@ export default function AdminMatchForm() {
       await setDoc(doc(db, 'days', day, 'matches', matchId), {
         gameNo: form.gameNo,
         league: form.league || '미정',
+        sport: '기타',
         homeTeam: form.homeTeam,
         awayTeam: form.awayTeam,
         startTime: startDate,
@@ -144,6 +145,7 @@ export default function AdminMatchForm() {
           await setDoc(matchRef, {
             gameNo: game.matchId?.split('|')[0] || String(count + 1),
             league: game.league || game.sport || '미정',
+            sport: game.sport || '기타',
             homeTeam: game.homeTeam,
             awayTeam: game.awayTeam,
             startTime: game.gameDate ? new Date(game.gameDate).getTime() : Date.now() + 3600000,

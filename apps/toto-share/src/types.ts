@@ -13,6 +13,7 @@ export interface Match {
   id: string;
   gameNo: string;
   league: string;
+  sport: string;
   homeTeam: string;
   awayTeam: string;
   startTime: number;
