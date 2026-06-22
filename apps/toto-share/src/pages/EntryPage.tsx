@@ -2,41 +2,40 @@ import { useState } from 'react';
 import {
   Box,
   Button,
-  TextField,
   Typography,
   Paper,
   Avatar,
   CircularProgress,
+  ToggleButton,
+  ToggleButtonGroup,
 } from '@mui/material';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import { useAuth } from '../hooks/useAuth';
+import { MEMBERS, ADMIN_NICKNAMES } from '../config';
 
 export default function EntryPage() {
-  const [nickname, setNickname] = useState('');
+  const [selected, setSelected] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const { login } = useAuth();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const trimmed = nickname.trim();
-    if (!trimmed) {
-      setError('닉네임을 입력하세요');
-      return;
-    }
-    if (trimmed.length > 10) {
-      setError('닉네임은 10자 이하로 입력하세요');
+  const handleEnter = async () => {
+    if (!selected) {
+      setError('이름을 선택하세요');
       return;
     }
     setLoading(true);
     setError('');
     try {
-      await login(trimmed);
+      await login(selected);
     } catch (err: any) {
       setError('입장에 실패했습니다. 다시 시도해주세요.');
       setLoading(false);
     }
   };
+
+  // 멤버 + 관리자(관리 기능용) 한 항목
+  const options = [...MEMBERS, ADMIN_NICKNAMES[0]];
 
   return (
     <Box
@@ -76,33 +75,55 @@ export default function EntryPage() {
           벳
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-          오늘의 경기 픽을 공유하세요
+          이름을 선택하고 입장하세요
         </Typography>
 
-        <Box component="form" onSubmit={handleSubmit}>
-          <TextField
-            fullWidth
-            label="닉네임"
-            placeholder="닉네임을 입력하세요"
-            value={nickname}
-            onChange={(e) => setNickname(e.target.value)}
-            error={!!error}
-            helperText={error}
-            autoFocus
-            sx={{ mb: 2 }}
-            inputProps={{ maxLength: 10 }}
-          />
-          <Button
-            fullWidth
-            variant="contained"
-            size="large"
-            type="submit"
-            disabled={loading || !nickname.trim()}
-            sx={{ py: 1.5 }}
-          >
-            {loading ? <CircularProgress size={24} /> : '입장하기'}
-          </Button>
-        </Box>
+        <ToggleButtonGroup
+          orientation="vertical"
+          exclusive
+          fullWidth
+          value={selected}
+          onChange={(_, v) => {
+            if (v !== null) {
+              setSelected(v);
+              setError('');
+            }
+          }}
+          sx={{ mb: 2, gap: 1 }}
+        >
+          {options.map((name) => (
+            <ToggleButton
+              key={name}
+              value={name}
+              sx={{
+                border: '1px solid rgba(255,255,255,0.15) !important',
+                borderRadius: '8px !important',
+                py: 1.2,
+                fontSize: '1rem',
+                fontWeight: 600,
+              }}
+            >
+              {name}
+            </ToggleButton>
+          ))}
+        </ToggleButtonGroup>
+
+        {error && (
+          <Typography variant="caption" color="error" sx={{ display: 'block', mb: 1 }}>
+            {error}
+          </Typography>
+        )}
+
+        <Button
+          fullWidth
+          variant="contained"
+          size="large"
+          onClick={handleEnter}
+          disabled={loading || !selected}
+          sx={{ py: 1.5 }}
+        >
+          {loading ? <CircularProgress size={24} /> : '입장하기'}
+        </Button>
       </Paper>
 
       <Typography
