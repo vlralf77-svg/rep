@@ -71,11 +71,12 @@ export default function MainPage() {
     }
   };
 
-  // 같은 경기(gameKey)끼리 묶기. gameKey 없으면 id로 단독 그룹.
+  // 같은 경기끼리 묶기. 팀명+경기시간으로 그룹핑하면 gameKey 유무와
+  // 상관없이(예전/새 데이터 혼용해도) 항상 한 그룹으로 모인다.
   const groups = useMemo(() => {
     const map = new Map<string, typeof matches>();
     for (const m of matches) {
-      const key = m.gameKey || m.id;
+      const key = `${m.homeTeam}|${m.awayTeam}|${m.startTime}`;
       if (!map.has(key)) map.set(key, []);
       map.get(key)!.push(m);
     }
