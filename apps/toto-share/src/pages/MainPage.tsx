@@ -21,6 +21,7 @@ import { useAuth } from '../hooks/useAuth';
 import { useMatches, todayKey } from '../hooks/useMatches';
 import { usePicks } from '../hooks/usePicks';
 import { useOnlineUsers } from '../hooks/useOnlineUsers';
+import { useAutoImport } from '../hooks/useAutoImport';
 import { useStore } from '../store';
 import { isAdmin } from '../config';
 import type { Selection, PickSummary } from '../types';
@@ -38,6 +39,7 @@ export default function MainPage() {
   const { picks, myPicks, submitPick, removePick, confirmCombo, resetPicks } =
     usePicks();
   const { onlineUsers } = useOnlineUsers();
+  useAutoImport();
   const confirmedCombo = useStore((s) => s.confirmedCombo);
   const day = todayKey();
   const admin = isAdmin(user?.nickname);

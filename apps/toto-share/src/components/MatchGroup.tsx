@@ -13,6 +13,8 @@ import {
 import LockIcon from '@mui/icons-material/Lock';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import type { Match, Selection, PickSummary } from '../types';
 
 interface Props {
@@ -71,9 +73,16 @@ function marketRank(t?: string): number {
   return i === -1 ? 999 : i;
 }
 
+function OddsArrow({ current, previous }: { current: number; previous?: number }) {
+  if (previous == null || previous === current) return null;
+  if (current > previous) return <ArrowDropUpIcon sx={{ fontSize: 16, color: '#f44336', ml: -0.3 }} />;
+  return <ArrowDropDownIcon sx={{ fontSize: 16, color: '#2196f3', ml: -0.3 }} />;
+}
+
 function SelectionButton({
   label,
   odds,
+  prevOdds,
   count,
   selected,
   disabled,
@@ -82,6 +91,7 @@ function SelectionButton({
 }: {
   label: string;
   odds: number;
+  prevOdds?: number;
   count: number;
   selected: boolean;
   disabled: boolean;
@@ -99,9 +109,12 @@ function SelectionButton({
       <Typography variant="caption" sx={{ fontWeight: 700, fontSize: '0.68rem' }}>
         {label}
       </Typography>
-      <Typography variant="body2" sx={{ fontWeight: 700 }}>
-        {odds.toFixed(2)}
-      </Typography>
+      <Stack direction="row" alignItems="center" justifyContent="center">
+        <Typography variant="body2" sx={{ fontWeight: 700 }}>
+          {odds.toFixed(2)}
+        </Typography>
+        <OddsArrow current={odds} previous={prevOdds} />
+      </Stack>
       {count > 0 && (
         <Chip
           label={count}
@@ -164,6 +177,7 @@ function MarketRow({
         <SelectionButton
           label={labels.home}
           odds={match.oddsHome}
+          prevOdds={match.prevOddsHome}
           count={summary.HOME}
           selected={mySelection === 'HOME'}
           disabled={disabled}
@@ -174,6 +188,7 @@ function MarketRow({
           <SelectionButton
             label={labels.draw}
             odds={match.oddsDraw}
+            prevOdds={match.prevOddsDraw}
             count={summary.DRAW}
             selected={mySelection === 'DRAW'}
             disabled={disabled}
@@ -184,6 +199,7 @@ function MarketRow({
         <SelectionButton
           label={labels.away}
           odds={match.oddsAway}
+          prevOdds={match.prevOddsAway}
           count={summary.AWAY}
           selected={mySelection === 'AWAY'}
           disabled={disabled}

@@ -16,7 +16,7 @@ import {
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import UploadIcon from '@mui/icons-material/Upload';
-import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase';
 import { todayKey } from '../hooks/useMatches';
 import type { MatchStatus } from '../types';
@@ -138,7 +138,10 @@ export default function AdminMatchForm() {
           const gameKey = `betman_${baseId}`.replace(/[\/\.\#\$\[\]]/g, '_');
           const matchId = `${gameKey}_${marketType}`.replace(/[\/\.\#\$\[\]]/g, '_');
 
-          await setDoc(doc(db, 'days', day, 'matches', matchId), {
+          const matchRef = doc(db, 'days', day, 'matches', matchId);
+          const existing = await getDoc(matchRef);
+          const prev = existing.exists() ? existing.data() : null;
+          await setDoc(matchRef, {
             gameNo: game.matchId?.split('|')[0] || String(count + 1),
             league: game.league || game.sport || '미정',
             homeTeam: game.homeTeam,
@@ -147,6 +150,9 @@ export default function AdminMatchForm() {
             oddsHome,
             oddsDraw,
             oddsAway,
+            prevOddsHome: prev ? prev.oddsHome : null,
+            prevOddsDraw: prev ? prev.oddsDraw : null,
+            prevOddsAway: prev ? prev.oddsAway : null,
             marketType,
             gameKey,
             line: typeof market.line === 'number' ? market.line : null,
