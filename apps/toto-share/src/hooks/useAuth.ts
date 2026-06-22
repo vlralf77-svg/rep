@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useRef } from 'react';
 import { signInAnonymously, onAuthStateChanged } from 'firebase/auth';
 import {
   doc,
@@ -11,6 +11,8 @@ import { useStore } from '../store';
 
 export function useAuth() {
   const { user, setUser } = useStore();
+  const userRef = useRef(user);
+  userRef.current = user;
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (fbUser) => {
@@ -20,6 +22,36 @@ export function useAuth() {
     });
     return unsub;
   }, [setUser]);
+
+  useEffect(() => {
+    if (!user) return;
+
+    const setOffline = () => {
+      const u = userRef.current;
+      if (!u) return;
+      const data = JSON.stringify({ online: false });
+      const blob = new Blob([data], { type: 'application/json' });
+      const url = `https://firestore.googleapis.com/v1/projects/betman-841e3/databases/(default)/documents/users/${u.uid}?updateMask.fieldPaths=online`;
+      navigator.sendBeacon(url, blob);
+      updateDoc(doc(db, 'users', u.uid), { online: false }).catch(() => {});
+    };
+
+    const handleVisibility = () => {
+      if (document.visibilityState === 'hidden') {
+        setOffline();
+      }
+    };
+
+    window.addEventListener('beforeunload', setOffline);
+    document.addEventListener('visibilitychange', handleVisibility);
+    window.addEventListener('pagehide', setOffline);
+
+    return () => {
+      window.removeEventListener('beforeunload', setOffline);
+      document.removeEventListener('visibilitychange', handleVisibility);
+      window.removeEventListener('pagehide', setOffline);
+    };
+  }, [user]);
 
   const login = useCallback(async (nickname: string) => {
     const cred = await signInAnonymously(auth);
