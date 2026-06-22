@@ -199,7 +199,21 @@ export default function MatchGroup({
   const [open, setOpen] = useState(defaultOpen);
   if (matches.length === 0) return null;
 
-  const sorted = [...matches].sort((a, b) => marketRank(a.marketType) - marketRank(b.marketType));
+  // marketType 있는 문서를 우선하여 정렬한 뒤, 같은 마켓은 하나만 남김.
+  // (옛 데이터의 marketType 없는 중복 문서 제거 → 승무패가 두 번 나오는 문제 해결)
+  const seen = new Set<string>();
+  const sorted = [...matches]
+    .sort((a, b) => {
+      const ra = a.marketType ? marketRank(a.marketType) : 1000;
+      const rb = b.marketType ? marketRank(b.marketType) : 1000;
+      return ra - rb;
+    })
+    .filter((m) => {
+      const key = m.marketType || '승무패';
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
   const head = sorted[0];
   const disabled = head.status !== 'OPEN' || Date.now() > head.startTime;
   // 이 경기에서 내가 선택한 마켓 수
@@ -220,7 +234,7 @@ export default function MatchGroup({
               sx={{ fontSize: '0.65rem', height: 20 }}
             />
             <Chip
-              label={`${matches.length}마켓`}
+              label={`${sorted.length}마켓`}
               size="small"
               sx={{ fontSize: '0.6rem', height: 18, bgcolor: 'grey.700', color: '#fff' }}
             />
