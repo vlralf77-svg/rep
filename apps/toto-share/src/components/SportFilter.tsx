@@ -7,8 +7,13 @@ import SportsIcon from '@mui/icons-material/Sports';
 import AppsIcon from '@mui/icons-material/Apps';
 import type { Match } from '../types';
 
+export interface MatchGroup {
+  key: string;
+  ms: Match[];
+}
+
 interface Props {
-  matches: Match[];
+  groups: MatchGroup[];
   selected: string;
   onSelect: (sport: string) => void;
 }
@@ -22,10 +27,14 @@ const SPORTS = [
   { key: '기타', label: '기타', icon: SportsIcon },
 ];
 
-export default function SportFilter({ matches, selected, onSelect }: Props) {
+function groupSport(ms: Match[]): string {
+  return ms[0]?.sport || '기타';
+}
+
+export default function SportFilter({ groups, selected, onSelect }: Props) {
   const sportCounts = new Map<string, number>();
-  for (const m of matches) {
-    const s = m.sport || '기타';
+  for (const g of groups) {
+    const s = groupSport(g.ms);
     sportCounts.set(s, (sportCounts.get(s) || 0) + 1);
   }
 
@@ -39,7 +48,7 @@ export default function SportFilter({ matches, selected, onSelect }: Props) {
     <Stack direction="row" spacing={1} sx={{ overflowX: 'auto', pb: 0.5 }}>
       {available.map(({ key, label, icon: Icon }) => {
         const active = selected === key;
-        const count = key === '전체' ? matches.length : sportCounts.get(key) || 0;
+        const count = key === '전체' ? groups.length : sportCounts.get(key) || 0;
         return (
           <Box
             key={key}

@@ -188,7 +188,7 @@ export default function MainPage() {
         </Box>
 
         <Box sx={{ mb: 2 }}>
-          <SportFilter matches={matches} selected={sportFilter} onSelect={setSportFilter} />
+          <SportFilter groups={groups} selected={sportFilter} onSelect={setSportFilter} />
         </Box>
 
         {matches.length === 0 ? (
@@ -203,7 +203,7 @@ export default function MainPage() {
         ) : (
           groups
             .filter((g) =>
-              sportFilter === '전체' || g.ms.some((m) => (m.sport || '기타') === sportFilter),
+              sportFilter === '전체' || (g.ms[0]?.sport || '기타') === sportFilter,
             )
             .map((g) => (
               <MatchGroup
