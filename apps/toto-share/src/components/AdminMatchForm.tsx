@@ -43,11 +43,17 @@ const empty: MatchInput = {
   oddsAway: '',
 };
 
+// UTC 타임스탬프를 한국시간(KST, UTC+9) 기준 yyyy-MM-dd 문자열로 변환
+function kstDateStr(ts: number): string {
+  return new Date(ts + 9 * 3600 * 1000).toISOString().slice(0, 10);
+}
+
 export default function AdminMatchForm() {
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState<MatchInput>(empty);
   const [loading, setLoading] = useState(false);
   const [importLoading, setImportLoading] = useState(false);
+  const [importDate, setImportDate] = useState(todayKey());
   const [message, setMessage] = useState('');
 
   const handleChange = (field: keyof MatchInput) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,25 +97,42 @@ export default function AdminMatchForm() {
         'https://raw.githubusercontent.com/vlralf77-svg/rep/claude/gracious-fermat-c195k9/data/betman.json',
       );
       const data = await res.json();
+      // 가져온 경기는 앱의 오늘 화면(공유 보드)에 바로 보이도록 today 컬렉션에 저장
       const day = todayKey();
-      const todayStr = day.replace(/-/g, '');
       const allGames = [...(data.proto || []), ...(data.toto || [])];
 
-      let count = 0;
-      for (const game of allGames) {
-        const gameDate = game.gameDate
-          ? new Date(game.gameDate).toISOString().slice(0, 10).replace(/-/g, '')
-          : '';
-        if (gameDate && gameDate !== todayStr) continue;
+      // 승무패(축구 3선택) > 승패(야구 승/패) > 승1패(야구 무 포함) 순으로 우선 사용
+      const MARKET_PRIORITY = ['승무패', '승패', '승1패'];
 
-        const market = game.markets?.find(
-          (m: any) => m.type === '승무패' || m.type === '승1패',
-        );
-        if (!market) continue;
+      let count = 0;
+      let skippedDate = 0;
+      let skippedMarket = 0;
+      for (const game of allGames) {
+        // 선택한 날짜(KST 기준)와 일치하는 경기만
+        if (game.gameDate) {
+          const gd = kstDateStr(new Date(game.gameDate).getTime());
+          if (gd !== importDate) {
+            skippedDate++;
+            continue;
+          }
+        }
+
+        // 우선순위에 따라 승패류 마켓 하나 선택
+        let market: any = null;
+        for (const t of MARKET_PRIORITY) {
+          market = game.markets?.find((m: any) => m.type === t);
+          if (market) break;
+        }
+        if (!market) {
+          skippedMarket++;
+          continue;
+        }
 
         const sels = market.selections || [];
         const oddsHome = sels.find((s: any) => s.label === '승')?.odds || 1.5;
-        const oddsDraw = sels.find((s: any) => s.label === '무')?.odds || 0;
+        // 무승부: 축구는 '무', 야구 승1패는 '1' 라벨. 둘 다 없으면 0(무 버튼 숨김)
+        const oddsDraw =
+          sels.find((s: any) => s.label === '무' || s.label === '1')?.odds || 0;
         const oddsAway = sels.find((s: any) => s.label === '패')?.odds || 2.5;
 
         const matchId = `betman_${game.matchId || `${game.homeTeam}_${game.awayTeam}`}`.replace(
@@ -130,8 +153,14 @@ export default function AdminMatchForm() {
         });
         count++;
       }
-      setMessage(`${count}개 경기를 가져왔습니다`);
-      setTimeout(() => setMessage(''), 3000);
+      if (count === 0) {
+        setMessage(
+          `가져온 경기 없음 (날짜 불일치 ${skippedDate}개 제외). 날짜를 확인하세요.`,
+        );
+      } else {
+        setMessage(`${count}개 경기를 가져왔습니다`);
+      }
+      setTimeout(() => setMessage(''), 4000);
     } catch (err) {
       setMessage('가져오기 실패');
     }
@@ -170,6 +199,18 @@ export default function AdminMatchForm() {
               {message}
             </Alert>
           )}
+
+          <TextField
+            label="가져올 날짜"
+            type="date"
+            size="small"
+            fullWidth
+            value={importDate}
+            onChange={(e) => setImportDate(e.target.value)}
+            InputLabelProps={{ shrink: true }}
+            helperText="이 날짜의 경기만 가져옵니다 (승/무/패·승패·승1패 모두 포함)"
+            sx={{ mb: 1.5 }}
+          />
 
           <Button
             fullWidth

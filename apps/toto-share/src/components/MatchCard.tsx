@@ -169,15 +169,17 @@ export default function MatchCard({ match, mySelection, pickSummary, onSelect }:
             color="primary"
             onClick={() => onSelect(match.id, 'HOME')}
           />
-          <SelectionButton
-            label="무"
-            odds={match.oddsDraw}
-            count={pickSummary.DRAW}
-            selected={mySelection === 'DRAW'}
-            disabled={disabled}
-            color="warning"
-            onClick={() => onSelect(match.id, 'DRAW')}
-          />
+          {match.oddsDraw > 0 && (
+            <SelectionButton
+              label="무"
+              odds={match.oddsDraw}
+              count={pickSummary.DRAW}
+              selected={mySelection === 'DRAW'}
+              disabled={disabled}
+              color="warning"
+              onClick={() => onSelect(match.id, 'DRAW')}
+            />
+          )}
           <SelectionButton
             label="원정승"
             odds={match.oddsAway}
