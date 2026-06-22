@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState, useCallback } from 'react';
 import {
   Box,
   AppBar,
@@ -9,6 +9,8 @@ import {
   Stack,
   Chip,
   Button,
+  Snackbar,
+  Alert,
 } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
@@ -65,12 +67,39 @@ export default function MainPage() {
     return map;
   }, [matches, picks]);
 
+  const [dupeAlert, setDupeAlert] = useState('');
+
+  const groupOf = useCallback(
+    (matchId: string) => {
+      const m = matches.find((x) => x.id === matchId);
+      if (!m) return null;
+      return `${m.homeTeam}|${m.awayTeam}|${m.startTime}`;
+    },
+    [matches],
+  );
+
   const handleSelect = (matchId: string, sel: Selection) => {
     if (myPicks[matchId] === sel) {
       removePick(matchId);
-    } else {
-      submitPick(matchId, sel);
+      return;
     }
+    const gKey = groupOf(matchId);
+    if (gKey) {
+      const sameGroupMatch = matches.find(
+        (m) =>
+          m.id !== matchId &&
+          `${m.homeTeam}|${m.awayTeam}|${m.startTime}` === gKey &&
+          myPicks[m.id],
+      );
+      if (sameGroupMatch) {
+        const existing = sameGroupMatch.marketType || '승무패';
+        setDupeAlert(
+          `같은 경기에서 이미 "${existing}" 마켓을 선택했습니다. 기존 선택을 해제한 후 다시 선택하세요.`,
+        );
+        return;
+      }
+    }
+    submitPick(matchId, sel);
   };
 
   // 같은 경기끼리 묶기. 팀명+경기시간으로 그룹핑하면 gameKey 유무와
@@ -170,6 +199,17 @@ export default function MainPage() {
         confirmed={confirmedCombo}
         onConfirm={confirmCombo}
       />
+
+      <Snackbar
+        open={!!dupeAlert}
+        autoHideDuration={3000}
+        onClose={() => setDupeAlert('')}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Alert severity="warning" onClose={() => setDupeAlert('')} sx={{ width: '100%' }}>
+          {dupeAlert}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }
