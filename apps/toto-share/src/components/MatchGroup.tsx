@@ -114,7 +114,7 @@ function SelectionButton({
 
 // 마켓 타입 + 핸디/기준점을 사람이 읽기 쉬운 라벨로
 function marketLabel(match: Match): string {
-  const t = match.marketType;
+  const t = match.marketType || '승무패';
   const line = match.line;
   const isHandicap = t.includes('핸디캡');
   const isOU = t.includes('언더오버');
