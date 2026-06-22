@@ -177,7 +177,7 @@ function MarketRow({
         <SelectionButton
           label={labels.home}
           odds={match.oddsHome}
-          prevOdds={match.prevOddsHome}
+          prevOdds={match.initialOddsHome}
           count={summary.HOME}
           selected={mySelection === 'HOME'}
           disabled={disabled}
@@ -188,7 +188,7 @@ function MarketRow({
           <SelectionButton
             label={labels.draw}
             odds={match.oddsDraw}
-            prevOdds={match.prevOddsDraw}
+            prevOdds={match.initialOddsDraw}
             count={summary.DRAW}
             selected={mySelection === 'DRAW'}
             disabled={disabled}
@@ -199,7 +199,7 @@ function MarketRow({
         <SelectionButton
           label={labels.away}
           odds={match.oddsAway}
-          prevOdds={match.prevOddsAway}
+          prevOdds={match.initialOddsAway}
           count={summary.AWAY}
           selected={mySelection === 'AWAY'}
           disabled={disabled}

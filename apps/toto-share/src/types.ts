@@ -19,9 +19,9 @@ export interface Match {
   oddsHome: number;
   oddsDraw: number;
   oddsAway: number;
-  prevOddsHome?: number;
-  prevOddsDraw?: number;
-  prevOddsAway?: number;
+  initialOddsHome?: number;
+  initialOddsDraw?: number;
+  initialOddsAway?: number;
   marketType: string;
   gameKey: string;
   line: number | null;
