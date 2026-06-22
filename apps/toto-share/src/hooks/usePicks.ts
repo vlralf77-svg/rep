@@ -69,15 +69,17 @@ export function usePicks() {
   const confirmCombo = useCallback(async (stake: number = 10) => {
     if (!user || Object.keys(myPicks).length === 0) return;
     const day = todayKey();
+    const comboId = `${user.uid}_${Date.now()}`;
     const batch = writeBatch(db);
 
     Object.entries(myPicks).forEach(([matchId, selection]) => {
-      const pickId = `${user.uid}_${matchId}`;
+      const pickId = `${comboId}_${matchId}`;
       batch.set(doc(db, 'days', day, 'picks', pickId), {
         uid: user.uid,
         nickname: user.nickname,
         matchId,
         selection,
+        comboId,
         stake,
         updatedAt: serverTimestamp(),
       });
@@ -92,8 +94,9 @@ export function usePicks() {
     }, 1);
     const totalOdds = Math.ceil(rawOdds * 100) / 100;
 
-    batch.set(doc(db, 'days', day, 'combos', user.uid), {
+    batch.set(doc(db, 'days', day, 'combos', comboId), {
       uid: user.uid,
+      comboId,
       pickIds: Object.keys(myPicks),
       totalOdds,
       stake,
@@ -101,8 +104,8 @@ export function usePicks() {
     });
 
     await batch.commit();
-    useStore.getState().setConfirmedCombo(true);
-  }, [user, myPicks, matches]);
+    clearMyPicks();
+  }, [user, myPicks, matches, clearMyPicks]);
 
   // 픽 초기화. all=true면 전원 픽/조합 삭제(관리자), false면 본인 것만.
   const resetPicks = useCallback(

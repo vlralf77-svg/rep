@@ -1,19 +1,16 @@
 import { useState } from 'react';
 import { Box, Button, Typography, Chip, Paper, TextField, InputAdornment } from '@mui/material';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import type { Match, Selection } from '../types';
 
 interface Props {
   myPicks: Record<string, Selection>;
   matches: Match[];
-  confirmed: boolean;
   onConfirm: (stake: number) => void;
 }
 
 export default function PickSummaryBar({
   myPicks,
   matches,
-  confirmed,
   onConfirm,
 }: Props) {
   const [stake, setStake] = useState('10');
@@ -82,14 +79,12 @@ export default function PickSummaryBar({
 
           <Button
             variant="contained"
-            color={confirmed ? 'success' : 'primary'}
+            color="primary"
             size="large"
             onClick={() => onConfirm(stakeNum)}
-            disabled={confirmed}
-            startIcon={confirmed ? <CheckCircleIcon /> : undefined}
             sx={{ px: 3, py: 1.2, fontWeight: 700, minWidth: 110 }}
           >
-            {confirmed ? '확정됨' : '확정하기'}
+            확정하기
           </Button>
         </Box>
 

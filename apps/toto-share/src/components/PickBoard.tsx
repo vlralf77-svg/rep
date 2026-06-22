@@ -110,21 +110,37 @@ function formatConfirmedTime(ms: number): string {
 }
 
 export default function PickBoard({ matches, picks }: Props) {
-  // 이름(nickname)으로 그룹핑. 익명 로그인은 매번 uid가 바뀌므로
-  // 같은 사람이 재접속해도 한 그룹으로 묶이도록 nickname 기준으로 묶는다.
-  // 같은 경기를 여러 번(다른 세션) 선택한 경우 최신 픽만 남긴다.
-  const userMap = new Map<string, Map<string, Pick>>();
+  // comboId 기준으로 그룹핑. comboId가 없는 옛 데이터는 nickname으로 묶음
+  const comboMap = new Map<string, Pick[]>();
   for (const p of picks) {
-    if (!userMap.has(p.nickname)) userMap.set(p.nickname, new Map());
-    const byMatch = userMap.get(p.nickname)!;
-    const prev = byMatch.get(p.matchId);
-    if (!prev || tsMillis(p.updatedAt) >= tsMillis(prev.updatedAt)) {
-      byMatch.set(p.matchId, p);
-    }
+    const key = p.comboId || `legacy_${p.nickname}`;
+    if (!comboMap.has(key)) comboMap.set(key, []);
+    comboMap.get(key)!.push(p);
   }
-  const users = Array.from(userMap.entries()).map(
-    ([nickname, byMatch]) => [nickname, Array.from(byMatch.values())] as const,
-  );
+  // 옛 데이터(comboId 없음)는 같은 matchId 중복 제거 (최신만)
+  const combos = Array.from(comboMap.entries()).map(([key, groupPicks]) => {
+    const nickname = groupPicks[0].nickname;
+    let cleaned: Pick[];
+    if (key.startsWith('legacy_')) {
+      const byMatch = new Map<string, Pick>();
+      for (const p of groupPicks) {
+        const prev = byMatch.get(p.matchId);
+        if (!prev || tsMillis(p.updatedAt) >= tsMillis(prev.updatedAt)) {
+          byMatch.set(p.matchId, p);
+        }
+      }
+      cleaned = Array.from(byMatch.values());
+    } else {
+      cleaned = groupPicks;
+    }
+    return { key, nickname, picks: cleaned };
+  });
+  // 확정 시간 기준 정렬 (최신 위로)
+  combos.sort((a, b) => {
+    const ta = Math.max(...a.picks.map((p) => tsMillis(p.updatedAt)));
+    const tb = Math.max(...b.picks.map((p) => tsMillis(p.updatedAt)));
+    return tb - ta;
+  });
 
   if (picks.length === 0) {
     return (
@@ -136,10 +152,9 @@ export default function PickBoard({ matches, picks }: Props) {
 
   return (
     <Stack spacing={2}>
-      {users.map(([nickname, userPicks]) => {
-        // 총 배당 계산
+      {combos.map(({ key, nickname, picks: comboPicks }) => {
         let rawOdds = 1;
-        const pickDetails = userPicks
+        const pickDetails = comboPicks
           .map((p) => {
             const match = matches.find((m) => m.id === p.matchId);
             if (!match) return null;
@@ -150,14 +165,14 @@ export default function PickBoard({ matches, picks }: Props) {
           .filter(Boolean) as { pick: Pick; match: Match; odds: number }[];
         const totalOdds = Math.ceil(rawOdds * 100) / 100;
 
-        // 베팅 금액(픽에 저장된 stake, 없으면 기본 10원)
-        const stake = userPicks.find((p) => typeof p.stake === 'number')?.stake ?? 10;
+        const stake = comboPicks.find((p) => typeof p.stake === 'number')?.stake ?? 10;
         const payout = stake * totalOdds;
         const profit = payout - stake;
-        const latestTs = Math.max(...userPicks.map((p) => tsMillis(p.updatedAt)));
+        const latestTs = Math.max(...comboPicks.map((p) => tsMillis(p.updatedAt)));
+        const comboLabel = key.startsWith('legacy_') ? '' : ` #${combos.filter((c) => c.nickname === nickname).indexOf(combos.find((c) => c.key === key)!) + 1}`;
 
         return (
-          <Paper key={nickname} sx={{ p: 2, borderRadius: 2 }}>
+          <Paper key={key} sx={{ p: 2, borderRadius: 2 }}>
             <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 1.5 }}>
               <Stack direction="row" spacing={1} alignItems="center">
                 <Avatar
@@ -172,7 +187,7 @@ export default function PickBoard({ matches, picks }: Props) {
                 </Avatar>
                 <Box>
                   <Typography variant="subtitle1" sx={{ fontWeight: 700, lineHeight: 1.2 }}>
-                    {nickname}
+                    {nickname}{comboLabel}
                   </Typography>
                   {latestTs > 0 && (
                     <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.6rem' }}>

@@ -36,6 +36,7 @@ export interface Pick {
   nickname: string;
   matchId: string;
   selection: Selection;
+  comboId?: string;
   stake?: number;
   updatedAt: number;
 }

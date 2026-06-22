@@ -44,7 +44,6 @@ export default function MainPage() {
     usePicks();
   const { onlineUsers } = useOnlineUsers();
   const { lastUpdated, refreshing, refresh } = useAutoImport();
-  const confirmedCombo = useStore((s) => s.confirmedCombo);
   const [sportFilter, setSportFilter] = useState('전체');
   const day = todayKey();
   const admin = isAdmin(user?.nickname);
@@ -221,7 +220,6 @@ export default function MainPage() {
       <PickSummaryBar
         myPicks={myPicks}
         matches={matches}
-        confirmed={confirmedCombo}
         onConfirm={confirmCombo}
       />
 
