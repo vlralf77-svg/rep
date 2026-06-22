@@ -24,6 +24,46 @@ function formatTime(ts: number): string {
   return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 }
 
+function getLabels(marketType?: string): { home: string; draw: string; away: string } {
+  switch (marketType) {
+    case '언더오버':
+    case '전반 언더오버':
+      return { home: '언더', draw: '', away: '오버' };
+    case 'SUM':
+      return { home: '홀', draw: '', away: '짝' };
+    case '핸디캡':
+    case '핸디캡2':
+    case '소수핸디캡':
+    case '세트핸디캡':
+    case '전반 핸디캡':
+      return { home: '승', draw: '무', away: '패' };
+    case '승패':
+      return { home: '승', draw: '', away: '패' };
+    case '승1패':
+      return { home: '승', draw: '1', away: '패' };
+    default:
+      return { home: '홈승', draw: '무', away: '원정승' };
+  }
+}
+
+function marketColor(marketType?: string): string | undefined {
+  switch (marketType) {
+    case '핸디캡':
+    case '핸디캡2':
+    case '소수핸디캡':
+    case '세트핸디캡':
+    case '전반 핸디캡':
+      return '#e65100';
+    case '언더오버':
+    case '전반 언더오버':
+      return '#1565c0';
+    case 'SUM':
+      return '#6a1b9a';
+    default:
+      return undefined;
+  }
+}
+
 function SelectionButton({
   label,
   odds,
@@ -84,6 +124,8 @@ export default function MatchCard({ match, mySelection, pickSummary, onSelect }:
   const isLocked = match.status !== 'OPEN';
   const isStarted = Date.now() > match.startTime;
   const disabled = isLocked || isStarted;
+  const labels = getLabels(match.marketType);
+  const mColor = marketColor(match.marketType);
 
   return (
     <Card sx={{ mb: 1.5 }}>
@@ -94,13 +136,26 @@ export default function MatchCard({ match, mySelection, pickSummary, onSelect }:
           justifyContent="space-between"
           sx={{ mb: 1 }}
         >
-          <Stack direction="row" spacing={1} alignItems="center">
+          <Stack direction="row" spacing={0.5} alignItems="center">
             <Chip
               label={match.league}
               size="small"
               variant="outlined"
               sx={{ fontSize: '0.65rem', height: 20 }}
             />
+            {match.marketType && match.marketType !== '승무패' && (
+              <Chip
+                label={match.marketType}
+                size="small"
+                sx={{
+                  fontSize: '0.6rem',
+                  height: 18,
+                  bgcolor: mColor || 'grey.700',
+                  color: '#fff',
+                  fontWeight: 700,
+                }}
+              />
+            )}
             <Typography variant="caption" color="text.secondary">
               #{match.gameNo}
             </Typography>
@@ -161,7 +216,7 @@ export default function MatchCard({ match, mySelection, pickSummary, onSelect }:
 
         <ButtonGroup fullWidth size="small" sx={{ gap: 0.5 }}>
           <SelectionButton
-            label="홈승"
+            label={labels.home}
             odds={match.oddsHome}
             count={pickSummary.HOME}
             selected={mySelection === 'HOME'}
@@ -169,9 +224,9 @@ export default function MatchCard({ match, mySelection, pickSummary, onSelect }:
             color="primary"
             onClick={() => onSelect(match.id, 'HOME')}
           />
-          {match.oddsDraw > 0 && (
+          {match.oddsDraw > 0 && labels.draw && (
             <SelectionButton
-              label="무"
+              label={labels.draw}
               odds={match.oddsDraw}
               count={pickSummary.DRAW}
               selected={mySelection === 'DRAW'}
@@ -181,7 +236,7 @@ export default function MatchCard({ match, mySelection, pickSummary, onSelect }:
             />
           )}
           <SelectionButton
-            label="원정승"
+            label={labels.away}
             odds={match.oddsAway}
             count={pickSummary.AWAY}
             selected={mySelection === 'AWAY'}

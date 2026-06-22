@@ -43,10 +43,13 @@ const empty: MatchInput = {
   oddsAway: '',
 };
 
-// UTC 타임스탬프를 한국시간(KST, UTC+9) 기준 yyyy-MM-dd 문자열로 변환
 function kstDateStr(ts: number): string {
   return new Date(ts + 9 * 3600 * 1000).toISOString().slice(0, 10);
 }
+
+const HOME_LABELS = ['승', '언더', '홀'];
+const DRAW_LABELS = ['무', '1'];
+const AWAY_LABELS = ['패', '오버', '짝'];
 
 export default function AdminMatchForm() {
   const [open, setOpen] = useState(false);
@@ -78,6 +81,7 @@ export default function AdminMatchForm() {
         oddsHome: parseFloat(form.oddsHome) || 1.5,
         oddsDraw: parseFloat(form.oddsDraw) || 3.5,
         oddsAway: parseFloat(form.oddsAway) || 2.5,
+        marketType: '승무패',
         status: 'OPEN' as MatchStatus,
         result: null,
       });
@@ -101,25 +105,9 @@ export default function AdminMatchForm() {
       const day = todayKey();
       const allGames = [...(data.proto || []), ...(data.toto || [])];
 
-      // 승/패 odds를 뽑을 수 있는 모든 마켓 (전체 경기 포함).
-      // 정배당 마켓(승무패/승패/승1패) 우선, 없으면 핸디캡 계열로 대체.
-      const MARKET_PRIORITY = [
-        '승무패',
-        '승패',
-        '승1패',
-        '핸디캡2',
-        '핸디캡',
-        '세트핸디캡',
-        '소수핸디캡',
-        '전반 승무패',
-        '전반 핸디캡',
-      ];
-
       let count = 0;
       let skippedDate = 0;
-      let skippedMarket = 0;
       for (const game of allGames) {
-        // 선택한 날짜(KST 기준)와 일치하는 경기만
         if (game.gameDate) {
           const gd = kstDateStr(new Date(game.gameDate).getTime());
           if (gd !== importDate) {
@@ -128,48 +116,43 @@ export default function AdminMatchForm() {
           }
         }
 
-        // 우선순위에 따라 승패류 마켓 하나 선택
-        let market: any = null;
-        for (const t of MARKET_PRIORITY) {
-          market = game.markets?.find((m: any) => m.type === t);
-          if (market) break;
-        }
-        if (!market) {
-          skippedMarket++;
-          continue;
-        }
+        const markets = game.markets || [];
+        if (markets.length === 0) continue;
 
-        const sels = market.selections || [];
-        const oddsHome = sels.find((s: any) => s.label === '승')?.odds || 1.5;
-        // 무승부: 축구는 '무', 야구 승1패는 '1' 라벨. 둘 다 없으면 0(무 버튼 숨김)
-        const oddsDraw =
-          sels.find((s: any) => s.label === '무' || s.label === '1')?.odds || 0;
-        const oddsAway = sels.find((s: any) => s.label === '패')?.odds || 2.5;
+        for (const market of markets) {
+          const marketType: string = market.type || '기타';
+          const sels = market.selections || [];
+          if (sels.length === 0) continue;
 
-        const matchId = `betman_${game.matchId || `${game.homeTeam}_${game.awayTeam}`}`.replace(
-          /[\/\.\#\$\[\]]/g,
-          '_',
-        );
-        await setDoc(doc(db, 'days', day, 'matches', matchId), {
-          gameNo: game.matchId?.split('|')[0] || String(count + 1),
-          league: game.league || game.sport || '미정',
-          homeTeam: game.homeTeam,
-          awayTeam: game.awayTeam,
-          startTime: game.gameDate ? new Date(game.gameDate).getTime() : Date.now() + 3600000,
-          oddsHome,
-          oddsDraw,
-          oddsAway,
-          status: 'OPEN' as MatchStatus,
-          result: null,
-        });
-        count++;
+          const oddsHome = sels.find((s: any) => HOME_LABELS.includes(s.label))?.odds || 1.5;
+          const oddsDraw = sels.find((s: any) => DRAW_LABELS.includes(s.label))?.odds || 0;
+          const oddsAway = sels.find((s: any) => AWAY_LABELS.includes(s.label))?.odds || 2.5;
+
+          const baseId = game.matchId || `${game.homeTeam}_${game.awayTeam}`;
+          const matchId = `betman_${baseId}_${marketType}`.replace(/[\/\.\#\$\[\]]/g, '_');
+
+          await setDoc(doc(db, 'days', day, 'matches', matchId), {
+            gameNo: game.matchId?.split('|')[0] || String(count + 1),
+            league: game.league || game.sport || '미정',
+            homeTeam: game.homeTeam,
+            awayTeam: game.awayTeam,
+            startTime: game.gameDate ? new Date(game.gameDate).getTime() : Date.now() + 3600000,
+            oddsHome,
+            oddsDraw,
+            oddsAway,
+            marketType,
+            status: 'OPEN' as MatchStatus,
+            result: null,
+          });
+          count++;
+        }
       }
       if (count === 0) {
         setMessage(
           `가져온 경기 없음 (날짜 불일치 ${skippedDate}개 제외). 날짜를 확인하세요.`,
         );
       } else {
-        setMessage(`${count}개 경기를 가져왔습니다`);
+        setMessage(`${count}개 마켓을 가져왔습니다`);
       }
       setTimeout(() => setMessage(''), 4000);
     } catch (err) {
@@ -219,7 +202,7 @@ export default function AdminMatchForm() {
             value={importDate}
             onChange={(e) => setImportDate(e.target.value)}
             InputLabelProps={{ shrink: true }}
-            helperText="이 날짜의 모든 경기를 가져옵니다 (승무패·승패·승1패·핸디캡 포함)"
+            helperText="이 날짜의 모든 경기·마켓을 가져옵니다 (승무패·핸디캡·언더오버·SUM 전체)"
             sx={{ mb: 1.5 }}
           />
 
