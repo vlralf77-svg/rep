@@ -6,7 +6,9 @@ import {
   Avatar,
   Stack,
   Divider,
+  LinearProgress,
 } from '@mui/material';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
 import type { Match, Pick, Selection } from '../types';
 
 interface Props {
@@ -55,6 +57,22 @@ function getOdds(match: Match, sel: Selection): number {
   if (sel === 'HOME') return match.oddsHome;
   if (sel === 'DRAW') return match.oddsDraw;
   return match.oddsAway;
+}
+
+function impliedProb(match: Match, sel: Selection): number {
+  const rawH = 1 / match.oddsHome;
+  const rawD = match.oddsDraw > 0 ? 1 / match.oddsDraw : 0;
+  const rawA = 1 / match.oddsAway;
+  const total = rawH + rawD + rawA;
+  if (sel === 'HOME') return rawH / total;
+  if (sel === 'DRAW') return rawD / total;
+  return rawA / total;
+}
+
+function probColor(p: number): string {
+  if (p >= 0.5) return '#66bb6a';
+  if (p >= 0.35) return '#ffa726';
+  return '#ef5350';
 }
 
 // Firestore Timestamp / number / null 을 비교용 밀리초로 변환
@@ -162,38 +180,74 @@ export default function PickBoard({ matches, picks }: Props) {
 
             <Divider sx={{ mb: 1 }} />
 
-            <Stack spacing={0.8}>
-              {pickDetails.map(({ pick, match, odds }) => (
-                <Stack
-                  key={pick.id}
-                  direction="row"
-                  alignItems="center"
-                  justifyContent="space-between"
-                >
-                  <Box sx={{ flex: 1, minWidth: 0 }}>
-                    <Typography variant="caption" sx={{ fontWeight: 600, display: 'block', lineHeight: 1.3 }}>
-                      {match.homeTeam} vs {match.awayTeam}
-                    </Typography>
-                    <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.6rem' }}>
-                      {marketTag(match)}
-                    </Typography>
+            <Stack spacing={1}>
+              {pickDetails.map(({ pick, match, odds }) => {
+                const prob = impliedProb(match, pick.selection);
+                const pct = Math.round(prob * 100);
+                return (
+                  <Box key={pick.id}>
+                    <Stack direction="row" alignItems="center" justifyContent="space-between">
+                      <Box sx={{ flex: 1, minWidth: 0 }}>
+                        <Typography variant="caption" sx={{ fontWeight: 600, display: 'block', lineHeight: 1.3 }}>
+                          {match.homeTeam} vs {match.awayTeam}
+                        </Typography>
+                        <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.6rem' }}>
+                          {marketTag(match)}
+                        </Typography>
+                      </Box>
+                      <Stack direction="row" spacing={0.5} alignItems="center" sx={{ flexShrink: 0 }}>
+                        <Chip
+                          label={selLabel(pick.selection, match.marketType)}
+                          size="small"
+                          color={selectionColor[pick.selection]}
+                          sx={{ height: 20, fontSize: '0.65rem', '& .MuiChip-label': { px: 0.5 } }}
+                        />
+                        <Typography variant="caption" sx={{ fontWeight: 700, minWidth: 32, textAlign: 'right' }}>
+                          {odds.toFixed(2)}
+                        </Typography>
+                      </Stack>
+                    </Stack>
+                    <Stack direction="row" alignItems="center" spacing={0.5} sx={{ mt: 0.3 }}>
+                      <SmartToyIcon sx={{ fontSize: 10, color: probColor(prob) }} />
+                      <LinearProgress
+                        variant="determinate"
+                        value={pct}
+                        sx={{
+                          flex: 1,
+                          height: 4,
+                          borderRadius: 2,
+                          bgcolor: 'rgba(255,255,255,0.06)',
+                          '& .MuiLinearProgress-bar': { bgcolor: probColor(prob), borderRadius: 2 },
+                        }}
+                      />
+                      <Typography variant="caption" sx={{ fontSize: '0.6rem', fontWeight: 700, color: probColor(prob), minWidth: 28 }}>
+                        {pct}%
+                      </Typography>
+                    </Stack>
                   </Box>
-                  <Stack direction="row" spacing={0.5} alignItems="center" sx={{ flexShrink: 0 }}>
-                    <Chip
-                      label={selLabel(pick.selection, match.marketType)}
-                      size="small"
-                      color={selectionColor[pick.selection]}
-                      sx={{ height: 20, fontSize: '0.65rem', '& .MuiChip-label': { px: 0.5 } }}
-                    />
-                    <Typography variant="caption" sx={{ fontWeight: 700, minWidth: 32, textAlign: 'right' }}>
-                      {odds.toFixed(2)}
-                    </Typography>
-                  </Stack>
-                </Stack>
-              ))}
+                );
+              })}
             </Stack>
 
             <Divider sx={{ my: 1 }} />
+
+            {pickDetails.length > 0 && (() => {
+              const comboProb = pickDetails.reduce((acc, { pick, match }) => acc * impliedProb(match, pick.selection), 1);
+              const comboPct = (comboProb * 100).toFixed(1);
+              return (
+                <Stack direction="row" alignItems="center" spacing={0.5} sx={{ mb: 1, px: 0.5 }}>
+                  <SmartToyIcon sx={{ fontSize: 12, color: '#ab47bc' }} />
+                  <Typography variant="caption" sx={{ fontSize: '0.6rem', color: 'text.secondary' }}>
+                    AI 적중 예측
+                  </Typography>
+                  <Chip
+                    label={`${comboPct}%`}
+                    size="small"
+                    sx={{ height: 18, fontSize: '0.65rem', fontWeight: 700, bgcolor: 'rgba(171,71,188,0.15)', color: '#ce93d8' }}
+                  />
+                </Stack>
+              );
+            })()}
 
             <Stack direction="row" justifyContent="space-between" sx={{ px: 0.5 }}>
               <Box sx={{ textAlign: 'center' }}>
