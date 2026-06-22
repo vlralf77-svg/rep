@@ -27,16 +27,44 @@ function stringToColor(str: string): string {
   return `hsl(${Math.abs(hash) % 360}, 60%, 45%)`;
 }
 
-const selectionLabel: Record<Selection, string> = {
-  HOME: '홈승',
-  DRAW: '무',
-  AWAY: '원정승',
-};
 const selectionColor: Record<Selection, 'primary' | 'warning' | 'secondary'> = {
   HOME: 'primary',
   DRAW: 'warning',
   AWAY: 'secondary',
 };
+
+// 마켓 타입별 선택지 라벨 (현황판 표시용)
+function selLabels(marketType?: string): Record<Selection, string> {
+  switch (marketType) {
+    case '언더오버':
+    case '전반 언더오버':
+      return { HOME: '언더', DRAW: '', AWAY: '오버' };
+    case 'SUM':
+      return { HOME: '홀', DRAW: '', AWAY: '짝' };
+    case '핸디캡':
+    case '핸디캡2':
+    case '소수핸디캡':
+    case '세트핸디캡':
+    case '전반 핸디캡':
+      return { HOME: '승', DRAW: '무', AWAY: '패' };
+    case '승패':
+      return { HOME: '승', DRAW: '', AWAY: '패' };
+    case '승1패':
+      return { HOME: '승', DRAW: '1', AWAY: '패' };
+    default:
+      return { HOME: '홈승', DRAW: '무', AWAY: '원정승' };
+  }
+}
+
+// 마켓 타입 + 핸디/기준점 라벨
+function marketLabel(match: Match): string {
+  const t = match.marketType || '승무패';
+  const line = match.line;
+  if (line === null || line === undefined) return t;
+  if (t.includes('핸디캡')) return `${t} (홈 ${line > 0 ? '+' + line : line})`;
+  if (t.includes('언더오버')) return `${t} (기준 ${line})`;
+  return `${t} (${line})`;
+}
 
 export default function PickBoard({ matches, picks }: Props) {
   const users = Array.from(
@@ -112,14 +140,27 @@ export default function PickBoard({ matches, picks }: Props) {
                   >
                     vs {match.awayTeam}
                   </Typography>
+                  <Chip
+                    label={marketLabel(match)}
+                    size="small"
+                    sx={{
+                      mt: 0.3,
+                      height: 16,
+                      fontSize: '0.55rem',
+                      bgcolor: 'grey.800',
+                      color: 'grey.300',
+                      '& .MuiChip-label': { px: 0.6 },
+                    }}
+                  />
                 </TableCell>
                 {users.map((u) => {
                   const pick = matchPicks.find((p) => p.uid === u.uid);
+                  const labels = selLabels(match.marketType);
                   return (
                     <TableCell key={u.uid} align="center">
                       {pick ? (
                         <Chip
-                          label={selectionLabel[pick.selection]}
+                          label={labels[pick.selection]}
                           size="small"
                           color={selectionColor[pick.selection]}
                           sx={{
@@ -141,7 +182,7 @@ export default function PickBoard({ matches, picks }: Props) {
                     <Stack spacing={0.3} alignItems="center">
                       {popular.slice(0, 2).map(([sel, count]) => (
                         <Typography key={sel} variant="caption" sx={{ fontSize: '0.6rem' }}>
-                          {selectionLabel[sel]} {count}명
+                          {selLabels(match.marketType)[sel]} {count}명
                         </Typography>
                       ))}
                     </Stack>

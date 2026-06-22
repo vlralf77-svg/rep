@@ -21,6 +21,7 @@ export interface Match {
   oddsAway: number;
   marketType: string;
   gameKey: string;
+  line: number | null;
   status: MatchStatus;
   result: MatchResult;
 }

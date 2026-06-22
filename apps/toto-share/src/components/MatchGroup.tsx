@@ -112,6 +112,24 @@ function SelectionButton({
   );
 }
 
+// 마켓 타입 + 핸디/기준점을 사람이 읽기 쉬운 라벨로
+function marketLabel(match: Match): string {
+  const t = match.marketType;
+  const line = match.line;
+  const isHandicap = t.includes('핸디캡');
+  const isOU = t.includes('언더오버');
+  if (line === null || line === undefined) return t;
+  if (isHandicap) {
+    // 핸디캡은 홈팀 기준 점수 (예: 홈 -1)
+    const sign = line > 0 ? `+${line}` : `${line}`;
+    return `${t} (홈 ${sign})`;
+  }
+  if (isOU) {
+    return `${t} (기준 ${line})`;
+  }
+  return `${t} (${line})`;
+}
+
 function MarketRow({
   match,
   mySelection,
@@ -132,7 +150,7 @@ function MarketRow({
         variant="caption"
         sx={{ display: 'block', mb: 0.5, color: 'text.secondary', fontWeight: 700 }}
       >
-        {match.marketType}
+        {marketLabel(match)}
       </Typography>
       <Stack direction="row" spacing={0.5}>
         <SelectionButton

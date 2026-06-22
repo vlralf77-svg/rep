@@ -83,6 +83,7 @@ export default function AdminMatchForm() {
         oddsAway: parseFloat(form.oddsAway) || 2.5,
         marketType: '승무패',
         gameKey: matchId,
+        line: null,
         status: 'OPEN' as MatchStatus,
         result: null,
       });
@@ -144,6 +145,7 @@ export default function AdminMatchForm() {
             oddsAway,
             marketType,
             gameKey,
+            line: typeof market.line === 'number' ? market.line : null,
             status: 'OPEN' as MatchStatus,
             result: null,
           });
