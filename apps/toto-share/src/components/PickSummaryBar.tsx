@@ -90,10 +90,10 @@ export default function PickSummaryBar({
 
         <Box sx={{ display: 'flex', gap: 2, mt: 1 }}>
           <Typography variant="caption" color="text.secondary">
-            예상 수익 <b style={{ color: '#90caf9' }}>{Math.round(payout).toLocaleString()}원</b>
+            예상 수익 <b style={{ color: '#90caf9' }}>{(Math.floor(payout / 10) * 10).toLocaleString()}원</b>
           </Typography>
           <Typography variant="caption" color="text.secondary">
-            순수익 <b style={{ color: '#a5d6a7' }}>+{Math.round(profit).toLocaleString()}원</b>
+            순수익 <b style={{ color: '#a5d6a7' }}>+{(Math.floor(profit / 10) * 10).toLocaleString()}원</b>
           </Typography>
         </Box>
       </Box>

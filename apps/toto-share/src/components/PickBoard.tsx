@@ -316,7 +316,7 @@ export default function PickBoard({ matches, picks }: Props) {
                   예상수익
                 </Typography>
                 <Typography variant="body2" sx={{ fontWeight: 700, color: 'primary.light' }}>
-                  {Math.round(payout).toLocaleString()}원
+                  {(Math.floor(payout / 10) * 10).toLocaleString()}원
                 </Typography>
               </Box>
               <Box sx={{ textAlign: 'center' }}>
@@ -324,7 +324,7 @@ export default function PickBoard({ matches, picks }: Props) {
                   순수익
                 </Typography>
                 <Typography variant="body2" sx={{ fontWeight: 700, color: 'success.light' }}>
-                  +{Math.round(profit).toLocaleString()}원
+                  +{(Math.floor(profit / 10) * 10).toLocaleString()}원
                 </Typography>
               </Box>
             </Stack>
