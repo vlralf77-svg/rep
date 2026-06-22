@@ -16,6 +16,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import type { Match, Selection, PickSummary } from '../types';
+import MatchPrediction from './MatchPrediction';
 
 interface Props {
   matches: Match[];
@@ -316,6 +317,7 @@ export default function MatchGroup({
               onSelect={onSelect}
             />
           ))}
+          <MatchPrediction matches={sorted} />
         </Box>
       </Collapse>
     </Card>
