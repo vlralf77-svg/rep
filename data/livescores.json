@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-06-23T17:32:44.671Z",
-  "count": 78,
+  "updatedAt": "2026-06-23T22:08:30.440Z",
+  "count": 76,
   "scores": [
     {
       "homeTeam": "아르헨티나",
@@ -279,30 +279,34 @@
     {
       "homeTeam": "포르투갈",
       "awayTeam": "우즈베키스탄",
-      "homeScore": 2,
-      "awayScore": 1,
-      "status": "LIVE",
+      "homeScore": 5,
+      "awayScore": 0,
+      "status": "FINISHED",
       "timestamp": 1782266400000,
       "sport": "축구",
-      "minute": "전반 30'"
+      "homeHalfScore": 3,
+      "awayHalfScore": 0
     },
     {
       "homeTeam": "잉글랜드",
       "awayTeam": "가나",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1782277200000,
-      "sport": "축구"
+      "sport": "축구",
+      "homeHalfScore": 0,
+      "awayHalfScore": 0
     },
     {
       "homeTeam": "토론토",
       "awayTeam": "휴스턴",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 4,
+      "status": "LIVE",
       "timestamp": 1782277620000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "6회말"
     },
     {
       "homeTeam": "탬파베이",
@@ -566,24 +570,6 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n16\n7\n15\n15",
-      "awayTeam": "Pato Basquete LDB U22",
-      "homeScore": 16,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1782235932045,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n16\n27\n24\n16",
-      "awayTeam": "Campo Mourao LDB U22",
-      "homeScore": 18,
-      "awayScore": 45,
-      "status": "LIVE",
-      "timestamp": 1782235932045,
-      "sport": "농구"
-    },
-    {
       "homeTeam": "아르헨티나",
       "awayTeam": "오스트리아",
       "homeScore": 2,
@@ -626,11 +612,13 @@
     {
       "homeTeam": "포르투갈",
       "awayTeam": "우즈베키스탄",
-      "homeScore": 2,
-      "awayScore": 1,
+      "homeScore": 5,
+      "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1782234000000,
-      "sport": "축구"
+      "sport": "축구",
+      "homeHalfScore": 3,
+      "awayHalfScore": 0
     },
     {
       "homeTeam": "잉글랜드",
@@ -639,7 +627,9 @@
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1782244800000,
-      "sport": "축구"
+      "sport": "축구",
+      "homeHalfScore": 0,
+      "awayHalfScore": 0
     },
     {
       "homeTeam": "파나마",
