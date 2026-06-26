@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-06-26T17:20:24.116Z",
-  "count": 81,
+  "updatedAt": "2026-06-26T21:53:02.472Z",
+  "count": 82,
   "scores": [
     {
       "homeTeam": "탬파베이",
@@ -261,20 +261,24 @@
     {
       "homeTeam": "세네갈",
       "awayTeam": "이라크",
-      "homeScore": 0,
+      "homeScore": 5,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1782532800000,
-      "sport": "축구"
+      "sport": "축구",
+      "homeHalfScore": 1,
+      "awayHalfScore": 0
     },
     {
       "homeTeam": "노르웨이",
       "awayTeam": "프랑스",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 4,
+      "status": "FINISHED",
       "timestamp": 1782532800000,
-      "sport": "축구"
+      "sport": "축구",
+      "homeHalfScore": 1,
+      "awayHalfScore": 3
     },
     {
       "homeTeam": "피츠버그",
@@ -313,8 +317,8 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "탬파베이",
-      "awayTeam": "애리조나",
+      "homeTeam": "보스턴",
+      "awayTeam": "뉴욕양키스",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -322,8 +326,8 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "보스턴",
-      "awayTeam": "뉴욕양키스",
+      "homeTeam": "탬파베이",
+      "awayTeam": "애리조나",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -565,12 +569,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n12\n15\n5\n5",
-      "awayTeam": "Bauru LDB U22\nMinas L",
-      "homeScore": 18,
-      "awayScore": 45,
+      "homeTeam": "연기",
+      "awayTeam": "APR BBC",
+      "homeScore": 16,
+      "awayScore": 50,
       "status": "LIVE",
-      "timestamp": 1782494381768,
+      "timestamp": 1782510739473,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n16\n30\n17\n10",
+      "awayTeam": "Mogi Das Cruzes U22\nB",
+      "homeScore": 23,
+      "awayScore": 15,
+      "status": "LIVE",
+      "timestamp": 1782510739473,
       "sport": "농구"
     },
     {
@@ -634,20 +647,24 @@
     {
       "homeTeam": "노르웨이",
       "awayTeam": "프랑스",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 4,
       "status": "SCHEDULED",
       "timestamp": 1782500400000,
-      "sport": "축구"
+      "sport": "축구",
+      "homeHalfScore": 1,
+      "awayHalfScore": 3
     },
     {
       "homeTeam": "세네갈",
       "awayTeam": "이라크",
-      "homeScore": 0,
+      "homeScore": 5,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1782500400000,
-      "sport": "축구"
+      "sport": "축구",
+      "homeHalfScore": 1,
+      "awayHalfScore": 0
     },
     {
       "homeTeam": "카보베르데",
