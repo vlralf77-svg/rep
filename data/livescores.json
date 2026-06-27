@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-06-27T16:22:20.529Z",
-  "count": 82,
+  "updatedAt": "2026-06-27T20:24:09.387Z",
+  "count": 80,
   "scores": [
     {
       "homeTeam": "세네갈",
@@ -315,18 +315,18 @@
     {
       "homeTeam": "디트로이트",
       "awayTeam": "휴스턴",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 6,
+      "awayScore": 8,
+      "status": "FINISHED",
       "timestamp": 1782612600000,
       "sport": "야구"
     },
     {
       "homeTeam": "보스턴",
       "awayTeam": "뉴욕양키스",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 4,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1782612600000,
       "sport": "야구"
     },
@@ -334,10 +334,11 @@
       "homeTeam": "토론토",
       "awayTeam": "텍사스",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1782619620000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "5회초"
     },
     {
       "homeTeam": "피츠버그",
@@ -349,15 +350,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "시카고W",
-      "awayTeam": "캔자스시티",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1782623400000,
-      "sport": "야구"
-    },
-    {
       "homeTeam": "뉴욕메츠",
       "awayTeam": "필라델피아",
       "homeScore": 0,
@@ -365,6 +357,16 @@
       "status": "SCHEDULED",
       "timestamp": 1782623400000,
       "sport": "야구"
+    },
+    {
+      "homeTeam": "시카고W",
+      "awayTeam": "캔자스시티",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1782623400000,
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "파나마",
@@ -599,24 +601,6 @@
       "status": "SCHEDULED",
       "timestamp": 1782670500000,
       "sport": "야구"
-    },
-    {
-      "homeTeam": "투갈\n스위스\n21\n20\n1Q\n21\n20",
-      "awayTeam": "슬로베니아",
-      "homeScore": 16,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1782577307123,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "연기",
-      "awayTeam": "ADIEE",
-      "homeScore": 13,
-      "awayScore": 45,
-      "status": "LIVE",
-      "timestamp": 1782577307124,
-      "sport": "농구"
     },
     {
       "homeTeam": "노르웨이",
