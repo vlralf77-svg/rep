@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-06-30T06:14:59.126Z",
-  "count": 60,
+  "updatedAt": "2026-06-30T08:48:15.248Z",
+  "count": 61,
   "scores": [
     {
       "homeTeam": "브라질",
@@ -155,18 +155,20 @@
       "awayTeam": "성균관대",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1782835200000,
-      "sport": "농구"
+      "sport": "농구",
+      "inning": "경기전"
     },
     {
       "homeTeam": "명지대",
       "awayTeam": "동국대",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1782835200000,
-      "sport": "농구"
+      "sport": "농구",
+      "inning": "경기전"
     },
     {
       "homeTeam": "요코하마",
@@ -436,6 +438,15 @@
       "awayScore": 87,
       "status": "FINISHED",
       "timestamp": 1782748800000,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n15\n24\n16\n18",
+      "awayTeam": "Bataan Risers",
+      "homeScore": 10,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1782809256632,
       "sport": "농구"
     },
     {
