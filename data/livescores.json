@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-30T16:40:54.433Z",
+  "updatedAt": "2026-06-30T22:04:52.371Z",
   "count": 75,
   "scores": [
     {
@@ -268,29 +268,32 @@
     {
       "homeTeam": "리턴즈FC",
       "awayTeam": "라밤바FC",
-      "homeScore": 0,
+      "homeScore": 5,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1782849600000,
       "sport": "축구"
     },
     {
       "homeTeam": "코트디부아르",
       "awayTeam": "노르웨이",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1782871200000,
       "sport": "축구"
     },
     {
       "homeTeam": "프랑스",
       "awayTeam": "스웨덴",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1782885600000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반종료",
+      "homeHalfScore": 1,
+      "awayHalfScore": 0
     },
     {
       "homeTeam": "볼티모어",
@@ -576,8 +579,8 @@
     {
       "homeTeam": "코트디부아르",
       "awayTeam": "노르웨이",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1782838800000,
       "sport": "축구"
@@ -585,11 +588,13 @@
     {
       "homeTeam": "프랑스",
       "awayTeam": "스웨덴",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1782853200000,
-      "sport": "축구"
+      "sport": "축구",
+      "homeHalfScore": 1,
+      "awayHalfScore": 0
     },
     {
       "homeTeam": "멕시코",
