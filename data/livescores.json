@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-02T16:29:41.917Z",
-  "count": 96,
+  "updatedAt": "2026-07-02T19:37:45.682Z",
+  "count": 95,
   "scores": [
     {
       "homeTeam": "잉글랜드",
@@ -239,9 +239,9 @@
     {
       "homeTeam": "프레스 ZD FC",
       "awayTeam": "경기남부소방",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 5,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1783022400000,
       "sport": "축구"
     },
@@ -257,38 +257,42 @@
     {
       "homeTeam": "필라델피아",
       "awayTeam": "피츠버그",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 6,
+      "status": "LIVE",
       "timestamp": 1783042500000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "9회말"
     },
     {
       "homeTeam": "밀워키",
       "awayTeam": "신시내티",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 5,
+      "status": "LIVE",
       "timestamp": 1783048200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "6회초"
     },
     {
       "homeTeam": "스페인",
       "awayTeam": "오스트리아",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1783051200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 34'"
     },
     {
       "homeTeam": "콜로라도",
       "awayTeam": "마이애미",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1783051800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "클리블랜드",
@@ -462,15 +466,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "HT\n36\n23\n28\n13",
-      "awayTeam": "Romania\n그리스\n21\n25\n2Q",
-      "homeScore": 16,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1783009744067,
-      "sport": "농구"
-    },
-    {
       "homeTeam": "잉글랜드",
       "awayTeam": "콩고민주",
       "homeScore": 2,
@@ -599,8 +594,8 @@
     {
       "homeTeam": "리투아니아",
       "awayTeam": "영국",
-      "homeScore": 59,
-      "awayScore": 41,
+      "homeScore": 105,
+      "awayScore": 85,
       "status": "SCHEDULED",
       "timestamp": 1783006200000,
       "sport": "농구"
@@ -608,8 +603,8 @@
     {
       "homeTeam": "우크라이나",
       "awayTeam": "조지아",
-      "homeScore": 49,
-      "awayScore": 37,
+      "homeScore": 95,
+      "awayScore": 76,
       "status": "SCHEDULED",
       "timestamp": 1783006200000,
       "sport": "농구"
@@ -617,8 +612,8 @@
     {
       "homeTeam": "루마니아",
       "awayTeam": "그리스",
-      "homeScore": 21,
-      "awayScore": 20,
+      "homeScore": 73,
+      "awayScore": 68,
       "status": "SCHEDULED",
       "timestamp": 1783008000000,
       "sport": "농구"
@@ -626,8 +621,8 @@
     {
       "homeTeam": "요르단",
       "awayTeam": "이란",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 49,
+      "awayScore": 67,
       "status": "SCHEDULED",
       "timestamp": 1783009800000,
       "sport": "농구"
@@ -635,8 +630,8 @@
     {
       "homeTeam": "사우디",
       "awayTeam": "레바논",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 82,
+      "awayScore": 88,
       "status": "SCHEDULED",
       "timestamp": 1783011600000,
       "sport": "농구"
@@ -644,8 +639,8 @@
     {
       "homeTeam": "스페인",
       "awayTeam": "덴마크",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 109,
+      "awayScore": 81,
       "status": "SCHEDULED",
       "timestamp": 1783011600000,
       "sport": "농구"
@@ -653,8 +648,8 @@
     {
       "homeTeam": "보스니아",
       "awayTeam": "튀르키예",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 62,
+      "awayScore": 63,
       "status": "SCHEDULED",
       "timestamp": 1783015200000,
       "sport": "농구"
@@ -662,8 +657,8 @@
     {
       "homeTeam": "스위스",
       "awayTeam": "세르비아",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 65,
+      "awayScore": 79,
       "status": "SCHEDULED",
       "timestamp": 1783015200000,
       "sport": "농구"
@@ -671,8 +666,8 @@
     {
       "homeTeam": "포르투갈",
       "awayTeam": "몬테네그로",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 46,
+      "awayScore": 53,
       "status": "SCHEDULED",
       "timestamp": 1783015200000,
       "sport": "농구"
