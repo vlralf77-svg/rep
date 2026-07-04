@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T16:36:53.261Z",
+  "updatedAt": "2026-07-04T20:19:30.648Z",
   "count": 116,
   "scores": [
     {
@@ -332,57 +332,60 @@
       "homeTeam": "아약스",
       "awayTeam": "파나시나이코스",
       "homeScore": 1,
-      "awayScore": 2,
-      "status": "LIVE",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1783209600000,
-      "sport": "축구",
-      "minute": "후반 25'"
+      "sport": "축구"
     },
     {
       "homeTeam": "워싱턴",
       "awayTeam": "피츠버그",
       "homeScore": 1,
-      "awayScore": 5,
-      "status": "LIVE",
+      "awayScore": 7,
+      "status": "FINISHED",
       "timestamp": 1783209900000,
-      "sport": "야구",
-      "inning": "5회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "캐나다",
       "awayTeam": "모로코",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1783216800000,
-      "sport": "축구"
+      "sport": "축구",
+      "homeHalfScore": 0,
+      "awayHalfScore": 0
     },
     {
       "homeTeam": "뉴욕양키스",
       "awayTeam": "미네소타",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 4,
+      "awayScore": 7,
+      "status": "LIVE",
       "timestamp": 1783218900000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "7회말"
     },
     {
       "homeTeam": "텍사스",
       "awayTeam": "디트로이트",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1783227900000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "시애틀",
       "awayTeam": "토론토",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1783228200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "파라과이",
@@ -714,10 +717,12 @@
       "homeTeam": "캐나다",
       "awayTeam": "모로코",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 3,
       "status": "SCHEDULED",
       "timestamp": 1783184400000,
-      "sport": "축구"
+      "sport": "축구",
+      "homeHalfScore": 0,
+      "awayHalfScore": 0
     },
     {
       "homeTeam": "파라과이",
