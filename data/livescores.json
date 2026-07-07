@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-07T18:27:03.337Z",
-  "count": 89,
+  "updatedAt": "2026-07-07T22:39:17.898Z",
+  "count": 87,
   "scores": [
     {
       "homeTeam": "바샤크셰히르",
@@ -225,21 +225,23 @@
     {
       "homeTeam": "세인트루이스",
       "awayTeam": "밀워키",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
+      "homeScore": 3,
+      "awayScore": 4,
+      "status": "FINISHED",
       "timestamp": 1783480500000,
-      "sport": "야구",
-      "inning": "1회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "스위스",
       "awayTeam": "콜롬비아",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1783486800000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "연장후반종료",
+      "homeHalfScore": 0,
+      "awayHalfScore": 0
     },
     {
       "homeTeam": "볼티모어",
@@ -449,6 +451,15 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "세이부",
+      "awayTeam": "라쿠텐",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1783535400000,
+      "sport": "야구"
+    },
+    {
       "homeTeam": "두산",
       "awayTeam": "SSG",
       "homeScore": 0,
@@ -467,15 +478,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "세이부",
-      "awayTeam": "라쿠텐",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1783535400000,
-      "sport": "야구"
-    },
-    {
       "homeTeam": "FC섭돌이",
       "awayTeam": "디라이프",
       "homeScore": 0,
@@ -483,24 +485,6 @@
       "status": "SCHEDULED",
       "timestamp": 1783540800000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "HT\n14\n20\n21\n26",
-      "awayTeam": "아이슬란드",
-      "homeScore": 17,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1783448788321,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n10\n20\n19\n15",
-      "awayTeam": "이스라엘",
-      "homeScore": 15,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1783448788321,
-      "sport": "농구"
     },
     {
       "homeTeam": "포르투갈",
@@ -540,7 +524,9 @@
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1783454400000,
-      "sport": "축구"
+      "sport": "축구",
+      "homeHalfScore": 0,
+      "awayHalfScore": 0
     },
     {
       "homeTeam": "튀르키예",
