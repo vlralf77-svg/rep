@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-08T18:11:50.491Z",
-  "count": 82,
+  "updatedAt": "2026-07-08T21:56:15.271Z",
+  "count": 80,
   "scores": [
     {
       "homeTeam": "아르헨티나",
@@ -276,20 +276,20 @@
       "homeTeam": "아드미라",
       "awayTeam": "페네르바체",
       "homeScore": 0,
-      "awayScore": 1,
-      "status": "LIVE",
+      "awayScore": 5,
+      "status": "FINISHED",
       "timestamp": 1783564200000,
-      "sport": "축구",
-      "minute": "전반 38'"
+      "sport": "축구"
     },
     {
       "homeTeam": "샌프란시스코",
       "awayTeam": "토론토",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 7,
+      "status": "LIVE",
       "timestamp": 1783572300000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "8회말"
     },
     {
       "homeTeam": "볼티모어",
@@ -508,30 +508,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n14\n14\n28\n20",
-      "awayTeam": "포르투갈",
-      "homeScore": 17,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1783534279667,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n16\n5\n9\n0\n14\n19\n12\n2",
-      "awayTeam": "Armenia",
-      "homeScore": 11,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1783534279667,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n16\n6\n22\n19",
-      "awayTeam": "알바니아",
-      "homeScore": 10,
+      "homeTeam": "티가 바부다\n20\n14\n1Q\n20\n14",
+      "awayTeam": "Turks and Caicos Isla",
+      "homeScore": 0,
       "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1783534279667,
+      "status": "SCHEDULED",
+      "timestamp": 1783547738259,
       "sport": "농구"
     },
     {
@@ -636,9 +618,9 @@
     {
       "homeTeam": "세르비아",
       "awayTeam": "불가리아",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1783533600000,
       "sport": "배구"
     },
