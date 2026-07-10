@@ -1,89 +1,7 @@
 {
-  "updatedAt": "2026-07-09T23:53:54.690Z",
+  "updatedAt": "2026-07-10T01:38:23.946Z",
   "toto": [],
   "proto": [
-    {
-      "matchId": "텍사스 레인저스|LA 에인절스|1783641900000",
-      "sport": "야구",
-      "league": "승부식81 회차",
-      "homeTeam": "텍사스 레인저스",
-      "awayTeam": "LA 에인절스",
-      "gameDate": "2026-07-10T00:05:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.56
-            },
-            {
-              "label": "패",
-              "odds": 2.02
-            }
-          ]
-        },
-        {
-          "type": "승1패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.12
-            },
-            {
-              "label": "1",
-              "odds": 3.25
-            },
-            {
-              "label": "패",
-              "odds": 2.7
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3.03
-            },
-            {
-              "label": "패",
-              "odds": 1.24
-            }
-          ],
-          "line": -2.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.73
-            },
-            {
-              "label": "오버",
-              "odds": 1.79
-            }
-          ],
-          "line": 7.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.54
-            },
-            {
-              "label": "짝",
-              "odds": 2.05
-            }
-          ]
-        }
-      ]
-    },
     {
       "matchId": "샌디에이고 파드리스|애리조나 다이아몬드백스|1783647600000",
       "sport": "야구",
@@ -142,11 +60,11 @@
           "selections": [
             {
               "label": "언더",
-              "odds": 1.87
+              "odds": 1.94
             },
             {
               "label": "오버",
-              "odds": 1.66
+              "odds": 1.61
             }
           ],
           "line": 8.5
@@ -224,11 +142,11 @@
           "selections": [
             {
               "label": "언더",
-              "odds": 1.84
+              "odds": 1.9
             },
             {
               "label": "오버",
-              "odds": 1.69
+              "odds": 1.64
             }
           ],
           "line": 8.5
@@ -251,11 +169,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.98
+              "odds": 2.04
             },
             {
               "label": "무",
-              "odds": 5.3
+              "odds": 4.9
             },
             {
               "label": "패",
@@ -334,11 +252,11 @@
           "selections": [
             {
               "label": "언더",
-              "odds": 1.76
+              "odds": 1.81
             },
             {
               "label": "오버",
-              "odds": 1.76
+              "odds": 1.71
             }
           ],
           "line": 183.5
