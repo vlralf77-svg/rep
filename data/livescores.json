@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-11T17:44:33.815Z",
-  "count": 94,
+  "updatedAt": "2026-07-11T20:30:09.290Z",
+  "count": 93,
   "scores": [
     {
       "homeTeam": "리드",
@@ -230,18 +230,9 @@
     {
       "homeTeam": "경주 한수원",
       "awayTeam": "인천 현대제철",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1783796400000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "화천 KSPO",
-      "awayTeam": "강진",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1783796400000,
       "sport": "축구"
     },
@@ -249,6 +240,15 @@
       "homeTeam": "페예노르트",
       "awayTeam": "클럽 브뤼헤",
       "homeScore": 3,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1783796400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "화천 KSPO",
+      "awayTeam": "강진",
+      "homeScore": 5,
       "awayScore": 1,
       "status": "FINISHED",
       "timestamp": 1783796400000,
@@ -329,84 +329,70 @@
     {
       "homeTeam": "피츠버그",
       "awayTeam": "밀워키",
-      "homeScore": 3,
-      "awayScore": 5,
-      "status": "LIVE",
+      "homeScore": 7,
+      "awayScore": 6,
+      "status": "FINISHED",
       "timestamp": 1783818300000,
-      "sport": "야구",
-      "inning": "5회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "페네르바체",
       "awayTeam": "포곤",
-      "homeScore": 0,
+      "homeScore": 4,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1783823400000,
       "sport": "축구"
     },
     {
       "homeTeam": "미네소타",
       "awayTeam": "LA에인절스",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1783825800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "7회초"
     },
     {
       "homeTeam": "시카고W",
       "awayTeam": "애슬레틱스",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1783825800000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "피츠버그",
-      "awayTeam": "밀워키",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1783832700000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "워싱턴",
-      "awayTeam": "뉴욕양키스",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1783832700000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "9회초"
     },
     {
       "homeTeam": "샌프란시스코",
       "awayTeam": "콜로라도",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1783832700000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회말"
     },
     {
-      "homeTeam": "뉴욕메츠",
-      "awayTeam": "보스턴",
+      "homeTeam": "피츠버그",
+      "awayTeam": "밀워키",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1783833000000,
-      "sport": "야구"
+      "status": "LIVE",
+      "timestamp": 1783832700000,
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
-      "homeTeam": "마이애미",
-      "awayTeam": "클리블랜드",
-      "homeScore": 0,
+      "homeTeam": "워싱턴",
+      "awayTeam": "뉴욕양키스",
+      "homeScore": 2,
       "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1783833000000,
-      "sport": "야구"
+      "status": "LIVE",
+      "timestamp": 1783832700000,
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "탬파베이",
@@ -416,6 +402,26 @@
       "status": "SCHEDULED",
       "timestamp": 1783833000000,
       "sport": "야구"
+    },
+    {
+      "homeTeam": "뉴욕메츠",
+      "awayTeam": "보스턴",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1783833000000,
+      "sport": "야구",
+      "inning": "2회초"
+    },
+    {
+      "homeTeam": "마이애미",
+      "awayTeam": "클리블랜드",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1783833000000,
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "노르웨이",
@@ -598,30 +604,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n14\n11\n6\n6\n14\n13",
-      "awayTeam": "코소보",
-      "homeScore": 11,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1783791830544,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n9\n14",
-      "awayTeam": "산마리노",
-      "homeScore": 9,
+      "homeTeam": "HT\n26\n21\n25\n27",
+      "awayTeam": "샬럿 호넷츠",
+      "homeScore": 20,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1783791830544,
+      "timestamp": 1783801764654,
       "sport": "농구"
     },
     {
-      "homeTeam": "대기",
-      "awayTeam": "Uruguay Liga Women",
-      "homeScore": 2,
-      "awayScore": 9,
+      "homeTeam": "Q\n33\n22",
+      "awayTeam": "필라델피아 세븐티식서스",
+      "homeScore": 21,
+      "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1783791830544,
+      "timestamp": 1783801764654,
       "sport": "농구"
     },
     {
@@ -762,9 +759,9 @@
     {
       "homeTeam": "세르비아",
       "awayTeam": "독일",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1783792800000,
       "sport": "배구"
     },
