@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-14T16:05:17.073Z",
-  "count": 22,
+  "updatedAt": "2026-07-14T20:23:52.828Z",
+  "count": 21,
   "scores": [
     {
       "homeTeam": "고리차",
@@ -68,9 +68,9 @@
     {
       "homeTeam": "리턴즈FC",
       "awayTeam": "디라이프",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 4,
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1784059200000,
       "sport": "축구"
     },
@@ -86,19 +86,18 @@
     {
       "homeTeam": "스파르타크 트르나바",
       "awayTeam": "베식타시",
-      "homeScore": 0,
-      "awayScore": 1,
-      "status": "LIVE",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1784075400000,
-      "sport": "축구",
-      "minute": "전반 29'"
+      "sport": "축구"
     },
     {
       "homeTeam": "LASK",
       "awayTeam": "페네르바체",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1784082600000,
       "sport": "축구"
     },
@@ -106,10 +105,13 @@
       "homeTeam": "프랑스",
       "awayTeam": "스페인",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1784088000000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 15'",
+      "homeHalfScore": 0,
+      "awayHalfScore": 1
     },
     {
       "homeTeam": "내셔널",
@@ -175,22 +177,15 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "HT\n32\n18\n23\n17",
-      "awayTeam": "Toronto Tempo",
-      "homeScore": 23,
-      "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1784045082852,
-      "sport": "농구"
-    },
-    {
       "homeTeam": "프랑스",
       "awayTeam": "스페인",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1784055600000,
-      "sport": "축구"
+      "sport": "축구",
+      "homeHalfScore": 0,
+      "awayHalfScore": 1
     },
     {
       "homeTeam": "잉글랜드",
