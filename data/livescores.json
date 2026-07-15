@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-15T07:27:41.482Z",
-  "count": 22,
+  "updatedAt": "2026-07-15T12:08:58.497Z",
+  "count": 24,
   "scores": [
     {
       "homeTeam": "스파르타크 트르나바",
@@ -44,54 +44,57 @@
       "homeTeam": "닛폰햄",
       "awayTeam": "소프트뱅크",
       "homeScore": 7,
-      "awayScore": 3,
-      "status": "LIVE",
+      "awayScore": 6,
+      "status": "FINISHED",
       "timestamp": 1784120400000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "주니치",
       "awayTeam": "한신",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 6,
+      "awayScore": 5,
+      "status": "LIVE",
       "timestamp": 1784138400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "8회말"
     },
     {
       "homeTeam": "세이부",
       "awayTeam": "지바롯데",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 5,
+      "awayScore": 3,
+      "status": "LIVE",
       "timestamp": 1784138400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "8회말"
     },
     {
       "homeTeam": "라쿠텐",
       "awayTeam": "오릭스",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1784138400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "8회말"
     },
     {
       "homeTeam": "히로시마",
       "awayTeam": "요코하마",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 6,
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1784138400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "9회초"
     },
     {
       "homeTeam": "야쿠르트",
       "awayTeam": "요미우리",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 8,
+      "status": "FINISHED",
       "timestamp": 1784138400000,
       "sport": "야구"
     },
@@ -177,12 +180,30 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n15\n23\n15\n16",
+      "homeTeam": "HT\n27\n26\n11\n21",
+      "awayTeam": "프랑스",
+      "homeScore": 11,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1784117300690,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n15\n19\n23\n14",
+      "awayTeam": "조지아",
+      "homeScore": 11,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1784117300690,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "U18\n45\n0\n2Q\n32\n13\n0\n0",
       "awayTeam": "인도네시아",
       "homeScore": 9,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1784100428980,
+      "timestamp": 1784117300690,
       "sport": "농구"
     },
     {
