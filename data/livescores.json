@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-15T20:39:45.229Z",
-  "count": 33,
+  "updatedAt": "2026-07-15T23:46:32.419Z",
+  "count": 34,
   "scores": [
     {
       "homeTeam": "스파르타크 트르나바",
@@ -132,11 +132,10 @@
       "homeTeam": "잉글랜드",
       "awayTeam": "아르헨티나",
       "homeScore": 1,
-      "awayScore": 0,
-      "status": "LIVE",
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1784174400000,
       "sport": "축구",
-      "minute": "후반 30'",
       "homeHalfScore": 0,
       "awayHalfScore": 0
     },
@@ -249,6 +248,15 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "HT\n11\n14\n33\n19",
+      "awayTeam": "니카라과",
+      "homeScore": 1,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1784159159623,
+      "sport": "농구"
+    },
+    {
       "homeTeam": "프랑스",
       "awayTeam": "스페인",
       "homeScore": 0,
@@ -261,7 +269,7 @@
       "homeTeam": "잉글랜드",
       "awayTeam": "아르헨티나",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1784142000000,
       "sport": "축구",
