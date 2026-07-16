@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-16T07:38:53.697Z",
-  "count": 33,
+  "updatedAt": "2026-07-16T09:39:08.099Z",
+  "count": 35,
   "scores": [
     {
       "homeTeam": "아약스",
@@ -54,81 +54,90 @@
       "awayTeam": "한신",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784224800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회말"
     },
     {
       "homeTeam": "세이부",
       "awayTeam": "지바롯데",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1784224800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회초"
     },
     {
       "homeTeam": "라쿠텐",
       "awayTeam": "오릭스",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1784224800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "야쿠르트",
       "awayTeam": "요미우리",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784224800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회초"
     },
     {
       "homeTeam": "SSG",
       "awayTeam": "KIA",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784226600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "LG",
       "awayTeam": "KT",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784226600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "삼성",
       "awayTeam": "롯데",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1784226600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "NC",
       "awayTeam": "두산",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784226600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "한화",
       "awayTeam": "키움",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784226600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "FC섭돌이",
@@ -140,12 +149,30 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "아메드",
+      "awayTeam": "디나모 바투미",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1784235600000,
+      "sport": "축구"
+    },
+    {
       "homeTeam": "푸스카스",
       "awayTeam": "바샤크셰히르",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1784235600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "알라니야",
+      "awayTeam": "티케시",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1784242800000,
       "sport": "축구"
     },
     {
