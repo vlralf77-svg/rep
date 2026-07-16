@@ -1,106 +1,7 @@
 {
-  "updatedAt": "2026-07-15T23:46:32.419Z",
-  "count": 34,
+  "updatedAt": "2026-07-16T07:38:53.697Z",
+  "count": 33,
   "scores": [
-    {
-      "homeTeam": "스파르타크 트르나바",
-      "awayTeam": "베식타시",
-      "homeScore": 3,
-      "awayScore": 2,
-      "status": "FINISHED",
-      "timestamp": 1784075400000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "LASK",
-      "awayTeam": "페네르바체",
-      "homeScore": 1,
-      "awayScore": 2,
-      "status": "FINISHED",
-      "timestamp": 1784082600000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "프랑스",
-      "awayTeam": "스페인",
-      "homeScore": 0,
-      "awayScore": 2,
-      "status": "FINISHED",
-      "timestamp": 1784088000000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "내셔널",
-      "awayTeam": "아메리칸",
-      "homeScore": 0,
-      "awayScore": 4,
-      "status": "FINISHED",
-      "timestamp": 1784106000000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "닛폰햄",
-      "awayTeam": "소프트뱅크",
-      "homeScore": 7,
-      "awayScore": 6,
-      "status": "FINISHED",
-      "timestamp": 1784120400000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "주니치",
-      "awayTeam": "한신",
-      "homeScore": 6,
-      "awayScore": 5,
-      "status": "FINISHED",
-      "timestamp": 1784138400000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "세이부",
-      "awayTeam": "지바롯데",
-      "homeScore": 7,
-      "awayScore": 3,
-      "status": "FINISHED",
-      "timestamp": 1784138400000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "라쿠텐",
-      "awayTeam": "오릭스",
-      "homeScore": 3,
-      "awayScore": 2,
-      "status": "FINISHED",
-      "timestamp": 1784138400000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "히로시마",
-      "awayTeam": "요코하마",
-      "homeScore": 6,
-      "awayScore": 4,
-      "status": "FINISHED",
-      "timestamp": 1784138400000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "야쿠르트",
-      "awayTeam": "요미우리",
-      "homeScore": 2,
-      "awayScore": 8,
-      "status": "FINISHED",
-      "timestamp": 1784138400000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "리제",
-      "awayTeam": "디나모 바투미",
-      "homeScore": 3,
-      "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1784158200000,
-      "sport": "축구"
-    },
     {
       "homeTeam": "아약스",
       "awayTeam": "보훔",
@@ -142,9 +43,9 @@
     {
       "homeTeam": "닛폰햄",
       "awayTeam": "소프트뱅크",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 6,
+      "status": "FINISHED",
       "timestamp": 1784206800000,
       "sport": "야구"
     },
@@ -248,13 +149,103 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n11\n14\n33\n19",
-      "awayTeam": "니카라과",
+      "homeTeam": "내셔널",
+      "awayTeam": "아메리칸",
+      "homeScore": 0,
+      "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1784106000000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "닛폰햄",
+      "awayTeam": "소프트뱅크",
+      "homeScore": 7,
+      "awayScore": 6,
+      "status": "FINISHED",
+      "timestamp": 1784120400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "주니치",
+      "awayTeam": "한신",
+      "homeScore": 6,
+      "awayScore": 5,
+      "status": "FINISHED",
+      "timestamp": 1784138400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "세이부",
+      "awayTeam": "지바롯데",
+      "homeScore": 7,
+      "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1784138400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "라쿠텐",
+      "awayTeam": "오릭스",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1784138400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "히로시마",
+      "awayTeam": "요코하마",
+      "homeScore": 6,
+      "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1784138400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "야쿠르트",
+      "awayTeam": "요미우리",
+      "homeScore": 2,
+      "awayScore": 8,
+      "status": "FINISHED",
+      "timestamp": 1784138400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "스파르타크 트르나바",
+      "awayTeam": "베식타시",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1784075400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "LASK",
+      "awayTeam": "페네르바체",
       "homeScore": 1,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1784159159623,
-      "sport": "농구"
+      "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1784082600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "프랑스",
+      "awayTeam": "스페인",
+      "homeScore": 0,
+      "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1784088000000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "리제",
+      "awayTeam": "디나모 바투미",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1784158200000,
+      "sport": "축구"
     },
     {
       "homeTeam": "프랑스",
