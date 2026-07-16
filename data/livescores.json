@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-16T11:22:35.921Z",
-  "count": 35,
+  "updatedAt": "2026-07-16T12:56:03.885Z",
+  "count": 36,
   "scores": [
     {
       "homeTeam": "아약스",
@@ -50,94 +50,89 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "주니치",
-      "awayTeam": "한신",
-      "homeScore": 1,
-      "awayScore": 2,
+      "homeTeam": "라쿠텐",
+      "awayTeam": "오릭스",
+      "homeScore": 9,
+      "awayScore": 7,
       "status": "LIVE",
       "timestamp": 1784224800000,
       "sport": "야구",
-      "inning": "8회초"
+      "inning": "8회말"
+    },
+    {
+      "homeTeam": "주니치",
+      "awayTeam": "한신",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1784224800000,
+      "sport": "야구"
     },
     {
       "homeTeam": "세이부",
       "awayTeam": "지바롯데",
-      "homeScore": 2,
-      "awayScore": 4,
-      "status": "LIVE",
-      "timestamp": 1784224800000,
-      "sport": "야구",
-      "inning": "8회초"
-    },
-    {
-      "homeTeam": "라쿠텐",
-      "awayTeam": "오릭스",
       "homeScore": 3,
       "awayScore": 4,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1784224800000,
-      "sport": "야구",
-      "inning": "6회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "야쿠르트",
       "awayTeam": "요미우리",
       "homeScore": 1,
-      "awayScore": 1,
-      "status": "LIVE",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1784224800000,
-      "sport": "야구",
-      "inning": "6회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "SSG",
       "awayTeam": "KIA",
-      "homeScore": 1,
+      "homeScore": 6,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1784226600000,
       "sport": "야구",
-      "inning": "5회말"
+      "inning": "9회초"
     },
     {
       "homeTeam": "LG",
       "awayTeam": "KT",
-      "homeScore": 1,
+      "homeScore": 3,
       "awayScore": 4,
       "status": "LIVE",
       "timestamp": 1784226600000,
       "sport": "야구",
-      "inning": "5회말"
+      "inning": "9회말"
+    },
+    {
+      "homeTeam": "한화",
+      "awayTeam": "키움",
+      "homeScore": 5,
+      "awayScore": 14,
+      "status": "LIVE",
+      "timestamp": 1784226600000,
+      "sport": "야구",
+      "inning": "9회말"
     },
     {
       "homeTeam": "삼성",
       "awayTeam": "롯데",
-      "homeScore": 2,
+      "homeScore": 4,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1784226600000,
-      "sport": "야구",
-      "inning": "6회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "NC",
       "awayTeam": "두산",
       "homeScore": 4,
-      "awayScore": 0,
-      "status": "LIVE",
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1784226600000,
-      "sport": "야구",
-      "inning": "6회말"
-    },
-    {
-      "homeTeam": "한화",
-      "awayTeam": "키움",
-      "homeScore": 0,
-      "awayScore": 5,
-      "status": "LIVE",
-      "timestamp": 1784226600000,
-      "sport": "야구",
-      "inning": "6회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "FC섭돌이",
@@ -151,20 +146,22 @@
     {
       "homeTeam": "아메드",
       "awayTeam": "디나모 바투미",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784235600000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반종료"
     },
     {
       "homeTeam": "푸스카스",
       "awayTeam": "바샤크셰히르",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1784235600000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반종료"
     },
     {
       "homeTeam": "알라니야",
@@ -273,6 +270,15 @@
       "status": "FINISHED",
       "timestamp": 1784158200000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "Q\n23\n14\n23\n15\n23\n18",
+      "awayTeam": "Beijing University",
+      "homeScore": 6,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1784206525544,
+      "sport": "농구"
     },
     {
       "homeTeam": "프랑스",
