@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-17T17:50:53.059Z",
-  "count": 73,
+  "updatedAt": "2026-07-17T18:45:14.725Z",
+  "count": 75,
   "scores": [
     {
       "homeTeam": "LNZ 체르카시",
@@ -158,21 +158,22 @@
     {
       "homeTeam": "보스턴",
       "awayTeam": "탬파베이",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1784342100000,
       "sport": "야구",
-      "inning": "1회말"
+      "inning": "5회말"
     },
     {
       "homeTeam": "위므라니예",
       "awayTeam": "갈라타사라이",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1784343600000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 40'"
     },
     {
       "homeTeam": "뉴욕양키스",
@@ -542,6 +543,24 @@
       "status": "SCHEDULED",
       "timestamp": 1784413800000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n16\n15\n19\n11",
+      "awayTeam": "미국",
+      "homeScore": 18,
+      "awayScore": 15,
+      "status": "LIVE",
+      "timestamp": 1784313875042,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n12\n12\n13\n19",
+      "awayTeam": "니카라과",
+      "homeScore": 20,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1784313875042,
+      "sport": "농구"
     },
     {
       "homeTeam": "몬트리올임팩",
