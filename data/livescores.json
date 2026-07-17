@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-17T08:34:11.773Z",
-  "count": 45,
+  "updatedAt": "2026-07-17T10:22:11.209Z",
+  "count": 44,
   "scores": [
     {
       "homeTeam": "LNZ 체르카시",
@@ -48,24 +48,6 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "히로시마",
-      "awayTeam": "한신",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1784311200000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "요미우리",
-      "awayTeam": "주니치",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1784311200000,
-      "sport": "야구"
-    },
-    {
       "homeTeam": "삼성",
       "awayTeam": "롯데",
       "homeScore": 0,
@@ -75,49 +57,74 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "요코하마",
-      "awayTeam": "야쿠르트",
+      "homeTeam": "히로시마",
+      "awayTeam": "한신",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1784311200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "5회초"
     },
     {
       "homeTeam": "SSG",
       "awayTeam": "KIA",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 3,
+      "awayScore": 5,
+      "status": "LIVE",
       "timestamp": 1784311200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "4회초"
+    },
+    {
+      "homeTeam": "요미우리",
+      "awayTeam": "주니치",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1784311200000,
+      "sport": "야구",
+      "inning": "5회말"
     },
     {
       "homeTeam": "LG",
       "awayTeam": "KT",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 6,
+      "status": "LIVE",
       "timestamp": 1784311200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "5회말"
     },
     {
       "homeTeam": "NC",
       "awayTeam": "두산",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1784311200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "5회초"
     },
     {
       "homeTeam": "한화",
       "awayTeam": "키움",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 3,
+      "awayScore": 4,
+      "status": "LIVE",
       "timestamp": 1784311200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "4회말"
+    },
+    {
+      "homeTeam": "요코하마",
+      "awayTeam": "야쿠르트",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1784311200000,
+      "sport": "야구",
+      "inning": "5회초"
     },
     {
       "homeTeam": "수원FC 위민",
@@ -298,15 +305,6 @@
       "status": "SCHEDULED",
       "timestamp": 1784232000000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "HT\n30\n30\n18\n23",
-      "awayTeam": "사우스랜드 샥스",
-      "homeScore": 4,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1784277219067,
-      "sport": "농구"
     },
     {
       "homeTeam": "잉글랜드",
