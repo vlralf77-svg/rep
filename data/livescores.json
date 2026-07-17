@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-17T12:50:12.424Z",
-  "count": 47,
+  "updatedAt": "2026-07-17T14:20:54.750Z",
+  "count": 45,
   "scores": [
     {
       "homeTeam": "LNZ 체르카시",
@@ -57,16 +57,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "NC",
-      "awayTeam": "두산",
-      "homeScore": 2,
-      "awayScore": 4,
-      "status": "LIVE",
-      "timestamp": 1784311200000,
-      "sport": "야구",
-      "inning": "10회말"
-    },
-    {
       "homeTeam": "히로시마",
       "awayTeam": "한신",
       "homeScore": 2,
@@ -103,6 +93,15 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "NC",
+      "awayTeam": "두산",
+      "homeScore": 2,
+      "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1784311200000,
+      "sport": "야구"
+    },
+    {
       "homeTeam": "한화",
       "awayTeam": "키움",
       "homeScore": 6,
@@ -132,21 +131,21 @@
     {
       "homeTeam": "페예노르트",
       "awayTeam": "샬레로이",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1784320200000,
-      "sport": "축구",
-      "minute": "후반 9'"
+      "sport": "축구"
     },
     {
       "homeTeam": "에르주룸",
       "awayTeam": "리제",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784325600000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 6'"
     },
     {
       "homeTeam": "SSG",
@@ -309,24 +308,6 @@
       "status": "SCHEDULED",
       "timestamp": 1784232000000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "Q\n25\n12\n13\n15\n7\n2",
-      "awayTeam": "인도네시아",
-      "homeScore": 9,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1784292580046,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n24\n24",
-      "awayTeam": "페리 레이크스 호크스",
-      "homeScore": 12,
-      "awayScore": 10,
-      "status": "LIVE",
-      "timestamp": 1784292580046,
-      "sport": "농구"
     },
     {
       "homeTeam": "잉글랜드",
