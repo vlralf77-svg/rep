@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-18T16:32:06.934Z",
-  "count": 93,
+  "updatedAt": "2026-07-18T17:32:53.728Z",
+  "count": 94,
   "scores": [
     {
       "homeTeam": "보스턴",
@@ -390,62 +390,59 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "카심파샤",
-      "awayTeam": "배트맨 페트롤",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1784419200000,
-      "sport": "축구"
-    },
-    {
       "homeTeam": "에유프스포르",
       "awayTeam": "반디르마",
       "homeScore": 1,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1784419200000,
-      "sport": "축구",
-      "minute": "후반 29'"
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "카심파샤",
+      "awayTeam": "배트맨 페트롤",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1784419200000,
+      "sport": "축구"
     },
     {
       "homeTeam": "로트바이스 오버하우젠",
       "awayTeam": "도르트문트",
       "homeScore": 1,
-      "awayScore": 2,
-      "status": "LIVE",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1784419200000,
-      "sport": "축구",
-      "minute": "후반 26'"
+      "sport": "축구"
     },
     {
       "homeTeam": "맨유",
       "awayTeam": "렉섬",
       "homeScore": 0,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1784419200000,
-      "sport": "축구",
-      "minute": "후반 25'"
+      "sport": "축구"
     },
     {
       "homeTeam": "ZTE",
       "awayTeam": "코냐",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1784421000000,
-      "sport": "축구",
-      "minute": "전반종료"
+      "sport": "축구"
     },
     {
       "homeTeam": "클리블랜드",
       "awayTeam": "피츠버그",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784427000000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "시카고컵스",
@@ -454,6 +451,15 @@
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1784431200000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "필라델피아",
+      "awayTeam": "뉴욕메츠",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1784433900000,
       "sport": "야구"
     },
     {
@@ -475,15 +481,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "필라델피아",
-      "awayTeam": "뉴욕메츠",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1784437500000,
-      "sport": "야구"
-    },
-    {
       "homeTeam": "휴스턴",
       "awayTeam": "볼티모어",
       "homeScore": 0,
@@ -495,15 +492,6 @@
     {
       "homeTeam": "밀워키",
       "awayTeam": "마이애미",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1784437800000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "캔자스시티",
-      "awayTeam": "샌디에이고",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -531,6 +519,15 @@
     {
       "homeTeam": "애틀랜타",
       "awayTeam": "텍사스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1784437800000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "캔자스시티",
+      "awayTeam": "샌디에이고",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -745,12 +742,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n10\n13\n18\n14",
-      "awayTeam": "Egypt",
-      "homeScore": 17,
-      "awayScore": 45,
+      "homeTeam": "HT\n25\n22\n27\n25",
+      "awayTeam": "라트비아",
+      "homeScore": 18,
+      "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1784392294519,
+      "timestamp": 1784395936522,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n16\n32\n23\n11",
+      "awayTeam": "우크라이나",
+      "homeScore": 18,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1784395936522,
       "sport": "농구"
     },
     {
