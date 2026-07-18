@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-18T20:28:33.422Z",
+  "updatedAt": "2026-07-18T21:13:31.048Z",
   "count": 94,
   "scores": [
     {
@@ -446,42 +446,41 @@
     {
       "homeTeam": "시카고컵스",
       "awayTeam": "미네소타",
-      "homeScore": 5,
+      "homeScore": 6,
       "awayScore": 2,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1784431200000,
-      "sport": "야구",
-      "inning": "7회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "필라델피아",
       "awayTeam": "뉴욕메츠",
-      "homeScore": 2,
+      "homeScore": 6,
       "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1784433900000,
       "sport": "야구",
-      "inning": "5회초"
+      "inning": "6회말"
     },
     {
       "homeTeam": "토론토",
       "awayTeam": "시카고W",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1784434020000,
       "sport": "야구",
-      "inning": "3회말"
+      "inning": "6회말"
     },
     {
       "homeTeam": "콜로라도",
       "awayTeam": "신시내티",
-      "homeScore": 8,
-      "awayScore": 1,
+      "homeScore": 10,
+      "awayScore": 3,
       "status": "LIVE",
       "timestamp": 1784434200000,
       "sport": "야구",
-      "inning": "5회초"
+      "inning": "7회말"
     },
     {
       "homeTeam": "보스턴",
@@ -496,60 +495,61 @@
       "homeTeam": "휴스턴",
       "awayTeam": "볼티모어",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1784437800000,
-      "sport": "야구",
-      "inning": "2회초"
-    },
-    {
-      "homeTeam": "밀워키",
-      "awayTeam": "마이애미",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1784437800000,
-      "sport": "야구",
-      "inning": "1회말"
-    },
-    {
-      "homeTeam": "캔자스시티",
-      "awayTeam": "샌디에이고",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1784437800000,
-      "sport": "야구",
-      "inning": "1회말"
-    },
-    {
-      "homeTeam": "애리조나",
-      "awayTeam": "세인트루이스",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1784437800000,
-      "sport": "야구",
-      "inning": "2회초"
-    },
-    {
-      "homeTeam": "애틀랜타",
-      "awayTeam": "텍사스",
-      "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1784437800000,
       "sport": "야구",
-      "inning": "1회말"
+      "inning": "4회말"
+    },
+    {
+      "homeTeam": "밀워키",
+      "awayTeam": "마이애미",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1784437800000,
+      "sport": "야구",
+      "inning": "3회말"
+    },
+    {
+      "homeTeam": "캔자스시티",
+      "awayTeam": "샌디에이고",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1784437800000,
+      "sport": "야구",
+      "inning": "4회초"
+    },
+    {
+      "homeTeam": "애리조나",
+      "awayTeam": "세인트루이스",
+      "homeScore": 4,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1784437800000,
+      "sport": "야구",
+      "inning": "4회초"
+    },
+    {
+      "homeTeam": "애틀랜타",
+      "awayTeam": "텍사스",
+      "homeScore": 4,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1784437800000,
+      "sport": "야구",
+      "inning": "3회말"
     },
     {
       "homeTeam": "프랑스",
       "awayTeam": "잉글랜드",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1784440800000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 10'"
     },
     {
       "homeTeam": "클리블랜드",
@@ -750,12 +750,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n24\n20",
-      "awayTeam": "Scarborough Shooting",
+      "homeTeam": "HT\n26\n14\n15\n15",
+      "awayTeam": "미국령 버진아일랜드",
       "homeScore": 23,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1784406474140,
+      "timestamp": 1784409176891,
       "sport": "농구"
     },
     {
@@ -764,7 +764,7 @@
       "homeScore": 17,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1784406474140,
+      "timestamp": 1784409176891,
       "sport": "농구"
     },
     {
@@ -825,7 +825,7 @@
       "homeTeam": "프랑스",
       "awayTeam": "잉글랜드",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1784408400000,
       "sport": "축구"
