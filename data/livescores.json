@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-18T23:02:38.608Z",
-  "count": 92,
+  "updatedAt": "2026-07-18T23:57:25.944Z",
+  "count": 97,
   "scores": [
     {
       "homeTeam": "보스턴",
@@ -480,54 +480,32 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "휴스턴",
-      "awayTeam": "볼티모어",
-      "homeScore": 1,
-      "awayScore": 2,
+      "homeTeam": "보스턴",
+      "awayTeam": "탬파베이",
+      "homeScore": 7,
+      "awayScore": 6,
       "status": "LIVE",
       "timestamp": 1784437800000,
       "sport": "야구",
-      "inning": "10회초"
+      "inning": "9회초"
+    },
+    {
+      "homeTeam": "휴스턴",
+      "awayTeam": "볼티모어",
+      "homeScore": 2,
+      "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1784437800000,
+      "sport": "야구"
     },
     {
       "homeTeam": "밀워키",
       "awayTeam": "마이애미",
       "homeScore": 8,
-      "awayScore": 3,
-      "status": "LIVE",
+      "awayScore": 6,
+      "status": "FINISHED",
       "timestamp": 1784437800000,
-      "sport": "야구",
-      "inning": "9회초"
-    },
-    {
-      "homeTeam": "애리조나",
-      "awayTeam": "세인트루이스",
-      "homeScore": 5,
-      "awayScore": 3,
-      "status": "LIVE",
-      "timestamp": 1784437800000,
-      "sport": "야구",
-      "inning": "9회초"
-    },
-    {
-      "homeTeam": "보스턴",
-      "awayTeam": "탬파베이",
-      "homeScore": 3,
-      "awayScore": 5,
-      "status": "LIVE",
-      "timestamp": 1784437800000,
-      "sport": "야구",
-      "inning": "6회말"
-    },
-    {
-      "homeTeam": "애틀랜타",
-      "awayTeam": "텍사스",
-      "homeScore": 6,
-      "awayScore": 7,
-      "status": "LIVE",
-      "timestamp": 1784437800000,
-      "sport": "야구",
-      "inning": "9회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "캔자스시티",
@@ -539,14 +517,31 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "애리조나",
+      "awayTeam": "세인트루이스",
+      "homeScore": 5,
+      "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1784437800000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "애틀랜타",
+      "awayTeam": "텍사스",
+      "homeScore": 6,
+      "awayScore": 7,
+      "status": "FINISHED",
+      "timestamp": 1784437800000,
+      "sport": "야구"
+    },
+    {
       "homeTeam": "프랑스",
       "awayTeam": "잉글랜드",
       "homeScore": 4,
-      "awayScore": 5,
-      "status": "LIVE",
+      "awayScore": 6,
+      "status": "FINISHED",
       "timestamp": 1784440800000,
       "sport": "축구",
-      "minute": "후반 52'",
       "homeHalfScore": 0,
       "awayHalfScore": 4
     },
@@ -749,6 +744,51 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "Q\n24\n24\n25\n9\n24\n24",
+      "awayTeam": "워싱턴 위저즈",
+      "homeScore": 23,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1784419010800,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n12\n12\n29\n29",
+      "awayTeam": "멕시코",
+      "homeScore": 1,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1784419010800,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n22\n25\n28\n23",
+      "awayTeam": "Niagara River Lions",
+      "homeScore": 19,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1784419010800,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n29\n13\n11\n22",
+      "awayTeam": "Lautaro SAESA",
+      "homeScore": 23,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1784419010800,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "대기",
+      "awayTeam": "Puerto Montt SAESA",
+      "homeScore": 23,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1784419010800,
+      "sport": "농구"
+    },
+    {
       "homeTeam": "내슈빌SC",
       "awayTeam": "애틀랜타U",
       "homeScore": 1,
@@ -806,7 +846,7 @@
       "homeTeam": "프랑스",
       "awayTeam": "잉글랜드",
       "homeScore": 4,
-      "awayScore": 5,
+      "awayScore": 6,
       "status": "SCHEDULED",
       "timestamp": 1784408400000,
       "sport": "축구",
