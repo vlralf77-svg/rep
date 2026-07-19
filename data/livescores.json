@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-19T22:05:38.146Z",
-  "count": 71,
+  "updatedAt": "2026-07-19T23:02:21.234Z",
+  "count": 72,
   "scores": [
     {
       "homeTeam": "에유프스포르",
@@ -475,42 +475,40 @@
     {
       "homeTeam": "애슬레틱스",
       "awayTeam": "워싱턴",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 5,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1784523900000,
-      "sport": "야구",
-      "inning": "7회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "LA에인절스",
       "awayTeam": "디트로이트",
-      "homeScore": 2,
-      "awayScore": 1,
+      "homeScore": 3,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1784524020000,
       "sport": "야구",
-      "inning": "6회말"
-    },
-    {
-      "homeTeam": "시애틀",
-      "awayTeam": "샌프란시스코",
-      "homeScore": 4,
-      "awayScore": 3,
-      "status": "LIVE",
-      "timestamp": 1784524200000,
-      "sport": "야구",
-      "inning": "6회말"
+      "inning": "9회초"
     },
     {
       "homeTeam": "애리조나",
       "awayTeam": "세인트루이스",
-      "homeScore": 0,
+      "homeScore": 5,
       "awayScore": 7,
       "status": "LIVE",
       "timestamp": 1784524200000,
       "sport": "야구",
-      "inning": "6회말"
+      "inning": "8회말"
+    },
+    {
+      "homeTeam": "시애틀",
+      "awayTeam": "샌프란시스코",
+      "homeScore": 6,
+      "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1784524200000,
+      "sport": "야구"
     },
     {
       "homeTeam": "뉴욕양키스",
@@ -583,6 +581,15 @@
       "status": "SCHEDULED",
       "timestamp": 1784590200000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n23\n30\n30\n26",
+      "awayTeam": "Winnipeg Sea Bears",
+      "homeScore": 22,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1784502100157,
+      "sport": "농구"
     },
     {
       "homeTeam": "프랑스",
