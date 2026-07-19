@@ -1,154 +1,7 @@
 {
-  "updatedAt": "2026-07-18T22:41:25.592Z",
+  "updatedAt": "2026-07-19T01:58:57.794Z",
   "toto": [],
   "proto": [
-    {
-      "matchId": "시애틀 매리너스|샌프란시스코 자이언츠|1784419680000",
-      "sport": "야구",
-      "league": "승부식84 회차",
-      "homeTeam": "시애틀 매리너스",
-      "awayTeam": "샌프란시스코 자이언츠",
-      "gameDate": "2026-07-19T00:08:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.57
-            },
-            {
-              "label": "패",
-              "odds": 2
-            }
-          ]
-        },
-        {
-          "type": "승1패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.24
-            },
-            {
-              "label": "1",
-              "odds": 3.15
-            },
-            {
-              "label": "패",
-              "odds": 2.6
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3.09
-            },
-            {
-              "label": "패",
-              "odds": 1.23
-            }
-          ],
-          "line": -2.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.6
-            },
-            {
-              "label": "오버",
-              "odds": 1.96
-            }
-          ],
-          "line": 7.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.54
-            },
-            {
-              "label": "짝",
-              "odds": 2.05
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "미국_남자_불가리아|남자|1784422800000",
-      "sport": "배구",
-      "league": "승부식84 회차",
-      "homeTeam": "미국_남자_불가리아",
-      "awayTeam": "남자",
-      "gameDate": "2026-07-19T01:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.21
-            },
-            {
-              "label": "패",
-              "odds": 3.23
-            }
-          ]
-        },
-        {
-          "type": "세트핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.56
-            },
-            {
-              "label": "패",
-              "odds": 2.02
-            }
-          ],
-          "line": -1.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.76
-            },
-            {
-              "label": "오버",
-              "odds": 1.76
-            }
-          ],
-          "line": 179.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.76
-            },
-            {
-              "label": "짝",
-              "odds": 1.76
-            }
-          ]
-        }
-      ]
-    },
     {
       "matchId": "애슬레틱스|워싱턴 내셔널스|1784426700000",
       "sport": "야구",
@@ -176,15 +29,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.45
+              "odds": 2.5
             },
             {
               "label": "1",
-              "odds": 3.4
+              "odds": 3.5
             },
             {
               "label": "패",
-              "odds": 2.24
+              "odds": 2.16
             }
           ]
         },
@@ -316,15 +169,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.75
+              "odds": 2.95
             },
             {
               "label": "무",
-              "odds": 5.8
+              "odds": 5.3
             },
             {
               "label": "패",
-              "odds": 1.63
+              "odds": 1.61
             }
           ]
         },
@@ -399,11 +252,11 @@
           "selections": [
             {
               "label": "언더",
-              "odds": 1.76
+              "odds": 1.81
             },
             {
               "label": "오버",
-              "odds": 1.76
+              "odds": 1.71
             }
           ],
           "line": 184.5
