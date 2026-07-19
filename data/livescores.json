@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-19T16:09:14.265Z",
-  "count": 72,
+  "updatedAt": "2026-07-19T17:13:34.877Z",
+  "count": 71,
   "scores": [
     {
       "homeTeam": "에유프스포르",
@@ -357,29 +357,30 @@
       "homeTeam": "괴체페",
       "awayTeam": "알 다프라",
       "homeScore": 2,
-      "awayScore": 0,
-      "status": "LIVE",
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1784505600000,
-      "sport": "축구",
-      "minute": "전반종료"
+      "sport": "축구"
     },
     {
       "homeTeam": "토론토",
       "awayTeam": "시카고W",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1784510100000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "4회말"
     },
     {
       "homeTeam": "뉴욕양키스",
       "awayTeam": "LA다저스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784511300000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회말"
     },
     {
       "homeTeam": "필라델피아",
@@ -578,15 +579,6 @@
       "status": "SCHEDULED",
       "timestamp": 1784590200000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "연기",
-      "awayTeam": "ANU Wolfpacks",
-      "homeScore": 13,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1784477314875,
-      "sport": "농구"
     },
     {
       "homeTeam": "프랑스",
