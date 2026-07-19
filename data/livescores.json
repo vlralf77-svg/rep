@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-19T12:37:41.840Z",
+  "updatedAt": "2026-07-19T14:09:36.256Z",
   "count": 93,
   "scores": [
     {
@@ -221,26 +221,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "삼성",
-      "awayTeam": "롯데",
-      "homeScore": 8,
-      "awayScore": 8,
-      "status": "LIVE",
-      "timestamp": 1784484000000,
-      "sport": "야구",
-      "inning": "9회초"
-    },
-    {
-      "homeTeam": "한화",
-      "awayTeam": "키움",
-      "homeScore": 9,
-      "awayScore": 9,
-      "status": "LIVE",
-      "timestamp": 1784484000000,
-      "sport": "야구",
-      "inning": "9회말"
-    },
-    {
       "homeTeam": "히로시마",
       "awayTeam": "한신",
       "homeScore": 2,
@@ -263,6 +243,15 @@
       "awayTeam": "KT",
       "homeScore": 1,
       "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1784484000000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "삼성",
+      "awayTeam": "롯데",
+      "homeScore": 8,
+      "awayScore": 11,
       "status": "FINISHED",
       "timestamp": 1784484000000,
       "sport": "야구"
@@ -295,6 +284,15 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "한화",
+      "awayTeam": "키움",
+      "homeScore": 9,
+      "awayScore": 9,
+      "status": "FINISHED",
+      "timestamp": 1784484000000,
+      "sport": "야구"
+    },
+    {
       "homeTeam": "요코하마",
       "awayTeam": "야쿠르트",
       "homeScore": 5,
@@ -302,16 +300,6 @@
       "status": "FINISHED",
       "timestamp": 1784484000000,
       "sport": "야구"
-    },
-    {
-      "homeTeam": "충북청주",
-      "awayTeam": "천안",
-      "homeScore": 1,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1784489400000,
-      "sport": "축구",
-      "minute": "후반종료"
     },
     {
       "homeTeam": "수원",
@@ -345,6 +333,15 @@
       "awayTeam": "광주",
       "homeScore": 1,
       "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1784489400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "충북청주",
+      "awayTeam": "천안",
+      "homeScore": 1,
+      "awayScore": 0,
       "status": "FINISHED",
       "timestamp": 1784489400000,
       "sport": "축구"
@@ -746,12 +743,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n16\n8\n3\n16\n16\n4",
-      "awayTeam": "인도",
-      "homeScore": 9,
+      "homeTeam": "HT\n23\n21\n17\n17",
+      "awayTeam": "Terror",
+      "homeScore": 12,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1784464628233,
+      "timestamp": 1784470137462,
       "sport": "농구"
     },
     {
@@ -833,7 +830,7 @@
       "awayTeam": "FC서울",
       "homeScore": 1,
       "awayScore": 3,
-      "status": "FINISHED",
+      "status": "SCHEDULED",
       "timestamp": 1784457000000,
       "sport": "축구"
     },
