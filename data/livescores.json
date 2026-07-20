@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-20T22:33:49.086Z",
-  "count": 73,
+  "updatedAt": "2026-07-20T23:34:38.621Z",
+  "count": 74,
   "scores": [
     {
       "homeTeam": "괴체페",
@@ -239,56 +239,62 @@
     {
       "homeTeam": "클리블랜드",
       "awayTeam": "미네소타",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 6,
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1784619600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회초"
     },
     {
       "homeTeam": "뉴욕양키스",
       "awayTeam": "피츠버그",
-      "homeScore": 0,
+      "homeScore": 4,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784621100000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "토론토",
       "awayTeam": "탬파베이",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1784621220000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회말"
     },
     {
       "homeTeam": "보스턴",
       "awayTeam": "볼티모어",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1784621400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "필라델피아",
       "awayTeam": "LA다저스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784621400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "애틀랜타",
       "awayTeam": "샌디에이고",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784621700000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "밀워키",
@@ -478,6 +484,15 @@
       "status": "SCHEDULED",
       "timestamp": 1784662200000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "Q\n22\n26",
+      "awayTeam": "Sayago",
+      "homeScore": 0,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1784590443849,
+      "sport": "농구"
     },
     {
       "homeTeam": "스페인",
