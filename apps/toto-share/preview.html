@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d1117" />
+  <title>벳 — 픽 공유</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      min-height: 100dvh;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Entry Page ── */
+    .entry-page {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: linear-gradient(135deg, #0d1117 0%, #1a237e 100%);
+    }
+    .entry-page.hidden { display: none; }
+    .entry-card {
+      background: #161b22;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 32px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .entry-avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: #5c6bc0;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 32px;
+    }
+    .entry-card h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+    .entry-card p { font-size: 0.875rem; color: #8b949e; margin-bottom: 24px; }
+    .entry-input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: #0d1117;
+      color: #e6edf3;
+      font-size: 1rem;
+      font-family: inherit;
+      margin-bottom: 16px;
+      outline: none;
+    }
+    .entry-input:focus { border-color: #5c6bc0; }
+    .entry-input::placeholder { color: #484f58; }
+    .btn-primary {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #5c6bc0;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #7986cb; }
+    .btn-primary:disabled { background: #3a3f5c; cursor: default; }
+    .entry-footer { margin-top: 24px; font-size: 0.75rem; color: #484f58; }
+
+    /* ── App Bar ── */
+    .app-bar {
+      position: sticky; top: 0; z-index: 100;
+      background: #161b22;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .app-bar h1 { font-size: 1.1rem; font-weight: 700; }
+    .app-bar-right { display: flex; align-items: center; gap: 8px; }
+    .user-chip {
+      padding: 4px 12px;
+      border-radius: 16px;
+      border: 1px solid #5c6bc0;
+      font-size: 0.8rem;
+      color: #8e99f3;
+    }
+    .btn-icon {
+      background: none; border: none; color: #8b949e; cursor: pointer;
+      font-size: 1.2rem; padding: 4px;
+    }
+    .btn-icon:hover { color: #e6edf3; }
+
+    /* ── Main Page ── */
+    .main-page { display: none; padding-bottom: 140px; }
+    .main-page.active { display: block; }
+    .container { max-width: 600px; margin: 0 auto; padding: 16px; }
+
+    .date-row {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 12px;
+    }
+    .date-label { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: #8b949e; }
+    .btn-outline {
+      padding: 4px 12px; border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: none; color: #8b949e;
+      font-size: 0.75rem; font-family: inherit;
+      cursor: pointer;
+    }
+    .btn-outline:hover { border-color: #5c6bc0; color: #8e99f3; }
+
+    /* Online users */
+    .online-bar {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      align-items: center; margin-bottom: 16px;
+    }
+    .online-dot { width: 8px; height: 8px; border-radius: 50%; background: #66bb6a; }
+    .online-count { font-size: 0.75rem; color: #8b949e; margin-right: 4px; }
+    .online-chip {
+      display: flex; align-items: center; gap: 4px;
+      padding: 2px 8px 2px 2px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.7rem;
+    }
+    .online-chip.me { border-color: #5c6bc0; background: rgba(92,107,192,0.15); }
+    .online-avatar {
+      width: 20px; height: 20px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; font-weight: 700; color: #fff;
+    }
+
+    /* ── Match Card ── */
+    .match-card {
+      background: #161b22;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+    }
+    .match-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 8px;
+    }
+    .match-header-left { display: flex; align-items: center; gap: 8px; }
+    .league-chip {
+      padding: 2px 8px; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.65rem; color: #8b949e;
+    }
+    .game-no { font-size: 0.75rem; color: #484f58; }
+    .match-time { font-size: 0.75rem; color: #8b949e; display: flex; align-items: center; gap: 4px; }
+    .match-teams {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 12px;
+    }
+    .team-name {
+      flex: 1; font-size: 0.9rem; font-weight: 500;
+    }
+    .team-name.left { text-align: left; }
+    .team-name.right { text-align: right; }
+    .team-name.selected-home { color: #8e99f3; font-weight: 700; }
+    .team-name.selected-away { color: #ffa270; font-weight: 700; }
+    .vs { font-size: 0.75rem; color: #484f58; margin: 0 12px; flex-shrink: 0; }
+
+    /* Selection buttons */
+    .sel-group {
+      display: flex; gap: 6px;
+    }
+    .sel-btn {
+      flex: 1;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 8px 4px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: none;
+      color: #8b949e;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .sel-btn:hover { border-color: rgba(255,255,255,0.3); }
+    .sel-btn .sel-label { font-size: 0.7rem; font-weight: 700; }
+    .sel-btn .sel-odds { font-size: 0.85rem; font-weight: 700; margin-top: 2px; }
+    .sel-btn.active-home {
+      background: #5c6bc0; border-color: #5c6bc0; color: #fff;
+    }
+    .sel-btn.active-draw {
+      background: #ffa726; border-color: #ffa726; color: #000;
+    }
+    .sel-btn.active-away {
+      background: #ff7043; border-color: #ff7043; color: #fff;
+    }
+    .sel-badge {
+      position: absolute; top: -8px; right: -4px;
+      min-width: 18px; height: 18px;
+      border-radius: 9px; padding: 0 4px;
+      font-size: 0.6rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+    }
+    .sel-badge.home-badge { background: #5c6bc0; }
+    .sel-badge.draw-badge { background: #ffa726; color: #000; }
+    .sel-badge.away-badge { background: #ff7043; }
+
+    /* ── Summary Bar ── */
+    .summary-bar {
+      position: fixed; bottom: 56px; left: 0; right: 0;
+      z-index: 120;
+      background: linear-gradient(180deg, #1e1e2e 0%, #161b22 100%);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px 16px 0 0;
+      padding: 16px;
+      display: none;
+    }
+    .summary-bar.visible { display: block; }
+    .summary-inner {
+      max-width: 600px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .summary-label { font-size: 0.85rem; color: #8b949e; }
+    .summary-info { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+    .summary-chip {
+      padding: 2px 10px; border-radius: 12px;
+      border: 1px solid #5c6bc0; color: #8e99f3;
+      font-size: 0.8rem;
+    }
+    .summary-odds { font-size: 1rem; font-weight: 700; }
+    .btn-confirm {
+      padding: 12px 24px; border: none; border-radius: 8px;
+      background: #5c6bc0; color: #fff;
+      font-size: 1rem; font-weight: 700;
+      font-family: inherit; cursor: pointer;
+      min-width: 120px;
+    }
+    .btn-confirm:hover { background: #7986cb; }
+    .btn-confirm.confirmed { background: #66bb6a; cursor: default; }
+
+    /* ── Bottom Nav ── */
+    .bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      z-index: 110;
+      background: #161b22;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex; height: 56px;
+    }
+    .nav-item {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: none; border: none; color: #484f58;
+      font-size: 0.7rem; font-family: inherit; cursor: pointer;
+      gap: 2px;
+    }
+    .nav-item.active { color: #8e99f3; }
+    .nav-item svg { width: 24px; height: 24px; }
+
+    /* ── Pick Board ── */
+    .board-page { display: none; }
+    .board-page.active { display: block; }
+    .board-table {
+      width: 100%; border-collapse: collapse;
+      background: #161b22;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .board-table th, .board-table td {
+      padding: 8px 6px;
+      font-size: 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+    .board-table th {
+      background: #1c2028;
+      font-weight: 600;
+      position: sticky; top: 0;
+    }
+    .board-table td:first-child { text-align: left; min-width: 100px; }
+    .board-table th:first-child { text-align: left; }
+    .pick-chip {
+      display: inline-block;
+      padding: 2px 6px; border-radius: 8px;
+      font-size: 0.6rem; font-weight: 600;
+    }
+    .pick-chip.home { background: #5c6bc0; color: #fff; }
+    .pick-chip.draw { background: #ffa726; color: #000; }
+    .pick-chip.away { background: #ff7043; color: #fff; }
+    .pick-empty { color: #484f58; }
+    .popular-text { font-size: 0.6rem; color: #8b949e; }
+
+    .board-avatar {
+      width: 24px; height: 24px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; font-weight: 700; color: #fff;
+      margin: 0 auto 2px;
+    }
+    .board-nick { font-size: 0.55rem; color: #8b949e; }
+
+    /* ── Dialog Overlay ── */
+    .dialog-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.6);
+      align-items: center; justify-content: center;
+      padding: 16px;
+    }
+    .dialog-overlay.open { display: flex; }
+    .dialog-box {
+      background: #161b22;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      width: 100%; max-width: 480px;
+      max-height: 90vh; overflow-y: auto;
+    }
+    .dialog-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-weight: 700; font-size: 1.1rem;
+    }
+    .dialog-body { padding: 20px; }
+    .dialog-footer {
+      display: flex; justify-content: flex-end; gap: 8px;
+      padding: 12px 20px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .btn-import {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ff7043;
+      border-radius: 8px;
+      background: none; color: #ffa270;
+      font-family: inherit; font-size: 0.9rem;
+      cursor: pointer; margin-bottom: 16px;
+    }
+    .btn-import:hover { background: rgba(255,112,67,0.1); }
+    .divider {
+      display: flex; align-items: center; gap: 12px;
+      margin: 16px 0; color: #484f58; font-size: 0.75rem;
+    }
+    .divider::before, .divider::after {
+      content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.06);
+    }
+    .form-row { display: flex; gap: 8px; margin-bottom: 12px; }
+    .form-input {
+      flex: 1; padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: #0d1117; color: #e6edf3;
+      font-size: 0.85rem; font-family: inherit;
+      outline: none;
+    }
+    .form-input:focus { border-color: #5c6bc0; }
+    .form-input::placeholder { color: #484f58; }
+    .btn-cancel {
+      padding: 8px 16px; border: none; border-radius: 8px;
+      background: none; color: #8b949e;
+      font-family: inherit; cursor: pointer;
+    }
+    .btn-submit {
+      padding: 8px 20px; border: none; border-radius: 8px;
+      background: #5c6bc0; color: #fff;
+      font-family: inherit; font-weight: 600; cursor: pointer;
+    }
+    .btn-submit:hover { background: #7986cb; }
+
+    .alert-success {
+      background: rgba(102,187,106,0.15);
+      border: 1px solid #66bb6a;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: #66bb6a;
+      margin-bottom: 12px;
+    }
+    .alert-success.hidden { display: none; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════ ENTRY PAGE ════════════ -->
+<div class="entry-page" id="entryPage">
+  <div class="entry-card">
+    <div class="entry-avatar">⚽</div>
+    <h1>벳</h1>
+    <p>오늘의 경기 픽을 공유하세요</p>
+    <input class="entry-input" id="nicknameInput" placeholder="닉네임을 입력하세요" maxlength="10" autofocus />
+    <button class="btn-primary" id="enterBtn" onclick="enterApp()">입장하기</button>
+  </div>
+  <div class="entry-footer">소규모 비공개 그룹 픽 공유 서비스</div>
+</div>
+
+<!-- ════════════ MAIN APP ════════════ -->
+<div id="appContainer" style="display:none">
+
+  <!-- App Bar -->
+  <div class="app-bar">
+    <h1>벳</h1>
+    <div class="app-bar-right">
+      <span class="user-chip" id="userChip"></span>
+      <button class="btn-icon" onclick="exitApp()" title="나가기">⎋</button>
+    </div>
+  </div>
+
+  <!-- Tab: 경기 -->
+  <div class="main-page active" id="tabMatches">
+    <div class="container">
+      <div class="date-row">
+        <div class="date-label">📅 06월 21일 (토)</div>
+        <button class="btn-outline" onclick="openAdmin()">+ 경기 관리</button>
+      </div>
+
+      <div class="online-bar">
+        <div class="online-dot"></div>
+        <span class="online-count" id="onlineCount">4명 접속</span>
+        <div id="onlineChips"></div>
+      </div>
+
+      <div id="matchList"></div>
+    </div>
+
+    <div class="summary-bar" id="summaryBar">
+      <div class="summary-inner">
+        <div>
+          <div class="summary-label">내 조합</div>
+          <div class="summary-info">
+            <span class="summary-chip" id="pickCount">0경기</span>
+            <span class="summary-odds" id="totalOdds">x0.00</span>
+          </div>
+        </div>
+        <button class="btn-confirm" id="confirmBtn" onclick="confirmCombo()">확정하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab: 현황판 -->
+  <div class="board-page" id="tabBoard">
+    <div class="container">
+      <table class="board-table" id="boardTable"></table>
+    </div>
+  </div>
+
+  <!-- Bottom Nav -->
+  <div class="bottom-nav">
+    <button class="nav-item active" id="navMatches" onclick="switchTab('matches')">
+      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-.17.02-.34.04-.5.05V18h-1v2.02c-3.93-.5-7.02-3.6-7.52-7.52H6v-1H4.02c.5-3.93 3.6-7.02 7.52-7.52V6h1V4.02c3.93.5 7.02 3.6 7.52 7.52H18v1h1.98c-.5 3.93-3.6 7.02-7.52 7.52z"/></svg>
+      경기
+    </button>
+    <button class="nav-item" id="navBoard" onclick="switchTab('board')">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11V3H8v6H2v12h20V11h-6zm-6-6h4v14h-4V5zm-6 6h4v8H4v-8zm16 8h-4v-6h4v6z"/></svg>
+      현황판
+    </button>
+  </div>
+</div>
+
+<!-- ════════════ ADMIN DIALOG ════════════ -->
+<div class="dialog-overlay" id="adminDialog">
+  <div class="dialog-box">
+    <div class="dialog-header">
+      경기 등록
+      <button class="btn-icon" onclick="closeAdmin()">✕</button>
+    </div>
+    <div class="dialog-body">
+      <div class="alert-success hidden" id="adminAlert"></div>
+      <button class="btn-import" onclick="importDemo()">📥 베트맨 데이터 가져오기</button>
+      <div class="divider">수동 입력</div>
+      <div class="form-row">
+        <input class="form-input" id="fGameNo" placeholder="게임번호" />
+        <input class="form-input" id="fLeague" placeholder="리그" />
+      </div>
+      <div class="form-row">
+        <input class="form-input" id="fHome" placeholder="홈팀" />
+        <input class="form-input" id="fAway" placeholder="원정팀" />
+      </div>
+      <div class="form-row">
+        <input class="form-input" id="fTime" type="time" value="19:00" />
+      </div>
+      <div class="form-row">
+        <input class="form-input" id="fOddsH" placeholder="홈승 배당" type="number" step="0.01" value="1.85" />
+        <input class="form-input" id="fOddsD" placeholder="무 배당" type="number" step="0.01" value="3.40" />
+        <input class="form-input" id="fOddsA" placeholder="원정승 배당" type="number" step="0.01" value="2.10" />
+      </div>
+    </div>
+    <div class="dialog-footer">
+      <button class="btn-cancel" onclick="closeAdmin()">닫기</button>
+      <button class="btn-submit" onclick="addMatch()">등록</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── State ──
+let currentUser = null;
+let myPicks = {};
+let confirmed = false;
+const users = [
+  { uid: 'u1', nickname: '철수', color: '#e91e63' },
+  { uid: 'u2', nickname: '영희', color: '#2196f3' },
+  { uid: 'u3', nickname: '민수', color: '#4caf50' },
+];
+let matches = [
+  { id: 'm1', gameNo: '101', league: 'EPL', homeTeam: '맨체스터 시티', awayTeam: '리버풀', time: '21:00', oddsHome: 2.10, oddsDraw: 3.30, oddsAway: 2.85 },
+  { id: 'm2', gameNo: '102', league: 'EPL', homeTeam: '아스날', awayTeam: '첼시', time: '23:30', oddsHome: 1.75, oddsDraw: 3.60, oddsAway: 3.95 },
+  { id: 'm3', gameNo: '201', league: 'KBO', homeTeam: 'LG 트윈스', awayTeam: 'KT 위즈', time: '18:30', oddsHome: 1.55, oddsDraw: 0, oddsAway: 2.25 },
+  { id: 'm4', gameNo: '202', league: 'KBO', homeTeam: 'SSG 랜더스', awayTeam: '삼성 라이온즈', time: '18:30', oddsHome: 1.80, oddsDraw: 0, oddsAway: 1.90 },
+  { id: 'm5', gameNo: '103', league: 'LaLiga', homeTeam: '레알 마드리드', awayTeam: '바르셀로나', time: '04:00', oddsHome: 2.30, oddsDraw: 3.20, oddsAway: 2.60 },
+];
+const otherPicks = {
+  'm1': { 'u1': 'HOME', 'u2': 'AWAY', 'u3': 'HOME' },
+  'm2': { 'u1': 'HOME', 'u3': 'HOME' },
+  'm3': { 'u2': 'HOME' },
+  'm5': { 'u1': 'DRAW', 'u2': 'HOME', 'u3': 'AWAY' },
+};
+
+// ── Entry ──
+function enterApp() {
+  const nick = document.getElementById('nicknameInput').value.trim();
+  if (!nick) return;
+  currentUser = { uid: 'me', nickname: nick, color: '#ff9800' };
+  document.getElementById('entryPage').classList.add('hidden');
+  document.getElementById('appContainer').style.display = 'block';
+  document.getElementById('userChip').textContent = nick;
+  renderOnline();
+  renderMatches();
+}
+function exitApp() {
+  currentUser = null;
+  myPicks = {};
+  confirmed = false;
+  document.getElementById('entryPage').classList.remove('hidden');
+  document.getElementById('appContainer').style.display = 'none';
+  document.getElementById('nicknameInput').value = '';
+}
+document.getElementById('nicknameInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') enterApp();
+});
+
+// ── Online Users ──
+function renderOnline() {
+  const allUsers = [...users];
+  if (currentUser) allUsers.push(currentUser);
+  document.getElementById('onlineCount').textContent = allUsers.length + '명 접속';
+  document.getElementById('onlineChips').innerHTML = allUsers.map(u =>
+    `<div class="online-chip ${u.uid === 'me' ? 'me' : ''}">
+      <div class="online-avatar" style="background:${u.color}">${u.nickname[0]}</div>
+      ${u.nickname}
+    </div>`
+  ).join('');
+}
+
+// ── Matches ──
+function renderMatches() {
+  const list = document.getElementById('matchList');
+  list.innerHTML = matches.map(m => {
+    const mySel = myPicks[m.id];
+    const picks = otherPicks[m.id] || {};
+    if (mySel) picks['me'] = mySel;
+    const cH = Object.values(picks).filter(v => v === 'HOME').length;
+    const cD = Object.values(picks).filter(v => v === 'DRAW').length;
+    const cA = Object.values(picks).filter(v => v === 'AWAY').length;
+    const hasDraw = m.oddsDraw > 0;
+
+    return `<div class="match-card">
+      <div class="match-header">
+        <div class="match-header-left">
+          <span class="league-chip">${m.league}</span>
+          <span class="game-no">#${m.gameNo}</span>
+        </div>
+        <div class="match-time">🕐 ${m.time}</div>
+      </div>
+      <div class="match-teams">
+        <span class="team-name left ${mySel === 'HOME' ? 'selected-home' : ''}">${m.homeTeam}</span>
+        <span class="vs">vs</span>
+        <span class="team-name right ${mySel === 'AWAY' ? 'selected-away' : ''}">${m.awayTeam}</span>
+      </div>
+      <div class="sel-group">
+        <button class="sel-btn ${mySel === 'HOME' ? 'active-home' : ''}" onclick="togglePick('${m.id}','HOME')">
+          ${cH > 0 ? `<span class="sel-badge home-badge">${cH}</span>` : ''}
+          <span class="sel-label">홈승</span>
+          <span class="sel-odds">${m.oddsHome.toFixed(2)}</span>
+        </button>
+        ${hasDraw ? `<button class="sel-btn ${mySel === 'DRAW' ? 'active-draw' : ''}" onclick="togglePick('${m.id}','DRAW')">
+          ${cD > 0 ? `<span class="sel-badge draw-badge">${cD}</span>` : ''}
+          <span class="sel-label">무</span>
+          <span class="sel-odds">${m.oddsDraw.toFixed(2)}</span>
+        </button>` : ''}
+        <button class="sel-btn ${mySel === 'AWAY' ? 'active-away' : ''}" onclick="togglePick('${m.id}','AWAY')">
+          ${cA > 0 ? `<span class="sel-badge away-badge">${cA}</span>` : ''}
+          <span class="sel-label">원정승</span>
+          <span class="sel-odds">${m.oddsAway.toFixed(2)}</span>
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+  updateSummary();
+}
+
+function togglePick(matchId, sel) {
+  if (confirmed) return;
+  if (myPicks[matchId] === sel) { delete myPicks[matchId]; }
+  else { myPicks[matchId] = sel; }
+  renderMatches();
+  renderBoard();
+}
+
+function updateSummary() {
+  const bar = document.getElementById('summaryBar');
+  const entries = Object.entries(myPicks);
+  if (entries.length === 0) { bar.classList.remove('visible'); return; }
+  bar.classList.add('visible');
+  document.getElementById('pickCount').textContent = entries.length + '경기';
+  let odds = 1;
+  entries.forEach(([mid, sel]) => {
+    const m = matches.find(x => x.id === mid);
+    if (!m) return;
+    odds *= sel === 'HOME' ? m.oddsHome : sel === 'DRAW' ? m.oddsDraw : m.oddsAway;
+  });
+  document.getElementById('totalOdds').textContent = 'x' + odds.toFixed(2);
+}
+
+function confirmCombo() {
+  if (confirmed) return;
+  confirmed = true;
+  document.getElementById('confirmBtn').textContent = '✓ 확정됨';
+  document.getElementById('confirmBtn').classList.add('confirmed');
+  renderBoard();
+}
+
+// ── Tab ──
+function switchTab(tab) {
+  document.getElementById('tabMatches').classList.toggle('active', tab === 'matches');
+  document.getElementById('tabBoard').classList.toggle('active', tab === 'board');
+  document.getElementById('navMatches').classList.toggle('active', tab === 'matches');
+  document.getElementById('navBoard').classList.toggle('active', tab === 'board');
+  if (tab === 'board') renderBoard();
+}
+
+// ── Pick Board ──
+function renderBoard() {
+  const allUsers = [...users];
+  if (currentUser) allUsers.push(currentUser);
+  const selLabel = { HOME: '홈승', DRAW: '무', AWAY: '원정승' };
+  const selClass = { HOME: 'home', DRAW: 'draw', AWAY: 'away' };
+
+  let html = `<thead><tr><th>경기</th>`;
+  allUsers.forEach(u => {
+    html += `<th><div class="board-avatar" style="background:${u.color}">${u.nickname[0]}</div><div class="board-nick">${u.nickname}</div></th>`;
+  });
+  html += `<th>인기 픽</th></tr></thead><tbody>`;
+
+  matches.forEach(m => {
+    const picks = { ...(otherPicks[m.id] || {}) };
+    if (myPicks[m.id]) picks['me'] = myPicks[m.id];
+    const cnt = { HOME: 0, DRAW: 0, AWAY: 0 };
+    Object.values(picks).forEach(s => cnt[s]++);
+    const popular = Object.entries(cnt).filter(([,c]) => c > 0).sort((a,b) => b[1] - a[1]);
+
+    html += `<tr><td><strong>${m.homeTeam}</strong><br/><span style="color:#8b949e">vs ${m.awayTeam}</span></td>`;
+    allUsers.forEach(u => {
+      const p = picks[u.uid];
+      html += `<td>${p ? `<span class="pick-chip ${selClass[p]}">${selLabel[p]}</span>` : '<span class="pick-empty">—</span>'}</td>`;
+    });
+    html += `<td>${popular.length ? popular.slice(0,2).map(([s,c]) => `<div class="popular-text">${selLabel[s]} ${c}명</div>`).join('') : '<span class="pick-empty">—</span>'}</td></tr>`;
+  });
+  html += '</tbody>';
+  document.getElementById('boardTable').innerHTML = html;
+}
+
+// ── Admin ──
+function openAdmin() { document.getElementById('adminDialog').classList.add('open'); }
+function closeAdmin() { document.getElementById('adminDialog').classList.remove('open'); }
+function addMatch() {
+  const gn = document.getElementById('fGameNo').value.trim();
+  const lg = document.getElementById('fLeague').value.trim() || '미정';
+  const home = document.getElementById('fHome').value.trim();
+  const away = document.getElementById('fAway').value.trim();
+  const time = document.getElementById('fTime').value || '19:00';
+  const oh = parseFloat(document.getElementById('fOddsH').value) || 1.85;
+  const od = parseFloat(document.getElementById('fOddsD').value) || 0;
+  const oa = parseFloat(document.getElementById('fOddsA').value) || 2.10;
+  if (!gn || !home || !away) return;
+  matches.push({ id: 'm' + Date.now(), gameNo: gn, league: lg, homeTeam: home, awayTeam: away, time, oddsHome: oh, oddsDraw: od, oddsAway: oa });
+  const al = document.getElementById('adminAlert');
+  al.textContent = '경기가 등록되었습니다';
+  al.classList.remove('hidden');
+  setTimeout(() => al.classList.add('hidden'), 2000);
+  document.getElementById('fGameNo').value = '';
+  document.getElementById('fHome').value = '';
+  document.getElementById('fAway').value = '';
+  renderMatches();
+}
+function importDemo() {
+  const demo = [
+    { id: 'md1', gameNo: '301', league: 'K리그', homeTeam: '전북 현대', awayTeam: '울산 HD', time: '19:00', oddsHome: 2.40, oddsDraw: 3.10, oddsAway: 2.55 },
+    { id: 'md2', gameNo: '302', league: 'K리그', homeTeam: '수원 FC', awayTeam: '인천 유나이티드', time: '19:00', oddsHome: 2.05, oddsDraw: 3.25, oddsAway: 3.10 },
+    { id: 'md3', gameNo: '203', league: 'KBO', homeTeam: '두산 베어스', awayTeam: '한화 이글스', time: '18:30', oddsHome: 1.65, oddsDraw: 0, oddsAway: 2.05 },
+  ];
+  matches.push(...demo);
+  const al = document.getElementById('adminAlert');
+  al.textContent = `${demo.length}개 경기를 가져왔습니다`;
+  al.classList.remove('hidden');
+  setTimeout(() => al.classList.add('hidden'), 3000);
+  renderMatches();
+}
+</script>
+</body>
+</html>
