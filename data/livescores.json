@@ -1,16 +1,7 @@
 {
-  "updatedAt": "2026-07-21T04:18:59.623Z",
-  "count": 73,
+  "updatedAt": "2026-07-21T06:45:09.987Z",
+  "count": 74,
   "scores": [
-    {
-      "homeTeam": "카예시스포르",
-      "awayTeam": "카심파샤",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1784592000000,
-      "sport": "축구"
-    },
     {
       "homeTeam": "클리블랜드",
       "awayTeam": "미네소타",
@@ -84,20 +75,19 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "시카고컵스",
-      "awayTeam": "디트로이트",
-      "homeScore": 6,
-      "awayScore": 8,
-      "status": "LIVE",
-      "timestamp": 1784624700000,
-      "sport": "야구",
-      "inning": "10회말"
-    },
-    {
       "homeTeam": "텍사스",
       "awayTeam": "시카고W",
       "homeScore": 3,
       "awayScore": 10,
+      "status": "FINISHED",
+      "timestamp": 1784624700000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "시카고컵스",
+      "awayTeam": "디트로이트",
+      "homeScore": 6,
+      "awayScore": 8,
       "status": "FINISHED",
       "timestamp": 1784624700000,
       "sport": "야구"
@@ -125,30 +115,27 @@
       "awayTeam": "신시내티",
       "homeScore": 8,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1784630400000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "애리조나",
       "awayTeam": "애슬레틱스",
       "homeScore": 2,
       "awayScore": 5,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1784630400000,
-      "sport": "야구",
-      "inning": "7회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "LA에인절스",
       "awayTeam": "세인트루이스",
-      "homeScore": 1,
+      "homeScore": 3,
       "awayScore": 2,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1784632200000,
-      "sport": "야구",
-      "inning": "8회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "요미우리",
@@ -482,6 +469,24 @@
       "status": "FINISHED",
       "timestamp": 1784590200000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n19\n16\n23\n19",
+      "awayTeam": "ZheJiang Chouzhou Ban",
+      "homeScore": 6,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1784616270084,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "C\n16\n49\nHT\n6\n10\n24\n25",
+      "awayTeam": "Labuan\nSabah",
+      "homeScore": 10,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1784616270084,
+      "sport": "농구"
     },
     {
       "homeTeam": "스페인",
