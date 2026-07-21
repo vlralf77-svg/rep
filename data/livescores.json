@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-21T12:48:25.246Z",
-  "count": 74,
+  "updatedAt": "2026-07-21T14:50:44.152Z",
+  "count": 73,
   "scores": [
     {
       "homeTeam": "클리블랜드",
@@ -138,30 +138,19 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "야쿠르트",
-      "awayTeam": "주니치",
-      "homeScore": 4,
-      "awayScore": 11,
-      "status": "LIVE",
-      "timestamp": 1784656800000,
-      "sport": "야구",
-      "inning": "9회말"
-    },
-    {
-      "homeTeam": "한신",
-      "awayTeam": "요코하마",
-      "homeScore": 1,
-      "awayScore": 1,
-      "status": "LIVE",
-      "timestamp": 1784656800000,
-      "sport": "야구",
-      "inning": "11회초"
-    },
-    {
       "homeTeam": "요미우리",
       "awayTeam": "히로시마",
       "homeScore": 11,
       "awayScore": 5,
+      "status": "FINISHED",
+      "timestamp": 1784656800000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "야쿠르트",
+      "awayTeam": "주니치",
+      "homeScore": 4,
+      "awayScore": 11,
       "status": "FINISHED",
       "timestamp": 1784656800000,
       "sport": "야구"
@@ -176,50 +165,56 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "한신",
+      "awayTeam": "요코하마",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1784656800000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "KT",
+      "awayTeam": "두산",
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1784658600000,
+      "sport": "야구",
+      "inning": "11회말"
+    },
+    {
       "homeTeam": "KIA",
       "awayTeam": "한화",
       "homeScore": 7,
       "awayScore": 3,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1784658600000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "LG",
       "awayTeam": "NC",
       "homeScore": 5,
       "awayScore": 7,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1784658600000,
-      "sport": "야구",
-      "inning": "9회초"
-    },
-    {
-      "homeTeam": "KT",
-      "awayTeam": "두산",
-      "homeScore": 2,
-      "awayScore": 1,
-      "status": "LIVE",
-      "timestamp": 1784658600000,
-      "sport": "야구",
-      "inning": "6회초"
-    },
-    {
-      "homeTeam": "키움",
-      "awayTeam": "삼성",
-      "homeScore": 6,
-      "awayScore": 8,
-      "status": "LIVE",
-      "timestamp": 1784658600000,
-      "sport": "야구",
-      "inning": "9회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "롯데",
       "awayTeam": "SSG",
       "homeScore": 6,
       "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1784658600000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "키움",
+      "awayTeam": "삼성",
+      "homeScore": 6,
+      "awayScore": 8,
       "status": "FINISHED",
       "timestamp": 1784658600000,
       "sport": "야구"
@@ -477,21 +472,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n12\n21\n24\n29\n21\n16",
-      "awayTeam": "Shanxi Zhuyeqing",
-      "homeScore": 6,
-      "awayScore": 30,
+      "homeTeam": "Q\n25\n11",
+      "awayTeam": "코소보",
+      "homeScore": 17,
+      "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1784638071949,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n25\n25\n30\n30",
-      "awayTeam": "TNT 트로팡\nTitan Ultra G",
-      "homeScore": 9,
-      "awayScore": 15,
-      "status": "LIVE",
-      "timestamp": 1784638071949,
+      "timestamp": 1784645402136,
       "sport": "농구"
     },
     {
