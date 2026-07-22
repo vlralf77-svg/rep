@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-22T06:14:28.291Z",
-  "count": 98,
+  "updatedAt": "2026-07-22T08:44:59.324Z",
+  "count": 99,
   "scores": [
     {
       "homeTeam": "카예시스포르",
@@ -201,6 +201,15 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "KT",
+      "awayTeam": "두산",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1784745000000,
+      "sport": "야구"
+    },
+    {
       "homeTeam": "KIA",
       "awayTeam": "한화",
       "homeScore": 0,
@@ -212,15 +221,6 @@
     {
       "homeTeam": "LG",
       "awayTeam": "NC",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1784745000000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "KT",
-      "awayTeam": "두산",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -532,6 +532,15 @@
       "status": "FINISHED",
       "timestamp": 1784662200000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n22\n0\n18\n0",
+      "awayTeam": "Meycauayan",
+      "homeScore": 10,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1784709864878,
+      "sport": "농구"
     },
     {
       "homeTeam": "제주SK FC",
@@ -851,7 +860,7 @@
     {
       "homeTeam": "이탈리아",
       "awayTeam": "네덜란드",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1784707200000,
