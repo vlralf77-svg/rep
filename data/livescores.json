@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-22T15:57:09.467Z",
+  "updatedAt": "2026-07-22T17:06:14.587Z",
   "count": 112,
   "scores": [
     {
@@ -275,9 +275,9 @@
     {
       "homeTeam": "프레스 ZD FC",
       "awayTeam": "동고FC",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 13,
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1784750400000,
       "sport": "축구"
     },
@@ -293,11 +293,12 @@
     {
       "homeTeam": "토트넘",
       "awayTeam": "MK돈스",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784768400000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 4'"
     },
     {
       "homeTeam": "벤피카 II",
@@ -817,7 +818,7 @@
       "awayTeam": "카이라트",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784739600000,
       "sport": "축구"
     },
