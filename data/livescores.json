@@ -1,16 +1,7 @@
 {
-  "updatedAt": "2026-07-22T21:57:17.580Z",
-  "count": 111,
+  "updatedAt": "2026-07-22T22:44:08.366Z",
+  "count": 109,
   "scores": [
-    {
-      "homeTeam": "카예시스포르",
-      "awayTeam": "카심파샤",
-      "homeScore": 0,
-      "awayScore": 1,
-      "status": "FINISHED",
-      "timestamp": 1784678400000,
-      "sport": "축구"
-    },
     {
       "homeTeam": "필라델피아",
       "awayTeam": "LA다저스",
@@ -282,15 +273,6 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "됭케르크",
-      "awayTeam": "삼순",
-      "homeScore": 2,
-      "awayScore": 1,
-      "status": "FINISHED",
-      "timestamp": 1784754000000,
-      "sport": "축구"
-    },
-    {
       "homeTeam": "토트넘",
       "awayTeam": "MK돈스",
       "homeScore": 1,
@@ -349,8 +331,17 @@
       "awayTeam": "워싱턴",
       "homeScore": 0,
       "awayScore": 8,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1784779800000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "애리조나",
+      "awayTeam": "애슬레틱스",
+      "homeScore": 15,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1784781600000,
       "sport": "야구",
       "inning": "9회초"
     },
@@ -359,20 +350,9 @@
       "awayTeam": "신시내티",
       "homeScore": 3,
       "awayScore": 5,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1784781600000,
-      "sport": "야구",
-      "inning": "9회초"
-    },
-    {
-      "homeTeam": "애리조나",
-      "awayTeam": "애슬레틱스",
-      "homeScore": 11,
-      "awayScore": 2,
-      "status": "LIVE",
-      "timestamp": 1784781600000,
-      "sport": "야구",
-      "inning": "6회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "LA에인절스",
@@ -382,7 +362,7 @@
       "status": "LIVE",
       "timestamp": 1784783220000,
       "sport": "야구",
-      "inning": "7회초"
+      "inning": "9회말"
     },
     {
       "homeTeam": "필라델피아",
