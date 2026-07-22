@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-22T17:06:14.587Z",
+  "updatedAt": "2026-07-22T18:18:38.306Z",
   "count": 112,
   "scores": [
     {
@@ -295,18 +295,8 @@
       "awayTeam": "MK돈스",
       "homeScore": 1,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1784768400000,
-      "sport": "축구",
-      "minute": "후반 4'"
-    },
-    {
-      "homeTeam": "벤피카 II",
-      "awayTeam": "알 나스르",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1784772000000,
       "sport": "축구"
     },
     {
@@ -322,37 +312,41 @@
       "homeTeam": "뉴욕양키스",
       "awayTeam": "피츠버그",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1784772300000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "5회초"
     },
     {
       "homeTeam": "보스턴",
       "awayTeam": "볼티모어",
-      "homeScore": 0,
+      "homeScore": 4,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784774100000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회초"
     },
     {
       "homeTeam": "밀워키",
       "awayTeam": "뉴욕메츠",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784776200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "캔자스시티",
       "awayTeam": "샌프란시스코",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784776200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "콜로라도",
@@ -688,6 +682,15 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "HT\n22\n21\n24\n20",
+      "awayTeam": "BRB",
+      "homeScore": 13,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1784744278559,
+      "sport": "농구"
+    },
+    {
       "homeTeam": "아반아카데미",
       "awayTeam": "샴록로버스",
       "homeScore": 2,
@@ -816,16 +819,16 @@
     {
       "homeTeam": "오모니아",
       "awayTeam": "카이라트",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "SCHEDULED",
       "timestamp": 1784739600000,
       "sport": "축구"
     },
     {
       "homeTeam": "레프스키",
       "awayTeam": "C크라이오바",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1784741400000,
