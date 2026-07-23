@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-23T07:05:17.839Z",
+  "updatedAt": "2026-07-23T09:32:17.872Z",
   "count": 109,
   "scores": [
     {
@@ -313,26 +313,38 @@
       "awayTeam": "닛폰햄",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784829600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "소프트뱅크",
       "awayTeam": "오릭스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784829600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "지바롯데",
       "awayTeam": "라쿠텐",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1784829600000,
+      "sport": "야구",
+      "inning": "2회초"
+    },
+    {
+      "homeTeam": "KT",
+      "awayTeam": "두산",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
-      "timestamp": 1784829600000,
+      "timestamp": 1784831400000,
       "sport": "야구"
     },
     {
@@ -347,15 +359,6 @@
     {
       "homeTeam": "LG",
       "awayTeam": "NC",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1784831400000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "KT",
-      "awayTeam": "두산",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -968,8 +971,8 @@
     {
       "homeTeam": "튀르키예",
       "awayTeam": "캐나다",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 2,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1784793600000,
       "sport": "배구"
