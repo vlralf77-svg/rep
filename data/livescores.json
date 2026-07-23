@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-23T12:55:59.075Z",
-  "count": 110,
+  "updatedAt": "2026-07-23T14:58:06.368Z",
+  "count": 112,
   "scores": [
     {
       "homeTeam": "토트넘",
@@ -345,26 +345,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "LG",
-      "awayTeam": "NC",
-      "homeScore": 5,
-      "awayScore": 7,
-      "status": "LIVE",
-      "timestamp": 1784831400000,
-      "sport": "야구",
-      "inning": "9회말"
-    },
-    {
-      "homeTeam": "키움",
-      "awayTeam": "삼성",
-      "homeScore": 1,
-      "awayScore": 1,
-      "status": "LIVE",
-      "timestamp": 1784831400000,
-      "sport": "야구",
-      "inning": "11회초"
-    },
-    {
       "homeTeam": "KIA",
       "awayTeam": "한화",
       "homeScore": 3,
@@ -374,10 +354,28 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "LG",
+      "awayTeam": "NC",
+      "homeScore": 5,
+      "awayScore": 7,
+      "status": "FINISHED",
+      "timestamp": 1784831400000,
+      "sport": "야구"
+    },
+    {
       "homeTeam": "롯데",
       "awayTeam": "SSG",
       "homeScore": 2,
       "awayScore": 5,
+      "status": "FINISHED",
+      "timestamp": 1784831400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "키움",
+      "awayTeam": "삼성",
+      "homeScore": 1,
+      "awayScore": 3,
       "status": "FINISHED",
       "timestamp": 1784831400000,
       "sport": "야구"
@@ -662,12 +660,30 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n11\n26\n19\n11",
-      "awayTeam": "조지아",
-      "homeScore": 14,
-      "awayScore": 30,
+      "homeTeam": "Q\n22\n25\n21\n23\n15\n12",
+      "awayTeam": "알바니아",
+      "homeScore": 16,
+      "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1784811315927,
+      "timestamp": 1784818645956,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n18\n2\n19\n6",
+      "awayTeam": "아르메니아",
+      "homeScore": 17,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1784818645956,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n27\n14\n8\n19",
+      "awayTeam": "Al Hashid Al Shaabi",
+      "homeScore": 16,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1784818645956,
       "sport": "농구"
     },
     {
@@ -988,9 +1004,9 @@
     {
       "homeTeam": "미국",
       "awayTeam": "중국",
-      "homeScore": 1,
-      "awayScore": 1,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1784806200000,
       "sport": "배구"
     }
