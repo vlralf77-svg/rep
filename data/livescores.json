@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-23T16:21:16.990Z",
+  "updatedAt": "2026-07-23T17:52:13.996Z",
   "count": 89,
   "scores": [
     {
@@ -383,29 +383,31 @@
     {
       "homeTeam": "다이아몬드FC",
       "awayTeam": "경기남부소방",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 6,
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1784836800000,
       "sport": "축구"
     },
     {
       "homeTeam": "애틀랜타",
       "awayTeam": "샌디에이고",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 5,
+      "awayScore": 3,
+      "status": "LIVE",
       "timestamp": 1784855700000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "5회말"
     },
     {
       "homeTeam": "클리블랜드",
       "awayTeam": "미네소타",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784859000000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회말"
     },
     {
       "homeTeam": "토론토",
@@ -597,12 +599,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n16\n7",
-      "awayTeam": "지브롤터",
-      "homeScore": 18,
-      "awayScore": 30,
+      "homeTeam": "HT\n15\n16\n18\n26",
+      "awayTeam": "키프로스",
+      "homeScore": 12,
+      "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1784823633869,
+      "timestamp": 1784829092047,
       "sport": "농구"
     },
     {
