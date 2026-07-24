@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-24T15:39:07.910Z",
+  "updatedAt": "2026-07-24T17:11:45.288Z",
   "count": 88,
   "scores": [
     {
@@ -213,19 +213,21 @@
       "homeTeam": "로젠보리",
       "awayTeam": "맨유",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1784941200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 9'"
     },
     {
       "homeTeam": "비보리",
       "awayTeam": "OB",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1784944800000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 7'"
     },
     {
       "homeTeam": "갈라타사라이",
@@ -543,15 +545,6 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "가테셰드",
-      "awayTeam": "뉴캐슬",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1785011400000,
-      "sport": "축구"
-    },
-    {
       "homeTeam": "라오스",
       "awayTeam": "태국",
       "homeScore": 0,
@@ -579,12 +572,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n4\n16",
-      "awayTeam": "Caxias do Sul LDB U22",
-      "homeScore": 17,
+      "homeTeam": "Q\n17\n22\n8\n21\n22\n9",
+      "awayTeam": "보스니아 헤르체고비나",
+      "homeScore": 16,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1784913063550,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n18\n24\n11\n28\n18\n9",
+      "awayTeam": "체코",
+      "homeScore": 18,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1784907506669,
+      "timestamp": 1784913063550,
       "sport": "농구"
     },
     {
