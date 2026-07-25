@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-25T15:03:39.631Z",
-  "count": 123,
+  "updatedAt": "2026-07-25T16:08:45.482Z",
+  "count": 125,
   "scores": [
     {
       "homeTeam": "로젠보리",
@@ -347,40 +347,40 @@
     {
       "homeTeam": "비스바덴",
       "awayTeam": "FC 바이에른",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1785018600000,
-      "sport": "축구",
-      "minute": "후반 24'"
+      "sport": "축구"
     },
     {
       "homeTeam": "셀틱",
       "awayTeam": "밀란",
       "homeScore": 2,
-      "awayScore": 0,
-      "status": "LIVE",
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1785020400000,
-      "sport": "축구",
-      "minute": "전반종료"
+      "sport": "축구"
     },
     {
       "homeTeam": "AGF",
       "awayTeam": "브뢴비",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785027600000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 5'"
     },
     {
       "homeTeam": "PSV 아인트호벤",
       "awayTeam": "비야레알",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785027600000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 4'"
     },
     {
       "homeTeam": "디트로이트",
@@ -878,12 +878,30 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n15\n8\n13\n1",
-      "awayTeam": "코소보",
-      "homeScore": 17,
+      "homeTeam": "Q\n6\n12",
+      "awayTeam": "북마케도니아",
+      "homeScore": 16,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1784991778337,
+      "timestamp": 1784995682011,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n17\n20\n24\n21",
+      "awayTeam": "Unifacisa LDB U22",
+      "homeScore": 15,
+      "awayScore": 15,
+      "status": "LIVE",
+      "timestamp": 1784995682011,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n12\n29\n21\n25",
+      "awayTeam": "Cruzeiro LDB U22",
+      "homeScore": 17,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1784995682011,
       "sport": "농구"
     },
     {
