@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-25T17:13:52.501Z",
+  "updatedAt": "2026-07-25T18:08:22.637Z",
   "count": 123,
   "scores": [
     {
@@ -365,40 +365,40 @@
     {
       "homeTeam": "AGF",
       "awayTeam": "브뢴비",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1785027600000,
-      "sport": "축구",
-      "minute": "후반 6'"
+      "sport": "축구"
     },
     {
       "homeTeam": "PSV 아인트호벤",
       "awayTeam": "비야레알",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1785027600000,
-      "sport": "축구",
-      "minute": "후반 5'"
+      "sport": "축구"
     },
     {
       "homeTeam": "디트로이트",
       "awayTeam": "캔자스시티",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1785031800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "4회말"
     },
     {
       "homeTeam": "스탕다르",
       "awayTeam": "유벤투스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785034800000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 3'"
     },
     {
       "homeTeam": "샌프란시스코",
@@ -878,12 +878,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n24\n7\n9\n22\n26\n16",
-      "awayTeam": "북마케도니아",
-      "homeScore": 16,
+      "homeTeam": "Q\n14\n8\n6\n8\n16\n4",
+      "awayTeam": "알바니아",
+      "homeScore": 12,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1784999596648,
+      "timestamp": 1785002864945,
       "sport": "농구"
     },
     {
