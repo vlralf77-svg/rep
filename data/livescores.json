@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-26T06:27:15.662Z",
+  "updatedAt": "2026-07-26T08:45:06.250Z",
   "count": 122,
   "scores": [
     {
@@ -320,45 +320,52 @@
     {
       "homeTeam": "오릭스",
       "awayTeam": "지바롯데",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 3,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1785070800000,
-      "sport": "야구",
-      "inning": "7회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "닛폰햄",
       "awayTeam": "라쿠텐",
-      "homeScore": 5,
+      "homeScore": 6,
       "awayScore": 2,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1785070800000,
-      "sport": "야구",
-      "inning": "7회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "주니치",
       "awayTeam": "요코하마",
-      "homeScore": 1,
+      "homeScore": 5,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1785072600000,
-      "sport": "야구",
-      "inning": "6회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "세이부",
       "awayTeam": "소프트뱅크",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785085200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회말"
     },
     {
       "homeTeam": "야쿠르트",
       "awayTeam": "히로시마",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1785088800000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "한신",
+      "awayTeam": "요미우리",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -404,15 +411,6 @@
     {
       "homeTeam": "KIA",
       "awayTeam": "키움",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1785088800000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "한신",
-      "awayTeam": "요미우리",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -492,8 +490,8 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "트라브존",
-      "awayTeam": "프랑크푸르트",
+      "homeTeam": "프랑크푸르트",
+      "awayTeam": "트라브존",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -1088,8 +1086,8 @@
     {
       "homeTeam": "중국",
       "awayTeam": "이탈리아",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1785051000000,
       "sport": "배구"
