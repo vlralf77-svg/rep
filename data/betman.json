@@ -1,145 +1,7 @@
 {
-  "updatedAt": "2026-07-26T11:15:08.159Z",
+  "updatedAt": "2026-07-26T13:03:56.522Z",
   "toto": [],
   "proto": [
-    {
-      "matchId": "튀르키예_여자_브라질|여자|1785065400000",
-      "sport": "배구",
-      "league": "승부식87 회차",
-      "homeTeam": "튀르키예_여자_브라질",
-      "awayTeam": "여자",
-      "gameDate": "2026-07-26T11:30:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.84
-            },
-            {
-              "label": "패",
-              "odds": 1.69
-            }
-          ]
-        },
-        {
-          "type": "세트핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.39
-            },
-            {
-              "label": "패",
-              "odds": 2.4
-            }
-          ],
-          "line": 1.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.81
-            },
-            {
-              "label": "오버",
-              "odds": 1.71
-            }
-          ],
-          "line": 185.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.76
-            },
-            {
-              "label": "짝",
-              "odds": 1.76
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "SK브란|볼레렝아 포트발|1785069000000",
-      "sport": "축구",
-      "league": "승부식87 회차",
-      "homeTeam": "SK브란",
-      "awayTeam": "볼레렝아 포트발",
-      "gameDate": "2026-07-26T12:30:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.64
-            },
-            {
-              "label": "무",
-              "odds": 3.75
-            },
-            {
-              "label": "패",
-              "odds": 3.65
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.7
-            },
-            {
-              "label": "무",
-              "odds": 3.6
-            },
-            {
-              "label": "패",
-              "odds": 1.99
-            }
-          ],
-          "line": -1
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.62
-            },
-            {
-              "label": "오버",
-              "odds": 1.93
-            }
-          ],
-          "line": 3.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.76
-            },
-            {
-              "label": "짝",
-              "odds": 1.76
-            }
-          ]
-        }
-      ]
-    },
     {
       "matchId": "사네피오르 포트발|FK보되 글림트|1785078000000",
       "sport": "축구",
@@ -154,15 +16,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 5.9
+              "odds": 6.2
             },
             {
               "label": "무",
-              "odds": 4.6
+              "odds": 4.7
             },
             {
               "label": "패",
-              "odds": 1.31
+              "odds": 1.29
             }
           ]
         },
@@ -171,15 +33,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.85
+              "odds": 3.05
             },
             {
               "label": "무",
-              "odds": 3.65
+              "odds": 3.55
             },
             {
               "label": "패",
-              "odds": 1.91
+              "odds": 1.85
             }
           ],
           "line": 1
@@ -1556,14 +1418,14 @@
           "selections": [
             {
               "label": "언더",
-              "odds": 1.81
+              "odds": 1.76
             },
             {
               "label": "오버",
-              "odds": 1.71
+              "odds": 1.76
             }
           ],
-          "line": 7.5
+          "line": 8.5
         },
         {
           "type": "SUM",
@@ -1682,11 +1544,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.49
+              "odds": 2.26
             },
             {
               "label": "패",
-              "odds": 1.36
+              "odds": 1.44
             }
           ],
           "line": -1.5
