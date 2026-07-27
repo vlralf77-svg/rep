@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-27T08:18:32.153Z",
-  "count": 97,
+  "updatedAt": "2026-07-27T11:43:43.916Z",
+  "count": 100,
   "scores": [
     {
       "homeTeam": "AS 칸",
@@ -158,11 +158,12 @@
     {
       "homeTeam": "싱가포르",
       "awayTeam": "동티모르",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785182400000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 41'"
     },
     {
       "homeTeam": "인도네시아",
@@ -685,6 +686,33 @@
       "status": "FINISHED",
       "timestamp": 1785094200000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n18\n20\n12\n11",
+      "awayTeam": "중국",
+      "homeScore": 11,
+      "awayScore": 30,
+      "status": "FINISHED",
+      "timestamp": 1785152591471,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n22\n11\n23\n11",
+      "awayTeam": "프랑스",
+      "homeScore": 11,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785152591471,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n15\n23\n25\n15",
+      "awayTeam": "터키",
+      "homeScore": 13,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1785152591472,
+      "sport": "농구"
     },
     {
       "homeTeam": "뉴욕레드불스",
