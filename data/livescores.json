@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-27T17:55:02.603Z",
-  "count": 51,
+  "updatedAt": "2026-07-27T19:06:15.006Z",
+  "count": 52,
   "scores": [
     {
       "homeTeam": "AS 칸",
@@ -187,28 +187,29 @@
       "awayTeam": "실케보리",
       "homeScore": 1,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1785204000000,
-      "sport": "축구",
-      "minute": "전반종료"
+      "sport": "축구"
     },
     {
       "homeTeam": "갈라타사라이",
       "awayTeam": "베네치아",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785207600000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반종료"
     },
     {
       "homeTeam": "텍사스",
       "awayTeam": "시애틀",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1785209700000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회말"
     },
     {
       "homeTeam": "피츠버그",
@@ -391,21 +392,30 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n22\n17\n28\n24",
-      "awayTeam": "Paulistano LDB U22",
-      "homeScore": 17,
-      "awayScore": 0,
+      "homeTeam": "Q\n15\n13\n18\n5",
+      "awayTeam": "스페인",
+      "homeScore": 18,
+      "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1785174862123,
+      "timestamp": 1785179143739,
       "sport": "농구"
     },
     {
-      "homeTeam": "HT\n22\n16\n16\n16",
-      "awayTeam": "Bauru LDB U22",
-      "homeScore": 12,
-      "awayScore": 30,
+      "homeTeam": "Q\n25\n11\n29\n9",
+      "awayTeam": "독일",
+      "homeScore": 16,
+      "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1785174862123,
+      "timestamp": 1785179143739,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "대기",
+      "awayTeam": "Philippines MPBL",
+      "homeScore": 4,
+      "awayScore": 44,
+      "status": "LIVE",
+      "timestamp": 1785179143739,
       "sport": "농구"
     },
     {
