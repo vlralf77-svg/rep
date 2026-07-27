@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-27T21:46:47.726Z",
-  "count": 48,
+  "updatedAt": "2026-07-27T22:44:15.628Z",
+  "count": 49,
   "scores": [
     {
       "homeTeam": "AS 칸",
@@ -223,9 +223,10 @@
       "awayTeam": "필라델피아",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785224400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "워싱턴",
@@ -336,8 +337,8 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "센트럴리그",
-      "awayTeam": "퍼시픽리그",
+      "homeTeam": "LG",
+      "awayTeam": "키움",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -345,8 +346,8 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "LG",
-      "awayTeam": "키움",
+      "homeTeam": "센트럴리그",
+      "awayTeam": "퍼시픽리그",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -379,6 +380,15 @@
       "status": "SCHEDULED",
       "timestamp": 1785276000000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n12\n8\n15\n28",
+      "awayTeam": "멕시코",
+      "homeScore": 0,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1785192227645,
+      "sport": "농구"
     },
     {
       "homeTeam": "쿠프스",
