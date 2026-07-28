@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-28T06:43:52.286Z",
-  "count": 48,
+  "updatedAt": "2026-07-28T09:24:15.392Z",
+  "count": 49,
   "scores": [
     {
       "homeTeam": "라네르스",
@@ -129,6 +129,15 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "센트럴리그",
+      "awayTeam": "퍼시픽리그",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1785263400000,
+      "sport": "야구"
+    },
+    {
       "homeTeam": "삼성",
       "awayTeam": "KIA",
       "homeScore": 0,
@@ -158,15 +167,6 @@
     {
       "homeTeam": "SSG",
       "awayTeam": "두산",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1785263400000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "센트럴리그",
-      "awayTeam": "퍼시픽리그",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -379,6 +379,15 @@
       "status": "FINISHED",
       "timestamp": 1785191400000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n18\n21\n18\n16",
+      "awayTeam": "노르웨이",
+      "homeScore": 11,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785230615596,
+      "sport": "농구"
     },
     {
       "homeTeam": "쿠프스",
