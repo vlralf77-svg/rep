@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-29T16:47:25.954Z",
+  "updatedAt": "2026-07-29T17:57:56.275Z",
   "count": 65,
   "scores": [
     {
@@ -221,49 +221,52 @@
     {
       "homeTeam": "마이애미",
       "awayTeam": "필라델피아",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 3,
+      "awayScore": 6,
       "status": "LIVE",
       "timestamp": 1785373800000,
       "sport": "야구",
-      "inning": "3회초"
+      "inning": "7회말"
     },
     {
       "homeTeam": "피츠버그",
       "awayTeam": "애리조나",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1785375300000,
       "sport": "야구",
-      "inning": "1회말"
+      "inning": "6회초"
     },
     {
       "homeTeam": "워싱턴",
       "awayTeam": "토론토",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785377100000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "4회초"
     },
     {
       "homeTeam": "뉴욕메츠",
       "awayTeam": "애틀랜타",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785377400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회말"
     },
     {
       "homeTeam": "디트로이트",
       "awayTeam": "볼티모어",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785377400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "4회초"
     },
     {
       "homeTeam": "브리스톨 C",
@@ -446,21 +449,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n24\n8\n15\n8",
-      "awayTeam": "아제르바이잔",
-      "homeScore": 16,
+      "homeTeam": "HT\n25\n33\n15\n12",
+      "awayTeam": "Rio Claro",
+      "homeScore": 17,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1785343605383,
+      "timestamp": 1785347840391,
       "sport": "농구"
     },
     {
-      "homeTeam": "HT\n7\n14\n25\n13",
-      "awayTeam": "Montenegro U18\n크로아티아",
-      "homeScore": 18,
+      "homeTeam": "HT\n28\n19\n25\n11",
+      "awayTeam": "Sao Jose LDB U22",
+      "homeScore": 12,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1785343605383,
+      "timestamp": 1785347840392,
       "sport": "농구"
     },
     {
@@ -529,7 +532,7 @@
     {
       "homeTeam": "카우노Z",
       "awayTeam": "클락스비크",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1785340800000,
@@ -539,7 +542,7 @@
       "homeTeam": "레흐포츠난",
       "awayTeam": "오르후스",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1785344400000,
       "sport": "축구"
@@ -557,7 +560,7 @@
       "homeTeam": "C크라이오바",
       "awayTeam": "레프스키",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1785346200000,
       "sport": "축구"
