@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-30T03:23:48.460Z",
-  "count": 62,
+  "updatedAt": "2026-07-30T06:04:31.754Z",
+  "count": 63,
   "scores": [
     {
       "homeTeam": "마이애미",
@@ -111,20 +111,19 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "시카고W",
-      "awayTeam": "뉴욕양키스",
-      "homeScore": 5,
-      "awayScore": 5,
-      "status": "LIVE",
-      "timestamp": 1785400800000,
-      "sport": "야구",
-      "inning": "12회말"
-    },
-    {
       "homeTeam": "미네소타",
       "awayTeam": "캔자스시티",
       "homeScore": 0,
       "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1785400800000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "시카고W",
+      "awayTeam": "뉴욕양키스",
+      "homeScore": 6,
+      "awayScore": 5,
       "status": "FINISHED",
       "timestamp": 1785400800000,
       "sport": "야구"
@@ -141,32 +140,29 @@
     {
       "homeTeam": "LA에인절스",
       "awayTeam": "휴스턴",
-      "homeScore": 3,
-      "awayScore": 5,
-      "status": "LIVE",
+      "homeScore": 4,
+      "awayScore": 7,
+      "status": "FINISHED",
       "timestamp": 1785407880000,
-      "sport": "야구",
-      "inning": "6회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "애슬레틱스",
       "awayTeam": "보스턴",
       "homeScore": 2,
-      "awayScore": 1,
-      "status": "LIVE",
+      "awayScore": 4,
+      "status": "FINISHED",
       "timestamp": 1785408000000,
-      "sport": "야구",
-      "inning": "6회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "LA다저스",
       "awayTeam": "시애틀",
-      "homeScore": 2,
-      "awayScore": 0,
-      "status": "LIVE",
+      "homeScore": 4,
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1785409800000,
-      "sport": "야구",
-      "inning": "4회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "삼성",
@@ -437,6 +433,15 @@
       "status": "FINISHED",
       "timestamp": 1785351600000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "nn Academy\n6\n7\n1Q\n6\n7",
+      "awayTeam": "Yulon Dinosaurs",
+      "homeScore": 8,
+      "awayScore": 30,
+      "status": "FINISHED",
+      "timestamp": 1785391441493,
+      "sport": "농구"
     },
     {
       "homeTeam": "쿠프스",
