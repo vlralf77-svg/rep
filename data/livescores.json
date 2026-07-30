@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-30T16:11:22.356Z",
-  "count": 65,
+  "updatedAt": "2026-07-30T17:46:51.313Z",
+  "count": 64,
   "scores": [
     {
       "homeTeam": "마이애미",
@@ -212,9 +212,9 @@
     {
       "homeTeam": "프레스 ZD FC",
       "awayTeam": "다이아몬드FC",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1785441600000,
       "sport": "축구"
     },
@@ -222,29 +222,31 @@
       "homeTeam": "트라브존",
       "awayTeam": "알 사드",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1785459600000,
       "sport": "축구",
-      "minute": "전반 7'"
+      "minute": "후반 43'"
     },
     {
       "homeTeam": "탬파베이",
       "awayTeam": "텍사스",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1785460200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "5회초"
     },
     {
       "homeTeam": "미네소타",
       "awayTeam": "캔자스시티",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785465600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "시카고W",
@@ -452,15 +454,6 @@
       "status": "SCHEDULED",
       "timestamp": 1785535200000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "Q\n2\n9",
-      "awayTeam": "프랑스",
-      "homeScore": 18,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1785427847610,
-      "sport": "농구"
     },
     {
       "homeTeam": "카이라트",
