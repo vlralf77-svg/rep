@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-30T08:41:09.495Z",
+  "updatedAt": "2026-07-30T10:51:25.202Z",
   "count": 62,
   "scores": [
     {
@@ -167,47 +167,52 @@
     {
       "homeTeam": "삼성",
       "awayTeam": "KIA",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 6,
+      "status": "LIVE",
       "timestamp": 1785436200000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "한화",
-      "awayTeam": "롯데",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1785436200000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "SSG",
-      "awayTeam": "두산",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1785436200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "4회초"
     },
     {
       "homeTeam": "NC",
       "awayTeam": "KT",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 4,
+      "status": "LIVE",
       "timestamp": 1785436200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "4회말"
+    },
+    {
+      "homeTeam": "한화",
+      "awayTeam": "롯데",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1785436200000,
+      "sport": "야구",
+      "inning": "5회말"
+    },
+    {
+      "homeTeam": "SSG",
+      "awayTeam": "두산",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1785436200000,
+      "sport": "야구",
+      "inning": "4회말"
     },
     {
       "homeTeam": "LG",
       "awayTeam": "키움",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "LIVE",
       "timestamp": 1785436200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "5회말"
     },
     {
       "homeTeam": "프레스 ZD FC",
