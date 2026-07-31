@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-31T17:55:45.475Z",
-  "count": 99,
+  "updatedAt": "2026-07-31T19:02:14.526Z",
+  "count": 102,
   "scores": [
     {
       "homeTeam": "트라브존",
@@ -250,18 +250,20 @@
       "awayTeam": "뉴욕양키스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785554400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회말"
     },
     {
       "homeTeam": "버밍엄",
       "awayTeam": "바르셀로나",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785555900000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 12'"
     },
     {
       "homeTeam": "던디 유나이티드",
@@ -660,12 +662,39 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n20\n35\n14\n15",
-      "awayTeam": "Uniao Corinthians LDB",
+      "homeTeam": "Q\n13\n6\n29\n2",
+      "awayTeam": "노르웨이",
+      "homeScore": 15,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785524497684,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n10\n21\n15\n14",
+      "awayTeam": "그리스",
+      "homeScore": 18,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785524497684,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n20\n15\n12\n22",
+      "awayTeam": "에스토니아",
+      "homeScore": 10,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1785524497684,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "연기",
+      "awayTeam": "Campo Mourao LDB U22",
       "homeScore": 17,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1785520505014,
+      "timestamp": 1785524497684,
       "sport": "농구"
     },
     {
