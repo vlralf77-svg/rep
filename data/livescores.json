@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-31T04:37:28.610Z",
-  "count": 64,
+  "updatedAt": "2026-07-31T07:28:29.378Z",
+  "count": 65,
   "scores": [
     {
       "homeTeam": "트라브존",
@@ -75,16 +75,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "샌디에이고",
-      "awayTeam": "샌프란시스코",
-      "homeScore": 1,
-      "awayScore": 4,
-      "status": "LIVE",
-      "timestamp": 1785494400000,
-      "sport": "야구",
-      "inning": "9회말"
-    },
-    {
       "homeTeam": "애슬레틱스",
       "awayTeam": "보스턴",
       "homeScore": 4,
@@ -94,14 +84,22 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "샌디에이고",
+      "awayTeam": "샌프란시스코",
+      "homeScore": 1,
+      "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1785494400000,
+      "sport": "야구"
+    },
+    {
       "homeTeam": "LA다저스",
       "awayTeam": "시애틀",
       "homeScore": 6,
       "awayScore": 2,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1785496200000,
-      "sport": "야구",
-      "inning": "8회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "야쿠르트",
@@ -453,6 +451,15 @@
       "status": "FINISHED",
       "timestamp": 1785441600000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "Q\n21\n26",
+      "awayTeam": "Sarangani Province",
+      "homeScore": 9,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785482877861,
+      "sport": "농구"
     },
     {
       "homeTeam": "카이라트",
