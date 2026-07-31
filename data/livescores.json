@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-31T21:34:18.503Z",
+  "updatedAt": "2026-07-31T22:36:19.058Z",
   "count": 98,
   "scores": [
     {
@@ -201,28 +201,28 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "동티모르",
+      "awayTeam": "인도네시아",
+      "homeScore": 0,
+      "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1785524400000,
+      "sport": "축구"
+    },
+    {
       "homeTeam": "인천 현대제철",
       "awayTeam": "화천 KSPO",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1785524400000,
       "sport": "축구"
     },
     {
       "homeTeam": "수원FC 위민",
       "awayTeam": "세종 스포츠토토",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1785524400000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "동티모르",
-      "awayTeam": "인도네시아",
-      "homeScore": 0,
-      "awayScore": 3,
+      "homeScore": 4,
+      "awayScore": 1,
       "status": "FINISHED",
       "timestamp": 1785524400000,
       "sport": "축구"
@@ -275,11 +275,12 @@
     {
       "homeTeam": "신시내티",
       "awayTeam": "피츠버그",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1785568200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "볼티모어",
