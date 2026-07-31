@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-31T10:04:50.235Z",
-  "count": 65,
+  "updatedAt": "2026-07-31T12:08:33.473Z",
+  "count": 67,
   "scores": [
     {
       "homeTeam": "트라브존",
@@ -105,51 +105,21 @@
       "homeTeam": "야쿠르트",
       "awayTeam": "한신",
       "homeScore": 3,
-      "awayScore": 0,
+      "awayScore": 4,
       "status": "LIVE",
       "timestamp": 1785520800000,
       "sport": "야구",
-      "inning": "3회초"
-    },
-    {
-      "homeTeam": "닛폰햄",
-      "awayTeam": "지바롯데",
-      "homeScore": 4,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1785520800000,
-      "sport": "야구",
-      "inning": "4회초"
-    },
-    {
-      "homeTeam": "히로시마",
-      "awayTeam": "주니치",
-      "homeScore": 0,
-      "awayScore": 1,
-      "status": "LIVE",
-      "timestamp": 1785520800000,
-      "sport": "야구",
-      "inning": "4회말"
+      "inning": "8회초"
     },
     {
       "homeTeam": "세이부",
       "awayTeam": "오릭스",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 3,
+      "awayScore": 3,
       "status": "LIVE",
       "timestamp": 1785520800000,
       "sport": "야구",
-      "inning": "3회말"
-    },
-    {
-      "homeTeam": "요미우리",
-      "awayTeam": "요코하마",
-      "homeScore": 1,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1785520800000,
-      "sport": "야구",
-      "inning": "4회말"
+      "inning": "8회초"
     },
     {
       "homeTeam": "라쿠텐",
@@ -161,54 +131,81 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "닛폰햄",
+      "awayTeam": "지바롯데",
+      "homeScore": 6,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1785520800000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "히로시마",
+      "awayTeam": "주니치",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1785520800000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "요미우리",
+      "awayTeam": "요코하마",
+      "homeScore": 6,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1785520800000,
+      "sport": "야구"
+    },
+    {
       "homeTeam": "KT",
       "awayTeam": "한화",
-      "homeScore": 0,
+      "homeScore": 5,
       "awayScore": 3,
       "status": "LIVE",
       "timestamp": 1785522600000,
       "sport": "야구",
-      "inning": "2회초"
+      "inning": "7회말"
     },
     {
       "homeTeam": "NC",
       "awayTeam": "KIA",
-      "homeScore": 1,
-      "awayScore": 1,
+      "homeScore": 9,
+      "awayScore": 3,
       "status": "LIVE",
       "timestamp": 1785522600000,
       "sport": "야구",
-      "inning": "2회초"
+      "inning": "7회말"
     },
     {
       "homeTeam": "두산",
       "awayTeam": "LG",
-      "homeScore": 0,
-      "awayScore": 1,
+      "homeScore": 4,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1785522600000,
       "sport": "야구",
-      "inning": "2회말"
+      "inning": "8회초"
     },
     {
       "homeTeam": "키움",
       "awayTeam": "SSG",
-      "homeScore": 1,
-      "awayScore": 0,
+      "homeScore": 12,
+      "awayScore": 5,
       "status": "LIVE",
       "timestamp": 1785522600000,
       "sport": "야구",
-      "inning": "2회말"
+      "inning": "6회말"
     },
     {
       "homeTeam": "롯데",
       "awayTeam": "삼성",
-      "homeScore": 0,
-      "awayScore": 1,
+      "homeScore": 3,
+      "awayScore": 9,
       "status": "LIVE",
       "timestamp": 1785522600000,
       "sport": "야구",
-      "inning": "2회초"
+      "inning": "7회말"
     },
     {
       "homeTeam": "인천 현대제철",
@@ -232,11 +229,10 @@
       "homeTeam": "동티모르",
       "awayTeam": "인도네시아",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1785524400000,
-      "sport": "축구",
-      "minute": "전반 2'"
+      "sport": "축구"
     },
     {
       "homeTeam": "베트남",
@@ -464,12 +460,30 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n21\n12\n30\n32",
-      "awayTeam": "Bulacan Kuyas",
-      "homeScore": 11,
+      "homeTeam": "Q\n25\n21\n7\n17\n18\n13",
+      "awayTeam": "보스니아 헤르체고비나",
+      "homeScore": 13,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1785499679326,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n14\n14\n19\n15\n5\n10",
+      "awayTeam": "이스라엘",
+      "homeScore": 13,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1785492260973,
+      "timestamp": 1785499679326,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n19\n15\n18\n22\n11\n28",
+      "awayTeam": "빌라이어 부드자",
+      "homeScore": 10,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1785499679326,
       "sport": "농구"
     },
     {
