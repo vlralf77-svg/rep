@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-01T07:04:57.820Z",
-  "count": 99,
+  "updatedAt": "2026-08-01T09:13:18.328Z",
+  "count": 100,
   "scores": [
     {
       "homeTeam": "유벤투스",
@@ -177,78 +177,24 @@
       "homeTeam": "닛폰햄",
       "awayTeam": "지바롯데",
       "homeScore": 3,
-      "awayScore": 3,
-      "status": "LIVE",
+      "awayScore": 5,
+      "status": "FINISHED",
       "timestamp": 1785592800000,
-      "sport": "야구",
-      "inning": "6회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "세이부",
       "awayTeam": "오릭스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785603600000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "KT",
-      "awayTeam": "한화",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1785607200000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "야쿠르트",
-      "awayTeam": "한신",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1785607200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "4회초"
     },
     {
       "homeTeam": "NC",
       "awayTeam": "KIA",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1785607200000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "히로시마",
-      "awayTeam": "주니치",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1785607200000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "두산",
-      "awayTeam": "LG",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1785607200000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "라쿠텐",
-      "awayTeam": "소프트뱅크",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1785607200000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "키움",
-      "awayTeam": "SSG",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -265,13 +211,74 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "KT",
+      "awayTeam": "한화",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785607200000,
+      "sport": "야구",
+      "inning": "1회말"
+    },
+    {
+      "homeTeam": "야쿠르트",
+      "awayTeam": "한신",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785607200000,
+      "sport": "야구",
+      "inning": "1회초"
+    },
+    {
+      "homeTeam": "히로시마",
+      "awayTeam": "주니치",
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1785607200000,
+      "sport": "야구",
+      "inning": "1회말"
+    },
+    {
+      "homeTeam": "두산",
+      "awayTeam": "LG",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785607200000,
+      "sport": "야구",
+      "inning": "1회말"
+    },
+    {
+      "homeTeam": "라쿠텐",
+      "awayTeam": "소프트뱅크",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785607200000,
+      "sport": "야구",
+      "inning": "1회말"
+    },
+    {
+      "homeTeam": "키움",
+      "awayTeam": "SSG",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785607200000,
+      "sport": "야구",
+      "inning": "1회말"
+    },
+    {
       "homeTeam": "요미우리",
       "awayTeam": "요코하마",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785607200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "경주 한수원",
@@ -661,12 +668,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n29\n16\n10\n8\n24\n17",
-      "awayTeam": "Manly Warringah Sea E",
-      "homeScore": 3,
+      "homeTeam": "Q\n11\n17\n21\n21",
+      "awayTeam": "스웨덴",
+      "homeScore": 8,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1785575553490,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n27\n11\n16\n19",
+      "awayTeam": "Nunawading Spectres",
+      "homeScore": 9,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1785567860122,
+      "timestamp": 1785575553490,
       "sport": "농구"
     },
     {
