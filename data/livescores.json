@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-01T15:17:10.031Z",
-  "count": 136,
+  "updatedAt": "2026-08-01T16:15:19.897Z",
+  "count": 139,
   "scores": [
     {
       "homeTeam": "유벤투스",
@@ -401,50 +401,49 @@
     {
       "homeTeam": "트랜미어",
       "awayTeam": "로치데일",
-      "homeScore": 1,
-      "awayScore": 1,
-      "status": "LIVE",
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1785625200000,
-      "sport": "축구",
-      "minute": "후반 11'"
+      "sport": "축구"
     },
     {
       "homeTeam": "팰커크",
       "awayTeam": "세인트 미렌",
       "homeScore": 0,
-      "awayScore": 1,
-      "status": "LIVE",
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1785625200000,
-      "sport": "축구",
-      "minute": "후반 13'"
+      "sport": "축구"
     },
     {
       "homeTeam": "카디프",
       "awayTeam": "로마",
-      "homeScore": 3,
-      "awayScore": 0,
-      "status": "LIVE",
+      "homeScore": 4,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1785625200000,
-      "sport": "축구",
-      "minute": "후반 7'"
+      "sport": "축구"
     },
     {
       "homeTeam": "레알 마드리드",
       "awayTeam": "피오렌티나",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785632400000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 10'"
     },
     {
       "homeTeam": "링비",
       "awayTeam": "AGF",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785632400000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 11'"
     },
     {
       "homeTeam": "애버딘",
@@ -960,12 +959,30 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n12\n6\n12\n12\n4\n21\n7\n4",
+      "homeTeam": "Q\n6\n9",
+      "awayTeam": "스위스",
+      "homeScore": 18,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1785600876208,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "과\n12\n6\n12\n21\n4\n21\n7\n4",
       "awayTeam": "Montenegro",
       "homeScore": 13,
       "awayScore": 45,
       "status": "LIVE",
-      "timestamp": 1785597393956,
+      "timestamp": 1785600876208,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n7\n10\n17\n34",
+      "awayTeam": "슬로바키아",
+      "homeScore": 18,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785600876208,
       "sport": "농구"
     },
     {
@@ -974,16 +991,25 @@
       "homeScore": 13,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1785597393956,
+      "timestamp": 1785600876208,
       "sport": "농구"
     },
     {
-      "homeTeam": "대기",
+      "homeTeam": "연기",
       "awayTeam": "Pinheiros LDB U22",
       "homeScore": 12,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1785597393956,
+      "timestamp": 1785600876208,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "과\n7\n9\n9\n15\n22\n13\n6\n13",
+      "awayTeam": "ADIEE",
+      "homeScore": 14,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785600876208,
       "sport": "농구"
     },
     {
@@ -1035,7 +1061,7 @@
       "homeTeam": "폴커크",
       "awayTeam": "세인트미렌",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1785592800000,
       "sport": "축구"
