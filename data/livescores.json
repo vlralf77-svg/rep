@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-01T22:13:24.207Z",
+  "updatedAt": "2026-08-01T23:10:28.288Z",
   "count": 133,
   "scores": [
     {
@@ -275,18 +275,18 @@
     {
       "homeTeam": "경주 한수원",
       "awayTeam": "문경 상무",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1785610800000,
       "sport": "축구"
     },
     {
       "homeTeam": "서울시청",
       "awayTeam": "강진",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1785610800000,
       "sport": "축구"
     },
@@ -480,43 +480,43 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "탬파베이",
-      "awayTeam": "시카고W",
-      "homeScore": 1,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1785647400000,
-      "sport": "야구",
-      "inning": "8회초"
-    },
-    {
       "homeTeam": "뉴욕메츠",
       "awayTeam": "마이애미",
       "homeScore": 2,
-      "awayScore": 5,
+      "awayScore": 6,
       "status": "LIVE",
       "timestamp": 1785647400000,
       "sport": "야구",
-      "inning": "6회초"
+      "inning": "8회말"
     },
     {
       "homeTeam": "시애틀",
       "awayTeam": "미네소타",
       "homeScore": 3,
-      "awayScore": 2,
+      "awayScore": 3,
       "status": "LIVE",
       "timestamp": 1785647400000,
       "sport": "야구",
-      "inning": "7회초"
+      "inning": "9회말"
+    },
+    {
+      "homeTeam": "탬파베이",
+      "awayTeam": "시카고W",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1785647400000,
+      "sport": "야구"
     },
     {
       "homeTeam": "신시내티",
       "awayTeam": "피츠버그",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785656400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회말"
     },
     {
       "homeTeam": "볼티모어",
