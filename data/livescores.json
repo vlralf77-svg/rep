@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-01T18:12:13.531Z",
-  "count": 136,
+  "updatedAt": "2026-08-01T19:32:41.306Z",
+  "count": 139,
   "scores": [
     {
       "homeTeam": "유벤투스",
@@ -446,41 +446,40 @@
     {
       "homeTeam": "애버딘",
       "awayTeam": "하츠",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1785634200000,
-      "sport": "축구",
-      "minute": "후반 36'"
+      "sport": "축구"
     },
     {
       "homeTeam": "이스트렐라 아마도라",
       "awayTeam": "알 나스르",
-      "homeScore": 1,
-      "awayScore": 0,
-      "status": "LIVE",
+      "homeScore": 4,
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1785636000000,
-      "sport": "축구",
-      "minute": "전반종료"
+      "sport": "축구"
     },
     {
       "homeTeam": "지로나",
       "awayTeam": "아스널",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 4,
       "status": "LIVE",
       "timestamp": 1785639600000,
       "sport": "축구",
-      "minute": "전반 10'"
+      "minute": "후반 28'"
     },
     {
       "homeTeam": "토론토",
       "awayTeam": "세인트루이스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785643620000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "탬파베이",
@@ -960,30 +959,57 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n16\n21\n20\n20",
-      "awayTeam": "피닉스 머큐리",
-      "homeScore": 19,
-      "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1785607901835,
+      "homeTeam": "HT\n24\n27\n31\n6",
+      "awayTeam": "폴란드",
+      "homeScore": 18,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1785612721347,
       "sport": "농구"
     },
     {
-      "homeTeam": "과\n12\n6\n12\n21\n4\n21\n7\n4",
-      "awayTeam": "Montenegro",
-      "homeScore": 13,
+      "homeTeam": "HT\n11\n21\n21\n19",
+      "awayTeam": "크로아티아",
+      "homeScore": 18,
       "awayScore": 45,
       "status": "LIVE",
-      "timestamp": 1785607901835,
+      "timestamp": 1785612721347,
       "sport": "농구"
     },
     {
-      "homeTeam": "Q\n6\n10",
+      "homeTeam": "Q\n14\n14\n22\n23",
+      "awayTeam": "터키",
+      "homeScore": 11,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785612721347,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n13\n7\n11\n19\n21\n11",
       "awayTeam": "포르투갈",
       "homeScore": 10,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1785607901835,
+      "timestamp": 1785612721347,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n17\n21\n16\n27",
+      "awayTeam": "에스토니아",
+      "homeScore": 18,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1785612721347,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n24\n11\n22\n15",
+      "awayTeam": "프랑스",
+      "homeScore": 16,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785612721347,
       "sport": "농구"
     },
     {
@@ -1043,7 +1069,7 @@
     {
       "homeTeam": "애버딘",
       "awayTeam": "하츠",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1785601800000,
