@@ -1,0 +1,15 @@
+{
+  "name": "@sports/videocall",
+  "version": "1.0.0",
+  "description": "OS-독립적인 WiFi 기반 WebRTC 영상통화 앱 (브라우저만 있으면 어디서나)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.0",
+    "selfsigned": "^2.4.1",
+    "ws": "^8.16.0"
+  }
+}

@@ -4,3 +4,6 @@ dist
 android
 .capacitor
 *.db
+
+# videocall self-signed certs
+apps/videocall/certs
