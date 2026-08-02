@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-02T16:16:50.260Z",
-  "count": 105,
+  "updatedAt": "2026-08-02T17:17:32.862Z",
+  "count": 107,
   "scores": [
     {
       "homeTeam": "레알 마드리드",
@@ -529,30 +529,29 @@
       "awayTeam": "우디네세",
       "homeScore": 1,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1785713400000,
-      "sport": "축구",
-      "minute": "후반 32'"
+      "sport": "축구"
     },
     {
       "homeTeam": "하이버니언",
       "awayTeam": "마더웰",
-      "homeScore": 0,
-      "awayScore": 1,
+      "homeScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1785717000000,
       "sport": "축구",
-      "minute": "전반 44'"
+      "minute": "후반 41'"
     },
     {
       "homeTeam": "실케보리",
       "awayTeam": "코펜하겐",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1785718800000,
       "sport": "축구",
-      "minute": "전반 14'"
+      "minute": "후반 11'"
     },
     {
       "homeTeam": "애틀랜타",
@@ -735,21 +734,39 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "과\n3\n9\n9\n9\n13\n17\n18\n14",
-      "awayTeam": "헝가리",
-      "homeScore": 11,
-      "awayScore": 15,
+      "homeTeam": "HT\n14\n18\n10\n14",
+      "awayTeam": "슬로베니아 U18",
+      "homeScore": 18,
+      "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1785687370262,
+      "timestamp": 1785691017148,
       "sport": "농구"
     },
     {
-      "homeTeam": "Q\n21\n12\n15\n6",
+      "homeTeam": "Q\n18\n29\n21\n10\n9\n5",
+      "awayTeam": "그리스",
+      "homeScore": 15,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1785691017148,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n21\n22\n15\n15\n13\n10",
       "awayTeam": "영국",
       "homeScore": 18,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1785687370262,
+      "timestamp": 1785691017148,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n5\n13\n14\n17",
+      "awayTeam": "코스타리카",
+      "homeScore": 19,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785691017148,
       "sport": "농구"
     },
     {
@@ -926,8 +943,8 @@
     {
       "homeTeam": "하이버니언",
       "awayTeam": "마더웰",
-      "homeScore": 0,
-      "awayScore": 1,
+      "homeScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1785684600000,
       "sport": "축구"
@@ -936,7 +953,7 @@
       "homeTeam": "PSV",
       "awayTeam": "AZ알크마르",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1785686400000,
       "sport": "축구"
