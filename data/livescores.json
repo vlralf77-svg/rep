@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-02T22:17:04.321Z",
-  "count": 103,
+  "updatedAt": "2026-08-02T23:13:55.764Z",
+  "count": 104,
   "scores": [
     {
       "homeTeam": "레알 마드리드",
@@ -672,31 +672,30 @@
       "homeTeam": "애슬레틱스",
       "awayTeam": "디트로이트",
       "homeScore": 0,
-      "awayScore": 6,
+      "awayScore": 11,
       "status": "LIVE",
       "timestamp": 1785733500000,
       "sport": "야구",
-      "inning": "6회말"
-    },
-    {
-      "homeTeam": "시애틀",
-      "awayTeam": "미네소타",
-      "homeScore": 6,
-      "awayScore": 2,
-      "status": "LIVE",
-      "timestamp": 1785733800000,
-      "sport": "야구",
-      "inning": "8회초"
+      "inning": "9회말"
     },
     {
       "homeTeam": "샌디에이고",
       "awayTeam": "샌프란시스코",
       "homeScore": 5,
-      "awayScore": 3,
+      "awayScore": 4,
       "status": "LIVE",
       "timestamp": 1785733800000,
       "sport": "야구",
-      "inning": "7회초"
+      "inning": "9회초"
+    },
+    {
+      "homeTeam": "시애틀",
+      "awayTeam": "미네소타",
+      "homeScore": 7,
+      "awayScore": 6,
+      "status": "FINISHED",
+      "timestamp": 1785733800000,
+      "sport": "야구"
     },
     {
       "homeTeam": "LA다저스",
@@ -733,6 +732,15 @@
       "status": "SCHEDULED",
       "timestamp": 1785796200000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "Q\n18\n25\n5\n25\n28\n5",
+      "awayTeam": "Scarborough Shooting",
+      "homeScore": 20,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785712395752,
+      "sport": "농구"
     },
     {
       "homeTeam": "애버딘",
