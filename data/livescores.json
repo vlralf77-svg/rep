@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-02T03:49:34.050Z",
-  "count": 134,
+  "updatedAt": "2026-08-02T06:23:53.744Z",
+  "count": 133,
   "scores": [
     {
       "homeTeam": "레알 마드리드",
@@ -267,21 +267,19 @@
       "homeTeam": "LA에인절스",
       "awayTeam": "밀워키",
       "homeScore": 1,
-      "awayScore": 2,
-      "status": "LIVE",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1785667080000,
-      "sport": "야구",
-      "inning": "8회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "애슬레틱스",
       "awayTeam": "디트로이트",
-      "homeScore": 2,
-      "awayScore": 6,
-      "status": "LIVE",
+      "homeScore": 6,
+      "awayScore": 8,
+      "status": "FINISHED",
       "timestamp": 1785667200000,
-      "sport": "야구",
-      "inning": "7회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "신시내티",
@@ -297,47 +295,48 @@
       "awayTeam": "댈러스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1785670200000,
-      "sport": "축구",
-      "minute": "후반 3'"
+      "sport": "축구"
     },
     {
       "homeTeam": "포틀랜드",
       "awayTeam": "시애틀",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1785671100000,
-      "sport": "축구",
-      "minute": "전반 51'"
+      "sport": "축구"
     },
     {
       "homeTeam": "닛폰햄",
       "awayTeam": "지바롯데",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785675600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "9회초"
     },
     {
       "homeTeam": "키움",
       "awayTeam": "SSG",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1785679200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회말"
     },
     {
       "homeTeam": "요미우리",
       "awayTeam": "요코하마",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785679200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "5회말"
     },
     {
       "homeTeam": "라쿠텐",
@@ -961,15 +960,6 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n15\n10\n19\n17",
-      "awayTeam": "Sherbrooke Suns",
-      "homeScore": 4,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1785642537646,
-      "sport": "농구"
-    },
-    {
       "homeTeam": "던디Utd",
       "awayTeam": "레인저스FC",
       "homeScore": 1,
@@ -1146,16 +1136,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
-      "timestamp": 1785637800000,
+      "timestamp": 1785638400000,
       "sport": "축구"
     },
     {
       "homeTeam": "포틀랜드",
       "awayTeam": "시애틀S",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
       "status": "SCHEDULED",
-      "timestamp": 1785638700000,
+      "timestamp": 1785639300000,
       "sport": "축구"
     },
     {
