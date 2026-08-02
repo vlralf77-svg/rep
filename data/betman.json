@@ -1,72 +1,7 @@
 {
-  "updatedAt": "2026-08-02T11:12:06.799Z",
+  "updatedAt": "2026-08-02T13:04:54.672Z",
   "toto": [],
   "proto": [
-    {
-      "matchId": "미국_남자_폴란드|남자|1785670200000",
-      "sport": "배구",
-      "league": "승부식90 회차",
-      "homeTeam": "미국_남자_폴란드",
-      "awayTeam": "남자",
-      "gameDate": "2026-08-02T11:30:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.68
-            },
-            {
-              "label": "패",
-              "odds": 1.31
-            }
-          ]
-        },
-        {
-          "type": "세트핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.76
-            },
-            {
-              "label": "패",
-              "odds": 1.76
-            }
-          ],
-          "line": 1.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.81
-            },
-            {
-              "label": "오버",
-              "odds": 1.71
-            }
-          ],
-          "line": 183.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.76
-            },
-            {
-              "label": "짝",
-              "odds": 1.76
-            }
-          ]
-        }
-      ]
-    },
     {
       "matchId": "KFUM카메라테네 오슬로|크리스티안순BK|1785682800000",
       "sport": "축구",
