@@ -1,0 +1,16 @@
+{
+  "name": "WiFi 영상통화",
+  "short_name": "영상통화",
+  "description": "서버 없이 브라우저로 하는 영상통화 · 전화 걸기",
+  "start_url": "./phone.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

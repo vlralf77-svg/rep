@@ -39,8 +39,13 @@ let online = false;
 let localStream = null;
 let currentCall = null;  // 진행 중인 MediaConnection
 let pendingCall = null;  // 수신 대기 중(아직 안 받은) MediaConnection
+let pendingCallbackFrom = null; // 푸시 알림으로 열려서 "되걸어야 하는" 상대 아이디
+let callingTarget = null; // 내가 지금 걸고 있는 상대(sanitize된 아이디)
 let callTimeout = null;
 let facingMode = 'user';
+
+// 푸시 알림을 눌러 열렸을 때 ?answer=<상대아이디> 로 되걸기 대상 전달
+const answerFrom = params.get('answer');
 
 // ---- 링톤 (WebAudio, 파일 불필요) ----
 let audioCtx = null;
@@ -125,6 +130,12 @@ function goOnline() {
     $('myStatus').textContent = '🟢 온라인 · 아이디: ' + raw;
     $('myStatus').classList.add('online');
     $('onlineBtn').textContent = '접속됨';
+    // 푸시 구독(백엔드에서 서빙될 때만 활성). 실패해도 온라인 통화는 동작.
+    if (window.pushInit) window.pushInit(raw).then((ok) => {
+      if (ok) $('myStatus').textContent = '🟢 온라인 · 알림 켜짐 · 아이디: ' + raw;
+    });
+    // 알림을 눌러 열린 경우: 되걸기 대상에게 벨을 띄운다(사용자가 받기 누르면 연결)
+    if (answerFrom && !currentCall) handleAnswerRequest(answerFrom);
   });
   peer.on('call', onIncomingCall);
   peer.on('error', (err) => {
@@ -132,7 +143,9 @@ function goOnline() {
       homeError('이미 사용 중인 아이디예요. 다른 아이디로 접속하거나, 다른 기기의 접속을 끊어주세요.');
       $('myStatus').textContent = '오프라인 (아이디 중복)';
     } else if (err && err.type === 'peer-unavailable') {
-      // 상대가 오프라인 (전화 걸 때)
+      // 상대가 지금 앱을 닫아둔 상태일 수 있다. 푸시가 켜져 있으면 알림으로 깨우는 중이므로
+      // 즉시 실패시키지 않고 되걸어오기를(타임아웃까지) 기다린다.
+      if (callingTarget && window.pushAvailable && window.pushAvailable()) return;
       onCallFailed('상대가 오프라인이거나 아이디가 틀렸어요.');
     } else {
       console.warn('peer error', err && err.type, err);
@@ -154,13 +167,24 @@ async function startCall() {
     return homeError('카메라/마이크 권한이 필요합니다: ' + e.message);
   }
 
+  callingTarget = sanitize(target);
   const call = peer.call(ID_PREFIX + sanitize(target), localStream, { metadata: { name: myId } });
   currentCall = call;
   showOverlay('outgoing');
   $('outTarget').textContent = target;
 
+  // 상대 앱이 닫혀 있어도 벨이 울리도록 푸시 발송(백엔드 있을 때만)
+  if (window.pushCall) {
+    window.pushCall(myId, target).then((r) => {
+      if (r && r.ok && r.delivered > 0) {
+        document.querySelector('#outgoing .ovsub').textContent = '상대 기기에 알림을 보냈어요. 응답을 기다립니다…';
+      }
+    });
+  }
+
   call.on('stream', (remote) => {
     clearTimeout(callTimeout);
+    callingTarget = null;
     enterCall(target, remote);
   });
   call.on('close', () => {
@@ -177,6 +201,7 @@ async function startCall() {
 
 function cancelOutgoing() {
   clearTimeout(callTimeout);
+  callingTarget = null;
   if (currentCall) { try { currentCall.close(); } catch (e) {} currentCall = null; }
   stopLocal();
   hideOverlays();
@@ -184,6 +209,7 @@ function cancelOutgoing() {
 
 function onCallFailed(msg) {
   clearTimeout(callTimeout);
+  callingTarget = null;
   if (currentCall) { try { currentCall.close(); } catch (e) {} currentCall = null; }
   stopLocal();
   hideOverlays();
@@ -192,8 +218,20 @@ function onCallFailed(msg) {
 
 // ---- 수신 ----
 function onIncomingCall(call) {
-  // 이미 통화 중이면 새 전화는 자동 거절(통화 중)
-  if (currentCall || pendingCall) { try { call.close(); } catch (e) {} return; }
+  // 내가 걸고 있던 상대가 (푸시 알림을 받고) 되걸어온 경우 → 자동 응답
+  if (callingTarget && call.peer === ID_PREFIX + callingTarget && localStream) {
+    clearTimeout(callTimeout);
+    callingTarget = null;
+    currentCall = call;
+    call.answer(localStream);
+    const from = (call.metadata && call.metadata.name) || $('outTarget').textContent || '상대';
+    call.on('stream', (remote) => enterCall(from, remote));
+    call.on('close', hangup);
+    call.on('error', hangup);
+    return;
+  }
+  // 이미 통화 중/수신 중이면 새 전화는 무시(통화 중)
+  if (currentCall || pendingCall || pendingCallbackFrom) { try { call.close(); } catch (e) {} return; }
   pendingCall = call;
   const from = (call.metadata && call.metadata.name) || '알 수 없음';
   $('inFrom').textContent = from;
@@ -212,6 +250,12 @@ function onIncomingCall(call) {
 
 async function acceptCall() {
   stopRing();
+  // 푸시 알림으로 열려 "되걸어야" 하는 경우
+  if (pendingCallbackFrom) {
+    const from = pendingCallbackFrom;
+    pendingCallbackFrom = null;
+    return startCallback(from);
+  }
   const call = pendingCall;
   pendingCall = null;
   if (!call) return;
@@ -234,7 +278,47 @@ async function acceptCall() {
 function declineCall() {
   stopRing();
   if (pendingCall) { try { pendingCall.close(); } catch (e) {} pendingCall = null; }
+  pendingCallbackFrom = null;
   hideOverlays();
+}
+
+// 푸시 알림을 받고 열렸을 때: 상대에게 벨(수신 화면)을 띄운다.
+function handleAnswerRequest(from) {
+  if (currentCall) return;
+  pendingCallbackFrom = from;
+  $('inFrom').textContent = from;
+  showOverlay('incoming');
+  startRing(true);
+}
+
+// 되걸기: 알림을 받은 쪽이 원래 발신자에게 연결한다(발신자는 자동 응답).
+async function startCallback(from) {
+  if (!online) return homeError('접속이 끊겨 되걸 수 없어요. 다시 시도해 주세요.');
+  try {
+    localStream = await getMedia();
+  } catch (e) {
+    hideOverlays();
+    return homeError('카메라/마이크 권한이 필요합니다: ' + e.message);
+  }
+  callingTarget = sanitize(from);
+  const call = peer.call(ID_PREFIX + sanitize(from), localStream, { metadata: { name: myId } });
+  currentCall = call;
+  showOverlay('outgoing');
+  $('outTarget').textContent = from;
+  document.querySelector('#outgoing .ovsub').textContent = '연결 중…';
+  call.on('stream', (remote) => { clearTimeout(callTimeout); callingTarget = null; enterCall(from, remote); });
+  call.on('close', () => { if ($('call').hidden) onCallFailed('연결이 종료됐어요.'); });
+  call.on('error', () => onCallFailed('연결에 실패했어요.'));
+  callTimeout = setTimeout(() => onCallFailed('상대와 연결되지 않았어요.'), 30000);
+}
+
+// 이미 열려 있는 창이 푸시를 받으면 SW가 메시지를 보냄
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'answer-call' && !currentCall) {
+      handleAnswerRequest(e.data.from);
+    }
+  });
 }
 
 // ---- 통화 화면 ----
