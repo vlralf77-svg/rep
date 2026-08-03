@@ -60,13 +60,16 @@ jobs:
           tag_name: videocall-apk
           name: WiFi 영상통화 APK
           body: |
-            같은 WiFi에 연결된 기기끼리 영상통화하는 Android 앱입니다.
+            OS 상관없이 영상통화하는 Android 앱입니다. **서버 운영 불필요** —
+            앱을 열면 공개 클라우드(PeerJS) 기반 통화 페이지가 바로 로드됩니다.
 
             **사용법**
-            1. PC에서 시그널링 서버 실행: `pnpm --filter @sports/videocall start`
-            2. 이 APK를 안드로이드 폰에 설치 (알 수 없는 출처 허용 필요)
-            3. 앱 실행 후 서버가 알려준 주소(예: `https://192.168.0.10:8443`) 입력 → 접속
-            4. 이름·방 코드 입력 후 통화
+            1. 이 APK를 안드로이드 폰에 설치 (알 수 없는 출처 허용 필요)
+            2. 앱 실행 → 카메라/마이크 권한 허용
+            3. 이름과 (겹치지 않게 특이한) 방 코드 입력 → 입장
+            4. 상대는 같은 방 코드로 이 앱 또는 브라우저(https://vlralf77-svg.github.io/rep/)로 접속
+
+            > 상단 주소창에 자체 서버 주소를 넣으면 그 서버로도 접속할 수 있습니다.
           files: wifi-videocall.apk
           prerelease: true
           make_latest: false

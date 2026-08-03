@@ -39,6 +39,10 @@ public class MainActivity extends Activity {
     private static final String KEY_URL = "server_url";
     private static final int REQ_PERMS = 100;
 
+    // 기본 접속 주소: 별도 서버 없이 바로 통화되는 GitHub Pages(PeerJS) 앱.
+    // 자체 서버를 쓰려면 상단 주소창에 그 주소를 입력하면 된다.
+    private static final String DEFAULT_URL = "https://vlralf77-svg.github.io/rep/";
+
     private WebView webView;
     private EditText urlInput;
 
@@ -53,12 +57,10 @@ public class MainActivity extends Activity {
 
         setupWebView();
 
-        // 마지막으로 접속한 주소 복원
+        // 마지막으로 접속한 주소 복원 (없으면 기본 Pages 주소)
         SharedPreferences prefs = getSharedPreferences(PREFS, Context.MODE_PRIVATE);
-        String saved = prefs.getString(KEY_URL, "");
-        if (!TextUtils.isEmpty(saved)) {
-            urlInput.setText(saved);
-        }
+        String saved = prefs.getString(KEY_URL, DEFAULT_URL);
+        urlInput.setText(saved);
 
         goBtn.setOnClickListener(v -> connect());
         urlInput.setOnEditorActionListener((v, actionId, event) -> {
@@ -71,6 +73,9 @@ public class MainActivity extends Activity {
 
         // 카메라/마이크 권한 확보
         requestMediaPermissions();
+
+        // 저장된(또는 기본) 주소를 바로 로드
+        webView.loadUrl(saved);
     }
 
     private void setupWebView() {
