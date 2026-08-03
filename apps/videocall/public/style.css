@@ -11,6 +11,9 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* hidden 속성이 항상 우선하도록 (.lobby/.call 의 display 규칙을 덮어씀) */
+[hidden] { display: none !important; }
+
 html, body {
   height: 100%;
   background: var(--bg);
