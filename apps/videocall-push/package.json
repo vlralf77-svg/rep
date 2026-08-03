@@ -1,0 +1,17 @@
+{
+  "name": "@sports/videocall-push",
+  "version": "1.0.0",
+  "description": "PWA 웹푸시 백엔드 - 앱이 닫혀 있어도 전화 알림(벨)을 보냄",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.18.0",
+    "web-push": "^3.6.7"
+  }
+}

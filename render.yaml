@@ -1,7 +1,27 @@
 # Render.com 무료 배포용 블루프린트
-# 대시보드 → New → Blueprint → 이 저장소 선택 시 자동으로 아래 서비스가 생성됩니다.
-# (또는 README 의 "Deploy to Render" 버튼 사용)
+# 대시보드 → New → Blueprint → 이 저장소 선택 시 아래 서비스가 자동 생성됩니다.
 services:
+  # ⭐ 전화급(PWA 웹푸시) 백엔드 — 앱이 닫혀 있어도 전화 알림(벨)을 보낸다.
+  #    통화 웹앱(정적)도 이 서비스가 함께 서빙하므로, 배포 후 나오는 주소 하나로 끝.
+  - type: web
+    name: videocall-push
+    runtime: node
+    plan: free
+    rootDir: apps/videocall-push
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /healthz
+    envVars:
+      # (선택) VAPID 키를 고정하려면 아래에 값을 넣는다. 비워두면 서버가 자동 생성한다.
+      #  ※ 무료 플랜은 디스크가 초기화될 수 있어, 고정하려면 env 로 넣는 걸 권장.
+      # - key: VAPID_PUBLIC
+      #   value: "..."
+      # - key: VAPID_PRIVATE
+      #   value: "..."
+      - key: VAPID_SUBJECT
+        value: "mailto:admin@example.com"
+
+  # (선택) 인터넷 없는 순수 LAN 전용 시그널링 서버. 보통은 필요 없음.
   - type: web
     name: wifi-videocall
     runtime: node
@@ -11,13 +31,5 @@ services:
     startCommand: node server.js
     healthCheckPath: /healthz
     envVars:
-      # Render 가 앞단에서 HTTPS(정식 인증서)를 처리하므로 앱은 HTTP 로 구동한다.
       - key: HTTP
         value: "1"
-      # (선택) 서로 다른 네트워크/모바일 데이터 통과가 필요하면 TURN 서버 정보를 넣는다.
-      # - key: TURN_URL
-      #   value: "turn:your-turn-server:3478"
-      # - key: TURN_USERNAME
-      #   value: "user"
-      # - key: TURN_CREDENTIAL
-      #   value: "pass"

@@ -4,7 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#0f172a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="영상통화" />
   <title>영상통화 - 전화 걸기</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="phone.css" />
 </head>
@@ -29,7 +34,8 @@
       <button id="callBtn" class="primary" type="button">📞 전화 걸기</button>
       <p id="homeError" class="error" hidden></p>
     </div>
-    <p class="hint">💡 아이디는 <b>전 세계 공용</b>이라 겹치지 않게 특이하게 지어주세요. 상대도 이 페이지를 열어 <b>온라인</b> 상태여야 벨이 울립니다.</p>
+    <p class="hint">💡 아이디는 <b>전 세계 공용</b>이라 겹치지 않게 특이하게 지어주세요.</p>
+    <p class="hint">🔔 앱이 <b>닫혀 있어도 벨</b>이 울리게 하려면: 이 페이지를 <b>홈 화면에 추가</b>(설치)하고 <b>알림을 허용</b>하세요. (푸시 백엔드로 배포한 주소에서만 동작)</p>
     <p class="hint"><a class="link" href="./">← 방 코드로 여러 명 통화하기</a></p>
   </div>
 
@@ -72,6 +78,7 @@
   </div>
 
   <script src="vendor/peerjs.min.js"></script>
+  <script src="push.js"></script>
   <script src="phone.js"></script>
 </body>
 </html>
