@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>영상통화 - 전화 걸기</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="phone.css" />
+</head>
+<body>
+  <!-- 홈: 내 아이디 + 전화 걸기 -->
+  <div id="home" class="lobby">
+    <div class="lobby-card">
+      <h1>📞 영상전화</h1>
+      <p class="subtitle">내 아이디를 정하고 온라인 상태가 되면, 다른 사람이 내 아이디로 전화를 걸 수 있어요.</p>
+
+      <label for="myIdInput">내 아이디 (상대가 이걸로 나에게 전화)</label>
+      <div class="room-row">
+        <input id="myIdInput" type="text" placeholder="예: gildong77" autocomplete="off" maxlength="30" />
+        <button id="onlineBtn" type="button" class="ghost" title="온라인">접속</button>
+      </div>
+      <p id="myStatus" class="status-line">오프라인</p>
+
+      <hr class="sep" />
+
+      <label for="peerIdInput">상대 아이디</label>
+      <input id="peerIdInput" type="text" placeholder="전화 걸 상대의 아이디" autocomplete="off" maxlength="30" />
+      <button id="callBtn" class="primary" type="button">📞 전화 걸기</button>
+      <p id="homeError" class="error" hidden></p>
+    </div>
+    <p class="hint">💡 아이디는 <b>전 세계 공용</b>이라 겹치지 않게 특이하게 지어주세요. 상대도 이 페이지를 열어 <b>온라인</b> 상태여야 벨이 울립니다.</p>
+    <p class="hint"><a class="link" href="./">← 방 코드로 여러 명 통화하기</a></p>
+  </div>
+
+  <!-- 발신 중 오버레이 -->
+  <div id="outgoing" class="overlay" hidden>
+    <div class="ovcard">
+      <div class="avatar">📞</div>
+      <p class="ovtitle" id="outTarget">상대</p>
+      <p class="ovsub">전화 거는 중… 상대의 응답을 기다립니다</p>
+      <button id="cancelBtn" class="ctrl leave" type="button">📴</button>
+    </div>
+  </div>
+
+  <!-- 수신(벨) 오버레이 -->
+  <div id="incoming" class="overlay" hidden>
+    <div class="ovcard">
+      <div class="avatar ring">📲</div>
+      <p class="ovtitle"><b id="inFrom">상대</b> 님의 영상전화</p>
+      <p class="ovsub">전화가 왔어요</p>
+      <div class="ovbtns">
+        <button id="declineBtn" class="ctrl leave" type="button" title="거절">📴</button>
+        <button id="acceptBtn" class="ctrl accept" type="button" title="받기">📹</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 통화 화면 -->
+  <div id="call" class="call" hidden>
+    <header class="call-header">
+      <span class="room-badge">통화 중 · <b id="peerLabel"></b></span>
+      <span id="statusText" class="status">연결됨</span>
+    </header>
+    <div id="grid" class="grid"></div>
+    <footer class="controls">
+      <button id="micBtn" class="ctrl" type="button" title="마이크">🎤</button>
+      <button id="camBtn" class="ctrl" type="button" title="카메라">📷</button>
+      <button id="flipBtn" class="ctrl" type="button" title="카메라 전환">🔄</button>
+      <button id="hangupBtn" class="ctrl leave" type="button" title="끊기">📴</button>
+    </footer>
+  </div>
+
+  <script src="vendor/peerjs.min.js"></script>
+  <script src="phone.js"></script>
+</body>
+</html>
