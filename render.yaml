@@ -1,0 +1,23 @@
+# Render.com 무료 배포용 블루프린트
+# 대시보드 → New → Blueprint → 이 저장소 선택 시 자동으로 아래 서비스가 생성됩니다.
+# (또는 README 의 "Deploy to Render" 버튼 사용)
+services:
+  - type: web
+    name: wifi-videocall
+    runtime: node
+    plan: free
+    rootDir: apps/videocall
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /healthz
+    envVars:
+      # Render 가 앞단에서 HTTPS(정식 인증서)를 처리하므로 앱은 HTTP 로 구동한다.
+      - key: HTTP
+        value: "1"
+      # (선택) 서로 다른 네트워크/모바일 데이터 통과가 필요하면 TURN 서버 정보를 넣는다.
+      # - key: TURN_URL
+      #   value: "turn:your-turn-server:3478"
+      # - key: TURN_USERNAME
+      #   value: "user"
+      # - key: TURN_CREDENTIAL
+      #   value: "pass"

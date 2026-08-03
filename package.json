@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "concurrently \"pnpm --filter @sports/api dev\" \"pnpm --filter @sports/web dev\"",
     "build": "pnpm --filter @sports/shared build && pnpm --filter @sports/api build && pnpm --filter @sports/web build",
-    "build:apk": "pnpm --filter @sports/web build && cd apps/web && npx cap sync android && cd android && ./gradlew assembleDebug"
+    "build:apk": "pnpm --filter @sports/web build && cd apps/web && npx cap sync android && cd android && ./gradlew assembleDebug",
+    "videocall": "pnpm --filter @sports/videocall start"
   },
   "devDependencies": {
     "concurrently": "^8.2.0"

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>WiFi 영상통화</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 입장 화면 -->
+  <div id="lobby" class="lobby">
+    <div class="lobby-card">
+      <h1>📹 WiFi 영상통화</h1>
+      <p class="subtitle">같은 방 코드를 입력하면 OS 상관없이 브라우저로 통화할 수 있어요.</p>
+
+      <label for="nameInput">이름</label>
+      <input id="nameInput" type="text" placeholder="홍길동" autocomplete="off" maxlength="20" />
+
+      <label for="roomInput">방 코드</label>
+      <div class="room-row">
+        <input id="roomInput" type="text" placeholder="예: family" autocomplete="off" maxlength="64" />
+        <button id="randomRoomBtn" type="button" title="랜덤 코드 생성">🎲</button>
+      </div>
+
+      <button id="joinBtn" class="primary" type="button">입장하기</button>
+      <p id="lobbyError" class="error" hidden></p>
+    </div>
+    <p class="hint">💡 서버와 같은 WiFi에 연결하고, 서로 같은 방 코드를 공유하세요.</p>
+  </div>
+
+  <!-- 통화 화면 -->
+  <div id="call" class="call" hidden>
+    <header class="call-header">
+      <span class="room-badge">방 <b id="roomLabel"></b></span>
+      <span id="statusText" class="status">연결 중…</span>
+      <button id="copyLinkBtn" class="ghost" type="button">🔗 초대링크 복사</button>
+    </header>
+
+    <div id="grid" class="grid"></div>
+
+    <footer class="controls">
+      <button id="micBtn" class="ctrl" type="button" title="마이크">🎤</button>
+      <button id="camBtn" class="ctrl" type="button" title="카메라">📷</button>
+      <button id="shareBtn" class="ctrl" type="button" title="화면 공유">🖥️</button>
+      <button id="flipBtn" class="ctrl" type="button" title="카메라 전환">🔄</button>
+      <button id="leaveBtn" class="ctrl leave" type="button" title="나가기">📴</button>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
