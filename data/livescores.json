@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-03T22:44:24.448Z",
-  "count": 60,
+  "updatedAt": "2026-08-03T23:48:56.086Z",
+  "count": 59,
   "scores": [
     {
       "homeTeam": "하이버니언",
@@ -222,28 +222,31 @@
       "homeTeam": "필라델피아",
       "awayTeam": "워싱턴",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "LIVE",
       "timestamp": 1785829200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "4회말"
     },
     {
       "homeTeam": "뉴욕양키스",
       "awayTeam": "세인트루이스",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "LIVE",
       "timestamp": 1785830700000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "밀워키",
       "awayTeam": "피츠버그",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785832800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "시카고컵스",
@@ -408,21 +411,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n23\n30\n16\n12",
-      "awayTeam": "Sesi SP",
-      "homeScore": 22,
-      "awayScore": 0,
+      "homeTeam": "대기",
+      "awayTeam": "Sayago",
+      "homeScore": 23,
+      "awayScore": 15,
       "status": "LIVE",
-      "timestamp": 1785797025311,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n17\n19\n14\n19",
-      "awayTeam": "푸에르토리코",
-      "homeScore": 0,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1785797025311,
+      "timestamp": 1785800896409,
       "sport": "농구"
     },
     {
