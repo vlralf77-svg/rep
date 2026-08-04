@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-04T07:07:41.117Z",
-  "count": 58,
+  "updatedAt": "2026-08-04T09:47:14.068Z",
+  "count": 59,
   "scores": [
     {
       "homeTeam": "OB",
@@ -97,67 +97,54 @@
       "awayTeam": "한신",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785865500000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "4회말"
     },
     {
       "homeTeam": "소프트뱅크",
       "awayTeam": "닛폰햄",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785866400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회초"
     },
     {
       "homeTeam": "지바롯데",
       "awayTeam": "세이부",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1785866400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회말"
     },
     {
       "homeTeam": "주니치",
       "awayTeam": "야쿠르트",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "LIVE",
       "timestamp": 1785866400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회초"
     },
     {
       "homeTeam": "히로시마",
       "awayTeam": "요미우리",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "LIVE",
       "timestamp": 1785866400000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "삼성",
-      "awayTeam": "한화",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1785868200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회말"
     },
     {
       "homeTeam": "KIA",
       "awayTeam": "KT",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1785868200000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "SSG",
-      "awayTeam": "LG",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -174,13 +161,34 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "롯데",
-      "awayTeam": "키움",
+      "homeTeam": "삼성",
+      "awayTeam": "한화",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785868200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
+    },
+    {
+      "homeTeam": "SSG",
+      "awayTeam": "LG",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785868200000,
+      "sport": "야구",
+      "inning": "1회초"
+    },
+    {
+      "homeTeam": "롯데",
+      "awayTeam": "키움",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785868200000,
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "미얀마",
@@ -406,6 +414,15 @@
       "status": "FINISHED",
       "timestamp": 1785796200000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n21\n17\n27\n23",
+      "awayTeam": "Yonsei University\nBei",
+      "homeScore": 11,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1785836802334,
+      "sport": "농구"
     },
     {
       "homeTeam": "하이버니언",
