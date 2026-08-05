@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-05T09:24:41.229Z",
-  "count": 68,
+  "updatedAt": "2026-08-05T11:36:03.197Z",
+  "count": 73,
   "scores": [
     {
       "homeTeam": "알 나스르",
@@ -158,62 +158,62 @@
     {
       "homeTeam": "요코하마",
       "awayTeam": "한신",
-      "homeScore": 4,
-      "awayScore": 2,
+      "homeScore": 11,
+      "awayScore": 7,
       "status": "LIVE",
       "timestamp": 1785951900000,
       "sport": "야구",
-      "inning": "2회말"
+      "inning": "8회말"
     },
     {
       "homeTeam": "소프트뱅크",
       "awayTeam": "닛폰햄",
+      "homeScore": 5,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1785952800000,
+      "sport": "야구",
+      "inning": "8회초"
+    },
+    {
+      "homeTeam": "오릭스",
+      "awayTeam": "라쿠텐",
       "homeScore": 3,
       "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1785952800000,
       "sport": "야구",
-      "inning": "1회말"
-    },
-    {
-      "homeTeam": "오릭스",
-      "awayTeam": "라쿠텐",
-      "homeScore": 1,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1785952800000,
-      "sport": "야구",
-      "inning": "2회초"
+      "inning": "9회초"
     },
     {
       "homeTeam": "지바롯데",
       "awayTeam": "세이부",
-      "homeScore": 0,
+      "homeScore": 8,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1785952800000,
       "sport": "야구",
-      "inning": "2회초"
+      "inning": "8회말"
     },
     {
       "homeTeam": "주니치",
       "awayTeam": "야쿠르트",
-      "homeScore": 2,
-      "awayScore": 0,
+      "homeScore": 4,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1785952800000,
       "sport": "야구",
-      "inning": "1회말"
+      "inning": "7회말"
     },
     {
       "homeTeam": "히로시마",
       "awayTeam": "요미우리",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 3,
       "status": "LIVE",
       "timestamp": 1785952800000,
       "sport": "야구",
-      "inning": "1회말"
+      "inning": "8회말"
     },
     {
       "homeTeam": "삼성",
@@ -263,29 +263,32 @@
     {
       "homeTeam": "K리그 XI",
       "awayTeam": "맨시티",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "LIVE",
       "timestamp": 1785960000000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 29'"
     },
     {
       "homeTeam": "밀란",
       "awayTeam": "인테르",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785960000000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 20'"
     },
     {
       "homeTeam": "첼시",
       "awayTeam": "유벤투스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1785961800000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 3'"
     },
     {
       "homeTeam": "KIA",
@@ -493,6 +496,51 @@
       "status": "FINISHED",
       "timestamp": 1785880800000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "Q\n27\n19\n11\n17\n12\n16",
+      "awayTeam": "National Formosa Univ",
+      "homeScore": 8,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1785929733954,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n22\n8\n16\n7",
+      "awayTeam": "핀란드",
+      "homeScore": 11,
+      "awayScore": 15,
+      "status": "LIVE",
+      "timestamp": 1785929733954,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n19\n14",
+      "awayTeam": "스페인",
+      "homeScore": 13,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1785929733954,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n18\n16\n0\n14\n9\n0",
+      "awayTeam": "에스토니아",
+      "homeScore": 10,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1785929733954,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n26\n20\n3\n15\n28\n9",
+      "awayTeam": "Azerbaijan",
+      "homeScore": 13,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1785929733954,
+      "sport": "농구"
     },
     {
       "homeTeam": "셀틱",
