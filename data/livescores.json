@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-06T11:11:41.850Z",
-  "count": 84,
+  "updatedAt": "2026-08-06T13:04:34.064Z",
+  "count": 83,
   "scores": [
     {
       "homeTeam": "휴스턴",
@@ -158,52 +158,48 @@
     {
       "homeTeam": "요코하마",
       "awayTeam": "한신",
-      "homeScore": 3,
-      "awayScore": 9,
-      "status": "LIVE",
+      "homeScore": 5,
+      "awayScore": 10,
+      "status": "FINISHED",
       "timestamp": 1786038300000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "히로시마",
+      "awayTeam": "요미우리",
+      "homeScore": 7,
+      "awayScore": 11,
+      "status": "LIVE",
+      "timestamp": 1786039200000,
       "sport": "야구",
-      "inning": "7회말"
+      "inning": "9회말"
     },
     {
       "homeTeam": "소프트뱅크",
       "awayTeam": "닛폰햄",
       "homeScore": 2,
-      "awayScore": 2,
-      "status": "LIVE",
+      "awayScore": 6,
+      "status": "FINISHED",
       "timestamp": 1786039200000,
-      "sport": "야구",
-      "inning": "7회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "오릭스",
       "awayTeam": "라쿠텐",
       "homeScore": 1,
       "awayScore": 3,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786039200000,
-      "sport": "야구",
-      "inning": "7회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "주니치",
       "awayTeam": "야쿠르트",
-      "homeScore": 0,
+      "homeScore": 5,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786039200000,
-      "sport": "야구",
-      "inning": "6회말"
-    },
-    {
-      "homeTeam": "히로시마",
-      "awayTeam": "요미우리",
-      "homeScore": 6,
-      "awayScore": 4,
-      "status": "LIVE",
-      "timestamp": 1786039200000,
-      "sport": "야구",
-      "inning": "6회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "삼성",
@@ -528,15 +524,6 @@
       "status": "FINISHED",
       "timestamp": 1785961800000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "Q\n6\n18",
-      "awayTeam": "헝가리",
-      "homeScore": 11,
-      "awayScore": 15,
-      "status": "LIVE",
-      "timestamp": 1786014662630,
-      "sport": "농구"
     },
     {
       "homeTeam": "아반아카데미",
