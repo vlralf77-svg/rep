@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-07T13:14:49.816Z",
-  "count": 115,
+  "updatedAt": "2026-08-07T14:20:22.460Z",
+  "count": 113,
   "scores": [
     {
       "homeTeam": "볼티모어",
@@ -204,8 +204,8 @@
       "homeTeam": "인천 현대제철",
       "awayTeam": "세종 스포츠토토",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1786129200000,
       "sport": "축구"
     },
@@ -223,16 +223,7 @@
       "awayTeam": "강진",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1786131000000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "화천 KSPO",
-      "awayTeam": "경주 한수원",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1786131000000,
       "sport": "축구"
     },
@@ -241,6 +232,15 @@
       "awayTeam": "우라와",
       "homeScore": 4,
       "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1786131000000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "화천 KSPO",
+      "awayTeam": "경주 한수원",
+      "homeScore": 1,
+      "awayScore": 1,
       "status": "FINISHED",
       "timestamp": 1786131000000,
       "sport": "축구"
@@ -302,32 +302,31 @@
     {
       "homeTeam": "바이에른 뮌헨",
       "awayTeam": "애스턴 빌라",
-      "homeScore": 1,
-      "awayScore": 0,
-      "status": "LIVE",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1786136400000,
-      "sport": "축구",
-      "minute": "후반 6'"
+      "sport": "축구"
     },
     {
       "homeTeam": "싱가포르",
       "awayTeam": "인도네시아",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1786140000000,
       "sport": "축구",
-      "minute": "전반 12'"
+      "minute": "후반 14'"
     },
     {
       "homeTeam": "베트남",
       "awayTeam": "캄보디아",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1786140000000,
       "sport": "축구",
-      "minute": "전반 12'"
+      "minute": "후반 14'"
     },
     {
       "homeTeam": "삼성",
@@ -571,24 +570,6 @@
       "status": "FINISHED",
       "timestamp": 1785988800000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "Q\n22\n25\n24\n29\n19\n22",
-      "awayTeam": "TNT 트로팡\nTitan Ultra G",
-      "homeScore": 9,
-      "awayScore": 15,
-      "status": "LIVE",
-      "timestamp": 1786108454625,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n19\n19\n15\n25",
-      "awayTeam": "Shanxi Dragons U19\nJi",
-      "homeScore": 12,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1786108454625,
-      "sport": "농구"
     },
     {
       "homeTeam": "오르후스",
