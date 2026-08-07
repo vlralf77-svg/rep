@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-07T22:41:15.312Z",
+  "updatedAt": "2026-08-07T23:17:27.129Z",
   "count": 157,
   "scores": [
     {
@@ -345,15 +345,6 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "피츠버그",
-      "awayTeam": "뉴욕메츠",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1786174800000,
-      "sport": "야구"
-    },
-    {
       "homeTeam": "필라델피아",
       "awayTeam": "토론토",
       "homeScore": 0,
@@ -361,6 +352,16 @@
       "status": "SCHEDULED",
       "timestamp": 1786174800000,
       "sport": "야구"
+    },
+    {
+      "homeTeam": "피츠버그",
+      "awayTeam": "뉴욕메츠",
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1786174800000,
+      "sport": "야구",
+      "inning": "3회초"
     },
     {
       "homeTeam": "워싱턴",
@@ -384,19 +385,21 @@
       "homeTeam": "마이애미",
       "awayTeam": "LA에인절스",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1786176600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "보스턴",
       "awayTeam": "애슬레틱스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786176600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "시카고W",
