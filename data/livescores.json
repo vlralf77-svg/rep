@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-08T22:28:26.526Z",
-  "count": 158,
+  "updatedAt": "2026-08-08T22:56:12.331Z",
+  "count": 157,
   "scores": [
     {
       "homeTeam": "쇠네르위스케",
@@ -550,27 +550,26 @@
       "status": "LIVE",
       "timestamp": 1786252200000,
       "sport": "야구",
-      "inning": "8회초"
+      "inning": "9회초"
     },
     {
       "homeTeam": "보스턴",
       "awayTeam": "애슬레틱스",
       "homeScore": 2,
-      "awayScore": 6,
+      "awayScore": 7,
       "status": "LIVE",
       "timestamp": 1786252200000,
       "sport": "야구",
-      "inning": "8회말"
+      "inning": "9회말"
     },
     {
       "homeTeam": "뉴잉글랜드",
       "awayTeam": "휴스턴",
       "homeScore": 0,
       "awayScore": 2,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786253400000,
-      "sport": "축구",
-      "minute": "후반 37'"
+      "sport": "축구"
     },
     {
       "homeTeam": "필라델피아",
@@ -580,25 +579,27 @@
       "status": "LIVE",
       "timestamp": 1786259100000,
       "sport": "야구",
-      "inning": "2회초"
+      "inning": "3회초"
     },
     {
       "homeTeam": "피츠버그",
       "awayTeam": "뉴욕메츠",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786261200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "워싱턴",
       "awayTeam": "신시내티",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786261500000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "캔자스시티",
@@ -896,15 +897,6 @@
       "status": "SCHEDULED",
       "timestamp": 1786319100000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "Q\n16\n17\n22\n15\n21\n10",
-      "awayTeam": "코리치안스 파울리스타",
-      "homeScore": 18,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786228059332,
-      "sport": "농구"
     },
     {
       "homeTeam": "캄부르",
