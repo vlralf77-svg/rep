@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-08T22:01:30.173Z",
+  "updatedAt": "2026-08-08T22:28:26.526Z",
   "count": 158,
   "scores": [
     {
@@ -311,9 +311,9 @@
     {
       "homeTeam": "문경 상무",
       "awayTeam": "서울시청",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1786217400000,
       "sport": "축구"
     },
@@ -538,10 +538,9 @@
       "awayTeam": "애틀랜타",
       "homeScore": 5,
       "awayScore": 4,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786248300000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "마이애미",
@@ -551,36 +550,37 @@
       "status": "LIVE",
       "timestamp": 1786252200000,
       "sport": "야구",
-      "inning": "6회말"
+      "inning": "8회초"
     },
     {
       "homeTeam": "보스턴",
       "awayTeam": "애슬레틱스",
       "homeScore": 2,
-      "awayScore": 5,
+      "awayScore": 6,
       "status": "LIVE",
       "timestamp": 1786252200000,
       "sport": "야구",
-      "inning": "6회말"
+      "inning": "8회말"
     },
     {
       "homeTeam": "뉴잉글랜드",
       "awayTeam": "휴스턴",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1786253400000,
       "sport": "축구",
-      "minute": "후반 12'"
+      "minute": "후반 37'"
     },
     {
       "homeTeam": "필라델피아",
       "awayTeam": "토론토",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1786259100000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "피츠버그",
@@ -898,12 +898,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n16\n17\n15\n21",
+      "homeTeam": "Q\n16\n17\n22\n15\n21\n10",
       "awayTeam": "코리치안스 파울리스타",
       "homeScore": 18,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786226456465,
+      "timestamp": 1786228059332,
       "sport": "농구"
     },
     {
@@ -1335,7 +1335,7 @@
       "homeTeam": "뉴잉글랜드",
       "awayTeam": "휴스턴디나모",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1786221000000,
       "sport": "축구"
