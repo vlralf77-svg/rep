@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-08T06:04:19.476Z",
+  "updatedAt": "2026-08-08T07:04:46.689Z",
   "count": 157,
   "scores": [
     {
@@ -156,23 +156,24 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "요미우리",
-      "awayTeam": "야쿠르트",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1786201200000,
-      "sport": "야구"
-    },
-    {
       "homeTeam": "닛폰햄",
       "awayTeam": "라쿠텐",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1786201200000,
       "sport": "야구",
-      "inning": "1회초"
+      "inning": "3회말"
+    },
+    {
+      "homeTeam": "요미우리",
+      "awayTeam": "야쿠르트",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1786201200000,
+      "sport": "야구",
+      "inning": "3회초"
     },
     {
       "homeTeam": "요코하마",
@@ -924,7 +925,7 @@
     {
       "homeTeam": "삿포로",
       "awayTeam": "도쿠시마",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1786167900000,
