@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-08T16:47:33.443Z",
-  "count": 160,
+  "updatedAt": "2026-08-08T17:15:18.647Z",
+  "count": 159,
   "scores": [
     {
       "homeTeam": "쇠네르위스케",
@@ -475,37 +475,39 @@
       "awayTeam": "맨유",
       "homeScore": 1,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786233600000,
-      "sport": "축구",
-      "minute": "후반 42'"
+      "sport": "축구"
     },
     {
       "homeTeam": "고 어헤드 이글스",
       "awayTeam": "빌럼 II",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1786239900000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 25'"
     },
     {
       "homeTeam": "페렌츠바로스",
       "awayTeam": "레알 마드리드",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786240800000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 12'"
     },
     {
       "homeTeam": "괴체페",
       "awayTeam": "트라브존",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786240800000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 8'"
     },
     {
       "homeTeam": "PSV 아인트호벤",
@@ -895,30 +897,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n25\n17\n23\n10",
+      "homeTeam": "Q\n25\n17\n6\n23\n14\n7",
       "awayTeam": "슬로베니아 U18",
       "homeScore": 16,
       "awayScore": 15,
       "status": "LIVE",
-      "timestamp": 1786207615840,
+      "timestamp": 1786209257796,
       "sport": "농구"
     },
     {
-      "homeTeam": "Q\n10\n4\n19\n8",
+      "homeTeam": "Q\n10\n6\n4\n19\n15\n3",
       "awayTeam": "스페인",
       "homeScore": 18,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1786207615840,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n18\n23\n10\n17\n9\n9",
-      "awayTeam": "루마니아",
-      "homeScore": 15,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1786207615840,
+      "timestamp": 1786209257796,
       "sport": "농구"
     },
     {
@@ -1240,7 +1233,7 @@
       "homeTeam": "GA이글스",
       "awayTeam": "빌렘II",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1786207500000,
       "sport": "축구"
