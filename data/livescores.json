@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-08T20:41:58.820Z",
-  "count": 159,
+  "updatedAt": "2026-08-08T21:05:38.180Z",
+  "count": 157,
   "scores": [
     {
       "homeTeam": "쇠네르위스케",
@@ -529,30 +529,29 @@
       "awayTeam": "ADO 덴 하그",
       "homeScore": 2,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786248000000,
-      "sport": "축구",
-      "minute": "후반 35'"
+      "sport": "축구"
     },
     {
       "homeTeam": "뉴욕양키스",
       "awayTeam": "애틀랜타",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1786248300000,
       "sport": "야구",
-      "inning": "5회말"
+      "inning": "7회말"
     },
     {
       "homeTeam": "마이애미",
       "awayTeam": "LA에인절스",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1786252200000,
       "sport": "야구",
-      "inning": "3회초"
+      "inning": "3회말"
     },
     {
       "homeTeam": "보스턴",
@@ -562,16 +561,17 @@
       "status": "LIVE",
       "timestamp": 1786252200000,
       "sport": "야구",
-      "inning": "3회초"
+      "inning": "4회초"
     },
     {
       "homeTeam": "뉴잉글랜드",
       "awayTeam": "휴스턴",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786253400000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 22'"
     },
     {
       "homeTeam": "필라델피아",
@@ -896,24 +896,6 @@
       "status": "SCHEDULED",
       "timestamp": 1786319100000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "HT\n23\n19\n22\n31",
-      "awayTeam": "Portland Fire",
-      "homeScore": 0,
-      "awayScore": 30,
-      "status": "FINISHED",
-      "timestamp": 1786221678474,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n25\n21\n28\n21",
-      "awayTeam": "Brampton Honey Badger",
-      "homeScore": 17,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786221678474,
-      "sport": "농구"
     },
     {
       "homeTeam": "캄부르",
@@ -1280,7 +1262,7 @@
       "awayTeam": "앙나방갱강",
       "homeScore": 2,
       "awayScore": 1,
-      "status": "FINISHED",
+      "status": "SCHEDULED",
       "timestamp": 1786214700000,
       "sport": "축구"
     },
@@ -1289,7 +1271,7 @@
       "awayTeam": "디종FCO",
       "homeScore": 1,
       "awayScore": 1,
-      "status": "FINISHED",
+      "status": "SCHEDULED",
       "timestamp": 1786214700000,
       "sport": "축구"
     },
@@ -1316,7 +1298,7 @@
       "awayTeam": "라발",
       "homeScore": 3,
       "awayScore": 1,
-      "status": "FINISHED",
+      "status": "SCHEDULED",
       "timestamp": 1786214700000,
       "sport": "축구"
     },
