@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-08T14:19:15.701Z",
+  "updatedAt": "2026-08-08T14:53:17.434Z",
   "count": 160,
   "scores": [
     {
@@ -406,7 +406,7 @@
       "status": "LIVE",
       "timestamp": 1786226400000,
       "sport": "축구",
-      "minute": "후반 12'"
+      "minute": "후반 46'"
     },
     {
       "homeTeam": "말레이시아",
@@ -416,7 +416,7 @@
       "status": "LIVE",
       "timestamp": 1786226400000,
       "sport": "축구",
-      "minute": "후반 12'"
+      "minute": "후반 46'"
     },
     {
       "homeTeam": "리즈",
@@ -426,17 +426,17 @@
       "status": "LIVE",
       "timestamp": 1786226400000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 25'"
     },
     {
       "homeTeam": "브라이턴",
       "awayTeam": "로마",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1786230000000,
       "sport": "축구",
-      "minute": "전반 14'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "세인트 미렌",
@@ -446,7 +446,7 @@
       "status": "LIVE",
       "timestamp": 1786230000000,
       "sport": "축구",
-      "minute": "전반 14'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "던디",
@@ -456,7 +456,7 @@
       "status": "LIVE",
       "timestamp": 1786230000000,
       "sport": "축구",
-      "minute": "전반 17'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "토트넘",
@@ -466,16 +466,17 @@
       "status": "LIVE",
       "timestamp": 1786230000000,
       "sport": "축구",
-      "minute": "전반 14'"
+      "minute": "후반 6'"
     },
     {
       "homeTeam": "NEC 네이메헌",
       "awayTeam": "텔스타",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1786231800000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 20'"
     },
     {
       "homeTeam": "LG",
@@ -802,30 +803,30 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n14\n13\n15\n12",
-      "awayTeam": "헝가리",
+      "homeTeam": "Q\n18\n14\n4\n20\n6\n2",
+      "awayTeam": "이탈리아",
       "homeScore": 13,
-      "awayScore": 45,
+      "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1786198722439,
+      "timestamp": 1786200763554,
       "sport": "농구"
     },
     {
-      "homeTeam": "Q\n18\n0\n20\n0",
+      "homeTeam": "Q\n14\n13\n11\n15\n12\n21",
       "awayTeam": "프랑스",
       "homeScore": 16,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786198722440,
+      "timestamp": 1786200763554,
       "sport": "농구"
     },
     {
-      "homeTeam": "Q\n17\n8\n11\n9\n24\n16",
-      "awayTeam": "불가리아",
-      "homeScore": 13,
-      "awayScore": 0,
+      "homeTeam": "HT\n13\n13\n23\n20",
+      "awayTeam": "크로아티아",
+      "homeScore": 16,
+      "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1786198722440,
+      "timestamp": 1786200763554,
       "sport": "농구"
     },
     {
@@ -1246,7 +1247,7 @@
       "homeTeam": "네이메헌",
       "awayTeam": "SC텔스타",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1786199400000,
       "sport": "축구"
