@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-08T20:05:56.157Z",
-  "count": 160,
+  "updatedAt": "2026-08-08T20:41:58.820Z",
+  "count": 159,
   "scores": [
     {
       "homeTeam": "쇠네르위스케",
@@ -527,40 +527,42 @@
     {
       "homeTeam": "알크마르 잔스트리크",
       "awayTeam": "ADO 덴 하그",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1786248000000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 35'"
     },
     {
       "homeTeam": "뉴욕양키스",
       "awayTeam": "애틀랜타",
-      "homeScore": 1,
-      "awayScore": 0,
+      "homeScore": 3,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1786248300000,
       "sport": "야구",
-      "inning": "4회말"
+      "inning": "5회말"
     },
     {
       "homeTeam": "마이애미",
       "awayTeam": "LA에인절스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786252200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회초"
     },
     {
       "homeTeam": "보스턴",
       "awayTeam": "애슬레틱스",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786252200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회초"
     },
     {
       "homeTeam": "뉴잉글랜드",
@@ -896,30 +898,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n16\n20\n7\n17\n20\n6",
-      "awayTeam": "프랑스",
-      "homeScore": 16,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786219514366,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n20\n8\n12\n20",
-      "awayTeam": "불가리아",
-      "homeScore": 19,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786219514366,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n21\n17\n0\n18\n23\n0",
-      "awayTeam": "크로아티아",
-      "homeScore": 16,
+      "homeTeam": "HT\n23\n19\n22\n31",
+      "awayTeam": "Portland Fire",
+      "homeScore": 0,
       "awayScore": 30,
+      "status": "FINISHED",
+      "timestamp": 1786221678474,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n25\n21\n28\n21",
+      "awayTeam": "Brampton Honey Badger",
+      "homeScore": 17,
+      "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786219514366,
+      "timestamp": 1786221678474,
       "sport": "농구"
     },
     {
@@ -1184,15 +1177,6 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "볼프스부르크",
-      "awayTeam": "카이저슬라우",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1786188600000,
-      "sport": "축구"
-    },
-    {
       "homeTeam": "던디FC",
       "awayTeam": "애버딘",
       "homeScore": 2,
@@ -1256,6 +1240,15 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "볼프스부르크",
+      "awayTeam": "카이저슬라우",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1786213800000,
+      "sport": "축구"
+    },
+    {
       "homeTeam": "US불로뉴",
       "awayTeam": "AS낭시",
       "homeScore": 0,
@@ -1276,8 +1269,8 @@
     {
       "homeTeam": "덩케르크",
       "awayTeam": "그르노블",
-      "homeScore": 3,
-      "awayScore": 1,
+      "homeScore": 4,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1786214700000,
       "sport": "축구"
@@ -1287,16 +1280,16 @@
       "awayTeam": "앙나방갱강",
       "homeScore": 2,
       "awayScore": 1,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1786214700000,
       "sport": "축구"
     },
     {
       "homeTeam": "몽펠리에",
       "awayTeam": "디종FCO",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1786214700000,
       "sport": "축구"
     },
@@ -1304,7 +1297,7 @@
       "homeTeam": "FC낭트",
       "awayTeam": "레드스타",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1786214700000,
       "sport": "축구"
@@ -1321,9 +1314,9 @@
     {
       "homeTeam": "로데스AF",
       "awayTeam": "라발",
-      "homeScore": 1,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1786214700000,
       "sport": "축구"
     },
@@ -1339,7 +1332,7 @@
     {
       "homeTeam": "AZ알크마르",
       "awayTeam": "ADO덴하그",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1786215600000,
