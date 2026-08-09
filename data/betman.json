@@ -1,299 +1,7 @@
 {
-  "updatedAt": "2026-08-09T10:25:05.392Z",
+  "updatedAt": "2026-08-09T12:34:52.336Z",
   "toto": [],
   "proto": [
-    {
-      "matchId": "맨체스터 시티|아틀레티코 마드리드|1786273200000",
-      "sport": "축구",
-      "league": "승부식93 회차",
-      "homeTeam": "맨체스터 시티",
-      "awayTeam": "아틀레티코 마드리드",
-      "gameDate": "2026-08-09T11:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.66
-            },
-            {
-              "label": "무",
-              "odds": 3.7
-            },
-            {
-              "label": "패",
-              "odds": 3.6
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.85
-            },
-            {
-              "label": "무",
-              "odds": 3.5
-            },
-            {
-              "label": "패",
-              "odds": 1.95
-            }
-          ],
-          "line": -1
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 2.31
-            },
-            {
-              "label": "오버",
-              "odds": 1.42
-            }
-          ],
-          "line": 2.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.76
-            },
-            {
-              "label": "짝",
-              "odds": 1.76
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "PEC즈볼러|AFC아약스|1786278600000",
-      "sport": "축구",
-      "league": "승부식93 회차",
-      "homeTeam": "PEC즈볼러",
-      "awayTeam": "AFC아약스",
-      "gameDate": "2026-08-09T12:30:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 4.85
-            },
-            {
-              "label": "무",
-              "odds": 4.1
-            },
-            {
-              "label": "패",
-              "odds": 1.43
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.4
-            },
-            {
-              "label": "무",
-              "odds": 3.55
-            },
-            {
-              "label": "패",
-              "odds": 2.22
-            }
-          ],
-          "line": 1
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.61
-            },
-            {
-              "label": "오버",
-              "odds": 1.94
-            }
-          ],
-          "line": 3.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.76
-            },
-            {
-              "label": "짝",
-              "odds": 1.76
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "흐로닝언|위트레흐트|1786278600000",
-      "sport": "축구",
-      "league": "승부식93 회차",
-      "homeTeam": "흐로닝언",
-      "awayTeam": "위트레흐트",
-      "gameDate": "2026-08-09T12:30:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.18
-            },
-            {
-              "label": "무",
-              "odds": 3.2
-            },
-            {
-              "label": "패",
-              "odds": 2.65
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 4.3
-            },
-            {
-              "label": "무",
-              "odds": 3.75
-            },
-            {
-              "label": "패",
-              "odds": 1.54
-            }
-          ],
-          "line": -1
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.9
-            },
-            {
-              "label": "오버",
-              "odds": 1.64
-            }
-          ],
-          "line": 2.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.77
-            },
-            {
-              "label": "짝",
-              "odds": 1.75
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "릴레스트룀SK|로센보르그BK|1786278600000",
-      "sport": "축구",
-      "league": "승부식93 회차",
-      "homeTeam": "릴레스트룀SK",
-      "awayTeam": "로센보르그BK",
-      "gameDate": "2026-08-09T12:30:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.17
-            },
-            {
-              "label": "무",
-              "odds": 3.3
-            },
-            {
-              "label": "패",
-              "odds": 2.6
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 4.15
-            },
-            {
-              "label": "무",
-              "odds": 3.85
-            },
-            {
-              "label": "패",
-              "odds": 1.54
-            }
-          ],
-          "line": -1
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 2.07
-            },
-            {
-              "label": "오버",
-              "odds": 1.53
-            }
-          ],
-          "line": 2.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.76
-            },
-            {
-              "label": "짝",
-              "odds": 1.76
-            }
-          ]
-        }
-      ]
-    },
     {
       "matchId": "아스널|도르트문트|1786280400000",
       "sport": "축구",
@@ -308,15 +16,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.49
+              "odds": 1.42
             },
             {
               "label": "무",
-              "odds": 3.85
+              "odds": 3.95
             },
             {
               "label": "패",
-              "odds": 4.6
+              "odds": 5.2
             }
           ]
         },
@@ -325,15 +33,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.4
+              "odds": 2.22
             },
             {
               "label": "무",
-              "odds": 3.4
+              "odds": 3.35
             },
             {
               "label": "패",
-              "odds": 2.28
+              "odds": 2.5
             }
           ],
           "line": -1
