@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-09T11:15:14.926Z",
-  "count": 164,
+  "updatedAt": "2026-08-09T11:45:54.063Z",
+  "count": 159,
   "scores": [
     {
       "homeTeam": "PSG",
@@ -291,16 +291,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "요코하마",
-      "awayTeam": "히로시마",
-      "homeScore": 1,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786298400000,
-      "sport": "야구",
-      "inning": "8회말"
-    },
-    {
       "homeTeam": "한신",
       "awayTeam": "주니치",
       "homeScore": 1,
@@ -308,7 +298,16 @@
       "status": "LIVE",
       "timestamp": 1786298400000,
       "sport": "야구",
-      "inning": "6회말"
+      "inning": "8회초"
+    },
+    {
+      "homeTeam": "요코하마",
+      "awayTeam": "히로시마",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1786298400000,
+      "sport": "야구"
     },
     {
       "homeTeam": "도쿄 베르디",
@@ -323,11 +322,11 @@
       "homeTeam": "나가사키",
       "awayTeam": "교토 상가",
       "homeScore": 2,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1786302000000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 31'"
     },
     {
       "homeTeam": "스파르타",
@@ -337,7 +336,7 @@
       "status": "LIVE",
       "timestamp": 1786302900000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 23'"
     },
     {
       "homeTeam": "맨시티",
@@ -347,7 +346,7 @@
       "status": "LIVE",
       "timestamp": 1786305600000,
       "sport": "축구",
-      "minute": "전반 9'"
+      "minute": "전반 40'"
     },
     {
       "homeTeam": "다룰 탁짐",
@@ -899,66 +898,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n21\n20\n20\n15",
-      "awayTeam": "중국",
-      "homeScore": 11,
-      "awayScore": 30,
-      "status": "FINISHED",
-      "timestamp": 1786274075946,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n14\n21",
+      "homeTeam": "HT\n25\n12\n23\n20",
       "awayTeam": "라트비아",
       "homeScore": 11,
       "awayScore": 15,
       "status": "LIVE",
-      "timestamp": 1786274075946,
+      "timestamp": 1786275920583,
       "sport": "농구"
     },
     {
-      "homeTeam": "HT\n21\n13\n12\n19",
-      "awayTeam": "우크라이나",
-      "homeScore": 12,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786274075946,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n18\n16\n10\n21\n13\n7",
-      "awayTeam": "터키",
-      "homeScore": 10,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786274075946,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n23\n14\n12\n18\n16\n2",
-      "awayTeam": "라트비아",
-      "homeScore": 12,
+      "homeTeam": "레인 오어 샤인 엘라스토 페인터스\n대기",
+      "awayTeam": "바란가이 기네브라 산 미구엘\n블랙워터",
+      "homeScore": 11,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1786274075946,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n23\n14\n12\n21",
-      "awayTeam": "Sichuan U19\nTianjin P",
-      "homeScore": 10,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1786274075946,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n24\n20\n20\n14",
-      "awayTeam": "Guangdong Southern Ti",
-      "homeScore": 12,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1786274075946,
+      "timestamp": 1786275920583,
       "sport": "농구"
     },
     {
@@ -1207,7 +1161,7 @@
     {
       "homeTeam": "뉘른베르크",
       "awayTeam": "드레스덴",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1786188600000,
@@ -1417,7 +1371,7 @@
       "homeTeam": "V나가사키",
       "awayTeam": "교토상가",
       "homeScore": 2,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1786269600000,
       "sport": "축구"
