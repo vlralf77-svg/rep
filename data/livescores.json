@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-09T15:24:13.130Z",
-  "count": 96,
+  "updatedAt": "2026-08-09T15:54:36.125Z",
+  "count": 97,
   "scores": [
     {
       "homeTeam": "PSG",
@@ -392,22 +392,12 @@
     {
       "homeTeam": "하츠",
       "awayTeam": "던디 유나이티드",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1786316400000,
       "sport": "축구",
-      "minute": "후반 18'"
-    },
-    {
-      "homeTeam": "마더웰",
-      "awayTeam": "팰커크",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786316400000,
-      "sport": "축구",
-      "minute": "후반 20'"
+      "minute": "후반 48'"
     },
     {
       "homeTeam": "라네르스",
@@ -417,7 +407,16 @@
       "status": "LIVE",
       "timestamp": 1786316400000,
       "sport": "축구",
-      "minute": "후반 17'"
+      "minute": "후반 47'"
+    },
+    {
+      "homeTeam": "마더웰",
+      "awayTeam": "팰커크",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1786316400000,
+      "sport": "축구"
     },
     {
       "homeTeam": "히렌빈",
@@ -427,7 +426,7 @@
       "status": "LIVE",
       "timestamp": 1786319100000,
       "sport": "축구",
-      "minute": "전반 35'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "레인저스",
@@ -437,7 +436,7 @@
       "status": "LIVE",
       "timestamp": 1786320000000,
       "sport": "축구",
-      "minute": "전반 20'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "호르센스",
@@ -584,30 +583,39 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "HT\n20\n12\n23\n16",
-      "awayTeam": "나이지리아 U18\n코트디부아르 U18",
+      "homeTeam": "Q\n19\n11",
+      "awayTeam": "포르투갈",
       "homeScore": 17,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786289013833,
+      "timestamp": 1786290836206,
       "sport": "농구"
     },
     {
-      "homeTeam": "HT\n11\n13\n5\n21",
-      "awayTeam": "Lithuania",
-      "homeScore": 15,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1786289013833,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n21\n19",
+      "homeTeam": "HT\n23\n25\n19\n17",
       "awayTeam": "슬로베니아",
       "homeScore": 15,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786289013833,
+      "timestamp": 1786290836206,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n19\n24\n19\n14",
+      "awayTeam": "이스라엘",
+      "homeScore": 17,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1786290836206,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "연기",
+      "awayTeam": "Moischers Nets",
+      "homeScore": 13,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786290836206,
       "sport": "농구"
     },
     {
