@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-09T23:06:05.697Z",
+  "updatedAt": "2026-08-09T23:42:11.003Z",
   "count": 93,
   "scores": [
     {
@@ -498,20 +498,19 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "시카고W",
-      "awayTeam": "클리블랜드",
-      "homeScore": 5,
-      "awayScore": 2,
-      "status": "LIVE",
-      "timestamp": 1786331400000,
-      "sport": "야구",
-      "inning": "7회말"
-    },
-    {
       "homeTeam": "캔자스시티",
       "awayTeam": "시카고컵스",
       "homeScore": 2,
       "awayScore": 10,
+      "status": "FINISHED",
+      "timestamp": 1786331400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "시카고W",
+      "awayTeam": "클리블랜드",
+      "homeScore": 5,
+      "awayScore": 3,
       "status": "FINISHED",
       "timestamp": 1786331400000,
       "sport": "야구"
@@ -548,10 +547,9 @@
       "awayTeam": "디트로이트",
       "homeScore": 1,
       "awayScore": 3,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786338300000,
-      "sport": "야구",
-      "inning": "10회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "애리조나",
