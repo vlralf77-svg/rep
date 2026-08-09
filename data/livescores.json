@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-09T08:59:09.324Z",
-  "count": 158,
+  "updatedAt": "2026-08-09T09:31:55.567Z",
+  "count": 159,
   "scores": [
     {
       "homeTeam": "PSG",
@@ -231,11 +231,11 @@
       "homeTeam": "지바롯데",
       "awayTeam": "오릭스",
       "homeScore": 2,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1786294800000,
       "sport": "야구",
-      "inning": "4회초"
+      "inning": "5회초"
     },
     {
       "homeTeam": "세이부",
@@ -245,29 +245,11 @@
       "status": "LIVE",
       "timestamp": 1786294800000,
       "sport": "야구",
-      "inning": "4회초"
-    },
-    {
-      "homeTeam": "요코하마",
-      "awayTeam": "히로시마",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1786298400000,
-      "sport": "야구"
+      "inning": "5회말"
     },
     {
       "homeTeam": "LG",
       "awayTeam": "KIA",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1786298400000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "한신",
-      "awayTeam": "주니치",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -311,13 +293,34 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "요코하마",
+      "awayTeam": "히로시마",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786298400000,
+      "sport": "야구",
+      "inning": "2회말"
+    },
+    {
+      "homeTeam": "한신",
+      "awayTeam": "주니치",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786298400000,
+      "sport": "야구",
+      "inning": "2회말"
+    },
+    {
       "homeTeam": "도쿄 베르디",
       "awayTeam": "가와사키",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786298400000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 25'"
     },
     {
       "homeTeam": "나가사키",
@@ -896,12 +899,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n17\n12\n17\n14",
-      "awayTeam": "룩셈부르크",
-      "homeScore": 9,
-      "awayScore": 30,
+      "homeTeam": "HT\n9\n12\n26\n26",
+      "awayTeam": "스웨덴",
+      "homeScore": 11,
+      "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786265907874,
+      "timestamp": 1786267866109,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "대기",
+      "awayTeam": "USIU",
+      "homeScore": 9,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786267866109,
       "sport": "농구"
     },
     {
