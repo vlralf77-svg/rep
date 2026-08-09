@@ -1,134 +1,7 @@
 {
-  "updatedAt": "2026-08-09T01:07:08.669Z",
+  "updatedAt": "2026-08-09T03:26:40.926Z",
   "toto": [],
   "proto": [
-    {
-      "matchId": "시애틀 매리너스|탬파베이 레이스|1786240200000",
-      "sport": "야구",
-      "league": "승부식93 회차",
-      "homeTeam": "시애틀 매리너스",
-      "awayTeam": "탬파베이 레이스",
-      "gameDate": "2026-08-09T01:50:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.7
-            },
-            {
-              "label": "패",
-              "odds": 1.82
-            }
-          ]
-        },
-        {
-          "type": "승1패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.45
-            },
-            {
-              "label": "1",
-              "odds": 3.15
-            },
-            {
-              "label": "패",
-              "odds": 2.36
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3.46
-            },
-            {
-              "label": "패",
-              "odds": 1.18
-            }
-          ],
-          "line": -2.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.62
-            },
-            {
-              "label": "오버",
-              "odds": 1.93
-            }
-          ],
-          "line": 7.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.54
-            },
-            {
-              "label": "짝",
-              "odds": 2.05
-            }
-          ]
-        },
-        {
-          "type": "전반 승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.1
-            },
-            {
-              "label": "무",
-              "odds": 4.8
-            },
-            {
-              "label": "패",
-              "odds": 2.15
-            }
-          ]
-        },
-        {
-          "type": "전반 핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3.03
-            },
-            {
-              "label": "패",
-              "odds": 1.24
-            }
-          ],
-          "line": -1.5
-        },
-        {
-          "type": "전반 언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.84
-            },
-            {
-              "label": "오버",
-              "odds": 1.69
-            }
-          ],
-          "line": 3.5
-        }
-      ]
-    },
     {
       "matchId": "요미우리 자이언츠|야쿠르트 스왈로스|1786251600000",
       "sport": "야구",
@@ -156,15 +29,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.35
+              "odds": 2.28
             },
             {
               "label": "1",
-              "odds": 2.6
+              "odds": 2.65
             },
             {
               "label": "패",
-              "odds": 2.95
+              "odds": 3
             }
           ]
         },
@@ -238,15 +111,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.99
+              "odds": 1.93
             },
             {
               "label": "1",
-              "odds": 2.95
+              "odds": 3.05
             },
             {
               "label": "패",
-              "odds": 3.25
+              "odds": 3.3
             }
           ]
         },
