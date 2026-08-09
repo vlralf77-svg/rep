@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-09T14:23:46.508Z",
-  "count": 160,
+  "updatedAt": "2026-08-09T14:58:53.602Z",
+  "count": 158,
   "scores": [
     {
       "homeTeam": "PSG",
@@ -357,41 +357,38 @@
       "homeTeam": "즈볼레",
       "awayTeam": "아약스",
       "homeScore": 0,
-      "awayScore": 1,
-      "status": "LIVE",
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1786311000000,
-      "sport": "축구",
-      "minute": "후반 41'"
+      "sport": "축구"
     },
     {
       "homeTeam": "흐로닝언",
       "awayTeam": "위트레흐트",
       "homeScore": 2,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786311000000,
-      "sport": "축구",
-      "minute": "후반 45'"
+      "sport": "축구"
     },
     {
       "homeTeam": "킬마녹",
       "awayTeam": "셀틱",
       "homeScore": 1,
       "awayScore": 5,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786311000000,
-      "sport": "축구",
-      "minute": "후반 48'"
+      "sport": "축구"
     },
     {
       "homeTeam": "리버풀",
       "awayTeam": "모나코",
       "homeScore": 2,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1786314600000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 21'"
     },
     {
       "homeTeam": "하츠",
@@ -401,7 +398,7 @@
       "status": "LIVE",
       "timestamp": 1786316400000,
       "sport": "축구",
-      "minute": "전반 20'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "마더웰",
@@ -411,7 +408,7 @@
       "status": "LIVE",
       "timestamp": 1786316400000,
       "sport": "축구",
-      "minute": "전반 21'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "라네르스",
@@ -421,16 +418,17 @@
       "status": "LIVE",
       "timestamp": 1786316400000,
       "sport": "축구",
-      "minute": "전반 21'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "히렌빈",
       "awayTeam": "트벤터",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786319100000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 9'"
     },
     {
       "homeTeam": "LG",
@@ -901,30 +899,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n21\n13\n21\n12",
-      "awayTeam": "슬로베니아 U18",
-      "homeScore": 13,
-      "awayScore": 45,
-      "status": "LIVE",
-      "timestamp": 1786285385987,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n12\n15",
-      "awayTeam": "ANU Wolfpacks",
-      "homeScore": 11,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786285385988,
-      "sport": "농구"
-    },
-    {
       "homeTeam": "레인 오어 샤인 엘라스토 페인터스\n연기",
       "awayTeam": "바란가이 기네브라 산 미구엘\n블랙워터",
       "homeScore": 11,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1786285385988,
+      "timestamp": 1786287493527,
       "sport": "농구"
     },
     {
@@ -1419,7 +1399,7 @@
       "homeTeam": "PEC즈볼레",
       "awayTeam": "아약스",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1786278600000,
       "sport": "축구"
