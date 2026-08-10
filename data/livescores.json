@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-10T22:48:56.239Z",
-  "count": 57,
+  "updatedAt": "2026-08-10T23:21:32.912Z",
+  "count": 58,
   "scores": [
     {
       "homeTeam": "레인저스",
@@ -169,18 +169,20 @@
       "awayTeam": "보스턴",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786435620000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "애틀랜타",
       "awayTeam": "뉴욕메츠",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786436100000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "미네소타",
@@ -370,6 +372,15 @@
       "status": "SCHEDULED",
       "timestamp": 1786474800000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "Q\n20\n22",
+      "awayTeam": "Deportivo Campoalto",
+      "homeScore": 23,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1786404060361,
+      "sport": "농구"
     },
     {
       "homeTeam": "레인저스FC",
