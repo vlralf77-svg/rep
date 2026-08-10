@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-10T23:21:32.912Z",
-  "count": 58,
+  "updatedAt": "2026-08-10T23:55:28.018Z",
+  "count": 59,
   "scores": [
     {
       "homeTeam": "레인저스",
@@ -172,35 +172,37 @@
       "status": "LIVE",
       "timestamp": 1786435620000,
       "sport": "야구",
-      "inning": "1회말"
+      "inning": "3회말"
     },
     {
       "homeTeam": "애틀랜타",
       "awayTeam": "뉴욕메츠",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 5,
       "status": "LIVE",
       "timestamp": 1786436100000,
       "sport": "야구",
-      "inning": "1회초"
+      "inning": "1회말"
     },
     {
       "homeTeam": "미네소타",
       "awayTeam": "볼티모어",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786437600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "세인트루이스",
       "awayTeam": "필라델피아",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786437900000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "LA에인절스",
@@ -374,12 +376,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n20\n22",
+      "homeTeam": "HT\n20\n24\n22\n18",
       "awayTeam": "Deportivo Campoalto",
       "homeScore": 23,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1786404060361,
+      "timestamp": 1786406089335,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n21\n18\n20\n15",
+      "awayTeam": "Ural Olimpia",
+      "homeScore": 23,
+      "awayScore": 15,
+      "status": "LIVE",
+      "timestamp": 1786406089335,
       "sport": "농구"
     },
     {
