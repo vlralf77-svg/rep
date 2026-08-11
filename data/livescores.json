@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-11T19:34:40.472Z",
+  "updatedAt": "2026-08-11T20:13:13.756Z",
   "count": 70,
   "scores": [
     {
@@ -165,15 +165,6 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "화천 KSPO",
-      "awayTeam": "인천 현대제철",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1786474800000,
-      "sport": "축구"
-    },
-    {
       "homeTeam": "두산",
       "awayTeam": "한화",
       "homeScore": 6,
@@ -217,6 +208,15 @@
       "status": "FINISHED",
       "timestamp": 1786474800000,
       "sport": "야구"
+    },
+    {
+      "homeTeam": "화천 KSPO",
+      "awayTeam": "인천 현대제철",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1786474800000,
+      "sport": "축구"
     },
     {
       "homeTeam": "유벤투스",
@@ -582,7 +582,7 @@
       "homeTeam": "FK츠르베나",
       "awayTeam": "베르셰바FC",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1786471200000,
       "sport": "축구"
@@ -590,7 +590,7 @@
     {
       "homeTeam": "NK첼레",
       "awayTeam": "아반아카데미",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1786472100000,
@@ -599,7 +599,7 @@
     {
       "homeTeam": "브라티슬라바",
       "awayTeam": "미엘뷔AIF",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1786472100000,
@@ -609,7 +609,7 @@
       "homeTeam": "스텀그라츠",
       "awayTeam": "페네르바체",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1786473000000,
       "sport": "축구"
