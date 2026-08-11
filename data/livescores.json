@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-11T08:30:15.287Z",
-  "count": 60,
+  "updatedAt": "2026-08-11T09:31:24.228Z",
+  "count": 59,
   "scores": [
     {
       "homeTeam": "실케보리",
@@ -142,9 +142,10 @@
       "awayTeam": "오릭스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786471200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회초"
     },
     {
       "homeTeam": "야쿠르트",
@@ -165,6 +166,24 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "화천 KSPO",
+      "awayTeam": "인천 현대제철",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1786474800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "유벤투스",
+      "awayTeam": "팔레르모",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1786474800000,
+      "sport": "축구"
+    },
+    {
       "homeTeam": "두산",
       "awayTeam": "한화",
       "homeScore": 0,
@@ -176,15 +195,6 @@
     {
       "homeTeam": "NC",
       "awayTeam": "KT",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1786474800000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "키움",
-      "awayTeam": "LG",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -210,22 +220,14 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "화천 KSPO",
-      "awayTeam": "인천 현대제철",
+      "homeTeam": "키움",
+      "awayTeam": "LG",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786474800000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "유벤투스",
-      "awayTeam": "팔레르모",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1786474800000,
-      "sport": "축구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "워싱턴",
@@ -388,15 +390,6 @@
       "status": "FINISHED",
       "timestamp": 1786323600000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "t\n32\n36\n2Q\n25\n7\n26\n10",
-      "awayTeam": "England UK50 Elite\nCh",
-      "homeScore": 11,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786436982857,
-      "sport": "농구"
     },
     {
       "homeTeam": "레인저스FC",
