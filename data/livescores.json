@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-12T21:08:08.680Z",
+  "updatedAt": "2026-08-12T21:58:39.063Z",
   "count": 86,
   "scores": [
     {
@@ -257,9 +257,9 @@
     {
       "homeTeam": "뉴캐슬",
       "awayTeam": "에버턴",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1786583700000,
       "sport": "축구"
     },
@@ -320,32 +320,31 @@
     {
       "homeTeam": "애슬레틱스",
       "awayTeam": "탬파베이",
-      "homeScore": 2,
-      "awayScore": 7,
-      "status": "LIVE",
+      "homeScore": 4,
+      "awayScore": 8,
+      "status": "FINISHED",
       "timestamp": 1786593900000,
-      "sport": "야구",
-      "inning": "7회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "애리조나",
       "awayTeam": "콜로라도",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 6,
       "status": "LIVE",
       "timestamp": 1786596000000,
       "sport": "야구",
-      "inning": "5회말"
+      "inning": "7회말"
     },
     {
       "homeTeam": "샌프란시스코",
       "awayTeam": "휴스턴",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1786596300000,
       "sport": "야구",
-      "inning": "5회초"
+      "inning": "8회말"
     },
     {
       "homeTeam": "샌디에이고",
@@ -355,7 +354,7 @@
       "status": "LIVE",
       "timestamp": 1786597800000,
       "sport": "야구",
-      "inning": "4회초"
+      "inning": "7회초"
     },
     {
       "homeTeam": "디트로이트",
