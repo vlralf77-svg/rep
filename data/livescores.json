@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-12T17:34:07.935Z",
-  "count": 86,
+  "updatedAt": "2026-08-12T18:30:13.587Z",
+  "count": 88,
   "scores": [
     {
       "homeTeam": "파흐타코르",
@@ -266,20 +266,22 @@
     {
       "homeTeam": "미네소타",
       "awayTeam": "볼티모어",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1786588800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회초"
     },
     {
       "homeTeam": "세인트루이스",
       "awayTeam": "필라델피아",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786590900000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "맨유",
@@ -532,6 +534,24 @@
       "status": "SCHEDULED",
       "timestamp": 1786647600000,
       "sport": "야구"
+    },
+    {
+      "homeTeam": "HT\n16\n20\n21\n25",
+      "awayTeam": "리투아니아",
+      "homeScore": 17,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1786559381565,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n23\n23\n18\n11",
+      "awayTeam": "터키",
+      "homeScore": 15,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786559381565,
+      "sport": "농구"
     },
     {
       "homeTeam": "카이라트",
