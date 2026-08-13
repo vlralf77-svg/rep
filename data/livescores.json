@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-13T20:07:12.223Z",
-  "count": 120,
+  "updatedAt": "2026-08-13T20:57:09.071Z",
+  "count": 119,
   "scores": [
     {
       "homeTeam": "뉴캐슬",
@@ -293,12 +293,11 @@
     {
       "homeTeam": "시카고W",
       "awayTeam": "신시내티",
-      "homeScore": 7,
+      "homeScore": 8,
       "awayScore": 9,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786673400000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "디트로이트",
@@ -323,10 +322,9 @@
       "awayTeam": "시애틀",
       "homeScore": 0,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786674900000,
-      "sport": "야구",
-      "inning": "8회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "알 샤밥",
@@ -354,16 +352,17 @@
       "status": "LIVE",
       "timestamp": 1786680420000,
       "sport": "야구",
-      "inning": "4회초"
+      "inning": "8회초"
     },
     {
       "homeTeam": "워싱턴",
       "awayTeam": "시카고컵스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786683900000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "4회말"
     },
     {
       "homeTeam": "미네소타",
@@ -519,15 +518,6 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n16\n15\n23\n17",
-      "awayTeam": "헝가리",
-      "homeScore": 19,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786651593345,
-      "sport": "농구"
-    },
-    {
       "homeTeam": "PSG",
       "awayTeam": "애스턴빌라",
       "homeScore": 2,
@@ -629,8 +619,8 @@
     {
       "homeTeam": "하츠",
       "awayTeam": "SL벤피카",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1786646700000,
       "sport": "축구"
@@ -638,8 +628,8 @@
     {
       "homeTeam": "에그나티아",
       "awayTeam": "샴록로버스",
-      "homeScore": 4,
-      "awayScore": 0,
+      "homeScore": 5,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1786647600000,
       "sport": "축구"
