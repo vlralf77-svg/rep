@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-13T12:05:52.573Z",
+  "updatedAt": "2026-08-13T13:38:32.018Z",
   "count": 88,
   "scores": [
     {
@@ -183,51 +183,47 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "야쿠르트",
+      "awayTeam": "히로시마",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1786644000000,
+      "sport": "야구"
+    },
+    {
       "homeTeam": "요미우리",
       "awayTeam": "한신",
       "homeScore": 2,
       "awayScore": 3,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786644000000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "소프트뱅크",
       "awayTeam": "지바롯데",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 4,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786644000000,
-      "sport": "야구",
-      "inning": "9회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "라쿠텐",
       "awayTeam": "오릭스",
       "homeScore": 2,
-      "awayScore": 5,
-      "status": "LIVE",
+      "awayScore": 8,
+      "status": "FINISHED",
       "timestamp": 1786644000000,
-      "sport": "야구",
-      "inning": "7회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "닛폰햄",
       "awayTeam": "세이부",
       "homeScore": 8,
       "awayScore": 2,
-      "status": "LIVE",
-      "timestamp": 1786644000000,
-      "sport": "야구",
-      "inning": "9회초"
-    },
-    {
-      "homeTeam": "야쿠르트",
-      "awayTeam": "히로시마",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1786644000000,
       "sport": "야구"
     },
@@ -243,52 +239,49 @@
     {
       "homeTeam": "두산",
       "awayTeam": "한화",
-      "homeScore": 8,
-      "awayScore": 2,
+      "homeScore": 9,
+      "awayScore": 6,
       "status": "LIVE",
       "timestamp": 1786647600000,
       "sport": "야구",
-      "inning": "6회초"
+      "inning": "9회초"
+    },
+    {
+      "homeTeam": "KIA",
+      "awayTeam": "삼성",
+      "homeScore": 8,
+      "awayScore": 7,
+      "status": "LIVE",
+      "timestamp": 1786647600000,
+      "sport": "야구",
+      "inning": "9회초"
     },
     {
       "homeTeam": "NC",
       "awayTeam": "KT",
-      "homeScore": 2,
-      "awayScore": 4,
-      "status": "LIVE",
+      "homeScore": 6,
+      "awayScore": 5,
+      "status": "FINISHED",
       "timestamp": 1786647600000,
-      "sport": "야구",
-      "inning": "7회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "키움",
       "awayTeam": "LG",
-      "homeScore": 4,
-      "awayScore": 10,
-      "status": "LIVE",
+      "homeScore": 6,
+      "awayScore": 13,
+      "status": "FINISHED",
       "timestamp": 1786647600000,
-      "sport": "야구",
-      "inning": "6회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "SSG",
       "awayTeam": "롯데",
       "homeScore": 0,
       "awayScore": 11,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786647600000,
-      "sport": "야구",
-      "inning": "7회말"
-    },
-    {
-      "homeTeam": "KIA",
-      "awayTeam": "삼성",
-      "homeScore": 5,
-      "awayScore": 4,
-      "status": "LIVE",
-      "timestamp": 1786647600000,
-      "sport": "야구",
-      "inning": "6회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "두산",
@@ -543,21 +536,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n15\n23\n13\n21",
-      "awayTeam": "레바논",
-      "homeScore": 14,
-      "awayScore": 0,
+      "homeTeam": "Q\n19\n10\n18\n5",
+      "awayTeam": "세네갈 U18\nMadagascar U1",
+      "homeScore": 15,
+      "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1786622719797,
+      "timestamp": 1786628275440,
       "sport": "농구"
     },
     {
-      "homeTeam": "U12\n30\n20\nHT\n14\n9\n6\n7",
-      "awayTeam": "Sydney Kings U12\nGump",
-      "homeScore": 12,
+      "homeTeam": "결과\n2\n9\n8\n21\n14\n7\n8\n10",
+      "awayTeam": "Nanjing U12\nDigital P",
+      "homeScore": 11,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786622719797,
+      "timestamp": 1786628275441,
       "sport": "농구"
     },
     {
