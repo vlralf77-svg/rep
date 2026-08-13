@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-13T23:02:49.072Z",
-  "count": 119,
+  "updatedAt": "2026-08-13T23:44:31.314Z",
+  "count": 121,
   "scores": [
     {
       "homeTeam": "뉴캐슬",
@@ -366,10 +366,11 @@
       "homeTeam": "미네소타",
       "awayTeam": "필라델피아",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1786696200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "LA에인절스",
@@ -514,6 +515,24 @@
       "status": "SCHEDULED",
       "timestamp": 1786734000000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n21\n27\n29\n22",
+      "awayTeam": "Capiata Bulls\nDeporti",
+      "homeScore": 23,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1786664634205,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "대기",
+      "awayTeam": "Paulistano Amil",
+      "homeScore": 23,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786664634205,
+      "sport": "농구"
     },
     {
       "homeTeam": "PSG",
