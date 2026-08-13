@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-13T15:36:55.872Z",
-  "count": 119,
+  "updatedAt": "2026-08-13T16:30:36.234Z",
+  "count": 121,
   "scores": [
     {
       "homeTeam": "뉴캐슬",
@@ -285,10 +285,20 @@
       "homeTeam": "압하",
       "awayTeam": "알 하젬",
       "homeScore": 0,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1786670100000,
+      "sport": "축구",
+      "minute": "전반 12'"
+    },
+    {
+      "homeTeam": "시카고W",
+      "awayTeam": "신시내티",
+      "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
-      "timestamp": 1786670100000,
-      "sport": "축구"
+      "timestamp": 1786673400000,
+      "sport": "야구"
     },
     {
       "homeTeam": "디트로이트",
@@ -334,15 +344,6 @@
       "status": "SCHEDULED",
       "timestamp": 1786676400000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "시카고W",
-      "awayTeam": "신시내티",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1786677000000,
-      "sport": "야구"
     },
     {
       "homeTeam": "토론토",
@@ -514,6 +515,24 @@
       "status": "SCHEDULED",
       "timestamp": 1786734000000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n15\n8\n9\n12",
+      "awayTeam": "코트디부아르 U18\n이집트 U18",
+      "homeScore": 18,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786638606197,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n14\n9\n15\n9\n6\n7\n8\n2",
+      "awayTeam": "Sydney Kings U12\nGump",
+      "homeScore": 12,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786638606198,
+      "sport": "농구"
     },
     {
       "homeTeam": "PSG",
