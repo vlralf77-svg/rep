@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-14T12:04:36.254Z",
-  "count": 124,
+  "updatedAt": "2026-08-14T13:24:07.922Z",
+  "count": 125,
   "scores": [
     {
       "homeTeam": "압하",
@@ -111,26 +111,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "소프트뱅크",
-      "awayTeam": "라쿠텐",
-      "homeScore": 2,
-      "awayScore": 5,
-      "status": "LIVE",
-      "timestamp": 1786730400000,
-      "sport": "야구",
-      "inning": "9회말"
-    },
-    {
-      "homeTeam": "야쿠르트",
-      "awayTeam": "요코하마",
-      "homeScore": 7,
-      "awayScore": 2,
-      "status": "LIVE",
-      "timestamp": 1786730400000,
-      "sport": "야구",
-      "inning": "8회말"
-    },
-    {
       "homeTeam": "히로시마",
       "awayTeam": "한신",
       "homeScore": 6,
@@ -152,6 +132,24 @@
       "homeTeam": "오릭스",
       "awayTeam": "닛폰햄",
       "homeScore": 6,
+      "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1786730400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "소프트뱅크",
+      "awayTeam": "라쿠텐",
+      "homeScore": 2,
+      "awayScore": 5,
+      "status": "FINISHED",
+      "timestamp": 1786730400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "야쿠르트",
+      "awayTeam": "요코하마",
+      "homeScore": 7,
       "awayScore": 2,
       "status": "FINISHED",
       "timestamp": 1786730400000,
@@ -187,52 +185,51 @@
     {
       "homeTeam": "삼성",
       "awayTeam": "한화",
-      "homeScore": 4,
-      "awayScore": 1,
+      "homeScore": 8,
+      "awayScore": 5,
       "status": "LIVE",
       "timestamp": 1786734000000,
       "sport": "야구",
-      "inning": "6회말"
+      "inning": "8회말"
     },
     {
       "homeTeam": "롯데",
       "awayTeam": "NC",
-      "homeScore": 2,
+      "homeScore": 6,
       "awayScore": 6,
       "status": "LIVE",
       "timestamp": 1786734000000,
       "sport": "야구",
-      "inning": "6회말"
+      "inning": "9회초"
     },
     {
       "homeTeam": "KIA",
       "awayTeam": "두산",
-      "homeScore": 1,
-      "awayScore": 4,
-      "status": "LIVE",
-      "timestamp": 1786734000000,
-      "sport": "야구",
-      "inning": "3회초"
-    },
-    {
-      "homeTeam": "LG",
-      "awayTeam": "SSG",
       "homeScore": 2,
-      "awayScore": 2,
+      "awayScore": 7,
       "status": "LIVE",
       "timestamp": 1786734000000,
       "sport": "야구",
-      "inning": "7회말"
+      "inning": "7회초"
     },
     {
       "homeTeam": "KT",
       "awayTeam": "키움",
-      "homeScore": 2,
+      "homeScore": 8,
       "awayScore": 3,
       "status": "LIVE",
       "timestamp": 1786734000000,
       "sport": "야구",
-      "inning": "6회초"
+      "inning": "9회초"
+    },
+    {
+      "homeTeam": "LG",
+      "awayTeam": "SSG",
+      "homeScore": 3,
+      "awayScore": 5,
+      "status": "FINISHED",
+      "timestamp": 1786734000000,
+      "sport": "야구"
     },
     {
       "homeTeam": "도쿄 베르디",
@@ -523,48 +520,57 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n22\n6\n13\n11",
-      "awayTeam": "몬테네그로",
-      "homeScore": 11,
+      "homeTeam": "HT\n19\n18\n21\n22",
+      "awayTeam": "독일",
+      "homeScore": 12,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1786709045341,
+      "timestamp": 1786713807182,
       "sport": "농구"
     },
     {
-      "homeTeam": "Q\n20\n13\n27\n12",
-      "awayTeam": "북마케도니아",
-      "homeScore": 14,
+      "homeTeam": "HT\n18\n23\n11\n13",
+      "awayTeam": "이탈리아",
+      "homeScore": 15,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786709045341,
+      "timestamp": 1786713807182,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n24\n7\n10\n9",
+      "awayTeam": "폴란드",
+      "homeScore": 12,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1786713807182,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n18\n18\n10\n18",
+      "awayTeam": "세르비아",
+      "homeScore": 15,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786713807182,
       "sport": "농구"
     },
     {
       "homeTeam": "연기",
-      "awayTeam": "Zamboanga Familys Bra",
-      "homeScore": 9,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786709045341,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "대기",
       "awayTeam": "Bataan Risers",
       "homeScore": 11,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786709045341,
+      "timestamp": 1786713807182,
       "sport": "농구"
     },
     {
-      "homeTeam": "Q\n8\n5\n8\n12\n9\n6",
-      "awayTeam": "Sydney Kings U12\nShan",
-      "homeScore": 0,
+      "homeTeam": "결과\n12\n5\n6\n11\n8\n11\n2\n4",
+      "awayTeam": "Luone U12\nNanjing U12",
+      "homeScore": 11,
       "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1786709045341,
+      "status": "LIVE",
+      "timestamp": 1786713807182,
       "sport": "농구"
     },
     {
@@ -689,7 +695,7 @@
       "awayTeam": "가시와레이솔",
       "homeScore": 1,
       "awayScore": 3,
-      "status": "FINISHED",
+      "status": "SCHEDULED",
       "timestamp": 1786701600000,
       "sport": "축구"
     },
