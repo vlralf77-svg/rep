@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-14T17:05:58.214Z",
-  "count": 181,
+  "updatedAt": "2026-08-14T17:59:56.866Z",
+  "count": 183,
   "scores": [
     {
       "homeTeam": "압하",
@@ -240,31 +240,30 @@
       "homeTeam": "마르세유",
       "awayTeam": "AT 마드리드",
       "homeScore": 1,
-      "awayScore": 1,
-      "status": "LIVE",
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1786753800000,
-      "sport": "축구",
-      "minute": "후반 25'"
+      "sport": "축구"
     },
     {
       "homeTeam": "네옴",
       "awayTeam": "알 파이하",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1786758600000,
       "sport": "축구",
-      "minute": "전반 13'"
+      "minute": "후반 4'"
     },
     {
       "homeTeam": "비보리",
       "awayTeam": "AGF",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1786759200000,
       "sport": "축구",
-      "minute": "전반 2'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "알 힐랄",
@@ -825,12 +824,30 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n19\n20\n10\n8",
-      "awayTeam": "아이슬란드",
-      "homeScore": 16,
+      "homeTeam": "HT\n15\n27\n14\n7",
+      "awayTeam": "아제르바이잔 U16",
+      "homeScore": 12,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786730359748,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n22\n13\n18\n14",
+      "awayTeam": "벨기에",
+      "homeScore": 12,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1786727122145,
+      "timestamp": 1786730359748,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n22\n21\n21\n20",
+      "awayTeam": "A.P.R.",
+      "homeScore": 19,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1786730359748,
       "sport": "농구"
     },
     {
@@ -1286,8 +1303,8 @@
     {
       "homeTeam": "홀슈타인킬",
       "awayTeam": "장크트파울리",
-      "homeScore": 0,
-      "awayScore": 1,
+      "homeScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1786793400000,
       "sport": "축구"
