@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-14T18:46:50.593Z",
-  "count": 181,
+  "updatedAt": "2026-08-14T19:39:25.829Z",
+  "count": 180,
   "scores": [
     {
       "homeTeam": "압하",
@@ -250,50 +250,48 @@
       "awayTeam": "알 파이하",
       "homeScore": 2,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786758600000,
-      "sport": "축구",
-      "minute": "후반 51'"
+      "sport": "축구"
     },
     {
       "homeTeam": "비보리",
       "awayTeam": "AGF",
       "homeScore": 2,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786759200000,
-      "sport": "축구",
-      "minute": "후반 40'"
+      "sport": "축구"
     },
     {
       "homeTeam": "알 힐랄",
       "awayTeam": "알 파이살리",
       "homeScore": 3,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1786762800000,
       "sport": "축구",
-      "minute": "전반 42'"
+      "minute": "후반 26'"
     },
     {
       "homeTeam": "알 이티파크",
       "awayTeam": "알 리야드",
-      "homeScore": 1,
-      "awayScore": 0,
+      "homeScore": 2,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1786762800000,
       "sport": "축구",
-      "minute": "전반 44'"
+      "minute": "후반 27'"
     },
     {
       "homeTeam": "텔스타",
       "awayTeam": "스파르타",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1786762800000,
       "sport": "축구",
-      "minute": "전반 44'"
+      "minute": "후반 33'"
     },
     {
       "homeTeam": "시카고컵스",
@@ -303,16 +301,17 @@
       "status": "LIVE",
       "timestamp": 1786764000000,
       "sport": "야구",
-      "inning": "2회말"
+      "inning": "6회초"
     },
     {
       "homeTeam": "울버햄튼",
       "awayTeam": "블랙번",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1786766400000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 36'"
     },
     {
       "homeTeam": "신시내티",
@@ -828,15 +827,6 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n22\n24\n26\n18\n28\n28",
-      "awayTeam": "이탈리아",
-      "homeScore": 15,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786733173785,
-      "sport": "농구"
-    },
-    {
       "homeTeam": "오모니아",
       "awayTeam": "FC링컨",
       "homeScore": 1,
@@ -975,7 +965,7 @@
       "homeTeam": "SC텔스타",
       "awayTeam": "스파르타R",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1786730400000,
       "sport": "축구"
@@ -983,7 +973,7 @@
     {
       "homeTeam": "FC안시",
       "awayTeam": "로데스AF",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1786733100000,
@@ -1019,8 +1009,8 @@
     {
       "homeTeam": "라발",
       "awayTeam": "FC낭트",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1786733100000,
       "sport": "축구"
@@ -1046,8 +1036,8 @@
     {
       "homeTeam": "스타드랭스",
       "awayTeam": "덩케르크",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1786733100000,
       "sport": "축구"
@@ -1055,7 +1045,7 @@
     {
       "homeTeam": "AS생테티엔",
       "awayTeam": "클레르몽",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1786733100000,
@@ -1064,8 +1054,8 @@
     {
       "homeTeam": "울버햄프턴",
       "awayTeam": "블랙번",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1786734000000,
       "sport": "축구"
