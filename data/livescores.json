@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-15T16:21:39.404Z",
-  "count": 232,
+  "updatedAt": "2026-08-15T16:46:18.281Z",
+  "count": 230,
   "scores": [
     {
       "homeTeam": "마르세유",
@@ -574,20 +574,18 @@
       "awayTeam": "NEC 네이메헌",
       "homeScore": 1,
       "awayScore": 4,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786836600000,
-      "sport": "축구",
-      "minute": "후반 42'"
+      "sport": "축구"
     },
     {
       "homeTeam": "맨유",
       "awayTeam": "밀란",
       "homeScore": 2,
-      "awayScore": 3,
-      "status": "LIVE",
+      "awayScore": 4,
+      "status": "FINISHED",
       "timestamp": 1786837500000,
-      "sport": "축구",
-      "minute": "후반 25'"
+      "sport": "축구"
     },
     {
       "homeTeam": "도르트문트",
@@ -597,7 +595,7 @@
       "status": "LIVE",
       "timestamp": 1786840200000,
       "sport": "축구",
-      "minute": "전반 42'"
+      "minute": "후반 4'"
     },
     {
       "homeTeam": "알 타아원",
@@ -607,16 +605,17 @@
       "status": "LIVE",
       "timestamp": 1786842900000,
       "sport": "축구",
-      "minute": "전반 3'"
+      "minute": "전반 27'"
     },
     {
       "homeTeam": "셰필드",
       "awayTeam": "버밍엄",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786843800000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 14'"
     },
     {
       "homeTeam": "위트레흐트",
@@ -1204,39 +1203,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n18\n20\n14\n10",
-      "awayTeam": "코트디부아르 U18\n카메룬 U18",
-      "homeScore": 18,
+      "homeTeam": "HT\n14\n14\n2\n9",
+      "awayTeam": "Finland",
+      "homeScore": 16,
       "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786810859911,
+      "status": "FINISHED",
+      "timestamp": 1786812340584,
       "sport": "농구"
     },
     {
-      "homeTeam": "HT\n12\n18\n26\n17",
+      "homeTeam": "Q\n12\n18\n8\n26\n17\n15",
       "awayTeam": "프랑스",
       "homeScore": 17,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1786810859911,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n10\n11\n5\n23\n23\n19",
-      "awayTeam": "터키",
-      "homeScore": 15,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786810859911,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n14\n12\n17\n10\n5\n7",
-      "awayTeam": "체코",
-      "homeScore": 17,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1786810859911,
+      "timestamp": 1786812340584,
       "sport": "농구"
     },
     {
@@ -1245,7 +1226,7 @@
       "homeScore": 12,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1786810859911,
+      "timestamp": 1786812340584,
       "sport": "농구"
     },
     {
