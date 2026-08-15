@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-15T07:50:40.376Z",
-  "count": 181,
+  "updatedAt": "2026-08-15T08:04:09.704Z",
+  "count": 182,
   "scores": [
     {
       "homeTeam": "마르세유",
@@ -194,28 +194,27 @@
     {
       "homeTeam": "오릭스",
       "awayTeam": "닛폰햄",
-      "homeScore": 2,
+      "homeScore": 4,
       "awayScore": 11,
       "status": "LIVE",
       "timestamp": 1786802400000,
       "sport": "야구",
-      "inning": "8회초"
-    },
-    {
-      "homeTeam": "주니치",
-      "awayTeam": "요미우리",
-      "homeScore": 11,
-      "awayScore": 2,
-      "status": "LIVE",
-      "timestamp": 1786802400000,
-      "sport": "야구",
-      "inning": "9회초"
+      "inning": "8회말"
     },
     {
       "homeTeam": "소프트뱅크",
       "awayTeam": "라쿠텐",
       "homeScore": 4,
       "awayScore": 6,
+      "status": "FINISHED",
+      "timestamp": 1786802400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "주니치",
+      "awayTeam": "요미우리",
+      "homeScore": 11,
+      "awayScore": 2,
       "status": "FINISHED",
       "timestamp": 1786802400000,
       "sport": "야구"
@@ -824,12 +823,21 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "elect Team\n2\n0\n1Q\n2\n0",
+      "awayTeam": "Honey Badgers\nProbask",
+      "homeScore": 11,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786781013531,
+      "sport": "농구"
+    },
+    {
       "homeTeam": "결과\n33\n7\n24\n22\n8\n9\n8\n9",
       "awayTeam": "Shanghai Minhang U12",
       "homeScore": 6,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1786780199989,
+      "timestamp": 1786781013531,
       "sport": "농구"
     },
     {
