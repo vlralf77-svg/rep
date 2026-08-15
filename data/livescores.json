@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-15T19:39:46.490Z",
+  "updatedAt": "2026-08-15T19:53:00.982Z",
   "count": 229,
   "scores": [
     {
@@ -628,10 +628,9 @@
       "awayTeam": "시카고W",
       "homeScore": 3,
       "awayScore": 4,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786846200000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "알라베스",
@@ -659,7 +658,7 @@
       "status": "LIVE",
       "timestamp": 1786849200000,
       "sport": "축구",
-      "minute": "후반 32'"
+      "minute": "후반 45'"
     },
     {
       "homeTeam": "엑셀시오르",
@@ -669,7 +668,7 @@
       "status": "LIVE",
       "timestamp": 1786849200000,
       "sport": "축구",
-      "minute": "후반 35'"
+      "minute": "후반 48'"
     },
     {
       "homeTeam": "알 이티하드",
@@ -679,7 +678,7 @@
       "status": "LIVE",
       "timestamp": 1786849200000,
       "sport": "축구",
-      "minute": "후반 32'"
+      "minute": "후반 45'"
     },
     {
       "homeTeam": "시카고컵스",
@@ -689,7 +688,7 @@
       "status": "LIVE",
       "timestamp": 1786850400000,
       "sport": "야구",
-      "inning": "5회초"
+      "inning": "5회말"
     },
     {
       "homeTeam": "시타르트",
@@ -699,7 +698,7 @@
       "status": "LIVE",
       "timestamp": 1786852800000,
       "sport": "축구",
-      "minute": "전반 36'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "토론토",
@@ -709,16 +708,17 @@
       "status": "LIVE",
       "timestamp": 1786853220000,
       "sport": "야구",
-      "inning": "2회말"
+      "inning": "3회초"
     },
     {
       "homeTeam": "세비야",
       "awayTeam": "바예카노",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1786854600000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 13'"
     },
     {
       "homeTeam": "샌프란시스코",
@@ -1207,21 +1207,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n12\n16\n17\n8",
+      "homeTeam": "HT\n20\n16\n21\n24",
+      "awayTeam": "Mogi das Cruzes",
+      "homeScore": 21,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786823544204,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n12\n26\n17\n19",
       "awayTeam": "몬테네그로",
       "homeScore": 14,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786822741796,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n15\n12\n26\n11",
-      "awayTeam": "CD Universidad Concep",
-      "homeScore": 19,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1786822741797,
+      "timestamp": 1786823544204,
       "sport": "농구"
     },
     {
@@ -1705,7 +1705,7 @@
       "homeTeam": "세비야",
       "awayTeam": "라요바예카노",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1786822200000,
       "sport": "축구"
