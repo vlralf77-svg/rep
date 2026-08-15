@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-15T21:01:30.545Z",
-  "count": 227,
+  "updatedAt": "2026-08-15T21:22:11.903Z",
+  "count": 228,
   "scores": [
     {
       "homeTeam": "마르세유",
@@ -682,10 +682,9 @@
       "awayTeam": "세인트루이스",
       "homeScore": 4,
       "awayScore": 8,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786850400000,
-      "sport": "야구",
-      "inning": "9회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "시타르트",
@@ -699,12 +698,12 @@
     {
       "homeTeam": "토론토",
       "awayTeam": "뉴욕양키스",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1786853220000,
       "sport": "야구",
-      "inning": "7회초"
+      "inning": "7회말"
     },
     {
       "homeTeam": "세비야",
@@ -714,27 +713,27 @@
       "status": "LIVE",
       "timestamp": 1786854600000,
       "sport": "축구",
-      "minute": "후반 11'"
+      "minute": "후반 31'"
     },
     {
       "homeTeam": "샌프란시스코",
       "awayTeam": "콜로라도",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1786856700000,
       "sport": "야구",
-      "inning": "4회초"
+      "inning": "4회말"
     },
     {
       "homeTeam": "뉴욕메츠",
       "awayTeam": "워싱턴",
       "homeScore": 2,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1786857000000,
       "sport": "야구",
-      "inning": "3회초"
+      "inning": "4회말"
     },
     {
       "homeTeam": "탬파베이",
@@ -1203,6 +1202,15 @@
       "status": "SCHEDULED",
       "timestamp": 1786923900000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n15\n17\n12\n18",
+      "awayTeam": "코트디부아르 U18\n카메룬 U18\n62",
+      "homeScore": 18,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786828874644,
+      "sport": "농구"
     },
     {
       "homeTeam": "브라운슈바이",
@@ -1677,7 +1685,7 @@
       "awayTeam": "캄부르",
       "homeScore": 3,
       "awayScore": 1,
-      "status": "FINISHED",
+      "status": "SCHEDULED",
       "timestamp": 1786820400000,
       "sport": "축구"
     },
