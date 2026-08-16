@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-16T14:43:30.685Z",
-  "count": 233,
+  "updatedAt": "2026-08-16T14:59:26.930Z",
+  "count": 234,
   "scores": [
     {
       "homeTeam": "도르트문트",
@@ -573,11 +573,11 @@
       "homeTeam": "말레이시아",
       "awayTeam": "베트남",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1786917600000,
       "sport": "축구",
-      "minute": "후반 34'"
+      "minute": "후반 50'"
     },
     {
       "homeTeam": "링비",
@@ -587,7 +587,7 @@
       "status": "LIVE",
       "timestamp": 1786921200000,
       "sport": "축구",
-      "minute": "전반 41'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "아스널",
@@ -597,7 +597,7 @@
       "status": "LIVE",
       "timestamp": 1786921200000,
       "sport": "축구",
-      "minute": "전반 37'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "바젤",
@@ -607,16 +607,17 @@
       "status": "LIVE",
       "timestamp": 1786923000000,
       "sport": "축구",
-      "minute": "전반 8'"
+      "minute": "전반 24'"
     },
     {
       "homeTeam": "아약스",
       "awayTeam": "히렌빈",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786923900000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 11'"
     },
     {
       "homeTeam": "삼성",
@@ -1204,21 +1205,30 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n13\n16\n20\n19",
+      "homeTeam": "Q\n13\n16\n0\n20\n21\n0",
       "awayTeam": "세네갈 U18\n코트디부아르 U18",
       "homeScore": 20,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786891376789,
+      "timestamp": 1786892330467,
       "sport": "농구"
     },
     {
-      "homeTeam": "HT\n14\n17\n29\n25",
-      "awayTeam": "호주 U18\n중국 대북",
-      "homeScore": 5,
+      "homeTeam": "HT\n19\n10\n21\n14",
+      "awayTeam": "Dep. 산호세\nOsasco Baske",
+      "homeScore": 14,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786891376790,
+      "timestamp": 1786892330467,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n18\n22\n19\n13",
+      "awayTeam": "Stanbic Aces",
+      "homeScore": 12,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786892330467,
       "sport": "농구"
     },
     {
@@ -1935,7 +1945,7 @@
     {
       "homeTeam": "아약스",
       "awayTeam": "헤렌벤",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1786891500000,
