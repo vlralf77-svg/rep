@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-16T19:28:58.490Z",
+  "updatedAt": "2026-08-16T19:43:51.079Z",
   "count": 149,
   "scores": [
     {
@@ -655,10 +655,9 @@
       "awayTeam": "볼티모어",
       "homeScore": 2,
       "awayScore": 10,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786929300000,
-      "sport": "야구",
-      "inning": "9회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "에스파뇰",
@@ -679,34 +678,33 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "애틀랜타",
-      "awayTeam": "애리조나",
-      "homeScore": 2,
-      "awayScore": 2,
-      "status": "LIVE",
-      "timestamp": 1786934100000,
-      "sport": "야구",
-      "inning": "7회말"
-    },
-    {
       "homeTeam": "피츠버그",
       "awayTeam": "보스턴",
       "homeScore": 7,
       "awayScore": 3,
+      "status": "SCHEDULED",
+      "timestamp": 1786934100000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "애틀랜타",
+      "awayTeam": "애리조나",
+      "homeScore": 5,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1786934100000,
       "sport": "야구",
-      "inning": "6회초"
+      "inning": "8회초"
     },
     {
       "homeTeam": "토론토",
       "awayTeam": "뉴욕양키스",
       "homeScore": 1,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1786934220000,
       "sport": "야구",
-      "inning": "7회초"
+      "inning": "8회초"
     },
     {
       "homeTeam": "클리블랜드",
@@ -721,11 +719,11 @@
       "homeTeam": "디트로이트",
       "awayTeam": "시카고W",
       "homeScore": 4,
-      "awayScore": 4,
+      "awayScore": 6,
       "status": "LIVE",
       "timestamp": 1786934400000,
       "sport": "야구",
-      "inning": "6회말"
+      "inning": "7회초"
     },
     {
       "homeTeam": "신시내티",
@@ -735,7 +733,7 @@
       "status": "LIVE",
       "timestamp": 1786934400000,
       "sport": "야구",
-      "inning": "7회초"
+      "inning": "7회말"
     },
     {
       "homeTeam": "뉴욕메츠",
@@ -745,7 +743,7 @@
       "status": "LIVE",
       "timestamp": 1786934400000,
       "sport": "야구",
-      "inning": "7회초"
+      "inning": "7회말"
     },
     {
       "homeTeam": "미네소타",
@@ -755,7 +753,7 @@
       "status": "LIVE",
       "timestamp": 1786936200000,
       "sport": "야구",
-      "inning": "5회초"
+      "inning": "5회말"
     },
     {
       "homeTeam": "랑스",
@@ -765,17 +763,17 @@
       "status": "LIVE",
       "timestamp": 1786938300000,
       "sport": "축구",
-      "minute": "전반 41'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "시카고컵스",
       "awayTeam": "세인트루이스",
       "homeScore": 0,
-      "awayScore": 2,
+      "awayScore": 3,
       "status": "LIVE",
       "timestamp": 1786940100000,
       "sport": "야구",
-      "inning": "1회말"
+      "inning": "2회말"
     },
     {
       "homeTeam": "샌프란시스코",
@@ -864,7 +862,7 @@
       "homeScore": 16,
       "awayScore": 40,
       "status": "LIVE",
-      "timestamp": 1786908502453,
+      "timestamp": 1786909384088,
       "sport": "농구"
     },
     {
@@ -873,7 +871,7 @@
       "homeScore": 17,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786908502453,
+      "timestamp": 1786909384088,
       "sport": "농구"
     },
     {
@@ -882,7 +880,7 @@
       "homeScore": 16,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786908502454,
+      "timestamp": 1786909384088,
       "sport": "농구"
     },
     {
@@ -891,7 +889,7 @@
       "homeScore": 16,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1786908502454,
+      "timestamp": 1786909384088,
       "sport": "농구"
     },
     {
