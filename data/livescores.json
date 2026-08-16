@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-16T21:16:20.330Z",
-  "count": 145,
+  "updatedAt": "2026-08-16T21:36:37.569Z",
+  "count": 146,
   "scores": [
     {
       "homeTeam": "도르트문트",
@@ -712,7 +712,7 @@
       "status": "LIVE",
       "timestamp": 1786934400000,
       "sport": "야구",
-      "inning": "2회말"
+      "inning": "3회말"
     },
     {
       "homeTeam": "디트로이트",
@@ -746,10 +746,9 @@
       "awayTeam": "필라델피아",
       "homeScore": 5,
       "awayScore": 7,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786936200000,
-      "sport": "야구",
-      "inning": "9회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "랑스",
@@ -768,17 +767,17 @@
       "status": "LIVE",
       "timestamp": 1786940100000,
       "sport": "야구",
-      "inning": "6회말"
+      "inning": "7회말"
     },
     {
       "homeTeam": "샌프란시스코",
       "awayTeam": "콜로라도",
       "homeScore": 6,
-      "awayScore": 4,
+      "awayScore": 6,
       "status": "LIVE",
       "timestamp": 1786943100000,
       "sport": "야구",
-      "inning": "4회말"
+      "inning": "5회말"
     },
     {
       "homeTeam": "애슬레틱스",
@@ -788,7 +787,7 @@
       "status": "LIVE",
       "timestamp": 1786943100000,
       "sport": "야구",
-      "inning": "4회초"
+      "inning": "5회초"
     },
     {
       "homeTeam": "LA에인절스",
@@ -798,17 +797,17 @@
       "status": "LIVE",
       "timestamp": 1786943220000,
       "sport": "야구",
-      "inning": "5회말"
+      "inning": "7회초"
     },
     {
       "homeTeam": "LA다저스",
       "awayTeam": "밀워키",
-      "homeScore": 0,
-      "awayScore": 1,
+      "homeScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1786943400000,
       "sport": "야구",
-      "inning": "4회말"
+      "inning": "5회말"
     },
     {
       "homeTeam": "시카고",
@@ -854,6 +853,15 @@
       "status": "SCHEDULED",
       "timestamp": 1786966200000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n12\n15\n21\n22",
+      "awayTeam": "CDS Basquetbol Consti",
+      "homeScore": 21,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786916156074,
+      "sport": "농구"
     },
     {
       "homeTeam": "안도라CF",
@@ -1236,8 +1244,8 @@
     {
       "homeTeam": "라스팔마스",
       "awayTeam": "알바세테",
-      "homeScore": 1,
-      "awayScore": 0,
+      "homeScore": 2,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1786908600000,
       "sport": "축구"
