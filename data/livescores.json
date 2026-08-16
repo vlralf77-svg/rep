@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-16T08:01:09.572Z",
-  "count": 232,
+  "updatedAt": "2026-08-16T08:27:21.549Z",
+  "count": 230,
   "scores": [
     {
       "homeTeam": "도르트문트",
@@ -340,10 +340,9 @@
       "awayTeam": "닛폰햄",
       "homeScore": 7,
       "awayScore": 13,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786885200000,
-      "sport": "야구",
-      "inning": "9회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "소프트뱅크",
@@ -366,11 +365,12 @@
     {
       "homeTeam": "세이부",
       "awayTeam": "지바롯데",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786899600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "히로시마",
@@ -1201,30 +1201,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n19\n15\n19\n20",
-      "awayTeam": "Chinese Taipei White",
-      "homeScore": 9,
+      "homeTeam": "l Club U14\n0\n9\n1Q\n0\n9",
+      "awayTeam": "Tokyo Hachioji Beetra",
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786867231712,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n24\n25\n14\n7\n19\n13",
-      "awayTeam": "USA Select Team\nProba",
-      "homeScore": 11,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786867231712,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n7\n6\n10\n17\n16\n18",
-      "awayTeam": "Suzhou Elite U14\nWest",
-      "homeScore": 8,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786867231712,
+      "status": "FINISHED",
+      "timestamp": 1786868796321,
       "sport": "농구"
     },
     {
@@ -1233,7 +1215,7 @@
       "homeScore": 4,
       "awayScore": 0,
       "status": "FINISHED",
-      "timestamp": 1786867231712,
+      "timestamp": 1786868796321,
       "sport": "농구"
     },
     {
@@ -1242,7 +1224,7 @@
       "homeScore": 6,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786867231712,
+      "timestamp": 1786868796321,
       "sport": "농구"
     },
     {
