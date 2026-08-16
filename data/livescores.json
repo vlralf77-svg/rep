@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-16T23:31:41.533Z",
-  "count": 149,
+  "updatedAt": "2026-08-16T23:46:12.504Z",
+  "count": 147,
   "scores": [
     {
       "homeTeam": "도르트문트",
@@ -705,16 +705,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "클리블랜드",
-      "awayTeam": "샌디에이고",
-      "homeScore": 0,
-      "awayScore": 5,
-      "status": "LIVE",
-      "timestamp": 1786934400000,
-      "sport": "야구",
-      "inning": "9회말"
-    },
-    {
       "homeTeam": "디트로이트",
       "awayTeam": "시카고W",
       "homeScore": 5,
@@ -737,6 +727,15 @@
       "awayTeam": "워싱턴",
       "homeScore": 4,
       "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1786934400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "클리블랜드",
+      "awayTeam": "샌디에이고",
+      "homeScore": 0,
+      "awayScore": 5,
       "status": "FINISHED",
       "timestamp": 1786934400000,
       "sport": "야구"
@@ -812,7 +811,7 @@
       "status": "LIVE",
       "timestamp": 1786950000000,
       "sport": "축구",
-      "minute": "후반 14'"
+      "minute": "후반 28'"
     },
     {
       "homeTeam": "NYCFC",
@@ -822,7 +821,7 @@
       "status": "LIVE",
       "timestamp": 1786950000000,
       "sport": "축구",
-      "minute": "후반 9'"
+      "minute": "후반 23'"
     },
     {
       "homeTeam": "휴스턴",
@@ -832,7 +831,7 @@
       "status": "LIVE",
       "timestamp": 1786954800000,
       "sport": "야구",
-      "inning": "1회초"
+      "inning": "2회초"
     },
     {
       "homeTeam": "오스틴",
@@ -853,39 +852,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n22\n18",
-      "awayTeam": "시애틀 스톰",
-      "homeScore": 21,
-      "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1786923064049,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n27\n22\n0\n24\n20\n2",
+      "homeTeam": "Q\n27\n22\n17\n24\n20\n18",
       "awayTeam": "Lobos Plateados",
       "homeScore": 23,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786923064050,
+      "timestamp": 1786923938670,
       "sport": "농구"
     },
     {
-      "homeTeam": "Q\n24\n17",
-      "awayTeam": "아베하스",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1786923064050,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n12\n19\n18\n17",
-      "awayTeam": "San Salvador U21",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1786923064050,
+      "homeTeam": "HT\n14\n11\n20\n17",
+      "awayTeam": "San Luis Basket U21\nA",
+      "homeScore": 23,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1786923938670,
       "sport": "농구"
     },
     {
@@ -1288,7 +1269,7 @@
       "homeTeam": "뉴욕시티FC",
       "awayTeam": "필라델피아U",
       "homeScore": 2,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1786917600000,
       "sport": "축구"
