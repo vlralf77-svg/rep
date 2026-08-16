@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-16T16:54:04.336Z",
-  "count": 148,
+  "updatedAt": "2026-08-16T17:09:09.906Z",
+  "count": 146,
   "scores": [
     {
       "homeTeam": "도르트문트",
@@ -617,28 +617,26 @@
     {
       "homeTeam": "번리",
       "awayTeam": "웨스트햄",
-      "homeScore": 1,
-      "awayScore": 2,
-      "status": "LIVE",
-      "timestamp": 1786924800000,
-      "sport": "축구",
-      "minute": "후반 47'"
-    },
-    {
-      "homeTeam": "라싱",
-      "awayTeam": "비야레알",
       "homeScore": 2,
       "awayScore": 2,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786924800000,
-      "sport": "축구",
-      "minute": "후반 41'"
+      "sport": "축구"
     },
     {
       "homeTeam": "샬케",
       "awayTeam": "레알 마드리드",
       "homeScore": 0,
       "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1786924800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "라싱",
+      "awayTeam": "비야레알",
+      "homeScore": 2,
+      "awayScore": 2,
       "status": "FINISHED",
       "timestamp": 1786924800000,
       "sport": "축구"
@@ -651,7 +649,7 @@
       "status": "LIVE",
       "timestamp": 1786928400000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 3'"
     },
     {
       "homeTeam": "탬파베이",
@@ -661,25 +659,27 @@
       "status": "LIVE",
       "timestamp": 1786929300000,
       "sport": "야구",
-      "inning": "3회말"
+      "inning": "4회말"
     },
     {
       "homeTeam": "에스파뇰",
       "awayTeam": "레반테",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786932000000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 3'"
     },
     {
       "homeTeam": "리버풀",
       "awayTeam": "코모",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786932000000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 5'"
     },
     {
       "homeTeam": "애틀랜타",
@@ -853,30 +853,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n17\n19\n7\n15",
-      "awayTeam": "중국",
-      "homeScore": 11,
-      "awayScore": 30,
-      "status": "FINISHED",
-      "timestamp": 1786899210467,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n18\n17\n16\n21",
-      "awayTeam": "CEB Purranque U21\nEsp",
-      "homeScore": 21,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786899210467,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "ACOB U20\n대기",
+      "homeTeam": "ACOB U20\n연기",
       "awayTeam": "Secel U20",
       "homeScore": 16,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1786899210467,
+      "timestamp": 1786900111331,
       "sport": "농구"
     },
     {
