@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-16T22:42:17.136Z",
-  "count": 147,
+  "updatedAt": "2026-08-16T22:56:37.185Z",
+  "count": 145,
   "scores": [
     {
       "homeTeam": "도르트문트",
@@ -678,19 +678,18 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "피츠버그",
-      "awayTeam": "보스턴",
-      "homeScore": 8,
-      "awayScore": 3,
-      "status": "LIVE",
-      "timestamp": 1786934100000,
-      "sport": "야구",
-      "inning": "8회말"
-    },
-    {
       "homeTeam": "애틀랜타",
       "awayTeam": "애리조나",
       "homeScore": 5,
+      "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1786934100000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "피츠버그",
+      "awayTeam": "보스턴",
+      "homeScore": 8,
       "awayScore": 3,
       "status": "FINISHED",
       "timestamp": 1786934100000,
@@ -713,7 +712,7 @@
       "status": "LIVE",
       "timestamp": 1786934400000,
       "sport": "야구",
-      "inning": "7회초"
+      "inning": "7회말"
     },
     {
       "homeTeam": "디트로이트",
@@ -777,17 +776,16 @@
       "status": "LIVE",
       "timestamp": 1786943100000,
       "sport": "야구",
-      "inning": "7회말"
+      "inning": "8회말"
     },
     {
       "homeTeam": "애슬레틱스",
       "awayTeam": "텍사스",
       "homeScore": 5,
       "awayScore": 2,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786943100000,
-      "sport": "야구",
-      "inning": "8회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "LA에인절스",
@@ -802,7 +800,7 @@
       "homeTeam": "LA다저스",
       "awayTeam": "밀워키",
       "homeScore": 1,
-      "awayScore": 4,
+      "awayScore": 6,
       "status": "LIVE",
       "timestamp": 1786943400000,
       "sport": "야구",
@@ -816,7 +814,7 @@
       "status": "LIVE",
       "timestamp": 1786950000000,
       "sport": "축구",
-      "minute": "전반 29'"
+      "minute": "전반 42'"
     },
     {
       "homeTeam": "NYCFC",
@@ -826,7 +824,7 @@
       "status": "LIVE",
       "timestamp": 1786950000000,
       "sport": "축구",
-      "minute": "전반 28'"
+      "minute": "전반 41'"
     },
     {
       "homeTeam": "휴스턴",
@@ -854,24 +852,6 @@
       "status": "SCHEDULED",
       "timestamp": 1786966200000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "HT\n14\n22\n17\n13",
-      "awayTeam": "콜로니아스 골드",
-      "homeScore": 22,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1786920098950,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n27\n24",
-      "awayTeam": "Lobos Plateados",
-      "homeScore": 23,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786920098950,
-      "sport": "농구"
     },
     {
       "homeTeam": "안도라CF",
