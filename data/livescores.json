@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-16T07:44:28.179Z",
+  "updatedAt": "2026-08-16T08:01:09.572Z",
   "count": 232,
   "scores": [
     {
@@ -338,12 +338,12 @@
     {
       "homeTeam": "오릭스",
       "awayTeam": "닛폰햄",
-      "homeScore": 3,
+      "homeScore": 7,
       "awayScore": 13,
       "status": "LIVE",
       "timestamp": 1786885200000,
       "sport": "야구",
-      "inning": "8회말"
+      "inning": "9회말"
     },
     {
       "homeTeam": "소프트뱅크",
@@ -359,10 +359,9 @@
       "awayTeam": "요미우리",
       "homeScore": 0,
       "awayScore": 11,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786887000000,
-      "sport": "야구",
-      "inning": "8회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "세이부",
@@ -1202,21 +1201,30 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "s\n49\n26\nHT\n24\n25\n7\n19",
+      "homeTeam": "HT\n19\n15\n19\n20",
+      "awayTeam": "Chinese Taipei White",
+      "homeScore": 9,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786867231712,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n24\n25\n14\n7\n19\n13",
       "awayTeam": "USA Select Team\nProba",
       "homeScore": 11,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786866232427,
+      "timestamp": 1786867231712,
       "sport": "농구"
     },
     {
-      "homeTeam": "U14\n11\n23\n2Q\n7\n4\n17\n6",
+      "homeTeam": "Q\n7\n6\n10\n17\n16\n18",
       "awayTeam": "Suzhou Elite U14\nWest",
       "homeScore": 8,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786866232427,
+      "timestamp": 1786867231712,
       "sport": "농구"
     },
     {
@@ -1225,16 +1233,7 @@
       "homeScore": 4,
       "awayScore": 0,
       "status": "FINISHED",
-      "timestamp": 1786866232427,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "결과\n8\n6\n15\n8\n6\n8\n9\n9",
-      "awayTeam": "Taizhung Wolf Warrior",
-      "homeScore": 5,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786866232427,
+      "timestamp": 1786867231712,
       "sport": "농구"
     },
     {
@@ -1243,7 +1242,7 @@
       "homeScore": 6,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786866232427,
+      "timestamp": 1786867231712,
       "sport": "농구"
     },
     {
