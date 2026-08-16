@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-16T04:09:37.501Z",
-  "count": 233,
+  "updatedAt": "2026-08-16T04:48:36.466Z",
+  "count": 235,
   "scores": [
     {
       "homeTeam": "도르트문트",
@@ -312,41 +312,38 @@
       "homeTeam": "애슬레틱스",
       "awayTeam": "텍사스",
       "homeScore": 3,
-      "awayScore": 4,
-      "status": "LIVE",
+      "awayScore": 5,
+      "status": "FINISHED",
       "timestamp": 1786876800000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "어스퀘이크",
       "awayTeam": "세인트루이스",
       "homeScore": 1,
       "awayScore": 3,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786879800000,
-      "sport": "축구",
-      "minute": "후반 23'"
+      "sport": "축구"
     },
     {
       "homeTeam": "LAFC",
       "awayTeam": "샌디에고",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1786879800000,
-      "sport": "축구",
-      "minute": "후반 23'"
+      "sport": "축구"
     },
     {
       "homeTeam": "오릭스",
       "awayTeam": "닛폰햄",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1786885200000,
       "sport": "야구",
-      "inning": "1회초"
+      "inning": "3회초"
     },
     {
       "homeTeam": "소프트뱅크",
@@ -356,16 +353,17 @@
       "status": "LIVE",
       "timestamp": 1786885200000,
       "sport": "야구",
-      "inning": "1회초"
+      "inning": "3회초"
     },
     {
       "homeTeam": "주니치",
       "awayTeam": "요미우리",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1786887000000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "세이부",
@@ -1210,7 +1208,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
-      "timestamp": 1786853343419,
+      "timestamp": 1786855677166,
       "sport": "농구"
     },
     {
@@ -1219,7 +1217,16 @@
       "homeScore": 23,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1786853343420,
+      "timestamp": 1786855677166,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n15\n15\n30\n26",
+      "awayTeam": "Perak U21\nSelangor U2",
+      "homeScore": 12,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786855677166,
       "sport": "농구"
     },
     {
@@ -1228,7 +1235,7 @@
       "homeScore": 23,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786853343420,
+      "timestamp": 1786855677166,
       "sport": "농구"
     },
     {
@@ -1237,7 +1244,7 @@
       "homeScore": 23,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786853343420,
+      "timestamp": 1786855677166,
       "sport": "농구"
     },
     {
@@ -1246,7 +1253,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
-      "timestamp": 1786853343420,
+      "timestamp": 1786855677166,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n14\n8\n6\n0\n22\n13\n22\n0",
+      "awayTeam": "Ning Bo U14\nSydney Ki",
+      "homeScore": 7,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1786855677166,
       "sport": "농구"
     },
     {
@@ -1255,7 +1271,7 @@
       "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786853343420,
+      "timestamp": 1786855677166,
       "sport": "농구"
     },
     {
@@ -1829,7 +1845,7 @@
       "homeTeam": "LAFC",
       "awayTeam": "샌디에고FC",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1786847400000,
       "sport": "축구"
