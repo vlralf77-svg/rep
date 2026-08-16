@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-16T08:55:19.287Z",
+  "updatedAt": "2026-08-16T09:15:16.248Z",
   "count": 230,
   "scores": [
     {
@@ -370,25 +370,27 @@
       "status": "LIVE",
       "timestamp": 1786899600000,
       "sport": "야구",
-      "inning": "3회말"
+      "inning": "4회말"
     },
     {
       "homeTeam": "히로시마",
       "awayTeam": "한신",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1786903200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "야쿠르트",
       "awayTeam": "요코하마",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786903200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "삼성",
@@ -409,6 +411,15 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "KT",
+      "awayTeam": "키움",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1786906800000,
+      "sport": "야구"
+    },
+    {
       "homeTeam": "KIA",
       "awayTeam": "두산",
       "homeScore": 0,
@@ -420,15 +431,6 @@
     {
       "homeTeam": "LG",
       "awayTeam": "SSG",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1786906800000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "KT",
-      "awayTeam": "키움",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -1201,21 +1203,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n4\n3\n14\n18\n14\n10",
-      "awayTeam": "Tokyo Hachioji Beetra",
-      "homeScore": 3,
-      "awayScore": 0,
+      "homeTeam": "HT\n27\n24\n15\n20",
+      "awayTeam": "일본",
+      "homeScore": 10,
+      "awayScore": 5,
       "status": "FINISHED",
-      "timestamp": 1786870476027,
+      "timestamp": 1786871679807,
       "sport": "농구"
     },
     {
-      "homeTeam": "결과\n7\n7\n6\n9\n9\n7\n5\n6",
-      "awayTeam": "Jubilee Phoenix U14\nX",
-      "homeScore": 4,
+      "homeTeam": "Q\n12\n18\n16\n17\n5\n13",
+      "awayTeam": "Selangor",
+      "homeScore": 10,
       "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1786870476027,
+      "status": "LIVE",
+      "timestamp": 1786871679807,
       "sport": "농구"
     },
     {
@@ -1224,7 +1226,7 @@
       "homeScore": 6,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786870476027,
+      "timestamp": 1786871679807,
       "sport": "농구"
     },
     {
