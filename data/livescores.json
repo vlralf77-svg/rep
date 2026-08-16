@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-16T02:36:52.414Z",
-  "count": 237,
+  "updatedAt": "2026-08-16T03:31:35.263Z",
+  "count": 235,
   "scores": [
     {
       "homeTeam": "도르트문트",
@@ -268,40 +268,38 @@
       "awayTeam": "마이애미",
       "homeScore": 4,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786872600000,
-      "sport": "축구",
-      "minute": "후반 42'"
+      "sport": "축구"
     },
     {
       "homeTeam": "휴스턴",
       "awayTeam": "갤럭시",
       "homeScore": 1,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786872600000,
-      "sport": "축구",
-      "minute": "후반 44'"
+      "sport": "축구"
     },
     {
       "homeTeam": "솔트 레이크",
       "awayTeam": "미네소타",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1786876200000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 45'"
     },
     {
       "homeTeam": "콜로라도",
       "awayTeam": "스포팅 KC",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1786876200000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 43'"
     },
     {
       "homeTeam": "LA에인절스",
@@ -311,35 +309,37 @@
       "status": "LIVE",
       "timestamp": 1786876680000,
       "sport": "야구",
-      "inning": "4회말"
+      "inning": "8회말"
     },
     {
       "homeTeam": "애슬레틱스",
       "awayTeam": "텍사스",
       "homeScore": 3,
-      "awayScore": 0,
+      "awayScore": 4,
       "status": "LIVE",
       "timestamp": 1786876800000,
       "sport": "야구",
-      "inning": "3회말"
+      "inning": "6회말"
     },
     {
       "homeTeam": "어스퀘이크",
       "awayTeam": "세인트루이스",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1786879800000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반종료"
     },
     {
       "homeTeam": "LAFC",
       "awayTeam": "샌디에고",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786879800000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반종료"
     },
     {
       "homeTeam": "오릭스",
@@ -1211,25 +1211,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
-      "timestamp": 1786847771829,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n22\n20",
-      "awayTeam": "아베하스",
-      "homeScore": 2,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786847771830,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n31\n18",
-      "awayTeam": "푸에르자 레기아",
-      "homeScore": 22,
-      "awayScore": 15,
-      "status": "LIVE",
-      "timestamp": 1786847771830,
+      "timestamp": 1786851057728,
       "sport": "농구"
     },
     {
@@ -1238,16 +1220,7 @@
       "homeScore": 23,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1786847771830,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n18\n12\n12\n20",
-      "awayTeam": "Nejapa U21",
-      "homeScore": 20,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1786847771830,
+      "timestamp": 1786851057728,
       "sport": "농구"
     },
     {
@@ -1256,7 +1229,7 @@
       "homeScore": 22,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786847771830,
+      "timestamp": 1786851057728,
       "sport": "농구"
     },
     {
@@ -1265,7 +1238,7 @@
       "homeScore": 23,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786847771830,
+      "timestamp": 1786851057728,
       "sport": "농구"
     },
     {
@@ -1274,25 +1247,34 @@
       "homeScore": 23,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786847771830,
+      "timestamp": 1786851057728,
       "sport": "농구"
     },
     {
-      "homeTeam": "ub Providencia U21\n대기",
+      "homeTeam": "ub Providencia U21\n연기",
       "awayTeam": "CD Provincial Linares",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
-      "timestamp": 1786847771830,
+      "timestamp": 1786851057728,
       "sport": "농구"
     },
     {
-      "homeTeam": "Q\n8\n6\n6\n6\n8\n0",
-      "awayTeam": "Taizhung Wolf Warrior",
-      "homeScore": 5,
+      "homeTeam": "Q\n7\n7\n0\n9\n7\n0",
+      "awayTeam": "Jubilee Phoenix U14\nX",
+      "homeScore": 4,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1786851057728,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n10\n7\n14\n9\n3\n2\n9\n6",
+      "awayTeam": "Digital Player U12\nSh",
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1786847771830,
+      "timestamp": 1786851057728,
       "sport": "농구"
     },
     {
@@ -1847,7 +1829,7 @@
     {
       "homeTeam": "콜로라도",
       "awayTeam": "S캔자스시티",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1786843800000,
@@ -1856,8 +1838,8 @@
     {
       "homeTeam": "R솔트레이크",
       "awayTeam": "미네소타U",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1786843800000,
       "sport": "축구"
@@ -1875,7 +1857,7 @@
       "homeTeam": "산호세E",
       "awayTeam": "세인트루이스",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1786847400000,
       "sport": "축구"
