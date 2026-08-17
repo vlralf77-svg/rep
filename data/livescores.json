@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-17T02:09:03.549Z",
-  "count": 147,
+  "updatedAt": "2026-08-17T03:11:23.419Z",
+  "count": 146,
   "scores": [
     {
       "homeTeam": "번리",
@@ -214,29 +214,28 @@
       "awayTeam": "시애틀",
       "homeScore": 2,
       "awayScore": 3,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1786954800000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "오스틴",
       "awayTeam": "댈러스",
       "homeScore": 1,
-      "awayScore": 1,
-      "status": "LIVE",
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1786959000000,
-      "sport": "축구",
-      "minute": "후반 19'"
+      "sport": "축구"
     },
     {
       "homeTeam": "시애틀",
       "awayTeam": "화이트캡스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1786966200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 26'"
     },
     {
       "homeTeam": "삼성",
@@ -851,21 +850,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n16\n16\n34\n25",
-      "awayTeam": "푸에르자 레기아",
-      "homeScore": 22,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1786932507445,
-      "sport": "농구"
-    },
-    {
       "homeTeam": "t U21\nHumboldt U21\n연기",
       "awayTeam": "Aguilas La Calera U21",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
-      "timestamp": 1786932507445,
+      "timestamp": 1786936245747,
       "sport": "농구"
     },
     {
@@ -1277,9 +1267,9 @@
       "homeTeam": "오스틴FC",
       "awayTeam": "FC댈러스",
       "homeScore": 1,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
-      "timestamp": 1786926600000,
+      "timestamp": 1786927200000,
       "sport": "축구"
     },
     {
