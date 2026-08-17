@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-17T18:03:59.050Z",
-  "count": 72,
+  "updatedAt": "2026-08-17T18:48:35.997Z",
+  "count": 73,
   "scores": [
     {
       "homeTeam": "번리",
@@ -240,11 +240,11 @@
       "homeTeam": "브뢴비",
       "awayTeam": "쇠네르위스케",
       "homeScore": 3,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1787018400000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 42'"
     },
     {
       "homeTeam": "신시내티",
@@ -254,7 +254,7 @@
       "status": "LIVE",
       "timestamp": 1787020800000,
       "sport": "야구",
-      "inning": "1회말"
+      "inning": "4회초"
     },
     {
       "homeTeam": "카디프",
@@ -480,6 +480,15 @@
       "status": "SCHEDULED",
       "timestamp": 1787090400000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n12\n9\n24\n5",
+      "awayTeam": "아르헨티나",
+      "homeScore": 20,
+      "awayScore": 45,
+      "status": "LIVE",
+      "timestamp": 1786992486253,
+      "sport": "농구"
     },
     {
       "homeTeam": "번리",
