@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-17T21:36:07.208Z",
-  "count": 72,
+  "updatedAt": "2026-08-17T21:54:57.257Z",
+  "count": 73,
   "scores": [
     {
       "homeTeam": "번리",
@@ -480,6 +480,15 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "HT\n12\n12\n14\n14",
+      "awayTeam": "캐나다",
+      "homeScore": 23,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1787003659038,
+      "sport": "농구"
+    },
+    {
       "homeTeam": "번리",
       "awayTeam": "웨스트햄",
       "homeScore": 2,
@@ -619,7 +628,7 @@
       "awayTeam": "엘덴세",
       "homeScore": 3,
       "awayScore": 0,
-      "status": "FINISHED",
+      "status": "SCHEDULED",
       "timestamp": 1786995000000,
       "sport": "축구"
     },
