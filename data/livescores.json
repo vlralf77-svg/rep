@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-18T08:30:00.966Z",
-  "count": 73,
+  "updatedAt": "2026-08-18T09:04:08.707Z",
+  "count": 72,
   "scores": [
     {
       "homeTeam": "브뢴비",
@@ -141,37 +141,11 @@
       "homeTeam": "요코하마",
       "awayTeam": "요미우리",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1787075100000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "라쿠텐",
-      "awayTeam": "지바롯데",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1787076000000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "히로시마",
-      "awayTeam": "주니치",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1787076000000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "세이부",
-      "awayTeam": "오릭스",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1787076000000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "한신",
@@ -181,6 +155,36 @@
       "status": "SCHEDULED",
       "timestamp": 1787076000000,
       "sport": "야구"
+    },
+    {
+      "homeTeam": "라쿠텐",
+      "awayTeam": "지바롯데",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787076000000,
+      "sport": "야구",
+      "inning": "1회초"
+    },
+    {
+      "homeTeam": "히로시마",
+      "awayTeam": "주니치",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787076000000,
+      "sport": "야구",
+      "inning": "1회초"
+    },
+    {
+      "homeTeam": "세이부",
+      "awayTeam": "오릭스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787076000000,
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "한화",
@@ -478,15 +482,6 @@
       "status": "FINISHED",
       "timestamp": 1786966200000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "HT\n31\n14\n28\n33",
-      "awayTeam": "UC 어바인\nChinese Taipei",
-      "homeScore": 9,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1787041769454,
-      "sport": "농구"
     },
     {
       "homeTeam": "번리",
