@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-18T09:40:43.936Z",
+  "updatedAt": "2026-08-18T10:03:29.299Z",
   "count": 72,
   "scores": [
     {
@@ -145,27 +145,27 @@
       "status": "LIVE",
       "timestamp": 1787075100000,
       "sport": "야구",
-      "inning": "3회말"
+      "inning": "4회말"
     },
     {
       "homeTeam": "라쿠텐",
       "awayTeam": "지바롯데",
-      "homeScore": 1,
+      "homeScore": 3,
       "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1787076000000,
       "sport": "야구",
-      "inning": "2회말"
+      "inning": "4회초"
     },
     {
       "homeTeam": "히로시마",
       "awayTeam": "주니치",
-      "homeScore": 0,
-      "awayScore": 1,
+      "homeScore": 1,
+      "awayScore": 3,
       "status": "LIVE",
       "timestamp": 1787076000000,
       "sport": "야구",
-      "inning": "3회초"
+      "inning": "4회말"
     },
     {
       "homeTeam": "세이부",
@@ -175,7 +175,7 @@
       "status": "LIVE",
       "timestamp": 1787076000000,
       "sport": "야구",
-      "inning": "3회초"
+      "inning": "4회말"
     },
     {
       "homeTeam": "한신",
@@ -185,25 +185,7 @@
       "status": "LIVE",
       "timestamp": 1787076000000,
       "sport": "야구",
-      "inning": "2회초"
-    },
-    {
-      "homeTeam": "한화",
-      "awayTeam": "KIA",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1787079600000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "LG",
-      "awayTeam": "KT",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1787079600000,
-      "sport": "야구"
+      "inning": "3회초"
     },
     {
       "homeTeam": "NC",
@@ -215,22 +197,44 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "한화",
+      "awayTeam": "KIA",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787079600000,
+      "sport": "야구",
+      "inning": "1회초"
+    },
+    {
+      "homeTeam": "LG",
+      "awayTeam": "KT",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787079600000,
+      "sport": "야구",
+      "inning": "1회초"
+    },
+    {
       "homeTeam": "삼성",
       "awayTeam": "SSG",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787079600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "롯데",
       "awayTeam": "키움",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787079600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "경기남부소방",
