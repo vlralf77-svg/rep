@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-19T03:11:17.256Z",
-  "count": 92,
+  "updatedAt": "2026-08-19T03:57:19.509Z",
+  "count": 93,
   "scores": [
     {
       "homeTeam": "하이덴하임",
@@ -140,12 +140,11 @@
     {
       "homeTeam": "콜로라도",
       "awayTeam": "LA다저스",
-      "homeScore": 5,
+      "homeScore": 6,
       "awayScore": 7,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787132400000,
-      "sport": "야구",
-      "inning": "8회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "닛폰햄",
@@ -571,21 +570,30 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "대기",
+      "homeTeam": "Q\n8\n14\n14\n12\n10\n19",
+      "awayTeam": "필리핀",
+      "homeScore": 23,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1787111809636,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "연기",
       "awayTeam": "Brujos Izalco U21",
       "homeScore": 1,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1787109035271,
+      "timestamp": 1787111809636,
       "sport": "농구"
     },
     {
-      "homeTeam": "대기",
+      "homeTeam": "연기",
       "awayTeam": "CD Dragon U21",
       "homeScore": 2,
       "awayScore": 45,
       "status": "LIVE",
-      "timestamp": 1787109035271,
+      "timestamp": 1787111809636,
       "sport": "농구"
     },
     {
