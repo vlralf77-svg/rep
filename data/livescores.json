@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-19T18:15:18.494Z",
-  "count": 119,
+  "updatedAt": "2026-08-19T18:54:19.739Z",
+  "count": 313,
   "scores": [
     {
       "homeTeam": "하이덴하임",
@@ -329,41 +329,42 @@
     {
       "homeTeam": "피츠버그",
       "awayTeam": "디트로이트",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 3,
       "status": "LIVE",
       "timestamp": 1787189700000,
       "sport": "야구",
-      "inning": "6회말"
+      "inning": "8회초"
     },
     {
       "homeTeam": "뉴욕메츠",
       "awayTeam": "샌디에이고",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 2,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787191800000,
       "sport": "야구",
-      "inning": "4회말"
+      "inning": "6회말"
     },
     {
       "homeTeam": "미네소타",
       "awayTeam": "애틀랜타",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1787193600000,
       "sport": "야구",
-      "inning": "3회말"
+      "inning": "5회초"
     },
     {
       "homeTeam": "시카고컵스",
       "awayTeam": "시카고W",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787196000000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회초"
     },
     {
       "homeTeam": "AT 마드리드",
@@ -717,21 +718,1767 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n30\n24\n21\n19\n18\n24",
-      "awayTeam": "US Laval\nVitre Aurore",
-      "homeScore": 17,
-      "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1787163274928,
+      "homeTeam": "하프타임",
+      "awayTeam": "맨스필드\n맨체스터 시티 U21\n0\n3",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
       "sport": "농구"
     },
     {
-      "homeTeam": "연기",
-      "awayTeam": "Nairobi City Thunder",
-      "homeScore": 17,
+      "homeTeam": "결과",
+      "awayTeam": "브레멘 II\nSC 바이헤",
+      "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1787163274928,
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "발레렝가",
+      "homeScore": 10,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "FC 코즐로비체\n슬라비친\n4\n2\n4\n3",
+      "homeScore": 9,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "카마즈\n테크스틸쉬틱\n0\n0\n0\n1",
+      "homeScore": 5,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "벨레스 모스크바\n파리 NN\n0\n1\n3",
+      "homeScore": 2,
+      "awayScore": 7,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Jednota Banova\n트렌친\n0",
+      "homeScore": 2,
+      "awayScore": 14,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Lovca\n반스카 비스트리차\n0\n1\n0",
+      "homeScore": 0,
+      "awayScore": 12,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Cicarovce\n스트로프코프\n0\n2",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "자호란 야쿠보브\nI. 브라티슬라바\n1",
+      "homeScore": 1,
+      "awayScore": 8,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "AFC 노베 메스토\n스칼리차\n0\n0\n0",
+      "homeScore": 2,
+      "awayScore": 7,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "베르놀라코보\n라차\n0\n1\n0\n3\n2.7",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Borsky Mikulas\n벨루사\n0",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "브레즈노\n칼리노보\n2\n1\n4\n1",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Druzstevnik Circ\n프레쇼브",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Dynamo Diviaky\n노바 바나",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "FK Cana\nLok. 코시체\n0\n1",
+      "homeScore": 2,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "TJ Iskra Holic\n미야바\n1",
+      "homeScore": 1,
+      "awayScore": 8,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "FC Jelka\nKostolne Kra",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Kopcany\n피에스타니\n0\n1\n1\n8",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Korna\nCadca\n0\n5\n0\n7",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "프라멘 코바초바\n즈볼렌\n0\n1\n0\n4",
+      "homeScore": 2,
+      "awayScore": 7,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "OFK Kovarce\n살라\n0\n0\n0",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "크라스노\nPodkonice\n1\n1\n1",
+      "homeScore": 2,
+      "awayScore": 8,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "홈 승",
+      "awayTeam": "결과\n0",
+      "homeScore": 15,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Krskany\n니트라\n0\n1\n0\n2",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Nova Dedinka\n1\n페트르잘카",
+      "homeScore": 2,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Or. Jasenica\n포바슈스카 비스",
+      "homeScore": 1,
+      "awayScore": 9,
+      "status": "FINISHED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Ostrovany\nKendice\n2\n1",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "원정 승",
+      "awayTeam": "결과\n6",
+      "homeScore": 15,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "로호즈니크\n사모린\n0\n1\n0\n1\n6.0",
+      "homeScore": 6,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "로시나\n1\nMFK Bytca\n0\n1\n0",
+      "homeScore": 2,
+      "awayScore": 7,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Rovnost Krajne\n푸호프\n1",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Roznava\n메제우\n0\n2\n1\n2",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Rudnany\n포드브레조바\n0\n2\n0",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Senkvice\nD. 루즈나\n0\n0\n0",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Svaty Peter\n둔냐스카 스트레다",
+      "homeScore": 2,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Tomasov\n가브치코보\n2\n0\n3\n1",
+      "homeScore": 4,
+      "awayScore": 8,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Vinohrad Cebovce\nDruz",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Vycapy Opatovce\n갈란타\n0",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "자바즈나 포루바\nK. 노베 메스토\n0",
+      "homeScore": 4,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Zitavany\nVelke Ludinc",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Hronec\n필라코보\n0\n2\n0\n4",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Kvasov\nMSK 마르틴\n1\n2\n2",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "FK 1931 Hranovnica\nHa",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "원정 승",
+      "awayTeam": "결과\n2",
+      "homeScore": 15,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Soporna\n말제니체\n1\n1\n2\n1",
+      "homeScore": 2,
+      "awayScore": 9,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Svaty Jur\n말리노보\n2\n0\n5",
+      "homeScore": 6,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Slovan Tomasovce\n코마르노",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "트르나바\nStankovce\n0\n0\n3",
+      "homeScore": 12,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "루빈 카잔\n스파르타크 모스크바\n1\n0",
+      "homeScore": 4,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "판세라이코스\n파나르카디코스\n1\n1\n2",
+      "homeScore": 5,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "ML 비테브스크\n바라노비치\n2\n0\n2",
+      "homeScore": 8,
+      "awayScore": 8,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Ziri\n1\nSkofja Loka\n0",
+      "homeScore": 4,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Tabor",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621110,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "파지르 세파시\n사낫 나프트\n0\n0\n0",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "말라반\n1\n조브 아한\n0\n1\n2\n1",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "메스 샤르 바닥\n케이바르 코라마바드\n2",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "페르세폴리스\n에스테그랄 쿠제스탄\n2\n0",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "벡셰 노라\n바르나모\n0\n1\n1\n3\n5.",
+      "homeScore": 3,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "호가보리\n외스테르스\n0\n0\n0\n4\n9.",
+      "homeScore": 1,
+      "awayScore": 7,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "IFK 외스테르순드\n데거포스\n0\n3\n1",
+      "homeScore": 3,
+      "awayScore": 9,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "IK 프랑케\n융스킬\n0\n0\n0\n1\n6.",
+      "homeScore": 0,
+      "awayScore": 9,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "FBK Karlstad\n순스발\n0\n0",
+      "homeScore": 5,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "엔코핑\n베스테로스 SK\n1\n1\n1\n2",
+      "homeScore": 8,
+      "awayScore": 6,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "엥엘홀름\n칼마르\n0\n2\n0\n7\n6.50",
+      "homeScore": 3,
+      "awayScore": 9,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "올림픽 탈린\nSaku JK\n0\n1\n0",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Hiiumaa\n놈메 Utd\n0\n0\n0",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "ASA 오르후스\n라네르스 FC\n0\n0",
+      "homeScore": 1,
+      "awayScore": 7,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "삼프도리아 U19\n세스트리 레반떼\n1",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Varese FC\nPro Palazzo",
+      "homeScore": 7,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "크라사바\nAEL 리마솔\n0\n1\n0\n4",
+      "homeScore": 3,
+      "awayScore": 7,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Llanes\nUnion Club Cea",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Praviano\nL",
+      "homeScore": 3,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "CDFC 칼사다\n미란데스\n0\n0\n0\n1",
+      "homeScore": 4,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Santomera\nCrevillente",
+      "homeScore": 5,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "알라베스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "R. 오비에도 B\n카우달 데포르티보\n1",
+      "homeScore": 6,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "레알소시에다드 C\n우니오니스타스 B\n0",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "시우다드 시에자\nTorrellano\n1",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "코룩소 FC\n폰테베드라\n0\n0\n3.75",
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "Pozuelo de Alarcon\nNo",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "산 세바스찬 레예스\n라요 마야다온다\n0",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "비야레알 B\n힘나스틱\n1\n0\n1.30",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "살라망카\n산타 마르타 토르메스\n1\n0",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "콜로니아 M.\nMexico FC\n2\n1",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "후엔라블라다\n라스 로자스\n0\n0\n2.3",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "나발칸네로\nAD Torrejon\n1\n0",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "프라트\nUE San Juan Montc",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "브뢴비",
+      "homeScore": 3,
+      "awayScore": 10,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "포르투나 예링",
+      "homeScore": 6,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "KoldingQ",
+      "homeScore": 8,
+      "awayScore": 6,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "마샬 무보라크\n안디잔\n0\n0\n0\n1\n3",
+      "homeScore": 3,
+      "awayScore": 8,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "다막\n알 타원\n0\n1\n0\n3\n3.50",
+      "homeScore": 4,
+      "awayScore": 8,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "제다\n1\n알 콜루드\n0\n4\n0\n5\n3.",
+      "homeScore": 0,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "Al",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "그라피카르 베오그라드\n로즈니차\n0\n1",
+      "homeScore": 1,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "브르샤츠\n두보치차\n0\n1\n2\n1\n1.6",
+      "homeScore": 13,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Bor 1919\nFK 보츠도박\n1\n1",
+      "homeScore": 3,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "야보르\n예딘스트보 U.\n2\n0\n3\n0",
+      "homeScore": 6,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "보라츠 1926\nNaftagas\n0\n0",
+      "homeScore": 3,
+      "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "메탈라츠\n스메데레보\n1\n0\n0\n1.83",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "우라르투 2\nBKMA 2\n0\n2\n3\n2",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "FC 레바디아 탈린",
+      "homeScore": 10,
+      "awayScore": 7,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "달비크\n1\n마그니\n0\n0\n3.50\n2.",
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "흐비티\nKFG 가르다바에르\n0\n3\n13",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "Kormakur\n하우카르\n1\n2\n7.0",
+      "homeScore": 5,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "올라프스비크\n트흐토투르 보가르\n1\n0",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "셀포스\n카리\n2\n1\n1.28\n5.50",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "프졸니르\nKFA\n1\n2\n4.00\n4.0",
+      "homeScore": 2,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "ND Mura 05",
+      "homeScore": 4,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "마리보르 U19\nBrinje Grosu",
+      "homeScore": 4,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "ND Ilirija U19\nNK 루다르",
+      "homeScore": 10,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "ND Beltinci U19\nNK Fu",
+      "homeScore": 6,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "NK Brezice U19\nNK 알루미",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "알 세브\n알 샤밥\n0\n0\n0\n0\n1.8",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "FC Jyvaskyla Blackbir",
+      "homeScore": 4,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "라푸아\nYPA\n0\n1\n2\n3\n2.00",
+      "homeScore": 11,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Jippo II\nToivalan Urh",
+      "homeScore": 20,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "TPV",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Lidzbark Warminski\n잠브",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "믈라바\nT. 마조비에츠키\n0\n1\n2\n3",
+      "homeScore": 14,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "엘블락\n브드제프 로츠 II\n0\n0\n0",
+      "homeScore": 5,
+      "awayScore": 7,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "플록 II\nLKS 롬자\n0\n1\n1\n1",
+      "homeScore": 8,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Troszyn\n바르타 시에라즈\n0\n1",
+      "homeScore": 9,
+      "awayScore": 7,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "자브키\n수발키\n1\n1\n1\n1\n3.20",
+      "homeScore": 8,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "KKS 칼리슈\nNotec Czarnko",
+      "homeScore": 6,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Luzino\nBKS Chemik Byd",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "스비누이스치에\n브르제스니아\n1\n0\n5",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "브다 스비치에\nGrom Nowy Sta",
+      "homeScore": 7,
+      "awayScore": 6,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "BKS Sparta Katowice\nG",
+      "homeScore": 9,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "옐레니아 고라\nSulow\n3\n0\n3\n0",
+      "homeScore": 5,
+      "awayScore": 10,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "클루츠보르크\n자글레비에 II\n0\n2\n1",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Warta Gorzow\nPolkowic",
+      "homeScore": 3,
+      "awayScore": 8,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "비알라 포들라스카\nAKS Busko Z",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "헬미안카 헤움\n비슬로카 데비차\n1\n0",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "코로나 키엘체 II\n1\n헤트만 자모스츠",
+      "homeScore": 3,
+      "awayScore": 11,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Wieczysta Krakow B\nSo",
+      "homeScore": 5,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Moravia Morawica\n나프르조",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "시에르카 타르노브르젝\n1\n야로스와프\n1",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "GKS Mirkow\nLechia Dzi",
+      "homeScore": 4,
+      "awayScore": 9,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Polonia Sroda Slaska",
+      "homeScore": 9,
+      "awayScore": 7,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "스빗\nMazovia Minsk Mazo",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Kluczevia Stargard\nGe",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "엘라나 토룬\nUnia Swarzedz",
+      "homeScore": 6,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Kotwica Kornik\n코스잘린\n0",
+      "homeScore": 3,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "KS ROW 1964 리브니크\n카리나",
+      "homeScore": 12,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "자글레비에 소스노비에츠\n슬레자 브로츠와",
+      "homeScore": 8,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Star Starachowice\n1\n차",
+      "homeScore": 7,
+      "awayScore": 8,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Obra Koscian\nLKS Golu",
+      "homeScore": 9,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Zjednoczeni Strykow\nZ",
+      "homeScore": 5,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "스로다\n블리키트니 스타르가르트\n2\n0",
+      "homeScore": 9,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "니사\n브제크\n2\n1\n1.66\n3.60",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "투겐\n디에티콘\n1\n0",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "Arbaer\n비디르\n0\n3\n51.00",
+      "homeScore": 2,
+      "awayScore": 8,
+      "status": "LIVE",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "퍄르다비크트\n틴다스톨\n0\n0\n2.50",
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "레이니르\nKH Hlidarendi\n1",
+      "homeScore": 5,
+      "awayScore": 5,
+      "status": "FINISHED",
+      "timestamp": 1787165621111,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "DVTK II\nDebrecen II\n0",
+      "homeScore": 5,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "도니카니\nLucan Utd\n1\n0\n1.",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "카게라 슈가\n신기다 블랙 스타즈\n1\n0",
+      "homeScore": 6,
+      "awayScore": 7,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Sportivo Italiano Res",
+      "homeScore": 3,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Ferrocarril Midland R",
+      "homeScore": 6,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "힘나시아 L.P. 2\n사르미엔토 후닌",
+      "homeScore": 6,
+      "awayScore": 6,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "반필드 2\n인스티투토 2\n1\n2\n5.0",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "알도시비 2\n아르헨티노스 주니어스 2",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "Atletico Rafaela Rese",
+      "homeScore": 5,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "페로 2\n산 마틴 S.J. 2\n0\n3",
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "우라칸 2\nInd. 리바다비아 2\n1",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "인디펜디엔테 2\n에스투디안테스 L.P.",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "CS Dock Sud Reserves",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "Deportivo Merlo Reser",
+      "homeScore": 2,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "아드미라 도른비른\n도른비르너 SV\n1",
+      "homeScore": 1,
+      "awayScore": 6,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "펠트키르흐\n알베르슈벤데\n0\n0\n0\n0",
+      "homeScore": 7,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "Apafut\n베라노폴리스\n1\n1\n2.8",
+      "homeScore": 3,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "Tupy\nSC Brasil Capixa",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "CD Obrero\n페르난도 데 라 모라",
+      "homeScore": 1,
+      "awayScore": 7,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "Estrela Potiguar U20",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "아메리카 RN U20\nFabrica d",
+      "homeScore": 2,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "포르탈레자 U20\n쿠이사다 U20\n1",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Universidad SC\n2\nDepo",
+      "homeScore": 1,
+      "awayScore": 9,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "팔메이라스 U20",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "코린티안스 U20",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "Ferroviaria U20",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "브라간티노 U20",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "취리히 II\nAmical Saint",
+      "homeScore": 5,
+      "awayScore": 4,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "Atlantida SC\n클럽 스포르티보",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "Olimpia de Ita\n스포르티보",
+      "homeScore": 4,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "에르푸르트 U19\n뉘른베르크 U19\n0",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "아우크스부르크 U19\n울름 U19\n0",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "자르브뤼켄 U19\n빅토리아 쾰른 U19",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "묀헨글라트바흐 U19\n레버쿠젠 U19",
+      "homeScore": 8,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과",
+      "awayTeam": "Juventud de Bernal\nSo",
+      "homeScore": 2,
+      "awayScore": 9,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "오우데나르데\n브루게 2\n0\n0\n3.00",
+      "homeScore": 3,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "티에넨\nKRC M메헬렌\n4\n0\n1.01",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "Lyra",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1787165621112,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "하프타임",
+      "awayTeam": "KV Diksmuide Oostende",
+      "homeScore": 1,
+      "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1787165621112,
       "sport": "농구"
     },
     {
