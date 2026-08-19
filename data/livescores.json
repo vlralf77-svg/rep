@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-19T19:57:28.874Z",
-  "count": 118,
+  "updatedAt": "2026-08-19T20:12:56.132Z",
+  "count": 119,
   "scores": [
     {
       "homeTeam": "하이덴하임",
@@ -339,21 +339,20 @@
       "homeTeam": "뉴욕메츠",
       "awayTeam": "샌디에이고",
       "homeScore": 4,
-      "awayScore": 1,
-      "status": "LIVE",
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1787191800000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "미네소타",
       "awayTeam": "애틀랜타",
-      "homeScore": 4,
+      "homeScore": 6,
       "awayScore": 4,
       "status": "LIVE",
       "timestamp": 1787193600000,
       "sport": "야구",
-      "inning": "7회말"
+      "inning": "8회초"
     },
     {
       "homeTeam": "시카고컵스",
@@ -363,7 +362,7 @@
       "status": "LIVE",
       "timestamp": 1787196000000,
       "sport": "야구",
-      "inning": "6회말"
+      "inning": "8회초"
     },
     {
       "homeTeam": "AT 마드리드",
@@ -373,7 +372,7 @@
       "status": "LIVE",
       "timestamp": 1787198400000,
       "sport": "축구",
-      "minute": "전반 46'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "보스턴",
@@ -719,11 +718,20 @@
     },
     {
       "homeTeam": "연기",
+      "awayTeam": "슬로베니아",
+      "homeScore": 18,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787170342663,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "연기",
       "awayTeam": "Nairobi City Thunder",
       "homeScore": 17,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1787169407845,
+      "timestamp": 1787170342663,
       "sport": "농구"
     },
     {
@@ -784,7 +792,7 @@
       "homeTeam": "네이메헌",
       "awayTeam": "보되글림트",
       "homeScore": 0,
-      "awayScore": 2,
+      "awayScore": 3,
       "status": "SCHEDULED",
       "timestamp": 1787166000000,
       "sport": "축구"
