@@ -1,226 +1,7 @@
 {
-  "updatedAt": "2026-08-19T10:20:52.657Z",
+  "updatedAt": "2026-08-19T12:30:20.089Z",
   "toto": [],
   "proto": [
-    {
-      "matchId": "부산 아이파크|부천FC 1995|1787135400000",
-      "sport": "축구",
-      "league": "승부식98 회차",
-      "homeTeam": "부산 아이파크",
-      "awayTeam": "부천FC 1995",
-      "gameDate": "2026-08-19T10:30:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.5
-            },
-            {
-              "label": "무",
-              "odds": 2.95
-            },
-            {
-              "label": "패",
-              "odds": 2.44
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.43
-            },
-            {
-              "label": "무",
-              "odds": 3.7
-            },
-            {
-              "label": "패",
-              "odds": 5.6
-            }
-          ],
-          "line": 1
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.75
-            },
-            {
-              "label": "오버",
-              "odds": 1.77
-            }
-          ],
-          "line": 2.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.81
-            },
-            {
-              "label": "짝",
-              "odds": 1.79
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "FC안양|제주 SKFC|1787135400000",
-      "sport": "축구",
-      "league": "승부식98 회차",
-      "homeTeam": "FC안양",
-      "awayTeam": "제주 SKFC",
-      "gameDate": "2026-08-19T10:30:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.55
-            },
-            {
-              "label": "무",
-              "odds": 2.95
-            },
-            {
-              "label": "패",
-              "odds": 2.39
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.49
-            },
-            {
-              "label": "무",
-              "odds": 3.6
-            },
-            {
-              "label": "패",
-              "odds": 5
-            }
-          ],
-          "line": 1
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.78
-            },
-            {
-              "label": "오버",
-              "odds": 1.74
-            }
-          ],
-          "line": 2.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.81
-            },
-            {
-              "label": "짝",
-              "odds": 1.79
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "강원FC|성남FC|1787135400000",
-      "sport": "축구",
-      "league": "승부식98 회차",
-      "homeTeam": "강원FC",
-      "awayTeam": "성남FC",
-      "gameDate": "2026-08-19T10:30:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.77
-            },
-            {
-              "label": "무",
-              "odds": 3.45
-            },
-            {
-              "label": "패",
-              "odds": 3.4
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3.7
-            },
-            {
-              "label": "무",
-              "odds": 3.4
-            },
-            {
-              "label": "패",
-              "odds": 1.71
-            }
-          ],
-          "line": -1
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.85
-            },
-            {
-              "label": "오버",
-              "odds": 1.68
-            }
-          ],
-          "line": 2.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.81
-            },
-            {
-              "label": "짝",
-              "odds": 1.79
-            }
-          ]
-        }
-      ]
-    },
     {
       "matchId": "베트남|말레이시아|1787144400000",
       "sport": "축구",
@@ -239,11 +20,11 @@
             },
             {
               "label": "무",
-              "odds": 3.95
+              "odds": 4.2
             },
             {
               "label": "패",
-              "odds": 6.7
+              "odds": 6.1
             }
           ]
         },
@@ -270,11 +51,11 @@
           "selections": [
             {
               "label": "언더",
-              "odds": 1.74
+              "odds": 1.79
             },
             {
               "label": "오버",
-              "odds": 1.78
+              "odds": 1.73
             }
           ],
           "line": 2.5
@@ -2339,11 +2120,11 @@
           "selections": [
             {
               "label": "언더",
-              "odds": 1.65
+              "odds": 1.78
             },
             {
               "label": "오버",
-              "odds": 1.89
+              "odds": 1.74
             }
           ],
           "line": 3.5
