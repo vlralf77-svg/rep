@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-20T20:40:13.360Z",
+  "updatedAt": "2026-08-20T21:02:27.470Z",
   "count": 173,
   "scores": [
     {
@@ -426,16 +426,6 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "시카고W",
-      "awayTeam": "애틀랜타",
-      "homeScore": 0,
-      "awayScore": 2,
-      "status": "LIVE",
-      "timestamp": 1787281800000,
-      "sport": "야구",
-      "inning": "9회말"
-    },
-    {
       "homeTeam": "캔자스시티",
       "awayTeam": "애슬레틱스",
       "homeScore": 6,
@@ -443,27 +433,36 @@
       "status": "LIVE",
       "timestamp": 1787281800000,
       "sport": "야구",
-      "inning": "7회초"
+      "inning": "8회말"
     },
     {
       "homeTeam": "밀워키",
       "awayTeam": "시애틀",
-      "homeScore": 6,
+      "homeScore": 7,
       "awayScore": 4,
       "status": "LIVE",
       "timestamp": 1787281800000,
       "sport": "야구",
-      "inning": "7회말"
+      "inning": "8회말"
+    },
+    {
+      "homeTeam": "시카고W",
+      "awayTeam": "애틀랜타",
+      "homeScore": 0,
+      "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1787281800000,
+      "sport": "야구"
     },
     {
       "homeTeam": "바예카노",
       "awayTeam": "알라베스",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787284800000,
       "sport": "축구",
-      "minute": "후반 30'"
+      "minute": "후반 52'"
     },
     {
       "homeTeam": "볼티모어",
@@ -633,7 +632,7 @@
       "homeScore": 16,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1787258362951,
+      "timestamp": 1787259713018,
       "sport": "농구"
     },
     {
@@ -642,7 +641,7 @@
       "homeScore": 18,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1787258362951,
+      "timestamp": 1787259713018,
       "sport": "농구"
     },
     {
@@ -928,7 +927,7 @@
       "homeTeam": "라요바예카노",
       "awayTeam": "D알라베스",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787252400000,
       "sport": "축구"
