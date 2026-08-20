@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-20T13:59:53.461Z",
+  "updatedAt": "2026-08-20T14:30:38.895Z",
   "count": 118,
   "scores": [
     {
@@ -336,16 +336,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "삼성",
-      "awayTeam": "SSG",
-      "homeScore": 4,
-      "awayScore": 6,
-      "status": "LIVE",
-      "timestamp": 1787252400000,
-      "sport": "야구",
-      "inning": "9회말"
-    },
-    {
       "homeTeam": "한화",
       "awayTeam": "KIA",
       "homeScore": 6,
@@ -368,6 +358,15 @@
       "awayTeam": "두산",
       "homeScore": 5,
       "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1787252400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "삼성",
+      "awayTeam": "SSG",
+      "homeScore": 4,
+      "awayScore": 6,
       "status": "FINISHED",
       "timestamp": 1787252400000,
       "sport": "야구"
@@ -720,7 +719,7 @@
       "homeScore": 16,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1787234352751,
+      "timestamp": 1787236205275,
       "sport": "농구"
     },
     {
