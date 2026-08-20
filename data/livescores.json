@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-20T16:46:47.296Z",
-  "count": 171,
+  "updatedAt": "2026-08-20T17:08:17.015Z",
+  "count": 172,
   "scores": [
     {
       "homeTeam": "피츠버그",
@@ -383,9 +383,9 @@
     {
       "homeTeam": "라밤바FC",
       "awayTeam": "디라이프",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 6,
+      "awayScore": 6,
+      "status": "FINISHED",
       "timestamp": 1787256000000,
       "sport": "축구"
     },
@@ -393,11 +393,11 @@
       "homeTeam": "신시내티",
       "awayTeam": "세인트루이스",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787276400000,
       "sport": "야구",
-      "inning": "1회초"
+      "inning": "2회말"
     },
     {
       "homeTeam": "클리블랜드",
@@ -625,6 +625,15 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "HT\n14\n14\n17\n19",
+      "awayTeam": "리투아니아",
+      "homeScore": 16,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1787245653912,
+      "sport": "농구"
+    },
+    {
       "homeTeam": "AT마드리드",
       "awayTeam": "말라가CF",
       "homeScore": 2,
@@ -816,7 +825,7 @@
     {
       "homeTeam": "야기엘로니아",
       "awayTeam": "이베리아",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1787241600000,
