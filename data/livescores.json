@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-20T15:06:10.801Z",
-  "count": 173,
+  "updatedAt": "2026-08-20T15:43:44.110Z",
+  "count": 172,
   "scores": [
     {
       "homeTeam": "피츠버그",
@@ -426,6 +426,15 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "밀워키",
+      "awayTeam": "시애틀",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787281800000,
+      "sport": "야구"
+    },
+    {
       "homeTeam": "시카고W",
       "awayTeam": "애틀랜타",
       "homeScore": 0,
@@ -437,15 +446,6 @@
     {
       "homeTeam": "캔자스시티",
       "awayTeam": "애슬레틱스",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1787281800000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "밀워키",
-      "awayTeam": "시애틀",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -624,21 +624,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n24\n20\n33\n28",
-      "awayTeam": "Nuwaidrat",
+      "homeTeam": "Q\n23\n24\n16\n17",
+      "awayTeam": "Akad Ainkawa",
       "homeScore": 15,
-      "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1787238332456,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "대기",
-      "awayTeam": "이고케아",
-      "homeScore": 16,
-      "awayScore": 0,
+      "awayScore": 20,
       "status": "LIVE",
-      "timestamp": 1787238332456,
+      "timestamp": 1787240585656,
       "sport": "농구"
     },
     {
@@ -825,7 +816,7 @@
       "homeTeam": "카이라트",
       "awayTeam": "안더레흐트",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1787238000000,
       "sport": "축구"
