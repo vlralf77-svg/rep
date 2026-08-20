@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-20T08:22:16.690Z",
+  "updatedAt": "2026-08-20T09:01:08.037Z",
   "count": 119,
   "scores": [
     {
@@ -289,16 +289,17 @@
       "status": "LIVE",
       "timestamp": 1787234400000,
       "sport": "야구",
-      "inning": "9회말"
+      "inning": "11회초"
     },
     {
       "homeTeam": "요코하마",
       "awayTeam": "요미우리",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1787247900000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "라쿠텐",
@@ -715,21 +716,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n18\n16",
+      "homeTeam": "HT\n24\n28\n23\n30",
+      "awayTeam": "일본",
+      "homeScore": 11,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787216428585,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n18\n20\n16\n16",
       "awayTeam": "Shanghai Jiaotong Uni",
       "homeScore": 10,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1787214094026,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n7\n21",
-      "awayTeam": "Sabah U21",
-      "homeScore": 4,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1787214094026,
+      "timestamp": 1787216428585,
       "sport": "농구"
     },
     {
