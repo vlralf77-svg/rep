@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-20T13:14:31.532Z",
-  "count": 117,
+  "updatedAt": "2026-08-20T13:59:53.461Z",
+  "count": 118,
   "scores": [
     {
       "homeTeam": "피츠버그",
@@ -336,44 +336,41 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "한화",
-      "awayTeam": "KIA",
-      "homeScore": 6,
-      "awayScore": 8,
-      "status": "LIVE",
-      "timestamp": 1787252400000,
-      "sport": "야구",
-      "inning": "9회초"
-    },
-    {
-      "homeTeam": "LG",
-      "awayTeam": "KT",
-      "homeScore": 3,
-      "awayScore": 14,
-      "status": "LIVE",
-      "timestamp": 1787252400000,
-      "sport": "야구",
-      "inning": "8회말"
-    },
-    {
-      "homeTeam": "NC",
-      "awayTeam": "두산",
+      "homeTeam": "삼성",
+      "awayTeam": "SSG",
       "homeScore": 4,
-      "awayScore": 4,
+      "awayScore": 6,
       "status": "LIVE",
       "timestamp": 1787252400000,
       "sport": "야구",
       "inning": "9회말"
     },
     {
-      "homeTeam": "삼성",
-      "awayTeam": "SSG",
-      "homeScore": 4,
-      "awayScore": 3,
-      "status": "LIVE",
+      "homeTeam": "한화",
+      "awayTeam": "KIA",
+      "homeScore": 6,
+      "awayScore": 10,
+      "status": "FINISHED",
       "timestamp": 1787252400000,
-      "sport": "야구",
-      "inning": "8회초"
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "LG",
+      "awayTeam": "KT",
+      "homeScore": 4,
+      "awayScore": 16,
+      "status": "FINISHED",
+      "timestamp": 1787252400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "NC",
+      "awayTeam": "두산",
+      "homeScore": 5,
+      "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1787252400000,
+      "sport": "야구"
     },
     {
       "homeTeam": "롯데",
@@ -716,6 +713,15 @@
       "status": "FINISHED",
       "timestamp": 1787176800000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "대기",
+      "awayTeam": "이고케아",
+      "homeScore": 16,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787234352751,
+      "sport": "농구"
     },
     {
       "homeTeam": "D자그레브",
