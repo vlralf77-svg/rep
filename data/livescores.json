@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-21T23:37:25.017Z",
-  "count": 220,
+  "updatedAt": "2026-08-21T23:55:09.095Z",
+  "count": 221,
   "scores": [
     {
       "homeTeam": "신시내티",
@@ -147,15 +147,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "세종 스포츠토토",
-      "awayTeam": "강진",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1787338800000,
-      "sport": "축구"
-    },
-    {
       "homeTeam": "화천 KSPO",
       "awayTeam": "서울시청",
       "homeScore": 0,
@@ -217,6 +208,15 @@
       "status": "FINISHED",
       "timestamp": 1787338800000,
       "sport": "야구"
+    },
+    {
+      "homeTeam": "세종 스포츠토토",
+      "awayTeam": "강진",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1787338800000,
+      "sport": "축구"
     },
     {
       "homeTeam": "가시와 레이솔",
@@ -316,17 +316,17 @@
       "status": "LIVE",
       "timestamp": 1787384400000,
       "sport": "야구",
-      "inning": "3회말"
+      "inning": "5회초"
     },
     {
       "homeTeam": "뉴욕양키스",
       "awayTeam": "토론토",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1787385900000,
       "sport": "야구",
-      "inning": "2회말"
+      "inning": "3회초"
     },
     {
       "homeTeam": "마이애미",
@@ -336,7 +336,7 @@
       "status": "LIVE",
       "timestamp": 1787386200000,
       "sport": "야구",
-      "inning": "2회말"
+      "inning": "3회말"
     },
     {
       "homeTeam": "보스턴",
@@ -346,17 +346,17 @@
       "status": "LIVE",
       "timestamp": 1787386200000,
       "sport": "야구",
-      "inning": "2회초"
+      "inning": "3회초"
     },
     {
       "homeTeam": "볼티모어",
       "awayTeam": "탬파베이",
-      "homeScore": 1,
-      "awayScore": 1,
+      "homeScore": 2,
+      "awayScore": 3,
       "status": "LIVE",
       "timestamp": 1787386500000,
       "sport": "야구",
-      "inning": "2회초"
+      "inning": "3회초"
     },
     {
       "homeTeam": "시카고W",
@@ -852,6 +852,15 @@
       "status": "SCHEDULED",
       "timestamp": 1787441400000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "Q\n17\n12",
+      "awayTeam": "워싱턴 미스틱스",
+      "homeScore": 23,
+      "awayScore": 30,
+      "status": "FINISHED",
+      "timestamp": 1787356457001,
+      "sport": "농구"
     },
     {
       "homeTeam": "카이라트",
