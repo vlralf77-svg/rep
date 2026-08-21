@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-21T20:31:14.593Z",
+  "updatedAt": "2026-08-21T20:52:01.144Z",
   "count": 221,
   "scores": [
     {
@@ -275,12 +275,11 @@
     {
       "homeTeam": "마르세유",
       "awayTeam": "스트라스부르",
-      "homeScore": 2,
+      "homeScore": 4,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787370300000,
-      "sport": "축구",
-      "minute": "후반 39'"
+      "sport": "축구"
     },
     {
       "homeTeam": "베티스",
@@ -290,7 +289,7 @@
       "status": "LIVE",
       "timestamp": 1787371200000,
       "sport": "축구",
-      "minute": "후반 23'"
+      "minute": "후반 43'"
     },
     {
       "homeTeam": "아스널",
@@ -300,7 +299,7 @@
       "status": "LIVE",
       "timestamp": 1787371200000,
       "sport": "축구",
-      "minute": "후반 26'"
+      "minute": "후반 46'"
     },
     {
       "homeTeam": "밀워키",
@@ -310,7 +309,7 @@
       "status": "LIVE",
       "timestamp": 1787375400000,
       "sport": "야구",
-      "inning": "2회초"
+      "inning": "3회말"
     },
     {
       "homeTeam": "필라델피아",
@@ -858,7 +857,7 @@
       "homeScore": 18,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1787344230124,
+      "timestamp": 1787345475701,
       "sport": "농구"
     },
     {
@@ -1078,9 +1077,18 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "비첸차",
+      "awayTeam": "카탄자로",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "SCHEDULED",
+      "timestamp": 1787337000000,
+      "sport": "축구"
+    },
+    {
       "homeTeam": "마르세유",
       "awayTeam": "스트라스부르",
-      "homeScore": 2,
+      "homeScore": 4,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1787337900000,
@@ -1108,7 +1116,7 @@
       "homeTeam": "코르도바",
       "awayTeam": "지로나",
       "homeScore": 2,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787338800000,
       "sport": "축구"
@@ -1380,15 +1388,6 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
-      "timestamp": 1787403600000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "비첸차",
-      "awayTeam": "카탄자로",
-      "homeScore": 3,
-      "awayScore": 2,
-      "status": "FINISHED",
       "timestamp": 1787403600000,
       "sport": "축구"
     },
