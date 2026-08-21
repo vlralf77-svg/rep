@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-21T16:01:33.928Z",
-  "count": 220,
+  "updatedAt": "2026-08-21T16:33:51.007Z",
+  "count": 221,
   "scores": [
     {
       "homeTeam": "신시내티",
@@ -240,19 +240,21 @@
       "homeTeam": "알 리야드",
       "awayTeam": "알 나스르",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1787360400000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 31'"
     },
     {
       "homeTeam": "알 하젬",
       "awayTeam": "알 디리야",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1787361300000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 16'"
     },
     {
       "homeTeam": "알 카디시야",
@@ -847,6 +849,15 @@
       "status": "SCHEDULED",
       "timestamp": 1787441400000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n22\n17\n29\n19",
+      "awayTeam": "포르투갈",
+      "homeScore": 16,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787329990329,
+      "sport": "농구"
     },
     {
       "homeTeam": "카이라트",
