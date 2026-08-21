@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-21T18:35:29.733Z",
-  "count": 221,
+  "updatedAt": "2026-08-21T19:10:34.785Z",
+  "count": 220,
   "scores": [
     {
       "homeTeam": "신시내티",
@@ -258,11 +258,11 @@
       "homeTeam": "알 카디시야",
       "awayTeam": "알 이티하드",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787367600000,
       "sport": "축구",
-      "minute": "전반 32'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "알 파이살리",
@@ -272,34 +272,37 @@
       "status": "LIVE",
       "timestamp": 1787367600000,
       "sport": "축구",
-      "minute": "전반 33'"
+      "minute": "후반 3'"
     },
     {
       "homeTeam": "마르세유",
       "awayTeam": "스트라스부르",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787370300000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 21'"
     },
     {
       "homeTeam": "베티스",
       "awayTeam": "소시에다드",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787371200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 4'"
     },
     {
       "homeTeam": "아스널",
       "awayTeam": "코벤트리",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787371200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 7'"
     },
     {
       "homeTeam": "밀워키",
@@ -851,15 +854,6 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n15\n31\n14\n8",
-      "awayTeam": "폴란드",
-      "homeScore": 15,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1787337292958,
-      "sport": "농구"
-    },
-    {
       "homeTeam": "카이라트",
       "awayTeam": "안더레흐트",
       "homeScore": 0,
@@ -1385,7 +1379,7 @@
       "homeTeam": "비첸차",
       "awayTeam": "카탄자로",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787403600000,
       "sport": "축구"
