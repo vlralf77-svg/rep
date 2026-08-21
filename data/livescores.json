@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-21T20:03:25.665Z",
+  "updatedAt": "2026-08-21T20:31:14.593Z",
   "count": 221,
   "scores": [
     {
@@ -275,41 +275,42 @@
     {
       "homeTeam": "마르세유",
       "awayTeam": "스트라스부르",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1787370300000,
       "sport": "축구",
-      "minute": "후반 11'"
+      "minute": "후반 39'"
     },
     {
       "homeTeam": "베티스",
       "awayTeam": "소시에다드",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1787371200000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 23'"
     },
     {
       "homeTeam": "아스널",
       "awayTeam": "코벤트리",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1787371200000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 26'"
     },
     {
       "homeTeam": "밀워키",
       "awayTeam": "애틀랜타",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787375400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "필라델피아",
@@ -852,12 +853,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n14\n22\n20\n20",
-      "awayTeam": "Kobe Stokes",
-      "homeScore": 5,
-      "awayScore": 0,
+      "homeTeam": "연기",
+      "awayTeam": "독일",
+      "homeScore": 18,
+      "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1787342560927,
+      "timestamp": 1787344230124,
       "sport": "농구"
     },
     {
@@ -1079,7 +1080,7 @@
     {
       "homeTeam": "마르세유",
       "awayTeam": "스트라스부르",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1787337900000,
@@ -1088,7 +1089,7 @@
     {
       "homeTeam": "아스날FC",
       "awayTeam": "코벤트리시티",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1787338800000,
@@ -1097,7 +1098,7 @@
     {
       "homeTeam": "베티스",
       "awayTeam": "소시에다드",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1787338800000,
@@ -1385,9 +1386,9 @@
     {
       "homeTeam": "비첸차",
       "awayTeam": "카탄자로",
-      "homeScore": 1,
+      "homeScore": 3,
       "awayScore": 2,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1787403600000,
       "sport": "축구"
     },
