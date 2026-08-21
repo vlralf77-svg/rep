@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-21T21:06:39.031Z",
-  "count": 221,
+  "updatedAt": "2026-08-21T21:35:14.424Z",
+  "count": 222,
   "scores": [
     {
       "homeTeam": "신시내티",
@@ -307,7 +307,7 @@
       "status": "LIVE",
       "timestamp": 1787375400000,
       "sport": "야구",
-      "inning": "4회초"
+      "inning": "6회초"
     },
     {
       "homeTeam": "필라델피아",
@@ -855,7 +855,16 @@
       "homeScore": 18,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1787346361029,
+      "timestamp": 1787348069606,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n12\n14",
+      "awayTeam": "Dep. 산호세",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787348069606,
       "sport": "농구"
     },
     {
@@ -1115,7 +1124,7 @@
       "awayTeam": "지로나",
       "homeScore": 2,
       "awayScore": 1,
-      "status": "FINISHED",
+      "status": "SCHEDULED",
       "timestamp": 1787338800000,
       "sport": "축구"
     },
