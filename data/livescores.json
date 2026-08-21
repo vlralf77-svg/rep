@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-21T13:14:27.151Z",
-  "count": 171,
+  "updatedAt": "2026-08-21T13:58:49.967Z",
+  "count": 172,
   "scores": [
     {
       "homeTeam": "신시내티",
@@ -109,7 +109,7 @@
       "status": "LIVE",
       "timestamp": 1787335200000,
       "sport": "야구",
-      "inning": "9회말"
+      "inning": "11회초"
     },
     {
       "homeTeam": "요미우리",
@@ -175,6 +175,16 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "한화",
+      "awayTeam": "LG",
+      "homeScore": 14,
+      "awayScore": 11,
+      "status": "LIVE",
+      "timestamp": 1787338800000,
+      "sport": "야구",
+      "inning": "8회말"
+    },
+    {
       "homeTeam": "SSG",
       "awayTeam": "KT",
       "homeScore": 3,
@@ -182,37 +192,25 @@
       "status": "LIVE",
       "timestamp": 1787338800000,
       "sport": "야구",
-      "inning": "10회초"
-    },
-    {
-      "homeTeam": "한화",
-      "awayTeam": "LG",
-      "homeScore": 8,
-      "awayScore": 11,
-      "status": "LIVE",
-      "timestamp": 1787338800000,
-      "sport": "야구",
-      "inning": "7회말"
-    },
-    {
-      "homeTeam": "두산",
-      "awayTeam": "롯데",
-      "homeScore": 3,
-      "awayScore": 9,
-      "status": "LIVE",
-      "timestamp": 1787338800000,
-      "sport": "야구",
-      "inning": "8회말"
+      "inning": "11회말"
     },
     {
       "homeTeam": "키움",
       "awayTeam": "KIA",
       "homeScore": 1,
       "awayScore": 11,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787338800000,
-      "sport": "야구",
-      "inning": "9회말"
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "두산",
+      "awayTeam": "롯데",
+      "homeScore": 4,
+      "awayScore": 11,
+      "status": "FINISHED",
+      "timestamp": 1787338800000,
+      "sport": "야구"
     },
     {
       "homeTeam": "NC",
@@ -627,6 +625,15 @@
       "status": "FINISHED",
       "timestamp": 1787256000000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n18\n15\n20\n24",
+      "awayTeam": "TED Ankara Kolejliler",
+      "homeScore": 15,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787320697028,
+      "sport": "농구"
     },
     {
       "homeTeam": "AT마드리드",
