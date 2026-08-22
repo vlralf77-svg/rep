@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-22T22:05:08.115Z",
-  "count": 274,
+  "updatedAt": "2026-08-22T22:31:51.031Z",
+  "count": 275,
   "scores": [
     {
       "homeTeam": "알 리야드",
@@ -838,16 +838,17 @@
       "status": "LIVE",
       "timestamp": 1787461800000,
       "sport": "야구",
-      "inning": "6회초"
+      "inning": "7회말"
     },
     {
       "homeTeam": "필라델피아",
       "awayTeam": "세인트루이스",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787468700000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "텍사스",
@@ -1327,12 +1328,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n20\n21\n21\n15",
+      "homeTeam": "Q\n20\n21\n28\n21\n15\n29",
       "awayTeam": "Mogi das Cruzes",
       "homeScore": 21,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1787436263783,
+      "timestamp": 1787437868029,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "대기",
+      "awayTeam": "Liceo Mixto San Felip",
+      "homeScore": 20,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1787437868029,
       "sport": "농구"
     },
     {
