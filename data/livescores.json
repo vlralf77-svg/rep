@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-22T17:43:06.604Z",
-  "count": 273,
+  "updatedAt": "2026-08-22T17:58:37.151Z",
+  "count": 274,
   "scores": [
     {
       "homeTeam": "알 리야드",
@@ -649,17 +649,17 @@
       "status": "LIVE",
       "timestamp": 1787447400000,
       "sport": "축구",
-      "minute": "후반 19'"
+      "minute": "후반 35'"
     },
     {
       "homeTeam": "우디네세",
       "awayTeam": "코모",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787448600000,
       "sport": "축구",
-      "minute": "후반 1'"
+      "minute": "후반 15'"
     },
     {
       "homeTeam": "브렌트퍼드",
@@ -669,17 +669,17 @@
       "status": "LIVE",
       "timestamp": 1787448600000,
       "sport": "축구",
-      "minute": "후반 9'"
+      "minute": "후반 23'"
     },
     {
       "homeTeam": "인테르",
       "awayTeam": "몬차",
-      "homeScore": 2,
+      "homeScore": 4,
       "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787448600000,
       "sport": "축구",
-      "minute": "후반 5'"
+      "minute": "후반 20'"
     },
     {
       "homeTeam": "던디 유나이티드",
@@ -689,17 +689,17 @@
       "status": "LIVE",
       "timestamp": 1787449500000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 5'"
     },
     {
       "homeTeam": "스파르타",
       "awayTeam": "위트레흐트",
       "homeScore": 1,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1787449500000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 8'"
     },
     {
       "homeTeam": "발렌시아",
@@ -709,17 +709,17 @@
       "status": "LIVE",
       "timestamp": 1787452200000,
       "sport": "축구",
-      "minute": "전반 6'"
+      "minute": "전반 22'"
     },
     {
       "homeTeam": "뉴욕양키스",
       "awayTeam": "토론토",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787452500000,
       "sport": "야구",
-      "inning": "1회초"
+      "inning": "1회말"
     },
     {
       "homeTeam": "NEC 네이메헌",
@@ -1334,6 +1334,15 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "HT\n22\n19\n22\n17",
+      "awayTeam": "이탈리아",
+      "homeScore": 17,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1787421483429,
+      "sport": "농구"
+    },
+    {
       "homeTeam": "US불로뉴",
       "awayTeam": "레드스타",
       "homeScore": 1,
@@ -1822,7 +1831,7 @@
     {
       "homeTeam": "인테르",
       "awayTeam": "AC몬차",
-      "homeScore": 2,
+      "homeScore": 4,
       "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787416200000,
@@ -1832,7 +1841,7 @@
       "homeTeam": "우디네세",
       "awayTeam": "코모",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787416200000,
       "sport": "축구"
@@ -1841,7 +1850,7 @@
       "homeTeam": "스파르타R",
       "awayTeam": "위트레흐트",
       "homeScore": 1,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1787417100000,
       "sport": "축구"
@@ -1859,7 +1868,7 @@
       "homeTeam": "알바세테",
       "awayTeam": "소시에다드B",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1787418000000,
       "sport": "축구"
