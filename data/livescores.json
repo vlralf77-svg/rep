@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-22T05:05:34.772Z",
-  "count": 220,
+  "updatedAt": "2026-08-22T05:36:10.319Z",
+  "count": 221,
   "scores": [
     {
       "homeTeam": "알 리야드",
@@ -183,24 +183,23 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "시애틀",
-      "awayTeam": "시카고컵스",
+      "homeTeam": "LA다저스",
+      "awayTeam": "피츠버그",
       "homeScore": 5,
-      "awayScore": 5,
+      "awayScore": 4,
       "status": "LIVE",
       "timestamp": 1787397000000,
       "sport": "야구",
       "inning": "10회말"
     },
     {
-      "homeTeam": "LA다저스",
-      "awayTeam": "피츠버그",
-      "homeScore": 4,
-      "awayScore": 4,
-      "status": "LIVE",
+      "homeTeam": "시애틀",
+      "awayTeam": "시카고컵스",
+      "homeScore": 6,
+      "awayScore": 5,
+      "status": "FINISHED",
       "timestamp": 1787397000000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "요미우리",
@@ -210,27 +209,27 @@
       "status": "LIVE",
       "timestamp": 1787407200000,
       "sport": "야구",
-      "inning": "1회초"
+      "inning": "2회말"
     },
     {
       "homeTeam": "소프트뱅크",
       "awayTeam": "오릭스",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1787407200000,
       "sport": "야구",
-      "inning": "1회초"
+      "inning": "2회말"
     },
     {
       "homeTeam": "주니치",
       "awayTeam": "야쿠르트",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1787407200000,
       "sport": "야구",
-      "inning": "1회초"
+      "inning": "2회말"
     },
     {
       "homeTeam": "요코하마",
@@ -854,12 +853,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n23\n7\n26\n16",
+      "homeTeam": "Q\n23\n10\n17\n26\n25\n16",
       "awayTeam": "Knox Raiders",
       "homeScore": 5,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1787375091784,
+      "timestamp": 1787376931124,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n23\n18\n20\n14",
+      "awayTeam": "Bankstown Bruins",
+      "homeScore": 6,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1787376931124,
       "sport": "농구"
     },
     {
