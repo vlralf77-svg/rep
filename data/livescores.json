@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-22T03:27:18.453Z",
+  "updatedAt": "2026-08-22T04:03:36.978Z",
   "count": 219,
   "scores": [
     {
@@ -149,52 +149,49 @@
     {
       "homeTeam": "텍사스",
       "awayTeam": "LA에인절스",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787390100000,
-      "sport": "야구",
-      "inning": "10회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "콜로라도",
       "awayTeam": "클리블랜드",
       "homeScore": 1,
       "awayScore": 9,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787391600000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "애리조나",
       "awayTeam": "신시내티",
-      "homeScore": 6,
+      "homeScore": 7,
       "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1787395200000,
-      "sport": "야구",
-      "inning": "6회초"
-    },
-    {
-      "homeTeam": "샌디에이고",
-      "awayTeam": "미네소타",
-      "homeScore": 6,
-      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1787395200000,
       "sport": "야구",
       "inning": "7회말"
     },
     {
+      "homeTeam": "샌디에이고",
+      "awayTeam": "미네소타",
+      "homeScore": 6,
+      "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1787395200000,
+      "sport": "야구"
+    },
+    {
       "homeTeam": "시애틀",
       "awayTeam": "시카고컵스",
-      "homeScore": 4,
+      "homeScore": 5,
       "awayScore": 3,
       "status": "LIVE",
       "timestamp": 1787397000000,
       "sport": "야구",
-      "inning": "5회초"
+      "inning": "7회말"
     },
     {
       "homeTeam": "LA다저스",
@@ -204,7 +201,7 @@
       "status": "LIVE",
       "timestamp": 1787397000000,
       "sport": "야구",
-      "inning": "4회말"
+      "inning": "7회초"
     },
     {
       "homeTeam": "요미우리",
@@ -853,15 +850,6 @@
       "status": "FINISHED",
       "timestamp": 1787340600000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "HT\n22\n20\n25\n22",
-      "awayTeam": "판테라스",
-      "homeScore": 2,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1787369194722,
-      "sport": "농구"
     },
     {
       "homeTeam": "카이라트",
@@ -1665,6 +1653,15 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "AS생테티엔",
+      "awayTeam": "그르노블",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787421600000,
+      "sport": "축구"
+    },
+    {
       "homeTeam": "도르트문트",
       "awayTeam": "바이에른뮌헨",
       "homeScore": 0,
@@ -1965,8 +1962,8 @@
       "homeTeam": "베트남",
       "awayTeam": "대한민국",
       "homeScore": 1,
-      "awayScore": 1,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1787364000000,
       "sport": "배구"
     },
