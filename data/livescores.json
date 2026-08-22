@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-22T04:39:01.841Z",
-  "count": 221,
+  "updatedAt": "2026-08-22T05:05:34.772Z",
+  "count": 220,
   "scores": [
     {
       "homeTeam": "알 리야드",
@@ -186,6 +186,16 @@
       "homeTeam": "시애틀",
       "awayTeam": "시카고컵스",
       "homeScore": 5,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1787397000000,
+      "sport": "야구",
+      "inning": "10회말"
+    },
+    {
+      "homeTeam": "LA다저스",
+      "awayTeam": "피츠버그",
+      "homeScore": 4,
       "awayScore": 4,
       "status": "LIVE",
       "timestamp": 1787397000000,
@@ -193,41 +203,34 @@
       "inning": "9회초"
     },
     {
-      "homeTeam": "LA다저스",
-      "awayTeam": "피츠버그",
-      "homeScore": 4,
-      "awayScore": 2,
-      "status": "LIVE",
-      "timestamp": 1787397000000,
-      "sport": "야구",
-      "inning": "8회초"
-    },
-    {
       "homeTeam": "요미우리",
       "awayTeam": "히로시마",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787407200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "소프트뱅크",
       "awayTeam": "오릭스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787407200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "주니치",
       "awayTeam": "야쿠르트",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787407200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "요코하마",
@@ -851,21 +854,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n2\n11",
+      "homeTeam": "Q\n23\n7\n26\n16",
       "awayTeam": "Knox Raiders",
       "homeScore": 5,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1787373503370,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n19\n15\n13\n21",
-      "awayTeam": "Johor U21\nSelangor U2",
-      "homeScore": 8,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1787373503370,
+      "timestamp": 1787375091784,
       "sport": "농구"
     },
     {
