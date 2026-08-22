@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-22T14:20:34.963Z",
-  "count": 220,
+  "updatedAt": "2026-08-22T14:44:07.477Z",
+  "count": 219,
   "scores": [
     {
       "homeTeam": "알 리야드",
@@ -483,11 +483,11 @@
       "homeTeam": "태국",
       "awayTeam": "베트남",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1787436000000,
       "sport": "축구",
-      "minute": "후반 15'"
+      "minute": "후반 39'"
     },
     {
       "homeTeam": "레인저스",
@@ -515,7 +515,7 @@
       "status": "LIVE",
       "timestamp": 1787439600000,
       "sport": "축구",
-      "minute": "전반 16'"
+      "minute": "전반 40'"
     },
     {
       "homeTeam": "프레스턴",
@@ -525,7 +525,7 @@
       "status": "LIVE",
       "timestamp": 1787439600000,
       "sport": "축구",
-      "minute": "전반 18'"
+      "minute": "전반 42'"
     },
     {
       "homeTeam": "웨스트햄",
@@ -535,17 +535,17 @@
       "status": "LIVE",
       "timestamp": 1787439600000,
       "sport": "축구",
-      "minute": "전반 17'"
+      "minute": "전반 41'"
     },
     {
       "homeTeam": "더비 카운티",
       "awayTeam": "카디프",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1787439600000,
       "sport": "축구",
-      "minute": "전반 18'"
+      "minute": "전반 42'"
     },
     {
       "homeTeam": "에버턴",
@@ -555,7 +555,7 @@
       "status": "LIVE",
       "timestamp": 1787439600000,
       "sport": "축구",
-      "minute": "전반 17'"
+      "minute": "전반 41'"
     },
     {
       "homeTeam": "블랙번",
@@ -565,7 +565,7 @@
       "status": "LIVE",
       "timestamp": 1787439600000,
       "sport": "축구",
-      "minute": "전반 17'"
+      "minute": "전반 42'"
     },
     {
       "homeTeam": "스완지",
@@ -575,37 +575,37 @@
       "status": "LIVE",
       "timestamp": 1787439600000,
       "sport": "축구",
-      "minute": "전반 16'"
+      "minute": "전반 40'"
     },
     {
       "homeTeam": "입스위치",
       "awayTeam": "선덜랜드",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1787439600000,
-      "sport": "축구",
-      "minute": "전반 16'"
-    },
-    {
-      "homeTeam": "렉섬",
-      "awayTeam": "왓퍼드",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787439600000,
       "sport": "축구",
-      "minute": "전반 17'"
+      "minute": "전반 41'"
+    },
+    {
+      "homeTeam": "렉섬",
+      "awayTeam": "왓퍼드",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1787439600000,
+      "sport": "축구",
+      "minute": "전반 41'"
     },
     {
       "homeTeam": "사우샘프턴",
       "awayTeam": "스토크",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787439600000,
       "sport": "축구",
-      "minute": "전반 17'"
+      "minute": "전반 41'"
     },
     {
       "homeTeam": "QPR",
@@ -615,16 +615,17 @@
       "status": "LIVE",
       "timestamp": 1787439600000,
       "sport": "축구",
-      "minute": "전반 17'"
+      "minute": "전반 41'"
     },
     {
       "homeTeam": "시타르트",
       "awayTeam": "알크마르 잔스트리크",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787441400000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 8'"
     },
     {
       "homeTeam": "키움",
@@ -859,15 +860,6 @@
       "status": "FINISHED",
       "timestamp": 1787340600000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "HT\n26\n8\n13\n21",
-      "awayTeam": "프랑스",
-      "homeScore": 15,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1787408400208,
-      "sport": "농구"
     },
     {
       "homeTeam": "카이라트",
@@ -1430,8 +1422,8 @@
     {
       "homeTeam": "입스위치타운",
       "awayTeam": "선더랜드",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787407200000,
       "sport": "축구"
@@ -1457,8 +1449,8 @@
     {
       "homeTeam": "더비카운티",
       "awayTeam": "카디프시티",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1787407200000,
       "sport": "축구"
@@ -1485,7 +1477,7 @@
       "homeTeam": "사우스햄턴",
       "awayTeam": "스토크시티",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787407200000,
       "sport": "축구"
@@ -1511,7 +1503,7 @@
     {
       "homeTeam": "렉섬",
       "awayTeam": "왓포드FC",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787407200000,
