@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-22T08:54:25.800Z",
-  "count": 221,
+  "updatedAt": "2026-08-22T09:15:13.740Z",
+  "count": 220,
   "scores": [
     {
       "homeTeam": "알 리야드",
@@ -246,31 +246,34 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "키움",
+      "awayTeam": "KIA",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787421600000,
+      "sport": "야구",
+      "inning": "1회말"
+    },
+    {
       "homeTeam": "라쿠텐",
       "awayTeam": "세이부",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787421600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "가시마",
       "awayTeam": "후쿠오카",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787421600000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "키움",
-      "awayTeam": "KIA",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1787421600000,
-      "sport": "야구"
+      "sport": "축구",
+      "minute": "전반 10'"
     },
     {
       "homeTeam": "오카야마",
@@ -302,15 +305,6 @@
     {
       "homeTeam": "두산",
       "awayTeam": "롯데",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1787425200000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "NC",
-      "awayTeam": "삼성",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -352,6 +346,15 @@
       "status": "SCHEDULED",
       "timestamp": 1787425200000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "NC",
+      "awayTeam": "삼성",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787425200000,
+      "sport": "야구"
     },
     {
       "homeTeam": "히로시마",
@@ -849,21 +852,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n21\n6\n16\n23",
-      "awayTeam": "Heilongjiang",
-      "homeScore": 9,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1787388833194,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n27\n0\n20\n2",
+      "homeTeam": "HT\n27\n21\n20\n17",
       "awayTeam": "캔버라",
       "homeScore": 9,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1787388833194,
+      "timestamp": 1787390069200,
       "sport": "농구"
     },
     {
