@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-22T08:00:13.753Z",
+  "updatedAt": "2026-08-22T08:24:09.232Z",
   "count": 219,
   "scores": [
     {
@@ -205,43 +205,31 @@
       "awayTeam": "히로시마",
       "homeScore": 5,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787407200000,
-      "sport": "야구",
-      "inning": "8회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "소프트뱅크",
       "awayTeam": "오릭스",
       "homeScore": 7,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787407200000,
-      "sport": "야구",
-      "inning": "8회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "주니치",
       "awayTeam": "야쿠르트",
-      "homeScore": 4,
+      "homeScore": 5,
       "awayScore": 4,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787407200000,
-      "sport": "야구",
-      "inning": "9회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "요코하마",
       "awayTeam": "한신",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1787421600000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "키움",
-      "awayTeam": "KIA",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -274,6 +262,15 @@
       "status": "SCHEDULED",
       "timestamp": 1787421600000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "키움",
+      "awayTeam": "KIA",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787421600000,
+      "sport": "야구"
     },
     {
       "homeTeam": "오카야마",
@@ -1089,7 +1086,7 @@
       "homeTeam": "하치노헤",
       "awayTeam": "베갈타센다이",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787385600000,
       "sport": "축구"
