@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-23T16:53:07.459Z",
-  "count": 194,
+  "updatedAt": "2026-08-23T17:08:46.583Z",
+  "count": 193,
   "scores": [
     {
       "homeTeam": "빌바오",
@@ -707,22 +707,21 @@
     {
       "homeTeam": "캄부르",
       "awayTeam": "페예노르트",
-      "homeScore": 1,
-      "awayScore": 4,
+      "homeScore": 2,
+      "awayScore": 5,
       "status": "LIVE",
       "timestamp": 1787528700000,
       "sport": "축구",
-      "minute": "후반 31'"
+      "minute": "후반 47'"
     },
     {
       "homeTeam": "AT 마드리드",
       "awayTeam": "비야레알",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 2,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787529600000,
-      "sport": "축구",
-      "minute": "후반 40'"
+      "sport": "축구"
     },
     {
       "homeTeam": "르 아브르",
@@ -732,7 +731,7 @@
       "status": "LIVE",
       "timestamp": 1787530500000,
       "sport": "축구",
-      "minute": "후반 30'"
+      "minute": "후반 46'"
     },
     {
       "homeTeam": "뉴캐슬",
@@ -742,7 +741,7 @@
       "status": "LIVE",
       "timestamp": 1787531400000,
       "sport": "축구",
-      "minute": "후반 17'"
+      "minute": "후반 33'"
     },
     {
       "homeTeam": "비보리",
@@ -752,27 +751,27 @@
       "status": "LIVE",
       "timestamp": 1787533200000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 2'"
     },
     {
       "homeTeam": "베네치아",
       "awayTeam": "레체",
-      "homeScore": 1,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1787535000000,
-      "sport": "축구",
-      "minute": "전반 17'"
-    },
-    {
-      "homeTeam": "프로시노네",
-      "awayTeam": "유벤투스",
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1787535000000,
       "sport": "축구",
-      "minute": "전반 18'"
+      "minute": "전반 33'"
+    },
+    {
+      "homeTeam": "프로시노네",
+      "awayTeam": "유벤투스",
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1787535000000,
+      "sport": "축구",
+      "minute": "전반 34'"
     },
     {
       "homeTeam": "헤타페",
@@ -973,21 +972,12 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "Q\n17\n26\n25\n25\n16\n25",
-      "awayTeam": "독일",
-      "homeScore": 15,
-      "awayScore": 30,
-      "status": "FINISHED",
-      "timestamp": 1787503944865,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n19\n13\n14\n11",
-      "awayTeam": "스페인",
-      "homeScore": 19,
+      "homeTeam": "HT\n27\n27\n22\n13",
+      "awayTeam": "터키",
+      "homeScore": 16,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1787503944865,
+      "timestamp": 1787504883743,
       "sport": "농구"
     },
     {
@@ -1470,9 +1460,9 @@
     {
       "homeTeam": "캄부르",
       "awayTeam": "페예노르트",
-      "homeScore": 1,
-      "awayScore": 4,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 5,
+      "status": "FINISHED",
       "timestamp": 1787496300000,
       "sport": "축구"
     },
@@ -1481,7 +1471,7 @@
       "awayTeam": "비야레알",
       "homeScore": 2,
       "awayScore": 2,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1787497200000,
       "sport": "축구"
     },
@@ -1516,7 +1506,7 @@
       "homeTeam": "프로시노네",
       "awayTeam": "유벤투스",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787502600000,
       "sport": "축구"
@@ -1524,7 +1514,7 @@
     {
       "homeTeam": "AC베네치아",
       "awayTeam": "US레체",
-      "homeScore": 1,
+      "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1787502600000,
@@ -1542,7 +1532,7 @@
     {
       "homeTeam": "스포르팅히혼",
       "awayTeam": "부르고스",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1787504400000,
