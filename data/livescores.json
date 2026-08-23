@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-23T13:21:10.748Z",
-  "count": 273,
+  "updatedAt": "2026-08-23T13:50:25.045Z",
+  "count": 275,
   "scores": [
     {
       "homeTeam": "빌바오",
@@ -516,20 +516,19 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "한화",
-      "awayTeam": "LG",
-      "homeScore": 3,
-      "awayScore": 12,
-      "status": "LIVE",
-      "timestamp": 1787511600000,
-      "sport": "야구",
-      "inning": "9회말"
-    },
-    {
       "homeTeam": "SSG",
       "awayTeam": "KT",
       "homeScore": 1,
       "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1787511600000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "한화",
+      "awayTeam": "LG",
+      "homeScore": 3,
+      "awayScore": 12,
       "status": "FINISHED",
       "timestamp": 1787511600000,
       "sport": "야구"
@@ -645,12 +644,12 @@
     {
       "homeTeam": "AGF",
       "awayTeam": "OB",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1787518800000,
       "sport": "축구",
-      "minute": "후반 13'"
+      "minute": "후반 42'"
     },
     {
       "homeTeam": "미트윌란",
@@ -660,47 +659,47 @@
       "status": "LIVE",
       "timestamp": 1787518800000,
       "sport": "축구",
-      "minute": "후반 11'"
+      "minute": "후반 40'"
     },
     {
       "homeTeam": "PSV 아인트호벤",
       "awayTeam": "흐로닝언",
-      "homeScore": 2,
+      "homeScore": 4,
       "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787520600000,
       "sport": "축구",
-      "minute": "전반 48'"
+      "minute": "후반 11'"
     },
     {
       "homeTeam": "앙제",
       "awayTeam": "릴",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1787522400000,
       "sport": "축구",
-      "minute": "전반 18'"
+      "minute": "전반 46'"
     },
     {
       "homeTeam": "맨시티",
       "awayTeam": "본머스",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787522400000,
       "sport": "축구",
-      "minute": "전반 15'"
+      "minute": "전반 43'"
     },
     {
       "homeTeam": "브라이턴",
       "awayTeam": "애스턴 빌라",
-      "homeScore": 2,
+      "homeScore": 4,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1787522400000,
       "sport": "축구",
-      "minute": "전반 19'"
+      "minute": "전반 47'"
     },
     {
       "homeTeam": "호르센스",
@@ -1331,6 +1330,24 @@
       "status": "FINISHED",
       "timestamp": 1787436000000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "Q\n22\n26\n23\n16\n14\n23",
+      "awayTeam": "Taoyuan Taiwan Beer Y",
+      "homeScore": 10,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787492991051,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n18\n16",
+      "awayTeam": "Blades",
+      "homeScore": 15,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787492991051,
+      "sport": "농구"
     },
     {
       "homeTeam": "US불로뉴",
@@ -2190,7 +2207,7 @@
     {
       "homeTeam": "PSV",
       "awayTeam": "흐로닝언",
-      "homeScore": 3,
+      "homeScore": 5,
       "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787488200000,
@@ -2199,7 +2216,7 @@
     {
       "homeTeam": "브라이턴HA",
       "awayTeam": "애스턴빌라",
-      "homeScore": 2,
+      "homeScore": 4,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1787490000000,
@@ -2209,7 +2226,7 @@
       "homeTeam": "맨체스터C",
       "awayTeam": "본머스",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787490000000,
       "sport": "축구"
@@ -2218,7 +2235,7 @@
       "homeTeam": "앙제SCO",
       "awayTeam": "릴OSC",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1787490000000,
       "sport": "축구"
@@ -2460,9 +2477,9 @@
     {
       "homeTeam": "일본",
       "awayTeam": "대한민국",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1787481000000,
       "sport": "배구"
     }
