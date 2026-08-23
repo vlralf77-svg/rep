@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-23T15:06:41.214Z",
-  "count": 194,
+  "updatedAt": "2026-08-23T15:33:56.545Z",
+  "count": 192,
   "scores": [
     {
       "homeTeam": "빌바오",
@@ -699,20 +699,21 @@
       "homeTeam": "호르센스",
       "awayTeam": "링비",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787526000000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 24'"
     },
     {
       "homeTeam": "캄부르",
       "awayTeam": "페예노르트",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787528700000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 14'"
     },
     {
       "homeTeam": "AT 마드리드",
@@ -722,16 +723,17 @@
       "status": "LIVE",
       "timestamp": 1787529600000,
       "sport": "축구",
-      "minute": "전반 1'"
+      "minute": "전반 29'"
     },
     {
       "homeTeam": "르 아브르",
       "awayTeam": "모나코",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1787530500000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 16'"
     },
     {
       "homeTeam": "뉴캐슬",
@@ -815,15 +817,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "캔자스시티",
-      "awayTeam": "디트로이트",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1787541000000,
-      "sport": "야구"
-    },
-    {
       "homeTeam": "시카고W",
       "awayTeam": "뉴욕메츠",
       "homeScore": 0,
@@ -835,6 +828,15 @@
     {
       "homeTeam": "휴스턴",
       "awayTeam": "애슬레틱스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787541000000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "캔자스시티",
+      "awayTeam": "디트로이트",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -966,24 +968,6 @@
       "status": "SCHEDULED",
       "timestamp": 1787559000000,
       "sport": "야구"
-    },
-    {
-      "homeTeam": "HT\n24\n24\n15\n19",
-      "awayTeam": "조지아",
-      "homeScore": 15,
-      "awayScore": 15,
-      "status": "FINISHED",
-      "timestamp": 1787497563205,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n25\n26\n10\n27",
-      "awayTeam": "Sao Jose Unimed",
-      "homeScore": 14,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1787497563206,
-      "sport": "농구"
     },
     {
       "homeTeam": "빌바오",
@@ -1493,7 +1477,7 @@
       "homeTeam": "르아브르AC",
       "awayTeam": "AS모나코",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787498100000,
       "sport": "축구"
