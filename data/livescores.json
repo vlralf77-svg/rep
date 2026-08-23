@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-23T23:18:57.347Z",
+  "updatedAt": "2026-08-23T23:38:41.414Z",
   "count": 194,
   "scores": [
     {
@@ -906,11 +906,10 @@
       "homeTeam": "시애틀",
       "awayTeam": "시카고컵스",
       "homeScore": 2,
-      "awayScore": 16,
-      "status": "LIVE",
+      "awayScore": 19,
+      "status": "FINISHED",
       "timestamp": 1787548200000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "샌디에이고",
@@ -951,38 +950,39 @@
     {
       "homeTeam": "애틀란타",
       "awayTeam": "스포팅 KC",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1787558400000,
       "sport": "축구",
-      "minute": "전반 4'"
+      "minute": "전반 23'"
     },
     {
       "homeTeam": "밀워키",
       "awayTeam": "애틀랜타",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1787559000000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
-      "homeTeam": "HT\n14\n28\n18\n23",
+      "homeTeam": "Q\n28\n28",
+      "awayTeam": "Portland Fire",
+      "homeScore": 23,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1787528277038,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n14\n28\n17\n18\n23\n20",
       "awayTeam": "Univ. Austral de Chil",
       "homeScore": 23,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1787527091709,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n25\n24",
-      "awayTeam": "The Sharks U21",
-      "homeScore": 23,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1787527091709,
+      "timestamp": 1787528277038,
       "sport": "농구"
     },
     {
@@ -1645,7 +1645,7 @@
     {
       "homeTeam": "애틀랜타U",
       "awayTeam": "S캔자스시티",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1787526000000,
