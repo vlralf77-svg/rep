@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-23T14:33:52.412Z",
-  "count": 273,
+  "updatedAt": "2026-08-23T14:52:55.135Z",
+  "count": 274,
   "scores": [
     {
       "homeTeam": "빌바오",
@@ -676,17 +676,17 @@
       "status": "LIVE",
       "timestamp": 1787522400000,
       "sport": "축구",
-      "minute": "후반 28'"
+      "minute": "후반 48'"
     },
     {
       "homeTeam": "맨시티",
       "awayTeam": "본머스",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787522400000,
       "sport": "축구",
-      "minute": "후반 25'"
+      "minute": "후반 45'"
     },
     {
       "homeTeam": "브라이턴",
@@ -696,7 +696,7 @@
       "status": "LIVE",
       "timestamp": 1787522400000,
       "sport": "축구",
-      "minute": "후반 26'"
+      "minute": "후반 45'"
     },
     {
       "homeTeam": "호르센스",
@@ -706,16 +706,17 @@
       "status": "LIVE",
       "timestamp": 1787526000000,
       "sport": "축구",
-      "minute": "전반 30'"
+      "minute": "전반 50'"
     },
     {
       "homeTeam": "캄부르",
       "awayTeam": "페예노르트",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787528700000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 5'"
     },
     {
       "homeTeam": "키움",
@@ -1328,6 +1329,15 @@
       "status": "FINISHED",
       "timestamp": 1787436000000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n26\n18\n18\n24",
+      "awayTeam": "한국",
+      "homeScore": 11,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787496736059,
+      "sport": "농구"
     },
     {
       "homeTeam": "US불로뉴",
@@ -2205,7 +2215,7 @@
     {
       "homeTeam": "맨체스터C",
       "awayTeam": "본머스",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787490000000,
