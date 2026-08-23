@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-23T16:02:55.741Z",
-  "count": 192,
+  "updatedAt": "2026-08-23T16:31:34.538Z",
+  "count": 195,
   "scores": [
     {
       "homeTeam": "빌바오",
@@ -708,21 +708,21 @@
       "homeTeam": "캄부르",
       "awayTeam": "페예노르트",
       "homeScore": 0,
-      "awayScore": 2,
+      "awayScore": 4,
       "status": "LIVE",
       "timestamp": 1787528700000,
       "sport": "축구",
-      "minute": "전반 43'"
+      "minute": "후반 10'"
     },
     {
       "homeTeam": "AT 마드리드",
       "awayTeam": "비야레알",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1787529600000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 18'"
     },
     {
       "homeTeam": "르 아브르",
@@ -732,7 +732,7 @@
       "status": "LIVE",
       "timestamp": 1787530500000,
       "sport": "축구",
-      "minute": "전반 46'"
+      "minute": "후반 8'"
     },
     {
       "homeTeam": "뉴캐슬",
@@ -742,16 +742,17 @@
       "status": "LIVE",
       "timestamp": 1787531400000,
       "sport": "축구",
-      "minute": "전반 29'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "비보리",
       "awayTeam": "코펜하겐",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787533200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 28'"
     },
     {
       "homeTeam": "베네치아",
@@ -817,15 +818,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "휴스턴",
-      "awayTeam": "애슬레틱스",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1787541000000,
-      "sport": "야구"
-    },
-    {
       "homeTeam": "캔자스시티",
       "awayTeam": "디트로이트",
       "homeScore": 0,
@@ -837,6 +829,15 @@
     {
       "homeTeam": "시카고W",
       "awayTeam": "뉴욕메츠",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787541000000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "휴스턴",
+      "awayTeam": "애슬레틱스",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -968,6 +969,33 @@
       "status": "SCHEDULED",
       "timestamp": 1787559000000,
       "sport": "야구"
+    },
+    {
+      "homeTeam": "HT\n17\n26\n25\n16",
+      "awayTeam": "독일",
+      "homeScore": 15,
+      "awayScore": 30,
+      "status": "FINISHED",
+      "timestamp": 1787502649848,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n8\n17\n18\n8",
+      "awayTeam": "프랑스",
+      "homeScore": 16,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787502649848,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n21\n16\n11\n11",
+      "awayTeam": "Eldonets",
+      "homeScore": 17,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787502649849,
+      "sport": "농구"
     },
     {
       "homeTeam": "빌바오",
@@ -1450,7 +1478,7 @@
       "homeTeam": "캄부르",
       "awayTeam": "페예노르트",
       "homeScore": 0,
-      "awayScore": 3,
+      "awayScore": 4,
       "status": "SCHEDULED",
       "timestamp": 1787496300000,
       "sport": "축구"
@@ -1458,7 +1486,7 @@
     {
       "homeTeam": "AT마드리드",
       "awayTeam": "비야레알",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1787497200000,
@@ -1467,7 +1495,7 @@
     {
       "homeTeam": "에이바르",
       "awayTeam": "바야돌리드",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1787497200000,
