@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-23T21:18:14.107Z",
-  "count": 192,
+  "updatedAt": "2026-08-23T21:38:24.187Z",
+  "count": 193,
   "scores": [
     {
       "homeTeam": "빌바오",
@@ -813,16 +813,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "휴스턴",
-      "awayTeam": "애슬레틱스",
-      "homeScore": 6,
-      "awayScore": 7,
-      "status": "LIVE",
-      "timestamp": 1787541000000,
-      "sport": "야구",
-      "inning": "9회초"
-    },
-    {
       "homeTeam": "캔자스시티",
       "awayTeam": "디트로이트",
       "homeScore": 11,
@@ -841,14 +831,22 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "휴스턴",
+      "awayTeam": "애슬레틱스",
+      "homeScore": 6,
+      "awayScore": 7,
+      "status": "FINISHED",
+      "timestamp": 1787541000000,
+      "sport": "야구"
+    },
+    {
       "homeTeam": "텍사스",
       "awayTeam": "LA에인절스",
       "homeScore": 5,
       "awayScore": 3,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787542500000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "렌",
@@ -885,7 +883,7 @@
       "status": "LIVE",
       "timestamp": 1787544600000,
       "sport": "야구",
-      "inning": "5회말"
+      "inning": "7회초"
     },
     {
       "homeTeam": "보스턴",
@@ -895,47 +893,46 @@
       "status": "LIVE",
       "timestamp": 1787544900000,
       "sport": "야구",
-      "inning": "7회초"
+      "inning": "8회말"
     },
     {
       "homeTeam": "엘체",
       "awayTeam": "바르셀로나",
       "homeScore": 0,
       "awayScore": 5,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787545800000,
-      "sport": "축구",
-      "minute": "후반 37'"
+      "sport": "축구"
     },
     {
       "homeTeam": "시애틀",
       "awayTeam": "시카고컵스",
       "homeScore": 2,
-      "awayScore": 1,
+      "awayScore": 5,
       "status": "LIVE",
       "timestamp": 1787548200000,
       "sport": "야구",
-      "inning": "3회초"
+      "inning": "4회초"
     },
     {
       "homeTeam": "샌디에이고",
       "awayTeam": "미네소타",
       "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1787548200000,
+      "sport": "야구",
+      "inning": "6회초"
+    },
+    {
+      "homeTeam": "LA다저스",
+      "awayTeam": "피츠버그",
+      "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1787548200000,
       "sport": "야구",
       "inning": "5회초"
-    },
-    {
-      "homeTeam": "LA다저스",
-      "awayTeam": "피츠버그",
-      "homeScore": 1,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1787548200000,
-      "sport": "야구",
-      "inning": "4회말"
     },
     {
       "homeTeam": "애리조나",
@@ -945,17 +942,17 @@
       "status": "LIVE",
       "timestamp": 1787548500000,
       "sport": "야구",
-      "inning": "3회말"
+      "inning": "4회말"
     },
     {
       "homeTeam": "뉴잉글랜드",
       "awayTeam": "NYCFC",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787549400000,
       "sport": "축구",
-      "minute": "전반 34'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "애틀란타",
@@ -974,6 +971,15 @@
       "status": "SCHEDULED",
       "timestamp": 1787559000000,
       "sport": "야구"
+    },
+    {
+      "homeTeam": "HT\n16\n22\n17\n25",
+      "awayTeam": "Liceo de Curico U21",
+      "homeScore": 21,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787521068165,
+      "sport": "농구"
     },
     {
       "homeTeam": "빌바오",
@@ -1626,8 +1632,8 @@
     {
       "homeTeam": "뉴잉글랜드",
       "awayTeam": "뉴욕시티FC",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787517000000,
       "sport": "축구"
