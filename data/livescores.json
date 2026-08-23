@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-23T09:55:15.152Z",
-  "count": 273,
+  "updatedAt": "2026-08-23T10:11:20.246Z",
+  "count": 275,
   "scores": [
     {
       "homeTeam": "빌바오",
@@ -496,17 +496,17 @@
       "status": "LIVE",
       "timestamp": 1787500800000,
       "sport": "야구",
-      "inning": "8회말"
+      "inning": "9회초"
     },
     {
       "homeTeam": "지바롯데",
       "awayTeam": "닛폰햄",
       "homeScore": 2,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1787504400000,
       "sport": "야구",
-      "inning": "6회초"
+      "inning": "6회말"
     },
     {
       "homeTeam": "요코하마",
@@ -516,52 +516,57 @@
       "status": "LIVE",
       "timestamp": 1787508000000,
       "sport": "야구",
-      "inning": "3회말"
-    },
-    {
-      "homeTeam": "쇠네르위스케",
-      "awayTeam": "노르셸란",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1787511600000,
-      "sport": "축구"
+      "inning": "4회말"
     },
     {
       "homeTeam": "SSG",
       "awayTeam": "KT",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787511600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "한화",
       "awayTeam": "LG",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787511600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "두산",
       "awayTeam": "롯데",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787511600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "NC",
       "awayTeam": "삼성",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787511600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
+    },
+    {
+      "homeTeam": "쇠네르위스케",
+      "awayTeam": "노르셸란",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787511600000,
+      "sport": "축구",
+      "minute": "전반 6'"
     },
     {
       "homeTeam": "고 어헤드 이글스",
@@ -1327,6 +1332,24 @@
       "status": "FINISHED",
       "timestamp": 1787436000000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n17\n19\n21\n16",
+      "awayTeam": "원주 DB",
+      "homeScore": 11,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787479838674,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n28\n16\n14\n16",
+      "awayTeam": "허난",
+      "homeScore": 10,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787479838674,
+      "sport": "농구"
     },
     {
       "homeTeam": "US불로뉴",
