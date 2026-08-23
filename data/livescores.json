@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-23T23:00:35.107Z",
-  "count": 193,
+  "updatedAt": "2026-08-23T23:18:57.347Z",
+  "count": 194,
   "scores": [
     {
       "homeTeam": "빌바오",
@@ -906,21 +906,20 @@
       "homeTeam": "시애틀",
       "awayTeam": "시카고컵스",
       "homeScore": 2,
-      "awayScore": 10,
+      "awayScore": 16,
       "status": "LIVE",
       "timestamp": 1787548200000,
       "sport": "야구",
-      "inning": "8회초"
+      "inning": "9회초"
     },
     {
       "homeTeam": "샌디에이고",
       "awayTeam": "미네소타",
       "homeScore": 8,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787548200000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "LA다저스",
@@ -936,10 +935,9 @@
       "awayTeam": "신시내티",
       "homeScore": 5,
       "awayScore": 3,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787548500000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "뉴잉글랜드",
@@ -955,9 +953,10 @@
       "awayTeam": "스포팅 KC",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787558400000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 4'"
     },
     {
       "homeTeam": "밀워키",
@@ -969,12 +968,21 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "HT\n13\n25\n19\n11",
-      "awayTeam": "Stadio Italiano U21",
-      "homeScore": 22,
+      "homeTeam": "HT\n14\n28\n18\n23",
+      "awayTeam": "Univ. Austral de Chil",
+      "homeScore": 23,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787527091709,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n25\n24",
+      "awayTeam": "The Sharks U21",
+      "homeScore": 23,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1787525996261,
+      "timestamp": 1787527091709,
       "sport": "농구"
     },
     {
