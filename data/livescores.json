@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-23T09:03:52.746Z",
+  "updatedAt": "2026-08-23T09:32:45.751Z",
   "count": 273,
   "scores": [
     {
@@ -496,7 +496,7 @@
       "status": "LIVE",
       "timestamp": 1787500800000,
       "sport": "야구",
-      "inning": "6회말"
+      "inning": "8회초"
     },
     {
       "homeTeam": "지바롯데",
@@ -506,17 +506,26 @@
       "status": "LIVE",
       "timestamp": 1787504400000,
       "sport": "야구",
-      "inning": "3회말"
+      "inning": "5회초"
     },
     {
       "homeTeam": "요코하마",
       "awayTeam": "한신",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787508000000,
       "sport": "야구",
-      "inning": "1회초"
+      "inning": "2회초"
+    },
+    {
+      "homeTeam": "쇠네르위스케",
+      "awayTeam": "노르셸란",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787511600000,
+      "sport": "축구"
     },
     {
       "homeTeam": "SSG",
@@ -553,15 +562,6 @@
       "status": "SCHEDULED",
       "timestamp": 1787511600000,
       "sport": "야구"
-    },
-    {
-      "homeTeam": "쇠네르위스케",
-      "awayTeam": "노르셸란",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1787511600000,
-      "sport": "축구"
     },
     {
       "homeTeam": "고 어헤드 이글스",
