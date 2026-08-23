@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-23T15:33:56.545Z",
+  "updatedAt": "2026-08-23T15:52:18.426Z",
   "count": 192,
   "scores": [
     {
@@ -703,17 +703,17 @@
       "status": "LIVE",
       "timestamp": 1787526000000,
       "sport": "축구",
-      "minute": "후반 24'"
+      "minute": "후반 42'"
     },
     {
       "homeTeam": "캄부르",
       "awayTeam": "페예노르트",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1787528700000,
       "sport": "축구",
-      "minute": "전반 14'"
+      "minute": "전반 32'"
     },
     {
       "homeTeam": "AT 마드리드",
@@ -723,7 +723,7 @@
       "status": "LIVE",
       "timestamp": 1787529600000,
       "sport": "축구",
-      "minute": "전반 29'"
+      "minute": "전반 47'"
     },
     {
       "homeTeam": "르 아브르",
@@ -733,16 +733,17 @@
       "status": "LIVE",
       "timestamp": 1787530500000,
       "sport": "축구",
-      "minute": "전반 16'"
+      "minute": "전반 34'"
     },
     {
       "homeTeam": "뉴캐슬",
       "awayTeam": "리버풀",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787531400000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 17'"
     },
     {
       "homeTeam": "비보리",
@@ -817,15 +818,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "시카고W",
-      "awayTeam": "뉴욕메츠",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1787541000000,
-      "sport": "야구"
-    },
-    {
       "homeTeam": "휴스턴",
       "awayTeam": "애슬레틱스",
       "homeScore": 0,
@@ -837,6 +829,15 @@
     {
       "homeTeam": "캔자스시티",
       "awayTeam": "디트로이트",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1787541000000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "시카고W",
+      "awayTeam": "뉴욕메츠",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -1450,7 +1451,7 @@
       "homeTeam": "캄부르",
       "awayTeam": "페예노르트",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1787496300000,
       "sport": "축구"
@@ -1485,7 +1486,7 @@
     {
       "homeTeam": "뉴캐슬",
       "awayTeam": "리버풀",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1787499000000,
