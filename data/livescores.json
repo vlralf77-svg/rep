@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-23T12:44:08.369Z",
+  "updatedAt": "2026-08-23T13:21:10.748Z",
   "count": 273,
   "scores": [
     {
@@ -516,16 +516,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "SSG",
-      "awayTeam": "KT",
-      "homeScore": 0,
-      "awayScore": 3,
-      "status": "LIVE",
-      "timestamp": 1787511600000,
-      "sport": "야구",
-      "inning": "9회초"
-    },
-    {
       "homeTeam": "한화",
       "awayTeam": "LG",
       "homeScore": 3,
@@ -533,27 +523,34 @@
       "status": "LIVE",
       "timestamp": 1787511600000,
       "sport": "야구",
-      "inning": "8회말"
+      "inning": "9회말"
+    },
+    {
+      "homeTeam": "SSG",
+      "awayTeam": "KT",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1787511600000,
+      "sport": "야구"
     },
     {
       "homeTeam": "두산",
       "awayTeam": "롯데",
       "homeScore": 3,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787511600000,
-      "sport": "야구",
-      "inning": "8회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "NC",
       "awayTeam": "삼성",
       "homeScore": 1,
       "awayScore": 2,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787511600000,
-      "sport": "야구",
-      "inning": "9회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "쇠네르위스케",
@@ -572,16 +569,6 @@
       "status": "FINISHED",
       "timestamp": 1787512500000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "충북청주",
-      "awayTeam": "경남",
-      "homeScore": 1,
-      "awayScore": 1,
-      "status": "LIVE",
-      "timestamp": 1787513400000,
-      "sport": "축구",
-      "minute": "후반종료"
     },
     {
       "homeTeam": "전남",
@@ -629,6 +616,15 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "충북청주",
+      "awayTeam": "경남",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1787513400000,
+      "sport": "축구"
+    },
+    {
       "homeTeam": "마치다 젤비아",
       "awayTeam": "우라와",
       "homeScore": 3,
@@ -642,20 +638,19 @@
       "awayTeam": "번리",
       "homeScore": 3,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787515200000,
-      "sport": "축구",
-      "minute": "후반 38'"
+      "sport": "축구"
     },
     {
       "homeTeam": "AGF",
       "awayTeam": "OB",
       "homeScore": 1,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1787518800000,
       "sport": "축구",
-      "minute": "전반 42'"
+      "minute": "후반 13'"
     },
     {
       "homeTeam": "미트윌란",
@@ -665,44 +660,47 @@
       "status": "LIVE",
       "timestamp": 1787518800000,
       "sport": "축구",
-      "minute": "전반 37'"
+      "minute": "후반 11'"
     },
     {
       "homeTeam": "PSV 아인트호벤",
       "awayTeam": "흐로닝언",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787520600000,
       "sport": "축구",
-      "minute": "전반 10'"
+      "minute": "전반 48'"
     },
     {
       "homeTeam": "앙제",
       "awayTeam": "릴",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1787522400000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 18'"
     },
     {
       "homeTeam": "맨시티",
       "awayTeam": "본머스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787522400000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 15'"
     },
     {
       "homeTeam": "브라이턴",
       "awayTeam": "애스턴 빌라",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787522400000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 19'"
     },
     {
       "homeTeam": "호르센스",
@@ -2192,7 +2190,7 @@
     {
       "homeTeam": "PSV",
       "awayTeam": "흐로닝언",
-      "homeScore": 1,
+      "homeScore": 3,
       "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787488200000,
@@ -2201,7 +2199,7 @@
     {
       "homeTeam": "브라이턴HA",
       "awayTeam": "애스턴빌라",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1787490000000,
@@ -2220,7 +2218,7 @@
       "homeTeam": "앙제SCO",
       "awayTeam": "릴OSC",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787490000000,
       "sport": "축구"
