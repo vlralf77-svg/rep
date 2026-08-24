@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-24T22:32:16.891Z",
-  "count": 99,
+  "updatedAt": "2026-08-24T22:56:34.211Z",
+  "count": 100,
   "scores": [
     {
       "homeTeam": "AT 마드리드",
@@ -331,27 +331,30 @@
       "awayTeam": "보스턴",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787643600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "디트로이트",
       "awayTeam": "탬파베이",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1787643600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "워싱턴",
       "awayTeam": "콜로라도",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787643900000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "시카고W",
@@ -550,6 +553,15 @@
       "status": "SCHEDULED",
       "timestamp": 1787688000000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n22\n17\n15\n19",
+      "awayTeam": "Paulistano U20",
+      "homeScore": 20,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1787612153804,
+      "sport": "농구"
     },
     {
       "homeTeam": "AT마드리드",
