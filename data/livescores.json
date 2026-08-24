@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-24T23:34:40.916Z",
-  "count": 99,
+  "updatedAt": "2026-08-24T23:51:47.184Z",
+  "count": 100,
   "scores": [
     {
       "homeTeam": "AT 마드리드",
@@ -334,36 +334,37 @@
       "status": "LIVE",
       "timestamp": 1787643600000,
       "sport": "야구",
-      "inning": "3회말"
+      "inning": "5회초"
     },
     {
       "homeTeam": "디트로이트",
       "awayTeam": "탬파베이",
       "homeScore": 0,
-      "awayScore": 2,
+      "awayScore": 3,
       "status": "LIVE",
       "timestamp": 1787643600000,
       "sport": "야구",
-      "inning": "4회초"
+      "inning": "4회말"
     },
     {
       "homeTeam": "워싱턴",
       "awayTeam": "콜로라도",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787643900000,
       "sport": "야구",
-      "inning": "3회초"
+      "inning": "4회초"
     },
     {
       "homeTeam": "시카고W",
       "awayTeam": "텍사스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787647200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "LA에인절스",
@@ -553,6 +554,15 @@
       "status": "SCHEDULED",
       "timestamp": 1787688000000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n32\n23\n19\n15",
+      "awayTeam": "펠릭스 페레즈 카르도소",
+      "homeScore": 23,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1787615467953,
+      "sport": "농구"
     },
     {
       "homeTeam": "AT마드리드",
