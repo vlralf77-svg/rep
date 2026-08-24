@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-24T17:26:50.171Z",
+  "updatedAt": "2026-08-24T17:55:11.192Z",
   "count": 99,
   "scores": [
     {
@@ -258,11 +258,11 @@
       "homeTeam": "볼로냐",
       "awayTeam": "라치오",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787621400000,
       "sport": "축구",
-      "minute": "전반종료"
+      "minute": "후반 15'"
     },
     {
       "homeTeam": "네옴",
@@ -272,26 +272,27 @@
       "status": "LIVE",
       "timestamp": 1787622000000,
       "sport": "축구",
-      "minute": "전반 44'"
+      "minute": "후반 7'"
     },
     {
       "homeTeam": "브뢴비",
       "awayTeam": "실케보리",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787623200000,
       "sport": "축구",
-      "minute": "전반 24'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "오사수나",
       "awayTeam": "레반테",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787625000000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 22'"
     },
     {
       "homeTeam": "알 이티하드",
@@ -738,7 +739,7 @@
       "homeTeam": "볼로냐",
       "awayTeam": "라치오",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787589000000,
       "sport": "축구"
