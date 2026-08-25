@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-25T05:52:26.387Z",
+  "updatedAt": "2026-08-25T06:20:45.672Z",
   "count": 100,
   "scores": [
     {
@@ -120,16 +120,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "샌디에이고",
-      "awayTeam": "피츠버그",
-      "homeScore": 2,
-      "awayScore": 3,
-      "status": "LIVE",
-      "timestamp": 1787654400000,
-      "sport": "야구",
-      "inning": "12회말"
-    },
-    {
       "homeTeam": "애리조나",
       "awayTeam": "시카고컵스",
       "homeScore": 0,
@@ -152,6 +142,15 @@
       "awayTeam": "필라델피아",
       "homeScore": 9,
       "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1787654400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "샌디에이고",
+      "awayTeam": "피츠버그",
+      "homeScore": 2,
+      "awayScore": 3,
       "status": "FINISHED",
       "timestamp": 1787654400000,
       "sport": "야구"
@@ -553,12 +552,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n15\n9\n27\n13",
-      "awayTeam": "Chinese Taipei Univ\nI",
-      "homeScore": 6,
-      "awayScore": 0,
+      "homeTeam": "HT\n27\n17\n14\n28",
+      "awayTeam": "SiChuan YuanDa",
+      "homeScore": 7,
+      "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1787637101661,
+      "timestamp": 1787638806694,
       "sport": "농구"
     },
     {
