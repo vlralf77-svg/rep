@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-25T23:00:17.795Z",
+  "updatedAt": "2026-08-25T23:22:52.116Z",
   "count": 92,
   "scores": [
     {
@@ -352,7 +352,7 @@
       "status": "LIVE",
       "timestamp": 1787730000000,
       "sport": "야구",
-      "inning": "2회초"
+      "inning": "3회말"
     },
     {
       "homeTeam": "디트로이트",
@@ -362,7 +362,7 @@
       "status": "LIVE",
       "timestamp": 1787730000000,
       "sport": "야구",
-      "inning": "2회초"
+      "inning": "3회말"
     },
     {
       "homeTeam": "워싱턴",
@@ -372,43 +372,47 @@
       "status": "LIVE",
       "timestamp": 1787730300000,
       "sport": "야구",
-      "inning": "1회말"
+      "inning": "3회초"
     },
     {
       "homeTeam": "뉴욕양키스",
       "awayTeam": "휴스턴",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787731500000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "토론토",
       "awayTeam": "캔자스시티",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1787731620000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "뉴욕메츠",
       "awayTeam": "밀워키",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787731800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "애틀랜타",
       "awayTeam": "LA다저스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787732100000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "시카고W",
