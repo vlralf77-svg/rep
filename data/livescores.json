@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-25T12:49:33.832Z",
-  "count": 100,
+  "updatedAt": "2026-08-25T13:38:33.786Z",
+  "count": 99,
   "scores": [
     {
       "homeTeam": "볼로냐",
@@ -165,16 +165,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "야쿠르트",
-      "awayTeam": "요미우리",
-      "homeScore": 6,
-      "awayScore": 8,
-      "status": "LIVE",
-      "timestamp": 1787680800000,
-      "sport": "야구",
-      "inning": "9회말"
-    },
-    {
       "homeTeam": "주니치",
       "awayTeam": "한신",
       "homeScore": 4,
@@ -220,24 +210,13 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "KIA",
-      "awayTeam": "롯데",
-      "homeScore": 4,
-      "awayScore": 5,
-      "status": "LIVE",
-      "timestamp": 1787682600000,
-      "sport": "야구",
-      "inning": "9회말"
-    },
-    {
-      "homeTeam": "LG",
-      "awayTeam": "NC",
-      "homeScore": 3,
-      "awayScore": 3,
-      "status": "LIVE",
-      "timestamp": 1787682600000,
-      "sport": "야구",
-      "inning": "9회말"
+      "homeTeam": "야쿠르트",
+      "awayTeam": "요미우리",
+      "homeScore": 6,
+      "awayScore": 8,
+      "status": "FINISHED",
+      "timestamp": 1787680800000,
+      "sport": "야구"
     },
     {
       "homeTeam": "키움",
@@ -247,17 +226,34 @@
       "status": "LIVE",
       "timestamp": 1787682600000,
       "sport": "야구",
-      "inning": "10회초"
+      "inning": "11회말"
     },
     {
       "homeTeam": "SSG",
       "awayTeam": "한화",
       "homeScore": 7,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787682600000,
-      "sport": "야구",
-      "inning": "9회초"
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "KIA",
+      "awayTeam": "롯데",
+      "homeScore": 8,
+      "awayScore": 5,
+      "status": "FINISHED",
+      "timestamp": 1787682600000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "LG",
+      "awayTeam": "NC",
+      "homeScore": 5,
+      "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1787682600000,
+      "sport": "야구"
     },
     {
       "homeTeam": "KT",
@@ -555,15 +551,6 @@
       "status": "FINISHED",
       "timestamp": 1787558400000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "Q\n22\n15\n9\n17\n21\n6",
-      "awayTeam": "ZheJiang Chouzhou Ban",
-      "homeScore": 12,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1787662138110,
-      "sport": "농구"
     },
     {
       "homeTeam": "AT마드리드",
