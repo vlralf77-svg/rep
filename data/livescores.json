@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-25T08:32:42.902Z",
-  "count": 101,
+  "updatedAt": "2026-08-25T09:11:02.540Z",
+  "count": 100,
   "scores": [
     {
       "homeTeam": "볼로냐",
@@ -169,54 +169,60 @@
       "awayTeam": "한신",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787680800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "세이부",
       "awayTeam": "닛폰햄",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787680800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "오릭스",
       "awayTeam": "라쿠텐",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787680800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "지바롯데",
       "awayTeam": "소프트뱅크",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787680800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "히로시마",
       "awayTeam": "요코하마",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787680800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "야쿠르트",
       "awayTeam": "요미우리",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "LIVE",
       "timestamp": 1787680800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "SSG",
@@ -552,21 +558,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n25\n19\n25\n29",
-      "awayTeam": "Shaanxi TianZe",
-      "homeScore": 8,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1787646720929,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n24\n3\n20\n8",
+      "homeTeam": "Q\n25\n8\n11\n19\n16\n9",
       "awayTeam": "Xinjiang TianSan",
       "homeScore": 9,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1787646720929,
+      "timestamp": 1787649029550,
       "sport": "농구"
     },
     {
