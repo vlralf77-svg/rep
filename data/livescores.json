@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-26T13:11:05.276Z",
-  "count": 92,
+  "updatedAt": "2026-08-26T14:03:18.528Z",
+  "count": 93,
   "scores": [
     {
       "homeTeam": "압하",
@@ -237,30 +237,19 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "KIA",
-      "awayTeam": "롯데",
-      "homeScore": 16,
-      "awayScore": 6,
-      "status": "LIVE",
-      "timestamp": 1787769000000,
-      "sport": "야구",
-      "inning": "8회초"
-    },
-    {
-      "homeTeam": "키움",
-      "awayTeam": "삼성",
-      "homeScore": 2,
-      "awayScore": 12,
-      "status": "LIVE",
-      "timestamp": 1787769000000,
-      "sport": "야구",
-      "inning": "9회말"
-    },
-    {
       "homeTeam": "SSG",
       "awayTeam": "한화",
       "homeScore": 6,
       "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1787769000000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "KIA",
+      "awayTeam": "롯데",
+      "homeScore": 16,
+      "awayScore": 11,
       "status": "FINISHED",
       "timestamp": 1787769000000,
       "sport": "야구"
@@ -279,6 +268,15 @@
       "awayTeam": "두산",
       "homeScore": 5,
       "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1787769000000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "키움",
+      "awayTeam": "삼성",
+      "homeScore": 2,
+      "awayScore": 12,
       "status": "FINISHED",
       "timestamp": 1787769000000,
       "sport": "야구"
@@ -323,11 +321,11 @@
       "homeTeam": "베트남",
       "awayTeam": "태국",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1787781600000,
       "sport": "축구",
-      "minute": "전반 7'"
+      "minute": "전반종료"
     },
     {
       "homeTeam": "SSG",
@@ -625,6 +623,15 @@
       "status": "SCHEDULED",
       "timestamp": 1787688000000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "대기",
+      "awayTeam": "Fenerbahce Reserves\nG",
+      "homeScore": 12,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1787752964001,
+      "sport": "농구"
     },
     {
       "homeTeam": "볼로냐",
