@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-26T16:57:09.801Z",
-  "count": 111,
+  "updatedAt": "2026-08-26T18:32:43.460Z",
+  "count": 110,
   "scores": [
     {
       "homeTeam": "압하",
@@ -331,37 +331,39 @@
       "awayTeam": "알 파테",
       "homeScore": 1,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1787792400000,
-      "sport": "축구",
-      "minute": "전반종료"
+      "sport": "축구"
     },
     {
       "homeTeam": "디트로이트",
       "awayTeam": "탬파베이",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "LIVE",
       "timestamp": 1787796600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "6회말"
     },
     {
       "homeTeam": "알 아흘리",
       "awayTeam": "오클랜드 시티",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787799600000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 28'"
     },
     {
       "homeTeam": "알 디리야",
       "awayTeam": "알 콜루드",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787799600000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 29'"
     },
     {
       "homeTeam": "레알 마드리드",
@@ -589,21 +591,12 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "HT\n12\n16\n26\n14",
-      "awayTeam": "스리랑카",
-      "homeScore": 11,
+      "homeTeam": "Q\n14\n17",
+      "awayTeam": "KCCA Leopards",
+      "homeScore": 16,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1787763392124,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n25\n28\n10\n12",
-      "awayTeam": "JT Lady Jaguars",
-      "homeScore": 15,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1787763392124,
+      "timestamp": 1787769128573,
       "sport": "농구"
     },
     {
