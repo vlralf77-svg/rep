@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-26T10:18:09.477Z",
+  "updatedAt": "2026-08-26T10:54:19.999Z",
   "count": 93,
   "scores": [
     {
@@ -185,22 +185,22 @@
     {
       "homeTeam": "주니치",
       "awayTeam": "한신",
-      "homeScore": 1,
+      "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
       "timestamp": 1787767200000,
       "sport": "야구",
-      "inning": "4회말"
+      "inning": "6회말"
     },
     {
       "homeTeam": "세이부",
       "awayTeam": "닛폰햄",
       "homeScore": 1,
-      "awayScore": 4,
+      "awayScore": 9,
       "status": "LIVE",
       "timestamp": 1787767200000,
       "sport": "야구",
-      "inning": "4회말"
+      "inning": "6회말"
     },
     {
       "homeTeam": "오릭스",
@@ -210,7 +210,7 @@
       "status": "LIVE",
       "timestamp": 1787767200000,
       "sport": "야구",
-      "inning": "3회말"
+      "inning": "5회말"
     },
     {
       "homeTeam": "지바롯데",
@@ -220,7 +220,7 @@
       "status": "LIVE",
       "timestamp": 1787767200000,
       "sport": "야구",
-      "inning": "4회초"
+      "inning": "5회말"
     },
     {
       "homeTeam": "히로시마",
@@ -230,7 +230,7 @@
       "status": "LIVE",
       "timestamp": 1787767200000,
       "sport": "야구",
-      "inning": "4회말"
+      "inning": "6회초"
     },
     {
       "homeTeam": "야쿠르트",
@@ -240,7 +240,7 @@
       "status": "LIVE",
       "timestamp": 1787767200000,
       "sport": "야구",
-      "inning": "4회초"
+      "inning": "5회말"
     },
     {
       "homeTeam": "SSG",
@@ -250,17 +250,17 @@
       "status": "LIVE",
       "timestamp": 1787769000000,
       "sport": "야구",
-      "inning": "3회말"
+      "inning": "5회말"
     },
     {
       "homeTeam": "KIA",
       "awayTeam": "롯데",
-      "homeScore": 3,
+      "homeScore": 5,
       "awayScore": 3,
       "status": "LIVE",
       "timestamp": 1787769000000,
       "sport": "야구",
-      "inning": "3회초"
+      "inning": "4회초"
     },
     {
       "homeTeam": "LG",
@@ -270,17 +270,17 @@
       "status": "LIVE",
       "timestamp": 1787769000000,
       "sport": "야구",
-      "inning": "3회초"
+      "inning": "5회초"
     },
     {
       "homeTeam": "KT",
       "awayTeam": "두산",
-      "homeScore": 0,
-      "awayScore": 1,
+      "homeScore": 3,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1787769000000,
       "sport": "야구",
-      "inning": "3회말"
+      "inning": "5회초"
     },
     {
       "homeTeam": "키움",
@@ -290,34 +290,37 @@
       "status": "LIVE",
       "timestamp": 1787769000000,
       "sport": "야구",
-      "inning": "2회말"
+      "inning": "4회초"
     },
     {
       "homeTeam": "대전",
       "awayTeam": "울산",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787772600000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 22'"
     },
     {
       "homeTeam": "강원",
       "awayTeam": "광주",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1787772600000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 22'"
     },
     {
       "homeTeam": "안양",
       "awayTeam": "인천",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787772600000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 22'"
     },
     {
       "homeTeam": "동고FC",
@@ -635,12 +638,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n31\n25\n22\n21",
-      "awayTeam": "beijing normal univer",
-      "homeScore": 10,
-      "awayScore": 0,
+      "homeTeam": "HT\n21\n20\n20\n22",
+      "awayTeam": "JiangXi Ganxing",
+      "homeScore": 11,
+      "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1787739455102,
+      "timestamp": 1787741628123,
       "sport": "농구"
     },
     {
@@ -791,7 +794,7 @@
       "homeTeam": "강원FC",
       "awayTeam": "광주FC",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1787740200000,
       "sport": "축구"
