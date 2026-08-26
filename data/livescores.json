@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-25T23:45:05.322Z",
-  "count": 92,
+  "updatedAt": "2026-08-26T00:01:00.403Z",
+  "count": 93,
   "scores": [
     {
       "homeTeam": "볼로냐",
@@ -352,7 +352,7 @@
       "status": "LIVE",
       "timestamp": 1787730000000,
       "sport": "야구",
-      "inning": "5회초"
+      "inning": "5회말"
     },
     {
       "homeTeam": "디트로이트",
@@ -362,27 +362,27 @@
       "status": "LIVE",
       "timestamp": 1787730000000,
       "sport": "야구",
-      "inning": "4회말"
+      "inning": "5회초"
     },
     {
       "homeTeam": "워싱턴",
       "awayTeam": "콜로라도",
-      "homeScore": 0,
-      "awayScore": 1,
+      "homeScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1787730300000,
       "sport": "야구",
-      "inning": "4회초"
+      "inning": "4회말"
     },
     {
       "homeTeam": "뉴욕양키스",
       "awayTeam": "휴스턴",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1787731500000,
       "sport": "야구",
-      "inning": "2회말"
+      "inning": "3회초"
     },
     {
       "homeTeam": "토론토",
@@ -392,7 +392,7 @@
       "status": "LIVE",
       "timestamp": 1787731620000,
       "sport": "야구",
-      "inning": "2회말"
+      "inning": "3회말"
     },
     {
       "homeTeam": "뉴욕메츠",
@@ -402,35 +402,37 @@
       "status": "LIVE",
       "timestamp": 1787731800000,
       "sport": "야구",
-      "inning": "2회말"
+      "inning": "3회말"
     },
     {
       "homeTeam": "애틀랜타",
       "awayTeam": "LA다저스",
       "homeScore": 3,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "LIVE",
       "timestamp": 1787732100000,
       "sport": "야구",
-      "inning": "2회초"
+      "inning": "2회말"
     },
     {
       "homeTeam": "시카고W",
       "awayTeam": "텍사스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787733600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "세인트루이스",
       "awayTeam": "볼티모어",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1787733900000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회말"
     },
     {
       "homeTeam": "LA에인절스",
@@ -629,6 +631,15 @@
       "status": "SCHEDULED",
       "timestamp": 1787781600000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "HT\n16\n28\n8\n21",
+      "awayTeam": "댈러스 윙스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1787702413774,
+      "sport": "농구"
     },
     {
       "homeTeam": "볼로냐",
