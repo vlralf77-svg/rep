@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-01T15:36:02.000Z",
-  "count": 132,
+  "updatedAt": "2026-09-01T18:48:23.899Z",
+  "count": 134,
   "scores": [
     {
       "homeTeam": "레체",
@@ -293,11 +293,12 @@
     {
       "homeTeam": "알 힐랄",
       "awayTeam": "알 아흘리",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788318000000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 45'"
     },
     {
       "homeTeam": "웨스트햄",
@@ -760,20 +761,38 @@
     },
     {
       "homeTeam": "취소",
+      "awayTeam": "체코",
+      "homeScore": 14,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1788288458864,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n0\n0\n0\n0\n0\n0\n0\n0",
       "awayTeam": "Petkim Spor",
       "homeScore": 14,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1788276925261,
+      "timestamp": 1788288458864,
       "sport": "농구"
     },
     {
-      "homeTeam": "대기",
+      "homeTeam": "연기",
       "awayTeam": "Municipal da Beira",
       "homeScore": 15,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1788276925262,
+      "timestamp": 1788288458864,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "연기",
+      "awayTeam": "페네르바흐체 율케르",
+      "homeScore": 16,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1788288458864,
       "sport": "농구"
     },
     {
