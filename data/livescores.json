@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-01T21:23:49.863Z",
-  "count": 131,
+  "updatedAt": "2026-09-01T23:24:52.373Z",
+  "count": 130,
   "scores": [
     {
       "homeTeam": "레체",
@@ -374,56 +374,62 @@
     {
       "homeTeam": "탬파베이",
       "awayTeam": "뉴욕메츠",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1788334800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회말"
+    },
+    {
+      "homeTeam": "신시내티",
+      "awayTeam": "샌디에이고",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1788334800000,
+      "sport": "야구",
+      "inning": "3회초"
     },
     {
       "homeTeam": "피츠버그",
       "awayTeam": "샌프란시스코",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 5,
+      "status": "LIVE",
       "timestamp": 1788334800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회말"
     },
     {
       "homeTeam": "클리블랜드",
       "awayTeam": "토론토",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788334800000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "신시내티",
-      "awayTeam": "샌디에이고",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1788334800000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회초"
     },
     {
       "homeTeam": "워싱턴",
       "awayTeam": "애틀랜타",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1788335100000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회말"
     },
     {
       "homeTeam": "보스턴",
       "awayTeam": "시애틀",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 6,
+      "status": "LIVE",
       "timestamp": 1788335100000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회말"
     },
     {
       "homeTeam": "미네소타",
@@ -757,15 +763,6 @@
       "status": "SCHEDULED",
       "timestamp": 1788375600000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "결과\n0\n0\n0\n0\n0\n0\n0\n0",
-      "awayTeam": "투르크 텔레콤",
-      "homeScore": 16,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1788297794754,
-      "sport": "농구"
     },
     {
       "homeTeam": "US레체",
