@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-03T08:56:32.852Z",
-  "count": 120,
+  "updatedAt": "2026-09-03T13:05:37.258Z",
+  "count": 122,
   "scores": [
     {
       "homeTeam": "신시내티",
@@ -239,18 +239,18 @@
     {
       "homeTeam": "주니치",
       "awayTeam": "히로시마",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 5,
+      "status": "FINISHED",
       "timestamp": 1788458400000,
       "sport": "야구"
     },
     {
       "homeTeam": "야쿠르트",
       "awayTeam": "한신",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 4,
+      "awayScore": 7,
+      "status": "FINISHED",
       "timestamp": 1788458400000,
       "sport": "야구"
     },
@@ -266,36 +266,38 @@
     {
       "homeTeam": "KT",
       "awayTeam": "한화",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 13,
+      "awayScore": 8,
+      "status": "LIVE",
       "timestamp": 1788460200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "9회초"
+    },
+    {
+      "homeTeam": "키움",
+      "awayTeam": "SSG",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "LIVE",
+      "timestamp": 1788460200000,
+      "sport": "야구",
+      "inning": "9회말"
     },
     {
       "homeTeam": "두산",
       "awayTeam": "LG",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1788460200000,
       "sport": "야구"
     },
     {
       "homeTeam": "삼성",
       "awayTeam": "롯데",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1788460200000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "키움",
-      "awayTeam": "SSG",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1788460200000,
       "sport": "야구"
     },
@@ -774,6 +776,24 @@
       "awayScore": 76,
       "status": "FINISHED",
       "timestamp": 1788364800000,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n21\n18\n27\n25",
+      "awayTeam": "산둥 히어로즈",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1788440647463,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "연기",
+      "awayTeam": "Twarde Pierniki Torun",
+      "homeScore": 16,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1788440647463,
       "sport": "농구"
     },
     {
