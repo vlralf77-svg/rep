@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-03T21:54:56.983Z",
-  "count": 146,
+  "updatedAt": "2026-09-03T23:37:38.457Z",
+  "count": 145,
   "scores": [
     {
       "homeTeam": "신시내티",
@@ -401,20 +401,22 @@
     {
       "homeTeam": "볼티모어",
       "awayTeam": "보스턴",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1788509700000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "시카고컵스",
       "awayTeam": "밀워키",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788509700000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "캔자스시티",
@@ -586,15 +588,6 @@
       "status": "SCHEDULED",
       "timestamp": 1788550200000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "연기",
-      "awayTeam": "Twarde Pierniki Torun",
-      "homeScore": 16,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1788472460108,
-      "sport": "농구"
     },
     {
       "homeTeam": "밀월FC",
