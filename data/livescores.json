@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-05T12:49:23.559Z",
-  "count": 257,
+  "updatedAt": "2026-09-05T15:37:38.209Z",
+  "count": 339,
   "scores": [
     {
       "homeTeam": "압하",
@@ -336,16 +336,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "히로시마",
-      "awayTeam": "요미우리",
-      "homeScore": 5,
-      "awayScore": 5,
-      "status": "LIVE",
-      "timestamp": 1788631200000,
-      "sport": "야구",
-      "inning": "9회말"
-    },
-    {
       "homeTeam": "야쿠르트",
       "awayTeam": "주니치",
       "homeScore": 4,
@@ -368,6 +358,15 @@
       "awayTeam": "요코하마",
       "homeScore": 2,
       "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1788631200000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "히로시마",
+      "awayTeam": "요미우리",
+      "homeScore": 5,
+      "awayScore": 10,
       "status": "FINISHED",
       "timestamp": 1788631200000,
       "sport": "야구"
@@ -492,103 +491,99 @@
     {
       "homeTeam": "뉴캐슬",
       "awayTeam": "본머스",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 2,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1788640200000,
-      "sport": "축구",
-      "minute": "후반 13'"
+      "sport": "축구"
     },
     {
       "homeTeam": "프레스턴",
       "awayTeam": "블랙번",
       "homeScore": 2,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1788640200000,
-      "sport": "축구",
-      "minute": "후반 12'"
+      "sport": "축구"
     },
     {
       "homeTeam": "링컨",
       "awayTeam": "사우샘프턴",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1788640200000,
-      "sport": "축구",
-      "minute": "후반 14'"
+      "sport": "축구"
     },
     {
       "homeTeam": "스토크",
       "awayTeam": "찰튼",
       "homeScore": 4,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1788640200000,
-      "sport": "축구",
-      "minute": "후반 9'"
+      "sport": "축구"
     },
     {
       "homeTeam": "브라질",
       "awayTeam": "탄자니아",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 4,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1788645600000,
       "sport": "축구"
     },
     {
       "homeTeam": "피오렌티나",
       "awayTeam": "토리노",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1788645600000,
       "sport": "축구"
     },
     {
       "homeTeam": "폴란드",
       "awayTeam": "아르헨티나",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1788645600000,
       "sport": "축구"
     },
     {
       "homeTeam": "호펜하임",
       "awayTeam": "도르트문트",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1788647400000,
       "sport": "축구"
     },
     {
       "homeTeam": "글라트바흐",
       "awayTeam": "엘버스베르크",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 3,
+      "awayScore": 4,
+      "status": "FINISHED",
       "timestamp": 1788647400000,
       "sport": "축구"
     },
     {
       "homeTeam": "브레멘",
       "awayTeam": "라이프치히",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1788647400000,
       "sport": "축구"
     },
     {
       "homeTeam": "레버쿠젠",
       "awayTeam": "우니온 베를린",
-      "homeScore": 0,
+      "homeScore": 4,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1788647400000,
       "sport": "축구"
     },
@@ -596,460 +591,1009 @@
       "homeTeam": "파더보른",
       "awayTeam": "프라이부르크",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1788647400000,
       "sport": "축구"
     },
     {
       "homeTeam": "웨스트햄",
       "awayTeam": "더비 카운티",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788649200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 32'"
     },
     {
       "homeTeam": "노팅엄",
       "awayTeam": "토트넘",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788649200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 32'"
     },
     {
       "homeTeam": "브라이턴",
       "awayTeam": "리즈",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1788649200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 31'"
     },
     {
       "homeTeam": "밀월",
       "awayTeam": "볼튼",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788649200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 32'"
     },
     {
       "homeTeam": "포츠머스",
       "awayTeam": "카디프",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788649200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 32'"
     },
     {
       "homeTeam": "번리",
       "awayTeam": "브리스톨 C",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788649200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 30'"
     },
     {
       "homeTeam": "던디 유나이티드",
       "awayTeam": "팰커크",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1788649200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 30'"
     },
     {
       "homeTeam": "애버딘",
       "awayTeam": "킬마녹",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788649200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 33'"
     },
     {
       "homeTeam": "웨스트 브롬",
       "awayTeam": "왓퍼드",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788649200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 31'"
     },
     {
       "homeTeam": "셰필드",
       "awayTeam": "노리치",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "LIVE",
       "timestamp": 1788649200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 31'"
     },
     {
       "homeTeam": "레인저스",
       "awayTeam": "마더웰",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788649200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 28'"
     },
     {
       "homeTeam": "풀럼",
       "awayTeam": "크리스털",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1788649200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 29'"
     },
     {
       "homeTeam": "맨시티",
       "awayTeam": "코벤트리",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788649200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 32'"
     },
     {
       "homeTeam": "QPR",
       "awayTeam": "미들즈브러",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1788649200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 29'"
     },
     {
       "homeTeam": "브렌트퍼드",
       "awayTeam": "선덜랜드",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788649200000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 24'"
     },
     {
       "homeTeam": "빌바오",
       "awayTeam": "AT 마드리드",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788650100000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 8'"
     },
     {
       "homeTeam": "NEC 네이메헌",
       "awayTeam": "페예노르트",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788651000000,
+      "sport": "축구",
+      "minute": "전반종료"
+    },
+    {
+      "homeTeam": "랑스",
+      "awayTeam": "로리앙",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1788653700000,
+      "sport": "축구",
+      "minute": "전반 20'"
+    },
+    {
+      "homeTeam": "알 파이살리",
+      "awayTeam": "알 하젬",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788655800000,
       "sport": "축구"
     },
     {
-      "homeTeam": "롯데",
-      "awayTeam": "한화",
-      "homeScore": 4,
-      "awayScore": 14,
-      "status": "FINISHED",
-      "timestamp": 1788546600000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "KIA",
-      "awayTeam": "KT",
-      "homeScore": 4,
-      "awayScore": 3,
-      "status": "FINISHED",
-      "timestamp": 1788546600000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "키움",
-      "awayTeam": "NC",
-      "homeScore": 1,
-      "awayScore": 6,
-      "status": "FINISHED",
-      "timestamp": 1788546600000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "SSG",
-      "awayTeam": "두산",
-      "homeScore": 4,
+      "homeTeam": "알 타아원",
+      "awayTeam": "알 파테",
+      "homeScore": 0,
       "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1788546600000,
+      "status": "SCHEDULED",
+      "timestamp": 1788656100000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "AGF",
+      "awayTeam": "실케보리",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788656400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "캐나다",
+      "awayTeam": "잉글랜드",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788656400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "인테르",
+      "awayTeam": "나폴리",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788656400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "멕시코",
+      "awayTeam": "베냉",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788656400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "바예카노",
+      "awayTeam": "라싱",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788658200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "샬케",
+      "awayTeam": "바이에른 뮌헨",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788658200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "헐 시티",
+      "awayTeam": "애스턴 빌라",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788658200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "위트레흐트",
+      "awayTeam": "고 어헤드 이글스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788659100000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "알 이티하드",
+      "awayTeam": "알 나스르",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788663600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "아약스",
+      "awayTeam": "PSV 아인트호벤",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788663600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "니스",
+      "awayTeam": "르 망",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788666300000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "르 아브르",
+      "awayTeam": "브레스트",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788666300000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "로마",
+      "awayTeam": "아탈란타",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788666300000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "빌럼 II",
+      "awayTeam": "엑셀시오르",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788667200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "스완지",
+      "awayTeam": "렉섬",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788667200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "비야레알",
+      "awayTeam": "데포르티보",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788667200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "세인트 미렌",
+      "awayTeam": "셀틱",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788667200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "마이애미",
+      "awayTeam": "시카고컵스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788671400000,
       "sport": "야구"
     },
     {
-      "homeTeam": "LG",
-      "awayTeam": "삼성",
-      "homeScore": 4,
-      "awayScore": 3,
-      "status": "FINISHED",
-      "timestamp": 1788546600000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "피츠버그",
+      "homeTeam": "뉴욕메츠",
       "awayTeam": "샌프란시스코",
-      "homeScore": 5,
-      "awayScore": 2,
-      "status": "FINISHED",
-      "timestamp": 1788485700000,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788671400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "필라델피아",
+      "awayTeam": "애틀랜타",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788678300000,
       "sport": "야구"
     },
     {
       "homeTeam": "클리블랜드",
-      "awayTeam": "토론토",
-      "homeScore": 3,
-      "awayScore": 6,
-      "status": "FINISHED",
-      "timestamp": 1788487800000,
+      "awayTeam": "디트로이트",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788678600000,
       "sport": "야구"
     },
     {
-      "homeTeam": "휴스턴",
-      "awayTeam": "시카고W",
-      "homeScore": 6,
-      "awayScore": 2,
-      "status": "FINISHED",
-      "timestamp": 1788491400000,
+      "homeTeam": "피츠버그",
+      "awayTeam": "LA에인절스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788680400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "신시내티",
+      "awayTeam": "밀워키",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788680400000,
       "sport": "야구"
     },
     {
       "homeTeam": "볼티모어",
       "awayTeam": "보스턴",
-      "homeScore": 5,
-      "awayScore": 6,
-      "status": "FINISHED",
-      "timestamp": 1788509700000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "시카고컵스",
-      "awayTeam": "밀워키",
-      "homeScore": 2,
-      "awayScore": 1,
-      "status": "FINISHED",
-      "timestamp": 1788509700000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "캔자스시티",
-      "awayTeam": "마이애미",
-      "homeScore": 7,
-      "awayScore": 3,
-      "status": "FINISHED",
-      "timestamp": 1788511200000,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788681900000,
       "sport": "야구"
     },
     {
       "homeTeam": "텍사스",
       "awayTeam": "탬파베이",
-      "homeScore": 6,
+      "homeScore": 0,
       "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1788512700000,
+      "status": "SCHEDULED",
+      "timestamp": 1788681900000,
       "sport": "야구"
+    },
+    {
+      "homeTeam": "시카고W",
+      "awayTeam": "미네소타",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788682200000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "캔자스시티",
+      "awayTeam": "토론토",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788682200000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "휴스턴",
+      "awayTeam": "애리조나",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788682500000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "샌디에이고",
+      "awayTeam": "뉴욕양키스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788682500000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "필라델피아",
+      "awayTeam": "몬트리얼",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788683400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "마이애미",
+      "awayTeam": "애틀란타",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788683400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "올랜도 시티",
+      "awayTeam": "샌디에고",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788683400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "콜롬버스",
+      "awayTeam": "콜로라도",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788683400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "샬럿",
+      "awayTeam": "휴스턴",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788683400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "신시내티",
+      "awayTeam": "DC 유나이티드",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788683400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "토론토",
+      "awayTeam": "시카고",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788683400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "콜로라도",
+      "awayTeam": "세인트루이스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788685800000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "오스틴",
+      "awayTeam": "어스퀘이크",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788687000000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "댈러스",
+      "awayTeam": "스포팅 KC",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788687000000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "시애틀",
+      "awayTeam": "뉴욕",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788687000000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "LA다저스",
+      "awayTeam": "워싱턴",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788689400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "갤럭시",
+      "awayTeam": "뉴잉글랜드",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788690600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "솔트 레이크",
+      "awayTeam": "LAFC",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788690600000,
+      "sport": "축구"
     },
     {
       "homeTeam": "시애틀",
       "awayTeam": "애슬레틱스",
-      "homeScore": 4,
-      "awayScore": 7,
-      "status": "FINISHED",
-      "timestamp": 1788518400000,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788691200000,
       "sport": "야구"
     },
     {
-      "homeTeam": "LA다저스",
+      "homeTeam": "포틀랜드",
+      "awayTeam": "미네소타",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788694200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "화이트캡스",
       "awayTeam": "세인트루이스",
-      "homeScore": 3,
-      "awayScore": 2,
-      "status": "FINISHED",
-      "timestamp": 1788520200000,
-      "sport": "야구"
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788694200000,
+      "sport": "축구"
     },
     {
       "homeTeam": "오릭스",
       "awayTeam": "지바롯데",
-      "homeScore": 3,
-      "awayScore": 1,
-      "status": "FINISHED",
-      "timestamp": 1788544800000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "야쿠르트",
-      "awayTeam": "주니치",
-      "homeScore": 1,
-      "awayScore": 1,
-      "status": "FINISHED",
-      "timestamp": 1788544800000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "라쿠텐",
-      "awayTeam": "닛폰햄",
-      "homeScore": 2,
-      "awayScore": 5,
-      "status": "FINISHED",
-      "timestamp": 1788544800000,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788699600000,
       "sport": "야구"
     },
     {
       "homeTeam": "소프트뱅크",
       "awayTeam": "세이부",
-      "homeScore": 8,
-      "awayScore": 2,
-      "status": "FINISHED",
-      "timestamp": 1788544800000,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788699600000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "키움",
+      "awayTeam": "NC",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788703200000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "라쿠텐",
+      "awayTeam": "닛폰햄",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788710400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "롯데",
+      "awayTeam": "한화",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788714000000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "야쿠르트",
+      "awayTeam": "주니치",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788714000000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "KIA",
+      "awayTeam": "KT",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788714000000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "SSG",
+      "awayTeam": "두산",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788714000000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "LG",
+      "awayTeam": "삼성",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788714000000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "제프 치바",
+      "awayTeam": "감바 오사카",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788717600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "한신",
+      "awayTeam": "요코하마",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788717600000,
       "sport": "야구"
     },
     {
       "homeTeam": "히로시마",
       "awayTeam": "요미우리",
-      "homeScore": 1,
-      "awayScore": 3,
-      "status": "FINISHED",
-      "timestamp": 1788544800000,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788717600000,
       "sport": "야구"
     },
     {
-      "homeTeam": "코펜하겐",
-      "awayTeam": "노르셸란",
-      "homeScore": 2,
-      "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1788490800000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "툴루즈",
-      "awayTeam": "릴",
-      "homeScore": 0,
-      "awayScore": 1,
-      "status": "FINISHED",
-      "timestamp": 1788493500000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "하이버니언",
-      "awayTeam": "하츠",
-      "homeScore": 1,
-      "awayScore": 3,
-      "status": "FINISHED",
-      "timestamp": 1788493500000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "소시에다드",
-      "awayTeam": "셀타 데 비고",
+      "homeTeam": "가시마",
+      "awayTeam": "우라와",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1788494400000,
+      "status": "SCHEDULED",
+      "timestamp": 1788717600000,
       "sport": "축구"
     },
     {
-      "homeTeam": "알 파이하",
-      "awayTeam": "알 콜루드",
-      "homeScore": 2,
-      "awayScore": 2,
-      "status": "FINISHED",
-      "timestamp": 1788483300000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "네옴",
-      "awayTeam": "알 칼리즈",
-      "homeScore": 3,
-      "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1788485400000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "알 디리야",
-      "awayTeam": "알 카디시야",
-      "homeScore": 0,
-      "awayScore": 2,
-      "status": "FINISHED",
-      "timestamp": 1788490800000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "충북청주",
-      "awayTeam": "서울E",
-      "homeScore": 0,
-      "awayScore": 2,
-      "status": "FINISHED",
-      "timestamp": 1788550200000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "파주",
-      "awayTeam": "대구",
+      "homeTeam": "오카야마",
+      "awayTeam": "히로시마",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1788550200000,
+      "status": "SCHEDULED",
+      "timestamp": 1788717600000,
       "sport": "축구"
     },
     {
-      "homeTeam": "홍익대",
-      "awayTeam": "인하대",
-      "homeScore": 1,
-      "awayScore": 3,
-      "status": "FINISHED",
-      "timestamp": 1788530400000,
-      "sport": "배구"
-    },
-    {
-      "homeTeam": "성균관대",
-      "awayTeam": "중부대",
-      "homeScore": 3,
+      "homeTeam": "나고야",
+      "awayTeam": "마치다 젤비아",
+      "homeScore": 0,
       "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1788530400000,
-      "sport": "배구"
+      "status": "SCHEDULED",
+      "timestamp": 1788717600000,
+      "sport": "축구"
     },
     {
-      "homeTeam": "연세대",
-      "awayTeam": "명지대",
-      "homeScore": 87,
-      "awayScore": 65,
-      "status": "FINISHED",
-      "timestamp": 1788537600000,
+      "homeTeam": "수원",
+      "awayTeam": "충남아산",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788721200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "안양",
+      "awayTeam": "강원",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788721200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "김천",
+      "awayTeam": "광주",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788721200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "김포",
+      "awayTeam": "성남",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788721200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "비셀 고베",
+      "awayTeam": "나가사키",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788721200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "세레소 오사카",
+      "awayTeam": "도쿄 베르디",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788721200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "가시와 레이솔",
+      "awayTeam": "요코하마 F.M",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788721200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "가와사키",
+      "awayTeam": "시미즈",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788721200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "흐로닝언",
+      "awayTeam": "트벤터",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788722100000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "FC 도쿄",
+      "awayTeam": "교토 상가",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788723000000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "버밍엄",
+      "awayTeam": "울버햄튼",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788724800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "쇠네르위스케",
+      "awayTeam": "호르센스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788728400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "히렌빈",
+      "awayTeam": "알크마르 잔스트리크",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788730200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "텔스타",
+      "awayTeam": "캄부르",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788730200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "일본",
+      "awayTeam": "뉴질랜드",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788732000000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "프로시노네",
+      "awayTeam": "베네치아",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788732000000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "에버턴",
+      "awayTeam": "맨유",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788732000000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "프랑스",
+      "awayTeam": "대한민국",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788732000000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "트루아",
+      "awayTeam": "스트라스부르",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788732000000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "파르마",
+      "awayTeam": "몬차",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788732000000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "함부르크",
+      "awayTeam": "마인츠",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788733800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "OB",
+      "awayTeam": "코펜하겐",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788735600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "하츠",
+      "awayTeam": "던디",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788735600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "세인트 존스턴",
+      "awayTeam": "하이버니언",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788735600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "발렌시아",
+      "awayTeam": "바르셀로나",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788736500000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "ADO 덴 하그",
+      "awayTeam": "시타르트",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788738300000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "연기",
+      "awayTeam": "Harem Spor",
+      "homeScore": 13,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1788622625396,
       "sport": "농구"
     },
     {
-      "homeTeam": "툴루즈",
-      "awayTeam": "릴OSC",
-      "homeScore": 0,
-      "awayScore": 1,
-      "status": "SCHEDULED",
-      "timestamp": 1788461100000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "하이버니언",
-      "awayTeam": "하츠",
-      "homeScore": 1,
-      "awayScore": 3,
-      "status": "SCHEDULED",
-      "timestamp": 1788461100000,
-      "sport": "축구"
+      "homeTeam": "대기",
+      "awayTeam": "Ferroviario Maputo",
+      "homeScore": 17,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1788622625396,
+      "sport": "농구"
     },
     {
       "homeTeam": "빌레펠트",
@@ -1288,7 +1832,7 @@
     {
       "homeTeam": "카이저슬라우",
       "awayTeam": "다름슈타트",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1788606000000,
@@ -1298,7 +1842,7 @@
       "homeTeam": "볼프스부르크",
       "awayTeam": "코트부스",
       "homeScore": 4,
-      "awayScore": 3,
+      "awayScore": 4,
       "status": "SCHEDULED",
       "timestamp": 1788606000000,
       "sport": "축구"
@@ -1306,7 +1850,7 @@
     {
       "homeTeam": "뉴캐슬",
       "awayTeam": "본머스",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1788607800000,
@@ -1315,7 +1859,7 @@
     {
       "homeTeam": "링컨시티",
       "awayTeam": "사우스햄턴",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1788607800000,
@@ -1342,7 +1886,7 @@
     {
       "homeTeam": "FC메스",
       "awayTeam": "로데스AF",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1788609600000,
@@ -1351,8 +1895,8 @@
     {
       "homeTeam": "스타드랭스",
       "awayTeam": "앙나방갱강",
-      "homeScore": 0,
-      "awayScore": 1,
+      "homeScore": 2,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1788609600000,
       "sport": "축구"
@@ -1360,8 +1904,8 @@
     {
       "homeTeam": "피오렌티나",
       "awayTeam": "토리노",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1788613200000,
       "sport": "축구"
@@ -1369,7 +1913,7 @@
     {
       "homeTeam": "FC쥐트티롤",
       "awayTeam": "카탄자로",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1788613200000,
@@ -1378,7 +1922,7 @@
     {
       "homeTeam": "레버쿠젠",
       "awayTeam": "유니온베를린",
-      "homeScore": 0,
+      "homeScore": 4,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1788615000000,
@@ -1387,8 +1931,8 @@
     {
       "homeTeam": "M글라트바흐",
       "awayTeam": "엘버스베르크",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 3,
+      "awayScore": 4,
       "status": "SCHEDULED",
       "timestamp": 1788615000000,
       "sport": "축구"
@@ -1396,8 +1940,8 @@
     {
       "homeTeam": "호펜하임",
       "awayTeam": "도르트문트",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 2,
+      "awayScore": 3,
       "status": "SCHEDULED",
       "timestamp": 1788615000000,
       "sport": "축구"
@@ -1406,7 +1950,7 @@
       "homeTeam": "파더보른",
       "awayTeam": "프라이부르크",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1788615000000,
       "sport": "축구"
@@ -1414,8 +1958,8 @@
     {
       "homeTeam": "브레멘",
       "awayTeam": "라이프치히",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 3,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1788615000000,
       "sport": "축구"
@@ -1423,7 +1967,7 @@
     {
       "homeTeam": "브렌트포드",
       "awayTeam": "선더랜드",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1788616800000,
@@ -1432,8 +1976,8 @@
     {
       "homeTeam": "브라이턴HA",
       "awayTeam": "리즈U",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1788616800000,
       "sport": "축구"
@@ -1441,8 +1985,8 @@
     {
       "homeTeam": "풀럼",
       "awayTeam": "크리스탈P",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 2,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1788616800000,
       "sport": "축구"
@@ -1450,7 +1994,7 @@
     {
       "homeTeam": "맨체스터C",
       "awayTeam": "코벤트리시티",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1788616800000,
@@ -1468,7 +2012,7 @@
     {
       "homeTeam": "번리",
       "awayTeam": "브리스톨시티",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1788616800000,
@@ -1477,7 +2021,7 @@
     {
       "homeTeam": "밀월FC",
       "awayTeam": "볼튼",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1788616800000,
@@ -1486,7 +2030,7 @@
     {
       "homeTeam": "포츠머스",
       "awayTeam": "카디프시티",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1788616800000,
@@ -1496,7 +2040,7 @@
       "homeTeam": "QPR",
       "awayTeam": "미들즈브러",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1788616800000,
       "sport": "축구"
@@ -1504,8 +2048,8 @@
     {
       "homeTeam": "셰필드U",
       "awayTeam": "노리치시티",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 3,
       "status": "SCHEDULED",
       "timestamp": 1788616800000,
       "sport": "축구"
@@ -1513,7 +2057,7 @@
     {
       "homeTeam": "W브롬위치",
       "awayTeam": "왓포드FC",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1788616800000,
@@ -1522,7 +2066,7 @@
     {
       "homeTeam": "웨스트햄",
       "awayTeam": "더비카운티",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1788616800000,
@@ -1541,7 +2085,7 @@
       "homeTeam": "던디Utd",
       "awayTeam": "폴커크",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1788616800000,
       "sport": "축구"
@@ -1549,7 +2093,7 @@
     {
       "homeTeam": "레인저스FC",
       "awayTeam": "마더웰",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1788616800000,
@@ -1558,7 +2102,7 @@
     {
       "homeTeam": "빌바오",
       "awayTeam": "AT마드리드",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1788617700000,
@@ -2186,49 +2730,202 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "대한민국",
-      "awayTeam": "대만",
-      "homeScore": 3,
-      "awayScore": 1,
-      "status": "FINISHED",
-      "timestamp": 1788505200000,
+      "homeTeam": "UD알메리아",
+      "awayTeam": "카디스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788706800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "CD카스테욘",
+      "awayTeam": "알바세테",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788706800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "에이바르",
+      "awayTeam": "그라나다",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788706800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "엘덴세",
+      "awayTeam": "마요르카",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788706800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "스포르팅히혼",
+      "awayTeam": "지로나",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788706800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "라스팔마스",
+      "awayTeam": "CD레가네스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788706800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "레알오비에도",
+      "awayTeam": "부르고스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788706800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "소시에다드B",
+      "awayTeam": "CD테네리페",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788706800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "사바델",
+      "awayTeam": "코르도바",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788706800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "바야돌리드",
+      "awayTeam": "안도라CF",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788706800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "앙제SCO",
+      "awayTeam": "스타드렌",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788707700000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "헬라스베로나",
+      "awayTeam": "아레초",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788707700000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "아스날FC",
+      "awayTeam": "첼시",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788708600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "프랑크푸르트",
+      "awayTeam": "아우크스부르",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788708600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "볼로냐",
+      "awayTeam": "사수올로",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788710400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "D알라베스",
+      "awayTeam": "오사수나",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788712200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "말라가CF",
+      "awayTeam": "레반테",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788712200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "크레모네세",
+      "awayTeam": "파도바",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788715800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "유벤투스",
+      "awayTeam": "AC밀란",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788720300000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "마르세유",
+      "awayTeam": "파리FC",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788720300000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "에스파뇰",
+      "awayTeam": "세비야",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788721200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "태국",
+      "awayTeam": "대한민국",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788768000000,
       "sport": "배구"
-    },
-    {
-      "homeTeam": "호주",
-      "awayTeam": "푸에르토리코",
-      "homeScore": 70,
-      "awayScore": 54,
-      "status": "SCHEDULED",
-      "timestamp": 1788514200000,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "일본",
-      "awayTeam": "말리",
-      "homeScore": 102,
-      "awayScore": 97,
-      "status": "SCHEDULED",
-      "timestamp": 1788514200000,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "미국",
-      "awayTeam": "중국",
-      "homeScore": 94,
-      "awayScore": 61,
-      "status": "SCHEDULED",
-      "timestamp": 1788524100000,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "대한민국",
-      "awayTeam": "나이지리아",
-      "homeScore": 99,
-      "awayScore": 81,
-      "status": "SCHEDULED",
-      "timestamp": 1788525000000,
-      "sport": "농구"
     },
     {
       "homeTeam": "벨기에",
@@ -2278,8 +2975,8 @@
     {
       "homeTeam": "나이지리아",
       "awayTeam": "헝가리",
-      "homeScore": 13,
-      "awayScore": 27,
+      "homeScore": 67,
+      "awayScore": 71,
       "status": "SCHEDULED",
       "timestamp": 1788610500000,
       "sport": "농구"
@@ -2318,6 +3015,60 @@
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1788697800000,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "푸에르토리코",
+      "awayTeam": "벨기에",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788709500000,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "이탈리아",
+      "awayTeam": "미국",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788720300000,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "벨기에",
+      "awayTeam": "호주",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788773400000,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "푸에르토리코",
+      "awayTeam": "튀르키예",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788773400000,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "헝가리",
+      "awayTeam": "대한민국",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788784200000,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "나이지리아",
+      "awayTeam": "프랑스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788784200000,
       "sport": "농구"
     }
   ]
