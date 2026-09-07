@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-07T00:55:37.697Z",
-  "count": 230,
+  "updatedAt": "2026-09-07T05:20:49.845Z",
+  "count": 231,
   "scores": [
     {
       "homeTeam": "앙제",
@@ -230,19 +230,18 @@
     {
       "homeTeam": "시카고W",
       "awayTeam": "미네소타",
-      "homeScore": 6,
+      "homeScore": 10,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1788765600000,
-      "sport": "야구",
-      "inning": "8회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "LA다저스",
       "awayTeam": "워싱턴",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 7,
+      "awayScore": 5,
+      "status": "FINISHED",
       "timestamp": 1788779400000,
       "sport": "야구"
     },
@@ -251,7 +250,7 @@
       "awayTeam": "성균관대",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788789600000,
       "sport": "배구"
     },
@@ -260,7 +259,7 @@
       "awayTeam": "중부대",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788789600000,
       "sport": "배구"
     },
@@ -1873,6 +1872,15 @@
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1788798600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "사바델",
+      "awayTeam": "코르도바",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1788805800000,
       "sport": "축구"
     },
     {
