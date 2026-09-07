@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-07T19:31:06.556Z",
+  "updatedAt": "2026-09-07T22:25:44.766Z",
   "toto": [],
   "proto": [
     {
@@ -290,6 +290,71 @@
             }
           ],
           "line": 4.5
+        }
+      ]
+    },
+    {
+      "matchId": "카타르_남자_한국|남자|1788841800000",
+      "sport": "배구",
+      "league": "승부식106 회차",
+      "homeTeam": "카타르_남자_한국",
+      "awayTeam": "남자",
+      "gameDate": "2026-09-08T04:30:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 4.11
+            },
+            {
+              "label": "패",
+              "odds": 1.12
+            }
+          ]
+        },
+        {
+          "type": "세트핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 2.34
+            },
+            {
+              "label": "패",
+              "odds": 1.41
+            }
+          ],
+          "line": 1.5
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.76
+            },
+            {
+              "label": "오버",
+              "odds": 1.76
+            }
+          ],
+          "line": 173.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.8
+            },
+            {
+              "label": "짝",
+              "odds": 1.8
+            }
+          ]
         }
       ]
     },
