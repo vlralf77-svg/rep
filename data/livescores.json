@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-08T00:23:27.298Z",
+  "updatedAt": "2026-09-08T04:51:53.957Z",
   "count": 123,
   "scores": [
     {
@@ -158,39 +158,40 @@
     {
       "homeTeam": "샌프란시스코",
       "awayTeam": "세인트루이스",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
+      "homeScore": 5,
+      "awayScore": 4,
+      "status": "FINISHED",
       "timestamp": 1788858600000,
-      "sport": "야구",
-      "inning": "1회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "LA다저스",
       "awayTeam": "신시내티",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 6,
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1788862200000,
       "sport": "야구"
     },
     {
       "homeTeam": "애슬레틱스",
       "awayTeam": "토론토",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 5,
+      "awayScore": 5,
+      "status": "LIVE",
       "timestamp": 1788865500000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "9회말"
     },
     {
       "homeTeam": "울산대",
       "awayTeam": "강원대",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1788876000000,
-      "sport": "농구"
+      "sport": "농구",
+      "inning": "경기전"
     },
     {
       "homeTeam": "한양대",
