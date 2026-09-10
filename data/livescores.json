@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-10T21:00:37.048Z",
+  "updatedAt": "2026-09-10T22:55:40.764Z",
   "count": 208,
   "scores": [
     {
@@ -615,16 +615,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "슬라비아",
-      "awayTeam": "랑스",
-      "homeScore": 2,
-      "awayScore": 3,
-      "status": "LIVE",
-      "timestamp": 1789099200000,
-      "sport": "축구",
-      "minute": "후반 51'"
-    },
-    {
       "homeTeam": "바이에른 뮌헨",
       "awayTeam": "보되 / 글림트",
       "homeScore": 5,
@@ -643,6 +633,15 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "슬라비아",
+      "awayTeam": "랑스",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1789099200000,
+      "sport": "축구"
+    },
+    {
       "homeTeam": "코모",
       "awayTeam": "라이프치히",
       "homeScore": 4,
@@ -654,12 +653,11 @@
     {
       "homeTeam": "시애틀",
       "awayTeam": "텍사스",
-      "homeScore": 0,
-      "awayScore": 2,
-      "status": "LIVE",
+      "homeScore": 4,
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1789103400000,
-      "sport": "야구",
-      "inning": "4회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "뉴욕양키스",
@@ -820,7 +818,7 @@
       "homeScore": 18,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1789073978624,
+      "timestamp": 1789080906248,
       "sport": "농구"
     },
     {
@@ -1062,7 +1060,7 @@
       "awayTeam": "보되글림트",
       "homeScore": 5,
       "awayScore": 0,
-      "status": "FINISHED",
+      "status": "SCHEDULED",
       "timestamp": 1789066800000,
       "sport": "축구"
     },
@@ -1071,7 +1069,7 @@
       "awayTeam": "라이프치히",
       "homeScore": 4,
       "awayScore": 1,
-      "status": "FINISHED",
+      "status": "SCHEDULED",
       "timestamp": 1789066800000,
       "sport": "축구"
     },
