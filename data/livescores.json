@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-10T15:09:41.238Z",
-  "count": 208,
+  "updatedAt": "2026-09-10T18:23:42.492Z",
+  "count": 209,
   "scores": [
     {
       "homeTeam": "알 콜루드",
@@ -565,7 +565,7 @@
       "awayTeam": "나이지리아",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1789088400000,
       "sport": "축구"
     },
@@ -574,45 +574,49 @@
       "awayTeam": "포르투갈",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1789088400000,
       "sport": "축구"
     },
     {
       "homeTeam": "애틀랜타",
       "awayTeam": "탬파베이",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1789089300000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "9회초"
     },
     {
       "homeTeam": "PSV 아인트호벤",
       "awayTeam": "샤흐타르",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1789091100000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 32'"
     },
     {
       "homeTeam": "페네르바체",
       "awayTeam": "로마",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1789091100000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 33'"
     },
     {
       "homeTeam": "필라델피아",
       "awayTeam": "휴스턴",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1789092300000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "6회초"
     },
     {
       "homeTeam": "바이에른 뮌헨",
@@ -813,12 +817,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n11\n6",
-      "awayTeam": "데친",
-      "homeScore": 16,
+      "homeTeam": "Neustadt\n대기",
+      "awayTeam": "Gernika Bizkaia",
+      "homeScore": 17,
+      "awayScore": 55,
+      "status": "LIVE",
+      "timestamp": 1789064584772,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "대기",
+      "awayTeam": "우니카하",
+      "homeScore": 18,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1789052948055,
+      "timestamp": 1789064584772,
       "sport": "농구"
     },
     {
@@ -1040,8 +1053,8 @@
     {
       "homeTeam": "페네르바체",
       "awayTeam": "AS로마",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1789058700000,
       "sport": "축구"
@@ -1049,8 +1062,8 @@
     {
       "homeTeam": "PSV",
       "awayTeam": "샤크타르",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1789058700000,
       "sport": "축구"
@@ -1787,8 +1800,8 @@
     {
       "homeTeam": "벨기에",
       "awayTeam": "독일",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 74,
+      "awayScore": 93,
       "status": "SCHEDULED",
       "timestamp": 1789055100000,
       "sport": "농구"
