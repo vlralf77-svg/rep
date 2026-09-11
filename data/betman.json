@@ -1,259 +1,7 @@
 {
-  "updatedAt": "2026-09-10T23:35:57.818Z",
+  "updatedAt": "2026-09-11T02:21:12.270Z",
   "toto": [],
   "proto": [
-    {
-      "matchId": "시카고 화이트삭스|피츠버그 파이어리츠|1789083600000",
-      "sport": "야구",
-      "league": "승부식108 회차",
-      "homeTeam": "시카고 화이트삭스",
-      "awayTeam": "피츠버그 파이어리츠",
-      "gameDate": "2026-09-10T23:40:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.68
-            },
-            {
-              "label": "패",
-              "odds": 1.85
-            }
-          ]
-        },
-        {
-          "type": "승1패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.45
-            },
-            {
-              "label": "1",
-              "odds": 3.2
-            },
-            {
-              "label": "패",
-              "odds": 2.33
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3.3
-            },
-            {
-              "label": "패",
-              "odds": 1.2
-            }
-          ],
-          "line": -2.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.8
-            },
-            {
-              "label": "오버",
-              "odds": 1.72
-            }
-          ],
-          "line": 7.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.58
-            },
-            {
-              "label": "짝",
-              "odds": 2.09
-            }
-          ]
-        },
-        {
-          "type": "전반 승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.04
-            },
-            {
-              "label": "무",
-              "odds": 5.5
-            },
-            {
-              "label": "패",
-              "odds": 2.1
-            }
-          ]
-        },
-        {
-          "type": "전반 핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.97
-            },
-            {
-              "label": "패",
-              "odds": 1.25
-            }
-          ],
-          "line": -1.5
-        },
-        {
-          "type": "전반 언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.71
-            },
-            {
-              "label": "오버",
-              "odds": 1.81
-            }
-          ],
-          "line": 4.5
-        }
-      ]
-    },
-    {
-      "matchId": "인디펜디엔테 델바예|CR플라멩구|1789086600000",
-      "sport": "축구",
-      "league": "승부식108 회차",
-      "homeTeam": "인디펜디엔테 델바예",
-      "awayTeam": "CR플라멩구",
-      "gameDate": "2026-09-11T00:30:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3.05
-            },
-            {
-              "label": "무",
-              "odds": 2.7
-            },
-            {
-              "label": "패",
-              "odds": 2.22
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.52
-            },
-            {
-              "label": "무",
-              "odds": 3.55
-            },
-            {
-              "label": "패",
-              "odds": 4.75
-            }
-          ],
-          "line": 1
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.5
-            },
-            {
-              "label": "오버",
-              "odds": 2.13
-            }
-          ],
-          "line": 2.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.82
-            },
-            {
-              "label": "짝",
-              "odds": 1.78
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "중국_남자_카자흐스탄|남자|1789088400000",
-      "sport": "농구",
-      "league": "승부식108 회차",
-      "homeTeam": "중국_남자_카자흐스탄",
-      "awayTeam": "남자",
-      "gameDate": "2026-09-11T01:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.77
-            },
-            {
-              "label": "패",
-              "odds": 1.75
-            }
-          ],
-          "line": -28.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.76
-            },
-            {
-              "label": "오버",
-              "odds": 1.76
-            }
-          ],
-          "line": 160.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.8
-            },
-            {
-              "label": "짝",
-              "odds": 1.8
-            }
-          ]
-        }
-      ]
-    },
     {
       "matchId": "필리핀_남자_바레인|남자|1789099200000",
       "sport": "농구",
@@ -268,11 +16,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 3.3
+              "odds": 3.03
             },
             {
               "label": "패",
-              "odds": 1.2
+              "odds": 1.24
             }
           ]
         },
@@ -579,11 +327,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.34
+              "odds": 2.15
             },
             {
               "label": "패",
-              "odds": 1.41
+              "odds": 1.49
             }
           ],
           "line": -2.5
@@ -661,11 +409,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.73
+              "odds": 1.63
             },
             {
               "label": "패",
-              "odds": 1.79
+              "odds": 1.91
             }
           ],
           "line": -2.5
