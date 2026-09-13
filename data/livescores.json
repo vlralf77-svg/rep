@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-13T21:36:33.358Z",
-  "count": 221,
+  "updatedAt": "2026-09-13T23:28:14.695Z",
+  "count": 219,
   "scores": [
     {
       "homeTeam": "스트라스부르",
@@ -950,59 +950,61 @@
     {
       "homeTeam": "보스턴",
       "awayTeam": "캔자스시티",
-      "homeScore": 1,
-      "awayScore": 0,
+      "homeScore": 4,
+      "awayScore": 1,
       "status": "LIVE",
       "timestamp": 1789358700000,
       "sport": "야구",
-      "inning": "3회초"
+      "inning": "9회초"
     },
     {
       "homeTeam": "애슬레틱스",
       "awayTeam": "시애틀",
-      "homeScore": 2,
-      "awayScore": 5,
+      "homeScore": 6,
+      "awayScore": 7,
       "status": "LIVE",
       "timestamp": 1789362300000,
       "sport": "야구",
-      "inning": "4회초"
+      "inning": "9회초"
     },
     {
       "homeTeam": "애리조나",
       "awayTeam": "텍사스",
-      "homeScore": 1,
-      "awayScore": 5,
-      "status": "LIVE",
+      "homeScore": 6,
+      "awayScore": 7,
+      "status": "FINISHED",
       "timestamp": 1789362600000,
-      "sport": "야구",
-      "inning": "6회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "시카고",
       "awayTeam": "뉴잉글랜드",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1789367400000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 40'"
     },
     {
       "homeTeam": "화이트캡스",
       "awayTeam": "오스틴",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1789371000000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 44'"
     },
     {
       "homeTeam": "샌프란시스코",
       "awayTeam": "샌디에이고",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1789374000000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "샌디에고",
@@ -1093,24 +1095,6 @@
       "status": "SCHEDULED",
       "timestamp": 1789425900000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "연기",
-      "awayTeam": "부두츠노스트",
-      "homeScore": 18,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1789335361489,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "대기",
-      "awayTeam": "Philippines MPBL",
-      "homeScore": 1,
-      "awayScore": 33,
-      "status": "LIVE",
-      "timestamp": 1789335361489,
-      "sport": "농구"
     },
     {
       "homeTeam": "스트라스부르",
@@ -1718,8 +1702,8 @@
     {
       "homeTeam": "시카고파이어",
       "awayTeam": "뉴잉글랜드",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1789335000000,
       "sport": "축구"
@@ -1728,7 +1712,7 @@
       "homeTeam": "밴쿠버화이트",
       "awayTeam": "오스틴FC",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1789338600000,
       "sport": "축구"
