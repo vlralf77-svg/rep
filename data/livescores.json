@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-14T01:19:30.331Z",
-  "count": 219,
+  "updatedAt": "2026-09-14T06:22:46.448Z",
+  "count": 220,
   "scores": [
     {
       "homeTeam": "르 망",
@@ -284,29 +284,27 @@
     {
       "homeTeam": "샌프란시스코",
       "awayTeam": "샌디에이고",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 6,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1789374000000,
-      "sport": "야구",
-      "inning": "6회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "샌디에고",
       "awayTeam": "필라델피아",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
+      "awayScore": 5,
+      "status": "FINISHED",
       "timestamp": 1789380000000,
-      "sport": "축구",
-      "minute": "전반 4'"
+      "sport": "축구"
     },
     {
       "homeTeam": "한양대",
       "awayTeam": "중부대",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1789385400000,
       "sport": "배구"
     },
@@ -314,8 +312,8 @@
       "homeTeam": "경기대",
       "awayTeam": "홍익대",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1789394400000,
       "sport": "배구"
     },
@@ -1094,6 +1092,15 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "Q\n21\n20",
+      "awayTeam": "볼로그다",
+      "homeScore": 10,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1789366930256,
+      "sport": "농구"
+    },
+    {
       "homeTeam": "스트라스부르",
       "awayTeam": "AS모나코",
       "homeScore": 1,
@@ -1718,7 +1725,7 @@
       "homeTeam": "샌디에고FC",
       "awayTeam": "필라델피아U",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 5,
       "status": "SCHEDULED",
       "timestamp": 1789347600000,
       "sport": "축구"
@@ -1960,8 +1967,8 @@
     {
       "homeTeam": "바레인",
       "awayTeam": "카자흐스탄",
-      "homeScore": 23,
-      "awayScore": 14,
+      "homeScore": 101,
+      "awayScore": 78,
       "status": "SCHEDULED",
       "timestamp": 1789347600000,
       "sport": "농구"
@@ -1969,8 +1976,8 @@
     {
       "homeTeam": "중국",
       "awayTeam": "필리핀",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 105,
+      "awayScore": 61,
       "status": "SCHEDULED",
       "timestamp": 1789358400000,
       "sport": "농구"
