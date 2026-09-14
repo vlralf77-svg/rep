@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-14T06:22:46.448Z",
-  "count": 220,
+  "updatedAt": "2026-09-14T13:02:46.703Z",
+  "count": 219,
   "scores": [
     {
       "homeTeam": "르 망",
@@ -12,19 +12,19 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "엘버스베르크",
-      "awayTeam": "바이에른 뮌헨",
-      "homeScore": 1,
-      "awayScore": 2,
+      "homeTeam": "맨유",
+      "awayTeam": "맨시티",
+      "homeScore": 0,
+      "awayScore": 1,
       "status": "FINISHED",
       "timestamp": 1789345800000,
       "sport": "축구"
     },
     {
-      "homeTeam": "맨유",
-      "awayTeam": "맨시티",
-      "homeScore": 0,
-      "awayScore": 1,
+      "homeTeam": "엘버스베르크",
+      "awayTeam": "바이에른 뮌헨",
+      "homeScore": 1,
+      "awayScore": 2,
       "status": "FINISHED",
       "timestamp": 1789345800000,
       "sport": "축구"
@@ -147,6 +147,15 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "PSV 아인트호벤",
+      "awayTeam": "스파르타",
+      "homeScore": 4,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1789354800000,
+      "sport": "축구"
+    },
+    {
       "homeTeam": "알 디리야",
       "awayTeam": "압하",
       "homeScore": 0,
@@ -160,15 +169,6 @@
       "awayTeam": "알 콜루드",
       "homeScore": 2,
       "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1789354800000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "PSV 아인트호벤",
-      "awayTeam": "스파르타",
-      "homeScore": 4,
-      "awayScore": 1,
       "status": "FINISHED",
       "timestamp": 1789354800000,
       "sport": "축구"
@@ -210,19 +210,19 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "브레스트",
-      "awayTeam": "PSG",
-      "homeScore": 0,
-      "awayScore": 1,
+      "homeTeam": "사수올로",
+      "awayTeam": "유벤투스",
+      "homeScore": 3,
+      "awayScore": 2,
       "status": "FINISHED",
       "timestamp": 1789357500000,
       "sport": "축구"
     },
     {
-      "homeTeam": "사수올로",
-      "awayTeam": "유벤투스",
-      "homeScore": 3,
-      "awayScore": 2,
+      "homeTeam": "브레스트",
+      "awayTeam": "PSG",
+      "homeScore": 0,
+      "awayScore": 1,
       "status": "FINISHED",
       "timestamp": 1789357500000,
       "sport": "축구"
@@ -320,27 +320,37 @@
     {
       "homeTeam": "한양대",
       "awayTeam": "중앙대",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 39,
+      "awayScore": 81,
+      "status": "FINISHED",
       "timestamp": 1789401600000,
       "sport": "농구"
     },
     {
       "homeTeam": "단국대",
       "awayTeam": "명지대",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 76,
+      "awayScore": 48,
+      "status": "FINISHED",
       "timestamp": 1789401600000,
       "sport": "농구"
+    },
+    {
+      "homeTeam": "요코하마",
+      "awayTeam": "요미우리",
+      "homeScore": 3,
+      "awayScore": 3,
+      "status": "LIVE",
+      "timestamp": 1789408800000,
+      "sport": "야구",
+      "inning": "10회말"
     },
     {
       "homeTeam": "야쿠르트",
       "awayTeam": "히로시마",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1789408800000,
       "sport": "야구"
     },
@@ -348,17 +358,8 @@
       "homeTeam": "한신",
       "awayTeam": "주니치",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1789408800000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "요코하마",
-      "awayTeam": "요미우리",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 6,
+      "status": "FINISHED",
       "timestamp": 1789408800000,
       "sport": "야구"
     },
@@ -1090,15 +1091,6 @@
       "status": "FINISHED",
       "timestamp": 1789326000000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "Q\n21\n20",
-      "awayTeam": "볼로그다",
-      "homeScore": 10,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1789366930256,
-      "sport": "농구"
     },
     {
       "homeTeam": "스트라스부르",
