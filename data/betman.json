@@ -1,539 +1,7 @@
 {
-  "updatedAt": "2026-09-14T02:43:35.186Z",
+  "updatedAt": "2026-09-14T09:26:36.623Z",
   "toto": [],
   "proto": [
-    {
-      "matchId": "중국_남자_필리핀|남자|1789358400000",
-      "sport": "농구",
-      "league": "승부식109 회차",
-      "homeTeam": "중국_남자_필리핀",
-      "awayTeam": "남자",
-      "gameDate": "2026-09-14T04:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.77
-            },
-            {
-              "label": "패",
-              "odds": 1.75
-            }
-          ],
-          "line": -25.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.78
-            },
-            {
-              "label": "오버",
-              "odds": 1.74
-            }
-          ],
-          "line": 168.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.8
-            },
-            {
-              "label": "짝",
-              "odds": 1.8
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "필리핀_여자_우즈베키스탄|여자|1789362000000",
-      "sport": "축구",
-      "league": "승부식109 회차",
-      "homeTeam": "필리핀_여자_우즈베키스탄",
-      "awayTeam": "여자",
-      "gameDate": "2026-09-14T05:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.85
-            },
-            {
-              "label": "무",
-              "odds": 3.05
-            },
-            {
-              "label": "패",
-              "odds": 3.75
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3.6
-            },
-            {
-              "label": "무",
-              "odds": 3.25
-            },
-            {
-              "label": "패",
-              "odds": 1.82
-            }
-          ],
-          "line": -1
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.55
-            },
-            {
-              "label": "오버",
-              "odds": 2.04
-            }
-          ],
-          "line": 2.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.81
-            },
-            {
-              "label": "짝",
-              "odds": 1.79
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "대만_여자_베트남|여자|1789369200000",
-      "sport": "축구",
-      "league": "승부식109 회차",
-      "homeTeam": "대만_여자_베트남",
-      "awayTeam": "여자",
-      "gameDate": "2026-09-14T07:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3.2
-            },
-            {
-              "label": "무",
-              "odds": 3
-            },
-            {
-              "label": "패",
-              "odds": 2.04
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.66
-            },
-            {
-              "label": "무",
-              "odds": 3.45
-            },
-            {
-              "label": "패",
-              "odds": 4.1
-            }
-          ],
-          "line": 1
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.56
-            },
-            {
-              "label": "오버",
-              "odds": 2.02
-            }
-          ],
-          "line": 2.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.81
-            },
-            {
-              "label": "짝",
-              "odds": 1.79
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "북한_여자_방글라데시|여자|1789369200000",
-      "sport": "축구",
-      "league": "승부식109 회차",
-      "homeTeam": "북한_여자_방글라데시",
-      "awayTeam": "여자",
-      "gameDate": "2026-09-14T07:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.47
-            },
-            {
-              "label": "무",
-              "odds": 5.5
-            },
-            {
-              "label": "패",
-              "odds": 3.65
-            }
-          ],
-          "line": -4
-        },
-        {
-          "type": "핸디캡2",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.09
-            },
-            {
-              "label": "무",
-              "odds": 4.9
-            },
-            {
-              "label": "패",
-              "odds": 2.2
-            }
-          ],
-          "line": -5
-        },
-        {
-          "type": "소수핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.97
-            },
-            {
-              "label": "패",
-              "odds": 1.25
-            }
-          ],
-          "line": -6.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.78
-            },
-            {
-              "label": "오버",
-              "odds": 1.74
-            }
-          ],
-          "line": 5.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.81
-            },
-            {
-              "label": "짝",
-              "odds": 1.79
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "야쿠르트 스왈로스|히로시마 도요카프|1789376400000",
-      "sport": "야구",
-      "league": "승부식109 회차",
-      "homeTeam": "야쿠르트 스왈로스",
-      "awayTeam": "히로시마 도요카프",
-      "gameDate": "2026-09-14T09:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.9
-            },
-            {
-              "label": "패",
-              "odds": 1.64
-            }
-          ]
-        },
-        {
-          "type": "승1패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3.1
-            },
-            {
-              "label": "1",
-              "odds": 2.65
-            },
-            {
-              "label": "패",
-              "odds": 2.22
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.23
-            },
-            {
-              "label": "패",
-              "odds": 3.09
-            }
-          ],
-          "line": 2.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.67
-            },
-            {
-              "label": "오버",
-              "odds": 1.86
-            }
-          ],
-          "line": 6.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.64
-            },
-            {
-              "label": "짝",
-              "odds": 1.99
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "요코하마 DeNA베이스타스|요미우리 자이언츠|1789376400000",
-      "sport": "야구",
-      "league": "승부식109 회차",
-      "homeTeam": "요코하마 DeNA베이스타스",
-      "awayTeam": "요미우리 자이언츠",
-      "gameDate": "2026-09-14T09:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.55
-            },
-            {
-              "label": "패",
-              "odds": 2.04
-            }
-          ]
-        },
-        {
-          "type": "승1패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.3
-            },
-            {
-              "label": "1",
-              "odds": 2.8
-            },
-            {
-              "label": "패",
-              "odds": 2.8
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3.16
-            },
-            {
-              "label": "패",
-              "odds": 1.22
-            }
-          ],
-          "line": -2.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.97
-            },
-            {
-              "label": "오버",
-              "odds": 1.59
-            }
-          ],
-          "line": 6.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.64
-            },
-            {
-              "label": "짝",
-              "odds": 1.99
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "한신 타이거즈|주니치 드래건스|1789376400000",
-      "sport": "야구",
-      "league": "승부식109 회차",
-      "homeTeam": "한신 타이거즈",
-      "awayTeam": "주니치 드래건스",
-      "gameDate": "2026-09-14T09:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.52
-            },
-            {
-              "label": "패",
-              "odds": 2.09
-            }
-          ]
-        },
-        {
-          "type": "승1패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.31
-            },
-            {
-              "label": "1",
-              "odds": 2.65
-            },
-            {
-              "label": "패",
-              "odds": 2.95
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3.23
-            },
-            {
-              "label": "패",
-              "odds": 1.21
-            }
-          ],
-          "line": -2.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.85
-            },
-            {
-              "label": "오버",
-              "odds": 1.68
-            }
-          ],
-          "line": 5.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.65
-            },
-            {
-              "label": "짝",
-              "odds": 1.98
-            }
-          ]
-        }
-      ]
-    },
     {
       "matchId": "중국_여자_홍콩|여자|1789380000000",
       "sport": "축구",
@@ -565,15 +33,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.56
+              "odds": 1.43
             },
             {
               "label": "무",
-              "odds": 4.25
+              "odds": 5
             },
             {
               "label": "패",
-              "odds": 3.85
+              "odds": 4.2
             }
           ],
           "line": -3
@@ -583,15 +51,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.85
+              "odds": 1.96
             },
             {
               "label": "무",
-              "odds": 5.2
+              "odds": 5.5
             },
             {
               "label": "패",
-              "odds": 1.69
+              "odds": 2.25
             }
           ],
           "line": -4
@@ -601,11 +69,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 3.86
+              "odds": 2.97
             },
             {
               "label": "패",
-              "odds": 1.14
+              "odds": 1.25
             }
           ],
           "line": -5.5
@@ -615,11 +83,11 @@
           "selections": [
             {
               "label": "언더",
-              "odds": 2.17
+              "odds": 2.26
             },
             {
               "label": "오버",
-              "odds": 1.48
+              "odds": 1.44
             }
           ],
           "line": 4.5
@@ -653,7 +121,7 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.56
+              "odds": 1.47
             },
             {
               "label": "무",
@@ -661,7 +129,7 @@
             },
             {
               "label": "패",
-              "odds": 3.3
+              "odds": 3.8
             }
           ],
           "line": -4
@@ -671,15 +139,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.25
+              "odds": 2.04
             },
             {
               "label": "무",
-              "odds": 5
+              "odds": 5.2
             },
             {
               "label": "패",
-              "odds": 2.03
+              "odds": 2.2
             }
           ],
           "line": -5
@@ -689,11 +157,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 3.09
+              "odds": 2.68
             },
             {
               "label": "패",
-              "odds": 1.23
+              "odds": 1.31
             }
           ],
           "line": -6.5
@@ -791,11 +259,11 @@
           "selections": [
             {
               "label": "언더",
-              "odds": 1.73
+              "odds": 1.63
             },
             {
               "label": "오버",
-              "odds": 1.79
+              "odds": 1.91
             }
           ],
           "line": 5.5
@@ -902,15 +370,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 4
+              "odds": 4.2
             },
             {
               "label": "무",
-              "odds": 3.55
+              "odds": 3.65
             },
             {
               "label": "패",
-              "odds": 1.62
+              "odds": 1.57
             }
           ]
         },
@@ -919,7 +387,7 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.03
+              "odds": 2.13
             },
             {
               "label": "무",
@@ -927,7 +395,7 @@
             },
             {
               "label": "패",
-              "odds": 2.75
+              "odds": 2.6
             }
           ],
           "line": 1
@@ -937,11 +405,11 @@
           "selections": [
             {
               "label": "언더",
-              "odds": 2.04
+              "odds": 2.13
             },
             {
               "label": "오버",
-              "odds": 1.55
+              "odds": 1.5
             }
           ],
           "line": 2.5
@@ -1317,7 +785,7 @@
           "selections": [
             {
               "label": "승",
-              "odds": 3.3
+              "odds": 3.55
             },
             {
               "label": "무",
@@ -1325,7 +793,7 @@
             },
             {
               "label": "패",
-              "odds": 1.95
+              "odds": 1.87
             }
           ]
         },
@@ -1334,15 +802,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.67
+              "odds": 1.75
             },
             {
               "label": "무",
-              "odds": 3.35
+              "odds": 3.25
             },
             {
               "label": "패",
-              "odds": 3.95
+              "odds": 3.7
             }
           ],
           "line": 1
@@ -1352,11 +820,11 @@
           "selections": [
             {
               "label": "언더",
-              "odds": 1.56
+              "odds": 1.64
             },
             {
               "label": "오버",
-              "odds": 2.02
+              "odds": 1.9
             }
           ],
           "line": 2.5
@@ -1407,11 +875,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.65
+              "odds": 1.6
             },
             {
               "label": "무",
-              "odds": 3.65
+              "odds": 3.95
             },
             {
               "label": "패",
@@ -1463,15 +931,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.19
+              "odds": 1.16
             },
             {
               "label": "무",
-              "odds": 4.95
+              "odds": 5.5
             },
             {
               "label": "패",
-              "odds": 9.3
+              "odds": 9.5
             }
           ]
         },
@@ -1480,7 +948,7 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.69
+              "odds": 1.61
             },
             {
               "label": "무",
@@ -1488,7 +956,7 @@
             },
             {
               "label": "패",
-              "odds": 3.7
+              "odds": 4.1
             }
           ],
           "line": -1
@@ -1498,15 +966,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.65
+              "odds": 2.5
             },
             {
               "label": "무",
-              "odds": 3.65
+              "odds": 3.55
             },
             {
               "label": "패",
-              "odds": 2.01
+              "odds": 2.14
             }
           ],
           "line": -2
@@ -1516,11 +984,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 4.75
+              "odds": 4.25
             },
             {
               "label": "패",
-              "odds": 1.08
+              "odds": 1.11
             }
           ],
           "line": -3.5
@@ -1530,11 +998,11 @@
           "selections": [
             {
               "label": "언더",
-              "odds": 1.53
+              "odds": 1.58
             },
             {
               "label": "오버",
-              "odds": 2.07
+              "odds": 1.99
             }
           ],
           "line": 3.5
@@ -2780,6 +2248,514 @@
       ]
     },
     {
+      "matchId": "삼성 라이온즈|롯데 자이언츠|1789464600000",
+      "sport": "야구",
+      "league": "승부식109 회차",
+      "homeTeam": "삼성 라이온즈",
+      "awayTeam": "롯데 자이언츠",
+      "gameDate": "2026-09-15T09:30:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.41
+            },
+            {
+              "label": "패",
+              "odds": 2.34
+            }
+          ]
+        },
+        {
+          "type": "승1패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.84
+            },
+            {
+              "label": "1",
+              "odds": 3.6
+            },
+            {
+              "label": "패",
+              "odds": 3.05
+            }
+          ]
+        },
+        {
+          "type": "핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 2.34
+            },
+            {
+              "label": "패",
+              "odds": 1.41
+            }
+          ],
+          "line": -2.5
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.86
+            },
+            {
+              "label": "오버",
+              "odds": 1.67
+            }
+          ],
+          "line": 10.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.61
+            },
+            {
+              "label": "짝",
+              "odds": 2.04
+            }
+          ]
+        },
+        {
+          "type": "전반 승무패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.64
+            },
+            {
+              "label": "무",
+              "odds": 7.2
+            },
+            {
+              "label": "패",
+              "odds": 2.5
+            }
+          ]
+        },
+        {
+          "type": "전반 핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 2.11
+            },
+            {
+              "label": "패",
+              "odds": 1.51
+            }
+          ],
+          "line": -1.5
+        },
+        {
+          "type": "전반 언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.66
+            },
+            {
+              "label": "오버",
+              "odds": 1.87
+            }
+          ],
+          "line": 6.5
+        }
+      ]
+    },
+    {
+      "matchId": "SSG 랜더스|KIA 타이거즈|1789464600000",
+      "sport": "야구",
+      "league": "승부식109 회차",
+      "homeTeam": "SSG 랜더스",
+      "awayTeam": "KIA 타이거즈",
+      "gameDate": "2026-09-15T09:30:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.89
+            },
+            {
+              "label": "패",
+              "odds": 1.65
+            }
+          ]
+        },
+        {
+          "type": "승1패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 2.7
+            },
+            {
+              "label": "1",
+              "odds": 3.5
+            },
+            {
+              "label": "패",
+              "odds": 2.03
+            }
+          ]
+        },
+        {
+          "type": "핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.33
+            },
+            {
+              "label": "패",
+              "odds": 2.6
+            }
+          ],
+          "line": 2.5
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.63
+            },
+            {
+              "label": "오버",
+              "odds": 1.91
+            }
+          ],
+          "line": 11.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.61
+            },
+            {
+              "label": "짝",
+              "odds": 2.04
+            }
+          ]
+        },
+        {
+          "type": "전반 승무패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 2.05
+            },
+            {
+              "label": "무",
+              "odds": 6.8
+            },
+            {
+              "label": "패",
+              "odds": 1.94
+            }
+          ]
+        },
+        {
+          "type": "전반 핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.33
+            },
+            {
+              "label": "패",
+              "odds": 2.6
+            }
+          ],
+          "line": 1.5
+        },
+        {
+          "type": "전반 언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.59
+            },
+            {
+              "label": "오버",
+              "odds": 1.97
+            }
+          ],
+          "line": 6.5
+        }
+      ]
+    },
+    {
+      "matchId": "NC 다이노스|LG 트윈스|1789464600000",
+      "sport": "야구",
+      "league": "승부식109 회차",
+      "homeTeam": "NC 다이노스",
+      "awayTeam": "LG 트윈스",
+      "gameDate": "2026-09-15T09:30:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 2.24
+            },
+            {
+              "label": "패",
+              "odds": 1.45
+            }
+          ]
+        },
+        {
+          "type": "승1패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 3.35
+            },
+            {
+              "label": "1",
+              "odds": 3.5
+            },
+            {
+              "label": "패",
+              "odds": 1.77
+            }
+          ]
+        },
+        {
+          "type": "핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.45
+            },
+            {
+              "label": "패",
+              "odds": 2.24
+            }
+          ],
+          "line": 2.5
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.89
+            },
+            {
+              "label": "오버",
+              "odds": 1.65
+            }
+          ],
+          "line": 9.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.62
+            },
+            {
+              "label": "짝",
+              "odds": 2.03
+            }
+          ]
+        },
+        {
+          "type": "전반 승무패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 2.45
+            },
+            {
+              "label": "무",
+              "odds": 6.7
+            },
+            {
+              "label": "패",
+              "odds": 1.69
+            }
+          ]
+        },
+        {
+          "type": "전반 핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.45
+            },
+            {
+              "label": "패",
+              "odds": 2.24
+            }
+          ],
+          "line": 1.5
+        },
+        {
+          "type": "전반 언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.69
+            },
+            {
+              "label": "오버",
+              "odds": 1.84
+            }
+          ],
+          "line": 5.5
+        }
+      ]
+    },
+    {
+      "matchId": "한화 이글스|KT 위즈|1789464600000",
+      "sport": "야구",
+      "league": "승부식109 회차",
+      "homeTeam": "한화 이글스",
+      "awayTeam": "KT 위즈",
+      "gameDate": "2026-09-15T09:30:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.93
+            },
+            {
+              "label": "패",
+              "odds": 1.62
+            }
+          ]
+        },
+        {
+          "type": "승1패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 2.8
+            },
+            {
+              "label": "1",
+              "odds": 3.3
+            },
+            {
+              "label": "패",
+              "odds": 2.04
+            }
+          ]
+        },
+        {
+          "type": "핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.32
+            },
+            {
+              "label": "패",
+              "odds": 2.64
+            }
+          ],
+          "line": 2.5
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.67
+            },
+            {
+              "label": "오버",
+              "odds": 1.86
+            }
+          ],
+          "line": 9.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.62
+            },
+            {
+              "label": "짝",
+              "odds": 2.03
+            }
+          ]
+        },
+        {
+          "type": "전반 승무패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 2.15
+            },
+            {
+              "label": "무",
+              "odds": 6.2
+            },
+            {
+              "label": "패",
+              "odds": 1.91
+            }
+          ]
+        },
+        {
+          "type": "전반 핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.33
+            },
+            {
+              "label": "패",
+              "odds": 2.6
+            }
+          ],
+          "line": 1.5
+        },
+        {
+          "type": "전반 언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.63
+            },
+            {
+              "label": "오버",
+              "odds": 1.91
+            }
+          ],
+          "line": 5.5
+        }
+      ]
+    },
+    {
       "matchId": "랏차부리|상하이 하이강|1789466400000",
       "sport": "축구",
       "league": "승부식109 회차",
@@ -2793,7 +2769,7 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.9
+              "odds": 2.7
             },
             {
               "label": "무",
@@ -2801,7 +2777,7 @@
             },
             {
               "label": "패",
-              "odds": 2.03
+              "odds": 2.14
             }
           ]
         },
@@ -2810,15 +2786,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.62
+              "odds": 1.55
             },
             {
               "label": "무",
-              "odds": 3.6
+              "odds": 3.75
             },
             {
               "label": "패",
-              "odds": 3.95
+              "odds": 4.2
             }
           ],
           "line": 1
@@ -3458,11 +3434,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 5.2
+              "odds": 4.95
             },
             {
               "label": "무",
-              "odds": 4.05
+              "odds": 4.2
             },
             {
               "label": "패",
@@ -3475,15 +3451,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.5
+              "odds": 2.4
             },
             {
               "label": "무",
-              "odds": 3.45
+              "odds": 3.5
             },
             {
               "label": "패",
-              "odds": 2.18
+              "odds": 2.23
             }
           ],
           "line": 1
@@ -3818,11 +3794,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.07
+              "odds": 1.04
             },
             {
               "label": "무",
-              "odds": 6.7
+              "odds": 8.1
             },
             {
               "label": "패",
@@ -3835,11 +3811,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.36
+              "odds": 1.31
             },
             {
               "label": "무",
-              "odds": 4.2
+              "odds": 4.75
             },
             {
               "label": "패",
@@ -3853,11 +3829,11 @@
           "selections": [
             {
               "label": "언더",
-              "odds": 1.81
+              "odds": 1.87
             },
             {
               "label": "오버",
-              "odds": 1.71
+              "odds": 1.66
             }
           ],
           "line": 3.5
