@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-16T06:41:03.866Z",
-  "count": 150,
+  "updatedAt": "2026-09-16T12:02:24.286Z",
+  "count": 153,
   "scores": [
     {
       "homeTeam": "알 아인",
@@ -66,6 +66,24 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "브리스톨 C",
+      "awayTeam": "링컨",
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1789530300000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "미들즈브러",
+      "awayTeam": "밀월",
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1789530300000,
+      "sport": "축구"
+    },
+    {
       "homeTeam": "팰커크",
       "awayTeam": "하츠",
       "homeScore": 2,
@@ -88,24 +106,6 @@
       "awayTeam": "애버딘",
       "homeScore": 0,
       "awayScore": 4,
-      "status": "FINISHED",
-      "timestamp": 1789530300000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "브리스톨 C",
-      "awayTeam": "링컨",
-      "homeScore": 0,
-      "awayScore": 1,
-      "status": "FINISHED",
-      "timestamp": 1789530300000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "미들즈브러",
-      "awayTeam": "밀월",
-      "homeScore": 2,
-      "awayScore": 2,
       "status": "FINISHED",
       "timestamp": 1789530300000,
       "sport": "축구"
@@ -282,32 +282,13 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "인하대",
-      "awayTeam": "한양대",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1789567200000,
-      "sport": "배구"
-    },
-    {
       "homeTeam": "울산대",
       "awayTeam": "광주여대",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1789567200000,
-      "sport": "농구",
-      "inning": "경기전"
-    },
-    {
-      "homeTeam": "경기대",
-      "awayTeam": "성균관대",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 95,
+      "awayScore": 98,
       "status": "FINISHED",
       "timestamp": 1789567200000,
-      "sport": "배구"
+      "sport": "농구"
     },
     {
       "homeTeam": "강원대",
@@ -319,65 +300,88 @@
       "sport": "농구"
     },
     {
-      "homeTeam": "지바롯데",
-      "awayTeam": "라쿠텐",
+      "homeTeam": "인하대",
+      "awayTeam": "한양대",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1789567200000,
+      "sport": "배구"
+    },
+    {
+      "homeTeam": "경기대",
+      "awayTeam": "성균관대",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1789581600000,
-      "sport": "야구"
+      "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1789567200000,
+      "sport": "배구"
     },
     {
       "homeTeam": "오릭스",
       "awayTeam": "소프트뱅크",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
+      "timestamp": 1789581600000,
+      "sport": "야구",
+      "inning": "8회말"
+    },
+    {
+      "homeTeam": "지바롯데",
+      "awayTeam": "라쿠텐",
+      "homeScore": 0,
+      "awayScore": 4,
+      "status": "FINISHED",
       "timestamp": 1789581600000,
       "sport": "야구"
     },
     {
       "homeTeam": "한화",
       "awayTeam": "KT",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "LIVE",
       "timestamp": 1789583400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "7회말"
     },
     {
       "homeTeam": "NC",
       "awayTeam": "LG",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 5,
+      "status": "LIVE",
       "timestamp": 1789583400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "8회초"
     },
     {
       "homeTeam": "롯데",
       "awayTeam": "SSG",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 4,
+      "status": "LIVE",
       "timestamp": 1789583400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "8회말"
     },
     {
       "homeTeam": "두산",
       "awayTeam": "삼성",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1789583400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "8회말"
     },
     {
       "homeTeam": "전북",
       "awayTeam": "가시와 레이솔",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1789585200000,
       "sport": "축구"
     },
@@ -385,14 +389,14 @@
       "homeTeam": "서울",
       "awayTeam": "반둥",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1789585200000,
       "sport": "축구"
     },
     {
-      "homeTeam": "비에트텔",
-      "awayTeam": "멜버른 FC",
+      "homeTeam": "포트",
+      "awayTeam": "비셀 고베",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -400,8 +404,8 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "포트",
-      "awayTeam": "비셀 고베",
+      "homeTeam": "비에트텔",
+      "awayTeam": "멜버른 FC",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -796,12 +800,39 @@
       "sport": "농구"
     },
     {
-      "homeTeam": "Q\n9\n8\n20\n14",
-      "awayTeam": "Yunost Penzevskaya Ob",
-      "homeScore": 10,
+      "homeTeam": "HT\n22\n12\n23\n24",
+      "awayTeam": "CSKA 소피아",
+      "homeScore": 14,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1789560109913,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "과\n9\n7\n25\n27\n21\n8\n10\n7",
+      "awayTeam": "울산 현대모비스",
+      "homeScore": 7,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1789540825947,
+      "timestamp": 1789560109913,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Tongxiang\nHangzhou\n대기",
+      "awayTeam": "Yuyao\nPutuo\n대기\nMozamb",
+      "homeScore": 11,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1789560109913,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n18\n23\n19\n11",
+      "awayTeam": "페로비아리우 베이라\nCosta do S",
+      "homeScore": 13,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1789560109913,
       "sport": "농구"
     },
     {
@@ -1059,8 +1090,8 @@
     {
       "homeTeam": "전북현대",
       "awayTeam": "가시와레이솔",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 2,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1789552800000,
       "sport": "축구"
@@ -1203,36 +1234,36 @@
     {
       "homeTeam": "대한민국",
       "awayTeam": "홍콩",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1789542000000,
       "sport": "배구"
     },
     {
       "homeTeam": "태국",
       "awayTeam": "몽골",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1789542000000,
       "sport": "배구"
     },
     {
       "homeTeam": "대만",
       "awayTeam": "키르기스스탄",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1789552800000,
       "sport": "배구"
     },
     {
       "homeTeam": "일본",
       "awayTeam": "네팔",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1789554000000,
       "sport": "배구"
     },
@@ -1311,8 +1342,8 @@
     {
       "homeTeam": "중국",
       "awayTeam": "사우디",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 87,
+      "awayScore": 78,
       "status": "SCHEDULED",
       "timestamp": 1789542000000,
       "sport": "농구"
@@ -1320,8 +1351,8 @@
     {
       "homeTeam": "대만",
       "awayTeam": "일본",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 74,
+      "awayScore": 82,
       "status": "SCHEDULED",
       "timestamp": 1789554000000,
       "sport": "농구"
