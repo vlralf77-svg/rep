@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-17T21:41:34.084Z",
-  "count": 207,
+  "updatedAt": "2026-09-17T23:41:42.094Z",
+  "count": 210,
   "scores": [
     {
       "homeTeam": "알칼디야 SC",
@@ -682,10 +682,9 @@
       "awayTeam": "샌디에이고",
       "homeScore": 2,
       "awayScore": 9,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1789704600000,
-      "sport": "야구",
-      "inning": "8회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "말라가",
@@ -699,20 +698,22 @@
     {
       "homeTeam": "휴스턴",
       "awayTeam": "캔자스시티",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1789719300000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회말"
     },
     {
       "homeTeam": "뉴욕메츠",
       "awayTeam": "필라델피아",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1789719300000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회말"
     },
     {
       "homeTeam": "시카고W",
@@ -821,6 +822,33 @@
       "status": "SCHEDULED",
       "timestamp": 1789756200000,
       "sport": "야구"
+    },
+    {
+      "homeTeam": "HT\n38\n14\n21\n21",
+      "awayTeam": "펠릭스 페레즈 카르도소",
+      "homeScore": 23,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1789688466774,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n21\n23\n13\n16",
+      "awayTeam": "AVIBA\nACOB Sicoob\n \n1",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1789688466774,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "과\n18\n17\n15\n31\n5\n4\n9\n2",
+      "awayTeam": "Maringa U23",
+      "homeScore": 20,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1789688466774,
+      "sport": "농구"
     },
     {
       "homeTeam": "아라라트",
