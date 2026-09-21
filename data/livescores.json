@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-21T01:18:59.199Z",
-  "count": 225,
+  "updatedAt": "2026-09-21T06:26:37.428Z",
+  "count": 229,
   "scores": [
     {
       "homeTeam": "니스",
@@ -241,20 +241,18 @@
       "awayTeam": "샌디에고",
       "homeScore": 2,
       "awayScore": 2,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1789977600000,
-      "sport": "축구",
-      "minute": "후반 51'"
+      "sport": "축구"
     },
     {
       "homeTeam": "볼티모어",
       "awayTeam": "밀워키",
       "homeScore": 0,
-      "awayScore": 2,
-      "status": "LIVE",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1789978800000,
-      "sport": "야구",
-      "inning": "7회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "태국",
@@ -286,29 +284,32 @@
     {
       "homeTeam": "주니치",
       "awayTeam": "히로시마",
-      "homeScore": 0,
+      "homeScore": 5,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1789999200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "5회초"
     },
     {
       "homeTeam": "닛폰햄",
       "awayTeam": "오릭스",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1789999200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "4회말"
     },
     {
       "homeTeam": "한신",
       "awayTeam": "요코하마",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1789999200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "4회초"
     },
     {
       "homeTeam": "중앙대",
@@ -1148,24 +1149,6 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n25\n22\n21\n28",
-      "awayTeam": "미네로스",
-      "homeScore": 0,
-      "awayScore": 5,
-      "status": "LIVE",
-      "timestamp": 1789953501368,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n15\n21\n0\n10\n15\n0",
-      "awayTeam": "Santos de San Luis",
-      "homeScore": 1,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1789953501368,
-      "sport": "농구"
-    },
-    {
       "homeTeam": "파리FC",
       "awayTeam": "스트라스부르",
       "homeScore": 2,
@@ -1881,7 +1864,7 @@
       "awayTeam": "샌디에고FC",
       "homeScore": 2,
       "awayScore": 2,
-      "status": "FINISHED",
+      "status": "SCHEDULED",
       "timestamp": 1789945200000,
       "sport": "축구"
     },
@@ -1931,6 +1914,60 @@
       "sport": "배구"
     },
     {
+      "homeTeam": "인도네시아",
+      "awayTeam": "베트남",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1789963200000,
+      "sport": "배구"
+    },
+    {
+      "homeTeam": "대만",
+      "awayTeam": "카자흐스탄",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "SCHEDULED",
+      "timestamp": 1789963200000,
+      "sport": "배구"
+    },
+    {
+      "homeTeam": "네팔",
+      "awayTeam": "홍콩",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1789974000000,
+      "sport": "배구"
+    },
+    {
+      "homeTeam": "태국",
+      "awayTeam": "중국",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1789974000000,
+      "sport": "배구"
+    },
+    {
+      "homeTeam": "필리핀",
+      "awayTeam": "몽골",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1789984800000,
+      "sport": "배구"
+    },
+    {
+      "homeTeam": "일본",
+      "awayTeam": "대한민국",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1789986000000,
+      "sport": "배구"
+    },
+    {
       "homeTeam": "홍콩",
       "awayTeam": "필리핀",
       "homeScore": 73,
@@ -1969,8 +2006,8 @@
     {
       "homeTeam": "몽골",
       "awayTeam": "대한민국",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 61,
+      "awayScore": 88,
       "status": "SCHEDULED",
       "timestamp": 1789963200000,
       "sport": "농구"
