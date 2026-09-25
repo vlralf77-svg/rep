@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-25T15:17:25.428Z",
-  "count": 129,
+  "updatedAt": "2026-09-25T19:17:47.381Z",
+  "count": 131,
   "scores": [
     {
       "homeTeam": "안도라",
@@ -321,18 +321,17 @@
       "homeTeam": "인도",
       "awayTeam": "파나마",
       "homeScore": 1,
-      "awayScore": 0,
-      "status": "LIVE",
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1790377200000,
-      "sport": "축구",
-      "minute": "후반 6'"
+      "sport": "축구"
     },
     {
       "homeTeam": "아르메니아",
       "awayTeam": "라트비아",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1790384400000,
       "sport": "축구"
     },
@@ -340,73 +339,80 @@
       "homeTeam": "조지아",
       "awayTeam": "북아일랜드",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1790384400000,
       "sport": "축구"
     },
     {
       "homeTeam": "보스턴",
       "awayTeam": "시카고컵스",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 3,
+      "awayScore": 3,
+      "status": "LIVE",
       "timestamp": 1790388300000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "7회말"
     },
     {
       "homeTeam": "폴란드",
       "awayTeam": "보스니아 헤르체고비나",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1790394300000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 27'"
     },
     {
       "homeTeam": "이탈리아",
       "awayTeam": "벨기에",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1790394300000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 26'"
     },
     {
       "homeTeam": "몬테네그로",
       "awayTeam": "키프로스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1790394300000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 27'"
     },
     {
       "homeTeam": "헝가리",
       "awayTeam": "우크라이나",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1790394300000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 25'"
     },
     {
       "homeTeam": "튀르키예",
       "awayTeam": "프랑스",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1790394300000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 26'"
     },
     {
       "homeTeam": "스웨덴",
       "awayTeam": "루마니아",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1790394300000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반 29'"
     },
     {
       "homeTeam": "뉴욕양키스",
@@ -688,36 +694,54 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "대기",
-      "awayTeam": "Botev 2012",
-      "homeScore": 15,
+      "homeTeam": "HT\n22\n20\n22\n21",
+      "awayTeam": "Mitteldeutscher BC",
+      "homeScore": 18,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1790349414437,
+      "timestamp": 1790363831486,
       "sport": "농구"
     },
     {
-      "homeTeam": "Q\n14\n12\n3\n11\n17\n11",
-      "awayTeam": "HD Marines",
+      "homeTeam": "연기",
+      "awayTeam": "KK 자다르",
+      "homeScore": 16,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1790363831486,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n26\n10\n27\n4",
+      "awayTeam": "Horticult Kontich Wol",
+      "homeScore": 19,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1790363831486,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "대기",
+      "awayTeam": "VTB 유나이티드 리그",
+      "homeScore": 3,
+      "awayScore": 22,
+      "status": "LIVE",
+      "timestamp": 1790363831486,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "과\n22\n13\n18\n12\n5\n6\n6\n6",
+      "awayTeam": "MC Alger",
       "homeScore": 14,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1790349414437,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n18\n18\n10\n7\n18\n5",
-      "awayTeam": "GS Cosider",
-      "homeScore": 15,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1790349414437,
+      "timestamp": 1790363831486,
       "sport": "농구"
     },
     {
       "homeTeam": "지로나",
       "awayTeam": "알바세테",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1790361000000,
