@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-28T05:32:12.484Z",
-  "count": 139,
+  "updatedAt": "2026-09-28T11:55:35.126Z",
+  "count": 141,
   "scores": [
     {
       "homeTeam": "오스트리아",
@@ -239,65 +239,70 @@
     {
       "homeTeam": "단국대",
       "awayTeam": "한양대",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 81,
+      "awayScore": 66,
+      "status": "FINISHED",
       "timestamp": 1790611200000,
       "sport": "농구"
     },
     {
       "homeTeam": "건국대",
       "awayTeam": "성균관대",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 75,
+      "awayScore": 92,
+      "status": "FINISHED",
       "timestamp": 1790611200000,
       "sport": "농구"
     },
     {
       "homeTeam": "요코하마",
       "awayTeam": "히로시마",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "LIVE",
       "timestamp": 1790618400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "8회초"
     },
     {
       "homeTeam": "지바롯데",
       "awayTeam": "닛폰햄",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 8,
+      "status": "LIVE",
       "timestamp": 1790618400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "8회말"
     },
     {
       "homeTeam": "세이부",
       "awayTeam": "라쿠텐",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 4,
+      "status": "LIVE",
       "timestamp": 1790618400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "7회초"
     },
     {
       "homeTeam": "일본",
       "awayTeam": "베네수엘라",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1790623500000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 22'"
     },
     {
       "homeTeam": "대한민국",
       "awayTeam": "우루과이",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "LIVE",
       "timestamp": 1790625600000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반종료"
     },
     {
       "homeTeam": "차이니스 타이베이",
@@ -804,6 +809,24 @@
       "sport": "농구"
     },
     {
+      "homeTeam": "HT\n18\n26\n31\n20",
+      "awayTeam": "Kamit Tver\nBC Moscow",
+      "homeScore": 13,
+      "awayScore": 30,
+      "status": "FINISHED",
+      "timestamp": 1790596502617,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n28\n19\n9\n25",
+      "awayTeam": "Yunost Penzevskaya Ob",
+      "homeScore": 14,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1790596502617,
+      "sport": "농구"
+    },
+    {
       "homeTeam": "CD테네리페",
       "awayTeam": "카디스",
       "homeScore": 1,
@@ -1103,18 +1126,18 @@
     {
       "homeTeam": "파키스탄",
       "awayTeam": "우즈베키스탄",
-      "homeScore": 1,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1790568000000,
       "sport": "배구"
     },
     {
       "homeTeam": "중국",
       "awayTeam": "필리핀",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1790568000000,
       "sport": "배구"
     },
@@ -1122,8 +1145,8 @@
       "homeTeam": "태국",
       "awayTeam": "이란",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1790578800000,
       "sport": "배구"
     },
@@ -1131,17 +1154,17 @@
       "homeTeam": "베트남",
       "awayTeam": "카타르",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1790578800000,
       "sport": "배구"
     },
     {
       "homeTeam": "대만",
       "awayTeam": "대한민국",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1790589600000,
       "sport": "배구"
     },
@@ -1149,8 +1172,8 @@
       "homeTeam": "카자흐스탄",
       "awayTeam": "일본",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1790590800000,
       "sport": "배구"
     },
