@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-28T18:48:50.661Z",
-  "count": 77,
+  "updatedAt": "2026-09-28T23:34:15.075Z",
+  "count": 75,
   "scores": [
     {
       "homeTeam": "오스트리아",
@@ -327,11 +327,38 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "스웨덴",
+      "awayTeam": "폴란드",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1790653500000,
+      "sport": "축구"
+    },
+    {
       "homeTeam": "북아일랜드",
       "awayTeam": "헝가리",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
+      "timestamp": 1790653500000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "루마니아",
+      "awayTeam": "보스니아 헤르체고비나",
+      "homeScore": 2,
+      "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1790653500000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "튀르키예",
+      "awayTeam": "이탈리아",
+      "homeScore": 1,
+      "awayScore": 4,
+      "status": "FINISHED",
       "timestamp": 1790653500000,
       "sport": "축구"
     },
@@ -339,40 +366,10 @@
       "homeTeam": "벨기에",
       "awayTeam": "프랑스",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1790653500000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "스웨덴",
-      "awayTeam": "폴란드",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1790653500000,
-      "sport": "축구",
-      "minute": "전반 1'"
-    },
-    {
-      "homeTeam": "루마니아",
-      "awayTeam": "보스니아 헤르체고비나",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1790653500000,
-      "sport": "축구",
-      "minute": "전반 2'"
-    },
-    {
-      "homeTeam": "튀르키예",
-      "awayTeam": "이탈리아",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1790653500000,
-      "sport": "축구",
-      "minute": "전반 1'"
     },
     {
       "homeTeam": "단국대",
@@ -492,24 +489,6 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n10\n9\n20\n15",
-      "awayTeam": "GS Ilioupolis\nPkao Am",
-      "homeScore": 18,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1790621300103,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n17\n18\n15\n21",
-      "awayTeam": "알 아라비",
-      "homeScore": 14,
-      "awayScore": 45,
-      "status": "LIVE",
-      "timestamp": 1790621300104,
-      "sport": "농구"
-    },
-    {
       "homeTeam": "부르고스",
       "awayTeam": "엘덴세",
       "homeScore": 1,
@@ -549,7 +528,7 @@
       "homeTeam": "CD레가네스",
       "awayTeam": "CD카스테욘",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1790620200000,
       "sport": "축구"
