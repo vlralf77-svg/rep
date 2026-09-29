@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-29T02:42:59.629Z",
-  "count": 76,
+  "updatedAt": "2026-09-29T09:03:25.351Z",
+  "count": 77,
   "scores": [
     {
       "homeTeam": "조지아",
@@ -77,33 +77,24 @@
     {
       "homeTeam": "단국대",
       "awayTeam": "광주여대",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 94,
+      "awayScore": 58,
+      "status": "FINISHED",
       "timestamp": 1790690400000,
       "sport": "농구"
     },
     {
       "homeTeam": "울산대",
       "awayTeam": "광주대",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 52,
+      "awayScore": 97,
+      "status": "FINISHED",
       "timestamp": 1790690400000,
       "sport": "농구"
     },
     {
       "homeTeam": "요미우리",
       "awayTeam": "히로시마",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1790704800000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "라쿠텐",
-      "awayTeam": "지바롯데",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -127,6 +118,16 @@
       "status": "SCHEDULED",
       "timestamp": 1790704800000,
       "sport": "야구"
+    },
+    {
+      "homeTeam": "라쿠텐",
+      "awayTeam": "지바롯데",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1790704800000,
+      "sport": "야구",
+      "inning": "1회초"
     },
     {
       "homeTeam": "삼성",
@@ -489,12 +490,21 @@
       "sport": "농구"
     },
     {
-      "homeTeam": "Q\n22\n25\n6\n4\n20\n15",
-      "awayTeam": "Santa Ana",
-      "homeScore": 1,
-      "awayScore": 15,
+      "homeTeam": "Q\n15\n19\n2\n9\n10\n1",
+      "awayTeam": "Magnitogorsk",
+      "homeScore": 14,
+      "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1790649741568,
+      "timestamp": 1790672567498,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "ombers\nLPU Pirates\n연기",
+      "awayTeam": "SSC",
+      "homeScore": 7,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1790672567498,
       "sport": "농구"
     },
     {
@@ -627,34 +637,34 @@
       "homeTeam": "홍콩",
       "awayTeam": "베트남",
       "homeScore": 1,
-      "awayScore": 2,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1790643600000,
       "sport": "배구"
     },
     {
       "homeTeam": "우즈베키스탄",
       "awayTeam": "카자흐스탄",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1790654400000,
       "sport": "배구"
     },
     {
       "homeTeam": "필리핀",
       "awayTeam": "대만",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1790654400000,
       "sport": "배구"
     },
     {
       "homeTeam": "이란",
       "awayTeam": "인도네시아",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 2,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1790665200000,
       "sport": "배구"
@@ -662,8 +672,8 @@
     {
       "homeTeam": "카타르",
       "awayTeam": "인도",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 2,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1790665200000,
       "sport": "배구"
