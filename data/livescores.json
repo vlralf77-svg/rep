@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-30T15:20:15.632Z",
-  "count": 55,
+  "updatedAt": "2026-09-30T20:06:55.124Z",
+  "count": 57,
   "scores": [
     {
       "homeTeam": "몰도바",
@@ -239,20 +239,21 @@
     {
       "homeTeam": "리투아니아",
       "awayTeam": "안도라",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "FINISHED",
       "timestamp": 1790816400000,
       "sport": "축구"
     },
     {
       "homeTeam": "애틀랜타",
       "awayTeam": "필라델피아",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1790823600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "7회초"
     },
     {
       "homeTeam": "휴스턴",
@@ -399,12 +400,30 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "Q\n16\n22",
-      "awayTeam": "하포엘 하이파",
+      "homeTeam": "HT\n34\n21\n18\n12",
+      "awayTeam": "테네리페",
+      "homeScore": 19,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1790798783180,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n24\n20\n17\n20",
+      "awayTeam": "샤울랴이",
       "homeScore": 15,
       "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1790781569367,
+      "timestamp": 1790798783180,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n38\n17\n10\n13",
+      "awayTeam": "Valur",
+      "homeScore": 19,
+      "awayScore": 15,
+      "status": "LIVE",
+      "timestamp": 1790798783181,
       "sport": "농구"
     },
     {
