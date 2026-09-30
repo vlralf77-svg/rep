@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-30T02:23:55.315Z",
+  "updatedAt": "2026-09-30T08:44:44.464Z",
   "count": 65,
   "scores": [
     {
@@ -122,12 +122,11 @@
     {
       "homeTeam": "뉴욕양키스",
       "awayTeam": "보스턴",
-      "homeScore": 2,
+      "homeScore": 9,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1790758800000,
-      "sport": "야구",
-      "inning": "7회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "미국",
@@ -143,36 +142,34 @@
       "awayTeam": "페루",
       "homeScore": 1,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1790762400000,
-      "sport": "축구",
-      "minute": "후반 14'"
+      "sport": "축구"
     },
     {
       "homeTeam": "샌디에이고",
       "awayTeam": "시카고컵스",
-      "homeScore": 2,
+      "homeScore": 8,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1790766000000,
-      "sport": "야구",
-      "inning": "1회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "수원대",
       "awayTeam": "강원대",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 54,
+      "awayScore": 61,
+      "status": "FINISHED",
       "timestamp": 1790776800000,
       "sport": "농구"
     },
     {
       "homeTeam": "경희대",
       "awayTeam": "상명대",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 74,
+      "awayScore": 52,
+      "status": "FINISHED",
       "timestamp": 1790784000000,
       "sport": "농구"
     },
@@ -195,6 +192,15 @@
       "sport": "야구"
     },
     {
+      "homeTeam": "SSG",
+      "awayTeam": "LG",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1790793000000,
+      "sport": "야구"
+    },
+    {
       "homeTeam": "삼성",
       "awayTeam": "한화",
       "homeScore": 0,
@@ -206,15 +212,6 @@
     {
       "homeTeam": "KIA",
       "awayTeam": "KT",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1790793000000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "SSG",
-      "awayTeam": "LG",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -429,21 +426,21 @@
       "sport": "농구"
     },
     {
-      "homeTeam": "HT\n12\n28\n12\n12",
-      "awayTeam": "Caimanes del Llano",
-      "homeScore": 23,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1790734993302,
-      "sport": "농구"
-    },
-    {
       "homeTeam": "CD레가네스",
       "awayTeam": "CD카스테욘",
       "homeScore": 0,
       "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1790620200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "뉴욕레드불스",
+      "awayTeam": "세인트루이스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1790811000000,
       "sport": "축구"
     },
     {
