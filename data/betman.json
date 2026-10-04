@@ -1,591 +1,7 @@
 {
-  "updatedAt": "2026-10-04T07:37:53.569Z",
+  "updatedAt": "2026-10-04T13:36:07.845Z",
   "toto": [],
   "proto": [
-    {
-      "matchId": "KT 위즈|롯데 자이언츠|1791100800000",
-      "sport": "야구",
-      "league": "승부식117 회차",
-      "homeTeam": "KT 위즈",
-      "awayTeam": "롯데 자이언츠",
-      "gameDate": "2026-10-04T08:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.38
-            },
-            {
-              "label": "패",
-              "odds": 2.43
-            }
-          ]
-        },
-        {
-          "type": "승1패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.76
-            },
-            {
-              "label": "1",
-              "odds": 3.65
-            },
-            {
-              "label": "패",
-              "odds": 3.25
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.31
-            },
-            {
-              "label": "패",
-              "odds": 1.42
-            }
-          ],
-          "line": -2.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.74
-            },
-            {
-              "label": "오버",
-              "odds": 1.78
-            }
-          ],
-          "line": 9.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.62
-            },
-            {
-              "label": "짝",
-              "odds": 2.03
-            }
-          ]
-        },
-        {
-          "type": "전반 승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.57
-            },
-            {
-              "label": "무",
-              "odds": 7
-            },
-            {
-              "label": "패",
-              "odds": 2.7
-            }
-          ]
-        },
-        {
-          "type": "전반 핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.04
-            },
-            {
-              "label": "패",
-              "odds": 1.55
-            }
-          ],
-          "line": -1.5
-        },
-        {
-          "type": "전반 언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.78
-            },
-            {
-              "label": "오버",
-              "odds": 1.74
-            }
-          ],
-          "line": 5.5
-        }
-      ]
-    },
-    {
-      "matchId": "야쿠르트 스왈로스|히로시마 도요카프|1791104400000",
-      "sport": "야구",
-      "league": "승부식117 회차",
-      "homeTeam": "야쿠르트 스왈로스",
-      "awayTeam": "히로시마 도요카프",
-      "gameDate": "2026-10-04T09:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.09
-            },
-            {
-              "label": "패",
-              "odds": 1.52
-            }
-          ]
-        },
-        {
-          "type": "승1패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3.5
-            },
-            {
-              "label": "1",
-              "odds": 2.7
-            },
-            {
-              "label": "패",
-              "odds": 2.03
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.29
-            },
-            {
-              "label": "패",
-              "odds": 2.77
-            }
-          ],
-          "line": 2.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.66
-            },
-            {
-              "label": "오버",
-              "odds": 1.87
-            }
-          ],
-          "line": 6.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.65
-            },
-            {
-              "label": "짝",
-              "odds": 1.98
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "요코하마 DeNA베이스타스|한신 타이거즈|1791104400000",
-      "sport": "야구",
-      "league": "승부식117 회차",
-      "homeTeam": "요코하마 DeNA베이스타스",
-      "awayTeam": "한신 타이거즈",
-      "gameDate": "2026-10-04T09:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.7
-            },
-            {
-              "label": "패",
-              "odds": 1.82
-            }
-          ]
-        },
-        {
-          "type": "승1패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.6
-            },
-            {
-              "label": "1",
-              "odds": 2.8
-            },
-            {
-              "label": "패",
-              "odds": 2.45
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3.65
-            },
-            {
-              "label": "패",
-              "odds": 1.16
-            }
-          ],
-          "line": -2.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.65
-            },
-            {
-              "label": "오버",
-              "odds": 1.89
-            }
-          ],
-          "line": 7.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.64
-            },
-            {
-              "label": "짝",
-              "odds": 1.99
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "지바롯데 마린스|라쿠텐 골든이글스|1791104400000",
-      "sport": "야구",
-      "league": "승부식117 회차",
-      "homeTeam": "지바롯데 마린스",
-      "awayTeam": "라쿠텐 골든이글스",
-      "gameDate": "2026-10-04T09:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.81
-            },
-            {
-              "label": "패",
-              "odds": 1.71
-            }
-          ]
-        },
-        {
-          "type": "승1패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.85
-            },
-            {
-              "label": "1",
-              "odds": 2.85
-            },
-            {
-              "label": "패",
-              "odds": 2.23
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.23
-            },
-            {
-              "label": "패",
-              "odds": 3.09
-            }
-          ],
-          "line": 2.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.65
-            },
-            {
-              "label": "오버",
-              "odds": 1.89
-            }
-          ],
-          "line": 7.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.64
-            },
-            {
-              "label": "짝",
-              "odds": 1.99
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "테게바자로 미야자키|RB오미야 아르디자|1791108000000",
-      "sport": "축구",
-      "league": "승부식117 회차",
-      "homeTeam": "테게바자로 미야자키",
-      "awayTeam": "RB오미야 아르디자",
-      "gameDate": "2026-10-04T10:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.45
-            },
-            {
-              "label": "무",
-              "odds": 3.15
-            },
-            {
-              "label": "패",
-              "odds": 2.36
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.45
-            },
-            {
-              "label": "무",
-              "odds": 3.9
-            },
-            {
-              "label": "패",
-              "odds": 4.9
-            }
-          ],
-          "line": 1
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.84
-            },
-            {
-              "label": "오버",
-              "odds": 1.69
-            }
-          ],
-          "line": 2.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.81
-            },
-            {
-              "label": "짝",
-              "odds": 1.79
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "BNK 썸|KB 스타즈|1791108000000",
-      "sport": "농구",
-      "league": "승부식117 회차",
-      "homeTeam": "BNK 썸",
-      "awayTeam": "KB 스타즈",
-      "gameDate": "2026-10-04T10:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.46
-            },
-            {
-              "label": "패",
-              "odds": 2.22
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.82
-            },
-            {
-              "label": "패",
-              "odds": 1.7
-            }
-          ],
-          "line": -3.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.74
-            },
-            {
-              "label": "오버",
-              "odds": 1.78
-            }
-          ],
-          "line": 135.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.8
-            },
-            {
-              "label": "짝",
-              "odds": 1.8
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "아제르바이잔|리투아니아|1791118800000",
-      "sport": "축구",
-      "league": "승부식117 회차",
-      "homeTeam": "아제르바이잔",
-      "awayTeam": "리투아니아",
-      "gameDate": "2026-10-04T13:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.11
-            },
-            {
-              "label": "무",
-              "odds": 2.75
-            },
-            {
-              "label": "패",
-              "odds": 3.2
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 4.6
-            },
-            {
-              "label": "무",
-              "odds": 3.35
-            },
-            {
-              "label": "패",
-              "odds": 1.58
-            }
-          ],
-          "line": -1
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.38
-            },
-            {
-              "label": "오버",
-              "odds": 2.43
-            }
-          ],
-          "line": 2.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.82
-            },
-            {
-              "label": "짝",
-              "odds": 1.78
-            }
-          ]
-        }
-      ]
-    },
     {
       "matchId": "코소보|오스트리아|1791129600000",
       "sport": "축구",
@@ -635,11 +51,11 @@
           "selections": [
             {
               "label": "언더",
-              "odds": 1.85
+              "odds": 1.8
             },
             {
               "label": "오버",
-              "odds": 1.68
+              "odds": 1.72
             }
           ],
           "line": 2.5
@@ -892,15 +308,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.1
+              "odds": 1.08
             },
             {
               "label": "무",
-              "odds": 6.1
+              "odds": 6.4
             },
             {
               "label": "패",
-              "odds": 13
+              "odds": 15
             }
           ]
         },
@@ -909,7 +325,7 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.45
+              "odds": 1.4
             },
             {
               "label": "무",
@@ -917,7 +333,7 @@
             },
             {
               "label": "패",
-              "odds": 4.75
+              "odds": 5.4
             }
           ],
           "line": -1
@@ -927,7 +343,7 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.09
+              "odds": 1.97
             },
             {
               "label": "무",
@@ -935,7 +351,7 @@
             },
             {
               "label": "패",
-              "odds": 2.55
+              "odds": 2.75
             }
           ],
           "line": -2
@@ -945,11 +361,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 3.38
+              "odds": 3.09
             },
             {
               "label": "패",
-              "odds": 1.19
+              "odds": 1.23
             }
           ],
           "line": -3.5
@@ -959,11 +375,11 @@
           "selections": [
             {
               "label": "언더",
-              "odds": 1.68
+              "odds": 1.72
             },
             {
               "label": "오버",
-              "odds": 1.85
+              "odds": 1.8
             }
           ],
           "line": 3.5
@@ -1087,15 +503,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 3.75
+              "odds": 3.55
             },
             {
               "label": "무",
-              "odds": 3.65
+              "odds": 3.6
             },
             {
               "label": "패",
-              "odds": 1.64
+              "odds": 1.7
             }
           ],
           "line": -1
@@ -1629,6 +1045,152 @@
             {
               "label": "오버",
               "odds": 1.65
+            }
+          ],
+          "line": 2.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.81
+            },
+            {
+              "label": "짝",
+              "odds": 1.79
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "matchId": "말레이시아|베트남|1791190800000",
+      "sport": "축구",
+      "league": "승부식117 회차",
+      "homeTeam": "말레이시아",
+      "awayTeam": "베트남",
+      "gameDate": "2026-10-05T09:00:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승무패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 2.24
+            },
+            {
+              "label": "무",
+              "odds": 3.15
+            },
+            {
+              "label": "패",
+              "odds": 2.6
+            }
+          ]
+        },
+        {
+          "type": "핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 4.55
+            },
+            {
+              "label": "무",
+              "odds": 3.8
+            },
+            {
+              "label": "패",
+              "odds": 1.5
+            }
+          ],
+          "line": -1
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.81
+            },
+            {
+              "label": "오버",
+              "odds": 1.71
+            }
+          ],
+          "line": 2.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.81
+            },
+            {
+              "label": "짝",
+              "odds": 1.79
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "matchId": "인도네시아|태국|1791205200000",
+      "sport": "축구",
+      "league": "승부식117 회차",
+      "homeTeam": "인도네시아",
+      "awayTeam": "태국",
+      "gameDate": "2026-10-05T13:00:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승무패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.93
+            },
+            {
+              "label": "무",
+              "odds": 3.1
+            },
+            {
+              "label": "패",
+              "odds": 3.25
+            }
+          ]
+        },
+        {
+          "type": "핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 3.85
+            },
+            {
+              "label": "무",
+              "odds": 3.4
+            },
+            {
+              "label": "패",
+              "odds": 1.68
+            }
+          ],
+          "line": -1
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.66
+            },
+            {
+              "label": "오버",
+              "odds": 1.87
             }
           ],
           "line": 2.5
