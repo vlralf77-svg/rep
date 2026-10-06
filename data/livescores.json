@@ -1,16 +1,7 @@
 {
-  "updatedAt": "2026-10-06T01:30:25.881Z",
-  "count": 68,
+  "updatedAt": "2026-10-06T07:50:11.748Z",
+  "count": 69,
   "scores": [
-    {
-      "homeTeam": "르완다",
-      "awayTeam": "케냐",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1791248400000,
-      "sport": "축구"
-    },
     {
       "homeTeam": "키프로스",
       "awayTeam": "라트비아",
@@ -21,12 +12,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "리히텐슈타인",
-      "awayTeam": "지브롤터",
+      "homeTeam": "르완다",
+      "awayTeam": "케냐",
       "homeScore": 0,
-      "awayScore": 2,
+      "awayScore": 0,
       "status": "FINISHED",
-      "timestamp": 1791258300000,
+      "timestamp": 1791248400000,
       "sport": "축구"
     },
     {
@@ -93,6 +84,15 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "리히텐슈타인",
+      "awayTeam": "지브롤터",
+      "homeScore": 0,
+      "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1791258300000,
+      "sport": "축구"
+    },
+    {
       "homeTeam": "클리블랜드",
       "awayTeam": "시카고W",
       "homeScore": 3,
@@ -104,19 +104,18 @@
     {
       "homeTeam": "탬파베이",
       "awayTeam": "뉴욕양키스",
-      "homeScore": 1,
-      "awayScore": 1,
-      "status": "LIVE",
+      "homeScore": 5,
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1791277200000,
-      "sport": "야구",
-      "inning": "4회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "인하대",
       "awayTeam": "한양대",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1791295200000,
       "sport": "배구"
     },
@@ -125,18 +124,20 @@
       "awayTeam": "연세대",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1791302400000,
-      "sport": "농구"
+      "sport": "농구",
+      "inning": "경기전"
     },
     {
       "homeTeam": "성균관대",
       "awayTeam": "고려대",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1791302400000,
-      "sport": "농구"
+      "sport": "농구",
+      "inning": "경기전"
     },
     {
       "homeTeam": "한신",
@@ -229,8 +230,8 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "인도",
-      "awayTeam": "우루과이",
+      "homeTeam": "카자흐스탄",
+      "awayTeam": "페로 제도",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -238,8 +239,8 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "카자흐스탄",
-      "awayTeam": "페로 제도",
+      "homeTeam": "인도",
+      "awayTeam": "우루과이",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -445,12 +446,21 @@
       "sport": "농구"
     },
     {
-      "homeTeam": "HT\n20\n28\n31\n29",
-      "awayTeam": "새크라맨토 킹스",
-      "homeScore": 2,
+      "homeTeam": "HT\n26\n18\n19\n26",
+      "awayTeam": "Chung",
+      "homeScore": 7,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1791250163560,
+      "timestamp": 1791272973210,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n17\n10",
+      "awayTeam": "인천 신한은행 에스버드",
+      "homeScore": 10,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1791272973210,
       "sport": "농구"
     },
     {
@@ -546,8 +556,8 @@
     {
       "homeTeam": "빅토리아",
       "awayTeam": "우리은행",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 60,
+      "awayScore": 94,
       "status": "SCHEDULED",
       "timestamp": 1791262800000,
       "sport": "농구"
@@ -555,8 +565,8 @@
     {
       "homeTeam": "KB스타즈",
       "awayTeam": "삼성생명",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 16,
+      "awayScore": 10,
       "status": "SCHEDULED",
       "timestamp": 1791271800000,
       "sport": "농구"
