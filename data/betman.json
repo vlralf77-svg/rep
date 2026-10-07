@@ -1,171 +1,7 @@
 {
-  "updatedAt": "2026-10-07T10:44:46.387Z",
+  "updatedAt": "2026-10-07T18:13:56.253Z",
   "toto": [],
   "proto": [
-    {
-      "matchId": "시카고 화이트삭스|클리블랜드 가디언스|1791403200000",
-      "sport": "야구",
-      "league": "승부식119 회차",
-      "homeTeam": "시카고 화이트삭스",
-      "awayTeam": "클리블랜드 가디언스",
-      "gameDate": "2026-10-07T20:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.69
-            },
-            {
-              "label": "패",
-              "odds": 1.84
-            }
-          ]
-        },
-        {
-          "type": "승1패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.4
-            },
-            {
-              "label": "1",
-              "odds": 3.25
-            },
-            {
-              "label": "패",
-              "odds": 2.35
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3.38
-            },
-            {
-              "label": "패",
-              "odds": 1.19
-            }
-          ],
-          "line": -2.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.9
-            },
-            {
-              "label": "오버",
-              "odds": 1.64
-            }
-          ],
-          "line": 7.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.58
-            },
-            {
-              "label": "짝",
-              "odds": 2.09
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "애틀랜타 브레이브스|LA 다저스|1791410400000",
-      "sport": "야구",
-      "league": "승부식119 회차",
-      "homeTeam": "애틀랜타 브레이브스",
-      "awayTeam": "LA 다저스",
-      "gameDate": "2026-10-07T22:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.97
-            },
-            {
-              "label": "패",
-              "odds": 1.59
-            }
-          ]
-        },
-        {
-          "type": "승1패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 3
-            },
-            {
-              "label": "1",
-              "odds": 3.2
-            },
-            {
-              "label": "패",
-              "odds": 1.99
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.32
-            },
-            {
-              "label": "패",
-              "odds": 2.64
-            }
-          ],
-          "line": 2.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.67
-            },
-            {
-              "label": "오버",
-              "odds": 1.86
-            }
-          ],
-          "line": 7.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.58
-            },
-            {
-              "label": "짝",
-              "odds": 2.09
-            }
-          ]
-        }
-      ]
-    },
     {
       "matchId": "뉴욕 양키스|탬파베이 레이스|1791417600000",
       "sport": "야구",
@@ -275,15 +111,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.5
+              "odds": 2.55
             },
             {
               "label": "1",
-              "odds": 3.15
+              "odds": 3
             },
             {
               "label": "패",
-              "odds": 2.32
+              "odds": 2.36
             }
           ]
         },
@@ -333,15 +169,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.03
+              "odds": 2.07
             },
             {
               "label": "무",
-              "odds": 5.2
+              "odds": 4.7
             },
             {
               "label": "패",
-              "odds": 2.15
+              "odds": 2.2
             }
           ]
         },
