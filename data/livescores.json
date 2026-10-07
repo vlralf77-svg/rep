@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-07T15:52:21.735Z",
-  "count": 66,
+  "updatedAt": "2026-10-07T20:51:36.011Z",
+  "count": 59,
   "scores": [
     {
       "homeTeam": "러시아",
@@ -246,42 +246,6 @@
       "sport": "야구"
     },
     {
-      "homeTeam": "경주 한수원",
-      "awayTeam": "화천 KSPO",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1791399600000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "서울시청",
-      "awayTeam": "문경 상무",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1791399600000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "강진",
-      "awayTeam": "수원FC 위민",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1791399600000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "세종 스포츠토토",
-      "awayTeam": "인천 현대제철",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1791399600000,
-      "sport": "축구"
-    },
-    {
       "homeTeam": "부산 KCC",
       "awayTeam": "대구 한국가스공사",
       "homeScore": 103,
@@ -291,13 +255,50 @@
       "sport": "농구"
     },
     {
+      "homeTeam": "경주 한수원",
+      "awayTeam": "화천 KSPO",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1791399600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "서울시청",
+      "awayTeam": "문경 상무",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1791399600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "강진",
+      "awayTeam": "수원FC 위민",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1791399600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "세종 스포츠토토",
+      "awayTeam": "인천 현대제철",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1791399600000,
+      "sport": "축구"
+    },
+    {
       "homeTeam": "시카고W",
       "awayTeam": "클리블랜드",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1791435600000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "3회초"
     },
     {
       "homeTeam": "애틀랜타",
@@ -363,75 +364,12 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n10\n8\n31\n16",
-      "awayTeam": "KP Brno",
-      "homeScore": 15,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1791388305406,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n12\n20\n19\n16",
-      "awayTeam": "Absheron BK\nGeneva Li",
-      "homeScore": 15,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1791388305406,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n16\n20\n25\n24",
-      "awayTeam": "Esenler Erokspor",
-      "homeScore": 16,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1791388305406,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n18\n14\n16\n22",
-      "awayTeam": "KK Buducnost",
-      "homeScore": 16,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1791388305406,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n15\n14\n25\n25",
-      "awayTeam": "CSKA 모스크바",
-      "homeScore": 16,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1791388305406,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n16\n12\n19\n9",
-      "awayTeam": "ZKK Kraljevo",
-      "homeScore": 16,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1791388305406,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n9\n2\n19\n0",
-      "awayTeam": "키비르크스티스 빌뉴스",
-      "homeScore": 16,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1791388305406,
-      "sport": "농구"
-    },
-    {
       "homeTeam": "연기",
-      "awayTeam": "Eng Tat Hornets",
-      "homeScore": 13,
-      "awayScore": 15,
+      "awayTeam": "Charnay Bourgogne Sud",
+      "homeScore": 18,
+      "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1791388305406,
+      "timestamp": 1791406250444,
       "sport": "농구"
     },
     {
