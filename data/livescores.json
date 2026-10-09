@@ -1,87 +1,16 @@
 {
-  "updatedAt": "2026-10-08T23:52:19.593Z",
-  "count": 102,
+  "updatedAt": "2026-10-09T03:10:18.369Z",
+  "count": 101,
   "scores": [
     {
       "homeTeam": "시카고W",
       "awayTeam": "클리블랜드",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 9,
-      "status": "FINISHED",
-      "timestamp": 1791435600000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "애틀랜타",
-      "awayTeam": "LA다저스",
-      "homeScore": 1,
-      "awayScore": 4,
-      "status": "FINISHED",
-      "timestamp": 1791442800000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "뉴욕양키스",
-      "awayTeam": "탬파베이",
-      "homeScore": 3,
-      "awayScore": 4,
-      "status": "FINISHED",
-      "timestamp": 1791450000000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "샌디에이고",
-      "awayTeam": "밀워키",
-      "homeScore": 1,
-      "awayScore": 3,
-      "status": "FINISHED",
-      "timestamp": 1791457200000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "경희대",
-      "awayTeam": "단국대",
-      "homeScore": 85,
-      "awayScore": 73,
-      "status": "FINISHED",
-      "timestamp": 1791475200000,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "한신",
-      "awayTeam": "야쿠르트",
-      "homeScore": 0,
-      "awayScore": 4,
-      "status": "FINISHED",
-      "timestamp": 1791482400000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "원주 DB",
-      "awayTeam": "창원 LG",
-      "homeScore": 92,
-      "awayScore": 96,
-      "status": "FINISHED",
-      "timestamp": 1791486000000,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "다이아몬드FC",
-      "awayTeam": "디라이프",
-      "homeScore": 0,
-      "awayScore": 3,
-      "status": "FINISHED",
-      "timestamp": 1791489600000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "시카고W",
-      "awayTeam": "클리블랜드",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1791536400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "8회초"
     },
     {
       "homeTeam": "수원 KT",
@@ -219,12 +148,75 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n25\n26\n19\n16",
-      "awayTeam": "데포르티보 에스파뇰",
-      "homeScore": 23,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1791503502651,
+      "homeTeam": "시카고W",
+      "awayTeam": "클리블랜드",
+      "homeScore": 3,
+      "awayScore": 9,
+      "status": "FINISHED",
+      "timestamp": 1791435600000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "애틀랜타",
+      "awayTeam": "LA다저스",
+      "homeScore": 1,
+      "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1791442800000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "뉴욕양키스",
+      "awayTeam": "탬파베이",
+      "homeScore": 3,
+      "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1791450000000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "샌디에이고",
+      "awayTeam": "밀워키",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1791457200000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "한신",
+      "awayTeam": "야쿠르트",
+      "homeScore": 0,
+      "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1791482400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "다이아몬드FC",
+      "awayTeam": "디라이프",
+      "homeScore": 0,
+      "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1791489600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "경희대",
+      "awayTeam": "단국대",
+      "homeScore": 85,
+      "awayScore": 73,
+      "status": "FINISHED",
+      "timestamp": 1791475200000,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "원주 DB",
+      "awayTeam": "창원 LG",
+      "homeScore": 92,
+      "awayScore": 96,
+      "status": "FINISHED",
+      "timestamp": 1791486000000,
       "sport": "농구"
     },
     {
