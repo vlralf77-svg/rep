@@ -1,151 +1,7 @@
 {
-  "updatedAt": "2026-10-09T21:37:46.623Z",
-  "count": 222,
+  "updatedAt": "2026-10-10T01:13:34.402Z",
+  "count": 219,
   "scores": [
-    {
-      "homeTeam": "시카고W",
-      "awayTeam": "클리블랜드",
-      "homeScore": 5,
-      "awayScore": 9,
-      "status": "FINISHED",
-      "timestamp": 1791536400000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "수원 KT",
-      "awayTeam": "고양 소노",
-      "homeScore": 88,
-      "awayScore": 79,
-      "status": "FINISHED",
-      "timestamp": 1791554400000,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "대전",
-      "awayTeam": "전북",
-      "homeScore": 2,
-      "awayScore": 1,
-      "status": "FINISHED",
-      "timestamp": 1791554400000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "수원FC",
-      "awayTeam": "화성",
-      "homeScore": 1,
-      "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1791554400000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "NC",
-      "awayTeam": "KIA",
-      "homeScore": 2,
-      "awayScore": 7,
-      "status": "FINISHED",
-      "timestamp": 1791554400000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "롯데",
-      "awayTeam": "LG",
-      "homeScore": 9,
-      "awayScore": 1,
-      "status": "FINISHED",
-      "timestamp": 1791554400000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "SSG",
-      "awayTeam": "삼성",
-      "homeScore": 3,
-      "awayScore": 1,
-      "status": "FINISHED",
-      "timestamp": 1791554400000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "인천",
-      "awayTeam": "포항",
-      "homeScore": 3,
-      "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1791563400000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "강원",
-      "awayTeam": "부천",
-      "homeScore": 2,
-      "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1791563400000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "서울 삼성",
-      "awayTeam": "안양 정관장",
-      "homeScore": 66,
-      "awayScore": 58,
-      "status": "FINISHED",
-      "timestamp": 1791563400000,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "김포",
-      "awayTeam": "서울E",
-      "homeScore": 0,
-      "awayScore": 1,
-      "status": "FINISHED",
-      "timestamp": 1791563400000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "충북청주",
-      "awayTeam": "성남",
-      "homeScore": 3,
-      "awayScore": 1,
-      "status": "FINISHED",
-      "timestamp": 1791563400000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "가시와 레이솔",
-      "awayTeam": "비셀 고베",
-      "homeScore": 4,
-      "awayScore": 2,
-      "status": "FINISHED",
-      "timestamp": 1791572400000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "가시마",
-      "awayTeam": "감바 오사카",
-      "homeScore": 2,
-      "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1791572400000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "알 콜루드",
-      "awayTeam": "알 카디시야",
-      "homeScore": 0,
-      "awayScore": 5,
-      "status": "FINISHED",
-      "timestamp": 1791586200000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "알 파테",
-      "awayTeam": "알 아흘리",
-      "homeScore": 0,
-      "awayScore": 4,
-      "status": "FINISHED",
-      "timestamp": 1791590100000,
-      "sport": "축구"
-    },
     {
       "homeTeam": "노르셸란",
       "awayTeam": "OB",
@@ -633,39 +489,156 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "연기",
-      "awayTeam": "Union Rennes Basket 3",
-      "homeScore": 18,
+      "homeTeam": "NC",
+      "awayTeam": "KIA",
+      "homeScore": 2,
+      "awayScore": 7,
+      "status": "FINISHED",
+      "timestamp": 1791554400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "롯데",
+      "awayTeam": "LG",
+      "homeScore": 9,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1791554400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "SSG",
+      "awayTeam": "삼성",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1791554400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "시카고W",
+      "awayTeam": "클리블랜드",
+      "homeScore": 5,
+      "awayScore": 9,
+      "status": "FINISHED",
+      "timestamp": 1791536400000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "대전",
+      "awayTeam": "전북",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1791554400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "수원FC",
+      "awayTeam": "화성",
+      "homeScore": 1,
       "awayScore": 0,
       "status": "FINISHED",
-      "timestamp": 1791581832538,
+      "timestamp": 1791554400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "인천",
+      "awayTeam": "포항",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1791563400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "강원",
+      "awayTeam": "부천",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1791563400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "김포",
+      "awayTeam": "서울E",
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1791563400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "충북청주",
+      "awayTeam": "성남",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1791563400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "가시와 레이솔",
+      "awayTeam": "비셀 고베",
+      "homeScore": 4,
+      "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1791572400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "가시마",
+      "awayTeam": "감바 오사카",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1791572400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "알 콜루드",
+      "awayTeam": "알 카디시야",
+      "homeScore": 0,
+      "awayScore": 5,
+      "status": "FINISHED",
+      "timestamp": 1791586200000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "알 파테",
+      "awayTeam": "알 아흘리",
+      "homeScore": 0,
+      "awayScore": 4,
+      "status": "FINISHED",
+      "timestamp": 1791590100000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "수원 KT",
+      "awayTeam": "고양 소노",
+      "homeScore": 88,
+      "awayScore": 79,
+      "status": "FINISHED",
+      "timestamp": 1791554400000,
       "sport": "농구"
     },
     {
-      "homeTeam": "연기",
-      "awayTeam": "Slavia Prague Tygri\nL",
-      "homeScore": 17,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1791581832538,
+      "homeTeam": "서울 삼성",
+      "awayTeam": "안양 정관장",
+      "homeScore": 66,
+      "awayScore": 58,
+      "status": "FINISHED",
+      "timestamp": 1791563400000,
       "sport": "농구"
     },
     {
-      "homeTeam": "연기",
-      "awayTeam": "SP Basket",
-      "homeScore": 17,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1791581832538,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "A.P.R.\nUGB\n연기",
-      "awayTeam": "Rwanda Energy Group\nE",
-      "homeScore": 17,
+      "homeTeam": "HT\n12\n25\n32\n29",
+      "awayTeam": "CDS Basquetbol Consti",
+      "homeScore": 19,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1791581832538,
+      "timestamp": 1791594780467,
       "sport": "농구"
     },
     {
