@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-10-12T19:32:32.784Z",
+  "updatedAt": "2026-10-13T01:45:00.275Z",
   "toto": [],
   "proto": [
     {
-      "matchId": "탬파베이 레이스|클리블랜드 가디언스|1791849600000",
-      "sport": "야구",
+      "matchId": "정관장 레드스파크스|SOOP 수퍼스|1791873000000",
+      "sport": "배구",
       "league": "승부식121 회차",
-      "homeTeam": "탬파베이 레이스",
-      "awayTeam": "클리블랜드 가디언스",
-      "gameDate": "2026-10-13T00:00:00.000Z",
+      "homeTeam": "정관장 레드스파크스",
+      "awayTeam": "SOOP 수퍼스",
+      "gameDate": "2026-10-13T06:30:00.000Z",
       "status": "발매중",
       "markets": [
         {
@@ -16,116 +16,54 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.38
+              "odds": 1.5
             },
             {
               "label": "패",
-              "odds": 2.43
+              "odds": 2.13
             }
           ]
         },
         {
-          "type": "승1패",
+          "type": "세트핸디캡",
           "selections": [
             {
               "label": "승",
-              "odds": 1.89
-            },
-            {
-              "label": "1",
-              "odds": 3.3
+              "odds": 2.15
             },
             {
               "label": "패",
-              "odds": 3.15
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.68
-            },
-            {
-              "label": "패",
-              "odds": 1.31
+              "odds": 1.49
             }
           ],
-          "line": -2.5
+          "line": -1.5
         },
         {
           "type": "언더오버",
           "selections": [
             {
               "label": "언더",
-              "odds": 1.81
+              "odds": 1.76
             },
             {
               "label": "오버",
-              "odds": 1.71
+              "odds": 1.76
             }
           ],
-          "line": 6.5
+          "line": 184.5
         },
         {
           "type": "SUM",
           "selections": [
             {
               "label": "홀",
-              "odds": 1.58
+              "odds": 1.8
             },
             {
               "label": "짝",
-              "odds": 2.09
+              "odds": 1.8
             }
           ]
-        },
-        {
-          "type": "전반 승무패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.74
-            },
-            {
-              "label": "무",
-              "odds": 5.1
-            },
-            {
-              "label": "패",
-              "odds": 2.65
-            }
-          ]
-        },
-        {
-          "type": "전반 핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.53
-            },
-            {
-              "label": "패",
-              "odds": 1.35
-            }
-          ],
-          "line": -1.5
-        },
-        {
-          "type": "전반 언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.82
-            },
-            {
-              "label": "오버",
-              "odds": 1.7
-            }
-          ],
-          "line": 3.5
         }
       ]
     },
@@ -143,15 +81,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.95
+              "odds": 3.45
             },
             {
               "label": "무",
-              "odds": 3.65
+              "odds": 3.75
             },
             {
               "label": "패",
-              "odds": 1.86
+              "odds": 1.69
             }
           ]
         },
@@ -160,15 +98,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.74
+              "odds": 1.93
             },
             {
               "label": "무",
-              "odds": 3.8
+              "odds": 3.65
             },
             {
               "label": "패",
-              "odds": 3.2
+              "odds": 2.8
             }
           ],
           "line": 1
@@ -197,6 +135,152 @@
             {
               "label": "짝",
               "odds": 1.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "matchId": "상하이 하이강|대전 하나시티즌|1791885600000",
+      "sport": "축구",
+      "league": "승부식121 회차",
+      "homeTeam": "상하이 하이강",
+      "awayTeam": "대전 하나시티즌",
+      "gameDate": "2026-10-13T10:00:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승무패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.95
+            },
+            {
+              "label": "무",
+              "odds": 3.3
+            },
+            {
+              "label": "패",
+              "odds": 3
+            }
+          ]
+        },
+        {
+          "type": "핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 3.65
+            },
+            {
+              "label": "무",
+              "odds": 3.6
+            },
+            {
+              "label": "패",
+              "odds": 1.67
+            }
+          ],
+          "line": -1
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.97
+            },
+            {
+              "label": "오버",
+              "odds": 1.59
+            }
+          ],
+          "line": 2.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.81
+            },
+            {
+              "label": "짝",
+              "odds": 1.79
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "matchId": "포항 스틸러스|조호르 다룰탁짐|1791885600000",
+      "sport": "축구",
+      "league": "승부식121 회차",
+      "homeTeam": "포항 스틸러스",
+      "awayTeam": "조호르 다룰탁짐",
+      "gameDate": "2026-10-13T10:00:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승무패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 2.7
+            },
+            {
+              "label": "무",
+              "odds": 3.2
+            },
+            {
+              "label": "패",
+              "odds": 2.14
+            }
+          ]
+        },
+        {
+          "type": "핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.55
+            },
+            {
+              "label": "무",
+              "odds": 3.7
+            },
+            {
+              "label": "패",
+              "odds": 4.25
+            }
+          ],
+          "line": 1
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.87
+            },
+            {
+              "label": "오버",
+              "odds": 1.66
+            }
+          ],
+          "line": 2.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.81
+            },
+            {
+              "label": "짝",
+              "odds": 1.79
             }
           ]
         }
@@ -256,6 +340,445 @@
             {
               "label": "오버",
               "odds": 1.58
+            }
+          ],
+          "line": 2.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.81
+            },
+            {
+              "label": "짝",
+              "odds": 1.79
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "matchId": "안양정관장 레드부스터스|고양소노 스카이거너스|1791885600000",
+      "sport": "농구",
+      "league": "승부식121 회차",
+      "homeTeam": "안양정관장 레드부스터스",
+      "awayTeam": "고양소노 스카이거너스",
+      "gameDate": "2026-10-13T10:00:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.58
+            },
+            {
+              "label": "패",
+              "odds": 1.99
+            }
+          ]
+        },
+        {
+          "type": "승5패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 2.21
+            },
+            {
+              "label": "5",
+              "odds": 2.75
+            },
+            {
+              "label": "패",
+              "odds": 3
+            }
+          ]
+        },
+        {
+          "type": "핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.79
+            },
+            {
+              "label": "패",
+              "odds": 1.73
+            }
+          ],
+          "line": -2.5
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.74
+            },
+            {
+              "label": "오버",
+              "odds": 1.78
+            }
+          ],
+          "line": 164.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.8
+            },
+            {
+              "label": "짝",
+              "odds": 1.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "matchId": "흥국생명 핑크스파이더스|IBK기업은행 알토스|1791885600000",
+      "sport": "배구",
+      "league": "승부식121 회차",
+      "homeTeam": "흥국생명 핑크스파이더스",
+      "awayTeam": "IBK기업은행 알토스",
+      "gameDate": "2026-10-13T10:00:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.82
+            },
+            {
+              "label": "패",
+              "odds": 1.7
+            }
+          ]
+        },
+        {
+          "type": "세트핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.41
+            },
+            {
+              "label": "패",
+              "odds": 2.34
+            }
+          ],
+          "line": 1.5
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.76
+            },
+            {
+              "label": "오버",
+              "odds": 1.76
+            }
+          ],
+          "line": 185.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.8
+            },
+            {
+              "label": "짝",
+              "odds": 1.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "matchId": "꽁안 하노이|가시마 앤틀러스|1791893700000",
+      "sport": "축구",
+      "league": "승부식121 회차",
+      "homeTeam": "꽁안 하노이",
+      "awayTeam": "가시마 앤틀러스",
+      "gameDate": "2026-10-13T12:15:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승무패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 5.2
+            },
+            {
+              "label": "무",
+              "odds": 3.8
+            },
+            {
+              "label": "패",
+              "odds": 1.44
+            }
+          ]
+        },
+        {
+          "type": "핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 2.4
+            },
+            {
+              "label": "무",
+              "odds": 3.3
+            },
+            {
+              "label": "패",
+              "odds": 2.33
+            }
+          ],
+          "line": 1
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 2.04
+            },
+            {
+              "label": "오버",
+              "odds": 1.55
+            }
+          ],
+          "line": 2.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.8
+            },
+            {
+              "label": "짝",
+              "odds": 1.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "matchId": "부리람 유나이티드|베이징 궈안|1791893700000",
+      "sport": "축구",
+      "league": "승부식121 회차",
+      "homeTeam": "부리람 유나이티드",
+      "awayTeam": "베이징 궈안",
+      "gameDate": "2026-10-13T12:15:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승무패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.97
+            },
+            {
+              "label": "무",
+              "odds": 3.3
+            },
+            {
+              "label": "패",
+              "odds": 2.95
+            }
+          ]
+        },
+        {
+          "type": "핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 3.7
+            },
+            {
+              "label": "무",
+              "odds": 3.6
+            },
+            {
+              "label": "패",
+              "odds": 1.66
+            }
+          ],
+          "line": -1
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.96
+            },
+            {
+              "label": "오버",
+              "odds": 1.6
+            }
+          ],
+          "line": 2.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.81
+            },
+            {
+              "label": "짝",
+              "odds": 1.79
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "matchId": "이스트 벵골|알쇼르타|1791899100000",
+      "sport": "축구",
+      "league": "승부식121 회차",
+      "homeTeam": "이스트 벵골",
+      "awayTeam": "알쇼르타",
+      "gameDate": "2026-10-13T13:45:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승무패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 2.7
+            },
+            {
+              "label": "무",
+              "odds": 3.1
+            },
+            {
+              "label": "패",
+              "odds": 2.19
+            }
+          ]
+        },
+        {
+          "type": "핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.53
+            },
+            {
+              "label": "무",
+              "odds": 3.65
+            },
+            {
+              "label": "패",
+              "odds": 4.5
+            }
+          ],
+          "line": 1
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.74
+            },
+            {
+              "label": "오버",
+              "odds": 1.78
+            }
+          ],
+          "line": 2.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.81
+            },
+            {
+              "label": "짝",
+              "odds": 1.79
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "matchId": "알시브 클럽|J알후세인|1791907200000",
+      "sport": "축구",
+      "league": "승부식121 회차",
+      "homeTeam": "알시브 클럽",
+      "awayTeam": "J알후세인",
+      "gameDate": "2026-10-13T16:00:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승무패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 2.5
+            },
+            {
+              "label": "무",
+              "odds": 2.95
+            },
+            {
+              "label": "패",
+              "odds": 2.44
+            }
+          ]
+        },
+        {
+          "type": "핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.43
+            },
+            {
+              "label": "무",
+              "odds": 3.85
+            },
+            {
+              "label": "패",
+              "odds": 5.3
+            }
+          ],
+          "line": 1
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.6
+            },
+            {
+              "label": "오버",
+              "odds": 1.96
             }
           ],
           "line": 2.5
@@ -715,15 +1238,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.86
+              "odds": 1.93
             },
             {
               "label": "무",
-              "odds": 3.2
+              "odds": 3.15
             },
             {
               "label": "패",
-              "odds": 3.35
+              "odds": 3.2
             }
           ]
         },
@@ -732,15 +1255,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 3.5
+              "odds": 3.7
             },
             {
               "label": "무",
-              "odds": 3.4
+              "odds": 3.45
             },
             {
               "label": "패",
-              "odds": 1.76
+              "odds": 1.7
             }
           ],
           "line": -1
@@ -1320,11 +1843,11 @@
             },
             {
               "label": "무",
-              "odds": 3.6
+              "odds": 3.7
             },
             {
               "label": "패",
-              "odds": 3.65
+              "odds": 3.55
             }
           ],
           "line": -1
@@ -1352,11 +1875,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 4.96
+              "odds": 4.4
             },
             {
               "label": "패",
-              "odds": 1.07
+              "odds": 1.1
             }
           ],
           "line": -3.5
@@ -1453,15 +1976,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.19
+              "odds": 1.16
             },
             {
               "label": "무",
-              "odds": 4.85
+              "odds": 5.1
             },
             {
               "label": "패",
-              "odds": 9.7
+              "odds": 11
             }
           ]
         },
@@ -1470,15 +1993,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.72
+              "odds": 1.64
             },
             {
               "label": "무",
-              "odds": 3.4
+              "odds": 3.45
             },
             {
               "label": "패",
-              "odds": 3.65
+              "odds": 4
             }
           ],
           "line": -1
@@ -1488,15 +2011,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.75
+              "odds": 2.6
             },
             {
               "label": "무",
-              "odds": 3.6
+              "odds": 3.5
             },
             {
               "label": "패",
-              "odds": 1.97
+              "odds": 2.09
             }
           ],
           "line": -2
@@ -1547,7 +2070,7 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.59
+              "odds": 1.56
             },
             {
               "label": "무",
@@ -1555,7 +2078,7 @@
             },
             {
               "label": "패",
-              "odds": 8.9
+              "odds": 10
             }
           ]
         },
@@ -1564,15 +2087,15 @@
           "selections": [
             {
               "label": "승",
-              "odds": 3.25
+              "odds": 3.1
             },
             {
               "label": "무",
-              "odds": 2.85
+              "odds": 2.8
             },
             {
               "label": "패",
-              "odds": 2.04
+              "odds": 2.13
             }
           ],
           "line": -1
@@ -2318,6 +2841,152 @@
             }
           ],
           "line": 1.5
+        }
+      ]
+    },
+    {
+      "matchId": "가시와 레이솔|포트FC|1791972000000",
+      "sport": "축구",
+      "league": "승부식121 회차",
+      "homeTeam": "가시와 레이솔",
+      "awayTeam": "포트FC",
+      "gameDate": "2026-10-14T10:00:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승무패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.15
+            },
+            {
+              "label": "무",
+              "odds": 5.4
+            },
+            {
+              "label": "패",
+              "odds": 10.5
+            }
+          ]
+        },
+        {
+          "type": "핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.57
+            },
+            {
+              "label": "무",
+              "odds": 3.75
+            },
+            {
+              "label": "패",
+              "odds": 4.05
+            }
+          ],
+          "line": -1
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.67
+            },
+            {
+              "label": "오버",
+              "odds": 1.86
+            }
+          ],
+          "line": 3.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.8
+            },
+            {
+              "label": "짝",
+              "odds": 1.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "matchId": "비셀 고베|전북 현대모터스|1791972000000",
+      "sport": "축구",
+      "league": "승부식121 회차",
+      "homeTeam": "비셀 고베",
+      "awayTeam": "전북 현대모터스",
+      "gameDate": "2026-10-14T10:00:00.000Z",
+      "status": "발매중",
+      "markets": [
+        {
+          "type": "승무패",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 1.63
+            },
+            {
+              "label": "무",
+              "odds": 3.35
+            },
+            {
+              "label": "패",
+              "odds": 4.2
+            }
+          ]
+        },
+        {
+          "type": "핸디캡",
+          "selections": [
+            {
+              "label": "승",
+              "odds": 2.9
+            },
+            {
+              "label": "무",
+              "odds": 3.25
+            },
+            {
+              "label": "패",
+              "odds": 2.01
+            }
+          ],
+          "line": -1
+        },
+        {
+          "type": "언더오버",
+          "selections": [
+            {
+              "label": "언더",
+              "odds": 1.75
+            },
+            {
+              "label": "오버",
+              "odds": 1.77
+            }
+          ],
+          "line": 2.5
+        },
+        {
+          "type": "SUM",
+          "selections": [
+            {
+              "label": "홀",
+              "odds": 1.81
+            },
+            {
+              "label": "짝",
+              "odds": 1.79
+            }
+          ]
         }
       ]
     }
