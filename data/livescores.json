@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-13T01:18:17.445Z",
-  "count": 105,
+  "updatedAt": "2026-10-13T07:46:28.195Z",
+  "count": 104,
   "scores": [
     {
       "homeTeam": "알와슬",
@@ -104,21 +104,21 @@
     {
       "homeTeam": "탬파베이",
       "awayTeam": "클리블랜드",
-      "homeScore": 2,
-      "awayScore": 0,
-      "status": "LIVE",
+      "homeScore": 3,
+      "awayScore": 7,
+      "status": "FINISHED",
       "timestamp": 1791882000000,
-      "sport": "야구",
-      "inning": "4회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "정관장",
       "awayTeam": "SOOP",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1791905400000,
-      "sport": "배구"
+      "sport": "배구",
+      "inning": "3세트"
     },
     {
       "homeTeam": "뉴캐슬 제츠",
@@ -382,15 +382,6 @@
       "sport": "농구"
     },
     {
-      "homeTeam": "Q\n33\n17",
-      "awayTeam": "ATLETICO ARGENTINO JU",
-      "homeScore": 23,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1791854261846,
-      "sport": "농구"
-    },
-    {
       "homeTeam": "스타드렌",
       "awayTeam": "AJ옥세르",
       "homeScore": 4,
@@ -580,15 +571,6 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "알나스르",
-      "awayTeam": "네프치펠가나",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1791828900000,
-      "sport": "축구"
-    },
-    {
       "homeTeam": "알가라파",
       "awayTeam": "에스테그랄",
       "homeScore": 1,
@@ -640,6 +622,15 @@
       "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1791831600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "알나스르",
+      "awayTeam": "네프치펠가나",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "SCHEDULED",
+      "timestamp": 1791832500000,
       "sport": "축구"
     },
     {
@@ -897,7 +888,7 @@
     {
       "homeTeam": "정관장",
       "awayTeam": "SOOP",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1791873000000,
