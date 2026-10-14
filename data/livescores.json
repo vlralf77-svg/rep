@@ -1,21 +1,21 @@
 {
-  "updatedAt": "2026-10-14T02:15:22.691Z",
-  "count": 131,
+  "updatedAt": "2026-10-14T07:38:08.972Z",
+  "count": 132,
   "scores": [
-    {
-      "homeTeam": "알 사드",
-      "awayTeam": "알 힐랄",
-      "homeScore": 0,
-      "awayScore": 2,
-      "status": "FINISHED",
-      "timestamp": 1791939600000,
-      "sport": "축구"
-    },
     {
       "homeTeam": "알 시브",
       "awayTeam": "알 후세인",
       "homeScore": 0,
       "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1791939600000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "알 사드",
+      "awayTeam": "알 힐랄",
+      "homeScore": 0,
+      "awayScore": 2,
       "status": "FINISHED",
       "timestamp": 1791939600000,
       "sport": "축구"
@@ -129,6 +129,24 @@
       "sport": "축구"
     },
     {
+      "homeTeam": "스토크",
+      "awayTeam": "미들즈브러",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1791950400000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "버밍엄",
+      "awayTeam": "프레스턴",
+      "homeScore": 4,
+      "awayScore": 0,
+      "status": "FINISHED",
+      "timestamp": 1791950400000,
+      "sport": "축구"
+    },
+    {
       "homeTeam": "바이킹",
       "awayTeam": "바이에른 뮌헨",
       "homeScore": 3,
@@ -165,39 +183,20 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "스토크",
-      "awayTeam": "미들즈브러",
-      "homeScore": 2,
-      "awayScore": 3,
-      "status": "FINISHED",
-      "timestamp": 1791950400000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "버밍엄",
-      "awayTeam": "프레스턴",
-      "homeScore": 4,
-      "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1791950400000,
-      "sport": "축구"
-    },
-    {
       "homeTeam": "탬파베이",
       "awayTeam": "클리블랜드",
       "homeScore": 3,
-      "awayScore": 0,
-      "status": "LIVE",
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1791968400000,
-      "sport": "야구",
-      "inning": "7회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "명지대",
       "awayTeam": "단국대",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1791993600000,
       "sport": "농구"
     },
@@ -247,6 +246,15 @@
       "sport": "농구"
     },
     {
+      "homeTeam": "한국도로공사",
+      "awayTeam": "현대건설",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1792004400000,
+      "sport": "배구"
+    },
+    {
       "homeTeam": "가시와 레이솔",
       "awayTeam": "포트",
       "homeScore": 0,
@@ -263,15 +271,6 @@
       "status": "SCHEDULED",
       "timestamp": 1792004400000,
       "sport": "축구"
-    },
-    {
-      "homeTeam": "한국도로공사",
-      "awayTeam": "현대건설",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1792004400000,
-      "sport": "배구"
     },
     {
       "homeTeam": "프레스 ZD FC",
@@ -505,6 +504,15 @@
       "awayScore": 81,
       "status": "FINISHED",
       "timestamp": 1791918000000,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n27\n5\n17\n19",
+      "awayTeam": "Barsy",
+      "homeScore": 9,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1791963452642,
       "sport": "농구"
     },
     {
