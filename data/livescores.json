@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T06:36:30.685Z",
+  "updatedAt": "2026-10-15T12:01:56.274Z",
   "count": 157,
   "scores": [
     {
@@ -312,65 +312,29 @@
       "homeTeam": "SOOP",
       "awayTeam": "흥국생명",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1792078200000,
-      "sport": "배구",
-      "inning": "1세트"
+      "sport": "배구"
     },
     {
       "homeTeam": "소프트뱅크",
       "awayTeam": "닛폰햄",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1792087200000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "9회말"
     },
     {
       "homeTeam": "한신",
       "awayTeam": "요코하마",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1792087200000,
       "sport": "야구"
-    },
-    {
-      "homeTeam": "서울 삼성",
-      "awayTeam": "창원 LG",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1792090800000,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "IBK기업은행",
-      "awayTeam": "정관장",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1792090800000,
-      "sport": "배구"
-    },
-    {
-      "homeTeam": "강원",
-      "awayTeam": "프놈펜 크라운",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1792090800000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "우푸",
-      "awayTeam": "라이언 시티 세일러스",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1792090800000,
-      "sport": "축구"
     },
     {
       "homeTeam": "화천 KSPO",
@@ -378,6 +342,44 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
+      "timestamp": 1792090800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "서울 삼성",
+      "awayTeam": "창원 LG",
+      "homeScore": 88,
+      "awayScore": 82,
+      "status": "LIVE",
+      "timestamp": 1792090800000,
+      "sport": "농구",
+      "inning": "4쿼터"
+    },
+    {
+      "homeTeam": "IBK기업은행",
+      "awayTeam": "정관장",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "LIVE",
+      "timestamp": 1792090800000,
+      "sport": "배구",
+      "inning": "4세트"
+    },
+    {
+      "homeTeam": "강원",
+      "awayTeam": "프놈펜 크라운",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "FINISHED",
+      "timestamp": 1792090800000,
+      "sport": "축구"
+    },
+    {
+      "homeTeam": "우푸",
+      "awayTeam": "라이언 시티 세일러스",
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "FINISHED",
       "timestamp": 1792090800000,
       "sport": "축구"
     },
@@ -1366,7 +1368,7 @@
       "homeTeam": "SOOP",
       "awayTeam": "흥국생명",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 3,
       "status": "SCHEDULED",
       "timestamp": 1792045800000,
       "sport": "배구"
@@ -1374,8 +1376,8 @@
     {
       "homeTeam": "IBK기업",
       "awayTeam": "정관장",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 2,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1792058400000,
       "sport": "배구"
@@ -1401,8 +1403,8 @@
     {
       "homeTeam": "서울삼성",
       "awayTeam": "창원LG",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 88,
+      "awayScore": 82,
       "status": "SCHEDULED",
       "timestamp": 1792058400000,
       "sport": "농구"
