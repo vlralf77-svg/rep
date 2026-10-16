@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-16T09:43:15.546Z",
-  "count": 229,
+  "updatedAt": "2026-10-16T14:16:26.986Z",
+  "count": 234,
   "scores": [
     {
       "homeTeam": "알 하젬",
@@ -356,29 +356,27 @@
     {
       "homeTeam": "소프트뱅크",
       "awayTeam": "닛폰햄",
-      "homeScore": 0,
-      "awayScore": 1,
-      "status": "LIVE",
+      "homeScore": 6,
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1792173600000,
-      "sport": "야구",
-      "inning": "3회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "한신",
       "awayTeam": "요코하마",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
+      "awayScore": 4,
+      "status": "FINISHED",
       "timestamp": 1792173600000,
-      "sport": "야구",
-      "inning": "2회말"
+      "sport": "야구"
     },
     {
       "homeTeam": "고양 소노",
       "awayTeam": "울산 현대모비스",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 95,
+      "awayScore": 82,
+      "status": "FINISHED",
       "timestamp": 1792177200000,
       "sport": "농구"
     },
@@ -386,19 +384,20 @@
       "homeTeam": "현대건설",
       "awayTeam": "GS칼텍스",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1792177200000,
       "sport": "배구"
     },
     {
       "homeTeam": "알 카디시야",
       "awayTeam": "압하",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1792188900000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "전반종료"
     },
     {
       "homeTeam": "LA다저스",
@@ -842,6 +841,33 @@
       "sport": "농구"
     },
     {
+      "homeTeam": "HT\n22\n33\n18\n23",
+      "awayTeam": "Al Ittihad\n알라얀",
+      "homeScore": 16,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1792160148513,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "Q\n22\n24\n23\n12\n6\n14",
+      "awayTeam": "Spartak Moscow Region",
+      "homeScore": 15,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1792160148514,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "umi U22\nIberia U22\n대기",
+      "awayTeam": "Rustavi B U22\nOrbi U2",
+      "homeScore": 14,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1792160148514,
+      "sport": "농구"
+    },
+    {
       "homeTeam": "페예노르트",
       "awayTeam": "코모",
       "homeScore": 3,
@@ -1259,7 +1285,7 @@
       "homeTeam": "허난FC",
       "awayTeam": "톈진진먼후",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1792150500000,
       "sport": "축구"
@@ -2015,9 +2041,27 @@
       "homeTeam": "현대건설",
       "awayTeam": "GS칼텍스",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 3,
       "status": "SCHEDULED",
       "timestamp": 1792144800000,
+      "sport": "배구"
+    },
+    {
+      "homeTeam": "흥국생명",
+      "awayTeam": "GS칼텍스",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1792211400000,
+      "sport": "배구"
+    },
+    {
+      "homeTeam": "한국도로공사",
+      "awayTeam": "IBK기업",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1792222200000,
       "sport": "배구"
     },
     {
@@ -2032,8 +2076,8 @@
     {
       "homeTeam": "고양소노",
       "awayTeam": "울산모비스",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 95,
+      "awayScore": 82,
       "status": "SCHEDULED",
       "timestamp": 1792144800000,
       "sport": "농구"
