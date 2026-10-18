@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-18T21:06:12.008Z",
-  "count": 190,
+  "updatedAt": "2026-10-18T23:01:56.398Z",
+  "count": 186,
   "scores": [
     {
       "homeTeam": "북한",
@@ -744,19 +744,21 @@
       "homeTeam": "신시내티",
       "awayTeam": "콜롬버스",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1792389600000,
-      "sport": "축구"
+      "sport": "축구",
+      "minute": "후반 35'"
     },
     {
       "homeTeam": "클리블랜드",
       "awayTeam": "탬파베이",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "LIVE",
       "timestamp": 1792390080000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "7회초"
     },
     {
       "homeTeam": "OK저축은행",
@@ -793,42 +795,6 @@
       "status": "SCHEDULED",
       "timestamp": 1792436400000,
       "sport": "배구"
-    },
-    {
-      "homeTeam": "럿거스\n연기",
-      "awayTeam": "드폴\nLoyola",
-      "homeScore": 18,
-      "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1792357541208,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "Q\n8\n2",
-      "awayTeam": "Luis Matte Larrain",
-      "homeScore": 21,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1792357541209,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "대기",
-      "awayTeam": "프르바리가",
-      "homeScore": 7,
-      "awayScore": 15,
-      "status": "LIVE",
-      "timestamp": 1792357541209,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n35\n19\n13\n21",
-      "awayTeam": "Quilmes",
-      "homeScore": 23,
-      "awayScore": 30,
-      "status": "LIVE",
-      "timestamp": 1792357541209,
-      "sport": "농구"
     },
     {
       "homeTeam": "스트라스부르",
@@ -1537,7 +1503,7 @@
       "awayTeam": "세비야",
       "homeScore": 4,
       "awayScore": 1,
-      "status": "FINISHED",
+      "status": "SCHEDULED",
       "timestamp": 1792350000000,
       "sport": "축구"
     },
@@ -1554,7 +1520,7 @@
       "homeTeam": "FC신시내티",
       "awayTeam": "콜럼버스크루",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1792357200000,
       "sport": "축구"
