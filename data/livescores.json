@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-19T05:26:11.461Z",
-  "count": 186,
+  "updatedAt": "2026-10-19T11:00:17.858Z",
+  "count": 190,
   "scores": [
     {
       "homeTeam": "캐나다",
@@ -185,39 +185,40 @@
     {
       "homeTeam": "OK저축은행",
       "awayTeam": "현대캐피탈",
-      "homeScore": 1,
-      "awayScore": 1,
-      "status": "LIVE",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1792414800000,
-      "sport": "배구",
-      "inning": "3세트"
+      "sport": "배구"
     },
     {
       "homeTeam": "한국전력",
       "awayTeam": "KB손해보험",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1792423800000,
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1792425600000,
       "sport": "배구"
     },
     {
       "homeTeam": "원주 DB",
       "awayTeam": "대구 한국가스공사",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 50,
+      "awayScore": 34,
+      "status": "LIVE",
       "timestamp": 1792436400000,
-      "sport": "농구"
+      "sport": "농구",
+      "inning": "3쿼터"
     },
     {
       "homeTeam": "대한항공",
       "awayTeam": "삼성화재",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1792436400000,
-      "sport": "배구"
+      "sport": "배구",
+      "inning": "2세트"
     },
     {
       "homeTeam": "KIA",
@@ -793,6 +794,42 @@
       "awayScore": 74,
       "status": "FINISHED",
       "timestamp": 1792341000000,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n23\n21\n20\n14",
+      "awayTeam": "지바",
+      "homeScore": 10,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1792407584875,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n17\n16\n15\n27",
+      "awayTeam": "센다이",
+      "homeScore": 10,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1792407584875,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n23\n16\n17\n9",
+      "awayTeam": "시마네",
+      "homeScore": 10,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1792407584875,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n16\n21\n27\n14",
+      "awayTeam": "류큐",
+      "homeScore": 10,
+      "awayScore": 35,
+      "status": "LIVE",
+      "timestamp": 1792407584875,
       "sport": "농구"
     },
     {
@@ -1581,8 +1618,8 @@
     {
       "homeTeam": "OK저축은행",
       "awayTeam": "현대캐피탈",
-      "homeScore": 1,
-      "awayScore": 1,
+      "homeScore": 2,
+      "awayScore": 3,
       "status": "SCHEDULED",
       "timestamp": 1792382400000,
       "sport": "배구"
@@ -1590,8 +1627,8 @@
     {
       "homeTeam": "한국전력",
       "awayTeam": "KB손해보험",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 3,
+      "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1792391400000,
       "sport": "배구"
@@ -1599,7 +1636,7 @@
     {
       "homeTeam": "대한항공",
       "awayTeam": "삼성화재",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1792404000000,
@@ -1662,8 +1699,8 @@
     {
       "homeTeam": "원주DB",
       "awayTeam": "한국가스공사",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 50,
+      "awayScore": 34,
       "status": "SCHEDULED",
       "timestamp": 1792404000000,
       "sport": "농구"
