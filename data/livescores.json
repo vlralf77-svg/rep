@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-20T05:13:56.327Z",
+  "updatedAt": "2026-10-20T10:02:03.655Z",
   "count": 107,
   "scores": [
     {
@@ -122,30 +122,30 @@
     {
       "homeTeam": "대한항공",
       "awayTeam": "OK저축은행",
-      "homeScore": 1,
+      "homeScore": 3,
       "awayScore": 1,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1792501200000,
-      "sport": "배구",
-      "inning": "3세트"
+      "sport": "배구"
     },
     {
       "homeTeam": "KB손해보험",
       "awayTeam": "우리카드",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1792510200000,
+      "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1792511100000,
       "sport": "배구"
     },
     {
       "homeTeam": "LG",
       "awayTeam": "KIA",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 1,
+      "status": "LIVE",
       "timestamp": 1792521000000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "2회초"
     },
     {
       "homeTeam": "서울 SK",
@@ -161,9 +161,10 @@
       "awayTeam": "현대캐피탈",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "SCHEDULED",
+      "status": "LIVE",
       "timestamp": 1792522800000,
-      "sport": "배구"
+      "sport": "배구",
+      "inning": "1세트"
     },
     {
       "homeTeam": "클리블랜드",
@@ -888,7 +889,7 @@
     {
       "homeTeam": "대한항공",
       "awayTeam": "OK저축은행",
-      "homeScore": 1,
+      "homeScore": 3,
       "awayScore": 1,
       "status": "SCHEDULED",
       "timestamp": 1792468800000,
@@ -898,7 +899,7 @@
       "homeTeam": "KB손해보험",
       "awayTeam": "우리카드",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 3,
       "status": "SCHEDULED",
       "timestamp": 1792477800000,
       "sport": "배구"
