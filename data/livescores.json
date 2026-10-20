@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-20T10:02:03.655Z",
-  "count": 107,
+  "updatedAt": "2026-10-20T14:44:59.066Z",
+  "count": 109,
   "scores": [
     {
       "homeTeam": "케냐",
@@ -140,19 +140,18 @@
     {
       "homeTeam": "LG",
       "awayTeam": "KIA",
-      "homeScore": 0,
-      "awayScore": 1,
-      "status": "LIVE",
+      "homeScore": 1,
+      "awayScore": 13,
+      "status": "FINISHED",
       "timestamp": 1792521000000,
-      "sport": "야구",
-      "inning": "2회초"
+      "sport": "야구"
     },
     {
       "homeTeam": "서울 SK",
       "awayTeam": "안양 정관장",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 84,
+      "awayScore": 76,
+      "status": "FINISHED",
       "timestamp": 1792522800000,
       "sport": "농구"
     },
@@ -160,11 +159,10 @@
       "homeTeam": "삼성화재",
       "awayTeam": "현대캐피탈",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
+      "awayScore": 3,
+      "status": "FINISHED",
       "timestamp": 1792522800000,
-      "sport": "배구",
-      "inning": "1세트"
+      "sport": "배구"
     },
     {
       "homeTeam": "클리블랜드",
@@ -380,6 +378,24 @@
       "awayScore": 78,
       "status": "FINISHED",
       "timestamp": 1792436400000,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n8\n15\n18\n17",
+      "awayTeam": "UMMC 예카테린부르크",
+      "homeScore": 14,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1792507466913,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n23\n23\n14\n9",
+      "awayTeam": "이바노보",
+      "homeScore": 15,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1792507466913,
       "sport": "농구"
     },
     {
@@ -908,7 +924,7 @@
       "homeTeam": "삼성화재",
       "awayTeam": "현대캐피탈",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 3,
       "status": "SCHEDULED",
       "timestamp": 1792490400000,
       "sport": "배구"
@@ -925,8 +941,8 @@
     {
       "homeTeam": "서울SK",
       "awayTeam": "안양정관장",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 84,
+      "awayScore": 76,
       "status": "SCHEDULED",
       "timestamp": 1792490400000,
       "sport": "농구"
