@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-23T05:23:48.211Z",
-  "count": 221,
+  "updatedAt": "2026-10-23T10:15:28.369Z",
+  "count": 223,
   "scores": [
     {
       "homeTeam": "중국",
@@ -374,11 +374,12 @@
     {
       "homeTeam": "수원 KT",
       "awayTeam": "원주 DB",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 9,
+      "awayScore": 16,
+      "status": "LIVE",
       "timestamp": 1792782000000,
-      "sport": "농구"
+      "sport": "농구",
+      "inning": "1쿼터"
     },
     {
       "homeTeam": "알 파이살리",
@@ -696,6 +697,24 @@
       "sport": "농구"
     },
     {
+      "homeTeam": "HT\n28\n19\n13\n20",
+      "awayTeam": "Shinagawa City BC",
+      "homeScore": 10,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1792750497586,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n15\n26\n21\n15",
+      "awayTeam": "CSJL Knights\nSSC",
+      "homeScore": 7,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1792750497587,
+      "sport": "농구"
+    },
+    {
       "homeTeam": "코모",
       "awayTeam": "맨체스터U",
       "homeScore": 4,
@@ -950,7 +969,7 @@
     {
       "homeTeam": "브리즈번로어",
       "awayTeam": "퍼스글로리",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1792746000000,
@@ -1850,8 +1869,8 @@
     {
       "homeTeam": "수원KT",
       "awayTeam": "원주DB",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 9,
+      "awayScore": 16,
       "status": "SCHEDULED",
       "timestamp": 1792749600000,
       "sport": "농구"
