@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-25T20:47:32.031Z",
-  "count": 237,
+  "updatedAt": "2026-10-25T22:51:26.891Z",
+  "count": 236,
   "scores": [
     {
       "homeTeam": "가나",
@@ -807,49 +807,48 @@
       "homeTeam": "알크마르 잔스트리크",
       "awayTeam": "트벤터",
       "homeScore": 0,
-      "awayScore": 1,
-      "status": "LIVE",
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1792987200000,
-      "sport": "축구",
-      "minute": "후반 42'"
+      "sport": "축구"
     },
     {
       "homeTeam": "우디네세",
       "awayTeam": "밀란",
       "homeScore": 0,
-      "awayScore": 1,
-      "status": "LIVE",
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1792989900000,
-      "sport": "축구",
-      "minute": "전반종료"
+      "sport": "축구"
     },
     {
       "homeTeam": "바르셀로나",
       "awayTeam": "레알 마드리드",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "FINISHED",
       "timestamp": 1792990800000,
-      "sport": "축구",
-      "minute": "전반 42'"
+      "sport": "축구"
     },
     {
       "homeTeam": "유타",
       "awayTeam": "LA레이커스",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 92,
+      "awayScore": 95,
+      "status": "LIVE",
       "timestamp": 1792994400000,
-      "sport": "농구"
+      "sport": "농구",
+      "inning": "3쿼터"
     },
     {
       "homeTeam": "브루클린",
       "awayTeam": "인디애나",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 35,
+      "awayScore": 35,
+      "status": "LIVE",
       "timestamp": 1792998000000,
-      "sport": "농구"
+      "sport": "농구",
+      "inning": "2쿼터"
     },
     {
       "homeTeam": "미네소타",
@@ -951,30 +950,21 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "s\n연기",
-      "awayTeam": "듀크 블루 데블스\n캔자스\n연기\nB.리그",
-      "homeScore": 17,
-      "awayScore": 0,
-      "status": "LIVE",
-      "timestamp": 1792961218852,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "연기",
-      "awayTeam": "Tresnjevka 2009",
-      "homeScore": 15,
-      "awayScore": 55,
-      "status": "LIVE",
-      "timestamp": 1792961218853,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "HT\n16\n17\n14\n8",
-      "awayTeam": "Arturo Prat U21",
+      "homeTeam": "apurro\n26\n24\n1Q\n26\n24",
+      "awayTeam": "BBC Layva\n25 de agost",
       "homeScore": 22,
+      "awayScore": 45,
+      "status": "LIVE",
+      "timestamp": 1792968655596,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n14\n18\n15\n24",
+      "awayTeam": "CDS Basquetbol Consti",
+      "homeScore": 20,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1792961218853,
+      "timestamp": 1792968655596,
       "sport": "농구"
     },
     {
@@ -1683,7 +1673,7 @@
       "homeTeam": "AZ알크마르",
       "awayTeam": "트벤테",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1792954800000,
       "sport": "축구"
@@ -1692,7 +1682,7 @@
       "homeTeam": "우디네세",
       "awayTeam": "AC밀란",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1792957500000,
       "sport": "축구"
@@ -1709,8 +1699,8 @@
     {
       "homeTeam": "바르셀로나",
       "awayTeam": "레알마드리드",
-      "homeScore": 0,
-      "awayScore": 1,
+      "homeScore": 1,
+      "awayScore": 2,
       "status": "SCHEDULED",
       "timestamp": 1792958400000,
       "sport": "축구"
@@ -1979,8 +1969,8 @@
     {
       "homeTeam": "유타",
       "awayTeam": "LA 레이커스",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 85,
+      "awayScore": 88,
       "status": "SCHEDULED",
       "timestamp": 1792962000000,
       "sport": "농구"
@@ -1988,8 +1978,8 @@
     {
       "homeTeam": "브룩클린",
       "awayTeam": "인디애나",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 26,
+      "awayScore": 24,
       "status": "SCHEDULED",
       "timestamp": 1792965600000,
       "sport": "농구"
