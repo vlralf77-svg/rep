@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-26T05:22:53.120Z",
-  "count": 234,
+  "updatedAt": "2026-10-26T11:17:52.997Z",
+  "count": 240,
   "scores": [
     {
       "homeTeam": "호르센스",
@@ -257,18 +257,18 @@
     {
       "homeTeam": "단국대",
       "awayTeam": "강원대",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
+      "homeScore": 78,
+      "awayScore": 39,
+      "status": "FINISHED",
       "timestamp": 1793023200000,
       "sport": "농구"
     },
     {
       "homeTeam": "광주대",
       "awayTeam": "수원대",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
+      "homeScore": 69,
+      "awayScore": 63,
+      "status": "FINISHED",
       "timestamp": 1793023200000,
       "sport": "농구"
     },
@@ -276,19 +276,21 @@
       "homeTeam": "삼성",
       "awayTeam": "KIA",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 5,
+      "status": "LIVE",
       "timestamp": 1793039400000,
-      "sport": "야구"
+      "sport": "야구",
+      "inning": "5회말"
     },
     {
       "homeTeam": "고양 소노",
       "awayTeam": "창원 LG",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 50,
+      "awayScore": 55,
+      "status": "LIVE",
       "timestamp": 1793041200000,
-      "sport": "농구"
+      "sport": "농구",
+      "inning": "3쿼터"
     },
     {
       "homeTeam": "넵치",
@@ -945,6 +947,60 @@
       "awayScore": 76,
       "status": "FINISHED",
       "timestamp": 1792945800000,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n21\n15\n15\n26",
+      "awayTeam": "Nagasaki Velca",
+      "homeScore": 10,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1793013437782,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n24\n26\n15\n20",
+      "awayTeam": "Saga",
+      "homeScore": 10,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1793013437782,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n24\n25\n19\n17",
+      "awayTeam": "도야마",
+      "homeScore": 10,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1793013437782,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n19\n17\n18\n25",
+      "awayTeam": "우츠노미야 브렉스",
+      "homeScore": 10,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1793013437782,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n26\n20\n17\n24",
+      "awayTeam": "요코하마",
+      "homeScore": 10,
+      "awayScore": 5,
+      "status": "LIVE",
+      "timestamp": 1793013437782,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n21\n11\n24\n26",
+      "awayTeam": "교토",
+      "homeScore": 10,
+      "awayScore": 15,
+      "status": "LIVE",
+      "timestamp": 1793013437782,
       "sport": "농구"
     },
     {
@@ -2012,8 +2068,8 @@
     {
       "homeTeam": "고양소노",
       "awayTeam": "창원LG",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 54,
+      "awayScore": 58,
       "status": "SCHEDULED",
       "timestamp": 1793008800000,
       "sport": "농구"
