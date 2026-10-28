@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-28T03:53:20.152Z",
-  "count": 150,
+  "updatedAt": "2026-10-28T10:05:32.658Z",
+  "count": 151,
   "scores": [
     {
       "homeTeam": "알 시브",
@@ -21,7 +21,7 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "그로샤스파흐",
+      "homeTeam": "그로스아스파흐",
       "awayTeam": "아우크스부르크",
       "homeScore": 2,
       "awayScore": 4,
@@ -94,7 +94,7 @@
     },
     {
       "homeTeam": "글라트바흐",
-      "awayTeam": "카를스루에",
+      "awayTeam": "KSC",
       "homeScore": 2,
       "awayScore": 0,
       "status": "FINISHED",
@@ -130,7 +130,7 @@
     },
     {
       "homeTeam": "엘버스베르크",
-      "awayTeam": "다름슈타트",
+      "awayTeam": "다름슈타트98",
       "homeScore": 0,
       "awayScore": 2,
       "status": "FINISHED",
@@ -165,16 +165,6 @@
       "sport": "농구"
     },
     {
-      "homeTeam": "탬파베이",
-      "awayTeam": "밀워키",
-      "homeScore": 2,
-      "awayScore": 2,
-      "status": "LIVE",
-      "timestamp": 1793178000000,
-      "sport": "야구",
-      "inning": "11회말"
-    },
-    {
       "homeTeam": "뉴욕",
       "awayTeam": "디트로이트",
       "homeScore": 111,
@@ -193,21 +183,29 @@
       "sport": "농구"
     },
     {
+      "homeTeam": "탬파베이",
+      "awayTeam": "밀워키",
+      "homeScore": 4,
+      "awayScore": 3,
+      "status": "FINISHED",
+      "timestamp": 1793178000000,
+      "sport": "야구"
+    },
+    {
       "homeTeam": "LA레이커스",
       "awayTeam": "포틀랜드",
-      "homeScore": 38,
-      "awayScore": 32,
-      "status": "LIVE",
+      "homeScore": 129,
+      "awayScore": 136,
+      "status": "FINISHED",
       "timestamp": 1793188800000,
-      "sport": "농구",
-      "inning": "1쿼터"
+      "sport": "농구"
     },
     {
       "homeTeam": "단국대",
       "awayTeam": "광주대",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 81,
+      "awayScore": 62,
+      "status": "FINISHED",
       "timestamp": 1793196000000,
       "sport": "농구"
     },
@@ -215,32 +213,15 @@
       "homeTeam": "소프트뱅크",
       "awayTeam": "요코하마",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "awayScore": 2,
+      "status": "LIVE",
       "timestamp": 1793210400000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "대구 한국가스공사",
-      "awayTeam": "원주 DB",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1793214000000,
-      "sport": "농구"
+      "sport": "야구",
+      "inning": "4회말"
     },
     {
       "homeTeam": "경주 한수원",
       "awayTeam": "서울시청",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1793214000000,
-      "sport": "축구"
-    },
-    {
-      "homeTeam": "가시마",
-      "awayTeam": "포항",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
@@ -257,15 +238,6 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "감바 오사카",
-      "awayTeam": "부리람",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1793214000000,
-      "sport": "축구"
-    },
-    {
       "homeTeam": "수원FC 위민",
       "awayTeam": "문경 상무",
       "homeScore": 0,
@@ -273,6 +245,36 @@
       "status": "SCHEDULED",
       "timestamp": 1793214000000,
       "sport": "축구"
+    },
+    {
+      "homeTeam": "대구 한국가스공사",
+      "awayTeam": "원주 DB",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1793214000000,
+      "sport": "농구",
+      "inning": "1쿼터"
+    },
+    {
+      "homeTeam": "가시마",
+      "awayTeam": "포항",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1793214000000,
+      "sport": "축구",
+      "minute": "전반 2'"
+    },
+    {
+      "homeTeam": "감바 오사카",
+      "awayTeam": "부리람",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1793214000000,
+      "sport": "축구",
+      "minute": "전반 1'"
     },
     {
       "homeTeam": "프레스 ZD FC",
@@ -581,12 +583,21 @@
       "sport": "농구"
     },
     {
-      "homeTeam": "연기",
-      "awayTeam": "Santa Ana",
-      "homeScore": 1,
-      "awayScore": 15,
+      "homeTeam": "HT\n23\n11\n23\n22",
+      "awayTeam": "San Juan Knights",
+      "homeScore": 11,
+      "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1793159565195,
+      "timestamp": 1793181899750,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n20\n34\n20\n25",
+      "awayTeam": "Hangtuah Sumsel IM",
+      "homeScore": 11,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1793181899750,
       "sport": "농구"
     },
     {
@@ -1222,8 +1233,8 @@
     {
       "homeTeam": "LA 레이커스",
       "awayTeam": "포틀랜드",
-      "homeScore": 38,
-      "awayScore": 32,
+      "homeScore": 129,
+      "awayScore": 136,
       "status": "SCHEDULED",
       "timestamp": 1793156400000,
       "sport": "농구"
@@ -1231,8 +1242,8 @@
     {
       "homeTeam": "한국가스공사",
       "awayTeam": "원주DB",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 2,
+      "awayScore": 4,
       "status": "SCHEDULED",
       "timestamp": 1793181600000,
       "sport": "농구"
