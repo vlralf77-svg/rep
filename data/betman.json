@@ -1,171 +1,7 @@
 {
-  "updatedAt": "2026-11-09T08:55:11.657Z",
+  "updatedAt": "2026-11-09T20:19:16.670Z",
   "toto": [],
   "proto": [
-    {
-      "matchId": "서울삼성 썬더스|수원KT 소닉붐|1794218400000",
-      "sport": "농구",
-      "league": "승부식133 회차",
-      "homeTeam": "서울삼성 썬더스",
-      "awayTeam": "수원KT 소닉붐",
-      "gameDate": "2026-11-09T10:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.58
-            },
-            {
-              "label": "패",
-              "odds": 1.94
-            }
-          ]
-        },
-        {
-          "type": "승5패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.24
-            },
-            {
-              "label": "5",
-              "odds": 2.75
-            },
-            {
-              "label": "패",
-              "odds": 2.95
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.79
-            },
-            {
-              "label": "패",
-              "odds": 1.69
-            }
-          ],
-          "line": -2.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.83
-            },
-            {
-              "label": "오버",
-              "odds": 1.66
-            }
-          ],
-          "line": 168.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.8
-            },
-            {
-              "label": "짝",
-              "odds": 1.8
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "matchId": "KB 스타즈|우리은행 우리WON|1794218400000",
-      "sport": "농구",
-      "league": "승부식133 회차",
-      "homeTeam": "KB 스타즈",
-      "awayTeam": "우리은행 우리WON",
-      "gameDate": "2026-11-09T10:00:00.000Z",
-      "status": "발매중",
-      "markets": [
-        {
-          "type": "승패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.8
-            },
-            {
-              "label": "패",
-              "odds": 1.68
-            }
-          ]
-        },
-        {
-          "type": "승5패",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 2.75
-            },
-            {
-              "label": "5",
-              "odds": 2.54
-            },
-            {
-              "label": "패",
-              "odds": 2.55
-            }
-          ]
-        },
-        {
-          "type": "핸디캡",
-          "selections": [
-            {
-              "label": "승",
-              "odds": 1.67
-            },
-            {
-              "label": "패",
-              "odds": 1.82
-            }
-          ],
-          "line": 1.5
-        },
-        {
-          "type": "언더오버",
-          "selections": [
-            {
-              "label": "언더",
-              "odds": 1.77
-            },
-            {
-              "label": "오버",
-              "odds": 1.71
-            }
-          ],
-          "line": 130.5
-        },
-        {
-          "type": "SUM",
-          "selections": [
-            {
-              "label": "홀",
-              "odds": 1.8
-            },
-            {
-              "label": "짝",
-              "odds": 1.8
-            }
-          ]
-        }
-      ]
-    },
     {
       "matchId": "애틀랜타 호크스|LA 레이커스|1794268800000",
       "sport": "농구",
@@ -180,11 +16,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 2.02
+              "odds": 1.94
             },
             {
               "label": "패",
-              "odds": 1.53
+              "odds": 1.58
             }
           ]
         },
@@ -258,11 +94,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.75
+              "odds": 1.8
             },
             {
               "label": "패",
-              "odds": 1.73
+              "odds": 1.68
             }
           ],
           "line": 8.5
@@ -409,7 +245,7 @@
               "odds": 1.75
             }
           ],
-          "line": 231.5
+          "line": 230.5
         },
         {
           "type": "SUM",
@@ -453,11 +289,11 @@
           "selections": [
             {
               "label": "승",
-              "odds": 1.74
+              "odds": 1.69
             },
             {
               "label": "패",
-              "odds": 1.74
+              "odds": 1.79
             }
           ],
           "line": -3.5
