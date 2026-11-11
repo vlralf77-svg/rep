@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-11-11T16:42:59.232Z",
-  "count": 63,
+  "updatedAt": "2026-11-11T23:03:56.935Z",
+  "count": 65,
   "scores": [
     {
       "homeTeam": "뉴욕",
@@ -192,15 +192,6 @@
       "sport": "농구"
     },
     {
-      "homeTeam": "대한민국",
-      "awayTeam": "호주",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1794484800000,
-      "sport": "야구"
-    },
-    {
       "homeTeam": "포틀랜드",
       "awayTeam": "오클라호마",
       "homeScore": 0,
@@ -208,6 +199,15 @@
       "status": "SCHEDULED",
       "timestamp": 1794484800000,
       "sport": "농구"
+    },
+    {
+      "homeTeam": "대한민국",
+      "awayTeam": "호주",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1794484800000,
+      "sport": "야구"
     },
     {
       "homeTeam": "뉴질랜드",
@@ -219,31 +219,13 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "차이니스 타이베이",
-      "awayTeam": "일본",
+      "homeTeam": "정관장",
+      "awayTeam": "한국도로공사",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1794510000000,
-      "sport": "야구"
-    },
-    {
-      "homeTeam": "대구 한국가스공사",
-      "awayTeam": "고양 소노",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1794510000000,
-      "sport": "농구"
-    },
-    {
-      "homeTeam": "화천 KSPO",
-      "awayTeam": "경주 한수원",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1794510000000,
-      "sport": "축구"
+      "sport": "배구"
     },
     {
       "homeTeam": "OK저축은행",
@@ -255,13 +237,31 @@
       "sport": "배구"
     },
     {
-      "homeTeam": "정관장",
-      "awayTeam": "한국도로공사",
+      "homeTeam": "대구 한국가스공사",
+      "awayTeam": "고양 소노",
       "homeScore": 0,
       "awayScore": 0,
       "status": "SCHEDULED",
       "timestamp": 1794510000000,
-      "sport": "배구"
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "차이니스 타이베이",
+      "awayTeam": "일본",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1794510000000,
+      "sport": "야구"
+    },
+    {
+      "homeTeam": "화천 KSPO",
+      "awayTeam": "경주 한수원",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "SCHEDULED",
+      "timestamp": 1794510000000,
+      "sport": "축구"
     },
     {
       "homeTeam": "FC섭돌이",
@@ -273,21 +273,39 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n18\n19\n14\n17",
-      "awayTeam": "보스니아",
-      "homeScore": 16,
-      "awayScore": 0,
+      "homeTeam": "ookman\n36\n35\nHT\n36\n35",
+      "awayTeam": "네이비\nPennsylvania\n2\n8",
+      "homeScore": 22,
+      "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1794415303573,
+      "timestamp": 1794438164162,
       "sport": "농구"
     },
     {
-      "homeTeam": "HT\n15\n14\n31\n30",
-      "awayTeam": "Neftchi IK\nMykonos",
-      "homeScore": 16,
+      "homeTeam": "결과\n36\n40\n49\n36",
+      "awayTeam": "UC 데이비스\n인카네이트 워드\n81\n6",
+      "homeScore": 19,
       "awayScore": 0,
-      "status": "FINISHED",
-      "timestamp": 1794415303573,
+      "status": "LIVE",
+      "timestamp": 1794438164162,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n49\n32\n33\n36",
+      "awayTeam": "사우스 플로리다\nSaint Joseph",
+      "homeScore": 20,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794438164162,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n34\n46\n39\n44",
+      "awayTeam": "에어 포스\nLoyola",
+      "homeScore": 20,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794438164162,
       "sport": "농구"
     },
     {
