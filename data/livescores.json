@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-11-18T15:56:53.970Z",
-  "count": 88,
+  "updatedAt": "2026-11-18T22:48:53.834Z",
+  "count": 91,
   "scores": [
     {
       "homeTeam": "사우디아라비아",
@@ -201,15 +201,6 @@
       "sport": "농구"
     },
     {
-      "homeTeam": "수원FC 위민",
-      "awayTeam": "경주 한수원",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
-      "timestamp": 1795028400000,
-      "sport": "축구"
-    },
-    {
       "homeTeam": "SOOP",
       "awayTeam": "현대건설",
       "homeScore": 1,
@@ -244,6 +235,15 @@
       "status": "FINISHED",
       "timestamp": 1795028400000,
       "sport": "농구"
+    },
+    {
+      "homeTeam": "수원FC 위민",
+      "awayTeam": "경주 한수원",
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "FINISHED",
+      "timestamp": 1795028400000,
+      "sport": "축구"
     },
     {
       "homeTeam": "클리블랜드",
@@ -435,21 +435,48 @@
       "sport": "축구"
     },
     {
-      "homeTeam": "HT\n24\n27\n27\n18",
-      "awayTeam": "Esenler Erokspor",
-      "homeScore": 16,
-      "awayScore": 0,
+      "homeTeam": "ty\n휴스턴\n40\n37\n전반\n40\n37",
+      "awayTeam": "조지타운\n네이비\n \n1.02\n1.91",
+      "homeScore": 23,
+      "awayScore": 30,
       "status": "LIVE",
-      "timestamp": 1795017156380,
+      "timestamp": 1795041880422,
       "sport": "농구"
     },
     {
-      "homeTeam": "Q\n16\n23\n0\n19\n19\n0",
-      "awayTeam": "루본",
-      "homeScore": 15,
+      "homeTeam": "결과\n60\n44\n19\n36",
+      "awayTeam": "노트르담\n럿거스\n110\n100\n결과\n4",
+      "homeScore": 19,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1795017156380,
+      "timestamp": 1795041880422,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "연기",
+      "awayTeam": "Spanish BKB Academy\nE",
+      "homeScore": 20,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1795041880422,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "HT\n5\n13\n17\n13",
+      "awayTeam": "University of Georgia",
+      "homeScore": 23,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1795041880422,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "연기",
+      "awayTeam": "라네르스",
+      "homeScore": 17,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1795041880422,
       "sport": "농구"
     },
     {
