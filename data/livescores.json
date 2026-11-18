@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-11-18T00:07:02.945Z",
-  "count": 92,
+  "updatedAt": "2026-11-18T06:30:50.135Z",
+  "count": 112,
   "scores": [
     {
       "homeTeam": "사우디아라비아",
@@ -124,85 +124,82 @@
       "awayTeam": "콜롬비아",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1794988800000,
-      "sport": "축구",
-      "minute": "전반종료"
+      "sport": "축구"
     },
     {
       "homeTeam": "아르헨티나",
       "awayTeam": "코스타리카",
-      "homeScore": 4,
+      "homeScore": 7,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1794988800000,
-      "sport": "축구",
-      "minute": "전반종료"
+      "sport": "축구"
     },
     {
       "homeTeam": "에콰도르",
       "awayTeam": "볼리비아",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1794990600000,
-      "sport": "축구",
-      "minute": "전반 23'"
+      "sport": "축구"
     },
     {
       "homeTeam": "우루과이",
       "awayTeam": "도미니카 공화국",
-      "homeScore": 0,
+      "homeScore": 5,
       "awayScore": 0,
-      "status": "LIVE",
+      "status": "FINISHED",
       "timestamp": 1794990600000,
-      "sport": "축구",
-      "minute": "전반 30'"
+      "sport": "축구"
     },
     {
       "homeTeam": "토론토",
       "awayTeam": "뉴욕",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 102,
+      "awayScore": 111,
+      "status": "FINISHED",
       "timestamp": 1794994200000,
       "sport": "농구"
     },
     {
       "homeTeam": "미네소타",
       "awayTeam": "포틀랜드",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 106,
+      "awayScore": 105,
+      "status": "FINISHED",
       "timestamp": 1794996000000,
       "sport": "농구"
     },
     {
       "homeTeam": "샌안토니오",
       "awayTeam": "디트로이트",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 93,
+      "awayScore": 105,
+      "status": "FINISHED",
       "timestamp": 1794996000000,
       "sport": "농구"
     },
     {
       "homeTeam": "LA클리퍼스",
       "awayTeam": "유타",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 107,
+      "awayScore": 132,
+      "status": "FINISHED",
       "timestamp": 1795005000000,
       "sport": "농구"
     },
     {
       "homeTeam": "LA레이커스",
       "awayTeam": "샬럿",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "SCHEDULED",
+      "homeScore": 98,
+      "awayScore": 102,
+      "status": "LIVE",
       "timestamp": 1795006800000,
-      "sport": "농구"
+      "sport": "농구",
+      "inning": "4쿼터"
     },
     {
       "homeTeam": "SOOP",
@@ -493,21 +490,201 @@
       "sport": "농구"
     },
     {
-      "homeTeam": "인트 피터스\n24\n26\nHT\n24\n26",
-      "awayTeam": "서던 일리노이\nLiberty\n30\n44",
-      "homeScore": 23,
+      "homeTeam": "트 버지니아\n31\n36\nHT\n31\n36",
+      "awayTeam": "베일러\n잭슨 스테이트",
+      "homeScore": 17,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1794960135042,
+      "timestamp": 1794983165026,
       "sport": "농구"
     },
     {
-      "homeTeam": "HT\n30\n44",
-      "awayTeam": "아미\n마리스트\n41\n35\nHT\n41\n3",
-      "homeScore": 23,
+      "homeTeam": "결과\n36\n45\n31\n43",
+      "awayTeam": "Southern Methodist",
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "timestamp": 1794960135042,
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n23\n53\n31\n41",
+      "awayTeam": "드폴\nMaryland",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n34\n49\n16\n23",
+      "awayTeam": "에번즈빌\nLeMoyne",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n36\n43\n24\n41",
+      "awayTeam": "일리노이 스테이트\nBellarmine",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n36\n40\n24\n35",
+      "awayTeam": "조지아 남부\nMiddle Tenness",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n46\n32\n33\n52",
+      "awayTeam": "UMKC\nNewman Jets\n68\n6",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n37\n31\n29\n35",
+      "awayTeam": "노던 아이오와\nLindenwood\n81",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n33\n48\n32\n42",
+      "awayTeam": "밴더빌트\n이스턴 일리노이\n96\n50\n결",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "과\n43\n53\n26\n24",
+      "awayTeam": "서던 미스\nTexas",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n35\n37\n43\n40",
+      "awayTeam": "Nebraska Omaha\n라마\n74",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n32\n42\n45\n59",
+      "awayTeam": "노스 다코타\nSIU",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n41\n31\n11\n27\n45\n6",
+      "awayTeam": "노던 애리조나\nEmbry\n72\n59\n결",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "과\n35\n37\n19\n40",
+      "awayTeam": "Utah\nEastern Washingt",
+      "homeScore": 1,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n25\n42\n30\n41",
+      "awayTeam": "와이오밍\nSam Houston Stat",
+      "homeScore": 1,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n43\n38\n36\n43",
+      "awayTeam": "미시시피주립대학교\n니콜스 스테이트\n76",
+      "homeScore": 1,
+      "awayScore": 30,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n34\n42\n9\n32",
+      "awayTeam": "버지니아\n올드 도미니언\n85\n65\n결과",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n25\n43\n37\n38",
+      "awayTeam": "테네시\n미시간 스테이트\n61\n46\n결과",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n35\n42\n55\n47",
+      "awayTeam": "California Baptist\n시애",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n25\n29\n48\n35",
+      "awayTeam": "퍼시픽\nPacific Union\n96",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n45\n51\n19\n22",
+      "awayTeam": "스탠퍼드\nUC 어바인\n65\n61\n결과",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
+      "sport": "농구"
+    },
+    {
+      "homeTeam": "결과\n56\n40\n29\n30",
+      "awayTeam": "곤자가\n몬태나 스테이트\n74\n62\n결과",
+      "homeScore": 4,
+      "awayScore": 0,
+      "status": "LIVE",
+      "timestamp": 1794983165026,
       "sport": "농구"
     },
     {
@@ -648,8 +825,8 @@
     {
       "homeTeam": "토론토",
       "awayTeam": "뉴욕",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 102,
+      "awayScore": 111,
       "status": "SCHEDULED",
       "timestamp": 1794961800000,
       "sport": "농구"
@@ -657,8 +834,8 @@
     {
       "homeTeam": "미네소타",
       "awayTeam": "포틀랜드",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 106,
+      "awayScore": 105,
       "status": "SCHEDULED",
       "timestamp": 1794963600000,
       "sport": "농구"
@@ -666,8 +843,8 @@
     {
       "homeTeam": "샌안토니오",
       "awayTeam": "디트로이트",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 93,
+      "awayScore": 105,
       "status": "SCHEDULED",
       "timestamp": 1794963600000,
       "sport": "농구"
@@ -675,8 +852,8 @@
     {
       "homeTeam": "LA 클리퍼스",
       "awayTeam": "유타",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 107,
+      "awayScore": 132,
       "status": "SCHEDULED",
       "timestamp": 1794972600000,
       "sport": "농구"
@@ -684,8 +861,8 @@
     {
       "homeTeam": "LA 레이커스",
       "awayTeam": "샬럿",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 98,
+      "awayScore": 102,
       "status": "SCHEDULED",
       "timestamp": 1794974400000,
       "sport": "농구"
